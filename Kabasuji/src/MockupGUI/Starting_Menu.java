@@ -64,8 +64,8 @@ public class Starting_Menu {
 		btnNewButton.setForeground(Color.DARK_GRAY);
 		btnNewButton.setIcon(null);
 		btnNewButton.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
-		btnNewButton.setBackground(Color.DARK_GRAY);
-		btnNewButton.setBounds(156, 113, 130, 40);
+		btnNewButton.setBackground(Color.LIGHT_GRAY);
+		btnNewButton.setBounds(116, 113, 200, 40);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton button = new JButton("Level Builder");
@@ -76,15 +76,15 @@ public class Starting_Menu {
 			}
 		});
 		button.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
-		button.setBackground(Color.DARK_GRAY);
-		button.setBounds(156, 154, 130, 40);
+		button.setBackground(Color.LIGHT_GRAY);
+		button.setBounds(116, 154, 200, 40);
 		frame.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("About");
 		button_1.setForeground(Color.DARK_GRAY);
 		button_1.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
-		button_1.setBackground(Color.DARK_GRAY);
-		button_1.setBounds(156, 195, 130, 40);
+		button_1.setBackground(Color.LIGHT_GRAY);
+		button_1.setBounds(116, 195, 200, 40);
 		frame.getContentPane().add(button_1);
 	}
 }
