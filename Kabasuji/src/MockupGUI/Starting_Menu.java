@@ -11,11 +11,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 public class Starting_Menu {
 
 	private JFrame frame;
-	private JTextField txtKabasuji;
 
 	/**
 	 * Launch the application.
@@ -50,22 +51,12 @@ public class Starting_Menu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		txtKabasuji = new JTextField();
-		txtKabasuji.setFont(new Font("PT Sans Caption", Font.BOLD, 35));
-		txtKabasuji.setForeground(Color.LIGHT_GRAY);
-		txtKabasuji.setBackground(Color.DARK_GRAY);
-		txtKabasuji.setHorizontalAlignment(SwingConstants.CENTER);
-		txtKabasuji.setText("Kabasuji");
-		txtKabasuji.setBounds(-11, -15, 467, 100);
-		frame.getContentPane().add(txtKabasuji);
-		txtKabasuji.setColumns(10);
-		
 		JButton btnNewButton = new JButton("Select Level");
 		btnNewButton.setForeground(Color.DARK_GRAY);
 		btnNewButton.setIcon(null);
 		btnNewButton.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setBounds(116, 113, 200, 40);
+		btnNewButton.setBounds(116, 108, 200, 40);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton button = new JButton("Level Builder");
@@ -77,14 +68,30 @@ public class Starting_Menu {
 		});
 		button.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
 		button.setBackground(Color.LIGHT_GRAY);
-		button.setBounds(116, 154, 200, 40);
+		button.setBounds(116, 160, 200, 40);
 		frame.getContentPane().add(button);
 		
-		JButton button_1 = new JButton("About");
-		button_1.setForeground(Color.DARK_GRAY);
-		button_1.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
-		button_1.setBackground(Color.LIGHT_GRAY);
-		button_1.setBounds(116, 195, 200, 40);
-		frame.getContentPane().add(button_1);
+		JPanel panel = new JPanel();
+		panel.setBorder(null);
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(100, 58, 226, 40);
+		frame.getContentPane().add(panel);
+		
+		JLabel lblNewLabel = new JLabel("Puzzle Game\nby Troilus");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		panel.add(lblNewLabel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.DARK_GRAY);
+		panel_1.setBorder(null);
+		panel_1.setBounds(0, 0, 450, 46);
+		frame.getContentPane().add(panel_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("Kabasuji");
+		lblNewLabel_1.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_1.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblNewLabel_1);
 	}
 }

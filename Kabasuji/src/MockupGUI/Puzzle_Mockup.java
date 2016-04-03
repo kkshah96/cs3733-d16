@@ -11,15 +11,19 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JSplitPane;
+import javax.swing.ImageIcon;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.border.LineBorder;
 
 public class Puzzle_Mockup {
 
 	private JFrame frame;
-	private JTextField txtBoardGoesHere;
-	private JTextField textField;
-	private JTextField txtBullpenGoesHere;
-	private JTextField txtScorestars;
-	private JTextField txtMovesMade;
+	private JPanel panel_1;
+	private JLabel lblLevelPuzzle;
 
 	/**
 	 * Launch the application.
@@ -49,7 +53,7 @@ public class Puzzle_Mockup {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 528, 357);
+		frame.setBounds(100, 100, 823, 565);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -57,64 +61,100 @@ public class Puzzle_Mockup {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(148, 132, 260, 157);
+		panel_1 = new JPanel();
+		panel_1.setBorder(null);
+		panel_1.setBackground(Color.DARK_GRAY);
+		panel_1.setBounds(0, 0, 823, 46);
 		panel.add(panel_1);
-		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		txtBoardGoesHere = new JTextField();
-		panel_1.add(txtBoardGoesHere);
-		txtBoardGoesHere.setBackground(Color.LIGHT_GRAY);
-		txtBoardGoesHere.setText("Board goes Here");
-		txtBoardGoesHere.setColumns(10);
+		lblLevelPuzzle = new JLabel("Level 1: Puzzle");
+		lblLevelPuzzle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLevelPuzzle.setForeground(Color.LIGHT_GRAY);
+		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
+		panel_1.add(lblLevelPuzzle);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.DARK_GRAY);
-		panel_2.setBounds(0, 0, 528, 49);
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_2.setBackground(Color.LIGHT_GRAY);
+		panel_2.setBounds(6, 88, 446, 449);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setForeground(Color.LIGHT_GRAY);
-		textField.setBackground(Color.DARK_GRAY);
-		textField.setText("Level 1");
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setFont(new Font("PT Sans Caption", Font.BOLD, 20));
-		textField.setColumns(10);
-		textField.setBounds(167, 6, 204, 38);
-		panel_2.add(textField);
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.LIGHT_GRAY);
+		panel_4.setBorder(null);
+		panel_4.setBounds(6, 6, 434, 34);
+		panel_2.add(panel_4);
+		panel_4.setLayout(null);
+		
+		JLabel lblBoard = new JLabel("Board");
+		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
+		lblBoard.setForeground(Color.BLACK);
+		lblBoard.setBounds(6, 6, 90, 28);
+		panel_4.add(lblBoard);
+		
+		JButton btnNewButton = new JButton("Undo");
+		btnNewButton.setBounds(62, 5, 90, 29);
+		panel_4.add(btnNewButton);
+		
+		JButton btnRedo = new JButton("Redo");
+		btnRedo.setBounds(147, 5, 90, 29);
+		panel_4.add(btnRedo);
+		
+		JLabel lblNewLabel = new JLabel("Moves: 40/50");
+		lblNewLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		lblNewLabel.setBounds(237, 6, 99, 22);
+		panel_4.add(lblNewLabel);
+		
+		JLabel lblStars = new JLabel("Stars: 0/1");
+		lblStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
+		lblStars.setBounds(346, 10, 82, 16);
+		panel_4.add(lblStars);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(105, 61, 337, 62);
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_3.setBackground(Color.LIGHT_GRAY);
+		panel_3.setBounds(458, 88, 365, 449);
 		panel.add(panel_3);
+		panel_3.setLayout(null);
 		
-		txtBullpenGoesHere = new JTextField();
-		txtBullpenGoesHere.setBackground(Color.WHITE);
-		txtBullpenGoesHere.setText("BullPen Goes Here");
-		panel_3.add(txtBullpenGoesHere);
-		txtBullpenGoesHere.setColumns(10);
+		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(Color.LIGHT_GRAY);
+		panel_5.setBounds(6, 6, 349, 33);
+		panel_3.add(panel_5);
+		panel_5.setLayout(null);
 		
-		txtMovesMade = new JTextField();
-		txtMovesMade.setText("Moves Made:");
-		txtMovesMade.setForeground(Color.BLACK);
-		txtMovesMade.setColumns(10);
-		txtMovesMade.setBackground(Color.LIGHT_GRAY);
-		txtMovesMade.setBounds(6, 168, 130, 34);
-		panel.add(txtMovesMade);
+		JLabel lblBullpen = new JLabel("Bullpen");
+		lblBullpen.setBounds(6, 6, 80, 23);
+		lblBullpen.setForeground(Color.BLACK);
+		lblBullpen.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
+		panel_5.add(lblBullpen);
 		
-		txtScorestars = new JTextField();
-		txtScorestars.setBounds(6, 234, 130, 34);
-		panel.add(txtScorestars);
-		txtScorestars.setText("Score/Stars:");
-		txtScorestars.setForeground(Color.BLACK);
-		txtScorestars.setColumns(10);
-		txtScorestars.setBackground(Color.LIGHT_GRAY);
+		JButton btnNewButton_1 = new JButton("Rotate CW");
+		btnNewButton_1.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.setBounds(76, 4, 99, 29);
+		panel_5.add(btnNewButton_1);
 		
-		JButton btnEndLevel = new JButton("End Level");
-		btnEndLevel.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnEndLevel.setForeground(Color.DARK_GRAY);
-		btnEndLevel.setBackground(Color.LIGHT_GRAY);
-		btnEndLevel.setBounds(411, 145, 117, 29);
-		panel.add(btnEndLevel);
+		JButton btnRotateCcw = new JButton("Rotate CCW");
+		btnRotateCcw.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		btnRotateCcw.setBounds(166, 4, 93, 29);
+		panel_5.add(btnRotateCcw);
+		
+		JButton btnFlip = new JButton("Flip");
+		btnFlip.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		btnFlip.setBounds(250, 4, 93, 29);
+		panel_5.add(btnFlip);
+		
+		JButton btnNewButton_2 = new JButton("Save");
+		btnNewButton_2.setBounds(10, 47, 117, 29);
+		panel.add(btnNewButton_2);
+		
+		JButton btnMainMenu = new JButton("Main Menu");
+		btnMainMenu.setBounds(700, 47, 117, 29);
+		panel.add(btnMainMenu);
 	}
 }
