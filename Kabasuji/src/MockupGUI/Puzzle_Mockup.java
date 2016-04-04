@@ -93,14 +93,6 @@ public class Puzzle_Mockup {
 		lblBoard.setBounds(6, 6, 90, 28);
 		panel_4.add(lblBoard);
 		
-		JButton btnNewButton = new JButton("Undo");
-		btnNewButton.setBounds(62, 5, 90, 29);
-		panel_4.add(btnNewButton);
-		
-		JButton btnRedo = new JButton("Redo");
-		btnRedo.setBounds(147, 5, 90, 29);
-		panel_4.add(btnRedo);
-		
 		JLabel lblNewLabel = new JLabel("Moves: 40/50");
 		lblNewLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		lblNewLabel.setBounds(237, 6, 99, 22);
