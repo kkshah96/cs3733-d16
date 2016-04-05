@@ -60,96 +60,31 @@ public class Level_Selection {
 		frame.getContentPane().setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setMinimum(30);
-		progressBar.setStringPainted(true);
-		progressBar.setForeground(Color.ORANGE);
-		progressBar.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setForeground(Color.LIGHT_GRAY);
 		panel.setBorder(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setForeground(Color.LIGHT_GRAY);
-		panel_1.setBorder(null);
-		panel_1.setBackground(Color.LIGHT_GRAY);
-		
-		JButton btnSpeedLightning = new JButton("Speed: Lightning");
-		btnSpeedLightning.setForeground(Color.BLACK);
-		btnSpeedLightning.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnSpeedLightning.setBackground(Color.LIGHT_GRAY);
-		btnSpeedLightning.setBounds(6, 24, 140, 29);
-		panel_1.add(btnSpeedLightning);
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.DARK_GRAY);
 		panel_2.setBorder(null);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBorder(null);
-		panel_6.setBackground(Color.LIGHT_GRAY);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(progressBar, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
-						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
-						.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 716, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(11, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 373, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(51, Short.MAX_VALUE))
 		);
-		panel_6.setLayout(null);
-		
-		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.setBounds(6, 0, 144, 31);
-		panel_6.add(btnMainMenu);
-		btnMainMenu.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		
-		JLabel lblCustomLevels = new JLabel("Custom Levels");
-		lblCustomLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblCustomLevels.setBounds(293, 6, 117, 16);
-		panel_1.add(lblCustomLevels);
-		
-		JButton btnMyLevel = new JButton("My Level: Release");
-		btnMyLevel.setForeground(Color.BLACK);
-		btnMyLevel.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnMyLevel.setBackground(Color.LIGHT_GRAY);
-		btnMyLevel.setBounds(6, 53, 140, 29);
-		panel_1.add(btnMyLevel);
-		
-		JButton btnHardPuzzle = new JButton("Hard: Puzzle");
-		btnHardPuzzle.setForeground(Color.BLACK);
-		btnHardPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnHardPuzzle.setBackground(Color.LIGHT_GRAY);
-		btnHardPuzzle.setBounds(6, 79, 140, 29);
-		panel_1.add(btnHardPuzzle);
-		
-		JButton btnImpossibleLightning = new JButton("LevelX: Lightning");
-		btnImpossibleLightning.setForeground(Color.BLACK);
-		btnImpossibleLightning.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnImpossibleLightning.setBackground(Color.LIGHT_GRAY);
-		btnImpossibleLightning.setBounds(6, 107, 140, 29);
-		panel_1.add(btnImpossibleLightning);
 		panel_2.setLayout(null);
 		
 		JLabel lblLevelSelection = new JLabel("Level Selection");
@@ -165,182 +100,177 @@ public class Level_Selection {
 		lblGameLevels.setBounds(299, 0, 117, 16);
 		panel.add(lblGameLevels);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.LIGHT_GRAY);
-		panel_3.setBorder(null);
-		panel_3.setBounds(6, 17, 235, 166);
-		panel.add(panel_3);
-		panel_3.setLayout(null);
+		JButton button = new JButton("Level 1: Puzzle");
+		button.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		button.setBackground(Color.DARK_GRAY);
+		button.setBounds(6, 17, 136, 29);
+		panel.add(button);
 		
-		JButton btnLevelPuzzle = new JButton("Level 1: Puzzle");
-		btnLevelPuzzle.setBackground(Color.DARK_GRAY);
+		JButton btnLevelPuzzle = new JButton("Level 4: Puzzle");
 		btnLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelPuzzle.setBounds(6, 6, 136, 29);
-		panel_3.add(btnLevelPuzzle);
+		btnLevelPuzzle.setBackground(Color.DARK_GRAY);
+		btnLevelPuzzle.setBounds(6, 45, 136, 29);
+		panel.add(btnLevelPuzzle);
 		
-		JButton btnLevelPuzzle_1 = new JButton("Level 2: Puzzle");
-		btnLevelPuzzle_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		JButton btnLevelPuzzle_1 = new JButton("Level 7: Puzzle");
 		btnLevelPuzzle_1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelPuzzle_1.setBackground(Color.DARK_GRAY);
-		btnLevelPuzzle_1.setBounds(6, 34, 136, 29);
-		panel_3.add(btnLevelPuzzle_1);
+		btnLevelPuzzle_1.setBounds(6, 75, 136, 29);
+		panel.add(btnLevelPuzzle_1);
 		
-		JButton btnLevelPuzzle_2 = new JButton("Level 3: Puzzle");
+		JButton btnLevelPuzzle_2 = new JButton("Level 10: Puzzle");
 		btnLevelPuzzle_2.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelPuzzle_2.setBackground(Color.DARK_GRAY);
-		btnLevelPuzzle_2.setBounds(6, 64, 136, 29);
-		panel_3.add(btnLevelPuzzle_2);
+		btnLevelPuzzle_2.setBounds(6, 102, 136, 29);
+		panel.add(btnLevelPuzzle_2);
 		
-		JButton btnLevelPuzzle_3 = new JButton("Level 4: Puzzle");
+		JButton btnLevelPuzzle_3 = new JButton("Level 13: Puzzle");
 		btnLevelPuzzle_3.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelPuzzle_3.setBackground(Color.DARK_GRAY);
-		btnLevelPuzzle_3.setBounds(6, 91, 136, 29);
-		panel_3.add(btnLevelPuzzle_3);
-		
-		JButton btnLevelPuzzle_4 = new JButton("Level 5: Puzzle");
-		btnLevelPuzzle_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelPuzzle_4.setBackground(Color.DARK_GRAY);
-		btnLevelPuzzle_4.setBounds(6, 119, 136, 29);
-		panel_3.add(btnLevelPuzzle_4);
+		btnLevelPuzzle_3.setBounds(6, 130, 136, 29);
+		panel.add(btnLevelPuzzle_3);
 		
 		JLabel label_9 = new JLabel("Stars: 0/3");
-		label_9.setBounds(142, 9, 85, 16);
-		panel_3.add(label_9);
+		label_9.setBounds(142, 20, 85, 16);
+		panel.add(label_9);
 		
 		JLabel label_10 = new JLabel("Stars: 0/3");
-		label_10.setBounds(142, 37, 85, 16);
-		panel_3.add(label_10);
+		label_10.setBounds(142, 48, 85, 16);
+		panel.add(label_10);
 		
 		JLabel label_11 = new JLabel("Stars: 0/3");
-		label_11.setBounds(142, 67, 85, 16);
-		panel_3.add(label_11);
+		label_11.setBounds(142, 78, 85, 16);
+		panel.add(label_11);
 		
 		JLabel label_12 = new JLabel("Stars: 0/3");
-		label_12.setBounds(142, 94, 85, 16);
-		panel_3.add(label_12);
+		label_12.setBounds(142, 105, 85, 16);
+		panel.add(label_12);
 		
 		JLabel label_13 = new JLabel("Stars: 0/3");
-		label_13.setBounds(142, 122, 85, 16);
-		panel_3.add(label_13);
+		label_13.setBounds(142, 133, 85, 16);
+		panel.add(label_13);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setLayout(null);
-		panel_4.setBorder(null);
-		panel_4.setBackground(Color.LIGHT_GRAY);
-		panel_4.setBounds(253, 17, 247, 166);
-		panel.add(panel_4);
-		
-		JButton btnLevelLightning = new JButton("Level 6: Lightning");
+		JButton btnLevelLightning = new JButton("Level 2: Lightning");
 		btnLevelLightning.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelLightning.setBackground(Color.DARK_GRAY);
-		btnLevelLightning.setBounds(6, 6, 148, 29);
-		panel_4.add(btnLevelLightning);
+		btnLevelLightning.setBounds(224, 17, 148, 29);
+		panel.add(btnLevelLightning);
 		
-		JButton btnLevelLightning_1 = new JButton("Level 7: Lightning");
+		JButton btnLevelLightning_1 = new JButton("Level 5: Lightning");
 		btnLevelLightning_1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelLightning_1.setBackground(Color.DARK_GRAY);
-		btnLevelLightning_1.setBounds(6, 33, 148, 29);
-		panel_4.add(btnLevelLightning_1);
+		btnLevelLightning_1.setBounds(224, 44, 148, 29);
+		panel.add(btnLevelLightning_1);
 		
 		JButton btnLevelLightning_2 = new JButton("Level 8: Lightning");
 		btnLevelLightning_2.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelLightning_2.setBackground(Color.DARK_GRAY);
-		btnLevelLightning_2.setBounds(6, 61, 148, 29);
-		panel_4.add(btnLevelLightning_2);
+		btnLevelLightning_2.setBounds(224, 72, 148, 29);
+		panel.add(btnLevelLightning_2);
 		
-		JButton btnLevelLightning_3 = new JButton("Level 9: Lightning");
+		JButton btnLevelLightning_3 = new JButton("Level 11: Lightning");
 		btnLevelLightning_3.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelLightning_3.setBackground(Color.DARK_GRAY);
-		btnLevelLightning_3.setBounds(6, 90, 148, 29);
-		panel_4.add(btnLevelLightning_3);
+		btnLevelLightning_3.setBounds(224, 101, 148, 29);
+		panel.add(btnLevelLightning_3);
 		
-		JButton btnLevelLightning_4 = new JButton("Level 10: Lightning");
+		JButton btnLevelLightning_4 = new JButton("Level 14: Lightning");
 		btnLevelLightning_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelLightning_4.setBackground(Color.DARK_GRAY);
-		btnLevelLightning_4.setBounds(6, 119, 148, 29);
-		panel_4.add(btnLevelLightning_4);
+		btnLevelLightning_4.setBounds(224, 130, 148, 29);
+		panel.add(btnLevelLightning_4);
 		
 		JLabel label_4 = new JLabel("Stars: 0/3");
-		label_4.setBounds(156, 9, 85, 16);
-		panel_4.add(label_4);
+		label_4.setBounds(374, 20, 85, 16);
+		panel.add(label_4);
 		
 		JLabel label_5 = new JLabel("Stars: 0/3");
-		label_5.setBounds(156, 36, 85, 16);
-		panel_4.add(label_5);
+		label_5.setBounds(374, 47, 85, 16);
+		panel.add(label_5);
 		
 		JLabel label_6 = new JLabel("Stars: 0/3");
-		label_6.setBounds(156, 64, 85, 16);
-		panel_4.add(label_6);
+		label_6.setBounds(374, 75, 85, 16);
+		panel.add(label_6);
 		
 		JLabel label_7 = new JLabel("Stars: 0/3");
-		label_7.setBounds(156, 93, 85, 16);
-		panel_4.add(label_7);
+		label_7.setBounds(374, 104, 85, 16);
+		panel.add(label_7);
 		
 		JLabel label_8 = new JLabel("Stars: 0/3");
-		label_8.setBounds(156, 122, 85, 16);
-		panel_4.add(label_8);
+		label_8.setBounds(374, 133, 85, 16);
+		panel.add(label_8);
 		
-		JPanel panel_5 = new JPanel();
-		panel_5.setLayout(null);
-		panel_5.setBorder(null);
-		panel_5.setBackground(Color.LIGHT_GRAY);
-		panel_5.setBounds(512, 17, 252, 166);
-		panel.add(panel_5);
-		
-		JButton btnLevel = new JButton("Level 11: Release");
-		btnLevel.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevel.setBackground(Color.DARK_GRAY);
-		btnLevel.setBounds(6, 6, 148, 29);
-		panel_5.add(btnLevel);
-		
-		JButton btnLevelRelease = new JButton("Level 12: Release");
+		JButton btnLevelRelease = new JButton("Level 3: Release");
 		btnLevelRelease.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelRelease.setBackground(Color.DARK_GRAY);
-		btnLevelRelease.setBounds(6, 35, 148, 29);
-		panel_5.add(btnLevelRelease);
+		btnLevelRelease.setBounds(471, 17, 148, 29);
+		panel.add(btnLevelRelease);
 		
-		JButton btnLevelRelease_1 = new JButton("Level 13: Release");
+		JButton btnLevelRelease_1 = new JButton("Level 6: Release");
 		btnLevelRelease_1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelRelease_1.setBackground(Color.DARK_GRAY);
-		btnLevelRelease_1.setBounds(6, 65, 148, 29);
-		panel_5.add(btnLevelRelease_1);
+		btnLevelRelease_1.setBounds(471, 46, 148, 29);
+		panel.add(btnLevelRelease_1);
 		
-		JButton btnLevelRelease_2 = new JButton("Level 14: Release");
+		JButton btnLevelRelease_2 = new JButton("Level 9: Release");
 		btnLevelRelease_2.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelRelease_2.setBackground(Color.DARK_GRAY);
-		btnLevelRelease_2.setBounds(6, 94, 148, 29);
-		panel_5.add(btnLevelRelease_2);
+		btnLevelRelease_2.setBounds(471, 76, 148, 29);
+		panel.add(btnLevelRelease_2);
 		
-		JButton btnLevelRelease_3 = new JButton("Level 15: Release");
+		JButton btnLevelRelease_3 = new JButton("Level 12: Release");
 		btnLevelRelease_3.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		btnLevelRelease_3.setBackground(Color.DARK_GRAY);
-		btnLevelRelease_3.setBounds(6, 119, 148, 29);
-		panel_5.add(btnLevelRelease_3);
+		btnLevelRelease_3.setBounds(471, 105, 148, 29);
+		panel.add(btnLevelRelease_3);
 		
-		JLabel lblStars = new JLabel("Stars: 0/3");
-		lblStars.setBounds(159, 9, 85, 16);
-		panel_5.add(lblStars);
+		JButton btnLevelRelease_4 = new JButton("Level 15: Release");
+		btnLevelRelease_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevelRelease_4.setBackground(Color.DARK_GRAY);
+		btnLevelRelease_4.setBounds(471, 130, 148, 29);
+		panel.add(btnLevelRelease_4);
 		
 		JLabel label = new JLabel("Stars: 0/3");
-		label.setBounds(159, 38, 85, 16);
-		panel_5.add(label);
+		label.setBounds(624, 20, 85, 16);
+		panel.add(label);
 		
 		JLabel label_1 = new JLabel("Stars: 0/3");
-		label_1.setBounds(159, 68, 85, 16);
-		panel_5.add(label_1);
+		label_1.setBounds(624, 49, 85, 16);
+		panel.add(label_1);
 		
 		JLabel label_2 = new JLabel("Stars: 0/3");
-		label_2.setBounds(159, 97, 85, 16);
-		panel_5.add(label_2);
+		label_2.setBounds(624, 79, 85, 16);
+		panel.add(label_2);
 		
 		JLabel label_3 = new JLabel("Stars: 0/3");
-		label_3.setBounds(159, 122, 85, 16);
-		panel_5.add(label_3);
+		label_3.setBounds(624, 108, 85, 16);
+		panel.add(label_3);
+		
+		JLabel label_14 = new JLabel("Stars: 0/3");
+		label_14.setBounds(624, 133, 85, 16);
+		panel.add(label_14);
+		
+		JButton btnLevelPuzzle_4 = new JButton("Level 16: Puzzle");
+		btnLevelPuzzle_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevelPuzzle_4.setBackground(Color.DARK_GRAY);
+		btnLevelPuzzle_4.setBounds(6, 161, 136, 29);
+		panel.add(btnLevelPuzzle_4);
+		
+		JLabel label_15 = new JLabel("Stars: 0/3");
+		label_15.setBounds(142, 164, 85, 16);
+		panel.add(label_15);
+		
+		JButton btnLevelRelease_5 = new JButton("Level 7: Release");
+		btnLevelRelease_5.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevelRelease_5.setBackground(Color.DARK_GRAY);
+		btnLevelRelease_5.setBounds(224, 161, 136, 29);
+		panel.add(btnLevelRelease_5);
+		
+		JLabel label_16 = new JLabel("Stars: 0/3");
+		label_16.setBounds(360, 164, 85, 16);
+		panel.add(label_16);
 		frame.getContentPane().setLayout(groupLayout);
-		frame.setBounds(100, 100, 782, 514);
+		frame.setBounds(100, 100, 733, 514);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

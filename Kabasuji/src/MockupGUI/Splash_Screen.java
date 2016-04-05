@@ -64,8 +64,22 @@ public class Splash_Screen {
 		lblTroilus.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTroilus.setForeground(Color.LIGHT_GRAY);
 		lblTroilus.setFont(new Font("PT Sans Caption", Font.BOLD, 26));
-		lblTroilus.setBounds(151, 133, 248, 108);
+		lblTroilus.setBounds(171, 173, 204, 54);
 		panel.add(lblTroilus);
+		
+		JLabel lblInsertLogoHere = new JLabel("Insert Logo Here");
+		lblInsertLogoHere.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInsertLogoHere.setForeground(Color.LIGHT_GRAY);
+		lblInsertLogoHere.setFont(new Font("PT Sans Caption", Font.BOLD, 26));
+		lblInsertLogoHere.setBounds(161, 121, 238, 62);
+		panel.add(lblInsertLogoHere);
+		
+		JLabel lblDanAlfredConnor = new JLabel("Dan Alfred, Connor Weeks, Maddy Longo, Alex Kasparek");
+		lblDanAlfredConnor.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDanAlfredConnor.setForeground(Color.LIGHT_GRAY);
+		lblDanAlfredConnor.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
+		lblDanAlfredConnor.setBounds(61, 226, 447, 73);
+		panel.add(lblDanAlfredConnor);
 	}
 
 }

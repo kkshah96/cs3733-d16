@@ -102,41 +102,6 @@ public class Release_Mockup {
 		lblBoard.setBounds(6, 6, 90, 28);
 		panel_4.add(lblBoard);
 		
-		JLabel lblStars = new JLabel("Stars: 0/3");
-		lblStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
-		lblStars.setBounds(453, 13, 65, 16);
-		panel_4.add(lblStars);
-		
-		JLabel lblRedSquaresCovered = new JLabel("Red Squares:");
-		lblRedSquaresCovered.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		lblRedSquaresCovered.setBounds(65, 14, 82, 16);
-		panel_4.add(lblRedSquaresCovered);
-		
-		JLabel label = new JLabel("0/6");
-		label.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label.setBounds(150, 14, 31, 16);
-		panel_4.add(label);
-		
-		JLabel lblGreenSquares = new JLabel("Green Squares:");
-		lblGreenSquares.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		lblGreenSquares.setBounds(180, 14, 103, 16);
-		panel_4.add(lblGreenSquares);
-		
-		JLabel label_1 = new JLabel("0/6");
-		label_1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label_1.setBounds(283, 14, 31, 16);
-		panel_4.add(label_1);
-		
-		JLabel lblYellowSquares = new JLabel("Yellow Squares:");
-		lblYellowSquares.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		lblYellowSquares.setBounds(314, 14, 103, 16);
-		panel_4.add(lblYellowSquares);
-		
-		JLabel label_2 = new JLabel("0/6");
-		label_2.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label_2.setBounds(421, 14, 31, 16);
-		panel_4.add(label_2);
-		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_3.setBackground(Color.LIGHT_GRAY);
@@ -185,15 +150,49 @@ public class Release_Mockup {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(10, 47, 176, 36);
+		btnNewButton_2.setBounds(852, 50, 176, 36);
 		panel.add(btnNewButton_2);
 		
-		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.setBounds(186, 47, 141, 36);
-		panel.add(btnMainMenu);
+		JPanel panel_6 = new JPanel();
+		panel_6.setLayout(null);
+		panel_6.setBorder(null);
+		panel_6.setBackground(Color.LIGHT_GRAY);
+		panel_6.setBounds(68, 48, 453, 38);
+		panel.add(panel_6);
 		
-		JButton btnNextLevel = new JButton("Next Level");
-		btnNextLevel.setBounds(893, 47, 141, 36);
-		panel.add(btnNextLevel);
+		JLabel label_3 = new JLabel("Stars: 0/3");
+		label_3.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
+		label_3.setBounds(388, 15, 65, 16);
+		panel_6.add(label_3);
+		
+		JLabel label_5 = new JLabel("Red Squares:");
+		label_5.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_5.setBounds(0, 16, 82, 16);
+		panel_6.add(label_5);
+		
+		JLabel label_6 = new JLabel("0/6");
+		label_6.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_6.setBounds(85, 16, 31, 16);
+		panel_6.add(label_6);
+		
+		JLabel label_7 = new JLabel("Green Squares:");
+		label_7.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_7.setBounds(115, 16, 103, 16);
+		panel_6.add(label_7);
+		
+		JLabel label_8 = new JLabel("0/6");
+		label_8.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_8.setBounds(218, 16, 31, 16);
+		panel_6.add(label_8);
+		
+		JLabel label_9 = new JLabel("Yellow Squares:");
+		label_9.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_9.setBounds(249, 16, 103, 16);
+		panel_6.add(label_9);
+		
+		JLabel label_10 = new JLabel("0/6");
+		label_10.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_10.setBounds(356, 16, 31, 16);
+		panel_6.add(label_10);
 	}
 }

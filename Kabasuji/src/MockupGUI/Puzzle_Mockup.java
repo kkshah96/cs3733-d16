@@ -93,16 +93,6 @@ public class Puzzle_Mockup {
 		lblBoard.setBounds(6, 6, 90, 28);
 		panel_4.add(lblBoard);
 		
-		JLabel lblNewLabel = new JLabel("Moves: 40/50");
-		lblNewLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblNewLabel.setBounds(237, 6, 99, 22);
-		panel_4.add(lblNewLabel);
-		
-		JLabel lblStars = new JLabel("Stars: 0/3");
-		lblStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
-		lblStars.setBounds(346, 10, 82, 16);
-		panel_4.add(lblStars);
-		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_3.setBackground(Color.LIGHT_GRAY);
@@ -151,15 +141,24 @@ public class Puzzle_Mockup {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(10, 47, 176, 36);
+		btnNewButton_2.setBounds(771, 50, 176, 36);
 		panel.add(btnNewButton_2);
 		
-		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.setBounds(186, 47, 141, 36);
-		panel.add(btnMainMenu);
+		JPanel panel_6 = new JPanel();
+		panel_6.setLayout(null);
+		panel_6.setBorder(null);
+		panel_6.setBackground(Color.LIGHT_GRAY);
+		panel_6.setBounds(237, 50, 200, 34);
+		panel.add(panel_6);
 		
-		JButton btnNextLevel = new JButton("Next Level");
-		btnNextLevel.setBounds(806, 47, 141, 36);
-		panel.add(btnNextLevel);
+		JLabel label_1 = new JLabel("Moves: 40/50");
+		label_1.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		label_1.setBounds(6, 7, 99, 22);
+		panel_6.add(label_1);
+		
+		JLabel label_2 = new JLabel("Stars: 0/3");
+		label_2.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
+		label_2.setBounds(117, 10, 82, 16);
+		panel_6.add(label_2);
 	}
 }

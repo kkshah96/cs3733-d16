@@ -14,16 +14,15 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class LevelBuilder_Editor {
 
 	private JFrame frame;
-	private JTextField txtEnterLevelName;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField txtEnterColor;
-	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -60,14 +59,14 @@ public class LevelBuilder_Editor {
 		panel.setLayout(null);
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(0, 113, 503, 408);
+		panel.setBounds(0, 113, 516, 408);
 		frame.getContentPane().add(panel);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_2.setBackground(Color.LIGHT_GRAY);
-		panel_2.setBounds(501, 37, 471, 484);
+		panel_2.setBounds(515, 37, 457, 484);
 		frame.getContentPane().add(panel_2);
 		
 		JPanel panel_3 = new JPanel();
@@ -134,13 +133,7 @@ public class LevelBuilder_Editor {
 		panel_4.add(panel_6);
 		panel_6.setLayout(null);
 		
-		txtEnterLevelName = new JTextField();
-		txtEnterLevelName.setText("Enter level name here...");
-		txtEnterLevelName.setBounds(6, 0, 339, 38);
-		panel_6.add(txtEnterLevelName);
-		txtEnterLevelName.setColumns(10);
-		
-		JButton btnLoadNewLevel = new JButton("Load New Level");
+		JButton btnLoadNewLevel = new JButton("Level Loader");
 		btnLoadNewLevel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		btnLoadNewLevel.setBounds(767, 0, 199, 38);
 		panel_4.add(btnLoadNewLevel);
@@ -158,18 +151,18 @@ public class LevelBuilder_Editor {
 		JPanel panel_7 = new JPanel();
 		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_7.setBackground(Color.LIGHT_GRAY);
-		panel_7.setBounds(0, 37, 503, 38);
+		panel_7.setBounds(0, 37, 516, 38);
 		frame.getContentPane().add(panel_7);
 		panel_7.setLayout(null);
 		
 		JLabel lblBoardSize = new JLabel("Board:");
 		lblBoardSize.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		lblBoardSize.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBoardSize.setBounds(0, 0, 106, 32);
+		lblBoardSize.setBounds(0, 0, 74, 32);
 		panel_7.add(lblBoardSize);
 		
 		textField = new JTextField();
-		textField.setBounds(92, 1, 50, 28);
+		textField.setBounds(70, 1, 50, 28);
 		panel_7.add(textField);
 		textField.setColumns(10);
 		
@@ -177,28 +170,28 @@ public class LevelBuilder_Editor {
 		lblX.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		lblX.setHorizontalAlignment(SwingConstants.CENTER);
 		lblX.setBackground(Color.LIGHT_GRAY);
-		lblX.setBounds(139, 10, 25, 13);
+		lblX.setBounds(120, 10, 25, 13);
 		panel_7.add(lblX);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(164, 1, 50, 28);
+		textField_1.setBounds(148, 1, 50, 28);
 		panel_7.add(textField_1);
 		
-		JButton btnNew = new JButton("New");
+		JButton btnNew = new JButton("Set");
 		btnNew.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnNew.setBounds(222, -2, 74, 38);
+		btnNew.setBounds(209, -2, 74, 38);
 		panel_7.add(btnNew);
 		
 		JLabel lblMaximumMoves = new JLabel("Maximum Moves:");
 		lblMaximumMoves.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMaximumMoves.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		lblMaximumMoves.setBounds(297, 1, 126, 32);
+		lblMaximumMoves.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
+		lblMaximumMoves.setBounds(282, 1, 126, 32);
 		panel_7.add(lblMaximumMoves);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(423, 4, 74, 28);
+		textField_2.setBounds(406, 1, 74, 28);
 		panel_7.add(textField_2);
 		
 		JPanel panel_8 = new JPanel();
@@ -211,12 +204,6 @@ public class LevelBuilder_Editor {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(246, 199, 425, -14);
 		panel_8.add(scrollPane);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane_1.setToolTipText("");
-		scrollPane_1.setBounds(6, 49, 960, 154);
-		panel_8.add(scrollPane_1);
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBounds(0, 0, 88, 36);
@@ -235,42 +222,44 @@ public class LevelBuilder_Editor {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(0, 76, 503, 38);
+		panel_1.setBounds(0, 76, 516, 38);
 		frame.getContentPane().add(panel_1);
 		
 		JButton btnRemove = new JButton("Toggle");
 		btnRemove.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnRemove.setBounds(342, 2, 76, 38);
+		btnRemove.setBounds(367, 2, 76, 38);
 		panel_1.add(btnRemove);
-		
-		JButton btnSquare = new JButton("Square");
-		btnSquare.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnSquare.setBounds(0, 2, 96, 38);
-		panel_1.add(btnSquare);
-		
-		txtEnterColor = new JTextField();
-		txtEnterColor.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
-		txtEnterColor.setHorizontalAlignment(SwingConstants.CENTER);
-		txtEnterColor.setText("Enter Color...");
-		txtEnterColor.setBounds(101, 7, 134, 28);
-		panel_1.add(txtEnterColor);
-		txtEnterColor.setColumns(10);
 		
 		JLabel lblNumber = new JLabel("Number:");
 		lblNumber.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
-		lblNumber.setBounds(241, 13, 61, 16);
+		lblNumber.setBounds(72, 13, 61, 16);
 		panel_1.add(lblNumber);
-		
-		textField_3 = new JTextField();
-		textField_3.setText("#...");
-		textField_3.setBounds(304, 5, 36, 28);
-		panel_1.add(textField_3);
-		textField_3.setColumns(10);
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnToggleHint.setBounds(421, 2, 76, 38);
+		btnToggleHint.setBounds(440, 2, 76, 38);
 		panel_1.add(btnToggleHint);
+		
+		JLabel lblSquare = new JLabel("Square:");
+		lblSquare.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSquare.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		lblSquare.setBounds(0, 2, 70, 32);
+		panel_1.add(lblSquare);
+		
+		JLabel lblNumberColor = new JLabel("Number Color:");
+		lblNumberColor.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
+		lblNumberColor.setBounds(189, 13, 97, 16);
+		panel_1.add(lblNumberColor);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(284, 7, 85, 27);
+		panel_1.add(comboBox);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Red", "Green", "Yellow"}));
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
+		comboBox_1.setBounds(127, 7, 61, 27);
+		panel_1.add(comboBox_1);
 		frame.setBackground(Color.LIGHT_GRAY);
 		frame.setBounds(100, 100, 972, 751);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

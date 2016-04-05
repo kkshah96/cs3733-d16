@@ -102,16 +102,6 @@ public class Lightning_Mockup {
 		lblBoard.setBounds(6, 6, 90, 28);
 		panel_4.add(lblBoard);
 		
-		JLabel lblNewLabel = new JLabel("Time Remaining: 1:30");
-		lblNewLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblNewLabel.setBounds(154, 6, 182, 22);
-		panel_4.add(lblNewLabel);
-		
-		JLabel lblStars = new JLabel("Stars: 0/3");
-		lblStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
-		lblStars.setBounds(346, 10, 82, 16);
-		panel_4.add(lblStars);
-		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_3.setBackground(Color.LIGHT_GRAY);
@@ -160,15 +150,24 @@ public class Lightning_Mockup {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(10, 47, 176, 36);
+		btnNewButton_2.setBounds(771, 50, 176, 36);
 		panel.add(btnNewButton_2);
 		
-		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.setBounds(186, 47, 141, 36);
-		panel.add(btnMainMenu);
+		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(null);
+		panel_6.setBackground(Color.LIGHT_GRAY);
+		panel_6.setBounds(175, 50, 286, 38);
+		panel.add(panel_6);
+		panel_6.setLayout(null);
 		
-		JButton btnNextLevel = new JButton("Next Level");
-		btnNextLevel.setBounds(806, 47, 141, 36);
-		panel.add(btnNextLevel);
+		JLabel lblNewLabel = new JLabel("Time Remaining: 1:30");
+		lblNewLabel.setBounds(6, 6, 161, 20);
+		panel_6.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		
+		JLabel lblStars = new JLabel("Stars: 0/3");
+		lblStars.setBounds(186, 8, 82, 16);
+		panel_6.add(lblStars);
+		lblStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
 	}
 }
