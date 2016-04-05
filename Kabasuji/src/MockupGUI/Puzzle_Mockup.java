@@ -146,7 +146,7 @@ public class Puzzle_Mockup {
 		btnFlipVertical.setBounds(361, 4, 110, 29);
 		panel_5.add(btnFlipVertical);
 		
-		JButton btnNewButton_2 = new JButton("Save");
+		JButton btnNewButton_2 = new JButton("Exit Level");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
