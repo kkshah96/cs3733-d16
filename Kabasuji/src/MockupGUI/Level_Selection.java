@@ -94,21 +94,14 @@ public class Level_Selection {
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
+				.addComponent(panel_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 719, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(progressBar, GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 701, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 696, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(progressBar, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+						.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -116,8 +109,8 @@ public class Level_Selection {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+					.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -128,9 +121,9 @@ public class Level_Selection {
 		panel_6.setLayout(null);
 		
 		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnMainMenu.setBounds(0, 0, 123, 29);
+		btnMainMenu.setBounds(6, 0, 144, 31);
 		panel_6.add(btnMainMenu);
+		btnMainMenu.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		
 		JLabel lblCustomLevels = new JLabel("Custom Levels");
 		lblCustomLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -175,7 +168,7 @@ public class Level_Selection {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.LIGHT_GRAY);
 		panel_3.setBorder(null);
-		panel_3.setBounds(28, 17, 163, 166);
+		panel_3.setBounds(6, 17, 235, 166);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -213,11 +206,31 @@ public class Level_Selection {
 		btnLevelPuzzle_4.setBounds(6, 119, 136, 29);
 		panel_3.add(btnLevelPuzzle_4);
 		
+		JLabel label_9 = new JLabel("Stars: 0/3");
+		label_9.setBounds(142, 9, 85, 16);
+		panel_3.add(label_9);
+		
+		JLabel label_10 = new JLabel("Stars: 0/3");
+		label_10.setBounds(142, 37, 85, 16);
+		panel_3.add(label_10);
+		
+		JLabel label_11 = new JLabel("Stars: 0/3");
+		label_11.setBounds(142, 67, 85, 16);
+		panel_3.add(label_11);
+		
+		JLabel label_12 = new JLabel("Stars: 0/3");
+		label_12.setBounds(142, 94, 85, 16);
+		panel_3.add(label_12);
+		
+		JLabel label_13 = new JLabel("Stars: 0/3");
+		label_13.setBounds(142, 122, 85, 16);
+		panel_3.add(label_13);
+		
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		panel_4.setBorder(null);
 		panel_4.setBackground(Color.LIGHT_GRAY);
-		panel_4.setBounds(217, 17, 163, 166);
+		panel_4.setBounds(253, 17, 247, 166);
 		panel.add(panel_4);
 		
 		JButton btnLevelLightning = new JButton("Level 6: Lightning");
@@ -250,11 +263,31 @@ public class Level_Selection {
 		btnLevelLightning_4.setBounds(6, 119, 148, 29);
 		panel_4.add(btnLevelLightning_4);
 		
+		JLabel label_4 = new JLabel("Stars: 0/3");
+		label_4.setBounds(156, 9, 85, 16);
+		panel_4.add(label_4);
+		
+		JLabel label_5 = new JLabel("Stars: 0/3");
+		label_5.setBounds(156, 36, 85, 16);
+		panel_4.add(label_5);
+		
+		JLabel label_6 = new JLabel("Stars: 0/3");
+		label_6.setBounds(156, 64, 85, 16);
+		panel_4.add(label_6);
+		
+		JLabel label_7 = new JLabel("Stars: 0/3");
+		label_7.setBounds(156, 93, 85, 16);
+		panel_4.add(label_7);
+		
+		JLabel label_8 = new JLabel("Stars: 0/3");
+		label_8.setBounds(156, 122, 85, 16);
+		panel_4.add(label_8);
+		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
 		panel_5.setBorder(null);
 		panel_5.setBackground(Color.LIGHT_GRAY);
-		panel_5.setBounds(406, 17, 163, 166);
+		panel_5.setBounds(512, 17, 252, 166);
 		panel.add(panel_5);
 		
 		JButton btnLevel = new JButton("Level 11: Release");
@@ -286,8 +319,28 @@ public class Level_Selection {
 		btnLevelRelease_3.setBackground(Color.DARK_GRAY);
 		btnLevelRelease_3.setBounds(6, 119, 148, 29);
 		panel_5.add(btnLevelRelease_3);
+		
+		JLabel lblStars = new JLabel("Stars: 0/3");
+		lblStars.setBounds(159, 9, 85, 16);
+		panel_5.add(lblStars);
+		
+		JLabel label = new JLabel("Stars: 0/3");
+		label.setBounds(159, 38, 85, 16);
+		panel_5.add(label);
+		
+		JLabel label_1 = new JLabel("Stars: 0/3");
+		label_1.setBounds(159, 68, 85, 16);
+		panel_5.add(label_1);
+		
+		JLabel label_2 = new JLabel("Stars: 0/3");
+		label_2.setBounds(159, 97, 85, 16);
+		panel_5.add(label_2);
+		
+		JLabel label_3 = new JLabel("Stars: 0/3");
+		label_3.setBounds(159, 122, 85, 16);
+		panel_5.add(label_3);
 		frame.getContentPane().setLayout(groupLayout);
-		frame.setBounds(100, 100, 721, 514);
+		frame.setBounds(100, 100, 782, 514);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

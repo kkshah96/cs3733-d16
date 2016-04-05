@@ -67,13 +67,13 @@ public class LevelBuilder_Editor {
 		panel_2.setLayout(null);
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_2.setBackground(Color.LIGHT_GRAY);
-		panel_2.setBounds(501, 37, 363, 484);
+		panel_2.setBounds(501, 37, 471, 484);
 		frame.getContentPane().add(panel_2);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setBackground(Color.LIGHT_GRAY);
-		panel_3.setBounds(6, 6, 349, 33);
+		panel_3.setBounds(6, 6, 459, 33);
 		panel_2.add(panel_3);
 		
 		JLabel label_3 = new JLabel("Bullpen");
@@ -84,23 +84,28 @@ public class LevelBuilder_Editor {
 		
 		JButton button_2 = new JButton("Rotate CW");
 		button_2.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		button_2.setBounds(76, 4, 99, 29);
+		button_2.setBounds(76, 4, 87, 29);
 		panel_3.add(button_2);
 		
 		JButton button_3 = new JButton("Rotate CCW");
 		button_3.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		button_3.setBounds(166, 4, 93, 29);
+		button_3.setBounds(158, 4, 87, 29);
 		panel_3.add(button_3);
 		
-		JButton button_4 = new JButton("Flip");
-		button_4.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		button_4.setBounds(250, 4, 93, 29);
-		panel_3.add(button_4);
+		JButton btnFlipHorizontal = new JButton("Flip Horizontal");
+		btnFlipHorizontal.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		btnFlipHorizontal.setBounds(237, 4, 105, 29);
+		panel_3.add(btnFlipHorizontal);
+		
+		JButton btnFlipVertical = new JButton("Flip Vertical");
+		btnFlipVertical.setBounds(335, 4, 105, 29);
+		panel_3.add(btnFlipVertical);
+		btnFlipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_4.setBackground(Color.LIGHT_GRAY);
-		panel_4.setBounds(0, 0, 864, 38);
+		panel_4.setBounds(0, 0, 972, 38);
 		frame.getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
@@ -112,7 +117,7 @@ public class LevelBuilder_Editor {
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(Color.LIGHT_GRAY);
 		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_5.setBounds(175, 0, 149, 38);
+		panel_5.setBounds(256, 0, 149, 38);
 		panel_4.add(panel_5);
 		panel_5.setLayout(null);
 		
@@ -125,25 +130,30 @@ public class LevelBuilder_Editor {
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_6.setBackground(Color.LIGHT_GRAY);
-		panel_6.setBounds(325, 0, 308, 38);
+		panel_6.setBounds(404, 0, 351, 38);
 		panel_4.add(panel_6);
 		panel_6.setLayout(null);
 		
 		txtEnterLevelName = new JTextField();
 		txtEnterLevelName.setText("Enter level name here...");
-		txtEnterLevelName.setBounds(6, 0, 288, 38);
+		txtEnterLevelName.setBounds(6, 0, 339, 38);
 		panel_6.add(txtEnterLevelName);
 		txtEnterLevelName.setColumns(10);
 		
 		JButton btnLoadNewLevel = new JButton("Load New Level");
 		btnLoadNewLevel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnLoadNewLevel.setBounds(638, 0, 189, 38);
+		btnLoadNewLevel.setBounds(767, 0, 199, 38);
 		panel_4.add(btnLoadNewLevel);
 		
 		JButton btnUndo = new JButton("Undo");
 		btnUndo.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		btnUndo.setBounds(102, 0, 74, 38);
 		panel_4.add(btnUndo);
+		
+		JButton btnRedo = new JButton("Redo");
+		btnRedo.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		btnRedo.setBounds(176, 0, 74, 38);
+		panel_4.add(btnRedo);
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -194,7 +204,7 @@ public class LevelBuilder_Editor {
 		JPanel panel_8 = new JPanel();
 		panel_8.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_8.setBackground(Color.LIGHT_GRAY);
-		panel_8.setBounds(0, 520, 864, 209);
+		panel_8.setBounds(0, 520, 972, 209);
 		frame.getContentPane().add(panel_8);
 		panel_8.setLayout(null);
 		
@@ -205,7 +215,7 @@ public class LevelBuilder_Editor {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setToolTipText("");
-		scrollPane_1.setBounds(6, 49, 852, 154);
+		scrollPane_1.setBounds(6, 49, 960, 154);
 		panel_8.add(scrollPane_1);
 		
 		JPanel panel_9 = new JPanel();
@@ -228,9 +238,9 @@ public class LevelBuilder_Editor {
 		panel_1.setBounds(0, 76, 503, 38);
 		frame.getContentPane().add(panel_1);
 		
-		JButton btnRemove = new JButton("Remove");
+		JButton btnRemove = new JButton("Toggle");
 		btnRemove.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnRemove.setBounds(382, 2, 121, 38);
+		btnRemove.setBounds(342, 2, 76, 38);
 		panel_1.add(btnRemove);
 		
 		JButton btnSquare = new JButton("Square");
@@ -256,8 +266,13 @@ public class LevelBuilder_Editor {
 		textField_3.setBounds(304, 5, 36, 28);
 		panel_1.add(textField_3);
 		textField_3.setColumns(10);
+		
+		JButton btnToggleHint = new JButton("Hint");
+		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		btnToggleHint.setBounds(421, 2, 76, 38);
+		panel_1.add(btnToggleHint);
 		frame.setBackground(Color.LIGHT_GRAY);
-		frame.setBounds(100, 100, 864, 751);
+		frame.setBounds(100, 100, 972, 751);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

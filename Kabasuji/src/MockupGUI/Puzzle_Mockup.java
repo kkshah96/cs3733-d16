@@ -21,7 +21,7 @@ import javax.swing.border.LineBorder;
 
 public class Puzzle_Mockup {
 
-	private JFrame frame;
+	JFrame frame;
 	private JPanel panel_1;
 	private JLabel lblLevelPuzzle;
 
@@ -53,7 +53,7 @@ public class Puzzle_Mockup {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 823, 565);
+		frame.setBounds(100, 100, 953, 565);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -64,7 +64,7 @@ public class Puzzle_Mockup {
 		panel_1 = new JPanel();
 		panel_1.setBorder(null);
 		panel_1.setBackground(Color.DARK_GRAY);
-		panel_1.setBounds(0, 0, 823, 46);
+		panel_1.setBounds(0, 0, 953, 46);
 		panel.add(panel_1);
 		
 		lblLevelPuzzle = new JLabel("Level 1: Puzzle");
@@ -76,7 +76,7 @@ public class Puzzle_Mockup {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_2.setBackground(Color.LIGHT_GRAY);
-		panel_2.setBounds(6, 88, 446, 449);
+		panel_2.setBounds(0, 88, 461, 455);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -98,7 +98,7 @@ public class Puzzle_Mockup {
 		lblNewLabel.setBounds(237, 6, 99, 22);
 		panel_4.add(lblNewLabel);
 		
-		JLabel lblStars = new JLabel("Stars: 0/1");
+		JLabel lblStars = new JLabel("Stars: 0/3");
 		lblStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
 		lblStars.setBounds(346, 10, 82, 16);
 		panel_4.add(lblStars);
@@ -106,13 +106,13 @@ public class Puzzle_Mockup {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_3.setBackground(Color.LIGHT_GRAY);
-		panel_3.setBounds(458, 88, 365, 449);
+		panel_3.setBounds(458, 88, 495, 455);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(Color.LIGHT_GRAY);
-		panel_5.setBounds(6, 6, 349, 33);
+		panel_5.setBounds(6, 6, 483, 33);
 		panel_3.add(panel_5);
 		panel_5.setLayout(null);
 		
@@ -136,17 +136,30 @@ public class Puzzle_Mockup {
 		btnRotateCcw.setBounds(166, 4, 93, 29);
 		panel_5.add(btnRotateCcw);
 		
-		JButton btnFlip = new JButton("Flip");
+		JButton btnFlip = new JButton("Flip Horizontal");
 		btnFlip.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		btnFlip.setBounds(250, 4, 93, 29);
+		btnFlip.setBounds(250, 4, 110, 29);
 		panel_5.add(btnFlip);
 		
+		JButton btnFlipVertical = new JButton("Flip Vertical");
+		btnFlipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		btnFlipVertical.setBounds(361, 4, 110, 29);
+		panel_5.add(btnFlipVertical);
+		
 		JButton btnNewButton_2 = new JButton("Save");
-		btnNewButton_2.setBounds(10, 47, 117, 29);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_2.setBounds(10, 47, 176, 36);
 		panel.add(btnNewButton_2);
 		
 		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.setBounds(700, 47, 117, 29);
+		btnMainMenu.setBounds(186, 47, 141, 36);
 		panel.add(btnMainMenu);
+		
+		JButton btnNextLevel = new JButton("Next Level");
+		btnNextLevel.setBounds(806, 47, 141, 36);
+		panel.add(btnNextLevel);
 	}
 }
