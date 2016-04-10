@@ -15,7 +15,13 @@ import java.awt.Font;
 import java.awt.ScrollPane;
 import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import controller.StartLevelController;
+
 import javax.swing.SwingConstants;
+
+import model.Kabasuji;
+
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import java.awt.Button;
@@ -25,40 +31,33 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-public class Level_Selection {
+public class Level_Selection extends JFrame{
 
-	private JFrame frame;
+	Kabasuji game;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Level_Selection window = new Level_Selection();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
 	 */
-	public Level_Selection() {
+	public Level_Selection(Kabasuji game) {
+		this.game = game;
 		initialize();
+	}
+	
+	public void setFrameVisible() {
+		setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
+		getContentPane().setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
@@ -68,7 +67,7 @@ public class Level_Selection {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.DARK_GRAY);
 		panel_2.setBorder(null);
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
@@ -105,6 +104,7 @@ public class Level_Selection {
 		button.setBackground(Color.DARK_GRAY);
 		button.setBounds(6, 17, 136, 29);
 		panel.add(button);
+		button.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevelPuzzle = new JButton("Level 4: Puzzle");
 		btnLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
@@ -269,8 +269,8 @@ public class Level_Selection {
 		JLabel label_16 = new JLabel("Stars: 0/3");
 		label_16.setBounds(360, 164, 85, 16);
 		panel.add(label_16);
-		frame.getContentPane().setLayout(groupLayout);
-		frame.setBounds(100, 100, 733, 514);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(groupLayout);
+		setBounds(100, 100, 733, 514);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

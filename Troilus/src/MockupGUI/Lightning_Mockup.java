@@ -41,7 +41,7 @@ public class Lightning_Mockup {
 			public void run() {
 				try {
 					Puzzle_Mockup window = new Puzzle_Mockup();
-					window.frame.setVisible(true);
+					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -2,19 +2,34 @@ package MockupGUI;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import controller.NewPuzzleLevelController;
+import model.LevelBuilder;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LevelBuilder_Selection extends JPanel {
+public class LevelBuilder_Selection extends JFrame {
 
+	LevelBuilder lb;
+	
 	/**
-	 * Create the panel.
+	 * Create the frame.
 	 */
-	public LevelBuilder_Selection() {
+	
+	public LevelBuilder_Selection(LevelBuilder lb) {
+		this.lb = lb;
+		initialize();
+	}
+	
+	void initialize(){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -24,7 +39,7 @@ public class LevelBuilder_Selection extends JPanel {
 		panel_1.setBorder(null);
 		panel_1.setBackground(Color.LIGHT_GRAY);
 		panel_1.setBounds(0, 103, 649, 409);
-		add(panel_1);
+		getContentPane().add(panel_1);
 		
 		JLabel label_1 = new JLabel("Game Levels");
 		label_1.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -147,10 +162,7 @@ public class LevelBuilder_Selection extends JPanel {
 		lblLevelEditor.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		
 		JButton btnNewLevel = new JButton("New Puzzle Level");
-		btnNewLevel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnNewLevel.addMouseListener(new NewPuzzleLevelController(lb, this));
 		btnNewLevel.setBounds(10, 54, 130, 37);
 		add(btnNewLevel);
 		

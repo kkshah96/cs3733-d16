@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -17,28 +21,11 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class LevelBuilder_Editor {
+public class LevelBuilder_Editor extends JFrame {
 
-	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelBuilder_Editor window = new LevelBuilder_Editor();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -51,23 +38,22 @@ public class LevelBuilder_Editor {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
-		frame.getContentPane().setLayout(null);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
+		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBounds(0, 113, 516, 408);
-		frame.getContentPane().add(panel);
+		getContentPane().add(panel);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_2.setBackground(Color.LIGHT_GRAY);
 		panel_2.setBounds(515, 37, 457, 484);
-		frame.getContentPane().add(panel_2);
+		getContentPane().add(panel_2);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
@@ -105,7 +91,7 @@ public class LevelBuilder_Editor {
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_4.setBackground(Color.LIGHT_GRAY);
 		panel_4.setBounds(0, 0, 972, 38);
-		frame.getContentPane().add(panel_4);
+		getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Save");
@@ -136,6 +122,12 @@ public class LevelBuilder_Editor {
 		JButton btnLoadNewLevel = new JButton("Level Loader");
 		btnLoadNewLevel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		btnLoadNewLevel.setBounds(767, 0, 199, 38);
+		btnLoadNewLevel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				dispose();
+			}
+		});
 		panel_4.add(btnLoadNewLevel);
 		
 		JButton btnUndo = new JButton("Undo");
@@ -152,7 +144,7 @@ public class LevelBuilder_Editor {
 		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_7.setBackground(Color.LIGHT_GRAY);
 		panel_7.setBounds(0, 37, 516, 38);
-		frame.getContentPane().add(panel_7);
+		getContentPane().add(panel_7);
 		panel_7.setLayout(null);
 		
 		JLabel lblBoardSize = new JLabel("Board:");
@@ -198,7 +190,7 @@ public class LevelBuilder_Editor {
 		panel_8.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_8.setBackground(Color.LIGHT_GRAY);
 		panel_8.setBounds(0, 520, 972, 209);
-		frame.getContentPane().add(panel_8);
+		getContentPane().add(panel_8);
 		panel_8.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -223,7 +215,7 @@ public class LevelBuilder_Editor {
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBackground(Color.LIGHT_GRAY);
 		panel_1.setBounds(0, 76, 516, 38);
-		frame.getContentPane().add(panel_1);
+		getContentPane().add(panel_1);
 		
 		JButton btnRemove = new JButton("Toggle");
 		btnRemove.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -260,8 +252,8 @@ public class LevelBuilder_Editor {
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
 		comboBox_1.setBounds(127, 7, 61, 27);
 		panel_1.add(comboBox_1);
-		frame.setBackground(Color.LIGHT_GRAY);
-		frame.setBounds(100, 100, 972, 751);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBackground(Color.LIGHT_GRAY);
+		setBounds(100, 100, 972, 751);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
