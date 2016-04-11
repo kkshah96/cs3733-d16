@@ -2,7 +2,7 @@ package Main;
 
 import java.awt.EventQueue;
 
-import MockupGUI.Level_Selection;
+import MockupGUI.LevelSelectorView;
 import MockupGUI.Splash_Screen;
 import model.Kabasuji;
 
@@ -20,7 +20,7 @@ public class StartKabasuji {
 					//Timer time = new Timer()
 				//add Timer here...
 					//for()
-					Level_Selection window = new Level_Selection(new Kabasuji());
+					LevelSelectorView window = new LevelSelectorView(new Kabasuji());
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
