@@ -6,31 +6,36 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 public class Splash_Screen extends JFrame {
-
-	private JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+		
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Splash_Screen window = new Splash_Screen();
-					window.frame.setVisible(true);
+					window.setVisible(true);
 					
-					window.frame.setVisible(false);
+					//window.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the application.
@@ -38,25 +43,19 @@ public class Splash_Screen extends JFrame {
 	public Splash_Screen() {
 		initialize();
 	}
-	
-	public void setFrameVisible() {
-		setVisible(true);
-	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 534, 327);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		setBounds(100, 100, 534, 427);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 534, 305);
 		panel.setBorder(null);
 		panel.setBackground(Color.DARK_GRAY);
-		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel label = new JLabel("Kabasuji");
@@ -80,12 +79,23 @@ public class Splash_Screen extends JFrame {
 		lblInsertLogoHere.setBounds(161, 121, 238, 62);
 		panel.add(lblInsertLogoHere);
 		
-		JLabel lblDanAlfredConnor = new JLabel("Dan Alfred, Connor Weeks, Maddy Longo, Alex Kasparek");
+		JLabel lblDanAlfredConnor = new JLabel("Dan Alfred, Connor Weeks, Maddy Longo,");
 		lblDanAlfredConnor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDanAlfredConnor.setForeground(Color.LIGHT_GRAY);
 		lblDanAlfredConnor.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
 		lblDanAlfredConnor.setBounds(61, 226, 447, 73);
 		panel.add(lblDanAlfredConnor);
+		
+		JLabel lblKunalAlex = new JLabel("Alex Kasparek, Kunal Shah");
+		lblKunalAlex.setHorizontalAlignment(SwingConstants.CENTER);
+		lblKunalAlex.setForeground(Color.LIGHT_GRAY);
+		lblKunalAlex.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
+		lblKunalAlex.setBounds(61, 256, 447, 73);
+		panel.add(lblKunalAlex); 
+		
+		
+		setPreferredSize(new Dimension(500,500));
+		getContentPane().add(panel);
 	}
 
 }
