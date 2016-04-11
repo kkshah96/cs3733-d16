@@ -135,7 +135,7 @@ public class LevelView extends JFrame{
 		panel_6.setLayout(null);
 		panel_6.setBorder(null);
 		panel_6.setBackground(Color.LIGHT_GRAY);
-		panel_6.setBounds(237, 50, 200, 34);
+		panel_6.setBounds(569, 52, 115, 34);
 		panel.add(panel_6);
 		
 		JLabel label_1 = new JLabel("Moves: 40/50");
@@ -144,8 +144,57 @@ public class LevelView extends JFrame{
 		panel_6.add(label_1);
 		
 		JLabel label_2 = new JLabel("Stars: 0/3");
+		label_2.setBounds(689, 60, 82, 16);
+		panel.add(label_2);
 		label_2.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
-		label_2.setBounds(117, 10, 82, 16);
-		panel_6.add(label_2);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBounds(10, 48, 383, 38);
+		panel.add(panel_7);
+		panel_7.setLayout(null);
+		panel_7.setBorder(null);
+		panel_7.setBackground(Color.LIGHT_GRAY);
+		
+		JLabel label_4 = new JLabel("Red Squares:");
+		label_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_4.setBounds(0, 16, 82, 16);
+		panel_7.add(label_4);
+		
+		JLabel label_5 = new JLabel("0/6");
+		label_5.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_5.setBounds(85, 16, 31, 16);
+		panel_7.add(label_5);
+		
+		JLabel label_6 = new JLabel("Green Squares:");
+		label_6.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_6.setBounds(115, 16, 103, 16);
+		panel_7.add(label_6);
+		
+		JLabel label_7 = new JLabel("0/6");
+		label_7.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_7.setBounds(218, 16, 31, 16);
+		panel_7.add(label_7);
+		
+		JLabel label_8 = new JLabel("Yellow Squares:");
+		label_8.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_8.setBounds(249, 16, 103, 16);
+		panel_7.add(label_8);
+		
+		JLabel label_9 = new JLabel("0/6");
+		label_9.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		label_9.setBounds(356, 16, 31, 16);
+		panel_7.add(label_9);
+		
+		JPanel panel_8 = new JPanel();
+		panel_8.setBounds(394, 50, 175, 34);
+		panel.add(panel_8);
+		panel_8.setLayout(null);
+		panel_8.setBorder(null);
+		panel_8.setBackground(Color.LIGHT_GRAY);
+		
+		JLabel label = new JLabel("Time Remaining: 1:30");
+		label.setBounds(6, 6, 161, 20);
+		panel_8.add(label);
+		label.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 	}
 }
