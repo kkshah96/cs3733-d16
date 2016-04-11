@@ -21,6 +21,10 @@ public class NewPuzzleLevelController extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		LevelEditorView newPuzzleLevel = new LevelEditorView();
+		newPuzzleLevel.setMaxMovesPanelVisibility(true);
+		newPuzzleLevel.setReleaseSquareOptionsPanel(false);
+		newPuzzleLevel.setTimePanel(false);
+		
 		newPuzzleLevel.setVisible(true);
 	}
 	

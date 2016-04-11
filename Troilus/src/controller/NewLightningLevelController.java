@@ -22,8 +22,11 @@ public class NewLightningLevelController extends MouseAdapter {
 		// TODO Auto-generated method stub
 		LevelEditorView newLightningLevel = new LevelEditorView();
 		newLightningLevel.setLevelType("Lightning");
+		newLightningLevel.setMaxMovesPanelVisibility(false);
+		newLightningLevel.setReleaseSquareOptionsPanel(false);
 		newLightningLevel.setVisible(true);
 	}
+	
 	
 }
 
