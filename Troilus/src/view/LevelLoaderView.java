@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -181,6 +182,7 @@ public class LevelLoaderView extends JFrame {
 		btnNewReleaseLevel.setBounds(310, 54, 137, 37);
 		getContentPane().add(btnNewReleaseLevel);
 
+		setSize(new Dimension(650,550));
 	}
 
 }
