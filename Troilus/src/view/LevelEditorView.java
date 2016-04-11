@@ -1,4 +1,4 @@
-package MockupGUI;
+package view;
 
 import java.awt.EventQueue;
 
@@ -32,7 +32,7 @@ public class LevelEditorView extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public LevelEditorView() {
+	public LevelEditorView(){
 		initialize();
 	}
 

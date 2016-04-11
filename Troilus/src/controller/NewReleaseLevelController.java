@@ -3,9 +3,9 @@ package controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import MockupGUI.LevelEditorView;
-import MockupGUI.LevelLoaderView;
 import model.LevelBuilder;
+import view.LevelEditorView;
+import view.LevelLoaderView;
 
 public class NewReleaseLevelController extends MouseAdapter {
 

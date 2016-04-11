@@ -1,4 +1,4 @@
-package MockupGUI;
+package view;
 
 import java.awt.EventQueue;
 
@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
-public class Puzzle_Mockup extends JFrame{
+public class LevelView extends JFrame{
 
 	private JPanel panel_1;
 	private JLabel lblLevelPuzzle;
@@ -31,7 +31,7 @@ public class Puzzle_Mockup extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public Puzzle_Mockup() {
+	public LevelView() {
 		initialize();
 	}
 

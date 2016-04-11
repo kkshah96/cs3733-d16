@@ -1,4 +1,4 @@
-package MockupGUI;
+package view;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;

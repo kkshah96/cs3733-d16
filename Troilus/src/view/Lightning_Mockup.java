@@ -1,37 +1,59 @@
-package MockupGUI;
+package view;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import javax.swing.JTextField;
 import java.awt.Color;
-import javax.swing.SwingConstants;
+import java.awt.GridLayout;
+import javax.swing.JScrollBar;
+import java.awt.Panel;
+import javax.swing.JMenuItem;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSplitPane;
+import java.awt.ScrollPane;
+import javax.swing.JProgressBar;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
-import java.awt.FlowLayout;
+import java.awt.Toolkit;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.border.LineBorder;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 
-public class LevelView extends JFrame{
+public class Lightning_Mockup {
 
+	JFrame frame;
 	private JPanel panel_1;
 	private JLabel lblLevelPuzzle;
 
 	/**
 	 * Launch the application.
 	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Puzzle_Mockup window = new Puzzle_Mockup();
+					window.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
+	 * @wbp.parser.entryPoint
 	 */
-	public LevelView() {
+	public Lightning_Mockup() {
 		initialize();
 	}
 
@@ -39,12 +61,13 @@ public class LevelView extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		setBounds(100, 100, 953, 565);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame = new JFrame();
+		frame.setBounds(100, 100, 953, 565);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
-		getContentPane().add(panel, BorderLayout.CENTER);
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
 		panel_1 = new JPanel();
@@ -53,7 +76,7 @@ public class LevelView extends JFrame{
 		panel_1.setBounds(0, 0, 953, 46);
 		panel.add(panel_1);
 		
-		lblLevelPuzzle = new JLabel("Level 1: Puzzle");
+		lblLevelPuzzle = new JLabel("Level 4: Lightning");
 		lblLevelPuzzle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLevelPuzzle.setForeground(Color.LIGHT_GRAY);
 		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
@@ -125,27 +148,26 @@ public class LevelView extends JFrame{
 		JButton btnNewButton_2 = new JButton("Exit Level");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 			}
 		});
 		btnNewButton_2.setBounds(771, 50, 176, 36);
 		panel.add(btnNewButton_2);
 		
 		JPanel panel_6 = new JPanel();
-		panel_6.setLayout(null);
 		panel_6.setBorder(null);
 		panel_6.setBackground(Color.LIGHT_GRAY);
-		panel_6.setBounds(237, 50, 200, 34);
+		panel_6.setBounds(175, 50, 286, 38);
 		panel.add(panel_6);
+		panel_6.setLayout(null);
 		
-		JLabel label_1 = new JLabel("Moves: 40/50");
-		label_1.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		label_1.setBounds(6, 7, 99, 22);
-		panel_6.add(label_1);
+		JLabel lblNewLabel = new JLabel("Time Remaining: 1:30");
+		lblNewLabel.setBounds(6, 6, 161, 20);
+		panel_6.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		
-		JLabel label_2 = new JLabel("Stars: 0/3");
-		label_2.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
-		label_2.setBounds(117, 10, 82, 16);
-		panel_6.add(label_2);
+		JLabel lblStars = new JLabel("Stars: 0/3");
+		lblStars.setBounds(186, 8, 82, 16);
+		panel_6.add(lblStars);
+		lblStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
 	}
 }

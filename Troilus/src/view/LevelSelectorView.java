@@ -1,4 +1,4 @@
-package MockupGUI;
+package view;
 
 import java.awt.EventQueue;
 

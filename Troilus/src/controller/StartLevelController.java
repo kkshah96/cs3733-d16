@@ -5,9 +5,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import MockupGUI.LevelSelectorView;
-import MockupGUI.Puzzle_Mockup;
 import model.Kabasuji;
+import view.LevelSelectorView;
+import view.Puzzle_Mockup;
 
 public class StartLevelController extends MouseAdapter {
 
