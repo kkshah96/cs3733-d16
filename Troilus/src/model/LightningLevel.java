@@ -5,8 +5,8 @@ public class LightningLevel extends Level{
 	int squaresMarked;
 	int timeLimit;
 	
-	public LightningLevel(int levelNum, Bullpen bullpen, Board board, Palette palette, int timeLimit) {
-		super(levelNum, bullpen, board, palette);
+	public LightningLevel(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette, int timeLimit) {
+		super(levelNum, locked, bullpen, board, palette);
 		
 		this.timeLimit = timeLimit;
 		

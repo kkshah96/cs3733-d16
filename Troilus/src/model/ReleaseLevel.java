@@ -8,8 +8,8 @@ public class ReleaseLevel extends Level{
 	boolean yellowCovered[];
 	boolean greenCovered[];
 	
-	public ReleaseLevel(int levelNum, Bullpen bullpen, Board board, Palette palette) {
-		super(levelNum, bullpen, board, palette);
+	public ReleaseLevel(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette) {
+		super(levelNum, locked, bullpen, board, palette);
 		
 		//TODO: Am I initializing these correctly or..
 		redCovered = new boolean[6];
