@@ -21,7 +21,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class LB_LevelEditor extends JFrame {
+public class LevelEditorView extends JFrame {
 
 	private JTextField textField;
 	private JTextField textField_1;
@@ -30,7 +30,7 @@ public class LB_LevelEditor extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public LB_LevelEditor() {
+	public LevelEditorView() {
 		initialize();
 	}
 
