@@ -26,6 +26,8 @@ public class LevelEditorView extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_5;
+	private JTextField textField_3;
 
 	/**
 	 * Create the application.
@@ -45,20 +47,20 @@ public class LevelEditorView extends JFrame {
 		panel.setLayout(null);
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(0, 113, 516, 408);
+		panel.setBounds(0, 113, 685, 408);
 		getContentPane().add(panel);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_2.setBackground(Color.LIGHT_GRAY);
-		panel_2.setBounds(515, 37, 457, 484);
+		panel_2.setBounds(685, 38, 457, 484);
 		getContentPane().add(panel_2);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setBackground(Color.LIGHT_GRAY);
-		panel_3.setBounds(6, 6, 459, 33);
+		panel_3.setBounds(6, 6, 446, 33);
 		panel_2.add(panel_3);
 		
 		JLabel label_3 = new JLabel("Bullpen");
@@ -90,7 +92,7 @@ public class LevelEditorView extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_4.setBackground(Color.LIGHT_GRAY);
-		panel_4.setBounds(0, 0, 972, 38);
+		panel_4.setBounds(0, 0, 1137, 38);
 		getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
@@ -121,7 +123,7 @@ public class LevelEditorView extends JFrame {
 		
 		JButton btnLoadNewLevel = new JButton("Level Loader");
 		btnLoadNewLevel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnLoadNewLevel.setBounds(767, 0, 199, 38);
+		btnLoadNewLevel.setBounds(871, 0, 199, 38);
 		btnLoadNewLevel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -143,7 +145,7 @@ public class LevelEditorView extends JFrame {
 		JPanel panel_7 = new JPanel();
 		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_7.setBackground(Color.LIGHT_GRAY);
-		panel_7.setBounds(0, 37, 516, 38);
+		panel_7.setBounds(0, 37, 686, 40);
 		getContentPane().add(panel_7);
 		panel_7.setLayout(null);
 		
@@ -175,16 +177,56 @@ public class LevelEditorView extends JFrame {
 		btnNew.setBounds(209, -2, 74, 38);
 		panel_7.add(btnNew);
 		
+		JPanel panel_11 = new JPanel();
+		panel_11.setBounds(286, 0, 184, 40);
+		panel_7.add(panel_11);
+		panel_11.setLayout(null);
+		panel_11.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_11.setBackground(Color.LIGHT_GRAY);
+		
 		JLabel lblMaximumMoves = new JLabel("Maximum Moves:");
+		lblMaximumMoves.setBounds(0, 0, 99, 32);
+		panel_11.add(lblMaximumMoves);
 		lblMaximumMoves.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMaximumMoves.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
-		lblMaximumMoves.setBounds(282, 1, 126, 32);
-		panel_7.add(lblMaximumMoves);
 		
 		textField_2 = new JTextField();
+		textField_2.setBounds(101, 4, 74, 28);
+		panel_11.add(textField_2);
 		textField_2.setColumns(10);
-		textField_2.setBounds(406, 1, 74, 28);
-		panel_7.add(textField_2);
+		
+		JPanel panel_10 = new JPanel();
+		panel_10.setBounds(469, 1, 217, 38);
+		panel_7.add(panel_10);
+		panel_10.setLayout(null);
+		panel_10.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_10.setBackground(Color.LIGHT_GRAY);
+		
+		JLabel lblTime = new JLabel("Time:");
+		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
+		lblTime.setBounds(2, 3, 42, 32);
+		panel_10.add(lblTime);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(42, 5, 35, 28);
+		panel_10.add(textField_5);
+		
+		JLabel lblMinutes = new JLabel("minutes");
+		lblMinutes.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		lblMinutes.setBounds(76, 13, 49, 13);
+		panel_10.add(lblMinutes);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(120, 4, 35, 28);
+		panel_10.add(textField_3);
+		
+		JLabel lblSeconds = new JLabel("seconds");
+		lblSeconds.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		lblSeconds.setBounds(156, 10, 48, 16);
+		panel_10.add(lblSeconds);
 		
 		JPanel panel_8 = new JPanel();
 		panel_8.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -214,12 +256,12 @@ public class LevelEditorView extends JFrame {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(0, 76, 516, 38);
+		panel_1.setBounds(0, 76, 685, 38);
 		getContentPane().add(panel_1);
 		
 		JButton btnRemove = new JButton("Toggle");
 		btnRemove.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnRemove.setBounds(367, 2, 76, 38);
+		btnRemove.setBounds(413, 0, 115, 38);
 		panel_1.add(btnRemove);
 		
 		JLabel lblNumber = new JLabel("Number:");
@@ -229,7 +271,7 @@ public class LevelEditorView extends JFrame {
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnToggleHint.setBounds(440, 2, 76, 38);
+		btnToggleHint.setBounds(548, 0, 91, 38);
 		panel_1.add(btnToggleHint);
 		
 		JLabel lblSquare = new JLabel("Square:");
@@ -253,7 +295,7 @@ public class LevelEditorView extends JFrame {
 		comboBox_1.setBounds(127, 7, 61, 27);
 		panel_1.add(comboBox_1);
 		setBackground(Color.LIGHT_GRAY);
-		setBounds(100, 100, 972, 751);
+		setBounds(100, 100, 1143, 751);
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
