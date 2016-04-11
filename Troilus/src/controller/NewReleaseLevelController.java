@@ -21,6 +21,7 @@ public class NewReleaseLevelController extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		LevelEditorView newReleaseLevel = new LevelEditorView();
+		newReleaseLevel.setLevelType("Release");
 		newReleaseLevel.setVisible(true);
 	}
 	
