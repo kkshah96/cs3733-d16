@@ -2,7 +2,7 @@ package Main;
 
 import java.awt.EventQueue;
 
-import MockupGUI.LevelBuilder_Selection;
+import MockupGUI.LB_LevelLoader;
 import model.LevelBuilder;
 
 public class StartLevelBuilder {
@@ -11,7 +11,7 @@ public class StartLevelBuilder {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LevelBuilder_Selection window = new LevelBuilder_Selection(new LevelBuilder());
+					LB_LevelLoader window = new LB_LevelLoader(new LevelBuilder());
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
