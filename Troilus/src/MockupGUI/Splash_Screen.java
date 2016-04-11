@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class Splash_Screen {
+public class Splash_Screen extends JFrame {
 
 	private JFrame frame;
 
@@ -23,6 +23,8 @@ public class Splash_Screen {
 				try {
 					Splash_Screen window = new Splash_Screen();
 					window.frame.setVisible(true);
+					
+					window.frame.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,6 +37,10 @@ public class Splash_Screen {
 	 */
 	public Splash_Screen() {
 		initialize();
+	}
+	
+	public void setFrameVisible() {
+		setVisible(true);
 	}
 
 	/**

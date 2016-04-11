@@ -21,6 +21,7 @@ public class StartLevelController extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		//if(lvlSelection.)
 		// TODO Auto-generated method stub
 		Puzzle_Mockup puzzleLevel = new Puzzle_Mockup();
 		puzzleLevel.setVisible(true);
