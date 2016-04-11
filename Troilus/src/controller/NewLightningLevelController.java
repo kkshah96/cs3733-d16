@@ -4,17 +4,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import MockupGUI.LB_LevelEditor;
-import MockupGUI.Level_Selection;
+import MockupGUI.LB_LevelLoader;
 import model.LevelBuilder;
 
 public class NewLightningLevelController extends MouseAdapter {
 
 	LevelBuilder builder;
-	Level_Selection selector;
+	LB_LevelLoader levelLoader;
 	
-	public NewLightningLevelController(LevelBuilder builder, Level_Selection selector) {
+	public NewLightningLevelController(LevelBuilder builder, LB_LevelLoader levelLoader) {
 		this.builder = builder;
-		this.selector = selector;
+		this.levelLoader = levelLoader;
 	}
 	
 	@Override

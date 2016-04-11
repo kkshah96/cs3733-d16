@@ -5,17 +5,16 @@ import java.awt.event.MouseEvent;
 
 import MockupGUI.LB_LevelEditor;
 import MockupGUI.LB_LevelLoader;
-import MockupGUI.Puzzle_Mockup;
 import model.LevelBuilder;
 
 public class NewPuzzleLevelController extends MouseAdapter {
 
 	LevelBuilder builder;
-	LB_LevelLoader selector;
+	LB_LevelLoader levelLoader;
 	
-	public NewPuzzleLevelController(LevelBuilder builder, LB_LevelLoader selector) {
+	public NewPuzzleLevelController(LevelBuilder builder, LB_LevelLoader levelLoader) {
 		this.builder = builder;
-		this.selector = selector;
+		this.levelLoader = levelLoader;
 	}
 	
 	@Override
