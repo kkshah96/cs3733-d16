@@ -31,7 +31,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-public class Level_Selection extends JFrame{
+public class LevelSelectorView extends JFrame{
 
 	Kabasuji game;
 
@@ -43,7 +43,7 @@ public class Level_Selection extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public Level_Selection(Kabasuji game) {
+	public LevelSelectorView(Kabasuji game) {
 		this.game = game;
 		initialize();
 	}

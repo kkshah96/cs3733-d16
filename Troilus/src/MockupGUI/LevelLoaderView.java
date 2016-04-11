@@ -19,7 +19,7 @@ import model.LevelBuilder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LB_LevelLoader extends JFrame {
+public class LevelLoaderView extends JFrame {
 
 	LevelBuilder lb;
 	
@@ -27,7 +27,7 @@ public class LB_LevelLoader extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public LB_LevelLoader(LevelBuilder lb) {
+	public LevelLoaderView(LevelBuilder lb) {
 		this.lb = lb;
 		initialize();
 	}
