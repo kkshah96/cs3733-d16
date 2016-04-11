@@ -10,7 +10,6 @@ import model.LevelBuilder;
 import view.LevelLoaderView;
 import view.Splash_Screen;
 
-
 public class StartLevelBuilder {
 
 	public static void main(String[] args) {
@@ -39,5 +38,4 @@ public class StartLevelBuilder {
 			}
 		});
 	}
-
 }

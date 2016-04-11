@@ -21,6 +21,9 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import model.LevelBuilder;
+import controller.ExitLevelEditorController;
+
 public class LevelEditorView extends JFrame {
 
 	private JTextField boardWidthField;
@@ -32,11 +35,16 @@ public class LevelEditorView extends JFrame {
 	JPanel maxMovesPanel;
 	JPanel releaseSquareOptionsPanel;
 	JPanel timePanel;
+	
+	LevelLoaderView levelLoader;
+	LevelBuilder builder;
 
 	/**
 	 * Create the application.
 	 */
-	public LevelEditorView(){
+	public LevelEditorView(LevelBuilder builder, LevelLoaderView levelLoader){
+		this.builder = builder;
+		this.levelLoader = levelLoader;
 		initialize();
 	}
 
@@ -128,12 +136,7 @@ public class LevelEditorView extends JFrame {
 		JButton levelLoaderButton = new JButton("Level Loader");
 		levelLoaderButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		levelLoaderButton.setBounds(871, 0, 199, 38);
-		levelLoaderButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				dispose();
-			}
-		});
+		levelLoaderButton.addMouseListener(new ExitLevelEditorController(builder, this, levelLoader));
 		panel_4.add(levelLoaderButton);
 		
 		JButton undoButton = new JButton("Undo");

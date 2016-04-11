@@ -8,7 +8,6 @@ import view.LevelEditorView;
 import view.LevelLoaderView;
 
 public class NewPuzzleLevelController extends MouseAdapter {
-
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;
 	
@@ -20,13 +19,12 @@ public class NewPuzzleLevelController extends MouseAdapter {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		LevelEditorView newPuzzleLevel = new LevelEditorView();
+		LevelEditorView newPuzzleLevel = new LevelEditorView(builder, levelLoader);
 		newPuzzleLevel.setMaxMovesPanelVisibility(true);
 		newPuzzleLevel.setReleaseSquareOptionsPanel(false);
 		newPuzzleLevel.setTimePanel(false);
 		
+		levelLoader.setVisible(false);
 		newPuzzleLevel.setVisible(true);
-	}
-	
+	}	
 }
-

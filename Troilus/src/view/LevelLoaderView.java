@@ -23,14 +23,14 @@ import javax.swing.UIManager;
 
 public class LevelLoaderView extends JFrame {
 
-	LevelBuilder lb;
+	LevelBuilder builder;
 	
 	/**
 	 * Create the frame.
 	 */
 	
-	public LevelLoaderView(LevelBuilder lb) {
-		this.lb = lb;
+	public LevelLoaderView(LevelBuilder builder) {
+		this.builder = builder;
 		initialize();
 	}
 	
@@ -168,17 +168,17 @@ public class LevelLoaderView extends JFrame {
 		lblLevelEditor.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		
 		JButton btnNewPuzzleLevel = new JButton("New Puzzle Level");
-		btnNewPuzzleLevel.addMouseListener(new NewPuzzleLevelController(lb, this));
+		btnNewPuzzleLevel.addMouseListener(new NewPuzzleLevelController(builder, this));
 		btnNewPuzzleLevel.setBounds(10, 54, 130, 37);
 		getContentPane().add(btnNewPuzzleLevel);
 		
 		JButton btnNewLightningLevel = new JButton("New Lightning Level");
-		btnNewLightningLevel.addMouseListener(new NewLightningLevelController(lb, this));
+		btnNewLightningLevel.addMouseListener(new NewLightningLevelController(builder, this));
 		btnNewLightningLevel.setBounds(152, 54, 146, 37);
 		getContentPane().add(btnNewLightningLevel);
 		
 		JButton btnNewReleaseLevel = new JButton("New Release Level");
-		btnNewReleaseLevel.addMouseListener(new NewReleaseLevelController(lb, this));
+		btnNewReleaseLevel.addMouseListener(new NewReleaseLevelController(builder, this));
 		btnNewReleaseLevel.setBounds(310, 54, 137, 37);
 		getContentPane().add(btnNewReleaseLevel);
 

@@ -8,7 +8,6 @@ import view.LevelEditorView;
 import view.LevelLoaderView;
 
 public class NewLightningLevelController extends MouseAdapter {
-
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;
 	
@@ -20,13 +19,12 @@ public class NewLightningLevelController extends MouseAdapter {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		LevelEditorView newLightningLevel = new LevelEditorView();
+		LevelEditorView newLightningLevel = new LevelEditorView(builder, levelLoader);
 		newLightningLevel.setLevelType("Lightning");
 		newLightningLevel.setMaxMovesPanelVisibility(false);
 		newLightningLevel.setReleaseSquareOptionsPanel(false);
+		
+		levelLoader.setVisible(false);
 		newLightningLevel.setVisible(true);
 	}
-	
-	
 }
-
