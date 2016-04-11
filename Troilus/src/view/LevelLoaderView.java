@@ -178,7 +178,7 @@ public class LevelLoaderView extends JFrame {
 		getContentPane().add(btnNewLightningLevel);
 		
 		JButton btnNewReleaseLevel = new JButton("New Release Level");
-		btnNewReleaseLevel.addMouseListener(new NewPuzzleLevelController(lb, this));
+		btnNewReleaseLevel.addMouseListener(new NewReleaseLevelController(lb, this));
 		btnNewReleaseLevel.setBounds(310, 54, 137, 37);
 		getContentPane().add(btnNewReleaseLevel);
 

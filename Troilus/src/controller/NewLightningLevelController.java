@@ -20,8 +20,9 @@ public class NewLightningLevelController extends MouseAdapter {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		LevelEditorView newPuzzleLevel = new LevelEditorView();
-		newPuzzleLevel.setVisible(true);
+		LevelEditorView newLightningLevel = new LevelEditorView();
+		newLightningLevel.setLevelType("Lightning");
+		newLightningLevel.setVisible(true);
 	}
 	
 }

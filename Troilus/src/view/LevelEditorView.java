@@ -28,6 +28,7 @@ public class LevelEditorView extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_5;
 	private JTextField textField_3;
+	JLabel levelTypeLabel;
 
 	/**
 	 * Create the application.
@@ -108,11 +109,11 @@ public class LevelEditorView extends JFrame {
 		panel_4.add(panel_5);
 		panel_5.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Puzzle");
-		lblNewLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(6, 6, 124, 26);
-		panel_5.add(lblNewLabel);
+		levelTypeLabel = new JLabel("Puzzle");
+		levelTypeLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
+		levelTypeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		levelTypeLabel.setBounds(6, 6, 124, 26);
+		panel_5.add(levelTypeLabel);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -298,4 +299,10 @@ public class LevelEditorView extends JFrame {
 		setBounds(100, 100, 1143, 751);
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	public void setLevelType(String type){
+		levelTypeLabel.setText(type);
+		//this.initialize();
+	}
+	
 }
