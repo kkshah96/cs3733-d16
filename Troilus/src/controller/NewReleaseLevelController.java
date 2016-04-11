@@ -3,7 +3,7 @@ package controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import MockupGUI.LB_LevelEditor;
+import MockupGUI.LevelEditorView;
 import MockupGUI.LevelLoaderView;
 import model.LevelBuilder;
 
@@ -20,7 +20,7 @@ public class NewReleaseLevelController extends MouseAdapter {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		LB_LevelEditor newReleaseLevel = new LB_LevelEditor();
+		LevelEditorView newReleaseLevel = new LevelEditorView();
 		newReleaseLevel.setVisible(true);
 	}
 	
