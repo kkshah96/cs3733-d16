@@ -1,13 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Kabasuji {
 
-	Level[] levels = new Level[15];
-	
+	ArrayList<Level> levels;
 	Level activeLevel;
 	
 	public Kabasuji() {
-		
+		// TODO: load levels from file
 	}
 	
 }
