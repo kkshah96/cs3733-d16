@@ -100,48 +100,48 @@ public class LevelSelectorView extends JFrame{
 		lblGameLevels.setBounds(299, 0, 117, 16);
 		panel.add(lblGameLevels);
 		
-		JButton button = new JButton("Level 1: Puzzle");
-		button.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		button.setBackground(UIManager.getColor("Button.background"));
-		button.setBounds(6, 17, 136, 29);
-		panel.add(button);
-		button.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel1 = new JButton("Level 1: Puzzle");
+		btnLevel1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel1.setBackground(UIManager.getColor("Button.background"));
+		btnLevel1.setBounds(6, 17, 136, 29);
+		panel.add(btnLevel1);
+		btnLevel1.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelPuzzle = new JButton("Level 4: Puzzle");
-		btnLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelPuzzle.setBackground(UIManager.getColor("Button.background"));
-		btnLevelPuzzle.setBounds(6, 45, 136, 29);
-		panel.add(btnLevelPuzzle);
-		btnLevelPuzzle.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel4 = new JButton("Level 4: Puzzle");
+		btnLevel4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel4.setBackground(UIManager.getColor("Button.background"));
+		btnLevel4.setBounds(6, 45, 136, 29);
+		panel.add(btnLevel4);
+		btnLevel4.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelPuzzle_1 = new JButton("Level 7: Puzzle");
-		btnLevelPuzzle_1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelPuzzle_1.setBackground(UIManager.getColor("Button.background"));
-		btnLevelPuzzle_1.setBounds(6, 75, 136, 29);
-		panel.add(btnLevelPuzzle_1);
-		btnLevelPuzzle_1.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel7 = new JButton("Level 7: Puzzle");
+		btnLevel7.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel7.setBackground(UIManager.getColor("Button.background"));
+		btnLevel7.setBounds(6, 75, 136, 29);
+		panel.add(btnLevel7);
+		btnLevel7.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelPuzzle_2 = new JButton("Level 10: Puzzle");
-		btnLevelPuzzle_2.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelPuzzle_2.setBackground(UIManager.getColor("Button.background"));
-		btnLevelPuzzle_2.setBounds(6, 102, 136, 29);
-		panel.add(btnLevelPuzzle_2);
-		btnLevelPuzzle_2.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel10 = new JButton("Level 10: Puzzle");
+		btnLevel10.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel10.setBackground(UIManager.getColor("Button.background"));
+		btnLevel10.setBounds(6, 102, 136, 29);
+		panel.add(btnLevel10);
+		btnLevel10.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelPuzzle_3 = new JButton("Level 13: Puzzle");
-		btnLevelPuzzle_3.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelPuzzle_3.setBackground(UIManager.getColor("Button.background"));
-		btnLevelPuzzle_3.setBounds(6, 130, 136, 29);
-		panel.add(btnLevelPuzzle_3);
-		btnLevelPuzzle_3.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel13 = new JButton("Level 13: Puzzle");
+		btnLevel13.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel13.setBackground(UIManager.getColor("Button.background"));
+		btnLevel13.setBounds(6, 130, 136, 29);
+		panel.add(btnLevel13);
+		btnLevel13.addMouseListener(new StartLevelController(this, game));
 		
-		JLabel label_9 = new JLabel("Stars: 0/3");
-		label_9.setBounds(142, 20, 85, 26);
-		panel.add(label_9);
+		JLabel labelLevel1 = new JLabel("Stars: 0/3");
+		labelLevel1.setBounds(142, 20, 85, 26);
+		panel.add(labelLevel1);
 		
-		JLabel label_10 = new JLabel("Stars: 0/3");
-		label_10.setBounds(142, 48, 85, 26);
-		panel.add(label_10);
+		JLabel labelLevel4 = new JLabel("Stars: 0/3");
+		labelLevel4.setBounds(142, 48, 85, 26);
+		panel.add(labelLevel4);
 		
 		JLabel label_11 = new JLabel("Stars: 0/3");
 		label_11.setBounds(142, 78, 85, 26);
