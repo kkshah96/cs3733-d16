@@ -95,10 +95,10 @@ public class LevelSelectorView extends JFrame{
 		panel_2.add(lblLevelSelection);
 		panel.setLayout(null);
 		
-		JLabel lblGameLevels = new JLabel("Game Levels");
-		lblGameLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblGameLevels.setBounds(299, 0, 117, 16);
-		panel.add(lblGameLevels);
+		JLabel labelLevels = new JLabel("Game Levels");
+		labelLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		labelLevels.setBounds(299, 0, 117, 16);
+		panel.add(labelLevels);
 		
 		JButton btnLevel1 = new JButton("Level 1: Puzzle");
 		btnLevel1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
@@ -143,153 +143,153 @@ public class LevelSelectorView extends JFrame{
 		labelLevel4.setBounds(142, 48, 85, 26);
 		panel.add(labelLevel4);
 		
-		JLabel label_11 = new JLabel("Stars: 0/3");
-		label_11.setBounds(142, 78, 85, 26);
-		panel.add(label_11);
+		JLabel labelLevel7 = new JLabel("Stars: 0/3");
+		labelLevel7.setBounds(142, 78, 85, 26);
+		panel.add(labelLevel7);
 		
-		JLabel label_12 = new JLabel("Stars: 0/3");
-		label_12.setBounds(142, 105, 85, 26);
-		panel.add(label_12);
+		JLabel labelLevel10 = new JLabel("Stars: 0/3");
+		labelLevel10.setBounds(142, 105, 85, 26);
+		panel.add(labelLevel10);
 		
-		JLabel label_13 = new JLabel("Stars: 0/3");
-		label_13.setBounds(142, 133, 85, 26);
-		panel.add(label_13);
+		JLabel labelLevel13 = new JLabel("Stars: 0/3");
+		labelLevel13.setBounds(142, 133, 85, 26);
+		panel.add(labelLevel13);
 		
-		JButton btnLevelLightning = new JButton("Level 2: Lightning");
-		btnLevelLightning.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelLightning.setBackground(UIManager.getColor("Button.background"));
-		btnLevelLightning.setBounds(224, 17, 148, 29);
-		panel.add(btnLevelLightning);
-		btnLevelLightning.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel2 = new JButton("Level 2: Lightning");
+		btnLevel2.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel2.setBackground(UIManager.getColor("Button.background"));
+		btnLevel2.setBounds(224, 17, 148, 29);
+		panel.add(btnLevel2);
+		btnLevel2.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelLightning_1 = new JButton("Level 5: Lightning");
-		btnLevelLightning_1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelLightning_1.setBackground(UIManager.getColor("Button.background"));
-		btnLevelLightning_1.setBounds(224, 44, 148, 29);
-		panel.add(btnLevelLightning_1);
-		btnLevelLightning_1.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel5 = new JButton("Level 5: Lightning");
+		btnLevel5.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel5.setBackground(UIManager.getColor("Button.background"));
+		btnLevel5.setBounds(224, 44, 148, 29);
+		panel.add(btnLevel5);
+		btnLevel5.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelLightning_2 = new JButton("Level 8: Lightning");
-		btnLevelLightning_2.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelLightning_2.setBackground(UIManager.getColor("Button.background"));
-		btnLevelLightning_2.setBounds(224, 72, 148, 29);
-		panel.add(btnLevelLightning_2);
-		btnLevelLightning_2.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel8 = new JButton("Level 8: Lightning");
+		btnLevel8.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel8.setBackground(UIManager.getColor("Button.background"));
+		btnLevel8.setBounds(224, 72, 148, 29);
+		panel.add(btnLevel8);
+		btnLevel8.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelLightning_3 = new JButton("Level 11: Lightning");
-		btnLevelLightning_3.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelLightning_3.setBackground(UIManager.getColor("Button.background"));
-		btnLevelLightning_3.setBounds(224, 101, 148, 29);
-		panel.add(btnLevelLightning_3);
-		btnLevelLightning_3.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel11 = new JButton("Level 11: Lightning");
+		btnLevel11.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel11.setBackground(UIManager.getColor("Button.background"));
+		btnLevel11.setBounds(224, 101, 148, 29);
+		panel.add(btnLevel11);
+		btnLevel11.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelLightning_4 = new JButton("Level 14: Lightning");
-		btnLevelLightning_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelLightning_4.setBackground(UIManager.getColor("Button.background"));
-		btnLevelLightning_4.setBounds(224, 130, 148, 29);
-		panel.add(btnLevelLightning_4);
-		btnLevelLightning_4.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel14 = new JButton("Level 14: Lightning");
+		btnLevel14.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel14.setBackground(UIManager.getColor("Button.background"));
+		btnLevel14.setBounds(224, 130, 148, 29);
+		panel.add(btnLevel14);
+		btnLevel14.addMouseListener(new StartLevelController(this, game));
 		
-		JLabel label_4 = new JLabel("Stars: 0/3");
-		label_4.setBounds(374, 20, 85, 26);
-		panel.add(label_4);
+		JLabel labelLevel2 = new JLabel("Stars: 0/3");
+		labelLevel2.setBounds(374, 20, 85, 26);
+		panel.add(labelLevel2);
 		
-		JLabel label_5 = new JLabel("Stars: 0/3");
-		label_5.setBounds(374, 47, 85, 27);
-		panel.add(label_5);
+		JLabel labelLevel5 = new JLabel("Stars: 0/3");
+		labelLevel5.setBounds(374, 47, 85, 27);
+		panel.add(labelLevel5);
 		
-		JLabel label_6 = new JLabel("Stars: 0/3");
-		label_6.setBounds(374, 75, 85, 29);
-		panel.add(label_6);
+		JLabel labelLevel8 = new JLabel("Stars: 0/3");
+		labelLevel8.setBounds(374, 75, 85, 29);
+		panel.add(labelLevel8);
 		
-		JLabel label_7 = new JLabel("Stars: 0/3");
-		label_7.setBounds(374, 104, 85, 27);
-		panel.add(label_7);
+		JLabel labelLevel11 = new JLabel("Stars: 0/3");
+		labelLevel11.setBounds(374, 104, 85, 27);
+		panel.add(labelLevel11);
 		
-		JLabel label_8 = new JLabel("Stars: 0/3");
-		label_8.setBounds(374, 133, 85, 26);
-		panel.add(label_8);
+		JLabel labelLevel14 = new JLabel("Stars: 0/3");
+		labelLevel14.setBounds(374, 133, 85, 26);
+		panel.add(labelLevel14);
 		
-		JButton btnLevelRelease = new JButton("Level 3: Release");
-		btnLevelRelease.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelRelease.setBackground(UIManager.getColor("Button.background"));
-		btnLevelRelease.setBounds(471, 17, 148, 29);
-		panel.add(btnLevelRelease);
-		btnLevelRelease.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel3 = new JButton("Level 3: Release");
+		btnLevel3.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel3.setBackground(UIManager.getColor("Button.background"));
+		btnLevel3.setBounds(471, 17, 148, 29);
+		panel.add(btnLevel3);
+		btnLevel3.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelRelease_1 = new JButton("Level 6: Release");
-		btnLevelRelease_1.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelRelease_1.setBackground(UIManager.getColor("Button.background"));
-		btnLevelRelease_1.setBounds(471, 46, 148, 29);
-		panel.add(btnLevelRelease_1);
-		btnLevelRelease_1.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel6 = new JButton("Level 6: Release");
+		btnLevel6.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel6.setBackground(UIManager.getColor("Button.background"));
+		btnLevel6.setBounds(471, 46, 148, 29);
+		panel.add(btnLevel6);
+		btnLevel6.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelRelease_2 = new JButton("Level 9: Release");
-		btnLevelRelease_2.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelRelease_2.setBackground(UIManager.getColor("Button.background"));
-		btnLevelRelease_2.setBounds(471, 76, 148, 29);
-		panel.add(btnLevelRelease_2);
-		btnLevelRelease_2.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel9 = new JButton("Level 9: Release");
+		btnLevel9.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel9.setBackground(UIManager.getColor("Button.background"));
+		btnLevel9.setBounds(471, 76, 148, 29);
+		panel.add(btnLevel9);
+		btnLevel9.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelRelease_3 = new JButton("Level 12: Release");
-		btnLevelRelease_3.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelRelease_3.setBackground(UIManager.getColor("Button.background"));
-		btnLevelRelease_3.setBounds(471, 105, 148, 29);
-		panel.add(btnLevelRelease_3);
-		btnLevelRelease_3.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel12 = new JButton("Level 12: Release");
+		btnLevel12.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel12.setBackground(UIManager.getColor("Button.background"));
+		btnLevel12.setBounds(471, 105, 148, 29);
+		panel.add(btnLevel12);
+		btnLevel12.addMouseListener(new StartLevelController(this, game));
 		
-		JButton btnLevelRelease_4 = new JButton("Level 15: Release");
-		btnLevelRelease_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelRelease_4.setBackground(UIManager.getColor("Button.background"));
-		btnLevelRelease_4.setBounds(471, 130, 148, 29);
-		panel.add(btnLevelRelease_4);
-		btnLevelRelease_4.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel15 = new JButton("Level 15: Release");
+		btnLevel15.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel15.setBackground(UIManager.getColor("Button.background"));
+		btnLevel15.setBounds(471, 130, 148, 29);
+		panel.add(btnLevel15);
+		btnLevel15.addMouseListener(new StartLevelController(this, game));
 		
-		JLabel label = new JLabel("Stars: 0/3");
-		label.setBounds(624, 20, 85, 26);
-		panel.add(label);
+		JLabel labelLevel3 = new JLabel("Stars: 0/3");
+		labelLevel3.setBounds(624, 20, 85, 26);
+		panel.add(labelLevel3);
 		
-		JLabel label_1 = new JLabel("Stars: 0/3");
-		label_1.setBounds(624, 49, 85, 25);
-		panel.add(label_1);
+		JLabel labelLevel6 = new JLabel("Stars: 0/3");
+		labelLevel6.setBounds(624, 49, 85, 25);
+		panel.add(labelLevel6);
 		
-		JLabel label_2 = new JLabel("Stars: 0/3");
-		label_2.setBounds(624, 79, 85, 25);
-		panel.add(label_2);
+		JLabel labelLevel9 = new JLabel("Stars: 0/3");
+		labelLevel9.setBounds(624, 79, 85, 25);
+		panel.add(labelLevel9);
 		
-		JLabel label_3 = new JLabel("Stars: 0/3");
-		label_3.setBounds(624, 108, 85, 23);
-		panel.add(label_3);
+		JLabel labelLevel12 = new JLabel("Stars: 0/3");
+		labelLevel12.setBounds(624, 108, 85, 23);
+		panel.add(labelLevel12);
 		
-		JLabel label_14 = new JLabel("Stars: 0/3");
-		label_14.setBounds(624, 133, 85, 26);
-		panel.add(label_14);
+		JLabel labelLevel15 = new JLabel("Stars: 0/3");
+		labelLevel15.setBounds(624, 133, 85, 26);
+		panel.add(labelLevel15);
 		
-		JButton btnLevelPuzzle_4 = new JButton("Level 16: Puzzle");
-		btnLevelPuzzle_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelPuzzle_4.setBackground(UIManager.getColor("Button.background"));
-		btnLevelPuzzle_4.setBounds(6, 161, 136, 29);
-		panel.add(btnLevelPuzzle_4);
-		btnLevelPuzzle_4.addMouseListener(new StartLevelController(this, game));
+		JButton btnLevel16 = new JButton("Level 16: Puzzle");
+		btnLevel16.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel16.setBackground(UIManager.getColor("Button.background"));
+		btnLevel16.setBounds(6, 161, 136, 29);
+		panel.add(btnLevel16);
+		btnLevel16.addMouseListener(new StartLevelController(this, game));
 		
-		JLabel label_15 = new JLabel("Stars: 0/3");
-		label_15.setBounds(142, 164, 85, 26);
-		panel.add(label_15);
+		JLabel labelLevel16 = new JLabel("Stars: 0/3");
+		labelLevel16.setBounds(142, 164, 85, 26);
+		panel.add(labelLevel16);
 		
-		JButton btnLevelRelease_5 = new JButton("Level 17: Release");
-		btnLevelRelease_5.addActionListener(new ActionListener() {
+		JButton btnLevel17 = new JButton("Level 17: Release");
+		btnLevel17.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnLevelRelease_5.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		btnLevelRelease_5.setBackground(UIManager.getColor("Button.background"));
-		btnLevelRelease_5.setBounds(224, 160, 148, 29);
-		panel.add(btnLevelRelease_5);
-		btnLevelRelease_5.addMouseListener(new StartLevelController(this, game));
+		btnLevel17.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		btnLevel17.setBackground(UIManager.getColor("Button.background"));
+		btnLevel17.setBounds(224, 160, 148, 29);
+		panel.add(btnLevel17);
+		btnLevel17.addMouseListener(new StartLevelController(this, game));
 		
-		JLabel label_16 = new JLabel("Stars: 0/3");
-		label_16.setBounds(374, 160, 85, 30);
-		panel.add(label_16);
+		JLabel labelLevel17 = new JLabel("Stars: 0/3");
+		labelLevel17.setBounds(374, 160, 85, 30);
+		panel.add(labelLevel17);
 		getContentPane().setLayout(groupLayout);
 		setBounds(100, 100, 733, 514);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
