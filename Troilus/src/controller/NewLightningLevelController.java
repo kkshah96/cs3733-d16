@@ -7,12 +7,12 @@ import MockupGUI.LB_LevelEditor;
 import MockupGUI.LevelLoaderView;
 import model.LevelBuilder;
 
-public class NewPuzzleLevelController extends MouseAdapter {
+public class NewLightningLevelController extends MouseAdapter {
 
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;
 	
-	public NewPuzzleLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
+	public NewLightningLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
 		this.builder = builder;
 		this.levelLoader = levelLoader;
 	}

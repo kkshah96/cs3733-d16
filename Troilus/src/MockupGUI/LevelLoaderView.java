@@ -10,12 +10,16 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import controller.NewPuzzleLevelController;
+import controller.NewLightningLevelController;
+import controller.NewReleaseLevelController;
+
+
 import model.LevelBuilder;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LevelBuilder_Selection extends JFrame {
+public class LevelLoaderView extends JFrame {
 
 	LevelBuilder lb;
 	
@@ -23,7 +27,7 @@ public class LevelBuilder_Selection extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public LevelBuilder_Selection(LevelBuilder lb) {
+	public LevelLoaderView(LevelBuilder lb) {
 		this.lb = lb;
 		initialize();
 	}
@@ -161,16 +165,18 @@ public class LevelBuilder_Selection extends JFrame {
 		lblLevelEditor.setForeground(Color.LIGHT_GRAY);
 		lblLevelEditor.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		
-		JButton btnNewLevel = new JButton("New Puzzle Level");
-		btnNewLevel.addMouseListener(new NewPuzzleLevelController(lb, this));
-		btnNewLevel.setBounds(10, 54, 130, 37);
-		add(btnNewLevel);
+		JButton btnNewPuzzleLevel = new JButton("New Puzzle Level");
+		btnNewPuzzleLevel.addMouseListener(new NewPuzzleLevelController(lb, this));
+		btnNewPuzzleLevel.setBounds(10, 54, 130, 37);
+		add(btnNewPuzzleLevel);
 		
 		JButton btnNewLightningLevel = new JButton("New Lightning Level");
+		btnNewLightningLevel.addMouseListener(new NewLightningLevelController(lb, this));
 		btnNewLightningLevel.setBounds(152, 54, 146, 37);
 		add(btnNewLightningLevel);
 		
 		JButton btnNewReleaseLevel = new JButton("New Release Level");
+		btnNewReleaseLevel.addMouseListener(new NewPuzzleLevelController(lb, this));
 		btnNewReleaseLevel.setBounds(310, 54, 137, 37);
 		add(btnNewReleaseLevel);
 

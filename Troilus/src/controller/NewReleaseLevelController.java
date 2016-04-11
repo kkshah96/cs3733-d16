@@ -3,25 +3,24 @@ package controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import MockupGUI.LevelBuilder_Editor;
-import MockupGUI.LevelBuilder_Selection;
-import MockupGUI.Release_Mockup;
+import MockupGUI.LB_LevelEditor;
+import MockupGUI.LevelLoaderView;
 import model.LevelBuilder;
 
 public class NewReleaseLevelController extends MouseAdapter {
 
 	LevelBuilder builder;
-	LevelBuilder_Selection selector;
+	LevelLoaderView levelLoader;
 	
-	public NewReleaseLevelController(LevelBuilder builder, LevelBuilder_Selection selector) {
+	public NewReleaseLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
 		this.builder = builder;
-		this.selector = selector;
+		this.levelLoader = levelLoader;
 	}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		LevelBuilder_Editor newReleaseLevel = new LevelBuilder_Editor();
+		LB_LevelEditor newReleaseLevel = new LB_LevelEditor();
 		newReleaseLevel.setVisible(true);
 	}
 	
