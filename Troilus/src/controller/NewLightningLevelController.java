@@ -4,15 +4,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import MockupGUI.LB_LevelEditor;
-import MockupGUI.LB_LevelLoader;
+import MockupGUI.LevelLoaderView;
 import model.LevelBuilder;
 
 public class NewLightningLevelController extends MouseAdapter {
 
 	LevelBuilder builder;
-	LB_LevelLoader levelLoader;
+	LevelLoaderView levelLoader;
 	
-	public NewLightningLevelController(LevelBuilder builder, LB_LevelLoader levelLoader) {
+	public NewLightningLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
 		this.builder = builder;
 		this.levelLoader = levelLoader;
 	}

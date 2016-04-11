@@ -5,16 +5,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import MockupGUI.Level_Selection;
+import MockupGUI.LevelSelectorView;
 import MockupGUI.Puzzle_Mockup;
 import model.Kabasuji;
 
 public class StartLevelController extends MouseAdapter {
 
 	Kabasuji game;
-	Level_Selection lvlSelection;
+	LevelSelectorView lvlSelection;
 	
-	public StartLevelController(Level_Selection lvlSelection, Kabasuji game) {
+	public StartLevelController(LevelSelectorView lvlSelection, Kabasuji game) {
 		this.lvlSelection = lvlSelection;
 		this.game = game;
 	}
