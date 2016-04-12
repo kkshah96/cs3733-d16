@@ -28,9 +28,9 @@ public class StartKabasuji {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							splash.setVisible(false);
-							Kabasuji kabasuji = new Kabasuji();
-							LevelSelectorView window = new LevelSelectorView(kabasuji);
-							StartLevelSelectorController selectorController = new StartLevelSelectorController(window, kabasuji);
+							Kabasuji game = new Kabasuji();
+							LevelSelectorView window = new LevelSelectorView(game);
+							StartLevelSelectorController selectorController = new StartLevelSelectorController(window, game);
 							selectorController.process();
 							window.setVisible(true);
 						}
@@ -43,5 +43,4 @@ public class StartKabasuji {
 			}
 		});
 	}
-
 }
