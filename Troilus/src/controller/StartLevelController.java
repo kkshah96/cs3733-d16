@@ -20,7 +20,6 @@ public class StartLevelController extends MouseAdapter {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		//if(lvlSelection.)
-		// TODO Auto-generated method stub
 		LevelView level = new LevelView(levelSelector);
 		level.setVisible(true);
 		levelSelector.setVisible(false);
