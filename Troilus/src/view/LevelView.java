@@ -74,25 +74,12 @@ public class LevelView extends JFrame{
 		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		panelTitle.add(lblLevelPuzzle);
 		
-		JPanel panelBoard = new JPanel();
+		JPanel panelBoard = new BoardView();
 		panelBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panelBoard.setBackground(Color.LIGHT_GRAY);
 		panelBoard.setBounds(0, 88, 461, 455);
 		panel.add(panelBoard);
 		panelBoard.setLayout(null);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.LIGHT_GRAY);
-		panel_4.setBorder(null);
-		panel_4.setBounds(6, 6, 434, 34);
-		panelBoard.add(panel_4);
-		panel_4.setLayout(null);
-		
-		JLabel lblBoard = new JLabel("Board");
-		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
-		lblBoard.setForeground(Color.BLACK);
-		lblBoard.setBounds(6, 6, 90, 28);
-		panel_4.add(lblBoard);
 		
 		JPanel panelBullpen = new JPanel();
 		panelBullpen.setBorder(new LineBorder(new Color(0, 0, 0), 2));
