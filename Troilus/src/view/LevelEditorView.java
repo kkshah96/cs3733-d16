@@ -272,12 +272,12 @@ public class LevelEditorView extends JFrame {
 		
 		JButton btnRemove = new JButton("Toggle");
 		btnRemove.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnRemove.setBounds(413, 0, 115, 38);
+		btnRemove.setBounds(437, 0, 115, 38);
 		panel_1.add(btnRemove);
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnToggleHint.setBounds(548, 0, 91, 38);
+		btnToggleHint.setBounds(564, 0, 91, 38);
 		panel_1.add(btnToggleHint);
 		
 		JLabel lblSquare = new JLabel("Square:");
@@ -287,7 +287,7 @@ public class LevelEditorView extends JFrame {
 		panel_1.add(lblSquare);
 		
 		releaseSquareOptionsPanel = new JPanel();
-		releaseSquareOptionsPanel.setBounds(84, 0, 317, 40);
+		releaseSquareOptionsPanel.setBounds(84, 0, 341, 40);
 		panel_1.add(releaseSquareOptionsPanel);
 		releaseSquareOptionsPanel.setLayout(null);
 		releaseSquareOptionsPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -299,19 +299,19 @@ public class LevelEditorView extends JFrame {
 		lblNumber.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
 		
 		JComboBox releaseNumberComboBox = new JComboBox();
-		releaseNumberComboBox.setBounds(66, 5, 61, 27);
+		releaseNumberComboBox.setBounds(66, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseNumberComboBox);
-		releaseNumberComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
+		releaseNumberComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "1", "2", "3", "4", "5", "6"}));
 		
 		JLabel lblNumberColor = new JLabel("Number Color:");
-		lblNumberColor.setBounds(131, 11, 97, 16);
+		lblNumberColor.setBounds(150, 11, 97, 16);
 		releaseSquareOptionsPanel.add(lblNumberColor);
 		lblNumberColor.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
 		
 		JComboBox releaseColorComboBox = new JComboBox();
-		releaseColorComboBox.setBounds(222, 5, 85, 27);
+		releaseColorComboBox.setBounds(250, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseColorComboBox);
-		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"Red", "Green", "Yellow"}));
+		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(100, 100, 1143, 751);
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
