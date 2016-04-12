@@ -23,6 +23,9 @@ import controller.StartLevelController;
 import controller.ExitLevelController;
 
 import model.Kabasuji;
+import model.Level;
+import model.LightningLevel;
+import model.PuzzleLevel;
 
 public class LevelView extends JFrame{
 
@@ -30,6 +33,8 @@ public class LevelView extends JFrame{
 	private JLabel lblLevelPuzzle;
 	LevelSelectorView levelSelector;
 	Kabasuji game;
+	Level level;
+	
 
 	/**
 	 * Launch the application.
@@ -38,8 +43,10 @@ public class LevelView extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public LevelView(LevelSelectorView levelSelector) {
+	public LevelView(LevelSelectorView levelSelector, Kabasuji game) {
 		this.levelSelector = levelSelector;
+		this.game = game;
+		this.level = game.getActiveLevel();
 		initialize();
 	}
 
@@ -135,70 +142,89 @@ public class LevelView extends JFrame{
 		btnExitLevel.setBounds(771, 50, 176, 36);
 		panel.add(btnExitLevel);
 		
-		JPanel panelMovesLeft = new JPanel();
-		panelMovesLeft.setLayout(null);
-		panelMovesLeft.setBorder(null);
-		panelMovesLeft.setBackground(Color.LIGHT_GRAY);
-		panelMovesLeft.setBounds(569, 52, 115, 34);
-		panel.add(panelMovesLeft);
+		JPanel panelPuzzleStats = new JPanel();
+		panelPuzzleStats.setLayout(null);
+		panelPuzzleStats.setBorder(null);
+		panelPuzzleStats.setBackground(Color.LIGHT_GRAY);
+		panelPuzzleStats.setBounds(569, 52, 115, 34);
+		panel.add(panelPuzzleStats);
 		
 		JLabel label_1 = new JLabel("Moves: 40/50");
 		label_1.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		label_1.setBounds(6, 7, 99, 22);
-		panelMovesLeft.add(label_1);
+		panelPuzzleStats.add(label_1);
 		
 		JLabel labelStars = new JLabel("Stars: 0/3");
 		labelStars.setBounds(689, 60, 82, 16);
 		panel.add(labelStars);
 		labelStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
 		
-		JPanel panelNumbers = new JPanel();
-		panelNumbers.setBounds(10, 48, 383, 38);
-		panel.add(panelNumbers);
-		panelNumbers.setLayout(null);
-		panelNumbers.setBorder(null);
-		panelNumbers.setBackground(Color.LIGHT_GRAY);
+		JPanel panelReleaseStats = new JPanel();
+		panelReleaseStats.setBounds(10, 48, 383, 38);
+		panel.add(panelReleaseStats);
+		panelReleaseStats.setLayout(null);
+		panelReleaseStats.setBorder(null);
+		panelReleaseStats.setBackground(Color.LIGHT_GRAY);
 		
 		JLabel label_4 = new JLabel("Red Squares:");
 		label_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		label_4.setBounds(0, 16, 82, 16);
-		panelNumbers.add(label_4);
+		panelReleaseStats.add(label_4);
 		
 		JLabel label_5 = new JLabel("0/6");
 		label_5.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		label_5.setBounds(85, 16, 31, 16);
-		panelNumbers.add(label_5);
+		panelReleaseStats.add(label_5);
 		
 		JLabel label_6 = new JLabel("Green Squares:");
 		label_6.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		label_6.setBounds(115, 16, 103, 16);
-		panelNumbers.add(label_6);
+		panelReleaseStats.add(label_6);
 		
 		JLabel label_7 = new JLabel("0/6");
 		label_7.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		label_7.setBounds(218, 16, 31, 16);
-		panelNumbers.add(label_7);
+		panelReleaseStats.add(label_7);
 		
 		JLabel label_8 = new JLabel("Yellow Squares:");
 		label_8.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		label_8.setBounds(249, 16, 103, 16);
-		panelNumbers.add(label_8);
+		panelReleaseStats.add(label_8);
 		
 		JLabel label_9 = new JLabel("0/6");
 		label_9.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		label_9.setBounds(356, 16, 31, 16);
-		panelNumbers.add(label_9);
+		panelReleaseStats.add(label_9);
 		
-		JPanel panelTimeLeft = new JPanel();
-		panelTimeLeft.setBounds(394, 50, 175, 34);
-		panel.add(panelTimeLeft);
-		panelTimeLeft.setLayout(null);
-		panelTimeLeft.setBorder(null);
-		panelTimeLeft.setBackground(Color.LIGHT_GRAY);
+		JPanel panelLightningStats = new JPanel();
+		panelLightningStats.setBounds(394, 50, 175, 34);
+		panel.add(panelLightningStats);
+		panelLightningStats.setLayout(null);
+		panelLightningStats.setBorder(null);
+		panelLightningStats.setBackground(Color.LIGHT_GRAY);
 		
 		JLabel label = new JLabel("Time Remaining: 1:30");
 		label.setBounds(6, 6, 161, 20);
-		panelTimeLeft.add(label);
+		panelLightningStats.add(label);
 		label.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		
+		
+		// control visibility depending on type of level
+		// TODO: change ugly code below (sorry guys!)
+		
+		if (level instanceof PuzzleLevel) {
+			panelLightningStats.setVisible(false);
+			panelReleaseStats.setVisible(false);
+		}
+		else if (level instanceof LightningLevel) {
+			panelPuzzleStats.setVisible(false);
+			panelReleaseStats.setVisible(false);
+		}
+		else {
+			panelPuzzleStats.setVisible(false);
+			panelLightningStats.setVisible(false);
+		}
+		
+		
 	}
 }

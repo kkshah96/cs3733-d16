@@ -29,7 +29,10 @@ public class StartLevelController extends MouseAdapter {
 			return;
 		}
 		
-		LevelView level = new LevelView(levelSelector);
+		// set active level in top model to selected level
+		game.setActiveLevel(selectedLevel);
+		
+		LevelView level = new LevelView(levelSelector, game);
 		level.setVisible(true);
 		levelSelector.setVisible(false);
 	}

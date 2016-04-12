@@ -16,19 +16,38 @@ public class Kabasuji {
 		return levels.size();
 	}
 	
+	public void setActiveLevel(Level level) {
+		activeLevel = level;
+	}
+	
+	public Level getActiveLevel() {
+		return activeLevel;
+	}
+	
 	public Kabasuji() {
 		// TODO: load levels from file
-		//For now, create levels in the model
+		
+		//For now, create stub levels in the model
 		levels = new ArrayList<Level>();
 		for(int i = 0; i < 24; i++){
-
-			if(i == 0) {
-				Level level1 = new PuzzleLevel(i, false, new Bullpen(), new Board(), new  Palette(null), 10); 
-				levels.add(level1);}
-			else {
-				Level other = new PuzzleLevel(i, true, new Bullpen(), new Board(), new  Palette(null), 10); 
-				levels.add(other);
+			Level level;
+			if (i % 3 == 0) {
+				level = new PuzzleLevel(i, false, new Bullpen(), new Board(), new  Palette(null), 10);
 			}
+			else if (i % 3 == 1) {
+				level = new LightningLevel(i, false, new Bullpen(), new Board(), new  Palette(null), 10);
+			}
+			else {
+				level = new ReleaseLevel(i, false, new Bullpen(), new Board(), new  Palette(null));
+				
+			}
+			
+			// show the first three levels
+			if(i >= 3) {
+				level.setLocked(true);
+			}
+			
+			levels.add(level);
 
 		}
 

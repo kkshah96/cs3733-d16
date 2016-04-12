@@ -35,8 +35,8 @@ public abstract class Level {
 		return numStars > 0; // TODO: Is this valid lol
 	}
 	
-	public void unlockLevel(){
-		locked = false;
+	public void setLocked(boolean locked){
+		this.locked = locked;
 	}
 	
 	public abstract void calcNumStars();
