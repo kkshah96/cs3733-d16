@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import model.Kabasuji;
 import view.LevelSelectorView;
-import view.Splash_Screen;
+import view.SplashScreenView;
 
 
 public class StartKabasuji {
@@ -16,11 +16,11 @@ public class StartKabasuji {
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
-			Splash_Screen splash;
+			SplashScreenView splash;
 			Timer timer;
 			public void run() {
 				try {
-					splash = new Splash_Screen();
+					splash = new SplashScreenView();
 					splash.setVisible(true);
 
 					timer = new Timer(2000, new ActionListener(){      // Timer 4 seconds

@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
-public class Splash_Screen extends JFrame {
+public class SplashScreenView extends JFrame {
 
 	/**
 	 * Launch the application.
@@ -40,7 +40,7 @@ public class Splash_Screen extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public Splash_Screen() {
+	public SplashScreenView() {
 		initialize();
 	}
 
