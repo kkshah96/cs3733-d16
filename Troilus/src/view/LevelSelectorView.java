@@ -39,23 +39,7 @@ public class LevelSelectorView extends JFrame{
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	ArrayList<JLabel> levelLabels = new ArrayList<JLabel>();
 	Kabasuji game;
-	JButton btnLevel1;
-	JButton btnLevel2;
-	JButton btnLevel3;
-	JButton btnLevel4;
-	JButton btnLevel5;
-	JButton btnLevel6;
-	JButton btnLevel7;
-	JButton btnLevel8;
-	JButton btnLevel9;
-	JButton btnLevel10;
-	JButton btnLevel11;
-	JButton btnLevel12;
-	JButton btnLevel13;
-	JButton btnLevel14;
-	JButton btnLevel15;
-	JButton btnLevel16;
-	JButton btnLevel17;
+
 	
 	/**
 	 * Launch the application.
