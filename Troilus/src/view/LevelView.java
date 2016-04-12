@@ -31,6 +31,10 @@ public class LevelView extends JFrame{
 
 	private JPanel panelTitle;
 	private JLabel lblLevelPuzzle;
+	private JPanel panelPuzzleStats;
+	private JPanel panelLightningStats;
+	private JPanel panelReleaseStats;
+	
 	LevelSelectorView levelSelector;
 	Kabasuji game;
 	Level level;
@@ -129,7 +133,7 @@ public class LevelView extends JFrame{
 		btnExitLevel.setBounds(771, 50, 176, 36);
 		panel.add(btnExitLevel);
 		
-		JPanel panelPuzzleStats = new JPanel();
+		panelPuzzleStats = new JPanel();
 		panelPuzzleStats.setLayout(null);
 		panelPuzzleStats.setBorder(null);
 		panelPuzzleStats.setBackground(Color.LIGHT_GRAY);
@@ -146,7 +150,7 @@ public class LevelView extends JFrame{
 		panel.add(labelStars);
 		labelStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
 		
-		JPanel panelReleaseStats = new JPanel();
+		panelReleaseStats = new JPanel();
 		panelReleaseStats.setBounds(10, 48, 383, 38);
 		panel.add(panelReleaseStats);
 		panelReleaseStats.setLayout(null);
@@ -183,7 +187,7 @@ public class LevelView extends JFrame{
 		label_9.setBounds(356, 16, 31, 16);
 		panelReleaseStats.add(label_9);
 		
-		JPanel panelLightningStats = new JPanel();
+		panelLightningStats = new JPanel();
 		panelLightningStats.setBounds(394, 50, 175, 34);
 		panel.add(panelLightningStats);
 		panelLightningStats.setLayout(null);
@@ -196,22 +200,17 @@ public class LevelView extends JFrame{
 		label.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		
 		
-		// control visibility depending on type of level
-		// TODO: change ugly code below (sorry guys!)
-		
-		if (level instanceof PuzzleLevel) {
-			panelLightningStats.setVisible(false);
-			panelReleaseStats.setVisible(false);
-		}
-		else if (level instanceof LightningLevel) {
-			panelPuzzleStats.setVisible(false);
-			panelReleaseStats.setVisible(false);
-		}
-		else {
-			panelPuzzleStats.setVisible(false);
-			panelLightningStats.setVisible(false);
-		}
-		
-		
+	}
+	
+	public JPanel getPanelPuzzleStats() {
+		return panelPuzzleStats;
+	}
+	
+	public JPanel getPanelLightningStats() {
+		return panelLightningStats;
+	}
+	
+	public JPanel getPanelReleaseStats() {
+		return panelReleaseStats;
 	}
 }
