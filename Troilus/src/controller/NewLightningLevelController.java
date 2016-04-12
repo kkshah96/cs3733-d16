@@ -22,7 +22,8 @@ public class NewLightningLevelController extends MouseAdapter {
 		LevelEditorView newLightningLevel = new LevelEditorView(builder, levelLoader);
 		newLightningLevel.setLevelType("Lightning");
 		newLightningLevel.setMaxMovesPanelVisibility(false);
-		newLightningLevel.setReleaseSquareOptionsPanel(false);
+		newLightningLevel.setReleaseSquarePanelVisibility(false);
+		newLightningLevel.setTimeLimitPanelVisibility(true);
 		
 		levelLoader.setVisible(false);
 		newLightningLevel.setVisible(true);

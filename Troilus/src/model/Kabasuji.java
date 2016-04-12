@@ -2,27 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
-
 public class Kabasuji {
 
 	ArrayList<Level> levels;
 	Level activeLevel;
-
-	public ArrayList<Level> getLevels() {
-		return levels;
-	}
-	
-	public int getNumLevels() {
-		return levels.size();
-	}
-	
-	public void setActiveLevel(Level level) {
-		activeLevel = level;
-	}
-	
-	public Level getActiveLevel() {
-		return activeLevel;
-	}
 	
 	public Kabasuji() {
 		// TODO: load levels from file
@@ -39,7 +22,6 @@ public class Kabasuji {
 			}
 			else {
 				level = new ReleaseLevel(i, false, new Bullpen(), new Board(), new  Palette(null));
-				
 			}
 			
 			// show the first three levels
@@ -48,8 +30,22 @@ public class Kabasuji {
 			}
 			
 			levels.add(level);
-
 		}
+	}
 
-	}	
+	public ArrayList<Level> getLevels() {
+		return levels;
+	}
+	
+	public int getNumLevels() {
+		return levels.size();
+	}
+	
+	public void setActiveLevel(Level level) {
+		activeLevel = level;
+	}
+	
+	public Level getActiveLevel() {
+		return activeLevel;
+	}
 }

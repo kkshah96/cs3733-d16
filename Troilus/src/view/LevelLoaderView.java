@@ -22,13 +22,15 @@ import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
 public class LevelLoaderView extends JFrame {
-
+	static final Font buttonFont = new Font("PT Sans Caption", Font.BOLD, 15);
+	static final Color buttonColor = UIManager.getColor("Button.background");
+	static final int buttonHeight = 29;
+	static final int buttonWidth = 139;
 	LevelBuilder builder;
 	
 	/**
 	 * Create the frame.
 	 */
-	
 	public LevelLoaderView(LevelBuilder builder) {
 		this.builder = builder;
 		initialize();
@@ -184,5 +186,12 @@ public class LevelLoaderView extends JFrame {
 
 		setSize(new Dimension(650,550));
 	}
-
+	
+	private void createLevelButton(JPanel panel, String name, int x, int y) {
+		JButton levelButton = new JButton(name);
+		levelButton.setFont(buttonFont);
+		levelButton.setBackground(buttonColor);
+		levelButton.setBounds(x, y, buttonWidth, buttonHeight);
+		panel.add(levelButton);
+	}
 }

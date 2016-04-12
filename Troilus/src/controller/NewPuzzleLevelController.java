@@ -20,9 +20,12 @@ public class NewPuzzleLevelController extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		LevelEditorView newPuzzleLevel = new LevelEditorView(builder, levelLoader);
+		// Since this only varies by Level type and must also be done in gameplay, we
+		// might be able to have an Initialize() method for each Level subclass that
+		// sets the appropriate visibility...
 		newPuzzleLevel.setMaxMovesPanelVisibility(true);
-		newPuzzleLevel.setReleaseSquareOptionsPanel(false);
-		newPuzzleLevel.setTimePanel(false);
+		newPuzzleLevel.setReleaseSquarePanelVisibility(false);
+		newPuzzleLevel.setTimeLimitPanelVisibility(false);
 		
 		levelLoader.setVisible(false);
 		newPuzzleLevel.setVisible(true);

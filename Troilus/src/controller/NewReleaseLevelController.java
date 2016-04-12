@@ -22,8 +22,8 @@ public class NewReleaseLevelController extends MouseAdapter {
 		LevelEditorView newReleaseLevel = new LevelEditorView(builder, levelLoader);
 		newReleaseLevel.setLevelType("Release");
 		newReleaseLevel.setMaxMovesPanelVisibility(false);
-		newReleaseLevel.setReleaseSquareOptionsPanel(true);
-		newReleaseLevel.setTimePanel(false);
+		newReleaseLevel.setReleaseSquarePanelVisibility(true);
+		newReleaseLevel.setTimeLimitPanelVisibility(false);
 
 		levelLoader.setVisible(false);
 		newReleaseLevel.setVisible(true);

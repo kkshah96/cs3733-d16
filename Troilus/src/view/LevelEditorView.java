@@ -323,15 +323,14 @@ public class LevelEditorView extends JFrame {
 	}
 	
 	public void setMaxMovesPanelVisibility(boolean which){
-			maxMovesPanel.setVisible(which);
+		maxMovesPanel.setVisible(which);
 	}
 	
-	public void setReleaseSquareOptionsPanel(boolean which){
+	public void setReleaseSquarePanelVisibility(boolean which){
 		releaseSquareOptionsPanel.setVisible(which);
 
 	}
-	public void setTimePanel(boolean which){
+	public void setTimeLimitPanelVisibility(boolean which){
 		timePanel.setVisible(which);
-
 	}
 }

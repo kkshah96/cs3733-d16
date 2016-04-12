@@ -39,7 +39,6 @@ public class LevelSelectorView extends JFrame{
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	ArrayList<JLabel> levelLabels = new ArrayList<JLabel>();
 	Kabasuji game;
-
 	
 	/**
 	 * Launch the application.
@@ -443,9 +442,8 @@ public class LevelSelectorView extends JFrame{
 		for (int i = 0; i < levelButtons.size(); i++){
 			levelButtons.get(i).addMouseListener(new StartLevelController(this, i + 1, game));
 		}
-		
-		
 	}
+	
 	public ArrayList<JButton> getLevelButtons(){
 		return levelButtons;
 	}
