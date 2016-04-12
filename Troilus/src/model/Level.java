@@ -19,6 +19,10 @@ public abstract class Level {
 		this.locked = locked;
 	}
 	
+	public boolean getLocked() {
+		return locked;
+	}
+	
 	public void setNumStars(int numStars){
 		this.numStars = numStars;
 	}

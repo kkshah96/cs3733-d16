@@ -3,6 +3,7 @@ package main;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import controller.StartLevelSelectorController;
 
 import javax.swing.*;
 
@@ -27,7 +28,10 @@ public class StartKabasuji {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							splash.setVisible(false);
-							LevelSelectorView window = new LevelSelectorView(new Kabasuji());
+							Kabasuji kabasuji = new Kabasuji();
+							LevelSelectorView window = new LevelSelectorView(kabasuji);
+							StartLevelSelectorController selectorController = new StartLevelSelectorController(window, kabasuji);
+							selectorController.process();
 							window.setVisible(true);
 						}
 					});
