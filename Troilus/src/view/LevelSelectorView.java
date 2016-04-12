@@ -27,6 +27,7 @@ import java.awt.Toolkit;
 import java.awt.Button;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -34,8 +35,26 @@ import javax.swing.UIManager;
 
 public class LevelSelectorView extends JFrame{
 
+	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	Kabasuji game;
-
+	JButton btnLevel1;
+	JButton btnLevel2;
+	JButton btnLevel3;
+	JButton btnLevel4;
+	JButton btnLevel5;
+	JButton btnLevel6;
+	JButton btnLevel7;
+	JButton btnLevel8;
+	JButton btnLevel9;
+	JButton btnLevel10;
+	JButton btnLevel11;
+	JButton btnLevel12;
+	JButton btnLevel13;
+	JButton btnLevel14;
+	JButton btnLevel15;
+	JButton btnLevel16;
+	JButton btnLevel17;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -105,6 +124,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel1.setBackground(UIManager.getColor("Button.background"));
 		btnLevel1.setBounds(6, 17, 136, 29);
 		panel.add(btnLevel1);
+		levelButtons.add(btnLevel1);
 		btnLevel1.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel4 = new JButton("Level 4: Puzzle");
@@ -112,6 +132,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel4.setBackground(UIManager.getColor("Button.background"));
 		btnLevel4.setBounds(6, 45, 136, 29);
 		panel.add(btnLevel4);
+		levelButtons.add(btnLevel4);
 		btnLevel4.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel7 = new JButton("Level 7: Puzzle");
@@ -119,6 +140,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel7.setBackground(UIManager.getColor("Button.background"));
 		btnLevel7.setBounds(6, 75, 136, 29);
 		panel.add(btnLevel7);
+		levelButtons.add(btnLevel7);
 		btnLevel7.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel10 = new JButton("Level 10: Puzzle");
@@ -126,6 +148,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel10.setBackground(UIManager.getColor("Button.background"));
 		btnLevel10.setBounds(6, 102, 136, 29);
 		panel.add(btnLevel10);
+		levelButtons.add(btnLevel10);
 		btnLevel10.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel13 = new JButton("Level 13: Puzzle");
@@ -133,15 +156,18 @@ public class LevelSelectorView extends JFrame{
 		btnLevel13.setBackground(UIManager.getColor("Button.background"));
 		btnLevel13.setBounds(6, 130, 136, 29);
 		panel.add(btnLevel13);
+		levelButtons.add(btnLevel13);
 		btnLevel13.addMouseListener(new StartLevelController(this, game));
 		
 		JLabel labelLevel1 = new JLabel("Stars: 0/3");
 		labelLevel1.setBounds(142, 20, 85, 26);
 		panel.add(labelLevel1);
+		levelButtons.add(btnLevel1);
 		
 		JLabel labelLevel4 = new JLabel("Stars: 0/3");
 		labelLevel4.setBounds(142, 48, 85, 26);
 		panel.add(labelLevel4);
+		levelButtons.add(btnLevel4);
 		
 		JLabel labelLevel7 = new JLabel("Stars: 0/3");
 		labelLevel7.setBounds(142, 78, 85, 26);
@@ -160,6 +186,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel2.setBackground(UIManager.getColor("Button.background"));
 		btnLevel2.setBounds(224, 17, 148, 29);
 		panel.add(btnLevel2);
+		levelButtons.add(btnLevel2);
 		btnLevel2.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel5 = new JButton("Level 5: Lightning");
@@ -167,6 +194,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel5.setBackground(UIManager.getColor("Button.background"));
 		btnLevel5.setBounds(224, 44, 148, 29);
 		panel.add(btnLevel5);
+		levelButtons.add(btnLevel5);
 		btnLevel5.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel8 = new JButton("Level 8: Lightning");
@@ -174,6 +202,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel8.setBackground(UIManager.getColor("Button.background"));
 		btnLevel8.setBounds(224, 72, 148, 29);
 		panel.add(btnLevel8);
+		levelButtons.add(btnLevel8);
 		btnLevel8.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel11 = new JButton("Level 11: Lightning");
@@ -181,6 +210,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel11.setBackground(UIManager.getColor("Button.background"));
 		btnLevel11.setBounds(224, 101, 148, 29);
 		panel.add(btnLevel11);
+		levelButtons.add(btnLevel11);
 		btnLevel11.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel14 = new JButton("Level 14: Lightning");
@@ -188,6 +218,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel14.setBackground(UIManager.getColor("Button.background"));
 		btnLevel14.setBounds(224, 130, 148, 29);
 		panel.add(btnLevel14);
+		levelButtons.add(btnLevel14);
 		btnLevel14.addMouseListener(new StartLevelController(this, game));
 		
 		JLabel labelLevel2 = new JLabel("Stars: 0/3");
@@ -215,6 +246,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel3.setBackground(UIManager.getColor("Button.background"));
 		btnLevel3.setBounds(471, 17, 148, 29);
 		panel.add(btnLevel3);
+		levelButtons.add(btnLevel3);
 		btnLevel3.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel6 = new JButton("Level 6: Release");
@@ -222,6 +254,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel6.setBackground(UIManager.getColor("Button.background"));
 		btnLevel6.setBounds(471, 46, 148, 29);
 		panel.add(btnLevel6);
+		levelButtons.add(btnLevel6);
 		btnLevel6.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel9 = new JButton("Level 9: Release");
@@ -229,6 +262,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel9.setBackground(UIManager.getColor("Button.background"));
 		btnLevel9.setBounds(471, 76, 148, 29);
 		panel.add(btnLevel9);
+		levelButtons.add(btnLevel9);
 		btnLevel9.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel12 = new JButton("Level 12: Release");
@@ -236,6 +270,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel12.setBackground(UIManager.getColor("Button.background"));
 		btnLevel12.setBounds(471, 105, 148, 29);
 		panel.add(btnLevel12);
+		levelButtons.add(btnLevel12);
 		btnLevel12.addMouseListener(new StartLevelController(this, game));
 		
 		JButton btnLevel15 = new JButton("Level 15: Release");
@@ -243,26 +278,32 @@ public class LevelSelectorView extends JFrame{
 		btnLevel15.setBackground(UIManager.getColor("Button.background"));
 		btnLevel15.setBounds(471, 130, 148, 29);
 		panel.add(btnLevel15);
+		levelButtons.add(btnLevel15);
 		btnLevel15.addMouseListener(new StartLevelController(this, game));
 		
 		JLabel labelLevel3 = new JLabel("Stars: 0/3");
 		labelLevel3.setBounds(624, 20, 85, 26);
+		levelButtons.add(btnLevel3);
 		panel.add(labelLevel3);
 		
 		JLabel labelLevel6 = new JLabel("Stars: 0/3");
 		labelLevel6.setBounds(624, 49, 85, 25);
+		levelButtons.add(btnLevel6);
 		panel.add(labelLevel6);
 		
 		JLabel labelLevel9 = new JLabel("Stars: 0/3");
 		labelLevel9.setBounds(624, 79, 85, 25);
+		levelButtons.add(btnLevel9);
 		panel.add(labelLevel9);
 		
 		JLabel labelLevel12 = new JLabel("Stars: 0/3");
 		labelLevel12.setBounds(624, 108, 85, 23);
+		levelButtons.add(btnLevel12);
 		panel.add(labelLevel12);
 		
 		JLabel labelLevel15 = new JLabel("Stars: 0/3");
 		labelLevel15.setBounds(624, 133, 85, 26);
+		levelButtons.add(btnLevel15);
 		panel.add(labelLevel15);
 		
 		JButton btnLevel16 = new JButton("Level 16: Puzzle");
@@ -270,6 +311,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel16.setBackground(UIManager.getColor("Button.background"));
 		btnLevel16.setBounds(6, 161, 136, 29);
 		panel.add(btnLevel16);
+		levelButtons.add(btnLevel16);
 		btnLevel16.addMouseListener(new StartLevelController(this, game));
 		
 		JLabel labelLevel16 = new JLabel("Stars: 0/3");
@@ -285,6 +327,7 @@ public class LevelSelectorView extends JFrame{
 		btnLevel17.setBackground(UIManager.getColor("Button.background"));
 		btnLevel17.setBounds(224, 160, 148, 29);
 		panel.add(btnLevel17);
+		levelButtons.add(btnLevel17);
 		btnLevel17.addMouseListener(new StartLevelController(this, game));
 		
 		JLabel labelLevel17 = new JLabel("Stars: 0/3");
@@ -294,4 +337,9 @@ public class LevelSelectorView extends JFrame{
 		setBounds(100, 100, 733, 514);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	public ArrayList<JButton> getLevelButtons(){
+		return levelButtons;
+	}
+	
+	
 }
