@@ -19,7 +19,7 @@ public abstract class Level {
 		this.locked = locked;
 	}
 	
-	public boolean getLocked() {
+	public boolean isLocked() {
 		return locked;
 	}
 	

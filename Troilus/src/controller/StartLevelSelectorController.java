@@ -40,7 +40,7 @@ public class StartLevelSelectorController {
 			labels.get(i).setVisible(true);
 			
 			// grey out button if locked
-			if (!levels.get(i).getLocked()) {
+			if (!levels.get(i).isLocked()) {
 				buttons.get(i).setEnabled(true);
 			}
 		}
