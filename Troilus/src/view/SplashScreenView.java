@@ -41,6 +41,7 @@ public class SplashScreenView extends JFrame {
 	 * Create the application.
 	 */
 	public SplashScreenView() {
+		setResizable(false);
 		initialize();
 	}
 

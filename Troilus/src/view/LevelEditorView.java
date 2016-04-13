@@ -43,6 +43,7 @@ public class LevelEditorView extends JFrame {
 	 * Create the application.
 	 */
 	public LevelEditorView(LevelBuilder builder, LevelLoaderView levelLoader){
+		setResizable(false);
 		this.builder = builder;
 		this.levelLoader = levelLoader;
 		initialize();
