@@ -55,11 +55,11 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		JPanel boardPanel = new JPanel();
+		JPanel boardPanel = new BoardView();
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		boardPanel.setBackground(Color.LIGHT_GRAY);
-		boardPanel.setBounds(0, 113, 685, 408);
+		boardPanel.setBounds(0, 114, 686, 408);
 		getContentPane().add(boardPanel);
 		
 		JPanel bullPenPanel = new JPanel();

@@ -17,7 +17,7 @@ public class TileView extends JComponent{
 		y = this.getY();
 		this.width = width;
 		this.height = width; // It's a square :D
-		c = Color.RED;
+		c = Color.BLACK;
 	}
 	
 	public void paintComponent(Graphics g){
@@ -25,7 +25,7 @@ public class TileView extends JComponent{
 		
 		Graphics2D g2 = (Graphics2D) g;
 	
-		//g.setColor(c);
+		g.setColor(c);
 		g2.drawRect(x, y, width, height);
 	}
 }
