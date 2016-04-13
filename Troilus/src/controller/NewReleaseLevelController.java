@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import model.LevelBuilder;
 import view.LevelEditorView;
@@ -19,7 +21,14 @@ public class NewReleaseLevelController extends MouseAdapter {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		LevelEditorView newReleaseLevel = new LevelEditorView(builder, levelLoader);
+		final LevelEditorView newReleaseLevel = new LevelEditorView(builder, levelLoader);
+		
+		newReleaseLevel.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				newReleaseLevel.dispose();
+				levelLoader.setVisible(true);
+			}      
+		});
 		newReleaseLevel.setLevelType("Release");
 		newReleaseLevel.setMaxMovesPanelVisibility(false);
 		newReleaseLevel.setReleaseSquarePanelVisibility(true);
