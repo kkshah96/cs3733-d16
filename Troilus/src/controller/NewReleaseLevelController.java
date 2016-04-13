@@ -29,6 +29,8 @@ public class NewReleaseLevelController extends MouseAdapter {
 				levelLoader.setVisible(true);
 			}      
 		});
+		
+		//Show/hide specific elements to only show things relevant to release levels
 		newReleaseLevel.setLevelType("Release");
 		newReleaseLevel.setMaxMovesPanelVisibility(false);
 		newReleaseLevel.setReleaseSquarePanelVisibility(true);

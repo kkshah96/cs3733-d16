@@ -24,7 +24,7 @@ public class Kabasuji {
 				level = new ReleaseLevel(i, false, new Bullpen(), new Board(), new  Palette(null));
 			}
 			
-			// show the first three levels
+			// show only the first level as unlocked, lock every other level
 			if(i >= 1) {
 				level.setLocked(true);
 			}

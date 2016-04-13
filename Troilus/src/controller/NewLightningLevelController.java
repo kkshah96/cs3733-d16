@@ -30,6 +30,7 @@ public class NewLightningLevelController extends MouseAdapter {
 			}      
 		});
 		
+		//Show/hide specific elements to only show things relevant to lightning levels
 		newLightningLevel.setLevelType("Lightning");
 		newLightningLevel.setMaxMovesPanelVisibility(false);
 		newLightningLevel.setReleaseSquarePanelVisibility(false);
