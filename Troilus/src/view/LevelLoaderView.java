@@ -94,6 +94,7 @@ public class LevelLoaderView extends JFrame{
 		btnNewReleaseLevel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewReleaseLevel.setBackground(UIManager.getColor("Button.background"));
 		
+		// Use group layout to easily move buttons, etc.
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -335,7 +336,7 @@ public class LevelLoaderView extends JFrame{
 		levelButtons.add(btnLevel26);
 		levelButtons.add(btnLevel27);
 		
-		// add mouse listeners to all level buttons
+		// Add mouse listeners to all level buttons
 		for (int i = 0; i < levelButtons.size(); i++){
 			if (i % 3 == 0) {
 				levelButtons.get(i).addMouseListener(new NewPuzzleLevelController(builder, this));
@@ -349,6 +350,7 @@ public class LevelLoaderView extends JFrame{
 		}
 	}
 	
+	// Get level buttons for controllers, etc.
 	public ArrayList<JButton> getLevelButtons(){
 		return levelButtons;
 	}

@@ -25,7 +25,7 @@ public class SquareView extends JPanel {
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		//g.setColor(c);
+		//g.setColor(color);
 		g2.drawRect(x, y, width, height);
 	}
 }

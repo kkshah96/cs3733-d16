@@ -76,6 +76,8 @@ public class LevelSelectorView extends JFrame{
 		JPanel pnlTitle = new JPanel();
 		pnlTitle.setBackground(Color.DARK_GRAY);
 		pnlTitle.setBorder(null);
+		
+		// Use group layout to easily move buttons, etc.
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
@@ -103,6 +105,7 @@ public class LevelSelectorView extends JFrame{
 		pnlTitle.add(lblLevelSelection);
 		panel.setLayout(null);
 
+		// For now, we are assuming a maximum of 27 Levels and only showing needed buttons
 		JLabel lblLevels = new JLabel("Game Levels");
 		lblLevels.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -386,7 +389,7 @@ public class LevelSelectorView extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-		// add buttons and labels to lists
+		// Add buttons and labels to lists
 		levelButtons.add(btnLevel1);
 		levelButtons.add(btnLevel2);
 		levelButtons.add(btnLevel3);
@@ -443,7 +446,7 @@ public class LevelSelectorView extends JFrame{
 		levelLabels.add(lblLevel26);
 		levelLabels.add(lblLevel27);
 
-		// add mouse listeners to all level buttons
+		// Add mouse listeners to all level buttons
 		for (int i = 0; i < levelButtons.size(); i++){
 			if (i % 3 == 0) {
 				levelButtons.get(i).addMouseListener(new StartPuzzleLevelController(this, i + 1, game));
