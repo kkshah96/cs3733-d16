@@ -16,7 +16,6 @@ import java.awt.ScrollPane;
 import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import controller.StartLevelController;
 import controller.StartLightningLevelController;
 import controller.StartPuzzleLevelController;
 import controller.StartReleaseLevelController;
@@ -97,7 +96,7 @@ public class LevelSelectorView extends JFrame{
 		pnlTitle.setLayout(null);
 
 		JLabel lblLevelSelection = new JLabel("Level Selection");
-		lblLevelSelection.setBounds(259, 6, 210, 38);
+		lblLevelSelection.setBounds(12, 6, 709, 38);
 		lblLevelSelection.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLevelSelection.setForeground(Color.LIGHT_GRAY);
 		lblLevelSelection.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
@@ -105,8 +104,9 @@ public class LevelSelectorView extends JFrame{
 		panel.setLayout(null);
 
 		JLabel lblLevels = new JLabel("Game Levels");
+		lblLevels.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblLevels.setBounds(293, 0, 117, 29);
+		lblLevels.setBounds(0, 0, 703, 29);
 		panel.add(lblLevels);
 
 		JButton btnLevel1 = new JButton("Level 1: Puzzle");

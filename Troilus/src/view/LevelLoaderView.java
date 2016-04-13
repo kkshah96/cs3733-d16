@@ -19,7 +19,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controller.NewLightningLevelController;
 import controller.NewPuzzleLevelController;
 import controller.NewReleaseLevelController;
-import controller.StartLevelController;
 import controller.StartLightningLevelController;
 import controller.StartPuzzleLevelController;
 import controller.StartReleaseLevelController;
@@ -127,8 +126,8 @@ public class LevelLoaderView extends JFrame{
 		);
 		pnlTitle.setLayout(null);
 
-		JLabel lblLevelSelection = new JLabel("Level Selection");
-		lblLevelSelection.setBounds(259, 6, 210, 38);
+		JLabel lblLevelSelection = new JLabel("Level Loader");
+		lblLevelSelection.setBounds(12, 6, 709, 38);
 		lblLevelSelection.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLevelSelection.setForeground(Color.LIGHT_GRAY);
 		lblLevelSelection.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
@@ -136,8 +135,9 @@ public class LevelLoaderView extends JFrame{
 		pnlLevels.setLayout(null);
 
 		JLabel lblLevels = new JLabel("Game Levels");
+		lblLevels.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblLevels.setBounds(293, 0, 117, 29);
+		lblLevels.setBounds(0, 0, 707, 29);
 		pnlLevels.add(lblLevels);
 
 		JButton btnLevel1 = new JButton("Level 1: Puzzle");

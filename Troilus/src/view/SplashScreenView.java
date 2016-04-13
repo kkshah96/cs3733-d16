@@ -60,7 +60,7 @@ public class SplashScreenView extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel label = new JLabel("Kabasuji");
-		label.setBounds(151, 38, 248, 108);
+		label.setBounds(12, 38, 496, 108);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.LIGHT_GRAY);
 		label.setFont(new Font("PT Sans Caption", Font.BOLD, 55));
@@ -70,33 +70,32 @@ public class SplashScreenView extends JFrame {
 		lblTroilus.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTroilus.setForeground(Color.LIGHT_GRAY);
 		lblTroilus.setFont(new Font("PT Sans Caption", Font.BOLD, 26));
-		lblTroilus.setBounds(171, 173, 204, 54);
+		lblTroilus.setBounds(12, 173, 496, 54);
 		panel.add(lblTroilus);
 		
-		JLabel lblInsertLogoHere = new JLabel("Insert Logo Here");
+		JLabel lblInsertLogoHere = new JLabel("[Insert Logo Here]");
 		lblInsertLogoHere.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInsertLogoHere.setForeground(Color.LIGHT_GRAY);
 		lblInsertLogoHere.setFont(new Font("PT Sans Caption", Font.BOLD, 26));
-		lblInsertLogoHere.setBounds(161, 121, 238, 62);
+		lblInsertLogoHere.setBounds(12, 121, 496, 62);
 		panel.add(lblInsertLogoHere);
 		
-		JLabel lblDanAlfredConnor = new JLabel("Dan Alfred, Connor Weeks, Maddy Longo,");
-		lblDanAlfredConnor.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDanAlfredConnor.setForeground(Color.LIGHT_GRAY);
-		lblDanAlfredConnor.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
-		lblDanAlfredConnor.setBounds(61, 226, 447, 73);
-		panel.add(lblDanAlfredConnor);
-		
-		JLabel lblKunalAlex = new JLabel("Alex Kasparek, Kunal Shah");
-		lblKunalAlex.setHorizontalAlignment(SwingConstants.CENTER);
-		lblKunalAlex.setForeground(Color.LIGHT_GRAY);
-		lblKunalAlex.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
-		lblKunalAlex.setBounds(61, 256, 447, 73);
-		panel.add(lblKunalAlex); 
+		JLabel lblAlexKunal = new JLabel("Alex Kasparek, Kunal Shah");
+		lblAlexKunal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAlexKunal.setForeground(Color.LIGHT_GRAY);
+		lblAlexKunal.setFont(new Font("PT Sans Caption", Font.BOLD, 16));
+		lblAlexKunal.setBounds(12, 333, 506, 54);
+		panel.add(lblAlexKunal);
 		
 		
 		setPreferredSize(new Dimension(500,500));
 		getContentPane().add(panel);
+		
+		JLabel lblDanAlfredConnor = new JLabel("Dan Alfred, Connor Weeks, Maddy Longo,");
+		lblDanAlfredConnor.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDanAlfredConnor.setForeground(Color.LIGHT_GRAY);
+		lblDanAlfredConnor.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblDanAlfredConnor.setBounds(12, 311, 506, 49);
+		panel.add(lblDanAlfredConnor);
 	}
-
 }
