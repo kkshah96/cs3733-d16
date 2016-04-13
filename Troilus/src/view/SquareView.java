@@ -7,18 +7,18 @@ import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public class TileView extends JPanel {
+public class SquareView extends JPanel {
 	
 	int x, y, width, height;
-	Color c;
+	Color color;
 	int number;
 	
-	public TileView(int width){
+	public SquareView(int width){
 		x = this.getX();
 		y = this.getY();
 		this.width = width;
 		this.height = width; // It's a square :D
-		c = Color.BLACK;
+		color = Color.BLACK;
 	}
 	
 	public void paintComponent(Graphics g){

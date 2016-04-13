@@ -23,8 +23,6 @@ import controller.ExitLevelController;
 
 import model.Kabasuji;
 import model.Level;
-import model.LightningLevel;
-import model.PuzzleLevel;
 
 public class LevelView extends JFrame{
 
