@@ -35,7 +35,7 @@ public class BoardView extends JPanel {
 		for(int i = 0; i < MAX_BOARD_SIZE * SQUARE_SIZE; i+= SQUARE_SIZE){
 			for(int j = 0; j < MAX_BOARD_SIZE * SQUARE_SIZE; j+= SQUARE_SIZE){
 				tiles.add(new TileView(SQUARE_SIZE));
-				tiles.get(count).setBounds(i + 10, j + 30, 30, 30);
+				tiles.get(count).setBounds(i + 10, j + 30, 31, 31);
 				add(tiles.get(count));
 				count++;
 			}
