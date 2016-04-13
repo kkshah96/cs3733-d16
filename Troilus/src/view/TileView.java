@@ -18,15 +18,14 @@ public class TileView extends JPanel {
 		y = this.getY();
 		this.width = width;
 		this.height = width; // It's a square :D
-		c = Color.RED;
+		c = Color.BLACK;
 	}
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-	
-		//g2.setColor(c);
+		//g.setColor(c);
 		g2.drawRect(x, y, width, height);
 	}
 }

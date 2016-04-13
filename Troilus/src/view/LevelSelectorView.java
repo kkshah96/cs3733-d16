@@ -53,6 +53,7 @@ public class LevelSelectorView extends JFrame{
 	 * Create the application.
 	 */
 	public LevelSelectorView(Kabasuji game) {
+		setResizable(false);
 		this.game = game;
 		initialize();
 	}
@@ -73,13 +74,13 @@ public class LevelSelectorView extends JFrame{
 		panel.setForeground(Color.LIGHT_GRAY);
 		panel.setBorder(null);
 
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.DARK_GRAY);
-		panel_2.setBorder(null);
+		JPanel pnlTitle = new JPanel();
+		pnlTitle.setBackground(Color.DARK_GRAY);
+		pnlTitle.setBorder(null);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
+				.addComponent(pnlTitle, GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
 				.addGroup(groupLayout.createSequentialGroup()
 						.addGap(10)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 707, GroupLayout.PREFERRED_SIZE)
@@ -88,25 +89,25 @@ public class LevelSelectorView extends JFrame{
 		groupLayout.setVerticalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pnlTitle, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
 						.addContainerGap())
 				);
-		panel_2.setLayout(null);
+		pnlTitle.setLayout(null);
 
 		JLabel lblLevelSelection = new JLabel("Level Selection");
 		lblLevelSelection.setBounds(259, 6, 210, 38);
 		lblLevelSelection.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLevelSelection.setForeground(Color.LIGHT_GRAY);
 		lblLevelSelection.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
-		panel_2.add(lblLevelSelection);
+		pnlTitle.add(lblLevelSelection);
 		panel.setLayout(null);
 
-		JLabel labelLevels = new JLabel("Game Levels");
-		labelLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		labelLevels.setBounds(293, 0, 117, 29);
-		panel.add(labelLevels);
+		JLabel lblLevels = new JLabel("Game Levels");
+		lblLevels.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		lblLevels.setBounds(293, 0, 117, 29);
+		panel.add(lblLevels);
 
 		JButton btnLevel1 = new JButton("Level 1: Puzzle");
 		btnLevel1.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -138,25 +139,25 @@ public class LevelSelectorView extends JFrame{
 		btnLevel13.setBounds(0, 195, 136, 29);
 		panel.add(btnLevel13);
 
-		JLabel labelLevel1 = new JLabel("Stars: 0/3");
-		labelLevel1.setBounds(143, 35, 75, 29);
-		panel.add(labelLevel1);
+		JLabel lblLevel1 = new JLabel("Stars: 0/3");
+		lblLevel1.setBounds(143, 35, 75, 29);
+		panel.add(lblLevel1);
 
-		JLabel labelLevel4 = new JLabel("Stars: 0/3");
-		labelLevel4.setBounds(143, 75, 75, 29);
-		panel.add(labelLevel4);
+		JLabel lblLevel4 = new JLabel("Stars: 0/3");
+		lblLevel4.setBounds(143, 75, 75, 29);
+		panel.add(lblLevel4);
 
-		JLabel labelLevel7 = new JLabel("Stars: 0/3");
-		labelLevel7.setBounds(143, 115, 75, 29);
-		panel.add(labelLevel7);
+		JLabel lblLevel7 = new JLabel("Stars: 0/3");
+		lblLevel7.setBounds(143, 115, 75, 29);
+		panel.add(lblLevel7);
 
-		JLabel labelLevel10 = new JLabel("Stars: 0/3");
-		labelLevel10.setBounds(143, 155, 75, 29);
-		panel.add(labelLevel10);
+		JLabel lblLevel10 = new JLabel("Stars: 0/3");
+		lblLevel10.setBounds(143, 155, 75, 29);
+		panel.add(lblLevel10);
 
-		JLabel labelLevel13 = new JLabel("Stars: 0/3");
-		labelLevel13.setBounds(143, 195, 75, 29);
-		panel.add(labelLevel13);
+		JLabel lblLevel13 = new JLabel("Stars: 0/3");
+		lblLevel13.setBounds(143, 195, 75, 29);
+		panel.add(lblLevel13);
 
 		JButton btnLevel2 = new JButton("Level 2: Lightning");
 		btnLevel2.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -188,25 +189,25 @@ public class LevelSelectorView extends JFrame{
 		btnLevel14.setBounds(218, 195, 148, 29);
 		panel.add(btnLevel14);
 
-		JLabel labelLevel2 = new JLabel("Stars: 0/3");
-		labelLevel2.setBounds(370, 35, 83, 29);
-		panel.add(labelLevel2);
+		JLabel lblLevel2 = new JLabel("Stars: 0/3");
+		lblLevel2.setBounds(370, 35, 83, 29);
+		panel.add(lblLevel2);
 
-		JLabel labelLevel5 = new JLabel("Stars: 0/3");
-		labelLevel5.setBounds(370, 75, 83, 29);
-		panel.add(labelLevel5);
+		JLabel lblLevel5 = new JLabel("Stars: 0/3");
+		lblLevel5.setBounds(370, 75, 83, 29);
+		panel.add(lblLevel5);
 
-		JLabel labelLevel8 = new JLabel("Stars: 0/3");
-		labelLevel8.setBounds(370, 115, 83, 29);
-		panel.add(labelLevel8);
+		JLabel lblLevel8 = new JLabel("Stars: 0/3");
+		lblLevel8.setBounds(370, 115, 83, 29);
+		panel.add(lblLevel8);
 
-		JLabel labelLevel11 = new JLabel("Stars: 0/3");
-		labelLevel11.setBounds(370, 155, 83, 29);
-		panel.add(labelLevel11);
+		JLabel lblLevel11 = new JLabel("Stars: 0/3");
+		lblLevel11.setBounds(370, 155, 83, 29);
+		panel.add(lblLevel11);
 
-		JLabel labelLevel14 = new JLabel("Stars: 0/3");
-		labelLevel14.setBounds(370, 195, 83, 29);
-		panel.add(labelLevel14);
+		JLabel lblLevel14 = new JLabel("Stars: 0/3");
+		lblLevel14.setBounds(370, 195, 83, 29);
+		panel.add(lblLevel14);
 
 		JButton btnLevel3 = new JButton("Level 3: Release");
 		btnLevel3.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -238,25 +239,25 @@ public class LevelSelectorView extends JFrame{
 		btnLevel15.setBounds(463, 195, 148, 29);
 		panel.add(btnLevel15);
 
-		JLabel labelLevel3 = new JLabel("Stars: 0/3");
-		labelLevel3.setBounds(618, 35, 85, 29);
-		panel.add(labelLevel3);
+		JLabel lblLevel3 = new JLabel("Stars: 0/3");
+		lblLevel3.setBounds(618, 35, 85, 29);
+		panel.add(lblLevel3);
 
-		JLabel labelLevel6 = new JLabel("Stars: 0/3");
-		labelLevel6.setBounds(618, 75, 85, 29);
-		panel.add(labelLevel6);
+		JLabel lblLevel6 = new JLabel("Stars: 0/3");
+		lblLevel6.setBounds(618, 75, 85, 29);
+		panel.add(lblLevel6);
 
-		JLabel labelLevel9 = new JLabel("Stars: 0/3");
-		labelLevel9.setBounds(618, 115, 85, 29);
-		panel.add(labelLevel9);
+		JLabel lblLevel9 = new JLabel("Stars: 0/3");
+		lblLevel9.setBounds(618, 115, 85, 29);
+		panel.add(lblLevel9);
 
-		JLabel labelLevel12 = new JLabel("Stars: 0/3");
-		labelLevel12.setBounds(618, 155, 85, 29);
-		panel.add(labelLevel12);
+		JLabel lblLevel12 = new JLabel("Stars: 0/3");
+		lblLevel12.setBounds(618, 155, 85, 29);
+		panel.add(lblLevel12);
 
-		JLabel labelLevel15 = new JLabel("Stars: 0/3");
-		labelLevel15.setBounds(618, 195, 85, 29);
-		panel.add(labelLevel15);
+		JLabel lblLevel15 = new JLabel("Stars: 0/3");
+		lblLevel15.setBounds(618, 195, 85, 29);
+		panel.add(lblLevel15);
 
 		JButton btnLevel16 = new JButton("Level 16: Puzzle");
 		btnLevel16.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -264,9 +265,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel16.setBounds(0, 235, 136, 29);
 		panel.add(btnLevel16);
 
-		JLabel labelLevel16 = new JLabel("Stars: 0/3");
-		labelLevel16.setBounds(143, 235, 75, 29);
-		panel.add(labelLevel16);
+		JLabel lblLevel16 = new JLabel("Stars: 0/3");
+		lblLevel16.setBounds(143, 235, 75, 29);
+		panel.add(lblLevel16);
 
 		JButton btnLevel17 = new JButton("Level 17: Lightning");
 		btnLevel17.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -274,9 +275,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel17.setBounds(218, 235, 148, 29);
 		panel.add(btnLevel17);
 
-		JLabel labelLevel17 = new JLabel("Stars: 0/3");
-		labelLevel17.setBounds(370, 235, 83, 29);
-		panel.add(labelLevel17);
+		JLabel lblLevel17 = new JLabel("Stars: 0/3");
+		lblLevel17.setBounds(370, 235, 83, 29);
+		panel.add(lblLevel17);
 
 		JButton btnLevel18 = new JButton("Level 18: Release");
 		btnLevel18.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -284,9 +285,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel18.setBounds(463, 235, 148, 29);
 		panel.add(btnLevel18);
 
-		JLabel labelLevel18 = new JLabel("Stars: 0/3");
-		labelLevel18.setBounds(618, 235, 85, 29);
-		panel.add(labelLevel18);
+		JLabel lblLevel18 = new JLabel("Stars: 0/3");
+		lblLevel18.setBounds(618, 235, 85, 29);
+		panel.add(lblLevel18);
 
 		JButton btnLevel19 = new JButton("Level 19: Puzzle");
 		btnLevel19.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -294,9 +295,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel19.setBounds(0, 275, 136, 29);
 		panel.add(btnLevel19);
 
-		JLabel labelLevel19 = new JLabel("Stars: 0/3");
-		labelLevel19.setBounds(143, 275, 75, 29);
-		panel.add(labelLevel19);
+		JLabel lblLevel19 = new JLabel("Stars: 0/3");
+		lblLevel19.setBounds(143, 275, 75, 29);
+		panel.add(lblLevel19);
 
 		JButton btnLevel20 = new JButton("Level 20: Lightning");
 		btnLevel20.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -304,9 +305,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel20.setBounds(218, 275, 148, 29);
 		panel.add(btnLevel20);
 
-		JLabel labelLevel20 = new JLabel("Stars: 0/3");
-		labelLevel20.setBounds(370, 275, 83, 29);
-		panel.add(labelLevel20);
+		JLabel lblLevel20 = new JLabel("Stars: 0/3");
+		lblLevel20.setBounds(370, 275, 83, 29);
+		panel.add(lblLevel20);
 
 		JButton btnLevel21 = new JButton("Level 21: Release");
 		btnLevel21.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -314,9 +315,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel21.setBounds(463, 275, 148, 29);
 		panel.add(btnLevel21);
 
-		JLabel labelLevel21 = new JLabel("Stars: 0/3");
-		labelLevel21.setBounds(618, 275, 85, 29);
-		panel.add(labelLevel21);
+		JLabel lblLevel21 = new JLabel("Stars: 0/3");
+		lblLevel21.setBounds(618, 275, 85, 29);
+		panel.add(lblLevel21);
 
 		JButton btnLevel22 = new JButton("Level 22: Puzzle");
 		btnLevel22.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -325,9 +326,9 @@ public class LevelSelectorView extends JFrame{
 
 		panel.add(btnLevel22);
 
-		JLabel labelLevel22 = new JLabel("Stars: 0/3");
-		labelLevel22.setBounds(143, 315, 75, 29);
-		panel.add(labelLevel22);
+		JLabel lblLevel22 = new JLabel("Stars: 0/3");
+		lblLevel22.setBounds(143, 315, 75, 29);
+		panel.add(lblLevel22);
 
 		JButton btnLevel23 = new JButton("Level 23: Lightning");
 		btnLevel23.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -335,9 +336,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel23.setBounds(218, 315, 148, 29);
 		panel.add(btnLevel23);
 
-		JLabel labelLevel23 = new JLabel("Stars: 0/3");
-		labelLevel23.setBounds(370, 315, 83, 29);
-		panel.add(labelLevel23);
+		JLabel lblLevel23 = new JLabel("Stars: 0/3");
+		lblLevel23.setBounds(370, 315, 83, 29);
+		panel.add(lblLevel23);
 
 		JButton btnLevel24 = new JButton("Level 24: Release");
 		btnLevel24.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -345,9 +346,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel24.setBounds(463, 315, 148, 29);
 		panel.add(btnLevel24);
 
-		JLabel labelLevel24 = new JLabel("Stars: 0/3");
-		labelLevel24.setBounds(618, 315, 85, 29);
-		panel.add(labelLevel24);
+		JLabel lblLevel24 = new JLabel("Stars: 0/3");
+		lblLevel24.setBounds(618, 315, 85, 29);
+		panel.add(lblLevel24);
 
 		JButton btnLevel25 = new JButton("Level 25: Puzzle");
 		btnLevel25.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -355,9 +356,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel25.setBounds(0, 355, 136, 29);
 		panel.add(btnLevel25);
 
-		JLabel labelLevel25 = new JLabel("Stars: 0/3");
-		labelLevel25.setBounds(143, 355, 75, 29);
-		panel.add(labelLevel25);
+		JLabel lblLevel25 = new JLabel("Stars: 0/3");
+		lblLevel25.setBounds(143, 355, 75, 29);
+		panel.add(lblLevel25);
 
 		JButton btnLevel26 = new JButton("Level 26: Lightning");
 		btnLevel26.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -365,9 +366,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel26.setBounds(218, 355, 148, 29);
 		panel.add(btnLevel26);
 
-		JLabel labelLevel26 = new JLabel("Stars: 0/3");
-		labelLevel26.setBounds(370, 355, 83, 29);
-		panel.add(labelLevel26);
+		JLabel lblLevel26 = new JLabel("Stars: 0/3");
+		lblLevel26.setBounds(370, 355, 83, 29);
+		panel.add(lblLevel26);
 
 		JButton btnLevel27 = new JButton("Level 27: Release");
 		btnLevel27.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -375,9 +376,9 @@ public class LevelSelectorView extends JFrame{
 		btnLevel27.setBounds(463, 355, 148, 29);
 		panel.add(btnLevel27);
 
-		JLabel labelLevel27 = new JLabel("Stars: 0/3");
-		labelLevel27.setBounds(618, 355, 85, 29);
-		panel.add(labelLevel27);
+		JLabel lblLevel27 = new JLabel("Stars: 0/3");
+		lblLevel27.setBounds(618, 355, 85, 29);
+		panel.add(lblLevel27);
 
 
 		getContentPane().setLayout(groupLayout);
@@ -414,33 +415,33 @@ public class LevelSelectorView extends JFrame{
 		levelButtons.add(btnLevel26);
 		levelButtons.add(btnLevel27);
 
-		levelLabels.add(labelLevel1);
-		levelLabels.add(labelLevel2);
-		levelLabels.add(labelLevel3);
-		levelLabels.add(labelLevel4);
-		levelLabels.add(labelLevel5);
-		levelLabels.add(labelLevel6);
-		levelLabels.add(labelLevel7);
-		levelLabels.add(labelLevel8);
-		levelLabels.add(labelLevel9);
-		levelLabels.add(labelLevel10);
-		levelLabels.add(labelLevel11);
-		levelLabels.add(labelLevel12);
-		levelLabels.add(labelLevel13);
-		levelLabels.add(labelLevel14);
-		levelLabels.add(labelLevel15);
-		levelLabels.add(labelLevel16);
-		levelLabels.add(labelLevel17);
-		levelLabels.add(labelLevel18);
-		levelLabels.add(labelLevel19);
-		levelLabels.add(labelLevel20);
-		levelLabels.add(labelLevel21);
-		levelLabels.add(labelLevel22);
-		levelLabels.add(labelLevel23);
-		levelLabels.add(labelLevel24);
-		levelLabels.add(labelLevel25);
-		levelLabels.add(labelLevel26);
-		levelLabels.add(labelLevel27);
+		levelLabels.add(lblLevel1);
+		levelLabels.add(lblLevel2);
+		levelLabels.add(lblLevel3);
+		levelLabels.add(lblLevel4);
+		levelLabels.add(lblLevel5);
+		levelLabels.add(lblLevel6);
+		levelLabels.add(lblLevel7);
+		levelLabels.add(lblLevel8);
+		levelLabels.add(lblLevel9);
+		levelLabels.add(lblLevel10);
+		levelLabels.add(lblLevel11);
+		levelLabels.add(lblLevel12);
+		levelLabels.add(lblLevel13);
+		levelLabels.add(lblLevel14);
+		levelLabels.add(lblLevel15);
+		levelLabels.add(lblLevel16);
+		levelLabels.add(lblLevel17);
+		levelLabels.add(lblLevel18);
+		levelLabels.add(lblLevel19);
+		levelLabels.add(lblLevel20);
+		levelLabels.add(lblLevel21);
+		levelLabels.add(lblLevel22);
+		levelLabels.add(lblLevel23);
+		levelLabels.add(lblLevel24);
+		levelLabels.add(lblLevel25);
+		levelLabels.add(lblLevel26);
+		levelLabels.add(lblLevel27);
 
 		// add mouse listeners to all level buttons
 		for (int i = 0; i < levelButtons.size(); i++){
