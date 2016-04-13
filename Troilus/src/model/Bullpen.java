@@ -11,6 +11,7 @@ public class Bullpen {
 	}
 
 	// TODO: Do we need these methods? Should they return void or boolean?
+	//Adds the specified piece to the bullpen
 	public void addPiece(Piece p){
 		this.pieces.add(p);
 	}

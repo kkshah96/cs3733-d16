@@ -9,6 +9,9 @@ import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
 
+/**
+ * Controller to initialize new lightning level in Kabasuji.
+ */
 public class StartLightningLevelController extends MouseAdapter {
 	Kabasuji game;
 	int levelNumber;

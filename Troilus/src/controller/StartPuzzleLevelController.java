@@ -11,6 +11,9 @@ import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
 
+/**
+ * Controller to initialize new puzzle level in Kabasuji.
+ */
 public class StartPuzzleLevelController extends MouseAdapter {
 	Kabasuji game;
 	int levelNumber;

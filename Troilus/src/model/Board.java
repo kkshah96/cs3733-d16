@@ -21,10 +21,12 @@ public class Board {
 		this.pieces.add(p);
 	}
 	
+	//remove the given piece from the board
 	public void removePiece(Piece p){
 		this.pieces.remove(p);
 	}
 	
+	//Find the piece at the given row and column on the board
 	public Piece getPiece(int row, int col){
 		for(int i = 0; i < pieces.size(); i++){
 			if(pieces.get(i).row == row && pieces.get(i).col == col){
@@ -34,6 +36,7 @@ public class Board {
 		return null;
 	}
 	
+	//Get the square of the board at the indicated row and column
 	public Square getSquare(int row, int col){
 		for(int i = 0; i < squares.size(); i++){
 			if(squares.get(i).row == row && squares.get(i).col == col){

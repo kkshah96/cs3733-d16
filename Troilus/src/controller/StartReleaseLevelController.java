@@ -9,6 +9,11 @@ import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
 
+
+
+/**
+ * Controller to initialize new release level in Kabasuji.
+ */
 public class StartReleaseLevelController extends MouseAdapter {
 	Kabasuji game;
 	int levelNumber;
