@@ -43,7 +43,6 @@ import java.awt.SystemColor;
 public class LevelLoaderView extends JFrame{
 
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
-	ArrayList<JLabel> levelLabels = new ArrayList<JLabel>();
 	LevelBuilder builder;
 
 
@@ -334,7 +333,7 @@ public class LevelLoaderView extends JFrame{
 		levelButtons.add(btnLevel25);
 		levelButtons.add(btnLevel26);
 		levelButtons.add(btnLevel27);
-
+		
 		// add mouse listeners to all level buttons
 		for (int i = 0; i < levelButtons.size(); i++){
 			if (i % 3 == 0) {
@@ -351,9 +350,5 @@ public class LevelLoaderView extends JFrame{
 	
 	public ArrayList<JButton> getLevelButtons(){
 		return levelButtons;
-	}
-
-	public ArrayList<JLabel> getLevelLabels() {
-		return levelLabels;
 	}
 }
