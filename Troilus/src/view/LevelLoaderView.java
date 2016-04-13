@@ -196,36 +196,39 @@ public class LevelLoaderView extends JFrame {
 	
 	private void createAllButtons(int x, int y, int margin, JPanel panel) {
 		ArrayList<Level> levels = builder.getLevels();
-		int levelNum = 0;
+		int levelNum = 1;
 		int currentX = x;
 		int currentY = y;
 		String currentName;
 		JButton currentButton;
+		boolean isLocked;
 		
 		for (Level level : levels) {
 			currentName = String.format("Level %d", levelNum);
-			currentButton = createLevelButton(currentName, currentX, currentY);
+			isLocked = level.isLocked();
+			currentButton = createLevelButton(isLocked, currentName, currentX, currentY);
 			linkLevelButton(panel, currentButton, level);
 			
-			if (levelNum > 3) {
-				level.setLocked(true);
-			}
-			
-			levelNum++;
 			if (levelNum % 3 == 0) {
 				currentY += buttonHeight + margin;
 				currentX = x;
 			} else {
 				currentX += buttonWidth + margin;
 			}
+			levelNum++;
 		}
 	}
 	
-	private JButton createLevelButton(String name, int x, int y) {
+	private JButton createLevelButton(boolean isLocked, String name, int x, int y) {
 		JButton levelButton = new JButton(name);
-		levelButton.setFont(buttonFont);
-		levelButton.setBackground(buttonColor);
 		levelButton.setBounds(x, y, buttonWidth, buttonHeight);
+		
+		if (!isLocked) {
+			levelButton.setFont(buttonFont);
+			levelButton.setBackground(buttonColor);
+		} else {
+			levelButton.setEnabled(false);
+		}
 		
 		return levelButton;
 	}
@@ -238,5 +241,7 @@ public class LevelLoaderView extends JFrame {
 	private void linkLevelButton(JPanel panel, JButton button, Level level) {
 		//TODO: Implement this
 		panel.add(button);
+		//builder.setActiveLevel(level);
+		//button.addMouseListener(new EditLevelController(this, builder));
 	}
 }
