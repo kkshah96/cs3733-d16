@@ -55,6 +55,7 @@ public class LevelLoaderView extends JFrame{
 	 * Create the application.
 	 */
 	public LevelLoaderView(LevelBuilder builder) {
+		setResizable(false);
 		this.builder = builder;
 		initialize();
 	}
