@@ -25,7 +25,7 @@ public class Kabasuji {
 			}
 			
 			// show the first three levels
-			if(i >= 3) {
+			if(i >= 1) {
 				level.setLocked(true);
 			}
 			
