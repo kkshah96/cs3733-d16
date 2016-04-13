@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import model.LevelBuilder;
 import view.LevelEditorView;
@@ -19,7 +21,15 @@ public class NewLightningLevelController extends MouseAdapter {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		LevelEditorView newLightningLevel = new LevelEditorView(builder, levelLoader);
+		final LevelEditorView newLightningLevel = new LevelEditorView(builder, levelLoader);
+		
+		newLightningLevel.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				newLightningLevel.dispose();
+				levelLoader.setVisible(true);
+			}      
+		});
+		
 		newLightningLevel.setLevelType("Lightning");
 		newLightningLevel.setMaxMovesPanelVisibility(false);
 		newLightningLevel.setReleaseSquarePanelVisibility(false);

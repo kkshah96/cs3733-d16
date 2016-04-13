@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import model.Level;
 
@@ -31,8 +33,13 @@ public class StartPuzzleLevelController extends MouseAdapter {
 
 
 
-		LevelView levelView = new LevelView(levelSelector, game);
-
+		final LevelView levelView = new LevelView(levelSelector, game);
+		levelView.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				levelView.dispose();
+				levelSelector.setVisible(true);
+			}      
+		});
 		// set active level in top model to selected level
 		game.setActiveLevel(selectedLevel);
 

@@ -5,8 +5,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 
-public class TileView extends JComponent{
+public class TileView extends JPanel {
 	
 	int x, y, width, height;
 	Color c;
@@ -24,8 +25,7 @@ public class TileView extends JComponent{
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-	
-		g.setColor(c);
+		//g.setColor(c);
 		g2.drawRect(x, y, width, height);
 	}
 }
