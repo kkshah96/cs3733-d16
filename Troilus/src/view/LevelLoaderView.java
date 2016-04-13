@@ -119,13 +119,6 @@ public class LevelLoaderView extends JFrame {
 		JButton levelButton = new JButton(name);
 		levelButton.setBounds(x, y, buttonWidth, buttonHeight);
 		
-		if (!isLocked) {
-			levelButton.setFont(buttonFont);
-			levelButton.setBackground(buttonColor);
-		} else {
-			levelButton.setEnabled(false);
-		}
-		
 		return levelButton;
 	}
 	
