@@ -1,6 +1,6 @@
 package model;
 
-public class PieceSquare extends Square{
+public class PieceSquare extends Square {
 	public PieceSquare(int row, int col) {
 		super(row, col);
 	}
