@@ -1,7 +1,6 @@
 package model;
 
-public class PuzzleLevel extends Level{
-
+public class PuzzleLevel extends Level {
 	int maxMoves;
 	int movesLeft;
 	
@@ -17,12 +16,11 @@ public class PuzzleLevel extends Level{
 		// TODO Implement this
 	}
 	
-	public void updateMovesLeft(int i){
+	public void updateMovesLeft(int i) {
 		movesLeft += i;
 	}
 	
 	public String getName() {
 		return "Puzzle";
 	}
-
 }

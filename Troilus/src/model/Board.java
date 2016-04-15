@@ -10,7 +10,7 @@ public class Board {
 	ArrayList<Piece> pieces;
 	
 	// TODO: Is there any case where we will need to pass parameters to the constructor?
-	public Board(){
+	public Board() {
 		squares = new Square[BOARD_WIDTH*BOARD_HEIGHT];
 		pieces = new ArrayList<Piece>();
 	}
