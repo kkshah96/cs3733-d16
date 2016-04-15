@@ -43,8 +43,8 @@ public class LevelSelectorView extends JFrame{
 	Kabasuji game;
 
 
-	/**
-	 * Launch the application.
+	/*
+	 * TODO: Change level % 3, and allow builder to create levels in any order they want
 	 */
 
 
