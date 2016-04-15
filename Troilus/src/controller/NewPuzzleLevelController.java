@@ -8,7 +8,6 @@ import java.awt.event.WindowEvent;
 import model.LevelBuilder;
 import view.LevelEditorView;
 import view.LevelLoaderView;
-import view.LevelView;
 
 public class NewPuzzleLevelController extends MouseAdapter {
 	LevelBuilder builder;

@@ -2,7 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 
-import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import model.LevelBuilder;

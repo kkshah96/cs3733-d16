@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import controller.StartLevelLoaderController;
-import controller.StartLevelSelectorController;
 import model.LevelBuilder;
 import view.LevelLoaderView;
 import view.SplashScreenView;
