@@ -33,6 +33,7 @@ public class StartLevelLoaderController {
 			// enable buttons if level exists
 			buttons.get(i).setVisible(true);
 			buttons.get(i).setEnabled(true);
+			buttons.get(i).setText("Level " + levels.get(i).getLevelNum() + ": " + levels.get(i).getName());
 		}
 	}
 }

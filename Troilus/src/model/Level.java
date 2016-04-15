@@ -39,5 +39,15 @@ public abstract class Level {
 		this.locked = locked;
 	}
 	
+	public int getLevelNum() {
+		return levelNum;
+	}
+	
 	public abstract void calcNumStars();
+	
+	/**
+	 * Returns the name (corresponding to type) of this level
+	 * @return String
+	 */
+	public abstract String getName();
 }
