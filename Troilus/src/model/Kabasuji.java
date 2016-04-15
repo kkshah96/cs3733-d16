@@ -2,15 +2,25 @@ package model;
 
 import java.util.ArrayList;
 
+import controller.LoadLevelsController;
+
 public class Kabasuji {
 
 	ArrayList<Level> levels;
 	Level activeLevel;
 	
 	public Kabasuji() {
-		// TODO: load levels from file
 		
-		//For now, create stub levels in the model
+		// TODO: UNCOMMENT THIS LATER
+		/*
+		// create level loader controller
+		LoadLevelsController loader = new LoadLevelsController();
+		
+		// load levels into the list of levels
+		levels = loader.loadLevels();
+		*/
+		// stubs for testing:
+		
 		levels = new ArrayList<Level>();
 		for(int i = 0; i < 24; i++){
 			Level level;
@@ -31,6 +41,7 @@ public class Kabasuji {
 			
 			levels.add(level);
 		}
+		
 	}
 
 	public ArrayList<Level> getLevels() {
