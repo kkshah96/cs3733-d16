@@ -1,6 +1,5 @@
 package model;
 
-
 public class Palette {
 	Piece[] pieces;
 	
@@ -20,4 +19,3 @@ public class Palette {
 		return null;
 	}
 }
-
