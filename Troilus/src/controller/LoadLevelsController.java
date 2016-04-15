@@ -25,7 +25,7 @@ public class LoadLevelsController {
 		ArrayList<Level> levels = new ArrayList<Level>();
 		
 		
-		// TODO: load levels from file here
+		// TODO: load levels from XML here
 		
 		
 		return levels;
