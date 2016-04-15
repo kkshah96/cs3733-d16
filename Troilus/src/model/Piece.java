@@ -18,21 +18,23 @@ public class Piece {
 		
 		
 		for(int i = 0; i < 4; i++){
-//			if(degree < 0){ //ROTATE CCW
-//				int tempRow;
-//				int tempCol;
-//				tempRow = squares[i].getRow();
-//				tempCol = squares[i].getCol();
-//				Square newSquare = new PieceSquare( tempCol, tempRow);
-//			}
+			if(degree < 0){ //ROTATE CCW
+				int tempRow;
+				int tempCol;
+				tempRow = squares[i].getRow();
+				tempCol = squares[i].getCol();
+				Square newSquare = new PieceSquare( tempCol, tempRow);
+				newSquares[i] = newSquare;
+			}
 			
-//			if(degree >= 0){ //ROTATE CW
-//				int tempRow;
-//				int tempCol;
-//				tempRow = squares[i].getRow();
-//				tempCol = squares[i].getCol();
-//				Square newSquare = new PieceSquare(tempCol, -1*tempRow);
-//			}
+			if(degree >= 0){ //ROTATE CW
+				int tempRow;
+				int tempCol;
+				tempRow = squares[i].getRow();
+				tempCol = squares[i].getCol();
+				Square newSquare = new PieceSquare(tempCol, -1*tempRow);
+				newSquares[i] = newSquare;
+		}
 			
 			
 			
@@ -42,7 +44,33 @@ public class Piece {
 	}
 	
 	public Piece flipPiece(int degree){
-		return new Piece(squares, anchor); // TODO: Implement this
+Square[] newSquares = new Square[5];
+		
+		
+		for(int i = 0; i < 4; i++){
+			if(degree < 0){ //FLIP HORIZONTAL
+				int tempRow;
+				int tempCol;
+				tempRow = squares[i].getRow();
+				tempCol = squares[i].getCol();
+				Square newSquare = new PieceSquare( tempRow, (tempCol*-1));
+				newSquares[i] = newSquare;
+			}
+			
+			if(degree >= 0){ //FLIP VERTICAL
+				int tempRow;
+				int tempCol;
+				tempRow = squares[i].getRow();
+				tempCol = squares[i].getCol();
+				Square newSquare = new PieceSquare((tempRow*-1), tempCol);
+				newSquares[i] = newSquare;
+		}
+			
+			
+			
+		}
+		
+		return new Piece(newSquares, anchor); // TODO: Implement this
 	}
 	
 }
