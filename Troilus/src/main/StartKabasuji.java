@@ -30,8 +30,12 @@ public class StartKabasuji {
 							splash.setVisible(false);
 							Kabasuji game = new Kabasuji();
 							LevelSelectorView window = new LevelSelectorView(game);
+							
+							// allow controller to set up GUI based on the levels loaded by 'game'
 							StartLevelSelectorController selectorController = new StartLevelSelectorController(window, game);
 							selectorController.process();
+							
+							// show window
 							window.setVisible(true);
 						}
 					});

@@ -30,10 +30,11 @@ public class StartLevelLoaderController {
 		}
 		
 		for (int i = 0; i < numLevels; i++) {
-			// enable buttons if level exists
+			// enable buttons if level exists; set text accordingly
+			buttons.get(i).setText("Level " + levels.get(i).getLevelNum() + ": " + levels.get(i).getName());
 			buttons.get(i).setVisible(true);
 			buttons.get(i).setEnabled(true);
-			buttons.get(i).setText("Level " + levels.get(i).getLevelNum() + ": " + levels.get(i).getName());
+			
 		}
 	}
 }
