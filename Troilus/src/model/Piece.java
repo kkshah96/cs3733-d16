@@ -2,21 +2,36 @@ package model;
 
 // TODO: Should we make Piece subclasses for level types so square types are consistent?
 public class Piece {
-	
 	Square[] squares;
 	Square anchor;
-	int row, col; // TODO: Do we need this? If so, update constructor(s)
-	
+	//int row, col; // TODO: Do we need this? If so, update constructor(s)
+
 	// TODO: Make sure we check that the Square array is an appropriate size at execution time (throw exception if it isn't?)
-	public Piece(Square[] squares, Square anchor){
+	public Piece(Square[] squares, Square anchor) {
 		this.squares = squares;
 		this.anchor = anchor;
 	}
 	
+	public int getRow() {
+		return anchor.row;
+	}
+	
+	public int getCol() {
+		return anchor.col;
+	}
+	
+	/** Update location of anchor
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	public Piece place(int row, int col) {
+		return new Piece(squares, new PieceSquare(row, col));
+	}
+	
 	public Piece rotatePiece(int degree){ //CCW: degree < 0
 		Square[] newSquares = new Square[5];
-		
-		
+
 		for(int i = 0; i < 4; i++){
 			if(degree < 0){ //ROTATE CCW
 				int tempRow;
@@ -26,29 +41,25 @@ public class Piece {
 				Square newSquare = new PieceSquare( tempCol, tempRow);
 				newSquares[i] = newSquare;
 			}
+
 			
-			if(degree >= 0){ //ROTATE CW
+			else if(degree >= 0){ //ROTATE CW
 				int tempRow;
 				int tempCol;
 				tempRow = squares[i].getRow();
 				tempCol = squares[i].getCol();
 				Square newSquare = new PieceSquare(tempCol, -1*tempRow);
 				newSquares[i] = newSquare;
+			}
 		}
-			
-			
-			
-		}
-		
 		return new Piece(newSquares, anchor); // TODO: Implement this
 	}
-	
+
 	public Piece flipPiece(int degree){
-Square[] newSquares = new Square[5];
-		
-		
+		Square[] newSquares = new Square[5];
+
 		for(int i = 0; i < 4; i++){
-			if(degree < 0){ //FLIP HORIZONTAL
+			if(degree < 0){ // FLIP HORIZONTAL
 				int tempRow;
 				int tempCol;
 				tempRow = squares[i].getRow();
@@ -56,21 +67,17 @@ Square[] newSquares = new Square[5];
 				Square newSquare = new PieceSquare( tempRow, (tempCol*-1));
 				newSquares[i] = newSquare;
 			}
+
 			
-			if(degree >= 0){ //FLIP VERTICAL
+			else if(degree >= 0){ //FLIP VERTICAL
 				int tempRow;
 				int tempCol;
 				tempRow = squares[i].getRow();
 				tempCol = squares[i].getCol();
 				Square newSquare = new PieceSquare((tempRow*-1), tempCol);
 				newSquares[i] = newSquare;
+			}
 		}
-			
-			
-			
-		}
-		
 		return new Piece(newSquares, anchor); // TODO: Implement this
 	}
-	
 }

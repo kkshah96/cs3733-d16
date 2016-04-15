@@ -31,12 +31,20 @@ public abstract class Level {
 		this.activePiece = activePiece;
 	}
 	
+	public Piece getActivePiece(){
+		return activePiece;
+	}
+	
 	public boolean hasWon(){
 		return numStars > 0; // TODO: Is this valid lol
 	}
 	
 	public void setLocked(boolean locked){
 		this.locked = locked;
+	}
+	
+	public int getLevelNum() {
+		return levelNum;
 	}
 	
 	public abstract void calcNumStars();

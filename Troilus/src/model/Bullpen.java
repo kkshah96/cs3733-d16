@@ -21,13 +21,12 @@ public class Bullpen {
 	}
 	
 	// TODO: Assumed we would need to be able to get a piece from the bullpen so I added this
-	public Piece getPiece(int row, int col){
-		for(int i = 0; i < pieces.size(); i++){
-			if(pieces.get(i).row == row && pieces.get(i).col == col){
-				return pieces.get(i);
+	public Piece getPiece(int row, int col) {
+		for (Piece piece : pieces) {
+			if (piece.getRow() == row && piece.getCol() == col) {
+				return piece;
 			}
 		}
 		return null;
 	}
 }
-

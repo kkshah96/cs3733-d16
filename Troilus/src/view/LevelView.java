@@ -31,6 +31,7 @@ public class LevelView extends JFrame{
 	private JPanel panelPuzzleStats;
 	private JPanel panelLightningStats;
 	private JPanel panelReleaseStats;
+	JButton flipPieceHButton;
 	
 	LevelSelectorView levelSelector;
 	Kabasuji game;
@@ -116,10 +117,10 @@ public class LevelView extends JFrame{
 		btnRotateCcw.setBounds(166, 4, 93, 29);
 		panel_5.add(btnRotateCcw);
 		
-		JButton btnFlip = new JButton("Flip Horizontal");
-		btnFlip.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		btnFlip.setBounds(250, 4, 110, 29);
-		panel_5.add(btnFlip);
+		flipPieceHButton = new JButton("Flip Horizontal");
+		flipPieceHButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		flipPieceHButton.setBounds(250, 4, 110, 29);
+		panel_5.add(flipPieceHButton);
 		
 		JButton btnFlipVertical = new JButton("Flip Vertical");
 		btnFlipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
@@ -196,8 +197,6 @@ public class LevelView extends JFrame{
 		label.setBounds(6, 6, 161, 20);
 		panelLightningStats.add(label);
 		label.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		
-		
 	}
 	
 	public JPanel getPanelPuzzleStats() {
