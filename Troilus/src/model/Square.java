@@ -12,4 +12,12 @@ public abstract class Square {
 	
 	// TODO: Does this have to be an abstract method?
 	public abstract boolean isValid();
+	
+	public int getRow(){
+		return this.row;
+	}
+	
+	public int getCol(){
+		return this.col;
+	}
 }
