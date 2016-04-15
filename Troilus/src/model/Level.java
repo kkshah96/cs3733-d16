@@ -31,6 +31,10 @@ public abstract class Level {
 		this.activePiece = activePiece;
 	}
 	
+	public Piece getActivePiece(){
+		return activePiece;
+	}
+	
 	public boolean hasWon(){
 		return numStars > 0; // TODO: Is this valid lol
 	}

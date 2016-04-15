@@ -42,7 +42,8 @@ public class Piece {
 				newSquares[i] = newSquare;
 			}
 
-			if(degree >= 0){ //ROTATE CW
+			
+			else if(degree >= 0){ //ROTATE CW
 				int tempRow;
 				int tempCol;
 				tempRow = squares[i].getRow();
@@ -67,7 +68,8 @@ public class Piece {
 				newSquares[i] = newSquare;
 			}
 
-			if(degree >= 0){ //FLIP VERTICAL
+			
+			else if(degree >= 0){ //FLIP VERTICAL
 				int tempRow;
 				int tempCol;
 				tempRow = squares[i].getRow();
