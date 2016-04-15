@@ -1,7 +1,6 @@
 package model;
 
 public abstract class Level {
-	
 	int levelNum;
 	boolean locked;
 	Bullpen bullpen;
@@ -9,8 +8,7 @@ public abstract class Level {
 	Palette palette;
 	int numStars;
 	Piece activePiece;
-	
-	
+
 	public Level(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette) {
 		this.levelNum = levelNum;
 		this.bullpen = bullpen;
@@ -18,37 +16,37 @@ public abstract class Level {
 		this.palette = palette;
 		this.locked = locked;
 	}
-	
+
 	public boolean isLocked() {
 		return locked;
 	}
-	
-	public void setNumStars(int numStars){
+
+	public void setNumStars(int numStars) {
 		this.numStars = numStars;
 	}
-	
-	public void setActivePiece(Piece activePiece){
+
+	public void setActivePiece(Piece activePiece) {
 		this.activePiece = activePiece;
 	}
-	
-	public Piece getActivePiece(){
+
+	public Piece getActivePiece() {
 		return activePiece;
 	}
-	
-	public boolean hasWon(){
+
+	public boolean hasWon() {
 		return numStars > 0; // TODO: Is this valid lol
 	}
-	
-	public void setLocked(boolean locked){
+
+	public void setLocked(boolean locked) {
 		this.locked = locked;
 	}
-	
+
 	public int getLevelNum() {
 		return levelNum;
 	}
-	
+
 	public abstract void calcNumStars();
-	
+
 	/**
 	 * Returns the name (corresponding to type) of this level
 	 * @return String

@@ -5,7 +5,7 @@ public class Piece {
 	Square[] squares;
 	Square anchor;
 	//int row, col; // TODO: Do we need this? If so, update constructor(s)
-
+	
 	// TODO: Make sure we check that the Square array is an appropriate size at execution time (throw exception if it isn't?)
 	public Piece(Square[] squares, Square anchor) {
 		this.squares = squares;
@@ -41,7 +41,6 @@ public class Piece {
 				Square newSquare = new PieceSquare( tempCol, tempRow);
 				newSquares[i] = newSquare;
 			}
-
 			
 			else if(degree >= 0){ //ROTATE CW
 				int tempRow;
@@ -54,10 +53,10 @@ public class Piece {
 		}
 		return new Piece(newSquares, anchor); // TODO: Implement this
 	}
-
+	
 	public Piece flipPiece(int degree){
 		Square[] newSquares = new Square[5];
-
+		
 		for(int i = 0; i < 4; i++){
 			if(degree < 0){ // FLIP HORIZONTAL
 				int tempRow;
@@ -67,7 +66,6 @@ public class Piece {
 				Square newSquare = new PieceSquare( tempRow, (tempCol*-1));
 				newSquares[i] = newSquare;
 			}
-
 			
 			else if(degree >= 0){ //FLIP VERTICAL
 				int tempRow;
