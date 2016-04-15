@@ -20,4 +20,8 @@ public class LightningLevel extends Level{
 	public void updateSquaresMarked(int i){
 		squaresMarked += i;
 	}
+	
+	public String getName() {
+		return "Lightning";
+	}
 }

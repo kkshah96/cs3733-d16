@@ -36,5 +36,9 @@ public class ReleaseLevel extends Level{
 			greenCovered[i] = true;
 		}
 	}
+	
+	public String getName() {
+		return "Release";
+	}
 
 }

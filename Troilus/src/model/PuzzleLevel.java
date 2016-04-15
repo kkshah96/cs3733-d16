@@ -20,5 +20,9 @@ public class PuzzleLevel extends Level{
 	public void updateMovesLeft(int i){
 		movesLeft += i;
 	}
+	
+	public String getName() {
+		return "Puzzle";
+	}
 
 }
