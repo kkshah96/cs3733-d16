@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import controller.StartLevelLoaderController;
 import model.LevelBuilder;
 import view.LevelLoaderView;
 import view.SplashScreenView;
@@ -26,7 +27,14 @@ public class StartLevelBuilder {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							splash.setVisible(false);
-							LevelLoaderView window = new LevelLoaderView(new LevelBuilder());
+							LevelBuilder builder = new LevelBuilder();
+							LevelLoaderView window = new LevelLoaderView(builder);
+							
+							// allow controller to set up GUI based on the levels loaded by 'builder'
+							StartLevelLoaderController loaderController = new StartLevelLoaderController(window, builder);
+							loaderController.process();
+							
+							// show the window
 							window.setVisible(true);
 						}
 					});

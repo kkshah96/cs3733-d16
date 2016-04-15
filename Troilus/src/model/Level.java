@@ -43,6 +43,10 @@ public abstract class Level {
 		this.locked = locked;
 	}
 	
+	public int getLevelNum() {
+		return levelNum;
+	}
+	
 	public abstract void calcNumStars();
 	
 	/**

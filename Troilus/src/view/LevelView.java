@@ -197,8 +197,6 @@ public class LevelView extends JFrame{
 		label.setBounds(6, 6, 161, 20);
 		panelLightningStats.add(label);
 		label.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		
-		
 	}
 	
 	public JPanel getPanelPuzzleStats() {
