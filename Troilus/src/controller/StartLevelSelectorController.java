@@ -34,14 +34,17 @@ public class StartLevelSelectorController {
 			label.setVisible(false);;
 		}
 		for (int i = 0; i < numLevels; i++) {
+			Level currentLevel = levels.get(i);
+			JButton currentButton = buttons.get(i);
 			// enable buttons if level exists
-			buttons.get(i).setVisible(true);
+			currentButton.setVisible(true);
+			currentButton.setText("Level " + currentLevel.getLevelNum() + ": " + currentLevel.getName());
 			
 			labels.get(i).setVisible(true);
 			
 			// grey out button if locked
-			if (!levels.get(i).isLocked()) {
-				buttons.get(i).setEnabled(true);
+			if (!currentLevel.isLocked()) {
+				currentButton.setEnabled(true);
 			}
 		}
 	}
