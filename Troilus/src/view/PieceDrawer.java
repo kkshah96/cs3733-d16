@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 import model.Piece;
 import model.PieceSquare;
@@ -20,7 +21,14 @@ public class PieceDrawer {
 		squares = piece.getSquares();
 		anchorSquare = piece.getAnchor();
 		
-		g.setColor(Color.RED);
+		Random rand = new Random();
+		float red = rand.nextFloat();
+		float green = rand.nextFloat();
+		float blue = rand.nextFloat();
+		
+		Color c = new Color(red, green, blue);
+		
+		g.setColor(c);
 		for(int i = 0; i < 5; i++){
 			g.fillRect(squares[i].getRow() * width + width_offset, squares[i].getCol() * width + height_offset, width, width);
 		}
