@@ -24,4 +24,8 @@ public class LightningLevel extends Level{
 	public String getName() {
 		return "Lightning";
 	}
+	
+	public int getTime() {
+		return timeLimit;
+	}
 }

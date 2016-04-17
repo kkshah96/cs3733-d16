@@ -20,4 +20,6 @@ public abstract class Square {
 	public int getCol(){
 		return this.col;
 	}
+	
+	public abstract String getType();
 }

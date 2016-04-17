@@ -11,4 +11,10 @@ public class OutOfBoundsSquare extends Square {
 		return false;
 	}
 
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return "OutOfBoundsSquare";
+	}
+
 }

@@ -14,4 +14,10 @@ public class LightningSquare extends Square {
 		return true;
 	}
 
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return "LightningSquare";
+	}
+
 }

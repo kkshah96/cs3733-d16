@@ -4,12 +4,14 @@ package model;
 public class Piece {
 	Square[] squares;
 	Square anchor;
+	int type;
 	//int row, col; // TODO: Do we need this? If so, update constructor(s)
 	
 	// TODO: Make sure we check that the Square array is an appropriate size at execution time (throw exception if it isn't?)
-	public Piece(Square[] squares, Square anchor) {
+	public Piece(Square[] squares, Square anchor, int type) {
 		this.squares = squares;
 		this.anchor = anchor;
+		this.type = type;
 	}
 	
 	public int getRow() {
@@ -26,7 +28,11 @@ public class Piece {
 	 * @return
 	 */
 	public Piece place(int row, int col) {
-		return new Piece(squares, new PieceSquare(row, col));
+		return new Piece(squares, new PieceSquare(row, col), type);
+	}
+	
+	public int getType() {
+		return type;
 	}
 	
 	public Piece rotatePiece(int degree){ //CCW: degree < 0
@@ -51,7 +57,7 @@ public class Piece {
 				newSquares[i] = newSquare;
 			}
 		}
-		return new Piece(newSquares, anchor); // TODO: Implement this
+		return new Piece(newSquares, anchor, type); // TODO: Implement this
 	}
 	
 	public Piece flipPiece(int degree){
@@ -76,6 +82,6 @@ public class Piece {
 				newSquares[i] = newSquare;
 			}
 		}
-		return new Piece(newSquares, anchor); // TODO: Implement this
+		return new Piece(newSquares, anchor, type); // TODO: Implement this
 	}
 }

@@ -23,4 +23,8 @@ public class PuzzleLevel extends Level {
 	public String getName() {
 		return "Puzzle";
 	}
+	
+	public int getMaxMoves() {
+		return maxMoves;
+	}
 }

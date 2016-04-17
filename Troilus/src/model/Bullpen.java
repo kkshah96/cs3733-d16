@@ -30,4 +30,12 @@ public class Bullpen {
 		}
 		return null;
 	}
+	
+	public Piece getPiece(int index) {
+		return pieces.get(index);
+	}
+	
+	public int getNumPieces() {
+		return pieces.size();
+	}
 }

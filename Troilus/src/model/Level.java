@@ -52,4 +52,16 @@ public abstract class Level {
 	 * @return String
 	 */
 	public abstract String getName();
+	
+	public int getNumStars() {
+		return numStars;
+	}
+	
+	public Bullpen getBullpen() {
+		return bullpen;
+	}
+	
+	public Board getBoard() {
+		return board;
+	}
 }

@@ -10,9 +10,15 @@ public class Board {
 	ArrayList<Piece> pieces;
 	
 	// TODO: Is there any case where we will need to pass parameters to the constructor?
+	// Yes- when loading a board from storage, where we will need to set the squares accordingly
 	public Board() {
 		squares = new Square[BOARD_WIDTH*BOARD_HEIGHT];
 		pieces = new ArrayList<Piece>();
+	}
+	
+	public Board(Square[] squares) {
+		this.squares = squares;
+		this.pieces = new ArrayList<Piece>();
 	}
 	
 	/** Add the given piece to the board if valid

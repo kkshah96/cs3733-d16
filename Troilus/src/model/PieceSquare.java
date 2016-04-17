@@ -10,4 +10,10 @@ public class PieceSquare extends Square {
 	public boolean isValid() {
 		return true;
 	}
+
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return "PieceSquare";
+	}
 }
