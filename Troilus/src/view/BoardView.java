@@ -60,9 +60,11 @@ public class BoardView extends JPanel {
 			}
 		}
 		
-		Piece piece = PieceFactory.getPiece(4, 4, 2);
+		Piece piece = PieceFactory.getPiece(4, 4, 1);
+		Piece piece2 = PieceFactory.getPiece(6, 6, 2);
+		piece2 = piece2.rotatePiece(-1);
 		
 		pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
-	
+		pDrawer.paint(g, piece2, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 	}
 }

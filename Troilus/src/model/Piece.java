@@ -46,22 +46,30 @@ public class Piece {
 	public Piece rotatePiece(int degree){ //CCW: degree < 0
 		Square[] newSquares = new Square[5];
 
-		for(int i = 0; i < 4; i++){
+		for(int i = 0; i < 5; i++){
 			if(degree < 0){ //ROTATE CCW
-				int tempRow;
-				int tempCol;
-				tempRow = squares[i].getRow();
-				tempCol = squares[i].getCol();
-				Square newSquare = new PieceSquare( -1*tempCol, tempRow);
+				int oldRow = squares[i].getRow();
+				int oldCol = squares[i].getCol();
+				int distToFRow = anchor.getRow() - oldRow;
+				int distToFCol = anchor.getCol() - oldCol;				
+				int newRow = anchor.getRow() - distToFCol;
+				int newCol = anchor.getCol() - distToFRow;
+				
+				System.out.println("Square " + i + ":");
+				System.out.println("Originally at (" + oldCol + "," + oldRow + ")");
+				System.out.println("Distance to anchor: (" + distToFCol + "," + distToFRow + ")");
+				System.out.println("New coords: (" + newCol + "," + newRow + ")");
+				
+				Square newSquare = new PieceSquare(newRow, newCol);
 				newSquares[i] = newSquare;
 			}
 			
-			else if(degree >= 0){ //ROTATE CW
+			else { //ROTATE CW
 				int tempRow;
 				int tempCol;
 				tempRow = squares[i].getRow();
 				tempCol = squares[i].getCol();
-				Square newSquare = new PieceSquare(tempCol, -1*tempRow);
+				Square newSquare = new PieceSquare(tempRow, tempCol);
 				newSquares[i] = newSquare;
 			}
 		}
@@ -71,7 +79,7 @@ public class Piece {
 	public Piece flipPiece(int degree){
 		Square[] newSquares = new Square[5];
 		
-		for(int i = 0; i < 4; i++){
+		for(int i = 0; i < 5; i++){
 			if(degree < 0){ // FLIP HORIZONTAL
 				int tempRow;
 				int tempCol;
@@ -81,7 +89,7 @@ public class Piece {
 				newSquares[i] = newSquare;
 			}
 			
-			else if(degree >= 0){ //FLIP VERTICAL
+			else { //FLIP VERTICAL
 				int tempRow;
 				int tempCol;
 				tempRow = squares[i].getRow();

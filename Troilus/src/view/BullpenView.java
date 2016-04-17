@@ -28,14 +28,14 @@
 			lblBoard.setBounds(201, 5, 100, 23);
 			
 			int count = 0;
-			for(int i = 0; i < MAX_BOARD_SIZE * SQUARE_SIZE; i+= SQUARE_SIZE){
+			/*for(int i = 0; i < MAX_BOARD_SIZE * SQUARE_SIZE; i+= SQUARE_SIZE){
 				for(int j = 0; j < MAX_BOARD_SIZE * SQUARE_SIZE; j+= SQUARE_SIZE){
 					squares.add(new SquareView(SQUARE_SIZE));
 					squares.get(count).setBounds(i + 10, j + 30, SQUARE_SIZE + BUFFER_SIZE, SQUARE_SIZE + BUFFER_SIZE);
 					add(squares.get(count));
 					count++;
 				}
-			}
+			}*/
 			
 			setLayout(null);
 			add(lblBoard);
