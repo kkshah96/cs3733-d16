@@ -53,23 +53,21 @@ public class Piece {
 				int distToFRow = anchor.getRow() - oldRow;
 				int distToFCol = anchor.getCol() - oldCol;				
 				int newRow = anchor.getRow() - distToFCol;
-				int newCol = anchor.getCol() - distToFRow;
-				
-				System.out.println("Square " + i + ":");
-				System.out.println("Originally at (" + oldCol + "," + oldRow + ")");
-				System.out.println("Distance to anchor: (" + distToFCol + "," + distToFRow + ")");
-				System.out.println("New coords: (" + newCol + "," + newRow + ")");
+				int newCol = anchor.getCol() + distToFRow;
 				
 				Square newSquare = new PieceSquare(newRow, newCol);
 				newSquares[i] = newSquare;
 			}
 			
 			else { //ROTATE CW
-				int tempRow;
-				int tempCol;
-				tempRow = squares[i].getRow();
-				tempCol = squares[i].getCol();
-				Square newSquare = new PieceSquare(tempRow, tempCol);
+				int oldRow = squares[i].getRow();
+				int oldCol = squares[i].getCol();
+				int distToFRow = anchor.getRow() - oldRow;
+				int distToFCol = anchor.getCol() - oldCol;				
+				int newRow = anchor.getRow() + distToFCol;
+				int newCol = anchor.getCol() - distToFRow;
+
+				Square newSquare = new PieceSquare(newRow, newCol);
 				newSquares[i] = newSquare;
 			}
 		}
@@ -81,20 +79,22 @@ public class Piece {
 		
 		for(int i = 0; i < 5; i++){
 			if(degree < 0){ // FLIP HORIZONTAL
-				int tempRow;
-				int tempCol;
-				tempRow = squares[i].getRow();
-				tempCol = squares[i].getCol();
-				Square newSquare = new PieceSquare( tempRow, (-1)*tempCol);
+				int oldRow = squares[i].getRow();
+				int oldCol = squares[i].getCol();
+				int distToFRow = anchor.getRow() - oldRow;
+				int newRow = anchor.getRow() + distToFRow;
+
+				Square newSquare = new PieceSquare(newRow, oldCol);
 				newSquares[i] = newSquare;
 			}
 			
 			else { //FLIP VERTICAL
-				int tempRow;
-				int tempCol;
-				tempRow = squares[i].getRow();
-				tempCol = squares[i].getCol();
-				Square newSquare = new PieceSquare((-1)*tempRow, tempCol);
+				int oldRow = squares[i].getRow();
+				int oldCol = squares[i].getCol();
+				int distToFCol = anchor.getCol() - oldCol;				
+				int newCol = anchor.getCol() + distToFCol;
+
+				Square newSquare = new PieceSquare(oldRow, newCol);
 				newSquares[i] = newSquare;
 			}
 		}
