@@ -8,10 +8,14 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Piece;
+import model.PieceFactory;
+
 public class BoardView extends JPanel {
 	static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
 	static final int SQUARE_SIZE = 30;
-	static final int BUFFER_SIZE = 1;
+	static final int WIDTH_OFFSET = 10;
+	static final int HEIGHT_OFFSET = 30;
 	ArrayList<SquareView> squares = new ArrayList<SquareView>();
 	
 	/**
@@ -47,12 +51,18 @@ public class BoardView extends JPanel {
 	
 	public void paintComponent(Graphics g){
 		SquareDrawer drawer = new SquareDrawer();
+		PieceDrawer pDrawer = new PieceDrawer();
 
 		//int count = 0;
 		for(int i = 0; i < MAX_BOARD_SIZE * SQUARE_SIZE; i+= SQUARE_SIZE){
 			for(int j = 0; j < MAX_BOARD_SIZE * SQUARE_SIZE; j+= SQUARE_SIZE){
-				drawer.paint(g, i + 10, j + 30, SQUARE_SIZE, null, Color.BLACK);
+				drawer.paint(g, i + WIDTH_OFFSET, j + HEIGHT_OFFSET, SQUARE_SIZE, null, Color.BLACK);
 			}
 		}
+		
+		Piece piece = PieceFactory.getPiece(4, 4, 2);
+		
+		pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+	
 	}
 }

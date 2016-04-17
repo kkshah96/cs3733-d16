@@ -22,6 +22,14 @@ public class Piece {
 		return anchor.col;
 	}
 	
+	public Square[] getSquares() {
+		return squares;
+	}
+	
+	public Square getAnchor() {
+		return anchor;
+	}
+	
 	/** Update location of anchor
 	 * @param row
 	 * @param col
