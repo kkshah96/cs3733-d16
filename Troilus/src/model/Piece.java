@@ -52,7 +52,7 @@ public class Piece {
 				int tempCol;
 				tempRow = squares[i].getRow();
 				tempCol = squares[i].getCol();
-				Square newSquare = new PieceSquare( tempCol, tempRow);
+				Square newSquare = new PieceSquare( -1*tempCol, tempRow);
 				newSquares[i] = newSquare;
 			}
 			
@@ -77,7 +77,7 @@ public class Piece {
 				int tempCol;
 				tempRow = squares[i].getRow();
 				tempCol = squares[i].getCol();
-				Square newSquare = new PieceSquare( tempRow, (tempCol*-1));
+				Square newSquare = new PieceSquare( tempRow, (-1)*tempCol);
 				newSquares[i] = newSquare;
 			}
 			
@@ -86,7 +86,7 @@ public class Piece {
 				int tempCol;
 				tempRow = squares[i].getRow();
 				tempCol = squares[i].getCol();
-				Square newSquare = new PieceSquare((tempRow*-1), tempCol);
+				Square newSquare = new PieceSquare((-1)*tempRow, tempCol);
 				newSquares[i] = newSquare;
 			}
 		}

@@ -20,7 +20,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
 import controller.ExitLevelController;
-
+import controller.FlipPieceController;
+import controller.RotatePieceController;
 import model.Kabasuji;
 import model.Level;
 
@@ -32,6 +33,11 @@ public class LevelView extends JFrame{
 	private JPanel panelLightningStats;
 	private JPanel panelReleaseStats;
 	JButton flipPieceHButton;
+	
+	static final int FLIP_HORIZONTAL = -1;
+	static final int FLIP_VERTICAL = 1;
+	static final int ROTATE_CCW = -1;
+	static final int ROTATE_CW = 1;
 	
 	LevelSelectorView levelSelector;
 	Kabasuji game;
@@ -77,14 +83,15 @@ public class LevelView extends JFrame{
 		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		panelTitle.add(lblLevelPuzzle);
 		
-		JPanel panelBoard = new BoardView();
+		BoardView panelBoard = new BoardView();
+		
 		panelBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panelBoard.setBackground(Color.LIGHT_GRAY);
 		panelBoard.setBounds(0, 88, 461, 455);
 		panel.add(panelBoard);
 		panelBoard.setLayout(null);
 		
-		JPanel panelBullpen = new JPanel();
+		BullpenView panelBullpen = new BullpenView();
 		panelBullpen.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panelBullpen.setBackground(Color.LIGHT_GRAY);
 		panelBullpen.setBounds(458, 88, 495, 455);
@@ -103,29 +110,33 @@ public class LevelView extends JFrame{
 		lblBullpen.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
 		panel_5.add(lblBullpen);
 		
-		JButton btnNewButton_1 = new JButton("Rotate CW");
-		btnNewButton_1.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnRotateCW = new JButton("Rotate CW");
+		btnRotateCW.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		btnRotateCW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(76, 4, 99, 29);
-		panel_5.add(btnNewButton_1);
+		btnRotateCW.addMouseListener(new RotatePieceController(level, game, panelBullpen, ROTATE_CW));
+		btnRotateCW.setBounds(76, 4, 99, 29);
+		panel_5.add(btnRotateCW);
 		
 		JButton btnRotateCcw = new JButton("Rotate CCW");
 		btnRotateCcw.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		btnRotateCcw.setBounds(166, 4, 93, 29);
 		panel_5.add(btnRotateCcw);
+		btnRotateCcw.addMouseListener(new RotatePieceController(level, game, panelBullpen, ROTATE_CCW));
 		
 		flipPieceHButton = new JButton("Flip Horizontal");
 		flipPieceHButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		flipPieceHButton.setBounds(250, 4, 110, 29);
 		panel_5.add(flipPieceHButton);
+		flipPieceHButton.addMouseListener(new FlipPieceController(level, game, panelBullpen, FLIP_HORIZONTAL));
 		
 		JButton btnFlipVertical = new JButton("Flip Vertical");
 		btnFlipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		btnFlipVertical.setBounds(361, 4, 110, 29);
 		panel_5.add(btnFlipVertical);
+		btnFlipVertical.addMouseListener(new FlipPieceController(level, game, panelBullpen, FLIP_VERTICAL));
 		
 		JButton btnExitLevel = new JButton("Exit Level");
 		btnExitLevel.addMouseListener(new ExitLevelController(this, levelSelector, game));

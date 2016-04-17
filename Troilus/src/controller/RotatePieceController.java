@@ -8,24 +8,26 @@ import view.BullpenView;
 
 
 
-public class FlipPieceHorizontalController extends MouseAdapter{
+public class RotatePieceController extends MouseAdapter{
 	Kabasuji game;
 
 	Level level;
 	BullpenView bullpen;
+	int degree;
 	
-	static final int FLIP_HORIZONTAL = -1;
 	
-	public FlipPieceHorizontalController(Level level, Kabasuji game, BullpenView bullpen){
+	
+	public RotatePieceController(Level level, Kabasuji game, BullpenView bullpen, int degree){
 
 		this.game = game;
 		this.bullpen = bullpen;
 		this.level = level;
+		this.degree = degree;
 		
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		level.getActivePiece().flipPiece(FLIP_HORIZONTAL);
+		level.getActivePiece().rotatePiece(degree);
 	}
 	
 	
