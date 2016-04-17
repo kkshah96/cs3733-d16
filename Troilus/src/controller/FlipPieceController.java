@@ -16,6 +16,7 @@ public class FlipPieceController extends MouseAdapter{
 	int degree;
 	
 	
+	
 	public FlipPieceController(Level level, Kabasuji game, BullpenView bullpen, int degree){
 
 		this.game = game;
