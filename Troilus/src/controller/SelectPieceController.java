@@ -43,9 +43,8 @@ public class SelectPieceController extends MouseAdapter{
 			System.out.println("Error: Did not click within the board");
 		}
 		else {	
-			Piece activePiece = new Piece(null, null, -1);
-			activePiece = level.getBoard().getPiece(((x-10)/30), ((y-30)/30));
-				if(activePiece.getAnchor() == null){
+				Piece activePiece = level.getBoard().getPiece(((x-10)/30), ((y-30)/30));
+				if(activePiece == null){
 					System.out.print("No piece here.");
 				}
 				else 
