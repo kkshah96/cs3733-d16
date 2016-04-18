@@ -3,7 +3,11 @@ package view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
@@ -292,18 +296,19 @@ public class LevelEditorView extends JFrame {
 		releaseColorComboBox.setBounds(250, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseColorComboBox);
 		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(56, 561, 500, 115);
-		getContentPane().add(scrollPane);
-		
-		PaletteView panel = new PaletteView();
-		scrollPane.setViewportView(panel);
-		panel.setLayout(null);
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(100, 100, 1143, 751);
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		PaletteView pView = new PaletteView();
+		pView.setBounds(275, 561, 495, 111);
+		pView.setPreferredSize(new Dimension(500, 500));
+		//pView.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane(pView);
+		scrollPane.setBounds(56, 561, 193, 115);
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
 	}
 	
 	public void setLevelType(String type){
