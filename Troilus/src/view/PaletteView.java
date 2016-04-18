@@ -1,17 +1,22 @@
 	package view;
 
-	import java.awt.Color;
-	import java.awt.Font;
-	import java.util.ArrayList;
+	import java.awt.Graphics;
+import java.util.ArrayList;
 
-	import javax.swing.JLabel;
-	import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import model.Palette;
+import model.Piece;
+import model.PieceFactory;
 
 	public class PaletteView extends JPanel {
 		static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
-		static final int SQUARE_SIZE = 30;
+		static final int SQUARE_SIZE = 10;
 		static final int BUFFER_SIZE = 1;
 		ArrayList<SquareView> squares = new ArrayList<SquareView>();
+		
+		Palette p = new Palette();
 		
 		/**
 		 * Create the panel.
@@ -26,8 +31,18 @@
 			JLabel lblIfYouCan = new JLabel("If you can see this it works!");
 			lblIfYouCan.setBounds(944, 11, 210, 14);
 			add(lblIfYouCan);
-			initialize();
 			
+			
+			
+		}
+		
+		public void paintComponent(Graphics g){
+			PieceDrawer pDrawer = new PieceDrawer();
+			
+			for(int i = 0; i < 35; i++){
+			//pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+				pDrawer.paint(g, p.getPiece(i), SQUARE_SIZE, 60, 10);
+			}
 		}
 		
 		private void initialize(){

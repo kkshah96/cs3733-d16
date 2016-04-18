@@ -10,6 +10,10 @@ public class Palette {
 		pieces = new Piece[35];
 		initialize();
 	}
+	
+	public Piece getPiece(int index){
+		return pieces[index];
+	}
 
 	// TODO: Assumed we would need to be able to get a piece from the Palette so I added this
 	public Piece getPiece(int row, int col){
@@ -23,7 +27,7 @@ public class Palette {
 	
 	private void initialize(){
 		for(int i = 0; i < 35; i++){
-			pieces[i] = PieceFactory.getPiece(0, i * 6, i);
+			pieces[i] = PieceFactory.getPiece(i * 6, 0, i + 1);
 		}
 	}
 }
