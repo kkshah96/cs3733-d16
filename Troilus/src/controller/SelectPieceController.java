@@ -34,8 +34,6 @@ public class SelectPieceController extends MouseAdapter{
 		
 	}
 	
-	
-	
 	public void mousePressed(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
@@ -44,21 +42,15 @@ public class SelectPieceController extends MouseAdapter{
 		{
 			System.out.println("Error: Did not click within the board");
 		}
-		else {
-		ArrayList<Piece> pieces= new ArrayList<Piece>();
-		pieces = level.getBoard().getPieces();
-		
-		
-			
+		else {	
 			Piece activePiece = new Piece(null, null, -1);
-			activePiece = level.getBoard().getPiece((x/30), (y/30));
-			if(activePiece.getAnchor() == null){
-				System.out.print("Invalid Piece");
-			}
-			else 
-				level.setActivePiece(activePiece);
-		
-		}//end check bounds else
+			activePiece = level.getBoard().getPiece(((x-10)/30), ((y-30)/30));
+				if(activePiece.getAnchor() == null){
+					System.out.print("No piece here.");
+				}
+				else 
+					level.setActivePiece(activePiece);
+				}//end check bounds else
 		
 	}
 }
