@@ -2,8 +2,8 @@ package model;
 
 public class OutOfBoundsSquare extends Square {
 
-	public OutOfBoundsSquare(int row, int col){//, boolean hintSquare) {
-		super(row, col);//, hintSquare);
+	public OutOfBoundsSquare() {//, boolean hintSquare) {
+		super();//, hintSquare);
 	}
 
 	@Override
@@ -16,5 +16,4 @@ public class OutOfBoundsSquare extends Square {
 		// TODO Auto-generated method stub
 		return "OutOfBoundsSquare";
 	}
-
 }

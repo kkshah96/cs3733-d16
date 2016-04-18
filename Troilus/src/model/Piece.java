@@ -2,13 +2,13 @@ package model;
 
 // TODO: Should we make Piece subclasses for level types so square types are consistent?
 public class Piece {
-	Square[] squares;
-	Square anchor;
+	PieceSquare[] squares;
+	PieceSquare anchor;
 	int type;
 	//int row, col; // TODO: Do we need this? If so, update constructor(s)
 	
 	// TODO: Make sure we check that the Square array is an appropriate size at execution time (throw exception if it isn't?)
-	public Piece(Square[] squares, Square anchor, int type) {
+	public Piece(PieceSquare[] squares, PieceSquare anchor, int type) {
 		this.squares = squares;
 		this.anchor = anchor;
 		this.type = type;
@@ -22,11 +22,11 @@ public class Piece {
 		return anchor.col;
 	}
 	
-	public Square[] getSquares() {
+	public PieceSquare[] getSquares() {
 		return squares;
 	}
 	
-	public Square getAnchor() {
+	public PieceSquare getAnchor() {
 		return anchor;
 	}
 	
@@ -44,7 +44,7 @@ public class Piece {
 	}
 	
 	public Piece rotatePiece(int degree){ //CCW: degree < 0
-		Square[] newSquares = new Square[5];
+		PieceSquare[] newSquares = new PieceSquare[5];
 
 		for(int i = 0; i < 5; i++){
 			if(degree < 0){ //ROTATE CCW
@@ -55,7 +55,7 @@ public class Piece {
 				int newRow = anchor.getRow() - distToFCol;
 				int newCol = anchor.getCol() + distToFRow;
 				
-				Square newSquare = new PieceSquare(newRow, newCol);
+				PieceSquare newSquare = new PieceSquare(newRow, newCol);
 				newSquares[i] = newSquare;
 			}
 			
@@ -67,7 +67,7 @@ public class Piece {
 				int newRow = anchor.getRow() + distToFCol;
 				int newCol = anchor.getCol() - distToFRow;
 
-				Square newSquare = new PieceSquare(newRow, newCol);
+				PieceSquare newSquare = new PieceSquare(newRow, newCol);
 				newSquares[i] = newSquare;
 			}
 		}
@@ -75,7 +75,7 @@ public class Piece {
 	}
 	
 	public Piece flipPiece(int degree){
-		Square[] newSquares = new Square[5];
+		PieceSquare[] newSquares = new PieceSquare[5];
 		
 		for(int i = 0; i < 5; i++){
 			if(degree < 0){ // FLIP HORIZONTAL
@@ -84,7 +84,7 @@ public class Piece {
 				int distToFRow = anchor.getRow() - oldRow;
 				int newRow = anchor.getRow() + distToFRow;
 
-				Square newSquare = new PieceSquare(newRow, oldCol);
+				PieceSquare newSquare = new PieceSquare(newRow, oldCol);
 				newSquares[i] = newSquare;
 			}
 			
@@ -94,7 +94,7 @@ public class Piece {
 				int distToFCol = anchor.getCol() - oldCol;				
 				int newCol = anchor.getCol() + distToFCol;
 
-				Square newSquare = new PieceSquare(oldRow, newCol);
+				PieceSquare newSquare = new PieceSquare(oldRow, newCol);
 				newSquares[i] = newSquare;
 			}
 		}

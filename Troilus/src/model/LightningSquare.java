@@ -4,8 +4,8 @@ public class LightningSquare extends Square {
 
 	boolean isCovered;
 	
-	public LightningSquare(int row, int col){//, boolean hintSquare) {
-		super(row, col);//, hintSquare);
+	public LightningSquare() {//, boolean hintSquare) {
+		super();//, hintSquare);
 	}
 
 	// TODO: Can a LightningSquare become invalid?
@@ -19,5 +19,4 @@ public class LightningSquare extends Square {
 		// TODO Auto-generated method stub
 		return "LightningSquare";
 	}
-
 }

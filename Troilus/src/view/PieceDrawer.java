@@ -10,8 +10,8 @@ import model.Square;
 
 public class PieceDrawer {
 	
-	Square[] squares;
-	Square anchorSquare;
+	PieceSquare[] squares;
+	PieceSquare anchorSquare;
 	
 	public PieceDrawer(){
 		this.squares = new PieceSquare[6]; // TODO: Where do we want to define constants such as the number of squares per piece (6)

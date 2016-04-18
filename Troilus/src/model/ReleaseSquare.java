@@ -7,8 +7,7 @@ public class ReleaseSquare extends Square {
 	int number;
 	Color numberColor;
 	
-	public ReleaseSquare(int row, int col, int number, Color color){//, boolean hintSquare) {
-		super(row, col);//, hintSquare);
+	public ReleaseSquare(int number, Color color) {//, boolean hintSquare) {
 		this.number = number;
 		this.numberColor = color;
 	}

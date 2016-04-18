@@ -2,8 +2,8 @@ package model;
 
 public class PuzzleSquare extends Square {
 
-	public PuzzleSquare(int row, int col){//, boolean hintSquare) {
-		super(row, col);//, hintSquare);
+	public PuzzleSquare() {//, boolean hintSquare) {
+		super(); //, hintSquare;
 	}
 
 	// TODO: Can a PuzzleSquare become invalid?
@@ -17,5 +17,4 @@ public class PuzzleSquare extends Square {
 		// TODO Auto-generated method stub
 		return "PuzzleSquare";
 	}
-
 }

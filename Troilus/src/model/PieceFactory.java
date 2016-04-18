@@ -3,8 +3,8 @@ package model;
 public class PieceFactory {
 
 	public static Piece getPiece(int row, int col, int pieceType) {
-		Square anchorSquare = new PieceSquare(row, col);
-		Square[] pieceSquares = new Square[5];
+		PieceSquare anchorSquare = new PieceSquare(row, col);
+		PieceSquare[] pieceSquares = new PieceSquare[5];
 
 		switch(pieceType) {
 		case 1:

@@ -74,7 +74,7 @@ public class LevelXMLInputController {
 					
 				} else if(levelNodes.item(a).getNodeName().equals("Board")) {
 					NodeList rowList = levelNodes.item(a).getChildNodes();
-					Square[] squares = new Square[Board.BOARD_HEIGHT * Board.BOARD_WIDTH];
+					Square[][] squares = new Square[Board.BOARD_HEIGHT][Board.BOARD_WIDTH];
 					
 					for(int j = 0; j < rowList.getLength(); j++) {
 						Node row = rowList.item(j);
@@ -88,14 +88,14 @@ public class LevelXMLInputController {
 								NamedNodeMap rsAttributes = squareList.item(k).getAttributes();
 								int number = Integer.parseInt(rsAttributes.getNamedItem("Number").getNodeValue());
 								String color = rsAttributes.getNamedItem("Color").getNodeValue();
-								square = new ReleaseSquare(j, k, number, Color.getColor(color));
+								square = new ReleaseSquare(number, Color.getColor(color));
 							} else if(squareType.equals("LightningSquare")) {
-								square = new LightningSquare(j, k);
+								square = new LightningSquare();
 							} else if(squareType.equals("PuzzleSquare")) {
-								square = new PuzzleSquare(j, k);
+								square = new PuzzleSquare();
 							}
 							
-							squares[Board.BOARD_WIDTH*j + k] = square;
+							squares[j][k] = square;
 						}
 					}
 					
@@ -103,7 +103,7 @@ public class LevelXMLInputController {
 				}
 			}
 			
-			if(levelType.equals("Release")) {
+			if (levelType.equals("Release")) {
 				level = new ReleaseLevel(levelNumber, levelLocked, bullpen, board, null);
 			} else if(levelType.equals("Lightning")) {
 				int levelTime = Integer.parseInt(rootLevelElement.getAttribute("Time"));
