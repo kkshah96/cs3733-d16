@@ -30,7 +30,7 @@ public class PieceDrawer {
 		
 		g.setColor(c);
 		for(int i = 0; i < 5; i++){
-			g.fillRect(squares[i].getRow() * width + width_offset, squares[i].getCol() * width + height_offset, width, width);
+			g.fillRect((anchorSquare.getRow() + squares[i].getRow()) * width + width_offset,( anchorSquare.getCol() + squares[i].getCol()) * width + height_offset, width, width);
 		}
 		
 		g.fillRect(anchorSquare.getRow() * width + width_offset, anchorSquare.getCol() * width + height_offset, width, width);
