@@ -291,16 +291,27 @@ public class LevelEditorView extends JFrame {
 		JComboBox releaseColorComboBox = new JComboBox();
 		releaseColorComboBox.setBounds(250, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseColorComboBox);
+		
+		//TODO: Does it make sense to get these colors from some entity class?
 		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(56, 561, 500, 115);
 		getContentPane().add(scrollPane);
 		
 		PaletteView panel = new PaletteView();
 		scrollPane.setViewportView(panel);
-		panel.setLayout(null);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 496, Short.MAX_VALUE)
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 111, Short.MAX_VALUE)
+		);
+		panel.setLayout(gl_panel);
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(100, 100, 1143, 751);
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

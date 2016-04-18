@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import model.Palette;
 import model.Piece;
 import model.PieceFactory;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 	public class PaletteView extends JPanel {
 		static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
@@ -22,15 +25,40 @@ import model.PieceFactory;
 		 * Create the panel.
 		 */
 		public PaletteView() {
-			setLayout(null);
+		//	setLayout();
 			
 			JLabel lblNewLabel = new JLabel("There should be a scrollbar here..");
 			lblNewLabel.setBounds(10, 11, 436, 14);
-			add(lblNewLabel);
 			
 			JLabel lblIfYouCan = new JLabel("If you can see this it works!");
 			lblIfYouCan.setBounds(944, 11, 210, 14);
-			add(lblIfYouCan);
+			
+			JLabel lblBleh = new JLabel("Bleh");
+			GroupLayout groupLayout = new GroupLayout(this);
+			groupLayout.setHorizontalGroup(
+				groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(30)
+								.addComponent(lblNewLabel)
+								.addGap(5)
+								.addComponent(lblIfYouCan))
+							.addComponent(lblBleh))
+						.addContainerGap(111, Short.MAX_VALUE))
+			);
+			groupLayout.setVerticalGroup(
+				groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createSequentialGroup()
+						.addGap(5)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addComponent(lblNewLabel)
+							.addComponent(lblIfYouCan))
+						.addPreferredGap(ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
+						.addComponent(lblBleh)
+						.addContainerGap())
+			);
+			setLayout(groupLayout);
 			
 			
 			
