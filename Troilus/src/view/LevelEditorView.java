@@ -311,16 +311,15 @@ public class LevelEditorView extends JFrame {
 		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(100, 100, 1143, 751);
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		PaletteView pView = new PaletteView();
-		pView.setBounds(275, 561, 495, 111);
-		pView.setPreferredSize(new Dimension(500, 500));
+		//pView.setPreferredSize(new Dimension(500, 500));
 		//pView.setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane(pView);
-		scrollPane.setBounds(56, 561, 193, 115);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 522, 1142, 201);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
+		JPanel panel = new PaletteView();
+		scrollPane.setViewportView(panel);
 		
 	}
 	
