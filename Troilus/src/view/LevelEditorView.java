@@ -295,8 +295,6 @@ public class LevelEditorView extends JFrame {
 		JComboBox releaseColorComboBox = new JComboBox();
 		releaseColorComboBox.setBounds(250, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseColorComboBox);
-		
-		//TODO: Does it make sense to get these colors from some entity class?
 		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(100, 100, 1143, 751);
