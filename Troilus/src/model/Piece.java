@@ -2,6 +2,9 @@ package model;
 
 // TODO: Should we make Piece subclasses for level types so square types are consistent?
 public class Piece {
+	static final int ROTATE_CCW = -1;
+	static final int ROTATE_CW = 1;
+	
 	PieceSquare[] squares;
 	PieceSquare anchor;
 	int type;
