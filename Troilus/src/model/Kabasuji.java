@@ -25,13 +25,13 @@ public class Kabasuji {
 		for(int i = 0; i < 24; i++){
 			Level level;
 			if (i % 3 == 0) {
-				level = new PuzzleLevel(i, false, new Bullpen(), new Board(), new  Palette(null), 10);
+				level = new PuzzleLevel(i, false, new Bullpen(), new Board(), new  Palette(), 10);
 			}
 			else if (i % 3 == 1) {
-				level = new LightningLevel(i, false, new Bullpen(), new Board(), new  Palette(null), 10);
+				level = new LightningLevel(i, false, new Bullpen(), new Board(), new  Palette(), 10);
 			}
 			else {
-				level = new ReleaseLevel(i, false, new Bullpen(), new Board(), new  Palette(null));
+				level = new ReleaseLevel(i, false, new Bullpen(), new Board(), new  Palette());
 			}
 			
 			// show only the first level as unlocked, lock every other level

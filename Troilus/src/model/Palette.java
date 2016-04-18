@@ -5,8 +5,10 @@ public class Palette {
 
 	// TODO: Handle checking there are exactly 35 pieces at execution time? NO (could change!)
 	// TODO: Can we just pass in all of the pieces to the constructor or should we make an addPiece method?
-	public Palette(Piece[] pieces){
-		this.pieces = pieces;
+	public Palette(){
+		//this.pieces = pieces;
+		pieces = new Piece[35];
+		initialize();
 	}
 
 	// TODO: Assumed we would need to be able to get a piece from the Palette so I added this
@@ -17,5 +19,11 @@ public class Palette {
 			}
 		}
 		return null;
+	}
+	
+	private void initialize(){
+		for(int i = 0; i < 35; i++){
+			pieces[i] = PieceFactory.getPiece(0, i * 6, i);
+		}
 	}
 }

@@ -23,6 +23,9 @@ import javax.swing.DefaultComboBoxModel;
 
 import model.LevelBuilder;
 import controller.ExitLevelEditorController;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.FlowLayout;
 
 public class LevelEditorView extends JFrame {
 
@@ -240,30 +243,6 @@ public class LevelEditorView extends JFrame {
 		lblSeconds.setBounds(156, 10, 48, 16);
 		timePanel.add(lblSeconds);
 		
-		JPanel panel_8 = new JPanel();
-		panel_8.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_8.setBackground(Color.LIGHT_GRAY);
-		panel_8.setBounds(0, 520, 972, 209);
-		getContentPane().add(panel_8);
-		panel_8.setLayout(null);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(246, 199, 425, -14);
-		panel_8.add(scrollPane);
-		
-		JPanel panel_9 = new JPanel();
-		panel_9.setBounds(0, 0, 88, 36);
-		panel_8.add(panel_9);
-		panel_9.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_9.setBackground(Color.LIGHT_GRAY);
-		panel_9.setLayout(null);
-		
-		JLabel lblPalette = new JLabel("Palette");
-		lblPalette.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
-		lblPalette.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPalette.setBounds(6, 6, 76, 24);
-		panel_9.add(lblPalette);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -313,6 +292,15 @@ public class LevelEditorView extends JFrame {
 		releaseColorComboBox.setBounds(250, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseColorComboBox);
 		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(56, 561, 500, 115);
+		getContentPane().add(scrollPane);
+		
+		PaletteView panel = new PaletteView();
+		scrollPane.setViewportView(panel);
+		panel.setLayout(null);
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(100, 100, 1143, 751);
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
