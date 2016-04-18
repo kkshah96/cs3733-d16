@@ -102,4 +102,9 @@ public class Board {
 		}
 		return squares[row][col];
 	}
+	
+	public void setDimensions(int rows, int cols){
+		squares = new Square[rows][cols];
+	}
+	
 }

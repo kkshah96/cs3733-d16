@@ -25,8 +25,11 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import model.Level;
 import model.LevelBuilder;
 import controller.ExitLevelEditorController;
+import controller.SetBoardDimensionsController;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
@@ -188,10 +191,20 @@ public class LevelEditorView extends JFrame {
 		panel_7.add(boardHeightField);
 		
 		
-		JButton btnNew = new JButton("Set");
-		btnNew.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnNew.setBounds(209, -2, 74, 38);
-		panel_7.add(btnNew);
+		JButton setButton = new JButton("Set");
+		setButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		setButton.setBounds(209, -2, 74, 38);
+		panel_7.add(setButton);
+
+		//boardHeightField.add
+		
+		if(!boardHeightField.getText().isEmpty() && !boardWidthField.getText().isEmpty()){
+			Integer newRows = Integer.parseInt(boardHeightField.getText());
+			Integer newCols = Integer.parseInt(boardWidthField.getText());
+			setButton.addMouseListener(new SetBoardDimensionsController(builder, builder.getActiveLevel(), levelLoader, newRows.intValue(), newCols.intValue()));
+		}
+
+
 		
 		maxMovesPanel = new JPanel();
 		maxMovesPanel.setBounds(286, 0, 184, 40);
