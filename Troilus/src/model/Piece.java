@@ -100,4 +100,26 @@ public class Piece {
 		}
 		return new Piece(newSquares, anchor, type); // TODO: Implement this
 	}
+	
+	/** Return true if any PieceSquare is at the given coordinates
+	 * 
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	public boolean overlaps(int row, int col) {
+		int anchorRow = this.getRow();
+		int anchorCol = this.getCol();
+		
+		if (anchorRow == row && anchorCol == col) {
+			return true;
+		}
+		for (PieceSquare square : squares) {
+			if (anchorRow + square.getRow() == row && anchorCol + square.getCol() == col) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }

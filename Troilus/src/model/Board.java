@@ -15,6 +15,21 @@ public class Board {
 		squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
 		pieces = new ArrayList<Piece>();
 	}
+	
+	public Board(int rows, int cols, Square squareType) {
+		if (rows > BOARD_HEIGHT || cols > BOARD_WIDTH) {
+			//return; // Should this check be here?
+		}
+		for (int i = 0; i < BOARD_HEIGHT; i++) {
+			for (int j = 0; j < BOARD_WIDTH; j++) {
+				if (i < rows && j < cols) {
+					//squares[i][j] = (Square) squareType.clone();
+				} else {
+					squares[i][j] = new OutOfBoundsSquare();
+				}
+			}
+		}
+	}
 
 	public Board(Square[][] squares) {
 		this.squares = squares;
@@ -67,10 +82,11 @@ public class Board {
 			return null;
 		}
 		for (Piece piece : pieces) {
-			if (piece.getRow() == row && piece.getCol() == col) {
+			if (piece.overlaps(row,col)) {
 				return piece;
 			}
 		}
+		
 		return null;
 	}
 

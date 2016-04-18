@@ -3,11 +3,10 @@ package model;
 import java.awt.Color;
 
 public class ReleaseSquare extends Square {
-
 	int number;
 	Color numberColor;
 	
-	public ReleaseSquare(int number, Color color) {//, boolean hintSquare) {
+	public ReleaseSquare(int number, Color color) {
 		this.number = number;
 		this.numberColor = color;
 	}
@@ -31,5 +30,4 @@ public class ReleaseSquare extends Square {
 	public String getNumberColor() {
 		return numberColor.toString();
 	}
-
 }

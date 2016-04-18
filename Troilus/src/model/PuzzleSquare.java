@@ -1,9 +1,8 @@
 package model;
 
 public class PuzzleSquare extends Square {
-
-	public PuzzleSquare() {//, boolean hintSquare) {
-		super(); //, hintSquare;
+	public PuzzleSquare() {
+		super();
 	}
 
 	// TODO: Can a PuzzleSquare become invalid?

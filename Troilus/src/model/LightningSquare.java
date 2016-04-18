@@ -1,14 +1,15 @@
 package model;
 
 public class LightningSquare extends Square {
-
 	boolean isCovered;
 	
-	public LightningSquare() {//, boolean hintSquare) {
-		super();//, hintSquare);
+	public LightningSquare() {
+		super();
 	}
 
-	// TODO: Can a LightningSquare become invalid?
+	/** Returns true if square is not already covered
+	 * 
+	 */
 	@Override
 	public boolean isValid() {
 		return true;
