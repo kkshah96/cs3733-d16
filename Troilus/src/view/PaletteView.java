@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -7,8 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Palette;
-import model.Piece;
-import model.PieceFactory;
 
 public class PaletteView extends JPanel {
 	static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
@@ -23,6 +22,8 @@ public class PaletteView extends JPanel {
 	 */
 	public PaletteView() {
 		setLayout(null);
+		
+		this.setPreferredSize(new Dimension(500, 500));
 
 		JLabel lblNewLabel = new JLabel("There should be a scrollbar here..");
 		lblNewLabel.setBounds(10, 11, 436, 14);
@@ -37,6 +38,9 @@ public class PaletteView extends JPanel {
 	}
 
 	public void paintComponent(Graphics g){
+		
+		super.paintComponent(g);
+		
 		PieceDrawer pDrawer = new PieceDrawer();
 
 		for(int i = 0; i < 35; i++){
