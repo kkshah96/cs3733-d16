@@ -10,6 +10,9 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -196,14 +199,73 @@ public class LevelEditorView extends JFrame {
 		setButton.setBounds(209, -2, 74, 38);
 		panel_7.add(setButton);
 
-		//boardHeightField.add
 		
-		if(!boardHeightField.getText().isEmpty() && !boardWidthField.getText().isEmpty()){
-			Integer newRows = Integer.parseInt(boardHeightField.getText());
-			Integer newCols = Integer.parseInt(boardWidthField.getText());
-			setButton.addMouseListener(new SetBoardDimensionsController(builder, builder.getActiveLevel(), levelLoader, newRows.intValue(), newCols.intValue()));
-		}
+	
+		boardHeightField.getDocument().addDocumentListener(new DocumentListener() {
+			Integer newRows;
+			public void insertUpdate(DocumentEvent e) {
+				newRows = Integer.parseInt(boardHeightField.getText());
+				
+			}
 
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				System.out.println("Gets here for some reason");
+				
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				System.out.println("Gets here for some reason");
+				
+			}
+			
+			public Integer getRows(){
+				return newRows;
+			}
+		    // implement the methods
+		});
+		
+		
+		boardWidthField.getDocument().addDocumentListener(new DocumentListener() {
+			Integer newCols;
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				newCols = Integer.parseInt(boardWidthField.getText());
+				
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				System.out.println("Gets here for some reason");
+				
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				System.out.println("Gets here for some reason");
+				
+			}
+			
+			public Integer getCols(){
+				return newCols;
+			}
+		});
+		
+//		if(!boardHeightField.getText().isEmpty() && !boardWidthField.getText().isEmpty()){
+//			Integer newRows = Integer.parseInt(boardHeightField.getText());
+//			Integer newCols = Integer.parseInt(boardWidthField.getText());
+//		
+//		}
+		
+		
+		
+		
+		Integer newRows = Integer.parseInt(boardHeightField.getText());
+		Integer newCols = Integer.parseInt(boardWidthField.getText());
+		
+		setButton.addMouseListener(new SetBoardDimensionsController
+				(builder, builder.getActiveLevel(), levelLoader, newRows.intValue(), newCols.intValue()));
 
 		
 		maxMovesPanel = new JPanel();
