@@ -191,65 +191,10 @@ public class LevelEditorView extends JFrame {
 
 		
 	
-		boardHeightField.getDocument().addDocumentListener(new DocumentListener() {
-			Integer newRows;
-			public void insertUpdate(DocumentEvent e) {
-				newRows = Integer.parseInt(boardHeightField.getText());
-				
-			}
+//TODO: This still doesn't exactly work....
+		setButton.addMouseListener(new SetBoardDimensionsController
+				(builder, builder.getActiveLevel(), levelLoader, Integer.parseInt(boardHeightField.getText()), Integer.parseInt(boardWidthField.getText())));
 
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				System.out.println("Gets here for some reason");
-				
-			}
-
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				System.out.println("Gets here for some reason");
-				
-			}
-			
-			public Integer getRows(){
-				return newRows;
-			}
-		    // implement the methods
-		});
-		
-		
-		boardWidthField.getDocument().addDocumentListener(new DocumentListener() {
-			Integer newCols;
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				newCols = Integer.parseInt(boardWidthField.getText());
-				
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				System.out.println("Gets here for some reason");
-				
-			}
-
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				System.out.println("Gets here for some reason");
-				
-			}
-			
-			public Integer getCols(){
-				return newCols;
-			}
-		});
-		
-//		if(!boardHeightField.getText().isEmpty() && !boardWidthField.getText().isEmpty()){
-//			Integer newRows = Integer.parseInt(boardHeightField.getText());
-//			Integer newCols = Integer.parseInt(boardWidthField.getText());
-//		
-//		}
-		
-		
-		
 		
 		Integer newRows = Integer.parseInt(boardHeightField.getText());
 		Integer newCols = Integer.parseInt(boardWidthField.getText());
