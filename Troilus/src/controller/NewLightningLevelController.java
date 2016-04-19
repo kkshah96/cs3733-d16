@@ -1,15 +1,21 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import model.Board;
+import model.Bullpen;
 import model.LevelBuilder;
+import model.LightningLevel;
+import model.Palette;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
-public class NewLightningLevelController extends MouseAdapter {
+public class NewLightningLevelController implements ActionListener {
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;
 	
@@ -18,9 +24,10 @@ public class NewLightningLevelController extends MouseAdapter {
 		this.levelLoader = levelLoader;
 	}
 	
+	
 	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+
 		final LevelEditorView newLightningLevel = new LevelEditorView(builder, levelLoader);
 		
 		newLightningLevel.addWindowListener(new WindowAdapter() {
@@ -36,7 +43,14 @@ public class NewLightningLevelController extends MouseAdapter {
 		newLightningLevel.setReleaseSquarePanelVisibility(false);
 		newLightningLevel.setTimeLimitPanelVisibility(true);
 		
+		Bullpen bpen = new Bullpen();
+		Board board = new Board();
+		Palette p = new Palette();
+		LightningLevel l = new LightningLevel(0, true, bpen, board, p, 0);
+		builder.addLevel(l);
+		
 		levelLoader.setVisible(false);
 		newLightningLevel.setVisible(true);
+		
 	}
 }

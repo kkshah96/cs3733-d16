@@ -1,15 +1,22 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import model.Board;
+import model.Bullpen;
 import model.LevelBuilder;
+import model.LightningLevel;
+import model.Palette;
+import model.PuzzleLevel;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
-public class NewPuzzleLevelController extends MouseAdapter {
+public class NewPuzzleLevelController implements ActionListener {
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;
 	
@@ -19,23 +26,30 @@ public class NewPuzzleLevelController extends MouseAdapter {
 	}
 	
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		final LevelEditorView newPuzzleLevel = new LevelEditorView(builder, levelLoader);
-		newPuzzleLevel.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				newPuzzleLevel.dispose();
-				levelLoader.setVisible(true);
-			}      
-		});
-		// Since this only varies by Level type and must also be done in gameplay, we
-		// might be able to have an Initialize() method for each Level subclass that
-		// sets the appropriate visibility...
-		newPuzzleLevel.setMaxMovesPanelVisibility(true);
-		newPuzzleLevel.setReleaseSquarePanelVisibility(false);
-		newPuzzleLevel.setTimeLimitPanelVisibility(false);
+				final LevelEditorView newPuzzleLevel = new LevelEditorView(builder, levelLoader);
+				newPuzzleLevel.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						newPuzzleLevel.dispose();
+						levelLoader.setVisible(true);
+					}      
+				});
+				// Since this only varies by Level type and must also be done in gameplay, we
+				// might be able to have an Initialize() method for each Level subclass that
+				// sets the appropriate visibility...
+				newPuzzleLevel.setMaxMovesPanelVisibility(true);
+				newPuzzleLevel.setReleaseSquarePanelVisibility(false);
+				newPuzzleLevel.setTimeLimitPanelVisibility(false);
+				
+				Bullpen bpen = new Bullpen();
+				Board board = new Board();
+				Palette p = new Palette();
+				PuzzleLevel p2 = new PuzzleLevel(0, true, bpen, board, p, 0);
+				builder.addLevel(p2);
+				
+				levelLoader.setVisible(false);
+				newPuzzleLevel.setVisible(true);
 		
-		levelLoader.setVisible(false);
-		newPuzzleLevel.setVisible(true);
 	}	
 }

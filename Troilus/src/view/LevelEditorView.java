@@ -27,13 +27,14 @@ import controller.ExitLevelEditorController;
 import controller.SetBoardDimensionsController;
 import controller.SetMaxMovesController;
 import controller.ToggleSquareController;
+import model.Board;
 import model.Level;
 import model.LevelBuilder;
 
 public class LevelEditorView extends JFrame {
 
-	private JTextField boardWidthField;
-	private JTextField boardHeightField;
+	private JTextField boardRowField;
+	private JTextField boardColField;
 	private JTextField maxMovesField;
 	private JTextField timeMinutesField;
 	private JTextField timeSecondsField;
@@ -62,7 +63,8 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		BoardView boardPanel = new BoardView(builder.getActiveLevel().getBoard()); //TODO: Does this make any sense?
+		//BoardView boardPanel = new BoardView(builder.getActiveLevel().getBoard()); //TODO: Does this make any sense?
+		BoardView boardPanel = new BoardView(new Board()); //TODO: GIve this the appropriate board
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		boardPanel.setBackground(Color.LIGHT_GRAY);
@@ -163,16 +165,16 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(panel_7);
 		panel_7.setLayout(null);
 		
-		JLabel lblBoardSize = new JLabel("Board:");
-		lblBoardSize.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblBoardSize.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBoardSize.setBounds(0, 0, 74, 32);
-		panel_7.add(lblBoardSize);
+		JLabel boardField = new JLabel("Board:");
+		boardField.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		boardField.setHorizontalAlignment(SwingConstants.CENTER);
+		boardField.setBounds(0, 0, 74, 32);
+		panel_7.add(boardField);
 		
-		boardWidthField = new JTextField();
-		boardWidthField.setBounds(70, 1, 50, 28);
-		panel_7.add(boardWidthField);
-		boardWidthField.setColumns(10);
+		boardRowField = new JTextField("12");
+		boardRowField.setBounds(70, 1, 50, 28);
+		panel_7.add(boardRowField);
+		boardRowField.setColumns(10);
 		
 		JLabel lblX = new JLabel("x");
 		lblX.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -181,10 +183,10 @@ public class LevelEditorView extends JFrame {
 		lblX.setBounds(120, 10, 25, 13);
 		panel_7.add(lblX);
 		
-		boardHeightField = new JTextField();
-		boardHeightField.setColumns(10);
-		boardHeightField.setBounds(148, 1, 50, 28);
-		panel_7.add(boardHeightField);
+		boardColField = new JTextField("12");
+		boardColField.setColumns(10);
+		boardColField.setBounds(148, 1, 50, 28);
+		panel_7.add(boardColField);
 		
 		
 		JButton setButton = new JButton("Set");
@@ -194,16 +196,15 @@ public class LevelEditorView extends JFrame {
 
 		
 	
-//TODO: This still doesn't exactly work....
-		setButton.addMouseListener(new SetBoardDimensionsController
-				(builder, builder.getActiveLevel(), levelLoader, Integer.parseInt(boardHeightField.getText()), Integer.parseInt(boardWidthField.getText())));
+////TODO: This still doesn't exactly work....
+//		setButton.addMouseListener(new SetBoardDimensionsController
+//				(builder, builder.getActiveLevel(), levelLoader, Integer.parseInt(boardHeightField.getText()), Integer.parseInt(boardWidthField.getText())));
 
 		
-		Integer newRows = Integer.parseInt(boardHeightField.getText());
-		Integer newCols = Integer.parseInt(boardWidthField.getText());
+
 		
-		setButton.addMouseListener(new SetBoardDimensionsController
-				(builder, builder.getActiveLevel(), levelLoader, newRows.intValue(), newCols.intValue()));
+		setButton.addActionListener(new SetBoardDimensionsController
+				(builder, builder.getActiveLevel(), this));
 
 		
 		maxMovesPanel = new JPanel();
@@ -342,5 +343,13 @@ public class LevelEditorView extends JFrame {
 	}
 	public void setTimeLimitPanelVisibility(boolean which){
 		timePanel.setVisible(which);
+	}
+	
+	public JTextField getRowField(){
+		return boardRowField;
+	}
+	
+	public JTextField getColField(){
+		return boardColField;
 	}
 }
