@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,7 +16,7 @@ import view.LevelView;
 /**
  * Controller to initialize new release level in Kabasuji.
  */
-public class StartReleaseLevelController extends MouseAdapter {
+public class StartReleaseLevelController implements ActionListener {
 	Kabasuji game;
 	int levelNumber;
 	LevelSelectorView levelSelector;
@@ -26,8 +28,8 @@ public class StartReleaseLevelController extends MouseAdapter {
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		Level selectedLevel = game.getLevels().get(levelNumber - 1);
+	public void actionPerformed(ActionEvent e) {
+Level selectedLevel = game.getLevels().get(levelNumber - 1);
 		
 		// if level is locked, take no action
 		if (selectedLevel.isLocked()) {
@@ -48,5 +50,6 @@ public class StartReleaseLevelController extends MouseAdapter {
 		// show level view
 		levelView.setVisible(true);
 		levelSelector.setVisible(false);
+		
 	}
 }

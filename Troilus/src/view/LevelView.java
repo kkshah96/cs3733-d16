@@ -70,7 +70,9 @@ public class LevelView extends JFrame{
 		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		panelTitle.add(lblLevelPuzzle);
 		
-		BoardView panelBoard = new BoardView(game.getActiveLevel().getBoard()); // TODO: Does this make any sense?
+	
+		//BoardView panelBoard = new BoardView(game.getActiveLevel().getBoard()); // TODO: Does this make any sense?
+		BoardView panelBoard = new BoardView(new Board());
 		panelBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panelBoard.setBackground(Color.LIGHT_GRAY);
 		panelBoard.setBounds(0, 88, 461, 455);
@@ -121,7 +123,7 @@ public class LevelView extends JFrame{
 		panel_5.add(btnFlipVertical);
 		
 		JButton btnExitLevel = new JButton("Exit Level");
-		btnExitLevel.addMouseListener(new ExitLevelController(this, levelSelector, game));
+		btnExitLevel.addActionListener(new ExitLevelController(this, levelSelector, game));
 		btnExitLevel.setBounds(771, 50, 176, 36);
 		panel.add(btnExitLevel);
 		

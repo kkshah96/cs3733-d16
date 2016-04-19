@@ -10,7 +10,7 @@ import model.LevelBuilder;
 import model.PuzzleLevel;
 import view.LevelLoaderView;
 
-public class SetMaxMovesController extends MouseAdapter implements ActionListener{
+public class SetMaxMovesController implements ActionListener{
 
 
 	PuzzleLevel level;

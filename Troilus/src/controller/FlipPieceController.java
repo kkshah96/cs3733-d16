@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import model.Kabasuji;
@@ -8,7 +10,7 @@ import view.BullpenView;
 
 
 
-public class FlipPieceController extends MouseAdapter{
+public class FlipPieceController implements ActionListener{
 	Kabasuji game;
 
 	Level level;
@@ -25,9 +27,11 @@ public class FlipPieceController extends MouseAdapter{
 		this.degree = degree;
 		
 	}
-	
-	public void mousePressed(MouseEvent e) {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		level.getActivePiece().flipPiece(degree);
+		
 	}
 	
 	

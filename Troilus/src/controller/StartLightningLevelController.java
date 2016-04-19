@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -12,7 +14,7 @@ import view.LevelView;
 /**
  * Controller to initialize new lightning level in Kabasuji.
  */
-public class StartLightningLevelController extends MouseAdapter {
+public class StartLightningLevelController implements ActionListener {
 	Kabasuji game;
 	int levelNumber;
 	LevelSelectorView levelSelector;
@@ -23,8 +25,9 @@ public class StartLightningLevelController extends MouseAdapter {
 		this.game = game;
 	}
 
+
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		Level selectedLevel = game.getLevels().get(levelNumber - 1);
 
 		// if level is locked, take no action
@@ -47,5 +50,6 @@ public class StartLightningLevelController extends MouseAdapter {
 		// show level view
 		levelView.setVisible(true);
 		levelSelector.setVisible(false);
+		
 	}
 }

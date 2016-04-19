@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -7,7 +9,7 @@ import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
 
-public class ExitLevelController extends MouseAdapter {
+public class ExitLevelController implements ActionListener {
 	Kabasuji game;
 	LevelView level;
 	LevelSelectorView levelSelector;
@@ -18,10 +20,13 @@ public class ExitLevelController extends MouseAdapter {
 		this.game = game;
 	}
 
-	public void mousePressed(MouseEvent e) {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		//if(lvlSelection.)
-		// TODO Auto-generated method stub\
-		level.dispose();
-		levelSelector.setVisible(true);
+				// TODO Auto-generated method stub\
+				level.dispose();
+				levelSelector.setVisible(true);
+		
 	}
 }

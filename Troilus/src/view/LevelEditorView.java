@@ -145,7 +145,7 @@ public class LevelEditorView extends JFrame {
 		JButton levelLoaderButton = new JButton("Level Loader");
 		levelLoaderButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		levelLoaderButton.setBounds(871, 0, 199, 38);
-		levelLoaderButton.addMouseListener(new ExitLevelEditorController(builder, this, levelLoader));
+		levelLoaderButton.addActionListener(new ExitLevelEditorController(builder, this, levelLoader));
 		panel_4.add(levelLoaderButton);
 		
 		JButton undoButton = new JButton("Undo");
