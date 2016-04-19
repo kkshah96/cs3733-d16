@@ -63,8 +63,8 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		//BoardView boardPanel = new BoardView(builder.getActiveLevel().getBoard()); //TODO: Does this make any sense?
-		BoardView boardPanel = new BoardView(new Board()); //TODO: GIve this the appropriate board
+		BoardView boardPanel = new BoardView(builder.getActiveLevel().getBoard());
+	//	BoardView boardPanel = new BoardView(new Board()); //TODO: GIve this the appropriate board
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		boardPanel.setBackground(Color.LIGHT_GRAY);

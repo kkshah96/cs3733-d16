@@ -23,6 +23,16 @@ public class NewPuzzleLevelController implements ActionListener {
 	public NewPuzzleLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
 		this.builder = builder;
 		this.levelLoader = levelLoader;
+		initialize();
+	}
+	
+	private void initialize(){
+		Bullpen bpen = new Bullpen();
+		Board board = new Board();
+		Palette p = new Palette();
+		PuzzleLevel p2 = new PuzzleLevel(0, true, bpen, board, p, 0);
+		builder.addLevel(p2);
+		builder.setActiveLevel(p2);
 	}
 	
 	@Override
@@ -41,12 +51,6 @@ public class NewPuzzleLevelController implements ActionListener {
 				newPuzzleLevel.setMaxMovesPanelVisibility(true);
 				newPuzzleLevel.setReleaseSquarePanelVisibility(false);
 				newPuzzleLevel.setTimeLimitPanelVisibility(false);
-				
-				Bullpen bpen = new Bullpen();
-				Board board = new Board();
-				Palette p = new Palette();
-				PuzzleLevel p2 = new PuzzleLevel(0, true, bpen, board, p, 0);
-				builder.addLevel(p2);
 				
 				levelLoader.setVisible(false);
 				newPuzzleLevel.setVisible(true);

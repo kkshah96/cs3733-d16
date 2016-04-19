@@ -21,6 +21,17 @@ public class NewReleaseLevelController extends MouseAdapter {
 	public NewReleaseLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
 		this.builder = builder;
 		this.levelLoader = levelLoader;
+		initialize();
+	}
+	
+	private void initialize(){
+
+		Bullpen bpen = new Bullpen();
+		Board board = new Board();
+		Palette p = new Palette();
+		ReleaseLevel r = new ReleaseLevel(0, true, bpen, board, p);
+		builder.addLevel(r);
+		builder.setActiveLevel(r);
 	}
 	
 	@Override
@@ -40,12 +51,6 @@ public class NewReleaseLevelController extends MouseAdapter {
 		newReleaseLevel.setMaxMovesPanelVisibility(false);
 		newReleaseLevel.setReleaseSquarePanelVisibility(true);
 		newReleaseLevel.setTimeLimitPanelVisibility(false);
-		
-		Bullpen bpen = new Bullpen();
-		Board board = new Board();
-		Palette p = new Palette();
-		ReleaseLevel r = new ReleaseLevel(0, true, bpen, board, p);
-		builder.addLevel(r);
 
 		levelLoader.setVisible(false);
 		newReleaseLevel.setVisible(true);
