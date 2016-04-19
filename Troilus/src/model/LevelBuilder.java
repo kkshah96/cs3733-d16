@@ -61,4 +61,8 @@ public class LevelBuilder {
 	public Level getActiveLevel() {
 		return activeLevel;
 	}
+	
+	public void addLevel(Level level){
+		levels.add(level);
+	}
 }
