@@ -34,8 +34,9 @@ public class SetMaxMovesController extends MouseAdapter implements ActionListene
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		level.setMaxMoves(maxMoves);
 		System.out.print("Gets here!");
+		level.setMaxMoves(maxMoves);
+		
 		
 	}
 
