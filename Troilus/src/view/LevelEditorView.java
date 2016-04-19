@@ -26,6 +26,7 @@ import javax.swing.border.LineBorder;
 import controller.ExitLevelEditorController;
 import controller.SetBoardDimensionsController;
 import controller.SetMaxMovesController;
+import controller.ToggleSquareController;
 import model.Level;
 import model.LevelBuilder;
 
@@ -268,10 +269,12 @@ public class LevelEditorView extends JFrame {
 		panel_1.setBounds(0, 76, 685, 38);
 		getContentPane().add(panel_1);
 		
-		JButton btnRemove = new JButton("Toggle");
-		btnRemove.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnRemove.setBounds(437, 0, 115, 38);
-		panel_1.add(btnRemove);
+		JButton ToggleButton = new JButton("Toggle");
+		ToggleButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		ToggleButton.setBounds(437, 0, 115, 38);
+		panel_1.add(ToggleButton);
+		
+		ToggleButton.addMouseListener(new ToggleSquareController(builder, builder.getActiveLevel(), levelLoader));
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));

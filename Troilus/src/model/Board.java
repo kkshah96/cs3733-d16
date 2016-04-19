@@ -111,4 +111,13 @@ public class Board {
 		return this.pieces;
 	}
 	
+	public void toggleSquareOff(int row, int col){
+		squares[row][col] = new OutOfBoundsSquare();
+	}
+	
+	//TODO: Fix this method:
+	public void toggleSquareOn(int row, int col){
+		squares[row][col] = new PuzzleSquare(); // TODO HOW DO WE DETERMINE WHICH TYPE OF SQUARE IT IS?
+	}
+	
 }

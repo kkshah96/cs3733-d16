@@ -3,9 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
-import model.Kabasuji;
+
 import model.Level;
 import model.LevelBuilder;
 import model.PuzzleLevel;
@@ -26,12 +25,6 @@ public class SetMaxMovesController extends MouseAdapter implements ActionListene
 		this.maxMoves = maxMoves;
 	}
 	
-	public void mousePressed(MouseEvent e) {
-		level.setMaxMoves(maxMoves);
-		
-		
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.print("Gets here!");
