@@ -107,4 +107,8 @@ public class Board {
 		squares = new Square[rows][cols];
 	}
 	
+	public ArrayList<Piece> getPieces(){
+		return this.pieces;
+	}
+	
 }

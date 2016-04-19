@@ -3,11 +3,11 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Board;
 import model.Piece;
 import model.PieceFactory;
 
@@ -16,16 +16,18 @@ public class BoardView extends JPanel {
 	static final int SQUARE_SIZE = 30;
 	static final int WIDTH_OFFSET = 10;
 	static final int HEIGHT_OFFSET = 30;
-	ArrayList<SquareView> squares = new ArrayList<SquareView>();
+	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
 	
+	Board board;
 	/**
 	 * Create the panel.
 	 */
-	public BoardView() {
+	public BoardView(Board board) {
+		this.board = board;
 		initialize();
 		
 	}
-	
+		
 	private void initialize(){
 		JLabel lblBoard = new JLabel("Board");
 		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
@@ -59,6 +61,10 @@ public class BoardView extends JPanel {
 				drawer.paint(g, i + WIDTH_OFFSET, j + HEIGHT_OFFSET, SQUARE_SIZE, null, Color.BLACK);
 			}
 		}
+		
+	//	for(int i = 0; i < board.getPieces().size(); i++){
+		//	pDrawer.paint(g, board.getPieces().get(i), width, height_offset, width_offset);
+	//	}
 		
 		Piece piece2 = PieceFactory.getPiece(6, 4, 2);
 		//pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);

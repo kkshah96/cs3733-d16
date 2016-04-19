@@ -1,26 +1,20 @@
 package view;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import javax.swing.JTextField;
 import java.awt.Color;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSplitPane;
-import javax.swing.ImageIcon;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import controller.ExitLevelController;
-
+import model.Board;
 import model.Kabasuji;
 import model.Level;
 
@@ -36,7 +30,6 @@ public class LevelView extends JFrame{
 	LevelSelectorView levelSelector;
 	Kabasuji game;
 	Level level;
-	
 
 	/**
 	 * Launch the application.
@@ -45,7 +38,7 @@ public class LevelView extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public LevelView(LevelSelectorView levelSelector, Kabasuji game) {
+	public LevelView(LevelSelectorView levelSelector, Kabasuji game) { 
 		setResizable(false);
 		this.levelSelector = levelSelector;
 		this.game = game;
@@ -77,7 +70,7 @@ public class LevelView extends JFrame{
 		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		panelTitle.add(lblLevelPuzzle);
 		
-		JPanel panelBoard = new BoardView();
+		BoardView panelBoard = new BoardView(game.getActiveLevel().getBoard()); // TODO: Does this make any sense?
 		panelBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panelBoard.setBackground(Color.LIGHT_GRAY);
 		panelBoard.setBounds(0, 88, 461, 455);

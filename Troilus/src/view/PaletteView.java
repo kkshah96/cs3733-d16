@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 import model.Palette;
 
 public class PaletteView extends JPanel {
-	static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
+	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
 	static final int SQUARE_SIZE = 10;
-	static final int BUFFER_SIZE = 1;
-	ArrayList<SquareView> squares = new ArrayList<SquareView>();
+	//static final int BUFFER_SIZE = 1;
+	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
 
 	Palette p = new Palette();
 
