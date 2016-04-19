@@ -1,8 +1,10 @@
-package test.model;
+package model;
+
+import org.junit.Test;
 
 import model.Level;
 
-public class TestLevel1 {
+public class TestPuzzleLevel {
 	
 	@Test
 	public void testInitialization() {
