@@ -2,6 +2,7 @@ package view;
 
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -10,8 +11,10 @@ import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
@@ -66,18 +69,12 @@ public class SplashScreenView extends JFrame {
 		label.setFont(new Font("PT Sans Caption", Font.BOLD, 55));
 		panel.add(label);
 		
-		JLabel lblTroilus = new JLabel("Troilus");
-		lblTroilus.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTroilus.setForeground(Color.LIGHT_GRAY);
-		lblTroilus.setFont(new Font("PT Sans Caption", Font.BOLD, 26));
-		lblTroilus.setBounds(12, 173, 496, 54);
-		panel.add(lblTroilus);
-		
-		JLabel lblInsertLogoHere = new JLabel("[Insert Logo Here]");
+		JLabel lblInsertLogoHere = new JLabel(new ImageIcon(SplashScreenView.class.getResource("/images/logo.png")));
+		lblInsertLogoHere.setEnabled(true);
 		lblInsertLogoHere.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInsertLogoHere.setForeground(Color.LIGHT_GRAY);
+		//lblInsertLogoHere.setForeground(new Color(255, 255, 255));
 		lblInsertLogoHere.setFont(new Font("PT Sans Caption", Font.BOLD, 26));
-		lblInsertLogoHere.setBounds(12, 121, 496, 62);
+		lblInsertLogoHere.setBounds(22, 170, 496, 72);
 		panel.add(lblInsertLogoHere);
 		
 		JLabel lblAlexKunal = new JLabel("Alex Kasparek, Kunal Shah");
