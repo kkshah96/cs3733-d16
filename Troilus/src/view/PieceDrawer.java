@@ -25,7 +25,7 @@ public class PieceDrawer {
 		squares = piece.getSquares();
 		anchorSquare = piece.getAnchor();
 		
-		//g.setColor(getRandomColor());
+		g.setColor(getRandomColor());
 		for(int i = 0; i < 5; i++){
 			g.fillRect((anchorSquare.getRow() + squares[i].getRow()) * width + width_offset,( anchorSquare.getCol() + squares[i].getCol()) * width + height_offset, width, width);
 		}

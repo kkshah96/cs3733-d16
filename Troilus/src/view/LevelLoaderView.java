@@ -80,12 +80,12 @@ public class LevelLoaderView extends JFrame{
 		pnlTitle.setBorder(null);
 		
 		JButton btnNewPuzzleLevel = new JButton("New Puzzle Level");
-		btnNewPuzzleLevel.addMouseListener(new NewPuzzleLevelController(builder, this));
+		btnNewPuzzleLevel.addActionListener(new NewPuzzleLevelController(builder, this));
 		btnNewPuzzleLevel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewPuzzleLevel.setBackground(UIManager.getColor("Button.background"));
 		
 		JButton btnNewLightningLevel = new JButton("New Lightning Level");
-		btnNewLightningLevel.addMouseListener(new NewLightningLevelController(builder, this));
+		btnNewLightningLevel.addActionListener(new NewLightningLevelController(builder, this));
 		btnNewLightningLevel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewLightningLevel.setBackground(UIManager.getColor("Button.background"));
 		
@@ -338,10 +338,10 @@ public class LevelLoaderView extends JFrame{
 		// add mouse listeners to all level buttons
 		for (int i = 0; i < levelButtons.size(); i++){
 			if (i % 3 == 0) {
-				levelButtons.get(i).addMouseListener(new NewPuzzleLevelController(builder, this));
+				levelButtons.get(i).addActionListener(new NewPuzzleLevelController(builder, this));
 			}
 			else if (i % 3 == 1) {
-				levelButtons.get(i).addMouseListener(new NewLightningLevelController(builder, this));
+				levelButtons.get(i).addActionListener(new NewLightningLevelController(builder, this));
 			}
 			else {
 				levelButtons.get(i).addMouseListener(new NewReleaseLevelController(builder, this));

@@ -5,7 +5,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import model.Board;
+import model.Bullpen;
 import model.LevelBuilder;
+import model.LightningLevel;
+import model.Palette;
+import model.ReleaseLevel;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
@@ -35,6 +40,12 @@ public class NewReleaseLevelController extends MouseAdapter {
 		newReleaseLevel.setMaxMovesPanelVisibility(false);
 		newReleaseLevel.setReleaseSquarePanelVisibility(true);
 		newReleaseLevel.setTimeLimitPanelVisibility(false);
+		
+		Bullpen bpen = new Bullpen();
+		Board board = new Board();
+		Palette p = new Palette();
+		ReleaseLevel r = new ReleaseLevel(0, true, bpen, board, p);
+		builder.addLevel(r);
 
 		levelLoader.setVisible(false);
 		newReleaseLevel.setVisible(true);
