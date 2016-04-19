@@ -27,4 +27,8 @@ public class PuzzleLevel extends Level {
 	public int getMaxMoves() {
 		return maxMoves;
 	}
+	
+	public void setMaxMoves(int maxMoves){
+		this.maxMoves = maxMoves;
+	}
 }

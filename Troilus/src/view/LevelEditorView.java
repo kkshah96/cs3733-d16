@@ -25,6 +25,8 @@ import javax.swing.border.LineBorder;
 
 import controller.ExitLevelEditorController;
 import controller.SetBoardDimensionsController;
+import controller.SetMaxMovesController;
+import model.Level;
 import model.LevelBuilder;
 
 public class LevelEditorView extends JFrame {
@@ -216,10 +218,12 @@ public class LevelEditorView extends JFrame {
 		lblMaximumMoves.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMaximumMoves.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
 		
-		maxMovesField = new JTextField();
+		maxMovesField = new JTextField("0");
 		maxMovesField.setBounds(101, 4, 74, 28);
 		maxMovesPanel.add(maxMovesField);
 		maxMovesField.setColumns(10);
+		
+		maxMovesField.addActionListener(new SetMaxMovesController(builder, builder.getActiveLevel(), levelLoader, 0));
 		
 		
 		timePanel = new JPanel();
