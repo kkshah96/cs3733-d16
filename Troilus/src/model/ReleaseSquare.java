@@ -51,4 +51,9 @@ public class ReleaseSquare extends Square {
 			return true;
 		}
 	}
+	
+	public boolean setNumberColor(Color color){
+		this.numberColor = color;
+		return true;
+	}
 }
