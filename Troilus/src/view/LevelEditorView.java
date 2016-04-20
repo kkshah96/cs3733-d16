@@ -169,7 +169,7 @@ public class LevelEditorView extends JFrame {
 		JPanel panel_7 = new JPanel();
 		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_7.setBackground(Color.LIGHT_GRAY);
-		panel_7.setBounds(0, 37, 686, 40);
+		panel_7.setBounds(0, 37, 747, 40);
 		getContentPane().add(panel_7);
 		panel_7.setLayout(null);
 		
@@ -233,13 +233,8 @@ public class LevelEditorView extends JFrame {
 		maxMovesPanel.add(maxMovesField);
 		maxMovesField.setColumns(10);
 		
-		//TODO: Is it okay to use this weirdish logic?
-		if(builder.getActiveLevel().getName().equals("Puzzle")){
-			maxMovesField.addActionListener(new SetMaxMovesController(builder, builder.getActiveLevel(), levelLoader, 0));
-		}
-		
 		timePanel = new JPanel();
-		timePanel.setBounds(469, 1, 279, 38);
+		timePanel.setBounds(468, 0, 279, 38);
 		panel_7.add(timePanel);
 		timePanel.setLayout(null);
 		timePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -248,7 +243,7 @@ public class LevelEditorView extends JFrame {
 		JLabel lblTime = new JLabel("Time:");
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
-		lblTime.setBounds(2, 3, 42, 32);
+		lblTime.setBounds(0, 1, 42, 32);
 		timePanel.add(lblTime);
 		
 		timeMinutesField = new JTextField("0");
@@ -272,6 +267,16 @@ public class LevelEditorView extends JFrame {
 		lblSeconds.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		lblSeconds.setBounds(156, 10, 48, 16);
 		timePanel.add(lblSeconds);
+		
+		JButton btnSetTime = new JButton("Set Time");
+		btnSetTime.setBounds(209, -1, 64, 38);
+		timePanel.add(btnSetTime);
+		btnSetTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
+		
+		//TODO: Is it okay to use this weirdish logic?
+		if(builder.getActiveLevel().getName().equals("Puzzle")){
+			maxMovesField.addActionListener(new SetMaxMovesController(builder, builder.getActiveLevel(), levelLoader, 0));
+		}
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -337,13 +342,10 @@ public class LevelEditorView extends JFrame {
 		panel.setPreferredSize(new Dimension(2100, 100));
 		scrollPane.setViewportView(panel);
 		
-		JButton btnSetTime = new JButton("Set Time");
-		btnSetTime.setBounds(683, 38, 64, 38);
-		getContentPane().add(btnSetTime);
-		btnSetTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
-		
-		setButton.addActionListener(new SetTimeLimitController
+		if(builder.getActiveLevel().getName().equals("Lightning")){
+			btnSetTime.addActionListener(new SetTimeLimitController
 				(builder, builder.getActiveLevel(), this));
+		}
 		
 	}
 	
