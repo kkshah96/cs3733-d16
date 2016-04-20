@@ -27,7 +27,7 @@ public class Palette {
 	
 	private void initialize(){
 		for(int i = 0; i < 35; i++){
-			pieces[i] = PieceFactory.getPiece(i * 6, 0, i + 1);
+			pieces[i] = PieceFactory.getPiece(0, i * 6, i + 1);
 		}
 	}
 }
