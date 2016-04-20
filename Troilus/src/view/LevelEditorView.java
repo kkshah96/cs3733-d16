@@ -341,6 +341,9 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(btnSetTime);
 		btnSetTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
 		
+		setButton.addActionListener(new SetBoardDimensionsController
+				(builder, builder.getActiveLevel(), this));
+		
 	}
 	
 	public void setLevelType(String type){

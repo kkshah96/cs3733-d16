@@ -28,4 +28,17 @@ public class LightningLevel extends Level{
 	public int getTime() {
 		return timeLimit;
 	}
+	
+	public boolean setTimeLimit(int limit){
+		if(limit < 0){
+			System.out.println("Error! Invalid time limit.");
+			return false;
+		}
+		else{
+			this.timeLimit = limit;
+			return true;
+		}
+		
+			
+	}
 }
