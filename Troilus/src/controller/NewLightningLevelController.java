@@ -41,9 +41,9 @@ public class NewLightningLevelController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		Bullpen bpen = new Bullpen();
-		Square[][] squares = new PuzzleSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
+		Square[][] squares = new LightningSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
 		for(int i = 0; i < Board.BOARD_WIDTH; i++){
-			for(int j = 0; j < Board.BOARD_HEIGHT; i++){
+			for(int j = 0; j < Board.BOARD_HEIGHT; j++){
 				squares[i][j] = new LightningSquare(i, j, true);
 			}
 		}

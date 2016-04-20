@@ -41,8 +41,8 @@ public class NewReleaseLevelController extends MouseAdapter {
 		Bullpen bpen = new Bullpen();
 		Square[][] squares = new ReleaseSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
 		for(int i = 0; i < Board.BOARD_WIDTH; i++){
-			for(int j = 0; j < Board.BOARD_HEIGHT; i++){
-				squares[i][j] = new PuzzleSquare(i, j, true);
+			for(int j = 0; j < Board.BOARD_HEIGHT; j++){
+				squares[i][j] = new ReleaseSquare(i, j, true);
 			}
 		}
 		
