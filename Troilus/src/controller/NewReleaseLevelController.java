@@ -8,9 +8,11 @@ import java.awt.event.WindowEvent;
 import model.Board;
 import model.Bullpen;
 import model.LevelBuilder;
-import model.LightningLevel;
 import model.Palette;
+import model.PuzzleSquare;
 import model.ReleaseLevel;
+import model.ReleaseSquare;
+import model.Square;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
@@ -37,7 +39,15 @@ public class NewReleaseLevelController extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 
 		Bullpen bpen = new Bullpen();
-		Board board = new Board();
+		Square[][] squares = new ReleaseSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
+		for(int i = 0; i < Board.BOARD_WIDTH; i++){
+			for(int j = 0; j < Board.BOARD_HEIGHT; i++){
+				squares[i][j] = new PuzzleSquare(i, j, true);
+			}
+		}
+		
+		Board board = new Board(squares);
+				
 		Palette p = new Palette();
 		ReleaseLevel r = new ReleaseLevel(0, true, bpen, board, p);
 		builder.addLevel(r);

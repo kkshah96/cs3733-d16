@@ -11,7 +11,10 @@ import model.Board;
 import model.Bullpen;
 import model.LevelBuilder;
 import model.LightningLevel;
+import model.LightningSquare;
 import model.Palette;
+import model.PuzzleSquare;
+import model.Square;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
@@ -38,7 +41,15 @@ public class NewLightningLevelController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		Bullpen bpen = new Bullpen();
-		Board board = new Board();
+		Square[][] squares = new PuzzleSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
+		for(int i = 0; i < Board.BOARD_WIDTH; i++){
+			for(int j = 0; j < Board.BOARD_HEIGHT; i++){
+				squares[i][j] = new LightningSquare(i, j, true);
+			}
+		}
+		
+		Board board = new Board(squares);
+				
 		Palette p = new Palette();
 		LightningLevel l = new LightningLevel(0, true, bpen, board, p, 0);
 		builder.addLevel(l);
