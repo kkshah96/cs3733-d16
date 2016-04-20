@@ -66,15 +66,15 @@ public class BoardView extends JPanel {
 		//	pDrawer.paint(g, board.getPieces().get(i), width, height_offset, width_offset);
 	//	}
 		
-		Piece piece2 = PieceFactory.getPiece(4, 6, 2);
+		Piece piece2 = PieceFactory.getPiece(4, 7, 2);
 		//pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		pDrawer.paint(g, piece2, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
-		Piece piece3 = PieceFactory.getPiece(4, 4, 2);
+		Piece piece3 = PieceFactory.getPiece(4, 5, 2);
 		piece3 = piece3.flipPiece(-1);
 		pDrawer.paint(g, piece3, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
-		Piece piece4 = PieceFactory.getPiece(8, 3, 2);
+		Piece piece4 = PieceFactory.getPiece(8, 5, 2);
 		piece4 = piece4.rotatePiece(-1);
 		pDrawer.paint(g, piece4, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
@@ -82,8 +82,17 @@ public class BoardView extends JPanel {
 		piece5 = piece5.rotatePiece(1);
 		pDrawer.paint(g, piece5, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
-		Piece piece6 = PieceFactory.getPiece(8, 6, 2);
+		Piece piece6 = PieceFactory.getPiece(7, 7, 2);
 		piece6 = piece6.flipPiece(1);
 		pDrawer.paint(g, piece6, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+		
+		Piece piece7 = PieceFactory.getPiece(11, 11, 1);
+		pDrawer.paint(g, piece7, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+		
+		Piece piece8 = PieceFactory.getPiece(4, 10, 15);
+		pDrawer.paint(g, piece8, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+		
+		Piece piece9 = PieceFactory.getPiece(4, 0, 14);
+		pDrawer.paint(g, piece9, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 	}
 }

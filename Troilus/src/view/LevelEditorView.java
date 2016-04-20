@@ -326,6 +326,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel panel = new PaletteView();
+		panel.setPreferredSize(new Dimension(2100, 100));
 		scrollPane.setViewportView(panel);
 		
 	}
