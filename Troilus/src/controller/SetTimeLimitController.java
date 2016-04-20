@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
+import model.LightningLevel;
 import model.Piece;
 import view.LevelEditorView;
 import view.LevelLoaderView;
@@ -22,15 +23,15 @@ import view.LevelView;
  */
 public class SetTimeLimitController implements ActionListener{
 
-	Level level;
+	LightningLevel level;
 	LevelBuilder builder;
 	LevelEditorView editorView;
-	int time;
 	
-	public SetTimeLimitController(LevelBuilder builder,Level level, LevelEditorView editorView, int time){
-		this.level = level;
+	
+	public SetTimeLimitController(LevelBuilder builder, Level level, LevelEditorView editorView){
+		this.level = (LightningLevel) level;
 		this.builder = builder;
-		this.time = time;
+		this.editorView = editorView;
 	}
 
 	
@@ -40,11 +41,12 @@ public class SetTimeLimitController implements ActionListener{
 		JTextField m = editorView.getMinutesField();
 		JTextField s = editorView.getSecondsField();
 		
-		int rows = Integer.parseInt(r.getText());
-		int cols = Integer.parseInt(c.getText());
+		int minutes = Integer.parseInt(m.getText());
+		int seconds = Integer.parseInt(s.getText());
 		
+		int newLimit = (minutes*60)+seconds;
 		
-		
+		level.setTimeLimit(newLimit);
 		
 	}
 }

@@ -26,6 +26,7 @@ import javax.swing.border.LineBorder;
 import controller.ExitLevelEditorController;
 import controller.SetBoardDimensionsController;
 import controller.SetMaxMovesController;
+import controller.SetTimeLimitController;
 import controller.ToggleSquareController;
 import model.Board;
 import model.Level;
@@ -250,7 +251,7 @@ public class LevelEditorView extends JFrame {
 		lblTime.setBounds(2, 3, 42, 32);
 		timePanel.add(lblTime);
 		
-		timeMinutesField = new JTextField();
+		timeMinutesField = new JTextField("0");
 		timeMinutesField.setColumns(10);
 		timeMinutesField.setBounds(42, 5, 35, 28);
 		timePanel.add(timeMinutesField);
@@ -261,7 +262,7 @@ public class LevelEditorView extends JFrame {
 		lblMinutes.setBounds(76, 13, 49, 13);
 		timePanel.add(lblMinutes);
 		
-		timeSecondsField = new JTextField();
+		timeSecondsField = new JTextField("00");
 		timeSecondsField.setColumns(10);
 		timeSecondsField.setBounds(120, 4, 35, 28);
 		timePanel.add(timeSecondsField);
@@ -341,7 +342,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(btnSetTime);
 		btnSetTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
 		
-		setButton.addActionListener(new SetBoardDimensionsController
+		setButton.addActionListener(new SetTimeLimitController
 				(builder, builder.getActiveLevel(), this));
 		
 	}
@@ -369,5 +370,13 @@ public class LevelEditorView extends JFrame {
 	
 	public JTextField getColField(){
 		return boardColField;
+	}
+	
+	public JTextField getMinutesField(){
+		return timeMinutesField;
+	}
+	public JTextField getSecondsField(){
+		return timeSecondsField;
+		
 	}
 }

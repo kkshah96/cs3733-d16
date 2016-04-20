@@ -49,7 +49,7 @@ public class SetBoardDimensionsController implements ActionListener{
 		}
 		else //TODO: Actually change the dimensions in the level
 			System.out.println(rows);
-		System.out.println(cols);
+			System.out.println(cols);
 			//level.getBoard().setDimensions(rows, cols);
 		
 	}
