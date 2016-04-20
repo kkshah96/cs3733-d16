@@ -21,6 +21,12 @@ public class ReleaseSquare extends Square {
 		numberColor = null;
 		
 	}
+	
+	public ReleaseSquare(int row, int col, boolean isValid, int number, Color numberColor) {
+		super(row, col, isValid);
+		this.number = number;
+		this.numberColor = numberColor;
+	}
 
 	@Override
 	public String getType() {
