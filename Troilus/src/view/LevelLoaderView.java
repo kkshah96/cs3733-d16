@@ -338,13 +338,14 @@ public class LevelLoaderView extends JFrame{
 		// add mouse listeners to all level buttons
 		for (int i = 0; i < levelButtons.size(); i++){
 			if (i % 3 == 0) {
-				levelButtons.get(i).addActionListener(new NewPuzzleLevelController(builder, this));
+			//	levelButtons.get(i).addActionListener(new NewPuzzleLevelController(builder, this));
 			}
 			else if (i % 3 == 1) {
-				levelButtons.get(i).addActionListener(new NewLightningLevelController(builder, this));
+				//levelButtons.get(i).addActionListener(new NewLightningLevelController(builder, this));
 			}
 			else {
-				levelButtons.get(i).addMouseListener(new NewReleaseLevelController(builder, this));
+				//
+				//levelButtons.get(i).addMouseListener(new NewReleaseLevelController(builder, this));
 			}
 		}
 	}

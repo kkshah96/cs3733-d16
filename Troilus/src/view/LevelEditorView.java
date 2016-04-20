@@ -225,8 +225,10 @@ public class LevelEditorView extends JFrame {
 		maxMovesPanel.add(maxMovesField);
 		maxMovesField.setColumns(10);
 		
-		//maxMovesField.addActionListener(new SetMaxMovesController(builder, builder.getActiveLevel(), levelLoader, 0));
-		
+		//TODO: Is it okay to use this weirdish logic?
+		if(builder.getActiveLevel().getName().equals("Puzzle")){
+			maxMovesField.addActionListener(new SetMaxMovesController(builder, builder.getActiveLevel(), levelLoader, 0));
+		}
 		
 		timePanel = new JPanel();
 		timePanel.setBounds(469, 1, 217, 38);

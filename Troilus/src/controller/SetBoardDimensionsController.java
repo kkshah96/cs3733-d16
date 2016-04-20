@@ -27,8 +27,6 @@ public class SetBoardDimensionsController implements ActionListener{
 	public SetBoardDimensionsController(LevelBuilder builder,Level level, LevelEditorView editorView){
 		this.level = level;
 		this.builder = builder;
-	
-		
 	}
 	
 
