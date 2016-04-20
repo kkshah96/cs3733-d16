@@ -22,7 +22,7 @@ public class PaletteView extends JPanel {
 	 */
 	public PaletteView() {
 		setLayout(null);
-		
+
 		this.setPreferredSize(new Dimension(500, 500));
 
 		JLabel lblNewLabel = new JLabel("There should be a scrollbar here..");
@@ -38,9 +38,9 @@ public class PaletteView extends JPanel {
 	}
 
 	public void paintComponent(Graphics g){
-		
+
 		super.paintComponent(g);
-		
+
 		PieceDrawer pDrawer = new PieceDrawer();
 
 		for(int i = 0; i < 35; i++){

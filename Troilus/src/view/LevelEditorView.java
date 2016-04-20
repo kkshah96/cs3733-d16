@@ -110,6 +110,13 @@ public class LevelEditorView extends JFrame {
 		bullPenOptionsPanel.add(btnFlipVertical);
 		btnFlipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(6, 50, 446, 423);
+		bullPenPanel.add(scrollPane_1);
+		
+		JPanel panel_2 = new BullpenView();
+		scrollPane_1.setViewportView(panel_2);
+		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_4.setBackground(Color.LIGHT_GRAY);
@@ -277,7 +284,7 @@ public class LevelEditorView extends JFrame {
 		ToggleButton.setBounds(437, 0, 115, 38);
 		panel_1.add(ToggleButton);
 		
-		ToggleButton.addMouseListener(new ToggleSquareController(builder, builder.getActiveLevel(), levelLoader));
+		ToggleButton.addActionListener(new ToggleSquareController(builder, builder.getActiveLevel(), levelLoader));
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
