@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Class allows for storage and manipulation of Lightning Square.
+ * 
+ * @author Maddy
+ *
+ */
 public class LightningSquare extends Square {
 	boolean isCovered;
 	

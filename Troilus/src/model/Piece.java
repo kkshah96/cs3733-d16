@@ -5,13 +5,14 @@ import java.awt.Color;
 // TODO: Should we make Piece subclasses for level types so square types are consistent?
 
 /**
- * Class allows for storage and manipulation of piece structure.
+ * Class allows for storage and manipulation of Piece structure.
  * 
  * Allows for implementation of pieces for Kabasuji. Each piece has an anchor square, and 5 additional squares
  * to create the "hexomino" relationship. These squares hold relative locations to the anchor square. This class
  * provides methods to allow interactions with pieces.
  * 
  * @author Dan Alfred
+ * @author Maddy Longo
  *
  */
 public class Piece {

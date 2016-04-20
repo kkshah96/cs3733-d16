@@ -2,6 +2,17 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Class allows for storage and manipulation of Board structure.
+ * 
+ * Allows for implemenation of the board in Kabasuji. The board is made up of a set
+ * number of Squares, which can be in-bounds or out-of-bounds, and has Pieces at
+ * locations within the board. This class provides methods to interact with the
+ * board and the pieces on it.
+ * 
+ * @author Maddy Longo
+ *
+ */
 public class Board {
 	public static final int BOARD_WIDTH = 12;
 	public static final int BOARD_HEIGHT = 12;
