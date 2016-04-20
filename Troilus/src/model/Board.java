@@ -49,6 +49,10 @@ public class Board {
 		this.pieces = new ArrayList<Piece>();
 	}
 	
+	public void setActiveSquare(int row, int col) {
+		this.activeSquare = squares[row][col];
+	}
+	
 	public Square getActiveSquare() {
 		return activeSquare;
 	}

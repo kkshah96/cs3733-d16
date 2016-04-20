@@ -33,4 +33,20 @@ public class ReleaseSquare extends Square {
 	public String getNumberColor() {
 		return numberColor.toString();
 	}
+	
+	public boolean setNumber(int num){
+		if(num < 1 || num > 6){
+			System.out.println("Error! Invalid number");
+			return false;
+		}
+		else{
+			this.number = num;
+			return true;
+		}
+	}
+	
+	public boolean setNumberColor(Color color){
+		this.numberColor = color;
+		return true;
+	}
 }

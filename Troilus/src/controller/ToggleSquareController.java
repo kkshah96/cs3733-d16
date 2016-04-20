@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,7 +16,7 @@ import view.LevelLoaderView;
  * 
  * @author Alexander Kasparek
  */
-public class ToggleSquareController extends MouseAdapter {
+public class ToggleSquareController implements ActionListener{
 	Level level;
 	LevelBuilder builder;
 	LevelLoaderView editorView;
@@ -43,5 +45,11 @@ public class ToggleSquareController extends MouseAdapter {
 				level.getBoard().toggleSquare(row, col);
 			}
 		}//end check bounds else
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Square toggle = level.getBoard().getActiveSquare();
+		level.getBoard().toggleSquare(toggle.getRow(), toggle.getCol());
 	}
 }

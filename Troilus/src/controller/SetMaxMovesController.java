@@ -31,8 +31,13 @@ public class SetMaxMovesController implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.print("Gets here!");
-		level.setMaxMoves(maxMoves);
+		if(maxMoves <= 0){
+			System.out.println("Error: Invalid number of moves.");
+		}
+		else{
+			System.out.println("Changed the max moves!");
+			level.setMaxMoves(maxMoves);
+		}
 		
 		
 	}
