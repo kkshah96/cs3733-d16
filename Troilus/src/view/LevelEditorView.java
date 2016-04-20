@@ -225,7 +225,7 @@ public class LevelEditorView extends JFrame {
 		maxMovesPanel.add(maxMovesField);
 		maxMovesField.setColumns(10);
 		
-		maxMovesField.addActionListener(new SetMaxMovesController(builder, builder.getActiveLevel(), levelLoader, 0));
+		//maxMovesField.addActionListener(new SetMaxMovesController(builder, builder.getActiveLevel(), levelLoader, 0));
 		
 		
 		timePanel = new JPanel();

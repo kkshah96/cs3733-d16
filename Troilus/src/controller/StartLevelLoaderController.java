@@ -28,7 +28,8 @@ public class StartLevelLoaderController {
 			button.setEnabled(false);
 		}
 		
-		for (int i = 0; i < numLevels; i++) {
+		//TODO: Fix this? 
+		for (int i = 0; i < levelLoaderView.getLevelButtons().size(); i++) {
 			// enable buttons if level exists; set text accordingly
 			buttons.get(i).setText("Level " + levels.get(i).getLevelNum() + ": " + levels.get(i).getName());
 			buttons.get(i).setVisible(true);
