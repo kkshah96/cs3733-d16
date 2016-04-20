@@ -8,6 +8,14 @@ import model.Piece;
 import model.PieceSquare;
 import model.Square;
 
+/**
+ * This class contains the logic to render a given piece.
+ * 
+ * PieceDrawer provides a paint method, given a calling class' graphics object, and a piece
+ * and information to draw the piece.
+ * @author Dan Alfred
+ *
+ */
 public class PieceDrawer {
 	
 	PieceSquare[] squares;
@@ -27,10 +35,10 @@ public class PieceDrawer {
 		
 		g.setColor(getRandomColor());
 		for(int i = 0; i < 5; i++){
-			g.fillRect((anchorSquare.getRow() + squares[i].getRow()) * width + width_offset,( anchorSquare.getCol() + squares[i].getCol()) * width + height_offset, width, width);
+			g.fillRect((anchorSquare.getCol() + squares[i].getCol()) * width + width_offset, (anchorSquare.getRow() + squares[i].getRow()) * width + height_offset, width, width);
 		}
 		
-		g.fillRect(anchorSquare.getRow() * width + width_offset, anchorSquare.getCol() * width + height_offset, width, width);
+		g.fillRect(anchorSquare.getCol() * width + width_offset, anchorSquare.getRow() * width + height_offset, width, width);
 	}
 	
 	private Color getRandomColor(){

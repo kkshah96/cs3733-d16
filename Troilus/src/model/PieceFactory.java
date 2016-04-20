@@ -1,5 +1,15 @@
 package model;
 
+
+/**
+ * This class is used as an interface to obtain pieces.
+ * 
+ * This class provides a layer of abstraction between the developer and the piece they receive. All
+ * logic pertaining to the creation of pieces and their shape (relative coordinates) are defined in here,
+ * to prevent definition elsewhere
+ * @author Dan Alfred
+ *
+ */
 public class PieceFactory {
 
 	public static Piece getPiece(int row, int col, int pieceType) {
@@ -8,21 +18,21 @@ public class PieceFactory {
 
 		switch(pieceType) {
 		case 1:
-			pieceSquares[0] = new PieceSquare(0, +1);
-			pieceSquares[1] = new PieceSquare(0, +2);
-			pieceSquares[2] = new PieceSquare(0, -1);
-			pieceSquares[3] = new PieceSquare(0, -2);
-			pieceSquares[4] = new PieceSquare(0, -3);
+			pieceSquares[0] = new PieceSquare(+1, 0);
+			pieceSquares[1] = new PieceSquare(+2, 0);
+			pieceSquares[2] = new PieceSquare(-1, 0);
+			pieceSquares[3] = new PieceSquare(-2, 0);
+			pieceSquares[4] = new PieceSquare(-3, 0);
 			return new Piece(pieceSquares, anchorSquare, pieceType);
 		case 2:
-			pieceSquares[0] = new PieceSquare(0, +1);
-			pieceSquares[1] = new PieceSquare(1, +1);
-			pieceSquares[2] = new PieceSquare(0, -1);
-			pieceSquares[3] = new PieceSquare(0, -2);
-			pieceSquares[4] = new PieceSquare(0, -3);
+			pieceSquares[0] = new PieceSquare(+1, 0);
+			pieceSquares[1] = new PieceSquare(+1, +1);
+			pieceSquares[2] = new PieceSquare(-1, 0);
+			pieceSquares[3] = new PieceSquare(-2, 0);
+			pieceSquares[4] = new PieceSquare(-3, 0);
 			return new Piece(pieceSquares, anchorSquare, pieceType);
 		case 3:
-			pieceSquares[0] = new PieceSquare(row, +1);
+			pieceSquares[0] = new PieceSquare(0, +1);
 			pieceSquares[1] = new PieceSquare(0, +2);
 			pieceSquares[2] = new PieceSquare(0, -1);
 			pieceSquares[3] = new PieceSquare(0, -2);
