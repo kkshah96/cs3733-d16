@@ -20,7 +20,6 @@ public class Board {
 	Square[][] squares; // uses squares[row][col]
 	ArrayList<Piece> pieces;
 	Square activeSquare;
-	Square typeSquare; // Hack that keeps track of what type of square to use
 
 	// TODO: Is there any case where we will need to pass parameters to the constructor?
 	// Yes- when loading a board from storage, where we will need to set the squares accordingly
@@ -32,15 +31,8 @@ public class Board {
 	public Board(int rows, int cols) {	
 		if (rows > BOARD_HEIGHT || cols > BOARD_WIDTH) {
 			//return; // Should this check be here?
-		}
-		for (int i = 0; i < BOARD_HEIGHT; i++) {
-			for (int j = 0; j < BOARD_WIDTH; j++) {
-				if (i < rows && j < cols) {
-					//squares[i][j] = (Square) typeSquare.copy(i, j);
-				} else {
-					squares[i][j] = new OutOfBoundsSquare(i, j);
-				}
-			}
+		} else {
+			this.squares = new Square[rows][cols];
 		}
 	}
 	
@@ -101,12 +93,12 @@ public class Board {
 		if (row > 11 || row < 0 || col > 11 || col < 0) {
 			return null;
 		}
+		
 		for (Piece piece : pieces) {
 			if (piece.overlaps(row,col)) {
 				return piece;
 			}
 		}
-		
 		return null;
 	}
 
@@ -131,12 +123,11 @@ public class Board {
 		return this.pieces;
 	}
 	
-	public void toggleSquare(int row, int col) {
-		Square square = squares[row][col];
-		if (square.isValid()) {
-			square.isValid = false;
+	public void toggleSquare() {
+		if (activeSquare.isValid()) {
+			activeSquare.isValid = false;
 		} else {
-			square.isValid = true;
+			activeSquare.isValid = true;
 		}
 	}
 }

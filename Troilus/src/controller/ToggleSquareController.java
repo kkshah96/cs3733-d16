@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import model.Board;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
@@ -21,7 +22,7 @@ public class ToggleSquareController implements ActionListener{
 	LevelBuilder builder;
 	LevelLoaderView editorView;
 
-	public ToggleSquareController(LevelBuilder builder,Level level, LevelLoaderView editorView){
+	public ToggleSquareController(LevelBuilder builder,Level level, LevelLoaderView editorView) {
 		this.level = level;
 		this.builder = builder;
 		this.editorView = editorView;
@@ -38,11 +39,12 @@ public class ToggleSquareController implements ActionListener{
 		else {	
 			int row = (x-10)/30;
 			int col = (y-30)/30;
-			Square toggle = level.getBoard().getSquare(row,col);
-			if(toggle == null){
-				System.out.print("No piece here.");
+			
+			Board board = level.getBoard();
+			if (board.getActiveSquare() == null){
+				System.out.print("No piece selected.");
 			} else {
-				level.getBoard().toggleSquare(row, col);
+				board.toggleSquare();
 			}
 		}//end check bounds else
 	}
@@ -50,6 +52,6 @@ public class ToggleSquareController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Square toggle = level.getBoard().getActiveSquare();
-		level.getBoard().toggleSquare(toggle.getRow(), toggle.getCol());
+		level.getBoard().toggleSquare();
 	}
 }

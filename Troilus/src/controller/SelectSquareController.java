@@ -14,7 +14,7 @@ import view.LevelEditorView;
  * @author Alexander Kasparek
  *
  */
-public class SelectSquareController extends MouseAdapter{
+public class SelectSquareController extends MouseAdapter {
 
 	Level level;
 	LevelBuilder builder;
