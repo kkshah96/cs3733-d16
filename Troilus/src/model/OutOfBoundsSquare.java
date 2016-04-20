@@ -11,17 +11,11 @@ package model;
  */
 public class OutOfBoundsSquare extends Square {
 	public OutOfBoundsSquare(int row, int col) {
-		super(row, col);
-	}
-
-	@Override
-	public boolean isValid() {
-		return false;
+		super(row, col, false);
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
 		return "OutOfBoundsSquare";
 	}
 }

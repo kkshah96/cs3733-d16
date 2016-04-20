@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Class allows for storage and manipulation of Board structure.
  * 
- * Allows for implemenation of the board in Kabasuji. The board is made up of a set
+ * Allows for implementation of the board in Kabasuji. The board is made up of a set
  * number of Squares, which can be in-bounds or out-of-bounds, and has Pieces at
  * locations within the board. This class provides methods to interact with the
  * board and the pieces on it.
@@ -19,6 +19,8 @@ public class Board {
 
 	Square[][] squares; // uses squares[row][col]
 	ArrayList<Piece> pieces;
+	Square activeSquare;
+	Square typeSquare; // Hack that keeps track of what type of square to use
 
 	// TODO: Is there any case where we will need to pass parameters to the constructor?
 	// Yes- when loading a board from storage, where we will need to set the squares accordingly
@@ -27,26 +29,29 @@ public class Board {
 		pieces = new ArrayList<Piece>();
 	}
 	
-	public Board(int rows, int cols, Square squareType) {
+	public Board(int rows, int cols) {	
 		if (rows > BOARD_HEIGHT || cols > BOARD_WIDTH) {
 			//return; // Should this check be here?
 		}
 		for (int i = 0; i < BOARD_HEIGHT; i++) {
 			for (int j = 0; j < BOARD_WIDTH; j++) {
 				if (i < rows && j < cols) {
-					//squares[i][j] = (Square) squareType.clone();
+					//squares[i][j] = (Square) typeSquare.copy(i, j);
 				} else {
 					squares[i][j] = new OutOfBoundsSquare(i, j);
 				}
 			}
 		}
 	}
-
+	
 	public Board(Square[][] squares) {
 		this.squares = squares;
 		this.pieces = new ArrayList<Piece>();
 	}
-
+	
+	public Square getActiveSquare() {
+		return activeSquare;
+	}
 	/** Add the given piece to the board if valid
 	 * Return true if valid, false if invalid
 	 * @param p
@@ -122,12 +127,12 @@ public class Board {
 		return this.pieces;
 	}
 	
-	public void toggleSquareOff(int row, int col){
-		squares[row][col] = new OutOfBoundsSquare(row, col);
-	}
-	
-	//TODO: Fix this method:
-	public void toggleSquareOn(int row, int col){
-		squares[row][col] = new PuzzleSquare(row, col); // TODO HOW DO WE DETERMINE WHICH TYPE OF SQUARE IT IS?
+	public void toggleSquare(int row, int col) {
+		Square square = squares[row][col];
+		if (square.isValid()) {
+			square.isValid = false;
+		} else {
+			square.isValid = true;
+		}
 	}
 }

@@ -14,14 +14,26 @@ package model;
 public abstract class Square {
 	int row;
 	int col;
+	boolean isValid;
 	
-	public Square(int row, int col) {
+	public Square(int row, int col, boolean isValid) {
 		this.row = row;
 		this.col = col;
+		this.isValid = isValid;
 	}
 	
+	/**
+	 * Returns a new Square of the given type
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	//public abstract Square copy(int row, int col);
+	
 	// TODO: Does this have to be an abstract method?
-	public abstract boolean isValid();
+	public boolean isValid() {
+		return this.isValid;
+	}
 	
 	public abstract String getType();
 	

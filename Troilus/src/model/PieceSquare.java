@@ -10,14 +10,11 @@ package model;
  *
  */
 public class PieceSquare extends Square {
-	int row;
-	int col;
-	
 	public PieceSquare(int row, int col) {
-		super(row, col);
+		super(row, col, true);
 	}
-
-	// TODO: Can a PuzzleSquare become invalid?
+	
+	// TODO: Can a PieceSquare become invalid?
 	@Override
 	public boolean isValid() {
 		return true;
@@ -25,7 +22,6 @@ public class PieceSquare extends Square {
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
 		return "PieceSquare";
 	}
 }

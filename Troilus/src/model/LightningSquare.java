@@ -12,21 +12,12 @@ package model;
 public class LightningSquare extends Square {
 	boolean isCovered;
 	
-	public LightningSquare(int row, int col) {
-		super(row, col);
-	}
-
-	/** Returns true if square is not already covered
-	 * 
-	 */
-	@Override
-	public boolean isValid() {
-		return true;
+	public LightningSquare(int row, int col, boolean isValid) {
+		super(row, col, isValid);
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
 		return "LightningSquare";
 	}
 }
