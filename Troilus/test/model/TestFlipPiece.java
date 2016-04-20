@@ -12,7 +12,7 @@ public class TestFlipPiece {
 	static final int FLIP_VERTICAL = 1;
 
 	@Test
-	public void test() {
+	public void testFlip1() {
 		Piece piece1 = PieceFactory.getPiece(0, 0, 1);
 		Piece p1FlippedHorizontal = piece1.flipPiece(FLIP_HORIZONTAL); //Should flip horizontally
 		

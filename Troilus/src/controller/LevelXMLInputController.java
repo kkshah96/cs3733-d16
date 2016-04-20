@@ -108,11 +108,11 @@ public class LevelXMLInputController {
 								NamedNodeMap rsAttributes = squareList.item(k).getAttributes();
 								int number = Integer.parseInt(rsAttributes.getNamedItem("Number").getNodeValue());
 								String color = rsAttributes.getNamedItem("Color").getNodeValue();
-								square = new ReleaseSquare(number, Color.getColor(color));
+								square = new ReleaseSquare(j, k, number, Color.getColor(color));
 							} else if(squareType.equals("LightningSquare")) {
-								square = new LightningSquare();
+								square = new LightningSquare(j, k);
 							} else if(squareType.equals("PuzzleSquare")) {
-								square = new PuzzleSquare();
+								square = new PuzzleSquare(j, k);
 							}
 							
 							squares[j][k] = square;

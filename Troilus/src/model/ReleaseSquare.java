@@ -15,7 +15,8 @@ public class ReleaseSquare extends Square {
 	int number;
 	Color numberColor;
 	
-	public ReleaseSquare(int number, Color color) {
+	public ReleaseSquare(int row, int col, int number, Color color) {
+		super(row, col);
 		this.number = number;
 		this.numberColor = color;
 	}

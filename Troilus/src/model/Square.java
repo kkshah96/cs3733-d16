@@ -11,11 +11,25 @@ package model;
  * @author Maddy
  *
  */
-public abstract class Square {	
-	public Square() {}
+public abstract class Square {
+	int row;
+	int col;
+	
+	public Square(int row, int col) {
+		this.row = row;
+		this.col = col;
+	}
 	
 	// TODO: Does this have to be an abstract method?
 	public abstract boolean isValid();
 	
 	public abstract String getType();
+	
+	public int getRow() {
+		return this.row;
+	}
+	
+	public int getCol() {
+		return this.col;
+	}
 }

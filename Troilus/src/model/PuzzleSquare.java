@@ -9,8 +9,8 @@ package model;
  *
  */
 public class PuzzleSquare extends Square {
-	public PuzzleSquare() {
-		super();
+	public PuzzleSquare(int row, int col) {
+		super(row, col);
 	}
 
 	// TODO: Can a PuzzleSquare become invalid?

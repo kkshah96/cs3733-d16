@@ -10,9 +10,8 @@ package model;
  *
  */
 public class OutOfBoundsSquare extends Square {
-
-	public OutOfBoundsSquare() {//, boolean hintSquare) {
-		super();//, hintSquare);
+	public OutOfBoundsSquare(int row, int col) {
+		super(row, col);
 	}
 
 	@Override

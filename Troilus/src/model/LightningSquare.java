@@ -12,8 +12,8 @@ package model;
 public class LightningSquare extends Square {
 	boolean isCovered;
 	
-	public LightningSquare() {
-		super();
+	public LightningSquare(int row, int col) {
+		super(row, col);
 	}
 
 	/** Returns true if square is not already covered

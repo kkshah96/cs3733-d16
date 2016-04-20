@@ -36,7 +36,7 @@ public class Board {
 				if (i < rows && j < cols) {
 					//squares[i][j] = (Square) squareType.clone();
 				} else {
-					squares[i][j] = new OutOfBoundsSquare();
+					squares[i][j] = new OutOfBoundsSquare(i, j);
 				}
 			}
 		}
@@ -123,12 +123,11 @@ public class Board {
 	}
 	
 	public void toggleSquareOff(int row, int col){
-		squares[row][col] = new OutOfBoundsSquare();
+		squares[row][col] = new OutOfBoundsSquare(row, col);
 	}
 	
 	//TODO: Fix this method:
 	public void toggleSquareOn(int row, int col){
-		squares[row][col] = new PuzzleSquare(); // TODO HOW DO WE DETERMINE WHICH TYPE OF SQUARE IT IS?
+		squares[row][col] = new PuzzleSquare(row, col); // TODO HOW DO WE DETERMINE WHICH TYPE OF SQUARE IT IS?
 	}
-	
 }
