@@ -103,7 +103,11 @@ public class LevelXMLOutputController {
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer trans = tf.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(path + "LevelXML" + level.getLevelNum() + ".xml"));
+			
+			// Create the file object, and have it overwrite if it exists already
+			File levelFile = new File(path + "LevelXML" + level.getLevelNum() + ".xml");
+			levelFile.createNewFile();
+			StreamResult result = new StreamResult(levelFile);
 			trans.transform(source, result);
 			
 			StreamResult consoleResult = new StreamResult(System.out);
