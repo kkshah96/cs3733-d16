@@ -8,7 +8,11 @@ import model.Kabasuji;
 import model.Level;
 import view.BullpenView;
 
-
+/**
+ * 
+ * 
+ * @author Alexander Kasparek
+ */
 
 public class RotatePieceController implements ActionListener{
 	Kabasuji game;

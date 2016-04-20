@@ -15,6 +15,11 @@ import view.LevelEditorView;
 import view.LevelLoaderView;
 import view.LevelView;
 
+/**
+ * 
+ *
+ * @author Alexander Kasparek
+ */
 public class SetBoardDimensionsController implements ActionListener{
 	Kabasuji game;
 

@@ -9,6 +9,12 @@ import model.Piece;
 import model.Square;
 import view.LevelLoaderView;
 
+
+/**
+ * 
+ * 
+ * @author Alexander Kasparek
+ */
 public class ToggleSquareController extends MouseAdapter{
 	
 	

@@ -22,7 +22,7 @@ import view.LevelLoaderView;
  * of levels, and shows the level editor screen for the newly created level.
  * 
  * @author Connor Weeks
- *
+ * @author Alexander Kasparek
  */
 public class NewReleaseLevelController extends MouseAdapter {
 	LevelBuilder builder;

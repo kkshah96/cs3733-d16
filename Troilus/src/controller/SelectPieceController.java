@@ -19,6 +19,7 @@ import view.LevelView;
  * selected piece if needed.
  * 
  * @author Connor Weeks
+ * @author Alexander Kasparek
  *
  */
 public class SelectPieceController extends MouseAdapter{
