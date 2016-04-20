@@ -43,12 +43,10 @@ public class ToggleSquareController implements ActionListener{
 					level.getBoard().toggleSquareOff(toggle.getRow(), toggle.getCol());
 					
 				}
-				
-				
-				}//end check bounds else
-		
-		
 	}
+		
+		
+}
 	
 
 

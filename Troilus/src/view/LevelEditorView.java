@@ -68,14 +68,14 @@ public class LevelEditorView extends JFrame {
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		boardPanel.setBackground(Color.LIGHT_GRAY);
-		boardPanel.setBounds(0, 114, 686, 408);
+		boardPanel.setBounds(0, 114, 747, 408);
 		getContentPane().add(boardPanel);
 		
 		JPanel bullPenPanel = new JPanel();
 		bullPenPanel.setLayout(null);
 		bullPenPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		bullPenPanel.setBackground(Color.LIGHT_GRAY);
-		bullPenPanel.setBounds(685, 38, 457, 484);
+		bullPenPanel.setBounds(748, 38, 457, 484);
 		getContentPane().add(bullPenPanel);
 		
 		JPanel bullPenOptionsPanel = new JPanel();
@@ -120,7 +120,7 @@ public class LevelEditorView extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_4.setBackground(Color.LIGHT_GRAY);
-		panel_4.setBounds(0, 0, 1137, 38);
+		panel_4.setBounds(0, 0, 1205, 38);
 		getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
@@ -238,7 +238,7 @@ public class LevelEditorView extends JFrame {
 		}
 		
 		timePanel = new JPanel();
-		timePanel.setBounds(469, 1, 217, 38);
+		timePanel.setBounds(469, 1, 279, 38);
 		panel_7.add(timePanel);
 		timePanel.setLayout(null);
 		timePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -276,7 +276,7 @@ public class LevelEditorView extends JFrame {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(0, 76, 685, 38);
+		panel_1.setBounds(0, 76, 747, 38);
 		getContentPane().add(panel_1);
 		
 		JButton ToggleButton = new JButton("Toggle");
@@ -324,17 +324,22 @@ public class LevelEditorView extends JFrame {
 		releaseSquareOptionsPanel.add(releaseColorComboBox);
 		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
 		setBackground(Color.LIGHT_GRAY);
-		setBounds(100, 100, 1143, 751);
+		setBounds(100, 100, 1207, 751);
 		//pView.setPreferredSize(new Dimension(500, 500));
 		//pView.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 522, 1142, 201);
+		scrollPane.setBounds(0, 522, 1205, 201);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel panel = new PaletteView();
 		panel.setPreferredSize(new Dimension(2100, 100));
 		scrollPane.setViewportView(panel);
+		
+		JButton btnSetTime = new JButton("Set Time");
+		btnSetTime.setBounds(683, 38, 64, 38);
+		getContentPane().add(btnSetTime);
+		btnSetTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
 		
 	}
 	
