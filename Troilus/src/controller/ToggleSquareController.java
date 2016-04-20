@@ -2,14 +2,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import model.Board;
 import model.Level;
 import model.LevelBuilder;
-import model.Piece;
-import model.Square;
 import view.LevelLoaderView;
 
 /**
@@ -17,7 +14,7 @@ import view.LevelLoaderView;
  * 
  * @author Alexander Kasparek
  */
-public class ToggleSquareController implements ActionListener{
+public class ToggleSquareController implements ActionListener {
 	Level level;
 	LevelBuilder builder;
 	LevelLoaderView editorView;
@@ -36,10 +33,7 @@ public class ToggleSquareController implements ActionListener{
 			System.out.println("Error: Did not click within the board");
 		}
 
-		else {	
-			int row = (x-10)/30;
-			int col = (y-30)/30;
-			
+		else {
 			Board board = level.getBoard();
 			if (board.getActiveSquare() == null){
 				System.out.print("No piece selected.");
@@ -51,7 +45,6 @@ public class ToggleSquareController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Square toggle = level.getBoard().getActiveSquare();
 		level.getBoard().toggleSquare();
 	}
 }

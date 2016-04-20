@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import model.Kabasuji;
 import model.Level;
@@ -10,7 +9,6 @@ import model.LevelBuilder;
 import model.Piece;
 import view.LevelLoaderView;
 import view.LevelView;
-
 
 /** 
  * Controls the selection of a piece on the board or bullpen.
@@ -22,9 +20,8 @@ import view.LevelView;
  * @author Alexander Kasparek
  *
  */
-public class SelectPieceController extends MouseAdapter{
+public class SelectPieceController extends MouseAdapter {
 	Kabasuji game;
-
 	Level level;
 	LevelView levelView;
 	LevelBuilder builder;
@@ -35,22 +32,19 @@ public class SelectPieceController extends MouseAdapter{
 		this.level = level;
 		this.game = game;
 		this.levelView = levelView;
-
 	}
 
 	public SelectPieceController(LevelBuilder builder,Level level, LevelLoaderView editorView){
 		this.level = level;
 		this.builder = builder;
 		this.editorView = editorView;
-
 	}
 
 	public void mousePressed(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
 
-		if(x > 370 || x < 10 || y > 390 || y < 30)
-		{
+		if(x > 370 || x < 10 || y > 390 || y < 30) {
 			System.out.println("Error: Did not click within the board");
 		}
 		else {	
@@ -61,6 +55,5 @@ public class SelectPieceController extends MouseAdapter{
 			else 
 				level.setActivePiece(activePiece);
 		}//end check bounds else
-
 	}
 }

@@ -5,9 +5,7 @@ import java.awt.event.MouseEvent;
 
 import model.Level;
 import model.LevelBuilder;
-import model.Square;
 import view.LevelEditorView;
-
 
 /**
  * 
@@ -15,7 +13,6 @@ import view.LevelEditorView;
  *
  */
 public class SelectSquareController extends MouseAdapter {
-
 	Level level;
 	LevelBuilder builder;
 	LevelEditorView editorView;

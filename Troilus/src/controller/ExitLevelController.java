@@ -2,13 +2,10 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
-
 
 /**
  * Controls the actions required to exit a level and display the level selector.
@@ -37,6 +34,5 @@ public class ExitLevelController implements ActionListener {
 		// TODO Auto-generated method stub\
 		level.dispose();
 		levelSelector.setVisible(true);
-
 	}
 }

@@ -8,7 +8,6 @@ import model.LevelBuilder;
 import model.Level;
 import view.LevelLoaderView;
 
-
 /** 
  * Controls the display of level buttons corresponding to the loaded levels.
  * Buttons are displayed only for levels loaded at initialization; the text
@@ -44,7 +43,6 @@ public class StartLevelLoaderController {
 			buttons.get(i).setText("Level " + levels.get(i).getLevelNum() + ": " + levels.get(i).getName());
 			buttons.get(i).setVisible(true);
 			buttons.get(i).setEnabled(true);
-			
 		}
 	}
 }

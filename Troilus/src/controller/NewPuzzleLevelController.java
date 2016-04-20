@@ -2,22 +2,18 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import model.Board;
 import model.Bullpen;
 import model.LevelBuilder;
-import model.LightningLevel;
 import model.Palette;
 import model.PuzzleLevel;
 import model.PuzzleSquare;
 import model.Square;
 import view.LevelEditorView;
 import view.LevelLoaderView;
-
 
 /**
  * Controls the creation of a new puzzle level in the level builder.
@@ -74,6 +70,5 @@ public class NewPuzzleLevelController implements ActionListener {
 
 		levelLoader.setVisible(false);
 		newPuzzleLevel.setVisible(true);
-
 	}	
 }

@@ -3,7 +3,6 @@ package controller;
 import model.Level;
 
 public class SaveLevelController {
-	
 	String filePath;
 	
 	public SaveLevelController() {
@@ -15,7 +14,6 @@ public class SaveLevelController {
 	}
 	
 	public void saveLevel(Level level) {
-		// do save operation here regarding XML
+		// TODO: do save operation here regarding XML
 	}
-
 }

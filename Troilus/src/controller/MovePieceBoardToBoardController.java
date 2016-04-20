@@ -6,7 +6,6 @@ import java.awt.event.MouseEvent;
 import model.Board;
 import view.BoardView;
 
-
 public class MovePieceBoardToBoardController extends MouseAdapter {
 	Board board;
 	BoardView boardView;
@@ -19,7 +18,5 @@ public class MovePieceBoardToBoardController extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		
-		
 	}
 }

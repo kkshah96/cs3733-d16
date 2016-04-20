@@ -2,8 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -13,11 +11,9 @@ import model.LevelBuilder;
 import model.LightningLevel;
 import model.LightningSquare;
 import model.Palette;
-import model.PuzzleSquare;
 import model.Square;
 import view.LevelEditorView;
 import view.LevelLoaderView;
-
 
 /**
  * Controls the creation of a new lightning level in the level builder.
@@ -70,9 +66,7 @@ public class NewLightningLevelController implements ActionListener {
 		newLightningLevel.setReleaseSquarePanelVisibility(false);
 		newLightningLevel.setTimeLimitPanelVisibility(true);
 
-		
 		levelLoader.setVisible(false);
 		newLightningLevel.setVisible(true);
-		
 	}
 }

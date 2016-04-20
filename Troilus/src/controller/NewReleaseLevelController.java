@@ -9,7 +9,6 @@ import model.Board;
 import model.Bullpen;
 import model.LevelBuilder;
 import model.Palette;
-import model.PuzzleSquare;
 import model.ReleaseLevel;
 import model.ReleaseSquare;
 import model.Square;

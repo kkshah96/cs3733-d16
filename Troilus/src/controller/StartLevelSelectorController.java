@@ -9,7 +9,6 @@ import model.Kabasuji;
 import model.Level;
 import view.LevelSelectorView;
 
-
 /**
  * Controls the display of level buttons corresponding to the levels loaded.
  * Buttons are displayed only for levels loaded at initialization; the text

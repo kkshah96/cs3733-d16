@@ -8,7 +8,6 @@ import model.LevelBuilder;
 import model.ReleaseSquare;
 import view.LevelEditorView;
 
-
 /**
  * 
  * @author Alexander Kasparek

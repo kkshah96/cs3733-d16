@@ -3,7 +3,6 @@ package controller;
 import java.util.ArrayList;
 import model.Level;
 
-
 /** 
  * Controls the high-level loading of levels.
  * This controller obtains level classes from the low-level 
@@ -13,7 +12,6 @@ import model.Level;
  *
  */
 public class LoadLevelsController {
-
 	String filePath;
 
 	public LoadLevelsController() {
@@ -25,18 +23,13 @@ public class LoadLevelsController {
 
 	}
 	
-	
 	/**
 	 * Loads levels from the file path
 	 * @return ArrayList of Levels
 	 */
 	public ArrayList<Level> loadLevels() {
 		ArrayList<Level> levels = new ArrayList<Level>();
-		
-		
 		// TODO: load levels from XML here
-		
-		
 		return levels;
 	}
 }

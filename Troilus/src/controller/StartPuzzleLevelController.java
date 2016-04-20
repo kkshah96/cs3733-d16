@@ -2,8 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -36,8 +34,6 @@ public class StartPuzzleLevelController implements ActionListener {
 			return;
 		}
 
-
-
 		final LevelView levelView = new LevelView(levelSelector, game);
 		levelView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -56,5 +52,4 @@ public class StartPuzzleLevelController implements ActionListener {
 		levelView.setVisible(true);
 		levelSelector.setVisible(false);
 	}
-
 }

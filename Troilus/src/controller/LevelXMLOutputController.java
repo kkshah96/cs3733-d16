@@ -115,7 +115,5 @@ public class LevelXMLOutputController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
+	}	
 }
-

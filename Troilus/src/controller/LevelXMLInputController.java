@@ -26,7 +26,6 @@ import model.ReleaseLevel;
 import model.ReleaseSquare;
 import model.Square;
 
-
 /**
  * Class to handle reading a level to file.
  * 
