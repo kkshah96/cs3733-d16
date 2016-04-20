@@ -5,8 +5,8 @@ package model;
 /**
  * Class allows for consistent manipulation of square structure.
  * 
- * Allows for implementation of squares for Kabasuji. Pieces can be
- * valid and have a type.
+ * Allows for implementation of squares for Kabasuji. Squares can be
+ * valid or invalid and have a type.
  * 
  * @author Maddy
  *

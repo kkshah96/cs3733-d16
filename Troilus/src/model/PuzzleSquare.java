@@ -1,5 +1,13 @@
 package model;
 
+/**
+ * Class allows for storage and manipulation of Puzzle Square.
+ * 
+ * Allows for implementation of Puzzle-level squares in Kabasuji.
+ * 
+ * @author Maddy
+ *
+ */
 public class PuzzleSquare extends Square {
 	public PuzzleSquare() {
 		super();

@@ -3,6 +3,7 @@ package model;
 import java.awt.Color;
 
 // TODO: Should we make Piece subclasses for level types so square types are consistent?
+// Why would we want to do that??
 
 /**
  * Class allows for storage and manipulation of Piece structure.

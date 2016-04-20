@@ -3,6 +3,9 @@ package model;
 /**
  * Class allows for storage and manipulation of Lightning Square.
  * 
+ * Allows for implementation of Lightning-level squares in Kabasuji.
+ * Keeps track of whether it has been covered by a Piece.
+ * 
  * @author Maddy
  *
  */
