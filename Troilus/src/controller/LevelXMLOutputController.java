@@ -17,9 +17,20 @@ import model.LightningLevel;
 import model.PuzzleLevel;
 import model.ReleaseSquare;
 
-public class LevelXMLOutputController {
+/**
+ * Class to handle writing a level to file.
+ * 
+ * When the builder indicates they want to save a level, this controller is called, converting the Level object
+ * and its properties into an XML file, identified by the level number in the file name
+ * @author Dan Alfred
+ *
+ */
 
+public class LevelXMLOutputController {
+	/** A placeholder for the level object we will be saving to */
 	Level level;
+	
+	/** The path our file will be saved in (could be used later) */
 	String path;
 	
 	LevelXMLOutputController(Level level, String path) {

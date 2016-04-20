@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,17 +26,36 @@ import model.ReleaseLevel;
 import model.ReleaseSquare;
 import model.Square;
 
+
+/**
+ * Class to handle reading a level to file.
+ * 
+ * This class, when given a level number (ID), will attempt to open the stored file containing the level data.
+ * From there, a level object will be created, populated, and returned to be viewed in Kabasuji.
+ * @author Dan Alfred
+ *
+ */
 public class LevelXMLInputController {
+	/** The path of the file (adding for if we want to implement later) */
 	String path;
 	
-	LevelXMLInputController(String path) {
+	/** The level number (ID) we are loading */
+	int levelNumber;
+	
+	LevelXMLInputController(String path, int levelNumber) {
 		this.path = path;
+		this.levelNumber = levelNumber;
 	}
 	
-	LevelXMLInputController() {
+	LevelXMLInputController(int levelNumber) {
 		this.path = "";
+		this.levelNumber = levelNumber;
 	}
 	
+	/**
+	 * Reads level from the file of the given level number. Returns a Level object matching the parameters stored in XML
+	 * @return Level object
+	 */
 	Level readLevelFromFile() {
 		Level level = null;
 		Bullpen bullpen = new Bullpen();
@@ -45,7 +65,7 @@ public class LevelXMLInputController {
 			// Create a new document from the builder
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbFactory.newDocumentBuilder();
-			Document doc = db.parse(new File("LevelXML.xml"));
+			Document doc = db.parse(new File(path + "LevelXML" + levelNumber + ".xml"));
 			
 			Element rootLevelElement = doc.getDocumentElement();
 			String levelType = rootLevelElement.getAttribute("Type");
@@ -113,6 +133,8 @@ public class LevelXMLInputController {
 				level = new PuzzleLevel(levelNumber, levelLocked, bullpen, board, null, maxMoves);
 			}
 			level.setNumStars(levelProgress);
+		} catch(FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
