@@ -15,6 +15,16 @@ import model.Palette;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
+
+/**
+ * Controls the creation of a new lightning level in the level builder.
+ * Upon the designer requesting to create a new lightning level, this
+ * controller creates the new level, adds it to the level builder's list 
+ * of levels, and shows the level editor screen for the newly created level.
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class NewLightningLevelController implements ActionListener {
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;

@@ -14,6 +14,16 @@ import model.ReleaseLevel;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
+
+/**
+ * Controls the creation of a new release level in the level builder.
+ * Upon the designer requesting to create a new release level, this
+ * controller creates the new level, adds it to the level builder's list 
+ * of levels, and shows the level editor screen for the newly created level.
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class NewReleaseLevelController extends MouseAdapter {
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;

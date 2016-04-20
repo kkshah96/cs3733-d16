@@ -9,6 +9,15 @@ import model.Kabasuji;
 import model.Level;
 import view.LevelSelectorView;
 
+
+/**
+ * Controls the display of level buttons corresponding to the levels loaded.
+ * Buttons are displayed only for levels loaded at initialization; the text
+ * of these buttons are set dynamically, depending on the type of level loaded.
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class StartLevelSelectorController {
 	Kabasuji game;
 	LevelSelectorView levelSelectorView;

@@ -3,6 +3,15 @@ package controller;
 import java.util.ArrayList;
 import model.Level;
 
+
+/** 
+ * Controls the high-level loading of levels.
+ * This controller obtains level classes from the low-level 
+ * XML classes and returns them in a list format.
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class LoadLevelsController {
 
 	String filePath;

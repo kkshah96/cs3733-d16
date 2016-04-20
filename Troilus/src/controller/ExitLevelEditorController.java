@@ -9,6 +9,15 @@ import model.LevelBuilder;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
+
+/**
+ * Controls the actions required to exit a level editor and display the level loader.
+ * This controller disposes of the current level editor view and returns the designer 
+ * to the level loader screen, where he / she may load a new level to edit.
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class ExitLevelEditorController implements ActionListener {
 	LevelBuilder builder;
 	LevelEditorView levelEditor;

@@ -9,6 +9,16 @@ import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
 
+
+/**
+ * Controls the actions required to exit a level and display the level selector.
+ * This controller saves the plaer's progress, disposes of the current level view,
+ * and returns the player to the level selector screen, where he / she may select a 
+ * new level to play.
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class ExitLevelController implements ActionListener {
 	Kabasuji game;
 	LevelView level;
@@ -24,9 +34,9 @@ public class ExitLevelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//if(lvlSelection.)
-				// TODO Auto-generated method stub\
-				level.dispose();
-				levelSelector.setVisible(true);
-		
+		// TODO Auto-generated method stub\
+		level.dispose();
+		levelSelector.setVisible(true);
+
 	}
 }
