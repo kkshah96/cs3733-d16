@@ -3,6 +3,8 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,23 +13,43 @@ import model.Board;
 import model.Piece;
 import model.PieceFactory;
 
+/**
+ * Represents a way for a Board to be visible in a window.
+ * 
+ * This class handles the drawing of contents of the board panel, i.e:
+ * the AWT board, and any pieces on the board
+ * @author Dan Alfred
+ *
+ */
 public class BoardView extends JPanel {
+	/** Constant for how large the BoardView can be */
 	static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
+	
+	/** Constant to define how large each square is, in pixels*/
 	static final int SQUARE_SIZE = 30;
+	
+	/** Constant to define the offset between the left of the panel and the left of the board */
 	static final int WIDTH_OFFSET = 10;
+	
+	/** Constant to define the offset between the top of the panel and the top of the board*/
 	static final int HEIGHT_OFFSET = 30;
 	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
 	
+	/** A reference to the Board entity */
 	Board board;
 	/**
-	 * Create the panel.
+	 * Constructor for the BoardView, for a given Board
+	 * @param board The Board this BoardView is based on
 	 */
 	public BoardView(Board board) {
 		this.board = board;
 		initialize();
 		
 	}
-		
+	
+	/**
+	 * Initializes the BoardView by initializing the label and drawing the grid
+	 */
 	private void initialize(){
 		JLabel lblBoard = new JLabel("Board");
 		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
@@ -51,7 +73,11 @@ public class BoardView extends JPanel {
 		add(lblBoard);
 	}
 	
+	/**
+	 * Paints the BoardView and squares on the Board
+	 */
 	public void paintComponent(Graphics g){
+		
 		SquareDrawer drawer = new SquareDrawer();
 		PieceDrawer pDrawer = new PieceDrawer();
 
@@ -71,19 +97,19 @@ public class BoardView extends JPanel {
 		pDrawer.paint(g, piece2, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
 		Piece piece3 = PieceFactory.getPiece(4, 5, 2);
-		piece3 = piece3.flipPiece(-1);
+		piece3 = piece3.flipPiece(Piece.FLIP_HORIZONTALLY);
 		pDrawer.paint(g, piece3, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
 		Piece piece4 = PieceFactory.getPiece(8, 5, 2);
-		piece4 = piece4.rotatePiece(-1);
+		piece4 = piece4.rotatePiece(Piece.ROTATE_CCW);
 		pDrawer.paint(g, piece4, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
 		Piece piece5 = PieceFactory.getPiece(10, 1, 2);
-		piece5 = piece5.rotatePiece(1);
+		piece5 = piece5.rotatePiece(Piece.ROTATE_CW);
 		pDrawer.paint(g, piece5, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
 		Piece piece6 = PieceFactory.getPiece(7, 7, 2);
-		piece6 = piece6.flipPiece(1);
+		piece6 = piece6.flipPiece(Piece.FLIP_VERTICALLY);
 		pDrawer.paint(g, piece6, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
 		Piece piece7 = PieceFactory.getPiece(11, 11, 1);
@@ -94,5 +120,6 @@ public class BoardView extends JPanel {
 		
 		Piece piece9 = PieceFactory.getPiece(4, 0, 14);
 		pDrawer.paint(g, piece9, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+		
 	}
 }

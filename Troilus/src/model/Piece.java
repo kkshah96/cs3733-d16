@@ -18,16 +18,16 @@ import java.awt.Color;
  */
 public class Piece {
 	/** A constant provided to indicate a CCW rotation is requested. */
-	static final int ROTATE_CCW = -1;
+	public static final int ROTATE_CCW = -1;
 	
 	/** A constant provided to indicate a CW rotation is requested. */
-	static final int ROTATE_CW = 1;
+	public static final int ROTATE_CW = 1;
 	
 	/** A constant provided to indicate a horizontal flip is requested. */
-	static final int FLIP_HORIZONTALLY = -2;
+	public static final int FLIP_HORIZONTALLY = -2;
 	
 	/** A constant provided to indicate a vertical flip is requested. */
-	static final int FLIP_VERTICALLY = 2;
+	public static final int FLIP_VERTICALLY = 2;
 	
 	/** The squares of the piece, not including anchor */
 	PieceSquare[] squares;
