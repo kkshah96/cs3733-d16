@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * 
  * @author Maddy Longo
  * @author Dan Alfred
+ * @author Kunal Shah
  */
 public class Board {
 	/** Constant denoting the maximum width of the board. */

@@ -9,6 +9,7 @@ import java.awt.Color;
  * Keeps track of its number and the number's color.
  * 
  * @author Maddy
+ * @author Kunal Shah
  *
  */
 public class ReleaseSquare extends Square {

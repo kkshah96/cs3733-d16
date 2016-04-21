@@ -2,6 +2,15 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a storage area for Pieces in the Kabasuji game
+ * 
+ * The Bullpen structure is similar to the Board structure in the sense that it maintains a collection of Pieces,
+ * but it has no notion of a grid
+ * 
+ * @author Kunal Shah
+ *
+ */
 public class Bullpen {
 	ArrayList<Piece> pieces;
 

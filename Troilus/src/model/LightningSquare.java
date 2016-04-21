@@ -7,6 +7,7 @@ package model;
  * Keeps track of whether it has been covered by a Piece.
  * 
  * @author Maddy
+ * @author Kunal Shah
  *
  */
 public class LightningSquare extends Square {

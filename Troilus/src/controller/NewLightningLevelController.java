@@ -22,6 +22,7 @@ import view.LevelLoaderView;
  * of levels, and shows the level editor screen for the newly created level.
  * 
  * @author Connor Weeks
+ * @author Kunal Shah
  *
  */
 public class NewLightningLevelController implements ActionListener {
@@ -36,6 +37,7 @@ public class NewLightningLevelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		// Create a new Bullpen, Palette and Board for the Level
 		Bullpen bpen = new Bullpen();
 		Square[][] squares = new LightningSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
 		for(int i = 0; i < Board.BOARD_WIDTH; i++){

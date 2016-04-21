@@ -6,6 +6,11 @@ import java.awt.event.MouseEvent;
 import model.Board;
 import view.BoardView;
 
+/**
+ * Controls moving a Piece from the Board in the active Level to another location on the Board
+ *
+ * @author Kunal Shah
+ */
 public class MovePieceBoardToBoardController extends MouseAdapter {
 	Board board;
 	BoardView boardView;

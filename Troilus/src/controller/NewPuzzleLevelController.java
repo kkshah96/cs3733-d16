@@ -36,6 +36,7 @@ public class NewPuzzleLevelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		// Create a new Bullpen, Palette and Board for the Level
 		Bullpen bpen = new Bullpen();
 		
 		Square[][] squares = new PuzzleSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];

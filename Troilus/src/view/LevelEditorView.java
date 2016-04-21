@@ -32,6 +32,14 @@ import model.Board;
 import model.Level;
 import model.LevelBuilder;
 
+/**
+ * GUI for editing Kabausji levels in the LevelBuilder application
+ * 
+ * The LevelEditorView displays a BoardView, BullpenView and PaletteView as well as necessary buttons, labels and text fields for editing any type of Kabasuji Level
+ * 
+ * @author Kunal Shah
+ *
+ */
 public class LevelEditorView extends JFrame {
 
 	private JTextField boardRowField;

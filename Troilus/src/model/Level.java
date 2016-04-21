@@ -1,5 +1,14 @@
 package model;
 
+/**
+ * Represents a Level in the Kabasuji game
+ * 
+ * The Level structure stores information about the Level itself (such as its index, whether or not it is locked, and how many stars have been obtained)
+ * and also knows about a single Board, Bullpen, and Palette
+ * 
+ * @author Kunal Shah
+ *
+ */
 public abstract class Level {
 	int levelNum;
 	boolean locked;

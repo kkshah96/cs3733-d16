@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -25,7 +27,7 @@ import view.LevelLoaderView;
  * @author Connor Weeks
  * @author Alexander Kasparek
  */
-public class NewReleaseLevelController extends MouseAdapter {
+public class NewReleaseLevelController implements ActionListener {
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;
 
@@ -35,8 +37,9 @@ public class NewReleaseLevelController extends MouseAdapter {
 	}
 	
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void actionPerformed(ActionEvent e) {
 
+		// Create a new Bullpen, Palette and Board for the Level
 		Bullpen bpen = new Bullpen();
 		Square[][] squares = new ReleaseSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
 		for(int i = 0; i < Board.BOARD_WIDTH; i++){

@@ -36,6 +36,15 @@ import javax.swing.JLabel;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
 
+/**
+ * GUI for selecting Levels in the Kabasuji game
+ * 
+ * Displays buttons for every playable level in the game, as well as labels containing the number of stars received for respective Levels
+ * 
+ * @author Kunal Shah
+ *
+ */
+
 public class LevelSelectorView extends JFrame{
 
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();

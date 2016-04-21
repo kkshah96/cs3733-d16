@@ -4,6 +4,14 @@ import java.util.ArrayList;
 
 import controller.LoadLevelsController;
 
+/**
+ * Top level entity for the Kabasuji game
+ * 
+ * The Kabasuji game consists of a collection of Levels, and always keeps track of the active Level (or level currently loaded)
+ * 
+ * @author Kunal Shah
+ *
+ */
 public class Kabasuji {
 
 	ArrayList<Level> levels;

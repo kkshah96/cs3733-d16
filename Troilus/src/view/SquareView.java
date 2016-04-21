@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import model.Piece;
 import model.PieceFactory;
 
+//TODO: Remove this
 public class SquareView extends JPanel {
 	
 	int x, y, width, height;

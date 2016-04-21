@@ -18,6 +18,14 @@ import model.Board;
 import model.Kabasuji;
 import model.Level;
 
+/**
+ * GUI for a playable level in the Kabasuji game
+ * 
+ * Contains a BoardView, BullpenView, and Paletteview as well as necessary buttons and labels for playing a Kabasuji Level
+ * 
+ * @author Kunal Shah
+ *
+ */
 public class LevelView extends JFrame{
 
 	private JPanel panelTitle;

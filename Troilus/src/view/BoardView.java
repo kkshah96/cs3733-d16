@@ -19,6 +19,7 @@ import model.PieceFactory;
  * This class handles the drawing of contents of the board panel, i.e:
  * the AWT board, and any pieces on the board
  * @author Dan Alfred
+ * @author Kunal Shah
  *
  */
 public class BoardView extends JPanel {

@@ -7,6 +7,7 @@ package model;
  * Invalid square
  * 
  * @author Maddy
+ * @author Kunal Shah
  *
  */
 public class OutOfBoundsSquare extends Square {

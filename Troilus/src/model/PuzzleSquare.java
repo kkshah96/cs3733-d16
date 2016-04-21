@@ -6,6 +6,7 @@ package model;
  * Allows for implementation of Puzzle-level squares in Kabasuji.
  * 
  * @author Maddy
+ * @author Kunal Shah
  *
  */
 public class PuzzleSquare extends Square {

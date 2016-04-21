@@ -14,6 +14,7 @@ import java.awt.Color;
  * 
  * @author Dan Alfred
  * @author Maddy Longo
+ * @author Kunal Shah
  *
  */
 public class Piece {

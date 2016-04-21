@@ -17,6 +17,7 @@ import model.PieceFactory;
 /**
  * Displays the bullpen based on model data.
  * @author Connor Weeks
+ * @author Kunal Shah
  *
  */
 public class BullpenView extends JPanel {

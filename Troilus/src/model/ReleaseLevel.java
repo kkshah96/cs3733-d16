@@ -2,6 +2,14 @@ package model;
 
 import java.awt.Color;
 
+/**
+ * Represents a Level of game type Release in the Kabasuji game
+ * 
+ * The ReleaseLevel structure stores three boolean arrays that capture which numbers of each color type have been covered
+ * 
+ * @author Kunal Shah
+ *
+ */
 public class ReleaseLevel extends Level{
 
 	boolean redCovered[];

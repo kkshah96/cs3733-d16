@@ -1,5 +1,13 @@
 package model;
 
+/**
+ * Represents a Palette in the Kabasuji game 
+ * 
+ * The Palette structure keeps track of a collection of each of the 35 unique Piece types in the Kabasuji game
+ * 
+ * @author Kunal Shah
+ *
+ */
 public class Palette {
 	Piece[] pieces;
 

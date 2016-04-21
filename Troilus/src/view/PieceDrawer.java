@@ -14,6 +14,7 @@ import model.Square;
  * PieceDrawer provides a paint method, given a calling class' graphics object, and a piece
  * and information to draw the piece.
  * @author Dan Alfred
+ * @author Kunal Shah
  *
  */
 public class PieceDrawer {

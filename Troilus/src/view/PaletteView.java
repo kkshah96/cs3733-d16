@@ -9,6 +9,14 @@ import javax.swing.JPanel;
 
 import model.Palette;
 
+/**
+ * GUI for a Palette in the LevelBuilder application
+ * 
+ * Displays every Piece in the Kabasuji game in a window using a scrollbar as needed
+ * 
+ * @author Kunal Shah
+ *
+ */
 public class PaletteView extends JPanel {
 	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
 	static final int SQUARE_SIZE = 10;

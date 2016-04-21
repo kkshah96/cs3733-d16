@@ -3,6 +3,14 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * Contains logic for drawing Kabasuji Squares
+ * 
+ * SquareDrawer handles painting a Square as an AWT Rectangle given an x, y, width, releaseNumber (if drawing a ReleaseSquare) and color
+ * 
+ * @author Kunal Shah
+ *
+ */
 public class SquareDrawer {
 	
 	int x, y, width;

@@ -9,6 +9,7 @@ package model;
  * valid or invalid and have a type.
  * 
  * @author Maddy
+ * @author Kunal Shah
  *
  */
 public abstract class Square {
