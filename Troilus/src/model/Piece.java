@@ -24,10 +24,10 @@ public class Piece {
 	static final int ROTATE_CW = 1;
 	
 	/** A constant provided to indicate a horizontal flip is requested. */
-	static final int FLIP_HORIZONTALLY = -1;
+	static final int FLIP_HORIZONTALLY = -2;
 	
 	/** A constant provided to indicate a vertical flip is requested. */
-	static final int FLIP_VERTICALLY = 1;
+	static final int FLIP_VERTICALLY = 2;
 	
 	/** The squares of the piece, not including anchor */
 	PieceSquare[] squares;
@@ -146,6 +146,8 @@ public class Piece {
 
 				PieceSquare newSquare = new PieceSquare((-1) * oldRow, oldCol);
 				newSquares[i] = newSquare;
+			} else {
+				return this;
 			}
 		}
 		return new Piece(newSquares, anchor, type); // TODO: Implement this
@@ -155,14 +157,8 @@ public class Piece {
 		// TODO Auto-generated method stub
 		return this;
 	}
-
-	public boolean overlaps(int row, int col) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
-	/* This method becomes irrelevant if the anchor no longer stores definite coordinates
-	 * 
+	// This method needs to be updated if anchor square uses relative coordinates
 	public boolean overlaps(int row, int col) {
 		int anchorRow = this.getRow();
 		int anchorCol = this.getCol();
@@ -177,5 +173,5 @@ public class Piece {
 		}
 		
 		return false;
-	}*/
+	}
 }

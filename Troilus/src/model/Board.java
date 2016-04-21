@@ -11,51 +11,90 @@ import java.util.ArrayList;
  * board and the pieces on it.
  * 
  * @author Maddy Longo
- *
+ * @author Dan Alfred
  */
 public class Board {
+	/** Constant denoting the maximum width of the board. */
 	public static final int BOARD_WIDTH = 12;
+	
+	/** Constant denoting the maximum height of the board. */
 	public static final int BOARD_HEIGHT = 12;
 
+	/** The 2D array of squares that compose the board. */
 	Square[][] squares; // uses squares[row][col]
+	
+	/** An ArrayList of Piece to hold references to pieces on the board. */
 	ArrayList<Piece> pieces;
+	
+	/** A reference to a square that has been clicked. */
 	Square activeSquare;
 
 	// TODO: Is there any case where we will need to pass parameters to the constructor?
 	// Yes- when loading a board from storage, where we will need to set the squares accordingly
+	
+	/**
+	 * Default constructor for Board, initializing 2D array of squares to max height and max width.
+	 * Also assumes no pieces are on the board
+	 */
 	public Board() {
 		squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
 		pieces = new ArrayList<Piece>();
 	}
 	
+	/**
+	 * Constructor for board to define the requested size. Will throw a RuntimeException if 
+	 * the number of rows or number of columns exceeds the max size.
+	 * @param rows Number of rows to have enabled on the board
+	 * @param cols Number of columns to have enabled on the board
+	 */
 	public Board(int rows, int cols) {	
 		if (rows > BOARD_HEIGHT || cols > BOARD_WIDTH) {
-			//return; // Should this check be here?
+			throw new RuntimeException("Board Constructor exception: Number of rows or columns provided exceeds max size of board!");
 		} else {
 			this.squares = new Square[rows][cols];
+			this.pieces = new ArrayList<Piece>();
 		}
 	}
 	
+	/**
+	 * Constructor for the board to take in a predefined 2D array of squares
+	 * Will throw a RuntimeException if the number of rows or number of columns in the 2D array exceeds max board size
+	 * @param squares 2D array of squares for the board
+	 */
 	public Board(Square[][] squares) {
-		this.squares = squares;
-		this.pieces = new ArrayList<Piece>();
+		if(squares[0].length > BOARD_HEIGHT || squares.length > BOARD_WIDTH) {
+			throw new RuntimeException("Board Constructor exception: 2D array of Squares provided to Board exceeds max size of board!");
+		} else {
+			this.squares = squares;
+			this.pieces = new ArrayList<Piece>();
+		}
 	}
 	
+	/**
+	 * Sets the currently active square on this board for events
+	 * @param row Row of the square selected
+	 * @param col Column of the square selected
+	 */
 	public void setActiveSquare(int row, int col) {
 		this.activeSquare = squares[row][col];
 	}
 	
+	/**
+	 * Returns the active square of this board
+	 * @return Reference to active Square object
+	 */
 	public Square getActiveSquare() {
 		return activeSquare;
 	}
+	
 	/** Add the given piece to the board if valid
-	 * Return true if valid, false if invalid
-	 * @param p
-	 * @param row
-	 * @param col
-	 * @return
+	 * @param p Piece to be added
+	 * @param row Requested row for the piece anchor
+	 * @param col Requested column for the piece anchor
+	 * @return Returns true if piece was added successfully, false otherwise
 	 */
 	public boolean addPiece(Piece p, int row, int col) {
+		// Ensure the anchor is not trying to be placed outside the board
 		if (row < 0 || row >= BOARD_HEIGHT || col < 0 || col >= BOARD_WIDTH) {
 			return false;
 		}
@@ -76,7 +115,7 @@ public class Board {
 	}
 
 	/** Remove the given piece from the board and return it
-	 * @param p
+	 * @param p The piece to be removed
 	 */
 	public Piece removePiece(Piece p) {
 		this.pieces.remove(p);
@@ -85,7 +124,7 @@ public class Board {
 
 	/** Find the Piece at the given location (don't change)
 	 * WARNING: Returns NULL if not on board
-	 * @param row
+	 * @param row The 
 	 * @param col
 	 * @return
 	 */
@@ -104,9 +143,9 @@ public class Board {
 
 	/** Find the Square at the given location (don't change)
 	 * WARNING: Returns NULL if not on board
-	 * @param row
-	 * @param col
-	 * @return
+	 * @param row Row of the requested square
+	 * @param col Column of the requested square
+	 * @return Returns a reference to the requested square
 	 */
 	public Square getSquare(int row, int col) {
 		if (row >= BOARD_HEIGHT || row < 0 || col >= BOARD_WIDTH || col < 0) {
@@ -115,19 +154,28 @@ public class Board {
 		return squares[row][col];
 	}
 	
+	/**
+	 * Resets the dimensions and squares inside the board
+	 * Will throw a RuntimeException if the sizes given are greater than max size
+	 * @param rows Size
+	 * @param cols
+	 */
 	public void setDimensions(int rows, int cols){
 		squares = new Square[rows][cols];
 	}
 	
+	/**
+	 * Retrieves the listing of pieces on this board
+	 * @return ArrayList of Piece for this board
+	 */
 	public ArrayList<Piece> getPieces(){
 		return this.pieces;
 	}
 	
+	/**
+	 * Toggles the validity of the active square for this board
+	 */
 	public void toggleSquare() {
-		if (activeSquare.isValid()) {
-			activeSquare.isValid = false;
-		} else {
-			activeSquare.isValid = true;
-		}
+		activeSquare.isValid = !activeSquare.isValid;
 	}
 }
