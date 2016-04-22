@@ -125,7 +125,7 @@ public class LevelEditorView extends JFrame {
 		scrollPane_1.setBounds(6, 50, 446, 423);
 		bullPenPanel.add(scrollPane_1);
 		
-		JPanel panel_2 = new BullpenView();
+		JPanel panel_2 = new BullpenView(activeLevel.getBullpen());
 		scrollPane_1.setViewportView(panel_2);
 		
 		JPanel panel_4 = new JPanel();
