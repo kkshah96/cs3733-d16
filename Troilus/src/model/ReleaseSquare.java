@@ -4,13 +4,12 @@ import java.awt.Color;
 
 /**
  * Class allows for storage and manipulation of Release Square.
- * 
+ * <p>
  * Allows for implementation of Release-level squares in Kabasuji.
  * Keeps track of its number and the number's color.
- * 
+ * <p>
  * @author Maddy
  * @author Kunal Shah
- *
  */
 public class ReleaseSquare extends Square {
 	int number;
