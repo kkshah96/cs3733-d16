@@ -23,12 +23,13 @@ public class PaletteView extends JPanel {
 	//static final int BUFFER_SIZE = 1;
 	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
 
-	Palette p = new Palette();
-
+	//Palette p = new Palette();
+	Palette palette;
 	/**
 	 * Create the panel.
 	 */
-	public PaletteView() {
+	public PaletteView(Palette palette) {
+		this.palette = palette;
 		setLayout(null);
 
 		this.setPreferredSize(new Dimension(500, 500));

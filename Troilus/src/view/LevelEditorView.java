@@ -54,14 +54,16 @@ public class LevelEditorView extends JFrame {
 	
 	LevelLoaderView levelLoader;
 	LevelBuilder builder;
+	Level activeLevel;
 
 	/**
 	 * Create the application.
 	 */
-	public LevelEditorView(LevelBuilder builder, LevelLoaderView levelLoader){
+	public LevelEditorView(LevelBuilder builder, LevelLoaderView levelLoader, Level activeLevel){
 		setResizable(false);
 		this.builder = builder;
 		this.levelLoader = levelLoader;
+		this.activeLevel = activeLevel;
 		initialize();
 	}
 
@@ -72,7 +74,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		BoardView boardPanel = new BoardView(builder.getActiveLevel().getBoard());
+		BoardView boardPanel = new BoardView(activeLevel.getBoard());
 	//	BoardView boardPanel = new BoardView(new Board()); //TODO: GIve this the appropriate board
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -220,7 +222,7 @@ public class LevelEditorView extends JFrame {
 
 		
 		setButton.addActionListener(new SetBoardDimensionsController
-				(builder, builder.getActiveLevel(), this));
+				(builder, activeLevel, this));
 
 		
 		maxMovesPanel = new JPanel();
@@ -282,8 +284,8 @@ public class LevelEditorView extends JFrame {
 		btnSetTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
 		
 		//TODO: Is it okay to use this weirdish logic?
-		if(builder.getActiveLevel().getName().equals("Puzzle")){
-			maxMovesField.addActionListener(new SetMaxMovesController(builder, builder.getActiveLevel(), levelLoader, 0));
+		if(activeLevel.getName().equals("Puzzle")){
+			maxMovesField.addActionListener(new SetMaxMovesController(builder, activeLevel, levelLoader, 0));
 		}
 		
 		JPanel panel_1 = new JPanel();
@@ -298,7 +300,7 @@ public class LevelEditorView extends JFrame {
 		ToggleButton.setBounds(437, 0, 115, 38);
 		panel_1.add(ToggleButton);
 		
-		ToggleButton.addActionListener(new ToggleSquareController(builder, builder.getActiveLevel(), levelLoader));
+		ToggleButton.addActionListener(new ToggleSquareController(builder, activeLevel, levelLoader));
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -346,13 +348,13 @@ public class LevelEditorView extends JFrame {
 		scrollPane.setBounds(0, 522, 1205, 201);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
-		JPanel panel = new PaletteView();
+		JPanel panel = new PaletteView(activeLevel.getPalette());
 		panel.setPreferredSize(new Dimension(2100, 100));
 		scrollPane.setViewportView(panel);
 		
-		if(builder.getActiveLevel().getName().equals("Lightning")){
+		if(activeLevel.equals("Lightning")){
 			btnSetTime.addActionListener(new SetTimeLimitController
-				(builder, builder.getActiveLevel(), this));
+				(builder, activeLevel, this));
 		}
 		
 	}
