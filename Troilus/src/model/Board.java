@@ -1,6 +1,8 @@
 package model;
 
-import java.util.ArrayList;
+import java.awt.Point;
+import java.util.Hashtable;
+import java.util.Set;
 
 /**
  * Class allows for storage and manipulation of Board structure.
@@ -25,7 +27,8 @@ public class Board {
 	Square[][] squares; // uses squares[row][col]
 	
 	/** An ArrayList of Piece to hold references to pieces on the board. */
-	ArrayList<Piece> pieces;
+	//ArrayList<Piece> pieces;
+	Hashtable<Piece, Point> pieces;
 	
 	/** A reference to a square that has been clicked. */
 	Square activeSquare;
@@ -39,7 +42,7 @@ public class Board {
 	 */
 	public Board() {
 		squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
-		pieces = new ArrayList<Piece>();
+		pieces = new Hashtable<Piece, Point>();
 	}
 	
 	/**
@@ -53,7 +56,7 @@ public class Board {
 			throw new RuntimeException("Board Constructor exception: Number of rows or columns provided exceeds max size of board!");
 		} else {
 			this.squares = new Square[rows][cols];
-			this.pieces = new ArrayList<Piece>();
+			this.pieces = new Hashtable<Piece, Point>();
 		}
 	}
 	
@@ -67,7 +70,7 @@ public class Board {
 			throw new RuntimeException("Board Constructor exception: 2D array of Squares provided to Board exceeds max size of board!");
 		} else {
 			this.squares = squares;
-			this.pieces = new ArrayList<Piece>();
+			this.pieces = new Hashtable<Piece, Point>();
 		}
 	}
 	
@@ -111,7 +114,7 @@ public class Board {
 			}
 		}
 
-		this.pieces.add(p.place(row, col));
+		this.pieces.put(p, new Point(row, col));
 		return true;
 	}
 
@@ -123,18 +126,19 @@ public class Board {
 		return p;
 	}
 
-	/** Find the Piece at the given location (don't change)
+	/** Find the Piece at the given location (don't change) //TODO: Sorry I changed this
 	 * WARNING: Returns NULL if not on board
 	 * @param row The 
 	 * @param col
 	 * @return
 	 */
-	public Piece getPiece(int row, int col) {
+	 public Piece getPiece(int row, int col) {
 		if (row > 11 || row < 0 || col > 11 || col < 0) {
 			return null;
 		}
 		
-		for (Piece piece : pieces) {
+		Set<Piece> keySet = pieces.keySet();
+		for (Piece piece : keySet) {
 			if (piece.overlaps(row,col)) {
 				return piece;
 			}
@@ -169,7 +173,7 @@ public class Board {
 	 * Retrieves the listing of pieces on this board
 	 * @return ArrayList of Piece for this board
 	 */
-	public ArrayList<Piece> getPieces(){
+	public Hashtable<Piece, Point> getPieces(){
 		return this.pieces;
 	}
 	
