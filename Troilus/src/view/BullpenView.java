@@ -26,7 +26,7 @@ public class BullpenView extends JPanel {
 	static final int SQUARE_SIZE = 10;
 	static final int BUFFER_SIZE = 1;
 
-	Bullpen bullpen = new Bullpen();
+	//Bullpen bullpen = new Bullpen();
 	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
 
 	/**
@@ -65,24 +65,25 @@ public class BullpenView extends JPanel {
 		add(lblBoard);
 	}
 
+	//TODO: Implement this using hashtable
 	public void paintComponent(Graphics g){
 
 		super.paintComponent(g);
 		
 		// add test pieces
-		bullpen.addPiece(PieceFactory.getPiece(0, 0, 1));
-		bullpen.addPiece(PieceFactory.getPiece(0, 6, 2));
-		bullpen.addPiece(PieceFactory.getPiece(0, 12, 3));
-		bullpen.addPiece(PieceFactory.getPiece(6, 0, 4));
-		bullpen.addPiece(PieceFactory.getPiece(6, 6, 5));
+		//bullpen.addPiece(PieceFactory.getPiece(0, 0, 1));
+		//bullpen.addPiece(PieceFactory.getPiece(0, 6, 2));
+		//bullpen.addPiece(PieceFactory.getPiece(0, 12, 3));
+		//bullpen.addPiece(PieceFactory.getPiece(6, 0, 4));
+		//bullpen.addPiece(PieceFactory.getPiece(6, 6, 5));
 		
 		
 		PieceDrawer pDrawer = new PieceDrawer();
-		int numPieces = bullpen.getNumPieces();
-		for(int i = 0; i < numPieces; i++){
+		//int numPieces = bullpen.getNumPieces();
+		//for(int i = 0; i < numPieces; i++){
 			//pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
-			pDrawer.paint(g, bullpen.getPiece(i), SQUARE_SIZE, 120, 6 * SQUARE_SIZE);
-		}
+			//pDrawer.paint(g, bullpen.getPiece(i), SQUARE_SIZE, 120, 6 * SQUARE_SIZE);
+		//}
 	}
 }
 

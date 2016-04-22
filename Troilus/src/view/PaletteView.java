@@ -45,6 +45,7 @@ public class PaletteView extends JPanel {
 
 	}
 
+	// TODO: Implement this using Hashtable
 	public void paintComponent(Graphics g){
 
 		super.paintComponent(g);
@@ -53,7 +54,7 @@ public class PaletteView extends JPanel {
 
 		for(int i = 0; i < 35; i++){
 			//pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
-			pDrawer.paint(g, p.getPiece(i), SQUARE_SIZE, 120, 10);
+			//pDrawer.paint(g, p.getPiece(i), SQUARE_SIZE, 120, 10);
 		}
 	}
 

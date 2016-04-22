@@ -2,11 +2,11 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.Random;
 
 import model.Piece;
 import model.PieceSquare;
-import model.Square;
 
 /**
  * This class contains the logic to render a given piece.
@@ -41,17 +41,17 @@ public class PieceDrawer {
 	 * @param height_offset The height offset of the piece in pixels
 	 * @param width_offset The width offset of the piece in pixels
 	 */
-	public void paint(Graphics g, Piece piece, int width, int height_offset, int width_offset){
+	public void paint(Graphics g, Piece piece, Point p, int width, int height_offset, int width_offset){
 		squares = piece.getSquares();
 		anchorSquare = piece.getAnchor();
 		
 		//g.setColor(getRandomColor());
 		g.setColor(Color.RED);
 		for(int i = 0; i < 5; i++){
-			g.fillRect((anchorSquare.getCol() + squares[i].getCol()) * width + width_offset, (anchorSquare.getRow() + squares[i].getRow()) * width + height_offset, width, width);
+			g.fillRect((p.x + squares[i].getCol()) * width + width_offset, (p.y + squares[i].getRow()) * width + height_offset, width, width);
 		}
 		
-		g.fillRect(anchorSquare.getCol() * width + width_offset, anchorSquare.getRow() * width + height_offset, width, width);
+		g.fillRect(p.x * width + width_offset, p.y * width + height_offset, width, width);
 	}
 	
 	private Color getRandomColor(){

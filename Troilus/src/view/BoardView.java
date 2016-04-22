@@ -3,8 +3,9 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Point;
+import java.util.Hashtable;
+import java.util.Set;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -81,7 +82,17 @@ public class BoardView extends JPanel {
 		
 		SquareDrawer drawer = new SquareDrawer();
 		PieceDrawer pDrawer = new PieceDrawer();
+		
+		Hashtable<Piece, Point> pieces = board.getPieces();
 
+		
+		//TEST adding pieces TODO: remove
+		pieces.put(PieceFactory.getPiece(4), new Point(5, 5));
+		Set<Piece> keySet = pieces.keySet();
+		for(Piece p : keySet){
+			pDrawer.paint(g, p, pieces.get(p), 30, HEIGHT_OFFSET, WIDTH_OFFSET);
+		}
+		
 		//int count = 0;
 		for(int i = 0; i < MAX_BOARD_SIZE * SQUARE_SIZE; i+= SQUARE_SIZE){
 			for(int j = 0; j < MAX_BOARD_SIZE * SQUARE_SIZE; j+= SQUARE_SIZE){
@@ -91,9 +102,9 @@ public class BoardView extends JPanel {
 		
 	//	for(int i = 0; i < board.getPieces().size(); i++){
 		//	pDrawer.paint(g, board.getPieces().get(i), width, height_offset, width_offset);
-	//	}
+		//}
 		
-		Piece piece2 = PieceFactory.getPiece(4, 7, 2);
+		/*Piece piece2 = PieceFactory.getPiece(4, 7, 2);
 		//pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		pDrawer.paint(g, piece2, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
@@ -120,7 +131,7 @@ public class BoardView extends JPanel {
 		pDrawer.paint(g, piece8, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		
 		Piece piece9 = PieceFactory.getPiece(4, 0, 14);
-		pDrawer.paint(g, piece9, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+		pDrawer.paint(g, piece9, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);*/
 		
 	}
 }
