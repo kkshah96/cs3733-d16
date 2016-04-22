@@ -39,6 +39,10 @@ public class Palette {
 		return null;
 	}
 	
+	public Hashtable<Piece, Point> getPieces(){
+		return this.pieces;
+	}
+	
 	private void initialize(){
 		for(int i = 0; i < 35; i++){
 			pieces.put(PieceFactory.getPiece(i+1), new Point(0, i * 6));

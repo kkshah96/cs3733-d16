@@ -51,6 +51,10 @@ public class Bullpen {
 		return pieces.get(index);
 	}*/
 	
+	public Hashtable<Piece, Point> getPieces(){
+		return this.pieces;
+	}
+	
 	public int getNumPieces() {
 		return pieces.size();
 	}

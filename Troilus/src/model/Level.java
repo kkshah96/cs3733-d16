@@ -73,4 +73,8 @@ public abstract class Level {
 	public Board getBoard() {
 		return board;
 	}
+	
+	public Palette getPalette(){
+		return palette;
+	}
 }
