@@ -12,8 +12,8 @@ package model;
  */
 public class PieceFactory {
 
-	public static Piece getPiece(int row, int col, int pieceType) {
-		PieceSquare anchorSquare = new PieceSquare(row, col);
+	public static Piece getPiece(int pieceType) {
+		PieceSquare anchorSquare = new PieceSquare(0, 0);
 		PieceSquare[] pieceSquares = new PieceSquare[5];
 
 		switch(pieceType) {

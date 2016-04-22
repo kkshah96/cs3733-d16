@@ -1,5 +1,9 @@
 package model;
 
+import java.awt.Point;
+import java.util.Hashtable;
+import java.util.Set;
+
 /**
  * Represents a Palette in the Kabasuji game 
  * 
@@ -9,24 +13,26 @@ package model;
  *
  */
 public class Palette {
-	Piece[] pieces;
+	Hashtable<Piece, Point> pieces;
 
 	// TODO: Handle checking there are exactly 35 pieces at execution time? NO (could change!)
 	// TODO: Can we just pass in all of the pieces to the constructor or should we make an addPiece method?
 	public Palette(){
 		//this.pieces = pieces;
-		pieces = new Piece[35];
+		pieces = new Hashtable<Piece, Point>(35);
 		initialize();
 	}
 	
-	public Piece getPiece(int index){
+	/*public Piece getPiece(int index){
 		return pieces[index];
-	}
+	}*/
 
 	// TODO: Assumed we would need to be able to get a piece from the Palette so I added this
 	public Piece getPiece(int row, int col){
-		for (Piece piece : pieces) {
-			if (piece.getRow() == row && piece.getCol() == col) {
+		Set<Piece> keySet = pieces.keySet();
+		for (Piece piece : keySet) {
+			Point p = pieces.get(piece);
+			if (p.getY() == row && p.getX() == col) {
 				return piece;
 			}
 		}
@@ -35,7 +41,7 @@ public class Palette {
 	
 	private void initialize(){
 		for(int i = 0; i < 35; i++){
-			pieces[i] = PieceFactory.getPiece(0, i * 6, i + 1);
+			pieces.put(PieceFactory.getPiece(i+1), new Point(0, i * 6));
 		}
 	}
 }
