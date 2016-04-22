@@ -344,6 +344,7 @@ public class LevelEditorView extends JFrame {
 		//pView.setPreferredSize(new Dimension(500, 500));
 		//pView.setLayout(null);
 		
+		//releaseColorComboBox.getSelectedItem().toString() //TODO: This is how to get the selected option
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 522, 1205, 201);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
