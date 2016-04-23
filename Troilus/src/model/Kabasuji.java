@@ -15,7 +15,7 @@ import controller.LoadLevelsController;
 public class Kabasuji {
 
 	ArrayList<Level> levels;
-	Level activeLevel;
+	//Level activeLevel;
 	
 	public Kabasuji() {
 		
@@ -60,11 +60,11 @@ public class Kabasuji {
 		return levels.size();
 	}
 	
-	public void setActiveLevel(Level level) {
-		activeLevel = level;
-	}
+//	public void setActiveLevel(Level level) {
+	//	activeLevel = level;
+	//}
 	
-	public Level getActiveLevel() {
-		return activeLevel;
-	}
+	//public Level getActiveLevel() {
+		//return activeLevel;
+	//}
 }

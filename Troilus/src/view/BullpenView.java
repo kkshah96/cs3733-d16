@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Bullpen;
+import model.Piece;
 import model.PieceFactory;
 
 
@@ -22,17 +24,21 @@ import model.PieceFactory;
  */
 public class BullpenView extends JPanel {
 	static final int BULLPEN_WIDTH = 440;
-	static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
 	static final int SQUARE_SIZE = 10;
-	static final int BUFFER_SIZE = 1;
-
-	//Bullpen bullpen = new Bullpen();
-	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
+	
+	/** Constant to define the offset between the left of the panel and the left of the bullpen */
+	static final int WIDTH_OFFSET = 10;
+	
+	/** Constant to define the offset between the top of the panel and the top of the bullpen*/
+	static final int HEIGHT_OFFSET = 30;
+	
+	Bullpen bullpen;
 
 	/**
 	 * Create the panel.
 	 */
-	public BullpenView() {
+	public BullpenView(Bullpen bullpen) {
+		this.bullpen = bullpen;
 		initialize();
 	}
 
@@ -42,14 +48,12 @@ public class BullpenView extends JPanel {
 
 		this.setPreferredSize(new Dimension(423, 473));
 
-		JLabel lblNewLabel = new JLabel("There should be a scrollbar here..");
-		lblNewLabel.setBounds(10, 11, 436, 14);
-		add(lblNewLabel);
-
 		JLabel lblBoard = new JLabel("Bullpen");
 		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
 		lblBoard.setForeground(Color.BLACK);
 		lblBoard.setBounds(201, 5, 100, 23);
+		
+		
 
 		int count = 0;
 		/*for(int i = 0; i < MAX_BOARD_SIZE * SQUARE_SIZE; i+= SQUARE_SIZE){
@@ -70,20 +74,17 @@ public class BullpenView extends JPanel {
 
 		super.paintComponent(g);
 		
-		// add test pieces
-		//bullpen.addPiece(PieceFactory.getPiece(0, 0, 1));
-		//bullpen.addPiece(PieceFactory.getPiece(0, 6, 2));
-		//bullpen.addPiece(PieceFactory.getPiece(0, 12, 3));
-		//bullpen.addPiece(PieceFactory.getPiece(6, 0, 4));
-		//bullpen.addPiece(PieceFactory.getPiece(6, 6, 5));
+		//TESTING TODO: Remove
+		//Hashtable<Piece, Point> pieces = bullpen.getPieces();
+		ArrayList<Piece> pieces = bullpen.getPieces();
+		PieceDrawer pDrawer = new PieceDrawer(); //TODO: Should we make PieceDrawer a static class?
 		
+		//TEST adding pieces TODO: remove
+		pieces.add(PieceFactory.getPiece(10));
+		for(int i = 0; i < pieces.size(); i++){
+			pDrawer.paint(g, pieces.get(i), new Point(10, 10), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+		}
 		
-		PieceDrawer pDrawer = new PieceDrawer();
-		//int numPieces = bullpen.getNumPieces();
-		//for(int i = 0; i < numPieces; i++){
-			//pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
-			//pDrawer.paint(g, bullpen.getPiece(i), SQUARE_SIZE, 120, 6 * SQUARE_SIZE);
-		//}
 	}
 }
 

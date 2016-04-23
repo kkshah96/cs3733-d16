@@ -46,11 +46,11 @@ public class LevelView extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public LevelView(LevelSelectorView levelSelector, Kabasuji game) { 
+	public LevelView(LevelSelectorView levelSelector, Kabasuji game, Level level) { 
 		setResizable(false);
 		this.levelSelector = levelSelector;
 		this.game = game;
-		this.level = game.getActiveLevel();
+		this.level = level;
 		initialize();
 	}
 

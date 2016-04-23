@@ -51,12 +51,12 @@ public class NewReleaseLevelController implements ActionListener {
 		Board board = new Board(squares);
 				
 		Palette p = new Palette();
-		ReleaseLevel r = new ReleaseLevel(0, true, bpen, board, p);
+		ReleaseLevel r = new ReleaseLevel(builder.getLevels().size(), true, bpen, board, p);
 		builder.addLevel(r);
-		builder.setActiveLevel(r);
+		//builder.setActiveLevel(r);
 
 		// TODO Auto-generated method stub
-		final LevelEditorView newReleaseLevel = new LevelEditorView(builder, levelLoader);
+		final LevelEditorView newReleaseLevel = new LevelEditorView(builder, levelLoader, r);
 
 		newReleaseLevel.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

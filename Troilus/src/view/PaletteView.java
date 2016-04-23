@@ -23,12 +23,13 @@ public class PaletteView extends JPanel {
 	//static final int BUFFER_SIZE = 1;
 	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
 
-	Palette p = new Palette();
-
+	//Palette p = new Palette();
+	Palette palette;
 	/**
 	 * Create the panel.
 	 */
-	public PaletteView() {
+	public PaletteView(Palette palette) {
+		this.palette = palette;
 		setLayout(null);
 
 		this.setPreferredSize(new Dimension(500, 500));
@@ -52,6 +53,7 @@ public class PaletteView extends JPanel {
 
 		PieceDrawer pDrawer = new PieceDrawer();
 
+		
 		for(int i = 0; i < 35; i++){
 			//pDrawer.paint(g, piece, SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 			//pDrawer.paint(g, p.getPiece(i), SQUARE_SIZE, 120, 10);

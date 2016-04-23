@@ -34,7 +34,7 @@ public class StartPuzzleLevelController implements ActionListener {
 			return;
 		}
 
-		final LevelView levelView = new LevelView(levelSelector, game);
+		final LevelView levelView = new LevelView(levelSelector, game, selectedLevel);
 		levelView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				levelView.dispose();
@@ -42,7 +42,7 @@ public class StartPuzzleLevelController implements ActionListener {
 			}      
 		});
 		// set active level in top model to selected level
-		game.setActiveLevel(selectedLevel);
+		//game.setActiveLevel(selectedLevel);
 
 		// set visibility of level view elements to account for level type
 		levelView.getPanelLightningStats().setVisible(false);

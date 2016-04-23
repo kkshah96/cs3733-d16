@@ -49,13 +49,13 @@ public class NewPuzzleLevelController implements ActionListener {
 		Board board = new Board(squares);
 		
 		Palette p = new Palette();
-		PuzzleLevel p2 = new PuzzleLevel(0, true, bpen, board, p, 0);
+		//TODO: I changed the level number from 0 to the size of the levels array (is there any reason this wouldn't work?)
+		PuzzleLevel p2 = new PuzzleLevel(builder.getLevels().size(), true, bpen, board, p, 0);
 		builder.addLevel(p2);
-		builder.setActiveLevel(p2);
-		System.out.println(builder.getActiveLevel());
+		//builder.setActiveLevel(p2); //TODO: We should be able to remove any activeLevel logic
 
 		// TODO Auto-generated method stub
-		final LevelEditorView newPuzzleLevel = new LevelEditorView(builder, levelLoader);
+		final LevelEditorView newPuzzleLevel = new LevelEditorView(builder, levelLoader, p2);
 		newPuzzleLevel.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				newPuzzleLevel.dispose();

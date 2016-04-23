@@ -71,7 +71,7 @@ public class LevelXMLOutputController {
 			int numPieces = level.getBullpen().getNumPieces();
 			for(int i = 0; i < numPieces; i++) {
 				Element pieceElement = doc.createElement("Piece");
-				pieceElement.setAttribute("Number", ""+ level.getBullpen().getPiece(i).getType());
+				pieceElement.setAttribute("Number", ""+ level.getBullpen().getPiece(0,i).getType()); //TODO: Fix first parameter
 				bullpenElement.appendChild(pieceElement);
 			}
 			

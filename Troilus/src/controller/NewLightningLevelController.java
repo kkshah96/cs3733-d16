@@ -49,11 +49,11 @@ public class NewLightningLevelController implements ActionListener {
 		Board board = new Board(squares);
 				
 		Palette p = new Palette();
-		LightningLevel l = new LightningLevel(0, true, bpen, board, p, 0);
+		LightningLevel l = new LightningLevel(builder.getLevels().size(), true, bpen, board, p, 0);
 		builder.addLevel(l);
-		builder.setActiveLevel(l); // TODO: Will we have to handle setting activeLevel to null in the future when a level is exited?
+		//builder.setActiveLevel(l); // TODO: Will we have to handle setting activeLevel to null in the future when a level is exited?
 
-		final LevelEditorView newLightningLevel = new LevelEditorView(builder, levelLoader);
+		final LevelEditorView newLightningLevel = new LevelEditorView(builder, levelLoader, l);
 		
 		newLightningLevel.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

@@ -10,8 +10,14 @@ import model.LevelBuilder;
 import view.LevelLoaderView;
 
 /**
- * 
- * 
+ * Toggles the selected Square on the board on or off, depending on its current state.
+ * <p>
+ * builder = the current builder instance. <br>
+ * <p>
+ * level = the current level being edited. <br>
+ * <p>
+ * editorView = the level editor window. <br>
+ * <p>
  * @author Alexander Kasparek
  */
 public class ToggleSquareController implements ActionListener {
