@@ -52,12 +52,6 @@ public class LevelLoaderView extends JFrame{
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	LevelBuilder builder;
 
-
-	/**
-	 * Launch the application.
-	 */
-
-
 	/**
 	 * Create the application.
 	 */
@@ -343,19 +337,6 @@ public class LevelLoaderView extends JFrame{
 		levelButtons.add(btnLevel26);
 		levelButtons.add(btnLevel27);
 		
-		// add mouse listeners to all level buttons
-		for (int i = 0; i < levelButtons.size(); i++){
-			if (i % 3 == 0) {
-			//	levelButtons.get(i).addActionListener(new NewPuzzleLevelController(builder, this));
-			}
-			else if (i % 3 == 1) {
-				//levelButtons.get(i).addActionListener(new NewLightningLevelController(builder, this));
-			}
-			else {
-				//
-				//levelButtons.get(i).addMouseListener(new NewReleaseLevelController(builder, this));
-			}
-		}
 	}
 	
 	public ArrayList<JButton> getLevelButtons(){

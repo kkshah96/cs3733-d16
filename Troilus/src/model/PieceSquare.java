@@ -14,7 +14,6 @@ public class PieceSquare extends Square {
 		super(row, col, true);
 	}
 	
-	// TODO: Can a PieceSquare become invalid?
 	@Override
 	public boolean isValid() {
 		return true;

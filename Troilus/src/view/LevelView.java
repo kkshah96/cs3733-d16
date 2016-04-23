@@ -40,10 +40,6 @@ public class LevelView extends JFrame{
 	Level level;
 
 	/**
-	 * Launch the application.
-	 */
-
-	/**
 	 * Create the application.
 	 */
 	public LevelView(LevelSelectorView levelSelector, Kabasuji game, Level level) { 
@@ -59,7 +55,6 @@ public class LevelView extends JFrame{
 	 */
 	private void initialize() {
 		setBounds(100, 100, 953, 565);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
@@ -78,7 +73,6 @@ public class LevelView extends JFrame{
 		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		panelTitle.add(lblLevelPuzzle);
 	
-		//BoardView panelBoard = new BoardView(game.getActiveLevel().getBoard()); // TODO: Does this make any sense?
 		BoardView panelBoard = new BoardView(level.getBoard());
 		panelBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panelBoard.setBackground(Color.LIGHT_GRAY);

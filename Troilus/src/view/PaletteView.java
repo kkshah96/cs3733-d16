@@ -22,15 +22,12 @@ import model.Piece;
  *
  */
 public class PaletteView extends JPanel {
-	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
+
 	static final int SQUARE_SIZE = 10;
 	static final int HEIGHT_OFFSET = 100;
 	static final int WIDTH_OFFSET = 10;
 	static final int SPACING = 6;
-	//static final int BUFFER_SIZE = 1;
-	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
-
-	//Palette p = new Palette();
+	
 	Palette palette;
 	/**
 	 * Create the panel.
@@ -38,11 +35,8 @@ public class PaletteView extends JPanel {
 	public PaletteView(Palette palette) {
 		this.palette = palette;
 		initialize();
-		
-
 	}
 
-	// TODO: Implement this using Hashtable
 	public void paintComponent(Graphics g){
 
 		super.paintComponent(g);
@@ -53,7 +47,6 @@ public class PaletteView extends JPanel {
 		
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
 			pDrawer.paint(g, pieces.get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
-			//pDrawer.paint(g, p.getPiece(i), SQUARE_SIZE, 120, 10);
 		}
 	}
 

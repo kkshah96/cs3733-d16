@@ -23,15 +23,6 @@ public abstract class Square {
 		this.isValid = isValid;
 	}
 	
-	/**
-	 * Returns a new Square of the given type
-	 * @param row
-	 * @param col
-	 * @return
-	 */
-	//public abstract Square copy(int row, int col);
-	
-	// TODO: Does this have to be an abstract method?
 	public boolean isValid() {
 		return true;
 	}

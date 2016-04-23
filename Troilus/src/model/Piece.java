@@ -41,7 +41,6 @@ public class Piece {
 	
 	/** An int representation of the piece type, from 1-35 */
 	int type;
-	//int row, col; // TODO: Do we need this? If so, update constructor(s)
 	
 	public Piece(PieceSquare[] squares, PieceSquare anchor, int type) {
 		this.squares = squares;
