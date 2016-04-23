@@ -15,6 +15,7 @@ import java.util.Set;
  * @author Maddy Longo
  * @author Dan Alfred
  * @author Kunal Shah
+ * @author Connor Weeks
  */
 public class Board {
 	/** Constant denoting the maximum width of the board. */
@@ -45,20 +46,6 @@ public class Board {
 		pieces = new Hashtable<Piece, Point>();
 	}
 	
-	/**
-	 * Constructor for board to define the requested size. Will throw a RuntimeException if 
-	 * the number of rows or number of columns exceeds the max size.
-	 * @param rows Number of rows to have enabled on the board
-	 * @param cols Number of columns to have enabled on the board
-	 */
-	public Board(int rows, int cols) {	
-		if (rows > BOARD_HEIGHT || cols > BOARD_WIDTH) {
-			throw new RuntimeException("Board Constructor exception: Number of rows or columns provided exceeds max size of board!");
-		} else {
-			this.squares = new Square[rows][cols];
-			this.pieces = new Hashtable<Piece, Point>();
-		}
-	}
 	
 	/**
 	 * Constructor for the board to take in a predefined 2D array of squares
@@ -166,7 +153,12 @@ public class Board {
 	 * @param cols
 	 */
 	public void setDimensions(int rows, int cols){
-		squares = new Square[rows][cols];
+		for (int row = 0; row < BOARD_HEIGHT; row++) {
+			for (int column = 0; column < BOARD_WIDTH; column++) {
+				boolean valid = row < rows && column <  cols;
+				squares[row][column].setIsValid(valid);
+			}
+		}
 	}
 	
 	/**
