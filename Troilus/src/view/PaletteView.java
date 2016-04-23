@@ -37,16 +37,8 @@ public class PaletteView extends JPanel {
 	 */
 	public PaletteView(Palette palette) {
 		this.palette = palette;
-		setLayout(null);
-
-		this.setPreferredSize(new Dimension(500, 500));
-
-		JLabel lblBoard = new JLabel("Palette");
-		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
-		lblBoard.setForeground(Color.BLACK);
-		lblBoard.setBounds(201, 5, 100, 23);
-
-
+		initialize();
+		
 
 	}
 
@@ -66,22 +58,15 @@ public class PaletteView extends JPanel {
 	}
 
 	private void initialize(){
-		//JLabel lblBoard = new JLabel("Bullpen");
-		//lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
-		//lblBoard.setForeground(Color.BLACK);
-		//lblBoard.setBounds(201, 5, 100, 23);
+		setLayout(null);
 
-		//int count = 0;
-		/*for(int i = 0; i < MAX_BOARD_SIZE * SQUARE_SIZE; i+= SQUARE_SIZE){
-for(int j = 0; j < MAX_BOARD_SIZE * SQUARE_SIZE; j+= SQUARE_SIZE){
-squares.add(new SquareView(SQUARE_SIZE));
-squares.get(count).setBounds(i + 10, j + 30, SQUARE_SIZE + BUFFER_SIZE, SQUARE_SIZE + BUFFER_SIZE);
-add(squares.get(count));
-count++;
-}
-}*/
+		this.setPreferredSize(new Dimension(500, 500));
 
-		//setLayout(null);
-		//add(lblBoard);
+		JLabel lblBoard = new JLabel("Palette");
+		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
+		lblBoard.setForeground(Color.BLACK);
+		lblBoard.setBounds(201, 5, 100, 23);
+		
+		this.add(lblBoard);
 	}
 }
