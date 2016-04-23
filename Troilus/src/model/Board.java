@@ -107,7 +107,7 @@ public class Board {
 			// check if each square is in bounds
 			int absRow = square.row + row;
 			int absCol = square.col + col;
-			if (!(absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
+			if ((absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
 				if (!squares[absRow][absCol].isValid()) {
 					return false;
 				}

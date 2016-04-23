@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Set;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,12 +25,12 @@ import model.Piece;
  */
 public class PaletteView extends JPanel {
 	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
-	static final int SQUARE_SIZE = 10;
-	static final int HEIGHT_OFFSET = 100;
-	static final int WIDTH_OFFSET = 10;
-	static final int SPACING = 6;
+	public static final int SQUARE_SIZE = 10;
+	public static final int HEIGHT_OFFSET = 100;
+	public static final int WIDTH_OFFSET = 10;
+	public static final int SPACING = 6;
 	//static final int BUFFER_SIZE = 1;
-	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
+	Hashtable<Piece, Point> squares;
 
 	//Palette p = new Palette();
 	Palette palette;
@@ -46,7 +48,7 @@ public class PaletteView extends JPanel {
 		lblBoard.setForeground(Color.BLACK);
 		lblBoard.setBounds(201, 5, 100, 23);
 
-
+		 squares = new Hashtable<Piece, Point>();
 
 	}
 
@@ -60,9 +62,14 @@ public class PaletteView extends JPanel {
 
 		
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
+			squares.put(pieces.get(i), new Point(i * SPACING, 0));
 			pDrawer.paint(g, pieces.get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 			//pDrawer.paint(g, p.getPiece(i), SQUARE_SIZE, 120, 10);
 		}
+	}
+	
+	public Hashtable<Piece,Point> getDrawnPieces() {
+		return squares;
 	}
 
 	private void initialize(){

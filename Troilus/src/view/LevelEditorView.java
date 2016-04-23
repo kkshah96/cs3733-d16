@@ -24,6 +24,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import controller.ExitLevelEditorController;
+import controller.MovePiecePaletteToBullpenController;
 import controller.SetBoardDimensionsController;
 import controller.SetMaxMovesController;
 import controller.SetTimeLimitController;
@@ -56,6 +57,8 @@ public class LevelEditorView extends JFrame {
 	LevelBuilder builder;
 	Level activeLevel;
 
+	PaletteView palettePanel;
+	
 	/**
 	 * Create the application.
 	 */
@@ -349,10 +352,10 @@ public class LevelEditorView extends JFrame {
 		scrollPane.setBounds(0, 522, 1205, 201);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
-		JPanel panel = new PaletteView(activeLevel.getPalette());
-		panel.setPreferredSize(new Dimension(2100, 100));
-		scrollPane.setViewportView(panel);
-		
+		palettePanel = new PaletteView(activeLevel.getPalette());
+		palettePanel.setPreferredSize(new Dimension(2100, 100));
+		scrollPane.setViewportView(palettePanel);
+		palettePanel.addMouseListener(new MovePiecePaletteToBullpenController(builder, activeLevel, levelLoader, this));
 		if(activeLevel.equals("Lightning")){
 			btnSetTime.addActionListener(new SetTimeLimitController
 				(builder, activeLevel, this));
@@ -391,5 +394,9 @@ public class LevelEditorView extends JFrame {
 	public JTextField getSecondsField(){
 		return timeSecondsField;
 		
+	}
+	
+	public PaletteView getPaletteView() {
+		return palettePanel;
 	}
 }
