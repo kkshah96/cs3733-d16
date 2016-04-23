@@ -39,6 +39,7 @@ public class PaletteView extends JPanel {
 	 */
 	public PaletteView(Palette palette) {
 		squares = new Hashtable<Piece, Point>();
+		this.palette = palette;
 		initialize();
 	}
 

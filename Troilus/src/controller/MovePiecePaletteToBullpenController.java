@@ -28,21 +28,29 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON2) {
+		if(e.getButton() == MouseEvent.BUTTON3) {
+			System.out.println("Right click");
 			return;
 		}
 		Point p = e.getPoint();
 		PaletteView pView = editorView.getPaletteView();
 		Hashtable<Piece, Point> pieces = pView.getDrawnPieces();
 		Set<Piece> keySet = pieces.keySet();
+		System.out.println(p);
 		for(Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
-			if((anchorPoint.getX() <= p.getX()) && (anchorPoint.getX() + PaletteView.SQUARE_SIZE >= p.getX()) && 
-					(anchorPoint.getY() <= p.getY()) && (anchorPoint.getY() >= p.getY())) {
-				
+			if((anchorPoint.getX() + PaletteView.WIDTH_OFFSET >= p.getX()) && 
+					(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE <= p.getX()) && 
+					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET >= p.getY()) && 
+					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE <= p.getY())) {
+				System.out.println("Within anchor point!");
 			}
-			
-			
+			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET);
+			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE);
+			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET);
+			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE);
+			System.out.println("---");
+
 		}
 		
 	}
