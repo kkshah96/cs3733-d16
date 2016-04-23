@@ -33,7 +33,7 @@ public abstract class Square {
 	
 	// TODO: Does this have to be an abstract method?
 	public boolean isValid() {
-		return this.isValid;
+		return true;
 	}
 	
 	public abstract String getType();

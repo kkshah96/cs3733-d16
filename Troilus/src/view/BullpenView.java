@@ -6,8 +6,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Set;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -77,14 +75,14 @@ public class BullpenView extends JPanel {
 		super.paintComponent(g);
 		
 		//TESTING TODO: Remove
-		Hashtable<Piece, Point> pieces = bullpen.getPieces();
+		//Hashtable<Piece, Point> pieces = bullpen.getPieces();
+		ArrayList<Piece> pieces = bullpen.getPieces();
 		PieceDrawer pDrawer = new PieceDrawer(); //TODO: Should we make PieceDrawer a static class?
 		
 		//TEST adding pieces TODO: remove
-		pieces.put(PieceFactory.getPiece(10), new Point(5, 5));
-		Set<Piece> keySet = pieces.keySet();
-		for(Piece p : keySet){
-			pDrawer.paint(g, p, pieces.get(p), 30, HEIGHT_OFFSET, WIDTH_OFFSET);
+		pieces.add(PieceFactory.getPiece(10));
+		for(int i = 0; i < pieces.size(); i++){
+			pDrawer.paint(g, pieces.get(i), new Point(10, 10), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 	}

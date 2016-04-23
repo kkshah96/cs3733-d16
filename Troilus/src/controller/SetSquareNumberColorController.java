@@ -29,7 +29,7 @@ public class SetSquareNumberColorController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ReleaseSquare square = (ReleaseSquare) builder.getActiveLevel().getBoard().getActiveSquare();
+		ReleaseSquare square = (ReleaseSquare) level.getBoard().getActiveSquare();
 		square.setNumberColor(color);
 	}
 }

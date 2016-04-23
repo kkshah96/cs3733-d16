@@ -19,7 +19,7 @@ public class SetSquareNumberController implements ActionListener{
 	LevelEditorView editorView;
 	int num;
 	
-	public SetSquareNumberController(LevelBuilder builder,Level level, LevelEditorView editorView, int num){
+	public SetSquareNumberController(LevelBuilder builder, Level level, LevelEditorView editorView, int num){
 		this.builder = builder;
 		this.level = level;
 		this.editorView = editorView;
@@ -28,7 +28,7 @@ public class SetSquareNumberController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ReleaseSquare square = (ReleaseSquare) builder.getActiveLevel().getBoard().getActiveSquare();
+		ReleaseSquare square = (ReleaseSquare) level.getBoard().getActiveSquare();
 		square.setNumber(num);
 	}
 }
