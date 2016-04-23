@@ -13,6 +13,7 @@ import java.util.Hashtable;
  *
  */
 public class Palette {
+	public static final int NUM_PIECES = 35;
 	//Hashtable<Piece, Point> pieces;
 	ArrayList<Piece> pieces;
 
@@ -21,7 +22,7 @@ public class Palette {
 	public Palette(){
 		//this.pieces = pieces;
 		//pieces = new Hashtable<Piece, Point>(35);
-		pieces = new ArrayList<Piece>(35);
+		pieces = new ArrayList<Piece>();
 		initialize();
 	}
 	
@@ -52,7 +53,7 @@ public class Palette {
 	}
 	
 	private void initialize(){
-		for(int i = 0; i < 35; i++){
+		for(int i = 0; i < NUM_PIECES; i++){
 			pieces.add(PieceFactory.getPiece(i+1));
 		}
 	}

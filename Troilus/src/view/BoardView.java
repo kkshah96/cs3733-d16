@@ -87,7 +87,7 @@ public class BoardView extends JPanel {
 
 		
 		//TEST adding pieces TODO: remove
-		pieces.put(PieceFactory.getPiece(4), new Point(5, 5));
+	//	pieces.put(PieceFactory.getPiece(4), new Point(5, 5));
 		Set<Piece> keySet = pieces.keySet();
 		for(Piece p : keySet){
 			pDrawer.paint(g, p, pieces.get(p), 30, HEIGHT_OFFSET, WIDTH_OFFSET);
