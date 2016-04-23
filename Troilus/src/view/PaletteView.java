@@ -29,10 +29,8 @@ public class PaletteView extends JPanel {
 	public static final int HEIGHT_OFFSET = 100;
 	public static final int WIDTH_OFFSET = 10;
 	public static final int SPACING = 6;
-	//static final int BUFFER_SIZE = 1;
-	Hashtable<Piece, Point> squares;
+	Hashtable<Piece, Point> pieces;
 
-	//Palette p = new Palette();
 	Palette palette;
 	/**
 	 * Create the panel.
@@ -48,17 +46,16 @@ public class PaletteView extends JPanel {
 		super.paintComponent(g);
 
 		PieceDrawer pDrawer = new PieceDrawer();
-		ArrayList<Piece> pieces = palette.getPieces();
 
 		
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
-			squares.put(pieces.get(i), new Point(i * SPACING, 0));
-			pDrawer.paint(g, pieces.get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			pieces.put(palette.getPieces().get(i), new Point(i * SPACING, 0));
+			pDrawer.paint(g, palette.getPieces().get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 	}
 	
 	public Hashtable<Piece,Point> getDrawnPieces() {
-		return squares;
+		return pieces;
 	}
 
 	private void initialize(){
