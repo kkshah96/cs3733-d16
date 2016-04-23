@@ -180,7 +180,7 @@ public class Board {
 	/**
 	 * Toggles the validity of the active square for this board
 	 */
-	public void toggleSquare() {
+	public void toggleActiveSquare() {
 		activeSquare.isValid = !activeSquare.isValid;
 	}
 }

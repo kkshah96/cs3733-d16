@@ -25,6 +25,7 @@ import javax.swing.border.LineBorder;
 
 import controller.ExitLevelEditorController;
 import controller.MovePiecePaletteToBullpenController;
+import controller.SelectSquareController;
 import controller.SetBoardDimensionsController;
 import controller.SetMaxMovesController;
 import controller.SetTimeLimitController;
@@ -78,12 +79,12 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setLayout(null);
 		
 		BoardView boardPanel = new BoardView(activeLevel.getBoard());
-	//	BoardView boardPanel = new BoardView(new Board()); //TODO: GIve this the appropriate board
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		boardPanel.setBackground(Color.LIGHT_GRAY);
 		boardPanel.setBounds(0, 114, 747, 408);
 		getContentPane().add(boardPanel);
+		boardPanel.addMouseListener(new SelectSquareController(activeLevel, boardPanel));
 		
 		JPanel bullPenPanel = new JPanel();
 		bullPenPanel.setLayout(null);
@@ -303,7 +304,7 @@ public class LevelEditorView extends JFrame {
 		ToggleButton.setBounds(437, 0, 115, 38);
 		panel_1.add(ToggleButton);
 		
-		ToggleButton.addActionListener(new ToggleSquareController(builder, activeLevel, levelLoader));
+		ToggleButton.addActionListener(new ToggleSquareController(activeLevel));
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
