@@ -10,6 +10,8 @@ package model;
  * @author Kunal Shah
  *
  */
+
+//TODO: Remove
 public class OutOfBoundsSquare extends Square {
 	public OutOfBoundsSquare(int row, int col) {
 		super(row, col, false);

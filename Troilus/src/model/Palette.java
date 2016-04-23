@@ -14,14 +14,10 @@ import java.util.Hashtable;
  */
 public class Palette {
 	public static final int NUM_PIECES = 35;
-	//Hashtable<Piece, Point> pieces;
 	ArrayList<Piece> pieces;
 
-	// TODO: Handle checking there are exactly 35 pieces at execution time? NO (could change!)
-	// TODO: Can we just pass in all of the pieces to the constructor or should we make an addPiece method?
+	// TODO: Handle checking there are exactly 35 pieces at execution time? 
 	public Palette(){
-		//this.pieces = pieces;
-		//pieces = new Hashtable<Piece, Point>(35);
 		pieces = new ArrayList<Piece>();
 		initialize();
 	}

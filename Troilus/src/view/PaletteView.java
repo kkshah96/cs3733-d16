@@ -38,21 +38,10 @@ public class PaletteView extends JPanel {
 	 * Create the panel.
 	 */
 	public PaletteView(Palette palette) {
-		this.palette = palette;
-		setLayout(null);
-
-		this.setPreferredSize(new Dimension(500, 500));
-
-		JLabel lblBoard = new JLabel("Palette");
-		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
-		lblBoard.setForeground(Color.BLACK);
-		lblBoard.setBounds(201, 5, 100, 23);
-
-		 squares = new Hashtable<Piece, Point>();
-
+		squares = new Hashtable<Piece, Point>();
+		initialize();
 	}
 
-	// TODO: Implement this using Hashtable
 	public void paintComponent(Graphics g){
 
 		super.paintComponent(g);
@@ -64,7 +53,6 @@ public class PaletteView extends JPanel {
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
 			squares.put(pieces.get(i), new Point(i * SPACING, 0));
 			pDrawer.paint(g, pieces.get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
-			//pDrawer.paint(g, p.getPiece(i), SQUARE_SIZE, 120, 10);
 		}
 	}
 	
@@ -73,22 +61,15 @@ public class PaletteView extends JPanel {
 	}
 
 	private void initialize(){
-		//JLabel lblBoard = new JLabel("Bullpen");
-		//lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
-		//lblBoard.setForeground(Color.BLACK);
-		//lblBoard.setBounds(201, 5, 100, 23);
+		setLayout(null);
 
-		//int count = 0;
-		/*for(int i = 0; i < MAX_BOARD_SIZE * SQUARE_SIZE; i+= SQUARE_SIZE){
-for(int j = 0; j < MAX_BOARD_SIZE * SQUARE_SIZE; j+= SQUARE_SIZE){
-squares.add(new SquareView(SQUARE_SIZE));
-squares.get(count).setBounds(i + 10, j + 30, SQUARE_SIZE + BUFFER_SIZE, SQUARE_SIZE + BUFFER_SIZE);
-add(squares.get(count));
-count++;
-}
-}*/
+		this.setPreferredSize(new Dimension(500, 500));
 
-		//setLayout(null);
-		//add(lblBoard);
+		JLabel lblBoard = new JLabel("Palette");
+		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
+		lblBoard.setForeground(Color.BLACK);
+		lblBoard.setBounds(201, 5, 100, 23);
+		
+		this.add(lblBoard);
 	}
 }
