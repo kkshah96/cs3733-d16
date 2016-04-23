@@ -80,7 +80,7 @@ public class BullpenView extends JPanel {
 		PieceDrawer pDrawer = new PieceDrawer(); //TODO: Should we make PieceDrawer a static class?
 		
 		//TEST adding pieces TODO: remove
-		pieces.add(PieceFactory.getPiece(10));
+		//pieces.add(PieceFactory.getPiece(10));
 		for(int i = 0; i < pieces.size(); i++){
 			pDrawer.paint(g, pieces.get(i), new Point(10, 10), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
