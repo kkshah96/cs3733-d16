@@ -4,11 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import junit.framework.TestCase;
 import model.Board;
 import model.Piece;
 import model.PieceFactory;
 
-public class TestBoard {
+public class TestBoard extends TestCase {
 	@Test
 	public void test() {
 		Board board = new Board();
