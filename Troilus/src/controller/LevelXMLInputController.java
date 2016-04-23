@@ -86,7 +86,7 @@ public class LevelXMLInputController {
 							pieceType = Integer.parseInt(pieceAttributes.item(j).getNodeValue());
 						}
 						
-						Piece piece = PieceFactory.getPiece(0, i, pieceType);
+						Piece piece = PieceFactory.getPiece(pieceType);
 						
 						bullpen.addPiece(piece);
 					}

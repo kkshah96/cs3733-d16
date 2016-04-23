@@ -12,7 +12,7 @@ public class TestBoard {
 	@Test
 	public void test() {
 		Board board = new Board();
-		Piece piece1 = PieceFactory.getPiece(1, 1, 1);
+		Piece piece1 = PieceFactory.getPiece(1);
 		boolean valid = board.addPiece(piece1, 4, 4);
 		assert(!valid);
 	}
