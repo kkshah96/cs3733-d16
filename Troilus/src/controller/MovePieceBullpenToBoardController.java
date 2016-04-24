@@ -62,7 +62,8 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 //			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET);
 //			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE);
 //			System.out.println("---");
-
+//
+			
 			// added by Connor <-- stud muffin
 			if((anchorPoint.getX() <= p.getX()) && 
 					(anchorPoint.getX() + BullpenView.SQUARE_SIZE >= p.getX()) && 

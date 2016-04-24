@@ -140,6 +140,7 @@ public class LevelEditorView extends JFrame {
 		bullpenView.setBackground(Color.LIGHT_GRAY);
 		bullpenView.setBounds(748, 38, 457, 484);
 		bullpenView.addMouseListener(new MovePieceBullpenToBoardController(builder, activeLevel, levelLoader, this));
+		//
 		//bullpenView.addMouseListener(new SelectPieceBullpenController(activeLevel, bullpenView));
 		
 		bullpenScrollPane.setBounds(6, 50, 446, 423);
