@@ -21,7 +21,7 @@ import model.PieceFactory;
  * the AWT board, and any pieces on the board
  * @author Dan Alfred
  * @author Kunal Shah
- *
+ * @author Alexander Kasparek
  */
 public class BoardView extends JPanel {
 	/** Constant to define how large each square is, in pixels*/
@@ -83,12 +83,14 @@ public class BoardView extends JPanel {
 		int row;
 		int col;
 		// int count = 0;
-		for(int i = 0; i < HEIGHT; i+= SQUARE_SIZE) {
-			for(int j = 0; j < WIDTH; j+= SQUARE_SIZE) {
+		for(int i = 0; i < board.getRows()*SQUARE_SIZE; i+= SQUARE_SIZE) {
+			for(int j = 0; j < board.getCols()*SQUARE_SIZE; j+= SQUARE_SIZE) {
 				row = i/SQUARE_SIZE;
 				col = j/SQUARE_SIZE;
 				sDrawer.paint(g, i + WIDTH_OFFSET, j + HEIGHT_OFFSET, SQUARE_SIZE, board.getSquare(row, col));
 			}
 		}		
 	}
+	
+	
 }
