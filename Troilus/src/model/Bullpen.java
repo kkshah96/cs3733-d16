@@ -12,6 +12,7 @@ import java.util.Set;
  * but it has no notion of a grid
  * 
  * @author Kunal Shah
+ * @author Connor Weeks
  *
  */
 public class Bullpen {

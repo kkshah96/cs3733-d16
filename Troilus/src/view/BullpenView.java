@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import model.Bullpen;
 import model.Piece;
@@ -33,15 +34,16 @@ public class BullpenView extends JPanel {
 	static final int HEIGHT_OFFSET = 100;
 	
 	static final int NUM_COLUMNS = 4;
-	
+	JScrollPane scrollPane;
 	static final int SPACING = 8;
 	Bullpen bullpen;
 
 	/**
 	 * Create the panel.
 	 */
-	public BullpenView(Bullpen bullpen) {
+	public BullpenView(Bullpen bullpen, JScrollPane scrollPane) {
 		this.bullpen = bullpen;
+		this.scrollPane = scrollPane;
 		initialize();
 	}
 
@@ -74,6 +76,8 @@ public class BullpenView extends JPanel {
 		for(int i = 0; i < pieces.size(); i++){
 			pDrawer.paint(g, pieces.get(i), new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
+		
+		scrollPane.repaint();
 		
 	}
 }
