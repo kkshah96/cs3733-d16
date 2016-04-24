@@ -37,8 +37,8 @@ public class ReleaseSquare extends Square {
 		return number;
 	}
 	
-	public String getNumberColor() {
-		return numberColor.toString();
+	public Color getNumberColor() {
+		return numberColor;
 	}
 	
 	public boolean setNumber(int num){

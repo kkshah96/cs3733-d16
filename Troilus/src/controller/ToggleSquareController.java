@@ -4,9 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Level;
-import model.LevelBuilder;
 import view.BoardView;
-import view.LevelEditorView;
 
 /**
  * Toggles the selected Square on the board on or off, depending on its current state.

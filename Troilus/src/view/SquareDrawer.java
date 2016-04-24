@@ -2,9 +2,10 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 
 import model.Board;
+import model.LightningSquare;
+import model.ReleaseSquare;
 import model.Square;
 
 /**
@@ -23,17 +24,21 @@ public class SquareDrawer {
 	public static final Color INVALID_COLOR = null;
 	int x, y, size;
 	Integer releaseNumber; // TODO How do we handle this without instanceof?
-	Color c;
 	Board board;
 
 	public SquareDrawer(Board board) {
 		this.board = board;
 		releaseNumber = null;
-		c = null;
 		size = BoardView.SQUARE_SIZE;
 	}
 
 	private Color findColor(Square square) {
+		if (square instanceof LightningSquare) {
+			if (((LightningSquare) square).isCovered()) {
+				return Color.GREEN;
+			}
+		}
+
 		if (square.equals(board.getActiveSquare())) {
 			if (square.isValid()) {
 				return VALID_ACTIVE_COLOR;
@@ -53,14 +58,29 @@ public class SquareDrawer {
 		g.setColor(Color.BLACK);
 		g.drawRect(x, y, size, size);
 
-		if (!(releaseNumber == null)) {
-			g.drawString("" + releaseNumber, x + 5, y + 5); //TODO: Change 5 to some buffer value
-		}
-		
 		Color c = findColor(square);
 		if (c != null) {
 			g.setColor(c);
 			g.fillRect(x+1, y+1, size-2, size-2);
+		}
+
+		if (square instanceof ReleaseSquare) {
+			int releaseNumber = ((ReleaseSquare) square).getNumber();
+			Color releaseColor = ((ReleaseSquare) square).getNumberColor();
+
+			if (releaseNumber == 0 || releaseColor == null) {
+				return;
+			}
+
+			if (releaseColor.equals("Yellow")) {
+				g.setColor(Color.YELLOW);
+			} else if (releaseColor.equals("Red")) {
+				g.setColor(Color.RED);
+			} else {
+				g.setColor(Color.GREEN);
+			}
+			
+			g.drawString("" + releaseNumber, x + 5, y + 5); //TODO: Change 5 to some buffer value
 		}
 	}
 }
