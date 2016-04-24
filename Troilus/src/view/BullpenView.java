@@ -84,7 +84,7 @@ public class BullpenView extends JPanel {
 		//pieces.add(PieceFactory.getPiece(10));
 		for(int i = 0; i < bullpen.getPieces().size(); i++){
 			//TODO: Ensure I did this correctly
-			pieces.put(bullpen.getPieces().get(i), new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET, (i / NUM_COLUMNS) * SPACING + HEIGHT_OFFSET));
+			pieces.put(bullpen.getPieces().get(i), new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET, (i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
 			pDrawer.paint(g, bullpen.getPieces().get(i), new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
