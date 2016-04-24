@@ -5,12 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
-<<<<<<< HEAD
-=======
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Set;
->>>>>>> branch 'master' of https://github.com/kshah96/cs3733-d16.git
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,14 +24,7 @@ import model.Piece;
  */
 public class PaletteView extends JPanel {
 	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
-<<<<<<< HEAD
-	static final int SQUARE_SIZE = 10;
-	
-	static final int HEIGHT_OFFSET = 100;
-	static final int WIDTH_OFFSET = 20;
-	//static final int BUFFER_SIZE = 1;
-	//ArrayList<SquareView> squares = new ArrayList<SquareView>();
-=======
+
 	public static final int SQUARE_SIZE = 10;
 	public static final int HEIGHT_OFFSET = 100;
 	public static final int WIDTH_OFFSET = 10;
@@ -48,7 +36,6 @@ public class PaletteView extends JPanel {
 	 * We are simply storing these Pieces in locations in a HashTable as we draw them so we can access them later
 	 */
 	Hashtable<Piece, Point> pieces;
->>>>>>> branch 'master' of https://github.com/kshah96/cs3733-d16.git
 
 	Palette palette;
 	/**
