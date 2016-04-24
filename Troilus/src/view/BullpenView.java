@@ -59,16 +59,8 @@ public class BullpenView extends JPanel {
 	private void initialize(){
 
 		setLayout(null);
-
 		this.setPreferredSize(new Dimension(BULLPEN_WIDTH, 1000)); // 473
 
-		/*JLabel lblBoard = new JLabel("Bullpen");
-		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
-		lblBoard.setForeground(Color.BLACK);
-		lblBoard.setBounds(201, 5, 100, 23);
-	
-		setLayout(null);
-		add(lblBoard);*/
 	}
 	
 	public Hashtable<Piece,Point> getDrawnPieces() {

@@ -31,10 +31,9 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	
 	public void mousePressed(MouseEvent e) {
 				
+		// get coordinates of mouse click
 		int x = e.getX();
 		int y = e.getY();
-		
-		//System.out.println("Clicked on (" + x + ", " + y + ")");
 		
 		Bullpen bullpen = level.getBullpen();
 		
@@ -75,7 +74,6 @@ public class SelectPieceBullpenController extends MouseAdapter {
 			return;
 		}
 		
-		System.out.println("Selected Piece");
 		
 		// a right click will remove the selected piece from the bullpen
 		if(e.getButton() == MouseEvent.BUTTON3) {
