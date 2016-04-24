@@ -39,17 +39,18 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 		System.out.println(p);
 		for(Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
-			if((anchorPoint.getX() + PaletteView.WIDTH_OFFSET >= p.getX()) && 
-					(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE <= p.getX()) && 
-					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET >= p.getY()) && 
-					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE <= p.getY())) {
-				System.out.println("Within anchor point!");
+			//System.out.println(piece.getType());
+			if((anchorPoint.getX() + PaletteView.WIDTH_OFFSET <= p.getX()) && 
+					(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE >= p.getX()) && 
+					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET <= p.getY()) && 
+					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE >= p.getY())) {
+				System.out.println("Within anchor point " + piece.getType() +"!");
 			}
-			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET);
+			/*System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET);
 			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE);
 			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET);
 			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE);
-			System.out.println("---");
+			System.out.println("---");*/
 
 		}
 		

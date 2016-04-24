@@ -184,6 +184,7 @@ public class Board {
 	 */
 	public void toggleActiveSquare() {
 		activeSquare.isValid = !activeSquare.isValid;
+		activeSquare = null;
 	}
 	
 	public int getRows(){
