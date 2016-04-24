@@ -9,8 +9,9 @@ import view.BoardView;
 import view.LevelEditorView;
 
 /**
- * 
+ * Handles logic for selecting a square in Level Builder.
  * @author Alexander Kasparek
+ * @author Maddy Longo
  *
  */
 public class SelectSquareController extends MouseAdapter {
@@ -32,8 +33,8 @@ public class SelectSquareController extends MouseAdapter {
 				|| y > BoardView.HEIGHT + BoardView.HEIGHT_OFFSET || y < BoardView.HEIGHT_OFFSET) {
 			System.out.println("Error: Did not click within the board");
 		} else {	
-			int row = (x-BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
-			int col = (y-BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
+			int col = (x-BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
+			int row = (y-BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
 			level.getBoard().setActiveSquare(row, col);
 			boardView.repaint();

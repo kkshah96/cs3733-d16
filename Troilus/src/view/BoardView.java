@@ -18,9 +18,10 @@ import model.PieceFactory;
  * Represents a way for a Board to be visible in a window.
  * 
  * This class handles the drawing of contents of the board panel, i.e:
- * the AWT board, and any pieces on the board
+ * the AWT board, and any pieces on the board.
  * @author Dan Alfred
  * @author Kunal Shah
+ * @author Maddy Longo
  *
  */
 public class BoardView extends JPanel {
@@ -87,8 +88,15 @@ public class BoardView extends JPanel {
 			for(int j = 0; j < WIDTH; j+= SQUARE_SIZE) {
 				row = i/SQUARE_SIZE;
 				col = j/SQUARE_SIZE;
-				sDrawer.paint(g, i + WIDTH_OFFSET, j + HEIGHT_OFFSET, SQUARE_SIZE, board.getSquare(row, col));
+				sDrawer.paint(g, i + WIDTH_OFFSET, j + HEIGHT_OFFSET, board.getSquare(row, col));
 			}
-		}		
+		}
+		
+		if (board.getActiveSquare() != null) {
+			int activeCol = board.getActiveSquare().getCol();
+			int activeRow = board.getActiveSquare().getRow();
+			sDrawer.paint(g, SQUARE_SIZE*(activeCol + 1),
+					SQUARE_SIZE*(activeRow + 1), null, Color.PINK);
+		}
 	}
 }

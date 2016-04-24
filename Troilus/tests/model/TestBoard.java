@@ -11,7 +11,7 @@ import model.PieceFactory;
 
 public class TestBoard extends TestCase {
 	@Test
-	public void test() {
+	public void testPlacement() {
 		Square[][] squares = new PuzzleSquare[Board.BOARD_HEIGHT][Board.BOARD_WIDTH];
 		for (int i = 0; i < Board.BOARD_HEIGHT; i++) {
 			for (int j = 0; j < Board.BOARD_WIDTH; j++) {
@@ -21,5 +21,9 @@ public class TestBoard extends TestCase {
 		Board board = new Board(squares);
 		Piece piece1 = PieceFactory.getPiece(1);
 		assertTrue(board.addPiece(piece1, 4, 4));
+	}
+	
+	public void testSelection() {
+		
 	}
 }

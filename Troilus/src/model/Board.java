@@ -39,7 +39,7 @@ public class Board {
 	
 	/**
 	 * Default constructor for Board, initializing 2D array of squares to max height and max width.
-	 * Also assumes no pieces are on the board
+	 * Also assumes no pieces are on the board. TODO: Should this EVER be used?
 	 */
 	public Board() {
 		squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
@@ -92,7 +92,7 @@ public class Board {
 		
 		for (PieceSquare square : p.squares) {
 			// check if each square is in bounds
-			int absRow = square.row + row;
+			int absRow = square.row + row; // find absolute position
 			int absCol = square.col + col;
 			if ((absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
 				if (!squares[absRow][absCol].isValid()) {
