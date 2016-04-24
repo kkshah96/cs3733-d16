@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,6 +38,8 @@ public class BullpenView extends JPanel {
 
 	public static final int SPACING = 8;
 	
+	Hashtable<Piece, Point> pieces;
+	
 	JScrollPane scrollPane;
 	Bullpen bullpen;
 
@@ -44,6 +47,7 @@ public class BullpenView extends JPanel {
 	 * Create the panel.
 	 */
 	public BullpenView(Bullpen bullpen, JScrollPane scrollPane) {
+		pieces = new Hashtable<Piece, Point>();
 		this.bullpen = bullpen;
 		this.scrollPane = scrollPane;
 		initialize();
@@ -63,6 +67,10 @@ public class BullpenView extends JPanel {
 		setLayout(null);
 		add(lblBoard);*/
 	}
+	
+	public Hashtable<Piece,Point> getDrawnPieces() {
+		return pieces;
+	}
 
 	public void paintComponent(Graphics g){
 
@@ -70,13 +78,14 @@ public class BullpenView extends JPanel {
 		
 		//TESTING TODO: Remove
 		//Hashtable<Piece, Point> pieces = bullpen.getPieces();
-		ArrayList<Piece> pieces = bullpen.getPieces();
 		PieceDrawer pDrawer = new PieceDrawer(); //TODO: Should we make PieceDrawer a static class?
 		
 		//TEST adding pieces TODO: remove
 		//pieces.add(PieceFactory.getPiece(10));
-		for(int i = 0; i < pieces.size(); i++){
-			pDrawer.paint(g, pieces.get(i), new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+		for(int i = 0; i < bullpen.getPieces().size(); i++){
+			//TODO: Ensure I did this correctly
+			pieces.put(bullpen.getPieces().get(i), new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET, (i / NUM_COLUMNS) * SPACING + HEIGHT_OFFSET));
+			pDrawer.paint(g, bullpen.getPieces().get(i), new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 		scrollPane.repaint();
