@@ -5,9 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Set;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,10 +19,12 @@ import model.Piece;
  * Displays every Piece in the Kabasuji game in a window using a scrollbar as needed
  * 
  * @author Kunal Shah
+ * @author Connor Weeks
  *
  */
 public class PaletteView extends JPanel {
 	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
+
 	public static final int SQUARE_SIZE = 10;
 	public static final int HEIGHT_OFFSET = 100;
 	public static final int WIDTH_OFFSET = 10;
@@ -52,9 +52,10 @@ public class PaletteView extends JPanel {
 		super.paintComponent(g);
 
 		PieceDrawer pDrawer = new PieceDrawer();
+
 		
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
-			pieces.put(palette.getPieces().get(i), new Point(i * SPACING, 0));
+			pieces.put(palette.getPieces().get(i), new Point(i * SPACING * SQUARE_SIZE + WIDTH_OFFSET, HEIGHT_OFFSET));
 			pDrawer.paint(g, palette.getPieces().get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 	}

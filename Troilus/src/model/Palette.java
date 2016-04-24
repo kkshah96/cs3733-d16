@@ -18,6 +18,7 @@ public class Palette {
 
 	// TODO: Handle checking there are exactly 35 pieces at execution time? 
 	public Palette(){
+
 		pieces = new ArrayList<Piece>();
 		initialize();
 	}
