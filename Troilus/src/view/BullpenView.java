@@ -48,13 +48,13 @@ public class BullpenView extends JPanel {
 
 		this.setPreferredSize(new Dimension(423, 473));
 
-		JLabel lblBoard = new JLabel("Bullpen");
+		/*JLabel lblBoard = new JLabel("Bullpen");
 		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
 		lblBoard.setForeground(Color.BLACK);
 		lblBoard.setBounds(201, 5, 100, 23);
 	
 		setLayout(null);
-		add(lblBoard);
+		add(lblBoard);*/
 	}
 
 	public void paintComponent(Graphics g){
