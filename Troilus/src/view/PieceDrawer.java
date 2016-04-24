@@ -38,21 +38,27 @@ public class PieceDrawer {
 	 * @param g Graphics object from calling class
 	 * @param piece The piece to be drawn
 	 * @param width The width of each square in pixels
-	 * @param height_offset The height offset of the piece in pixels
-	 * @param width_offset The width offset of the piece in pixels
+	 * @param heightOffset The height offset of the piece in pixels
+	 * @param widthOffset The width offset of the piece in pixels
 	 */
-	public void paint(Graphics g, Piece piece, Point p, int width, int height_offset, int width_offset){
+	public void paint(Graphics g, Color color, Piece piece, Point p, int width, int heightOffset, int widthOffset){
 		squares = piece.getSquares();
 		anchorSquare = piece.getAnchor();
 		
-		g.setColor(Color.RED);
-		for(int i = 0; i < 5; i++){
-			//g.fillRect(p.x, p.y, width, width);
-			g.fillRect((p.x + squares[i].getCol()) * width + width_offset, (p.y + squares[i].getRow()) * width + height_offset, width, width);
-		}
+		g.setColor(color);
 		
-		//g.fillRect(p.x, p.y, width, width);
-		g.fillRect(p.x * width + width_offset, p.y * width + height_offset, width, width);
+		// fill anchor square
+		g.fillRect(p.x * width + widthOffset, p.y * width + heightOffset, width, width);
+		
+		// fill other squares
+		for(int i = 0; i < 5; i++){
+			g.fillRect((p.x + squares[i].getCol()) * width + widthOffset, (p.y + squares[i].getRow()) * width + heightOffset, width, width);
+		}
+	}
+	
+	
+	public void paint(Graphics g, Piece piece, Point p, int width, int heightOffset, int widthOffset){
+		paint(g, Color.RED, piece, p, width, heightOffset, widthOffset);
 	}
 	
 }
