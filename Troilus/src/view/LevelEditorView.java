@@ -135,7 +135,7 @@ public class LevelEditorView extends JFrame {
 		// create actual bullpen view and add it to the scroll pane
 		
 		JScrollPane bullpenScrollPane = new JScrollPane();
-		bullpenView = new BullpenView(activeLevel.getBullpen(), bullpenScrollPane);
+		bullpenView = new BullpenView(activeLevel, bullpenScrollPane);
 		bullpenView.setLayout(null);
 		bullpenView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		bullpenView.setBackground(Color.LIGHT_GRAY);

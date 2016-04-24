@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import model.Bullpen;
+import model.Level;
 import model.Piece;
 import model.PieceFactory;
 
@@ -42,13 +43,15 @@ public class BullpenView extends JPanel {
 	
 	JScrollPane scrollPane;
 	Bullpen bullpen;
+	Level level;
 
 	/**
 	 * Create the panel.
 	 */
-	public BullpenView(Bullpen bullpen, JScrollPane scrollPane) {
-		pieces = new Hashtable<Piece, Point>();
-		this.bullpen = bullpen;
+	public BullpenView(Level level, JScrollPane scrollPane) {
+		this.level = level;
+		this.bullpen = level.getBullpen();
+		this.pieces = new Hashtable<Piece, Point>();
 		this.scrollPane = scrollPane;
 		initialize();
 	}
