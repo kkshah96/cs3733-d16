@@ -29,8 +29,8 @@ public class SelectSquareController extends MouseAdapter {
 		int y = e.getY();
 
 		// TODO: Change from hard-coded values!!!
-		if (x > BoardView.WIDTH + BoardView.WIDTH_OFFSET || x < BoardView.WIDTH_OFFSET
-				|| y > BoardView.HEIGHT + BoardView.HEIGHT_OFFSET || y < BoardView.HEIGHT_OFFSET) {
+		if (x > level.getBoard().getRows()*BoardView.SQUARE_SIZE + BoardView.WIDTH_OFFSET || x < BoardView.WIDTH_OFFSET
+				|| y > level.getBoard().getCols()*BoardView.SQUARE_SIZE + BoardView.HEIGHT_OFFSET || y < BoardView.HEIGHT_OFFSET) {
 			System.out.println("Error: Did not click within the board");
 		} else {	
 			int col = (x-BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
