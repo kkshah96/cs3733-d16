@@ -24,18 +24,20 @@ import model.PieceFactory;
  *
  */
 public class BullpenView extends JPanel {
-	static final int BULLPEN_WIDTH = 420;
-	static final int SQUARE_SIZE = 10;
+	public static final int BULLPEN_WIDTH = 420;
+	public static final int SQUARE_SIZE = 10;
 	
 	/** Constant to define the offset between the left of the panel and the left of the bullpen */
-	static final int WIDTH_OFFSET = 8 * SQUARE_SIZE;
+	public static final int WIDTH_OFFSET = 8 * SQUARE_SIZE;
 	
 	/** Constant to define the offset between the top of the panel and the top of the bullpen*/
-	static final int HEIGHT_OFFSET = 100;
+	public static final int HEIGHT_OFFSET = 100;
 	
-	static final int NUM_COLUMNS = 4;
+	public static final int NUM_COLUMNS = 4;
+
+	public static final int SPACING = 8;
+	
 	JScrollPane scrollPane;
-	static final int SPACING = 8;
 	Bullpen bullpen;
 
 	/**
