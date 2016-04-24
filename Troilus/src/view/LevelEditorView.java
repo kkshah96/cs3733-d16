@@ -57,7 +57,7 @@ public class LevelEditorView extends JFrame {
 	LevelLoaderView levelLoader;
 	LevelBuilder builder;
 	Level activeLevel;
-
+	BoardView boardPanel;
 	PaletteView palettePanel;
 	
 	/**
@@ -78,7 +78,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		BoardView boardPanel = new BoardView(activeLevel.getBoard());
+		boardPanel = new BoardView(activeLevel.getBoard());
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		boardPanel.setBackground(Color.LIGHT_GRAY);
@@ -304,7 +304,7 @@ public class LevelEditorView extends JFrame {
 		ToggleButton.setBounds(437, 0, 115, 38);
 		panel_1.add(ToggleButton);
 		
-		ToggleButton.addActionListener(new ToggleSquareController(activeLevel));
+		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, boardPanel));
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -400,4 +400,13 @@ public class LevelEditorView extends JFrame {
 	public PaletteView getPaletteView() {
 		return palettePanel;
 	}
+	
+	public BoardView getBoardView(){
+		return boardPanel;
+	}
+	
+	public void setBoardView(BoardView b){
+		this.boardPanel = b;
+	}
+	
 }

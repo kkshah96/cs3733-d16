@@ -12,16 +12,16 @@ import javax.swing.JPanel;
 
 import model.Board;
 import model.Piece;
-import model.PieceFactory;
 
 /**
  * Represents a way for a Board to be visible in a window.
  * 
  * This class handles the drawing of contents of the board panel, i.e:
- * the AWT board, and any pieces on the board
+ * the AWT board, and any pieces on the board.
  * @author Dan Alfred
  * @author Kunal Shah
- *
+ * @author Maddy Longo
+ * @author Alexander Kasparek
  */
 public class BoardView extends JPanel {
 	/** Constant to define how large each square is, in pixels*/
@@ -76,20 +76,24 @@ public class BoardView extends JPanel {
 		//TEST adding pieces TODO: remove
 		//	pieces.put(PieceFactory.getPiece(4), new Point(5, 5));
 		Set<Piece> keySet = pieces.keySet();
-		for(Piece p : keySet){
+		for(Piece p : keySet) {
 			pDrawer.paint(g, p, pieces.get(p), 30, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
-
-		int row;
-		int col;
-		// int count = 0;
-		for(int i = 0; i < 12; i+= SQUARE_SIZE) {
-			for(int j = 0; j < 12; j+= SQUARE_SIZE) {
-				//row = i/SQUARE_SIZE;
-				//col = j/SQUARE_SIZE;
-				//sDrawer.paint(g, i + WIDTH_OFFSET, j + HEIGHT_OFFSET, SQUARE_SIZE, board.getSquare(row, col));
-				sDrawer.paint(g, board, SQUARE_SIZE, null, null);
+		
+		// i is y-coordinate, j is x-coordinate
+		for (int i = 0; i < HEIGHT; i+= SQUARE_SIZE) {
+			for (int j = 0; j < WIDTH; j+= SQUARE_SIZE) {
+				sDrawer.paint(g, j + WIDTH_OFFSET, i + HEIGHT_OFFSET,
+						board.getSquare(i/SQUARE_SIZE, j/SQUARE_SIZE));
 			}
-		}		
+		}
+		
+		if (board.getActiveSquare() != null) {
+			int activeCol = board.getActiveSquare().getCol();
+			int activeRow = board.getActiveSquare().getRow();
+			// TODO: Find out why this isn't working
+			sDrawer.paint(g, SQUARE_SIZE*activeCol + WIDTH_OFFSET,
+					SQUARE_SIZE*activeRow + HEIGHT_OFFSET, null, Color.PINK);
+		}
 	}
 }

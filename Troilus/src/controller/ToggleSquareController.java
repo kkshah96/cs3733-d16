@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import model.Level;
 import model.LevelBuilder;
+import view.BoardView;
 import view.LevelEditorView;
 
 /**
@@ -21,16 +22,16 @@ import view.LevelEditorView;
  */
 public class ToggleSquareController implements ActionListener {
 	Level level;
-	//LevelBuilder builder;
-	//LevelEditorView editorView; // changed this from LevelLoaderView
+	BoardView boardView;
 
-	public ToggleSquareController(Level level) {
+	public ToggleSquareController(Level level, BoardView boardView) {
 		this.level = level;
-		//this.builder = builder;
+		this.boardView = boardView;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		level.getBoard().toggleActiveSquare();
+		boardView.repaint();
 	}
 }
