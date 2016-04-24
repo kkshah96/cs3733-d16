@@ -40,23 +40,18 @@ public class SquareDrawer {
 	public void paint(Graphics g, int x, int y, Square square) {
 		c = Color.BLACK;
 
+		g.setColor(c);
 		g.drawRect(x, y, size, size);
-		
-		if (!(releaseNumber == null)) {
-			g.drawString("" + releaseNumber, x + 5, y + 5); //TODO: Change 5 to some buffer value
-		}
 		
 		c = findColor(square);
 		
-		if (!(c == null)) {
-			g.setColor(c);
-		}
 		//g.fillRect(x+1, y+1, size-2, size-2);
 	}
 
 	public void paint(Graphics g, int x, int y, Integer releaseNumber, Color color) {
 		c = Color.BLACK;
 		
+		g.setColor(c);
 		g.drawRect(x, y, size, size);
 
 		if (!(releaseNumber == null)) {
