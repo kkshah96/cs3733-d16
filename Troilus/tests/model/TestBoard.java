@@ -1,7 +1,5 @@
 package model;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import junit.framework.TestCase;
@@ -10,8 +8,9 @@ import model.Piece;
 import model.PieceFactory;
 
 public class TestBoard extends TestCase {
-	@Test
-	public void testPlacement() {
+	private Board board;
+	
+	protected void setUp() {
 		Square[][] squares = new PuzzleSquare[Board.BOARD_HEIGHT][Board.BOARD_WIDTH];
 		for (int i = 0; i < Board.BOARD_HEIGHT; i++) {
 			for (int j = 0; j < Board.BOARD_WIDTH; j++) {
@@ -19,16 +18,36 @@ public class TestBoard extends TestCase {
 			}
 		}
 		Board board = new Board(squares);
-		Piece piece1 = PieceFactory.getPiece(1);
-		assertTrue(board.addPiece(piece1, 4, 4));
-		
+		this.board = board;
+	}
+	
+	@Test
+	public void testPlacement() {
 		board.setDimensions(4, 4);
 		assertTrue(!(board.getSquare(4, 4).isValid()));
 		assertTrue(!(board.getSquare(5, 5).isValid()));
 		assertTrue(board.getSquare(3, 3).isValid());
+		
+		Piece piece1 = PieceFactory.getPiece(1);
+		assertTrue(!board.addPiece(piece1, 4, 4));
+		assertTrue(board.addPiece(piece1, 0, 3));
+		
+		assertEquals(piece1, board.getPiece(0, 3));
 	}
 	
-	public void testSelection() {
+	@Test
+	public void testToggle() {
+		board.setDimensions(4, 4);
 		
+		assertTrue(!(board.getSquare(5, 7).isValid()));
+		board.setActiveSquare(5, 7);
+		board.toggleActiveSquare();
+		assertTrue(board.getSquare(5, 7).isValid());
+		
+		board.setActiveSquare(3, 2);
+		board.toggleActiveSquare();
+		assertTrue(!board.getSquare(3, 2).isValid());
 	}
+	
+	
 }

@@ -154,14 +154,15 @@ public class Piece {
 	}
 
 	public Piece place(int row, int col) {
-		// TODO Auto-generated method stub
+		// TODO Do we need this method any more?
 		return this;
 	}
 	
 	// This method needs to be updated if anchor square uses relative coordinates
-	public boolean overlaps(int row, int col) {
-		int anchorRow = this.getRow();
-		int anchorCol = this.getCol();
+	// TODO: Update this method
+	public boolean overlaps(int row, int col, int anchorRow, int anchorCol) {
+		//int anchorRow = this.getRow();
+		//int anchorCol = this.getCol();
 		
 		if (anchorRow == row && anchorCol == col) {
 			return true;

@@ -71,7 +71,7 @@ public class BoardView extends JPanel {
 		
 		super.paintComponent(g);
 		
-		SquareDrawer sDrawer = new SquareDrawer();
+		SquareDrawer sDrawer = new SquareDrawer(board);
 		PieceDrawer pDrawer = new PieceDrawer();
 
 		Hashtable<Piece, Point> pieces = board.getPieces();
@@ -89,14 +89,6 @@ public class BoardView extends JPanel {
 				sDrawer.paint(g, j + WIDTH_OFFSET, i + HEIGHT_OFFSET,
 						board.getSquare(i/SQUARE_SIZE, j/SQUARE_SIZE));
 			}
-		}
-		
-		if (board.getActiveSquare() != null) {
-			int activeCol = board.getActiveSquare().getCol();
-			int activeRow = board.getActiveSquare().getRow();
-			// TODO: Find out why this isn't working
-			sDrawer.paint(g, SQUARE_SIZE*activeCol + WIDTH_OFFSET,
-					SQUARE_SIZE*activeRow + HEIGHT_OFFSET, null, Color.PINK);
 		}
 	}
 }

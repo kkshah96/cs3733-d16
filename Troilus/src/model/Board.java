@@ -127,13 +127,19 @@ public class Board {
 	 * @return
 	 */
 	 public Piece getPiece(int row, int col) {
-		if (row > 11 || row < 0 || col > 11 || col < 0) {
+		if (row >= Board.BOARD_HEIGHT || row < 0 || col >= Board.BOARD_WIDTH || col < 0) {
 			return null;
 		}
 		
 		Set<Piece> keySet = pieces.keySet();
 		for (Piece piece : keySet) {
-			if (piece.overlaps(row,col)) {
+			// TODO this seems wrong... Board needs BoardView?
+			Point anchorPoint = pieces.get(piece);
+			double anchorX = anchorPoint.getX();
+			double anchorY = anchorPoint.getY();
+			int anchorRow = (int) anchorY/30 + 10;
+			int anchorCol = (int) anchorX/30 + 30;
+			if (piece.overlaps(row, col, anchorRow, anchorCol)) {
 				return piece;
 			}
 		}
