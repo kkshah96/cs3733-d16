@@ -10,6 +10,7 @@ import model.Bullpen;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
+import model.PieceFactory;
 import model.Square;
 import view.LevelLoaderView;
 import view.BullpenView;
@@ -63,7 +64,7 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 					(anchorPoint.getX() + PaletteView.SQUARE_SIZE >= p.getX()) && 
 					(anchorPoint.getY() <= p.getY()) && 
 					(anchorPoint.getY() + PaletteView.SQUARE_SIZE >= p.getY())) {
-				bp.addPiece(piece);
+				bp.addPiece(PieceFactory.getPiece(piece.getType()));
 				bpView.repaint();
 				return;
 			}
@@ -73,7 +74,7 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 						(anchorPoint.getX() + (s.getCol() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= p.getX()) && 
 						(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) <= p.getY()) && 
 						(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= p.getY())) {
-					bp.addPiece(piece);
+					bp.addPiece(PieceFactory.getPiece(piece.getType()));
 					bpView.repaint();
 					return;
 				}
