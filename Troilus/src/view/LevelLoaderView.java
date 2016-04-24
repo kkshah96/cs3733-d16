@@ -40,23 +40,17 @@ import javax.swing.UIManager;
 import java.awt.SystemColor;
 
 /**
- * GUI for loading Levels in the LevelBuilder application
+ * GUI for loading Levels in the LevelBuilder application.
  * 
- * Displays buttons for creating new Puzzle, Lightning, or Release Levels as well as buttons for loading previously saved Levels
+ * Displays buttons for creating new Puzzle, Lightning, or Release Levels
+ * as well as buttons for loading previously saved Levels.
  * 
  * @author Kunal Shah
  *
  */
-public class LevelLoaderView extends JFrame{
-
+public class LevelLoaderView extends JFrame {
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	LevelBuilder builder;
-
-
-	/**
-	 * Launch the application.
-	 */
-
 
 	/**
 	 * Create the application.
@@ -342,20 +336,6 @@ public class LevelLoaderView extends JFrame{
 		levelButtons.add(btnLevel25);
 		levelButtons.add(btnLevel26);
 		levelButtons.add(btnLevel27);
-		
-		// add mouse listeners to all level buttons
-		for (int i = 0; i < levelButtons.size(); i++){
-			if (i % 3 == 0) {
-			//	levelButtons.get(i).addActionListener(new NewPuzzleLevelController(builder, this));
-			}
-			else if (i % 3 == 1) {
-				//levelButtons.get(i).addActionListener(new NewLightningLevelController(builder, this));
-			}
-			else {
-				//
-				//levelButtons.get(i).addMouseListener(new NewReleaseLevelController(builder, this));
-			}
-		}
 	}
 	
 	public ArrayList<JButton> getLevelButtons(){

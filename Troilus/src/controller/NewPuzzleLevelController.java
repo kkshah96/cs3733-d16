@@ -52,7 +52,7 @@ public class NewPuzzleLevelController implements ActionListener {
 		//TODO: I changed the level number from 0 to the size of the levels array (is there any reason this wouldn't work?)
 		PuzzleLevel p2 = new PuzzleLevel(builder.getLevels().size(), true, bpen, board, p, 0);
 		builder.addLevel(p2);
-		builder.setActiveLevel(p2); //TODO: We should be able to remove any activeLevel logic
+		//builder.setActiveLevel(p2); //TODO: We should be able to remove any activeLevel logic
 
 		// TODO Auto-generated method stub
 		final LevelEditorView newPuzzleLevel = new LevelEditorView(builder, levelLoader, p2);

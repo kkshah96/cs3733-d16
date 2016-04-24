@@ -15,7 +15,7 @@ import controller.LoadLevelsController;
 public class LevelBuilder {
 	
 	ArrayList<Level> levels;
-	Level activeLevel;
+	//Level activeLevel;
 	
 	public LevelBuilder() {
 		
@@ -62,13 +62,13 @@ public class LevelBuilder {
 		return levels.size();
 	}
 	
-	public void setActiveLevel(Level level) {
-		activeLevel = level;
-	}
+	//public void setActiveLevel(Level level) {
+	//	activeLevel = level;
+	//}
 	
-	public Level getActiveLevel() {
-		return activeLevel;
-	}
+	//public Level getActiveLevel() {
+		//return activeLevel;
+	//}
 	
 	public void addLevel(Level level){
 		levels.add(level);

@@ -45,16 +45,14 @@ public class PieceDrawer {
 		squares = piece.getSquares();
 		anchorSquare = piece.getAnchor();
 		
-		//g.setColor(getRandomColor());
 		g.setColor(Color.RED);
 		for(int i = 0; i < 5; i++){
+			//g.fillRect(p.x, p.y, width, width);
 			g.fillRect((p.x + squares[i].getCol()) * width + width_offset, (p.y + squares[i].getRow()) * width + height_offset, width, width);
 		}
 		
+		//g.fillRect(p.x, p.y, width, width);
 		g.fillRect(p.x * width + width_offset, p.y * width + height_offset, width, width);
 	}
 	
-	private Color getRandomColor(){
-		return new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
-	}
 }

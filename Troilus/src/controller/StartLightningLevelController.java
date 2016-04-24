@@ -26,7 +26,7 @@ public class StartLightningLevelController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Level selectedLevel = game.getLevels().get(levelNumber - 1);
+		Level selectedLevel = game.getLevels().get(levelNumber - 1); //TODO: Why - 1? Can we assume 0 can be passed in?
 
 		// if level is locked, take no action
 		if (selectedLevel.isLocked()) {
@@ -34,12 +34,12 @@ public class StartLightningLevelController implements ActionListener {
 		}
 
 		// set active level in top model to selected level
-		game.setActiveLevel(selectedLevel);
+		//game.setActiveLevel(selectedLevel);
 
-		LevelView levelView = new LevelView(levelSelector, game);
+		LevelView levelView = new LevelView(levelSelector, game, selectedLevel);
 
 		// set active level in top model to selected level
-		game.setActiveLevel(selectedLevel);
+		//game.setActiveLevel(selectedLevel);
 
 		// set visibility of level view elements to account for level type
 		levelView.getPanelPuzzleStats().setVisible(false);

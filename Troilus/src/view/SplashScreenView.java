@@ -22,25 +22,6 @@ import javax.swing.Timer;
 public class SplashScreenView extends JFrame {
 
 	/**
-	 * Launch the application.
-	 */
-		
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Splash_Screen window = new Splash_Screen();
-					window.setVisible(true);
-					
-					//window.setVisible(false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
 	 * Create the application.
 	 */
 	public SplashScreenView() {
@@ -54,7 +35,6 @@ public class SplashScreenView extends JFrame {
 	private void initialize() {
 		setBounds(100, 100, 534, 427);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 534, 305);
@@ -72,7 +52,6 @@ public class SplashScreenView extends JFrame {
 		JLabel lblInsertLogoHere = new JLabel(new ImageIcon(SplashScreenView.class.getResource("/images/logo.png")));
 		lblInsertLogoHere.setEnabled(true);
 		lblInsertLogoHere.setHorizontalAlignment(SwingConstants.CENTER);
-		//lblInsertLogoHere.setForeground(new Color(255, 255, 255));
 		lblInsertLogoHere.setFont(new Font("PT Sans Caption", Font.BOLD, 26));
 		lblInsertLogoHere.setBounds(22, 170, 496, 72);
 		panel.add(lblInsertLogoHere);

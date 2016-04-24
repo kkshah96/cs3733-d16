@@ -15,6 +15,7 @@ import java.util.Set;
  * @author Maddy Longo
  * @author Dan Alfred
  * @author Kunal Shah
+ * @author Connor Weeks
  */
 public class Board {
 	/** Constant denoting the maximum width of the board. */
@@ -38,27 +39,18 @@ public class Board {
 	
 	/**
 	 * Default constructor for Board, initializing 2D array of squares to max height and max width.
-	 * Also assumes no pieces are on the board
+	 * Also assumes no pieces are on the board. TODO: Should this EVER be used?
 	 */
+	
+	protected int currentHeight; // TODO: Why are these stored when the board may not be rectangular?
+	protected int currentWidth;
 	public Board() {
 		squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
 		pieces = new Hashtable<Piece, Point>();
+		this.currentHeight = BOARD_HEIGHT;
+		this.currentWidth = BOARD_WIDTH;
 	}
 	
-	/**
-	 * Constructor for board to define the requested size. Will throw a RuntimeException if 
-	 * the number of rows or number of columns exceeds the max size.
-	 * @param rows Number of rows to have enabled on the board
-	 * @param cols Number of columns to have enabled on the board
-	 */
-	public Board(int rows, int cols) {	
-		if (rows > BOARD_HEIGHT || cols > BOARD_WIDTH) {
-			throw new RuntimeException("Board Constructor exception: Number of rows or columns provided exceeds max size of board!");
-		} else {
-			this.squares = new Square[rows][cols];
-			this.pieces = new Hashtable<Piece, Point>();
-		}
-	}
 	
 	/**
 	 * Constructor for the board to take in a predefined 2D array of squares
@@ -72,6 +64,8 @@ public class Board {
 			this.squares = squares;
 			this.pieces = new Hashtable<Piece, Point>();
 		}
+		this.currentHeight = BOARD_HEIGHT;
+		this.currentWidth = BOARD_WIDTH;
 	}
 	
 	/**
@@ -105,9 +99,9 @@ public class Board {
 		
 		for (PieceSquare square : p.squares) {
 			// check if each square is in bounds
-			int absRow = square.row + row;
+			int absRow = square.row + row; // find absolute position
 			int absCol = square.col + col;
-			if (!(absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
+			if ((absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
 				if (!squares[absRow][absCol].isValid()) {
 					return false;
 				}
@@ -160,18 +154,26 @@ public class Board {
 	}
 	
 	/**
-	 * Resets the dimensions and squares inside the board
-	 * Will throw a RuntimeException if the sizes given are greater than max size
+	 * Resets the dimensions and squares inside the board.
+	 * Will throw a RuntimeException if the sizes given are greater than max size.
+	 * <p>
 	 * @param rows Size
 	 * @param cols
 	 */
 	public void setDimensions(int rows, int cols){
-		squares = new Square[rows][cols];
+		for (int row = 0; row < BOARD_HEIGHT; row++) {
+			for (int column = 0; column < BOARD_WIDTH; column++) {
+				boolean valid = (row < rows) && (column < cols);
+				squares[row][column].setIsValid(valid);
+			}
+		}
+		this.currentHeight = rows;
+		this.currentWidth = cols;
 	}
 	
 	/**
-	 * Retrieves the listing of pieces on this board
-	 * @return ArrayList of Piece for this board
+	 * Retrieves the listing of pieces on this board.
+	 * @return Hashtable of Piece for this board
 	 */
 	public Hashtable<Piece, Point> getPieces(){
 		return this.pieces;
@@ -180,7 +182,15 @@ public class Board {
 	/**
 	 * Toggles the validity of the active square for this board
 	 */
-	public void toggleSquare() {
+	public void toggleActiveSquare() {
 		activeSquare.isValid = !activeSquare.isValid;
+	}
+	
+	public int getRows(){
+		return this.currentHeight;
+	}
+	
+	public int getCols(){
+		return this.currentWidth;
 	}
 }

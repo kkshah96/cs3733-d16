@@ -53,7 +53,7 @@ public class NewReleaseLevelController implements ActionListener {
 		Palette p = new Palette();
 		ReleaseLevel r = new ReleaseLevel(builder.getLevels().size(), true, bpen, board, p);
 		builder.addLevel(r);
-		builder.setActiveLevel(r);
+		//builder.setActiveLevel(r);
 
 		// TODO Auto-generated method stub
 		final LevelEditorView newReleaseLevel = new LevelEditorView(builder, levelLoader, r);

@@ -10,6 +10,7 @@ package model;
  * 
  * @author Maddy
  * @author Kunal Shah
+ * @author Connor Weeks
  *
  */
 public abstract class Square {
@@ -23,15 +24,6 @@ public abstract class Square {
 		this.isValid = isValid;
 	}
 	
-	/**
-	 * Returns a new Square of the given type
-	 * @param row
-	 * @param col
-	 * @return
-	 */
-	//public abstract Square copy(int row, int col);
-	
-	// TODO: Does this have to be an abstract method?
 	public boolean isValid() {
 		return this.isValid;
 	}
@@ -45,4 +37,9 @@ public abstract class Square {
 	public int getCol() {
 		return this.col;
 	}
+	
+	public void setIsValid(boolean isValid) {
+		this.isValid = isValid;
+	}
+	
 }

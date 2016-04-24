@@ -33,9 +33,9 @@ public class StartReleaseLevelController implements ActionListener {
 		}
 
 		// set active level in top model to selected level
-		game.setActiveLevel(selectedLevel);
+		//game.setActiveLevel(selectedLevel);
 		
-		LevelView levelView = new LevelView(levelSelector, game);
+		LevelView levelView = new LevelView(levelSelector, game, selectedLevel);
 
 		// set visibility of level view elements to account for level type
 		levelView.getPanelPuzzleStats().setVisible(false);

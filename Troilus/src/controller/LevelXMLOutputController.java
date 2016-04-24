@@ -105,7 +105,7 @@ public class LevelXMLOutputController {
 			DOMSource source = new DOMSource(doc);
 			
 			// Create the file object, and have it overwrite if it exists already
-			File levelFile = new File(path + "LevelXML" + level.getLevelNum() + ".xml");
+			File levelFile = new File(path, "LevelXML" + level.getLevelNum() + ".xml");
 			levelFile.createNewFile();
 			StreamResult result = new StreamResult(levelFile);
 			trans.transform(source, result);

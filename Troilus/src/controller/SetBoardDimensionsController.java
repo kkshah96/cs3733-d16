@@ -1,13 +1,16 @@
 package controller;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
+import model.Board;
 import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
+import view.BoardView;
 import view.LevelEditorView;
 
 /**
@@ -22,26 +25,30 @@ public class SetBoardDimensionsController implements ActionListener {
 	LevelEditorView editorView;
 	int rows;
 	int cols;
-	
-	public SetBoardDimensionsController(LevelBuilder builder,Level level, LevelEditorView editorView) {
+
+	public SetBoardDimensionsController(LevelBuilder builder, Level level, LevelEditorView editorView) {
 		this.level = level;
 		this.builder = builder;
+		this.editorView = editorView;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JTextField r = editorView.getRowField();
 		JTextField c = editorView.getColField();
-		
+
 		int rows = Integer.parseInt(r.getText());
 		int cols = Integer.parseInt(c.getText());
-		
-		if(cols <= 0 || cols > 12 || rows > 12 || rows <= 0){
+
+		if (cols <= 0 || cols > Board.BOARD_WIDTH || rows > Board.BOARD_HEIGHT || rows <= 0){
 			System.out.println("Invalid Dimensions");
+			return;
 		}
-		else //TODO: Actually change the dimensions in the level
-			System.out.println(rows);
-			System.out.println(cols);
-			//level.getBoard().setDimensions(rows, cols);
+
+		System.out.println(rows);
+		System.out.println(cols);
+		level.getBoard().setDimensions(rows, cols);
+		
+		editorView.getBoardView().repaint();
 	}
 }
