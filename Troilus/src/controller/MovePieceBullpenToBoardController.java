@@ -62,30 +62,31 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 //			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET);
 //			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE);
 //			System.out.println("---");
-
+//
+			
 			// added by Connor <-- stud muffin
 			if((anchorPoint.getX() <= p.getX()) && 
-					(anchorPoint.getX() + PaletteView.SQUARE_SIZE >= p.getX()) && 
+					(anchorPoint.getX() + BullpenView.SQUARE_SIZE >= p.getX()) && 
 					(anchorPoint.getY() <= p.getY()) && 
-					(anchorPoint.getY() + PaletteView.SQUARE_SIZE >= p.getY())) {
+					(anchorPoint.getY() + BullpenView.SQUARE_SIZE >= p.getY())) {
+				
+				System.out.println("Anchor");
 				//b.addPiece(piece);
 				//boardView.repaint();
 				return;
 			}
 			
 			for(Square s : piece.getSquares()) {
-				if((anchorPoint.getX() + (s.getCol() * PaletteView.SQUARE_SIZE) <= p.getX()) && 
-						(anchorPoint.getX() + (s.getCol() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= p.getX()) && 
-						(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) <= p.getY()) && 
-						(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= p.getY())) {
+				if((anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) <= p.getX()) && 
+						(anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= p.getX()) && 
+						(anchorPoint.getY() + (s.getRow() * BullpenView.SQUARE_SIZE) <= p.getY()) && 
+						(anchorPoint.getY() + (s.getRow() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= p.getY())) {
 					//b.addPiece(piece);
+					System.out.println("Square");
 				 //	boardView.repaint();
 					return;
 				}
 			}
-
 		}
-
 	}
-
 }
