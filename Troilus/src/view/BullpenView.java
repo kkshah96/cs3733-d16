@@ -79,9 +79,7 @@ public class BullpenView extends JPanel {
 
 		super.paintComponent(g);
 		
-		//TESTING TODO: Remove
-		//Hashtable<Piece, Point> pieces = bullpen.getPieces();
-		PieceDrawer pDrawer = new PieceDrawer(); //TODO: Should we make PieceDrawer a static class?
+		PieceDrawer pDrawer = new PieceDrawer();
 		
 		// reset pieces 
 		pieces = new Hashtable<Piece, Point>();
@@ -89,9 +87,12 @@ public class BullpenView extends JPanel {
 		for(int i = 0; i < bullpen.getPieces().size(); i++){
 			Piece piece = bullpen.getPieces().get(i);
 			Color color = Color.RED;
+			
+			// if the piece is selected, highlight it
 			if (piece == level.getActivePiece()) {
-				color = Color.CYAN;
+				color = Color.ORANGE;
 			}
+			
 			pieces.put(piece, new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET, (i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
 			pieces.put(piece, new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET, (i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
 			pDrawer.paint(g, color, piece, new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
