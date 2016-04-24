@@ -13,20 +13,26 @@ import view.LevelLoaderView;
 import view.LevelEditorView;
 import view.PaletteView;
 
+
+/**
+ * @author Dan Alfred
+ * @author Connor Weeks
+ *
+ */
 public class MovePiecePaletteToBullpenController extends MouseAdapter {
 
 	LevelBuilder builder;
 	Level level;
 	LevelLoaderView loaderView;
 	LevelEditorView editorView;
-	
+
 	public MovePiecePaletteToBullpenController(LevelBuilder builder, Level level, LevelLoaderView loaderView, LevelEditorView editorView) {
 		this.builder = builder;
 		this.level = level;
 		this.loaderView = loaderView;
 		this.editorView = editorView;
 	}
-	
+
 	public void mousePressed(MouseEvent e) {
 		if(e.getButton() == MouseEvent.BUTTON3) {
 			System.out.println("Right click");
@@ -45,14 +51,22 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE <= p.getY())) {
 				System.out.println("Within anchor point!");
 			}
-			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET);
-			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE);
-			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET);
-			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE);
-			System.out.println("---");
+//			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET);
+//			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE);
+//			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET);
+//			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE);
+//			System.out.println("---");
+
+			// added by Connor
+			if((anchorPoint.getX() <= p.getX()) && 
+					(anchorPoint.getX() + PaletteView.SQUARE_SIZE >= p.getX()) && 
+					(anchorPoint.getY() <= p.getY()) && 
+					(anchorPoint.getY() + PaletteView.SQUARE_SIZE >= p.getY())) {
+				System.out.println("Anchor was clicked");
+			}
 
 		}
-		
+
 	}
-	
+
 }

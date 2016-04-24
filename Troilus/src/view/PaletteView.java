@@ -21,6 +21,7 @@ import model.Piece;
  * Displays every Piece in the Kabasuji game in a window using a scrollbar as needed
  * 
  * @author Kunal Shah
+ * @author Connor Weeks
  *
  */
 public class PaletteView extends JPanel {
@@ -54,7 +55,7 @@ public class PaletteView extends JPanel {
 		PieceDrawer pDrawer = new PieceDrawer();
 		
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
-			pieces.put(palette.getPieces().get(i), new Point(i * SPACING, 0));
+			pieces.put(palette.getPieces().get(i), new Point(i * SPACING * SQUARE_SIZE + WIDTH_OFFSET, HEIGHT_OFFSET));
 			pDrawer.paint(g, palette.getPieces().get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 	}
