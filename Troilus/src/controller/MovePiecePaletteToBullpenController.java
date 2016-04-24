@@ -6,10 +6,13 @@ import java.awt.event.MouseEvent;
 import java.util.Hashtable;
 import java.util.Set;
 
+import model.Bullpen;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
+import model.Square;
 import view.LevelLoaderView;
+import view.BullpenView;
 import view.LevelEditorView;
 import view.PaletteView;
 
@@ -38,6 +41,10 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 			System.out.println("Right click");
 			return;
 		}
+		
+		Bullpen bp = level.getBullpen();
+		BullpenView bpView = editorView.getBullpenView();
+		
 		Point p = e.getPoint();
 		PaletteView pView = editorView.getPaletteView();
 		Hashtable<Piece, Point> pieces = pView.getDrawnPieces();
@@ -45,24 +52,29 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 		System.out.println(p);
 		for(Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
-			if((anchorPoint.getX() + PaletteView.WIDTH_OFFSET >= p.getX()) && 
-					(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE <= p.getX()) && 
-					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET >= p.getY()) && 
-					(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE <= p.getY())) {
-				System.out.println("Within anchor point!");
-			}
 //			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET);
 //			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE);
 //			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET);
 //			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE);
 //			System.out.println("---");
 
-			// added by Connor
+			// added by Connor <-- stud muffin
 			if((anchorPoint.getX() <= p.getX()) && 
 					(anchorPoint.getX() + PaletteView.SQUARE_SIZE >= p.getX()) && 
 					(anchorPoint.getY() <= p.getY()) && 
 					(anchorPoint.getY() + PaletteView.SQUARE_SIZE >= p.getY())) {
-				System.out.println("Anchor was clicked");
+				bp.addPiece(piece);
+				bpView.repaint();
+			}
+			
+			for(Square s : piece.getSquares()) {
+				if((anchorPoint.getX() + (s.getCol() * PaletteView.SQUARE_SIZE) <= p.getX()) && 
+						(anchorPoint.getX() + (s.getCol() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= p.getX()) && 
+						(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) <= p.getY()) && 
+						(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= p.getY())) {
+					bp.addPiece(piece);
+					bpView.repaint();
+				}
 			}
 
 		}

@@ -26,7 +26,7 @@ import model.Piece;
  */
 public class PaletteView extends JPanel {
 	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
-	public static final int SQUARE_SIZE = 10;
+	public static final int SQUARE_SIZE = 30;
 	public static final int HEIGHT_OFFSET = 100;
 	public static final int WIDTH_OFFSET = 10;
 	public static final int SPACING = 6;

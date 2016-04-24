@@ -59,6 +59,7 @@ public class LevelEditorView extends JFrame {
 	Level activeLevel;
 	BoardView boardPanel;
 	PaletteView palettePanel;
+	BullpenView bullpenPanel;
 	
 	/**
 	 * Create the application.
@@ -86,18 +87,18 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(boardPanel);
 		boardPanel.addMouseListener(new SelectSquareController(activeLevel, boardPanel));
 		
-		JPanel bullPenPanel = new JPanel();
-		bullPenPanel.setLayout(null);
-		bullPenPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		bullPenPanel.setBackground(Color.LIGHT_GRAY);
-		bullPenPanel.setBounds(748, 38, 457, 484);
-		getContentPane().add(bullPenPanel);
+		bullpenPanel = new BullpenView(activeLevel.getBullpen());
+		bullpenPanel.setLayout(null);
+		bullpenPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		bullpenPanel.setBackground(Color.LIGHT_GRAY);
+		bullpenPanel.setBounds(748, 38, 457, 484);
+		getContentPane().add(bullpenPanel);
 		
 		JPanel bullPenOptionsPanel = new JPanel();
 		bullPenOptionsPanel.setLayout(null);
 		bullPenOptionsPanel.setBackground(Color.LIGHT_GRAY);
 		bullPenOptionsPanel.setBounds(6, 6, 446, 33);
-		bullPenPanel.add(bullPenOptionsPanel);
+		bullpenPanel.add(bullPenOptionsPanel);
 		
 		JLabel label_3 = new JLabel("Bullpen");
 		label_3.setForeground(Color.BLACK);
@@ -127,7 +128,7 @@ public class LevelEditorView extends JFrame {
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(6, 50, 446, 423);
-		bullPenPanel.add(scrollPane_1);
+		bullpenPanel.add(scrollPane_1);
 		
 		JPanel panel_2 = new BullpenView(activeLevel.getBullpen());
 		scrollPane_1.setViewportView(panel_2);
@@ -403,6 +404,10 @@ public class LevelEditorView extends JFrame {
 	
 	public BoardView getBoardView(){
 		return boardPanel;
+	}
+	
+	public BullpenView getBullpenView() {
+		return bullpenPanel;
 	}
 	
 	public void setBoardView(BoardView b){
