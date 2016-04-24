@@ -36,7 +36,6 @@ public class PaletteView extends JPanel {
 	 * We are simply storing these Pieces in locations in a HashTable as we draw them so we can access them later
 	 */
 	Hashtable<Piece, Point> pieces;
-
 	Palette palette;
 	/**
 	 * Create the panel.
@@ -49,6 +48,7 @@ public class PaletteView extends JPanel {
 
 	public void paintComponent(Graphics g){
 
+		// THIS WAS SUPER IMPORTANT. pls
 		super.paintComponent(g);
 
 		PieceDrawer pDrawer = new PieceDrawer();
