@@ -21,8 +21,9 @@ public class SaveLevelController implements ActionListener {
 	Level level;
 	String filePath;
 
-	public SaveLevelController() {
-		this.filePath = "/some/default/path";
+	public SaveLevelController(Level level) {
+		this.level = level;
+		this.filePath = "./src/levels";
 	}
 	
 	public SaveLevelController(Level level, String filePath) {
@@ -32,6 +33,9 @@ public class SaveLevelController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (level == null) {
+			System.err.println("level is null");
+		}
 		// create new low level output object and store level
 		LevelXMLOutputController output = new LevelXMLOutputController(level, filePath);
 		output.storeLevelToFile();
