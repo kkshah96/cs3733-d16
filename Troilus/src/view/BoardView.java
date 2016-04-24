@@ -68,6 +68,9 @@ public class BoardView extends JPanel {
 	 * Paints the BoardView and squares on the Board
 	 */
 	public void paintComponent(Graphics g) {
+		
+		super.paintComponent(g);
+		
 		SquareDrawer sDrawer = new SquareDrawer();
 		PieceDrawer pDrawer = new PieceDrawer();
 
