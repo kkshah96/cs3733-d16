@@ -28,21 +28,7 @@ public class SquareDrawer {
 		c = null;
 		size = BoardView.SQUARE_SIZE;
 	}
-	
-	// TODO: Shitty code is shitty, do we want to pass this in to the constructor instead of the paint method or something?
-	public void paint(Graphics g, Square s, Point p, int width, Integer releaseNumber, Color c){
 		
-		if(!(c == null)){
-			g.setColor(c);
-		}
-		
-		if(!(releaseNumber == null)){
-			g.drawString("" + releaseNumber, x + 5, y + 5); //TODO: Change 5 to some buffer value
-		}
-		
-		g.drawRect((p.x + s.getCol()) * width, (p.y + s.getRow()) * width, width, width);
-	}
-	
 	private Color findColor(Square square) {
 		if (square.isValid()) {
 			return VALID_COLOR;
@@ -65,7 +51,7 @@ public class SquareDrawer {
 		if (!(c == null)) {
 			g.setColor(c);
 		}
-		g.fillRect(x+1, y+1, size-2, size-2);
+		//g.fillRect(x+1, y+1, size-2, size-2);
 	}
 
 	public void paint(Graphics g, int x, int y, Integer releaseNumber, Color color) {

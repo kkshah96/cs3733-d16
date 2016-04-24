@@ -29,6 +29,12 @@ public class PaletteView extends JPanel {
 	public static final int HEIGHT_OFFSET = 100;
 	public static final int WIDTH_OFFSET = 10;
 	public static final int SPACING = 6;
+	
+	/*
+	 * The PaletteView has a Hashtable of Pieces mapped to Points representing the locations where the Palette Pieces are
+	 * drawn. NOTE: This is NOT keeping track of variable state because the PaletteView always draws the same number of pieces at the same locations
+	 * We are simply storing these Pieces in locations in a HashTable as we draw them so we can access them later
+	 */
 	Hashtable<Piece, Point> pieces;
 
 	Palette palette;
@@ -46,7 +52,6 @@ public class PaletteView extends JPanel {
 		super.paintComponent(g);
 
 		PieceDrawer pDrawer = new PieceDrawer();
-
 		
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
 			pieces.put(palette.getPieces().get(i), new Point(i * SPACING, 0));
