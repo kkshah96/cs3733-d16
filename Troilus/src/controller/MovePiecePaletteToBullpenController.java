@@ -49,7 +49,7 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 		PaletteView pView = editorView.getPaletteView();
 		Hashtable<Piece, Point> pieces = pView.getDrawnPieces();
 		Set<Piece> keySet = pieces.keySet();
-		System.out.println(p);
+		//System.out.println(p);
 		for(Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
 //			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET);
