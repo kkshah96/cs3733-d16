@@ -80,8 +80,9 @@ public class BullpenView extends JPanel {
 		//Hashtable<Piece, Point> pieces = bullpen.getPieces();
 		PieceDrawer pDrawer = new PieceDrawer(); //TODO: Should we make PieceDrawer a static class?
 		
-		//TEST adding pieces TODO: remove
-		//pieces.add(PieceFactory.getPiece(10));
+		// reset pieces 
+		pieces = new Hashtable<Piece, Point>();
+		
 		for(int i = 0; i < bullpen.getPieces().size(); i++){
 			//TODO: Ensure I did this correctly
 			pieces.put(bullpen.getPieces().get(i), new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET, (i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));

@@ -30,11 +30,7 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON3) {
-			System.out.println("Right click");
-			return;
-		}
-		
+				
 		int x = e.getX();
 		int y = e.getY();
 		
@@ -80,6 +76,13 @@ public class SelectPieceBullpenController extends MouseAdapter {
 		}
 		
 		System.out.println("Selected Piece");
+		
+		// a right click will remove the selected piece from the bullpen
+		if(e.getButton() == MouseEvent.BUTTON3) {
+			bullpen.removePiece(selectedPiece);
+			bullpenView.repaint();
+			return;
+		}
 		
 		
 	}
