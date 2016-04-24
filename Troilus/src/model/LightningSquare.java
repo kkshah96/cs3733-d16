@@ -21,4 +21,8 @@ public class LightningSquare extends Square {
 	public String getType() {
 		return "LightningSquare";
 	}
+	
+	public boolean isCovered() {
+		return isCovered;
+	}
 }
