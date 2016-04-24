@@ -21,6 +21,11 @@ public class TestBoard extends TestCase {
 		Board board = new Board(squares);
 		Piece piece1 = PieceFactory.getPiece(1);
 		assertTrue(board.addPiece(piece1, 4, 4));
+		
+		board.setDimensions(4, 4);
+		assertTrue(!(board.getSquare(4, 4).isValid()));
+		assertTrue(!(board.getSquare(5, 5).isValid()));
+		assertTrue(board.getSquare(3, 3).isValid());
 	}
 	
 	public void testSelection() {

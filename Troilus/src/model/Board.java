@@ -42,7 +42,7 @@ public class Board {
 	 * Also assumes no pieces are on the board. TODO: Should this EVER be used?
 	 */
 	
-	protected int currentHeight;
+	protected int currentHeight; // TODO: Why are these stored when the board may not be rectangular?
 	protected int currentWidth;
 	public Board() {
 		squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
@@ -154,8 +154,8 @@ public class Board {
 	}
 	
 	/**
-	 * Resets the dimensions and squares inside the board
-	 * Will throw a RuntimeException if the sizes given are greater than max size
+	 * Resets the dimensions and squares inside the board.
+	 * Will throw a RuntimeException if the sizes given are greater than max size.
 	 * <p>
 	 * @param rows Size
 	 * @param cols
@@ -163,7 +163,7 @@ public class Board {
 	public void setDimensions(int rows, int cols){
 		for (int row = 0; row < BOARD_HEIGHT; row++) {
 			for (int column = 0; column < BOARD_WIDTH; column++) {
-				boolean valid = row < rows && column <  cols;
+				boolean valid = (row < rows) && (column < cols);
 				squares[row][column].setIsValid(valid);
 			}
 		}
@@ -172,7 +172,7 @@ public class Board {
 	}
 	
 	/**
-	 * Retrieves the listing of pieces on this board
+	 * Retrieves the listing of pieces on this board.
 	 * @return Hashtable of Piece for this board
 	 */
 	public Hashtable<Piece, Point> getPieces(){

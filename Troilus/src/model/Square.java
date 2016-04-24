@@ -25,7 +25,7 @@ public abstract class Square {
 	}
 	
 	public boolean isValid() {
-		return true;
+		return this.isValid;
 	}
 	
 	public abstract String getType();

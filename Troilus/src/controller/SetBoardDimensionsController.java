@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
+import model.Board;
 import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
@@ -25,7 +26,7 @@ public class SetBoardDimensionsController implements ActionListener {
 	int rows;
 	int cols;
 
-	public SetBoardDimensionsController(LevelBuilder builder,Level level, LevelEditorView editorView) {
+	public SetBoardDimensionsController(LevelBuilder builder, Level level, LevelEditorView editorView) {
 		this.level = level;
 		this.builder = builder;
 		this.editorView = editorView;
@@ -39,7 +40,7 @@ public class SetBoardDimensionsController implements ActionListener {
 		int rows = Integer.parseInt(r.getText());
 		int cols = Integer.parseInt(c.getText());
 
-		if(cols <= 0 || cols > 12 || rows > 12 || rows <= 0){
+		if (cols <= 0 || cols > Board.BOARD_WIDTH || rows > Board.BOARD_HEIGHT || rows <= 0){
 			System.out.println("Invalid Dimensions");
 			return;
 		}
@@ -47,11 +48,7 @@ public class SetBoardDimensionsController implements ActionListener {
 		System.out.println(rows);
 		System.out.println(cols);
 		level.getBoard().setDimensions(rows, cols);
-	
-		BoardView updated = new BoardView(level.getBoard());
 		
-		editorView.setBoardView(updated);
-		editorView.repaint();
-		
+		editorView.getBoardView().repaint();
 	}
 }

@@ -76,26 +76,24 @@ public class BoardView extends JPanel {
 		//TEST adding pieces TODO: remove
 		//	pieces.put(PieceFactory.getPiece(4), new Point(5, 5));
 		Set<Piece> keySet = pieces.keySet();
-		for(Piece p : keySet){
+		for(Piece p : keySet) {
 			pDrawer.paint(g, p, pieces.get(p), 30, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
-
-		int row;
-		int col;
-		// int count = 0;
-		for(int i = 0; i < board.getRows()*SQUARE_SIZE; i+= SQUARE_SIZE) {
-			for(int j = 0; j < board.getCols()*SQUARE_SIZE; j+= SQUARE_SIZE) {
-				row = i/SQUARE_SIZE;
-				col = j/SQUARE_SIZE;
-				sDrawer.paint(g, i + WIDTH_OFFSET, j + HEIGHT_OFFSET, board.getSquare(row, col));
+		
+		// i is y-coordinate, j is x-coordinate
+		for (int i = 0; i < HEIGHT; i+= SQUARE_SIZE) {
+			for (int j = 0; j < WIDTH; j+= SQUARE_SIZE) {
+				sDrawer.paint(g, j + WIDTH_OFFSET, i + HEIGHT_OFFSET,
+						board.getSquare(i/SQUARE_SIZE, j/SQUARE_SIZE));
 			}
 		}
 		
 		if (board.getActiveSquare() != null) {
 			int activeCol = board.getActiveSquare().getCol();
 			int activeRow = board.getActiveSquare().getRow();
-			sDrawer.paint(g, SQUARE_SIZE*(activeCol + 1),
-					SQUARE_SIZE*(activeRow + 1), null, Color.PINK);
+			// TODO: Find out why this isn't working
+			sDrawer.paint(g, SQUARE_SIZE*activeCol + WIDTH_OFFSET,
+					SQUARE_SIZE*activeRow + HEIGHT_OFFSET, null, Color.PINK);
 		}
 	}
 }
