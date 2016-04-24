@@ -65,6 +65,7 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 					(anchorPoint.getY() + PaletteView.SQUARE_SIZE >= p.getY())) {
 				bp.addPiece(piece);
 				bpView.repaint();
+				return;
 			}
 			
 			for(Square s : piece.getSquares()) {
@@ -74,6 +75,7 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 						(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= p.getY())) {
 					bp.addPiece(piece);
 					bpView.repaint();
+					return;
 				}
 			}
 

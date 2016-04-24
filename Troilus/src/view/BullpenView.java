@@ -23,15 +23,18 @@ import model.PieceFactory;
  *
  */
 public class BullpenView extends JPanel {
-	static final int BULLPEN_WIDTH = 440;
+	static final int BULLPEN_WIDTH = 420;
 	static final int SQUARE_SIZE = 10;
 	
 	/** Constant to define the offset between the left of the panel and the left of the bullpen */
-	static final int WIDTH_OFFSET = 10;
+	static final int WIDTH_OFFSET = 8 * SQUARE_SIZE;
 	
 	/** Constant to define the offset between the top of the panel and the top of the bullpen*/
-	static final int HEIGHT_OFFSET = 30;
+	static final int HEIGHT_OFFSET = 100;
 	
+	static final int NUM_COLUMNS = 4;
+	
+	static final int SPACING = 8;
 	Bullpen bullpen;
 
 	/**
@@ -46,7 +49,7 @@ public class BullpenView extends JPanel {
 
 		setLayout(null);
 
-		this.setPreferredSize(new Dimension(423, 473));
+		this.setPreferredSize(new Dimension(BULLPEN_WIDTH, 1000)); // 473
 
 		/*JLabel lblBoard = new JLabel("Bullpen");
 		lblBoard.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
@@ -69,7 +72,7 @@ public class BullpenView extends JPanel {
 		//TEST adding pieces TODO: remove
 		//pieces.add(PieceFactory.getPiece(10));
 		for(int i = 0; i < pieces.size(); i++){
-			pDrawer.paint(g, pieces.get(i), new Point(10, 10), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			pDrawer.paint(g, pieces.get(i), new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 	}
