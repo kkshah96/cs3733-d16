@@ -12,8 +12,10 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import model.Bullpen;
 import model.Level;
 import model.LightningLevel;
+import model.Piece;
 import model.PuzzleLevel;
 import model.ReleaseSquare;
 
@@ -68,10 +70,11 @@ public class LevelXMLOutputController {
  			}
 
 			Element bullpenElement = doc.createElement("Bullpen");
-			int numPieces = level.getBullpen().getNumPieces();
-			for(int i = 0; i < numPieces; i++) {
+			//int numPieces = level.getBullpen().getNumPieces();
+			Bullpen bullpen = level.getBullpen();
+			for (Piece piece : bullpen.getPieces()) {
 				Element pieceElement = doc.createElement("Piece");
-				pieceElement.setAttribute("Number", ""+ level.getBullpen().getPiece(0,i).getType()); //TODO: Fix first parameter
+				pieceElement.setAttribute("Number", "" + piece.getType()); //TODO: Fix first parameter
 				bullpenElement.appendChild(pieceElement);
 			}
 			
