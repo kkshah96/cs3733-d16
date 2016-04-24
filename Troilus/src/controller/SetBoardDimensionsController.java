@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +9,7 @@ import javax.swing.JTextField;
 import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
+import view.BoardView;
 import view.LevelEditorView;
 
 /**
@@ -45,5 +47,11 @@ public class SetBoardDimensionsController implements ActionListener {
 		System.out.println(rows);
 		System.out.println(cols);
 		level.getBoard().setDimensions(rows, cols);
+	
+		BoardView updated = new BoardView(level.getBoard());
+		
+		editorView.setBoardView(updated);
+		editorView.repaint();
+		
 	}
 }

@@ -57,7 +57,7 @@ public class LevelEditorView extends JFrame {
 	LevelLoaderView levelLoader;
 	LevelBuilder builder;
 	Level activeLevel;
-
+	BoardView boardPanel;
 	PaletteView palettePanel;
 	
 	/**
@@ -78,7 +78,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		BoardView boardPanel = new BoardView(activeLevel.getBoard());
+		boardPanel = new BoardView(activeLevel.getBoard());
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		boardPanel.setBackground(Color.LIGHT_GRAY);
@@ -400,4 +400,13 @@ public class LevelEditorView extends JFrame {
 	public PaletteView getPaletteView() {
 		return palettePanel;
 	}
+	
+	public BoardView getBoardView(){
+		return boardPanel;
+	}
+	
+	public void setBoardView(BoardView b){
+		this.boardPanel = b;
+	}
+	
 }

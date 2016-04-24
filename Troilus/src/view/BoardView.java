@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 import model.Board;
 import model.Piece;
-import model.PieceFactory;
 
 /**
  * Represents a way for a Board to be visible in a window.
@@ -22,7 +21,7 @@ import model.PieceFactory;
  * @author Dan Alfred
  * @author Kunal Shah
  * @author Maddy Longo
- *
+ * @author Alexander Kasparek
  */
 public class BoardView extends JPanel {
 	/** Constant to define how large each square is, in pixels*/
@@ -84,8 +83,8 @@ public class BoardView extends JPanel {
 		int row;
 		int col;
 		// int count = 0;
-		for(int i = 0; i < HEIGHT; i+= SQUARE_SIZE) {
-			for(int j = 0; j < WIDTH; j+= SQUARE_SIZE) {
+		for(int i = 0; i < board.getRows()*SQUARE_SIZE; i+= SQUARE_SIZE) {
+			for(int j = 0; j < board.getCols()*SQUARE_SIZE; j+= SQUARE_SIZE) {
 				row = i/SQUARE_SIZE;
 				col = j/SQUARE_SIZE;
 				sDrawer.paint(g, i + WIDTH_OFFSET, j + HEIGHT_OFFSET, board.getSquare(row, col));
