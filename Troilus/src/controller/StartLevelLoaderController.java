@@ -39,10 +39,23 @@ public class StartLevelLoaderController {
 		System.out.println(levels.size());
 		
 		for (int i = 0; i < numLevels; i++) {
+			Level level = levels.get(i);
 			// enable buttons if level exists; set text accordingly
-			buttons.get(i).setText("Level " + levels.get(i).getLevelNum() + ": " + levels.get(i).getName());
+			buttons.get(i).setText("Level " + level.getLevelNum() + ": " + level.getName());
 			buttons.get(i).setVisible(true);
 			buttons.get(i).setEnabled(true);
+			if (level.getName().equals("Puzzle")) {
+				buttons.get(i).addActionListener(new LoadPuzzleLevelController(levelLoaderView, level, builder));
+			}
+			else if (level.getName().equals("Lightning")) {
+				buttons.get(i).addActionListener(new LoadLightningLevelController(levelLoaderView, level, builder));
+			}
+			else if (level.getName().equals("Release")) {
+				buttons.get(i).addActionListener(new LoadReleaseLevelController(levelLoaderView, level, builder));
+			}
+			else {
+				throw new RuntimeException("Unexpected level type found");
+			}
 		}
 	}
 }

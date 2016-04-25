@@ -15,7 +15,7 @@ public class LoadLevelsController {
 	String filePath;
 
 	public LoadLevelsController() {
-		this.filePath = "some/default/path";
+		this.filePath = "./src/levels/";
 	}
 
 	public LoadLevelsController(String filePath) {
@@ -28,8 +28,7 @@ public class LoadLevelsController {
 	 * @return ArrayList of Levels
 	 */
 	public ArrayList<Level> loadLevels() {
-		ArrayList<Level> levels = new ArrayList<Level>();
-		// TODO: load levels from XML here
-		return levels;
+		LevelFileInputController fileInput = new LevelFileInputController();
+		return fileInput.getLevels();
 	}
 }

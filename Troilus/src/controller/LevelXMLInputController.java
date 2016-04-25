@@ -18,6 +18,7 @@ import model.Bullpen;
 import model.Level;
 import model.LightningLevel;
 import model.LightningSquare;
+import model.Palette;
 import model.Piece;
 import model.PieceFactory;
 import model.PuzzleLevel;
@@ -47,7 +48,7 @@ public class LevelXMLInputController {
 	}
 	
 	LevelXMLInputController(int levelNumber) {
-		this.path = "";
+		this.path = "./src/levels/";
 		this.levelNumber = levelNumber;
 	}
 	
@@ -123,13 +124,13 @@ public class LevelXMLInputController {
 			}
 			
 			if (levelType.equals("Release")) {
-				level = new ReleaseLevel(levelNumber, levelLocked, bullpen, board, null);
+				level = new ReleaseLevel(levelNumber, levelLocked, bullpen, board, new Palette());
 			} else if(levelType.equals("Lightning")) {
 				int levelTime = Integer.parseInt(rootLevelElement.getAttribute("Time"));
-				level = new LightningLevel(levelNumber, levelLocked, bullpen, board, null, levelTime);
+				level = new LightningLevel(levelNumber, levelLocked, bullpen, board, new Palette(), levelTime);
 			} else if(levelType.equals("Puzzle")) {
 				int maxMoves = Integer.parseInt(rootLevelElement.getAttribute("MaxMoves"));
-				level = new PuzzleLevel(levelNumber, levelLocked, bullpen, board, null, maxMoves);
+				level = new PuzzleLevel(levelNumber, levelLocked, bullpen, board, new Palette(), maxMoves);
 			}
 			level.setNumStars(levelProgress);
 		} catch(FileNotFoundException fnfe) {
