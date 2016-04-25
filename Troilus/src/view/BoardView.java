@@ -97,7 +97,11 @@ public class BoardView extends JPanel {
 		if(board.getDraggedPiece() != null) {
 			System.out.println("Painting dragged piece");
 			System.out.println("Point " + board.getDraggedPiecePoint());
-			pDrawer.paint(g, board.getDraggedPiece(), board.getDraggedPiecePoint(), SQUARE_SIZE, 0, 0);
+			
+			Point p = board.getDraggedPiecePoint();
+			int x = p.x / SQUARE_SIZE;
+			int y = p.y / SQUARE_SIZE;
+			pDrawer.paint(g, board.getDraggedPiece(), new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 	}
