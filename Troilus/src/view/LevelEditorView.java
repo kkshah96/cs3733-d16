@@ -33,6 +33,8 @@ import controller.SelectPieceBullpenController;
 import controller.SelectSquareController;
 import controller.SetBoardDimensionsController;
 import controller.SetMaxMovesController;
+import controller.SetSquareNumberColorController;
+import controller.SetSquareNumberController;
 import controller.SetTimeLimitController;
 import controller.ToggleSquareController;
 import model.Board;
@@ -68,6 +70,9 @@ public class LevelEditorView extends JFrame {
 	PaletteView palettePanel;
 	JPanel bullpenContainer;
 	BullpenView bullpenView;
+	
+	JComboBox releaseNumberComboBox;
+	JComboBox releaseColorComboBox;
 	
 	/**
 	 * Create the application.
@@ -366,17 +371,19 @@ public class LevelEditorView extends JFrame {
 		releaseSquareOptionsPanel.add(lblNumber);
 		lblNumber.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
 		
-		JComboBox releaseNumberComboBox = new JComboBox();
+		releaseNumberComboBox = new JComboBox();
 		releaseNumberComboBox.setBounds(66, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseNumberComboBox);
 		releaseNumberComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "1", "2", "3", "4", "5", "6"}));
+		releaseNumberComboBox.addActionListener(new SetSquareNumberController(builder, activeLevel,
+				this));
 		
 		JLabel lblNumberColor = new JLabel("Number Color:");
 		lblNumberColor.setBounds(150, 11, 97, 16);
 		releaseSquareOptionsPanel.add(lblNumberColor);
 		lblNumberColor.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
 		
-		JComboBox releaseColorComboBox = new JComboBox();
+		 releaseColorComboBox = new JComboBox();
 		releaseColorComboBox.setBounds(250, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseColorComboBox);
 		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
@@ -384,6 +391,8 @@ public class LevelEditorView extends JFrame {
 		setBounds(100, 100, 1207, 751);
 		//pView.setPreferredSize(new Dimension(500, 500));
 		//pView.setLayout(null);
+		releaseColorComboBox.addActionListener(new SetSquareNumberColorController(builder, activeLevel,
+				this));
 		
 		//releaseColorComboBox.getSelectedItem().toString() //TODO: This is how to get the selected option
 		JScrollPane scrollPane = new JScrollPane();
@@ -449,5 +458,11 @@ public class LevelEditorView extends JFrame {
 	public void setBoardView(BoardView b){
 		this.boardPanel = b;
 	}
+	public JComboBox getNumberComboBox(){
+		return releaseNumberComboBox;
+	}
 	
+	public JComboBox getNumberColorComboBox(){
+		return releaseColorComboBox;
+	}
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,18 +18,28 @@ public class SetSquareNumberController implements ActionListener{
 	Level level;
 	LevelBuilder builder;
 	LevelEditorView editorView;
-	int num;
+	String num;
 	
-	public SetSquareNumberController(LevelBuilder builder, Level level, LevelEditorView editorView, int num){
+	public SetSquareNumberController(LevelBuilder builder, Level level, LevelEditorView editorView){
 		this.builder = builder;
 		this.level = level;
 		this.editorView = editorView;
-		this.num = num;
+	
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		num = (String) editorView.getNumberComboBox().getSelectedItem();
 		ReleaseSquare square = (ReleaseSquare) level.getBoard().getActiveSquare();
-		square.setNumber(num);
+	if(!(num.equals("None")) && square != null){
+		System.out.println("New Number:" + num);
+		int n = Integer.parseInt(num);
+		square.setNumber(n);
+		}
+	else {
+		square.setNumber(-1);
+	}
+	editorView.getBoardView().repaint();
+	
 	}
 }

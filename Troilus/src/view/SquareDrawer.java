@@ -68,19 +68,20 @@ public class SquareDrawer {
 			int releaseNumber = ((ReleaseSquare) square).getNumber();
 			Color releaseColor = ((ReleaseSquare) square).getNumberColor();
 
-			if (releaseNumber == 0 || releaseColor == null) {
-				return;
+			if (releaseColor == null || releaseNumber == -1) {
+				g.drawRect(x, y, size, size);
 			}
-
-			if (releaseColor.equals("Yellow")) {
-				g.setColor(Color.YELLOW);
-			} else if (releaseColor.equals("Red")) {
-				g.setColor(Color.RED);
-			} else {
-				g.setColor(Color.GREEN);
+			else{ //has a color
+				if (releaseColor.equals(Color.YELLOW)) {
+					g.setColor(Color.YELLOW);
+				} else if (releaseColor.equals(Color.RED)) {
+					g.setColor(Color.RED);
+				} else {
+					g.setColor(Color.GREEN);
+				}
+				
+				g.drawString("" + releaseNumber, x + 10, y + 20); //TODO: Change 5 to some buffer value
 			}
-			
-			g.drawString("" + releaseNumber, x + 5, y + 5); //TODO: Change 5 to some buffer value
 		}
 	}
 }
