@@ -3,20 +3,14 @@ package controller;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Hashtable;
-import java.util.Set;
 
 import model.Board;
-import model.Bullpen;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
-import model.Square;
 import view.BoardView;
-import view.BullpenView;
 import view.LevelEditorView;
 import view.LevelLoaderView;
-import view.PaletteView;
 
 
 /**
@@ -41,11 +35,10 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		this.editorView = editorView;
 	}
 
-	public void mouseEntered(MouseEvent e){
+/*	public void mouseEntered(MouseEvent e){
 		activePiece = level.getActivePiece();
 		Board b = level.getBoard();
 		BoardView bView = editorView.getBoardView();
-		System.out.println("Entering Board");
 
 		//
 		if(activePiece != null){
@@ -56,7 +49,7 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 			bView.repaint();
 		}
 		//}
-	}
+	}*/
 	
 	@Override
 	public void mouseMoved(MouseEvent e) {
