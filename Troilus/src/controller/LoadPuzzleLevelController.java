@@ -49,6 +49,7 @@ public class LoadPuzzleLevelController implements ActionListener {
 		editorView.setTimeLimitPanelVisibility(false);
 
 		// show level view
+		editorView.setLevelType("Puzzle");
 		editorView.setVisible(true);
 		levelLoader.setVisible(false);
 	}

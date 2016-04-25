@@ -48,6 +48,7 @@ public class LoadLightningLevelController implements ActionListener {
 		editorView.setTimeLimitPanelVisibility(true);
 
 		// show level view
+		editorView.setLevelType("Lightning");
 		editorView.setVisible(true);
 		levelLoader.setVisible(false);
 	}

@@ -19,7 +19,7 @@ public class Kabasuji {
 	
 	public Kabasuji() {
 		
-		// TODO: UNCOMMENT THIS LATER
+		// TODO: UNCOMMENT THIS LATER- fix unlocking from stars of prior level
 		/*
 		// create level loader controller
 		LoadLevelsController loader = new LoadLevelsController();

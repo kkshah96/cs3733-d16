@@ -18,16 +18,7 @@ public class LevelBuilder {
 	//Level activeLevel;
 	
 	public LevelBuilder() {
-		
-		
-		
-		// create level loader controller
-		LoadLevelsController loader = new LoadLevelsController();
-		
-		// load levels into the list of levels
-		levels = loader.loadLevels();
-		
-		
+		initialize();
 		
 		
 		// stubs for testing
@@ -51,6 +42,17 @@ public class LevelBuilder {
 //			
 //			//levels.add(level);
 //		}
+		
+	}
+	
+	public void initialize() {
+
+		// create level loader controller
+		LoadLevelsController loader = new LoadLevelsController();
+		
+		// load levels into the list of levels
+		levels = loader.loadLevels();
+		
 		
 	}
 	

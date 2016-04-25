@@ -53,6 +53,7 @@ public class LoadReleaseLevelController implements ActionListener {
 		editorView.setTimeLimitPanelVisibility(false);
 
 		// show level view
+		editorView.setLevelType("Release");
 		editorView.setVisible(true);
 		levelLoader.setVisible(false);
 	}
