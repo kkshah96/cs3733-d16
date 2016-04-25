@@ -78,8 +78,15 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		
 		//TODO: Do we need a mousePressed method here? Heineman does it in Tangram and has some logic for if the activePiece is null :o 
 		if(activePiece == null){
-			
+			System.err.print("Somehow encountered null piece in drag");
+			return;
 		}
+		
+		Board b = level.getBoard();
+		b.addPiece(activePiece, e.getX() / BoardView.SQUARE_SIZE, (e.getY() - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE);
+		level.removeActivePiece();
+		BoardView bView = editorView.getBoardView();
+		bView.repaint();
 
 		//Bullpen bp = level.getBullpen();
 		//BullpenView bpView = editorView.getBullpenView();

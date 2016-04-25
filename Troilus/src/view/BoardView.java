@@ -89,19 +89,19 @@ public class BoardView extends JPanel {
 		}
 		
 		Set<Piece> keySet = pieces.keySet();
-		System.out.println(keySet.size() + " : Number of pieces stored in Board");
+		//System.out.println(keySet.size() + " : Number of pieces stored in Board");
 		for(Piece p : keySet) {
 			pDrawer.paint(g, p, pieces.get(p), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 		if(board.getDraggedPiece() != null) {
-			System.out.println("Painting dragged piece");
-			System.out.println("Point " + board.getDraggedPiecePoint());
+			//System.out.println("Painting dragged piece");
+			//System.out.println("Point " + board.getDraggedPiecePoint());
 			
 			//TODO: There is definitely a better way to do this
 			Point p = board.getDraggedPiecePoint();
 			int x = p.x / SQUARE_SIZE;
-			int y = p.y / SQUARE_SIZE;
+			int y = (p.y - SQUARE_SIZE) / SQUARE_SIZE;
 			pDrawer.paint(g, board.getDraggedPiece(), new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		

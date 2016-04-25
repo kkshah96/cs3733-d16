@@ -77,4 +77,8 @@ public abstract class Level {
 	public Palette getPalette(){
 		return palette;
 	}
+
+	public void removeActivePiece() {
+		setActivePiece(null);
+	}
 }
