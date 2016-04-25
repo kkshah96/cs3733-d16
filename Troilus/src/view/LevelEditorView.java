@@ -83,6 +83,7 @@ public class LevelEditorView extends JFrame {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	//
 	private void initialize() {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
