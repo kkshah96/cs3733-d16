@@ -189,6 +189,12 @@ public class Board {
 	 * Toggles the validity of the active square for this board
 	 */
 	public void toggleActiveSquare() {
+		
+		// make sure an active square exists
+		if (activeSquare == null) {
+			return;
+		}
+		
 		activeSquare.isValid = !activeSquare.isValid;
 		activeSquare = null;
 	}

@@ -13,6 +13,7 @@ import view.BullpenView;
  * 
  * 
  * @author Alexander Kasparek
+ * @author Connor Weeks
  */
 
 public class RotatePieceController implements ActionListener {
