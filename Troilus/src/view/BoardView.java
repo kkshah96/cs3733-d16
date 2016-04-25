@@ -78,10 +78,6 @@ public class BoardView extends JPanel {
 
 		//TEST adding pieces TODO: remove
 		//	pieces.put(PieceFactory.getPiece(4), new Point(5, 5));
-		Set<Piece> keySet = pieces.keySet();
-		for(Piece p : keySet) {
-			pDrawer.paint(g, p, pieces.get(p), 30, HEIGHT_OFFSET, WIDTH_OFFSET);
-		}
 		
 		// i is y-coordinate, j is x-coordinate
 		for (int i = 0; i < HEIGHT; i+= SQUARE_SIZE) {
@@ -90,5 +86,12 @@ public class BoardView extends JPanel {
 						board.getSquare(i/SQUARE_SIZE, j/SQUARE_SIZE));
 			}
 		}
+		
+		Set<Piece> keySet = pieces.keySet();
+		System.out.println(keySet.size() + " : Size");
+		for(Piece p : keySet) {
+			pDrawer.paint(g, p, pieces.get(p), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+		}
+		
 	}
 }
