@@ -35,7 +35,7 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		this.editorView = editorView;
 	}
 
-	public void mouseEntered(MouseEvent e){
+/*	public void mouseEntered(MouseEvent e){
 		activePiece = level.getActivePiece();
 		Board b = level.getBoard();
 		BoardView bView = editorView.getBoardView();
@@ -44,12 +44,28 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		if(activePiece != null){
 			//TODO: THis doesnt work because our current implmentation doesnt allow for drawing
 			// outside of the actual grid
-			//b.addPiece(activePiece, e.getY(), e.getX());
-			System.out.println("Adding dragged piece to board");
-			b.addDraggedPiece(activePiece, new Point(e.getX(), e.getY()));
+			b.addDraggedPiece(activePiece, e.getPoint());
+			System.out.println("Dragged piece added!");
 			bView.repaint();
 		}
 		//}
+	}*/
+	
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		activePiece = level.getActivePiece();
+		Board b = level.getBoard();
+		BoardView bView = editorView.getBoardView();
+		System.out.println("Entering Board");
+
+		//
+		if(activePiece != null){
+			//TODO: THis doesnt work because our current implmentation doesnt allow for drawing
+			// outside of the actual grid
+			b.addDraggedPiece(activePiece, e.getPoint());
+			System.out.println("Dragged piece added!");
+			bView.repaint();
+		}
 	}
 	
 	public void mousePressed(MouseEvent e) {
