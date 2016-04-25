@@ -170,7 +170,7 @@ public class Board {
 	 * @param rows Size
 	 * @param cols
 	 */
-	public void setDimensions(int rows, int cols){
+	public void setDimensions(int rows, int cols) {
 		for (int row = 0; row < BOARD_HEIGHT; row++) {
 			for (int column = 0; column < BOARD_WIDTH; column++) {
 				boolean valid = (row < rows) && (column < cols);
@@ -193,14 +193,13 @@ public class Board {
 	 * Toggles the validity of the active square for this board
 	 */
 	public void toggleActiveSquare() {
-		
 		// make sure an active square exists
 		if (activeSquare == null) {
 			return;
 		}
 		
 		activeSquare.isValid = !activeSquare.isValid;
-		activeSquare = null;
+		//activeSquare = null; // TODO We don't want to do this, do we?
 	}
 	
 	public int getRows(){

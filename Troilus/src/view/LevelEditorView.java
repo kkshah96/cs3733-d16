@@ -117,9 +117,6 @@ public class LevelEditorView extends JFrame {
 		bullpenLabel.setBounds(6, 6, 80, 23);
 		bullPenOptionsPanel.add(bullpenLabel);
 		
-
-		
-		
 		// create actual bullpen view and add it to the scroll pane
 		
 		JScrollPane bullpenScrollPane = new JScrollPane();
@@ -136,7 +133,6 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(bullpenScrollPane, BorderLayout.CENTER);
 		//bullpenContainer.add(bullpenScrollPane);
 		bullpenContainer.add(bullpenScrollPane);
-		
 		
 		JButton rotateCWButton = new JButton("Rotate CW");
 		rotateCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
@@ -161,9 +157,6 @@ public class LevelEditorView extends JFrame {
 		flipVerticalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		flipVerticalButton.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_VERTICALLY));
 		bullPenOptionsPanel.add(flipVerticalButton);
-		
-		
-		
 		
 //		JPanel panel_2 = new BullpenView(activeLevel.getBullpen());
 //		bullpenScrollPane.setViewportView(panel_2);
@@ -247,24 +240,16 @@ public class LevelEditorView extends JFrame {
 		boardColField.setBounds(148, 1, 50, 28);
 		panel_7.add(boardColField);
 		
-		
 		JButton setButton = new JButton("Set");
 		setButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		setButton.setBounds(209, -2, 74, 38);
 		panel_7.add(setButton);
-
 		
-	
 ////TODO: This still doesn't exactly work....
 //		setButton.addMouseListener(new SetBoardDimensionsController
 //				(builder, builder.getActiveLevel(), levelLoader, Integer.parseInt(boardHeightField.getText()), Integer.parseInt(boardWidthField.getText())));
 
-		
-
-		
-		setButton.addActionListener(new SetBoardDimensionsController
-				(builder, activeLevel, this));
-
+		setButton.addActionListener(new SetBoardDimensionsController(activeLevel, this));
 		
 		maxMovesPanel = new JPanel();
 		maxMovesPanel.setBounds(286, 0, 184, 40);
@@ -449,5 +434,4 @@ public class LevelEditorView extends JFrame {
 	public void setBoardView(BoardView b){
 		this.boardPanel = b;
 	}
-	
 }
