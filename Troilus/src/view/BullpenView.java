@@ -2,22 +2,16 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.Hashtable;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import model.Bullpen;
 import model.Level;
 import model.Piece;
-import model.PieceFactory;
-
-
 
 /**
  * Displays the bullpen based on model data.
@@ -57,10 +51,8 @@ public class BullpenView extends JPanel {
 	}
 
 	private void initialize(){
-
 		setLayout(null);
 		this.setPreferredSize(new Dimension(BULLPEN_WIDTH, 1000)); // 473
-
 	}
 	
 	public Hashtable<Piece,Point> getDrawnPieces() {
@@ -68,7 +60,6 @@ public class BullpenView extends JPanel {
 	}
 
 	public void paintComponent(Graphics g){
-
 		super.paintComponent(g);
 		
 		PieceDrawer pDrawer = new PieceDrawer();
@@ -85,15 +76,14 @@ public class BullpenView extends JPanel {
 				color = Color.ORANGE;
 			}
 			
-			pieces.put(piece, new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET, (i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
-			pieces.put(piece, new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET, (i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
-			pDrawer.paint(g, color, piece, new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			pieces.put(piece, new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET,
+					(i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
+			pieces.put(piece, new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET,
+					(i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
+			pDrawer.paint(g, color, piece, new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING),
+					SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 		scrollPane.repaint();
-		
 	}
 }
-
-
-

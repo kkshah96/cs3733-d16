@@ -106,14 +106,14 @@ public class Board {
 			int absRow = square.row + row; // find absolute position
 			int absCol = square.col + col;
 			if ((absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
-				if (!squares[absRow][absCol].isValid()) {
-					return false;
+				if (squares[absRow][absCol].isValid()) {
+					this.pieces.put(p, new Point(row, col));
+					return true;
 				}
 			}
 		}
 
-		this.pieces.put(p, new Point(row, col));
-		return true;
+		return false;
 	}
 
 	/** Remove the given piece from the board and return it

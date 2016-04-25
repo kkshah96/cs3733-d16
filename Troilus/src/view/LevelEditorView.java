@@ -6,9 +6,6 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
 import javax.swing.JLabel;
 import java.awt.Font;
 
@@ -16,15 +13,13 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
 
 import controller.ExitLevelEditorController;
 import controller.FlipPieceController;
+import controller.MovePieceBoardToBullpenController;
 import controller.MovePieceBullpenToBoardController;
 import controller.MovePiecePaletteToBullpenController;
 import controller.RotatePieceController;
@@ -37,7 +32,6 @@ import controller.SetSquareNumberColorController;
 import controller.SetSquareNumberController;
 import controller.SetTimeLimitController;
 import controller.ToggleSquareController;
-import model.Board;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
@@ -52,7 +46,6 @@ import model.Piece;
  *
  */
 public class LevelEditorView extends JFrame {
-
 	private JTextField boardRowField;
 	private JTextField boardColField;
 	private JTextField maxMovesField;
@@ -71,13 +64,14 @@ public class LevelEditorView extends JFrame {
 	JPanel bullpenContainer;
 	BullpenView bullpenView;
 	
+	// TODO parameterize raw type
 	JComboBox releaseNumberComboBox;
 	JComboBox releaseColorComboBox;
 	
 	/**
 	 * Create the application.
 	 */
-	public LevelEditorView(LevelBuilder builder, LevelLoaderView levelLoader, Level activeLevel){
+	public LevelEditorView (LevelBuilder builder, LevelLoaderView levelLoader, Level activeLevel) {
 		setResizable(false);
 		this.builder = builder;
 		this.levelLoader = levelLoader;
@@ -99,9 +93,12 @@ public class LevelEditorView extends JFrame {
 		boardPanel.setBackground(Color.LIGHT_GRAY);
 		boardPanel.setBounds(0, 114, 747, 408);
 		getContentPane().add(boardPanel);
+		boardPanel.addMouseListener(new MovePieceBoardToBullpenController(activeLevel, boardPanel));
 		boardPanel.addMouseListener(new SelectSquareController(activeLevel, boardPanel));
-		boardPanel.addMouseListener(new MovePieceBullpenToBoardController(builder, activeLevel, levelLoader, this));
-		boardPanel.addMouseMotionListener(new MovePieceBullpenToBoardController(builder, activeLevel, levelLoader, this));
+		boardPanel.addMouseListener(new MovePieceBullpenToBoardController(builder,
+				activeLevel, levelLoader, this));
+		boardPanel.addMouseMotionListener(new MovePieceBullpenToBoardController(builder,
+				activeLevel, levelLoader, this));
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
 		bullpenContainer.setLayout(null);
@@ -452,4 +449,3 @@ public class LevelEditorView extends JFrame {
 		return releaseColorComboBox;
 	}
 }
-
