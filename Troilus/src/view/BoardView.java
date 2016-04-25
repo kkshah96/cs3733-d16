@@ -50,6 +50,7 @@ public class BoardView extends JPanel {
 		this.board = board;
 		initialize();
 	}
+	//
 
 	/**
 	 * Initializes the BoardView by initializing the label and drawing the grid
