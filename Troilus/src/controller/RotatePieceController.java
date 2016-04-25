@@ -2,8 +2,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import model.Bullpen;
 import model.Kabasuji;
 import model.Level;
+import model.Piece;
 import view.BullpenView;
 
 /**
@@ -13,23 +16,36 @@ import view.BullpenView;
  */
 
 public class RotatePieceController implements ActionListener {
-	Kabasuji game;
-
+	
 	Level level;
-	BullpenView bullpen;
+	BullpenView bullpenView;
 	int degree;
 	
 	
 	
-	public RotatePieceController(Level level, Kabasuji game, BullpenView bullpen, int degree) {
-		this.game = game;
-		this.bullpen = bullpen;
+	public RotatePieceController(Level level, BullpenView bullpenView, int degree) {
+		this.bullpenView = bullpenView;
 		this.level = level;
 		this.degree = degree;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		level.getActivePiece().rotatePiece(degree);
+		
+		// get active level piece
+		Piece activePiece = level.getActivePiece();
+		if (activePiece == null) {
+			return;
+		}
+		
+		// rotate piece
+		Bullpen bullpen = level.getBullpen();
+		Piece rotatedPiece = activePiece.rotatePiece(degree);
+		
+		// reset the active piece and the bullpen
+		bullpen.getPieces().set(bullpen.getPieces().indexOf(activePiece), rotatedPiece);
+		level.setActivePiece(rotatedPiece);
+		
+		bullpenView.repaint();
 	}
 }

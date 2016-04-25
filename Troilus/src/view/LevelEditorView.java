@@ -26,6 +26,7 @@ import javax.swing.border.LineBorder;
 import controller.ExitLevelEditorController;
 import controller.MovePieceBullpenToBoardController;
 import controller.MovePiecePaletteToBullpenController;
+import controller.RotatePieceController;
 import controller.SaveLevelController;
 import controller.SelectPieceBullpenController;
 import controller.SelectSquareController;
@@ -36,6 +37,7 @@ import controller.ToggleSquareController;
 import model.Board;
 import model.Level;
 import model.LevelBuilder;
+import model.Piece;
 
 /**
  * GUI for editing Kabausji levels in the LevelBuilder application
@@ -105,31 +107,13 @@ public class LevelEditorView extends JFrame {
 		bullPenOptionsPanel.setBounds(6, 6, 446, 33);
 		bullpenContainer.add(bullPenOptionsPanel);
 		
-		JLabel label_3 = new JLabel("Bullpen");
-		label_3.setForeground(Color.BLACK);
-		label_3.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
-		label_3.setBounds(6, 6, 80, 23);
-		bullPenOptionsPanel.add(label_3);
+		JLabel bullpenLabel = new JLabel("Bullpen");
+		bullpenLabel.setForeground(Color.BLACK);
+		bullpenLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
+		bullpenLabel.setBounds(6, 6, 80, 23);
+		bullPenOptionsPanel.add(bullpenLabel);
 		
-		JButton button_2 = new JButton("Rotate CW");
-		button_2.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		button_2.setBounds(76, 4, 87, 29);
-		bullPenOptionsPanel.add(button_2);
-		
-		JButton button_3 = new JButton("Rotate CCW");
-		button_3.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		button_3.setBounds(158, 4, 87, 29);
-		bullPenOptionsPanel.add(button_3);
-		
-		JButton btnFlipHorizontal = new JButton("Flip Horizontal");
-		btnFlipHorizontal.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		btnFlipHorizontal.setBounds(237, 4, 105, 29);
-		bullPenOptionsPanel.add(btnFlipHorizontal);
-		
-		JButton btnFlipVertical = new JButton("Flip Vertical");
-		btnFlipVertical.setBounds(335, 4, 105, 29);
-		bullPenOptionsPanel.add(btnFlipVertical);
-		btnFlipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+
 		
 		
 		// create actual bullpen view and add it to the scroll pane
@@ -149,6 +133,32 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(bullpenScrollPane, BorderLayout.CENTER);
 		//bullpenContainer.add(bullpenScrollPane);
 		bullpenContainer.add(bullpenScrollPane);
+		
+		
+		JButton rotateCWButton = new JButton("Rotate CW");
+		rotateCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		rotateCWButton.setBounds(76, 4, 87, 29);
+		rotateCWButton.addActionListener(new RotatePieceController(activeLevel, bullpenView, Piece.ROTATE_CW));
+		bullPenOptionsPanel.add(rotateCWButton);
+		
+		JButton rotateCCWButton = new JButton("Rotate CCW");
+		rotateCCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		rotateCCWButton.setBounds(158, 4, 87, 29);
+		rotateCCWButton.addActionListener(new RotatePieceController(activeLevel, bullpenView, Piece.ROTATE_CCW));
+		bullPenOptionsPanel.add(rotateCCWButton);
+		
+		JButton flipHorizontalButton = new JButton("Flip Horizontal");
+		flipHorizontalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		flipHorizontalButton.setBounds(237, 4, 105, 29);
+		bullPenOptionsPanel.add(flipHorizontalButton);
+		
+		JButton flipVerticalButton = new JButton("Flip Vertical");
+		flipVerticalButton.setBounds(335, 4, 105, 29);
+		bullPenOptionsPanel.add(flipVerticalButton);
+		flipVerticalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		
+		
+		
 		
 //		JPanel panel_2 = new BullpenView(activeLevel.getBullpen());
 //		bullpenScrollPane.setViewportView(panel_2);
