@@ -3,20 +3,14 @@ package controller;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Hashtable;
-import java.util.Set;
 
 import model.Board;
-import model.Bullpen;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
-import model.Square;
 import view.BoardView;
-import view.BullpenView;
 import view.LevelEditorView;
 import view.LevelLoaderView;
-import view.PaletteView;
 
 
 /**
@@ -45,13 +39,14 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		activePiece = level.getActivePiece();
 		Board b = level.getBoard();
 		BoardView bView = editorView.getBoardView();
-		System.out.println("Entering Board");
 
 		//
 		if(activePiece != null){
 			//TODO: THis doesnt work because our current implmentation doesnt allow for drawing
 			// outside of the actual grid
-			b.addPiece(activePiece, e.getY(), e.getX());
+			//b.addPiece(activePiece, e.getY(), e.getX());
+			System.out.println("Adding dragged piece to board");
+			b.addDraggedPiece(activePiece, new Point(e.getX(), e.getY()));
 			bView.repaint();
 		}
 		//}
