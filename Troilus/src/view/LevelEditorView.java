@@ -176,7 +176,7 @@ public class LevelEditorView extends JFrame {
 		JButton saveButton = new JButton("Save");
 		saveButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		saveButton.setBounds(0, 0, 102, 38);
-		saveButton.addActionListener(new SaveLevelController(activeLevel));
+		saveButton.addActionListener(new SaveLevelController(builder));
 		panel_4.add(saveButton);
 		
 		JPanel panel_5 = new JPanel();

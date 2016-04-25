@@ -25,7 +25,7 @@ import model.ReleaseSquare;
  * When the builder indicates they want to save a level, this controller is called, converting the Level object
  * and its properties into an XML file, identified by the level number in the file name
  * @author Dan Alfred
- *
+ * @author Connor Weeks
  */
 
 public class LevelXMLOutputController {
@@ -43,7 +43,7 @@ public class LevelXMLOutputController {
 	
 	LevelXMLOutputController(Level level) {
 		this.level = level;
-		this.path = "";
+		this.path = "./src/levels/";
 		storeLevelToFile();
 	}
 	

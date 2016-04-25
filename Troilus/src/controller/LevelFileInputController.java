@@ -38,7 +38,7 @@ public class LevelFileInputController {
 	 * This constructor assumes default path
 	 */
 	public LevelFileInputController() {
-		this.path = "";
+		this.path = "./src/levels/";
 	}
 	
 	/**
@@ -49,10 +49,17 @@ public class LevelFileInputController {
 		// Create an empty ArrayList first, in case we have an error and can't read more
 		ArrayList<Level> levels = new ArrayList<Level>();
 		try {
+			
+			// see if Levels file exists
+			File f = new File(path, "Levels.xml");
+			if(!f.exists()) { 
+			    // return empty list of levels
+				return levels;
+			}
 			// Initialize our XML parsing classes
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbFactory.newDocumentBuilder();
-			Document doc = db.parse(new File(path + "Levels.xml"));
+			Document doc = db.parse(new File(path, "Levels.xml"));
 			
 			// Obtain the root element (holds our levels)
 			Element rootLevelElement = doc.getDocumentElement();

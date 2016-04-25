@@ -3,7 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Level;
+import model.LevelBuilder;
 
 
 /**
@@ -18,27 +18,24 @@ import model.Level;
  */
 public class SaveLevelController implements ActionListener {
 	
-	Level level;
+	LevelBuilder levelBuilder;
 	String filePath;
 
-	public SaveLevelController(Level level) {
-		this.level = level;
-		this.filePath = "./src/levels";
+	public SaveLevelController(LevelBuilder levelBuilder) {
+		this.levelBuilder = levelBuilder;
+		this.filePath = "./src/levels/";
 	}
 	
-	public SaveLevelController(Level level, String filePath) {
-		this.level = level;
+	public SaveLevelController(LevelBuilder levelBuilder, String filePath) {
+		this.levelBuilder = levelBuilder;
 		this.filePath = filePath;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (level == null) {
-			System.err.println("level is null");
-		}
+		
 		// create new low level output object and store level
-		LevelXMLOutputController output = new LevelXMLOutputController(level, filePath);
-		output.storeLevelToFile();
+		new LevelFileOutputController(levelBuilder);
 		
 		//TODO: When a level is saved, we need to add that level to the Kabausji Level arraylist--will that lgoci be handled here?
 	}
