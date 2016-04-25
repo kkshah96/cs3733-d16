@@ -33,6 +33,10 @@ public class Board {
 	
 	/** A reference to a square that has been clicked. */
 	Square activeSquare;
+	
+	/** Holds a reference to a dragged piece */
+	Piece draggedPiece = null;
+	Point dPiecePoint = null;
 
 	// TODO: Is there any case where we will need to pass parameters to the constructor?
 	// Yes- when loading a board from storage, where we will need to set the squares accordingly
@@ -205,5 +209,23 @@ public class Board {
 	
 	public int getCols(){
 		return this.currentWidth;
+	}
+	
+	public Piece getDraggedPiece() {
+		return this.draggedPiece;
+	}
+	
+	public Point getDraggedPiecePoint() {
+		return this.dPiecePoint;
+	}
+	
+	public void addDraggedPiece(Piece draggedPiece, Point dPiecePoint) {
+		this.draggedPiece = draggedPiece;
+		this.dPiecePoint = dPiecePoint;
+	}
+	
+	public void removeDraggedPiece() {
+		this.draggedPiece = null;
+		this.dPiecePoint = null;
 	}
 }
