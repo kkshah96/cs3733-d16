@@ -42,13 +42,14 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 	}
 
 	public void mouseEntered(MouseEvent e){
-		//if(e.getSource().equals(editorView.getBoardView())){
 		activePiece = level.getActivePiece();
 		Board b = level.getBoard();
 		BoardView bView = editorView.getBoardView();
-		
+		System.out.println("Entering Board");
+
 		if(activePiece != null){
-			System.out.println("Hi");
+			//TODO: THis doesnt work because our current implmentation doesnt allow for drawing
+			// outside of the actual grid
 			b.addPiece(activePiece, e.getY(), e.getX());
 			bView.repaint();
 		}

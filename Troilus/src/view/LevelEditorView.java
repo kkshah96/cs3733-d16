@@ -94,6 +94,7 @@ public class LevelEditorView extends JFrame {
 		boardPanel.setBounds(0, 114, 747, 408);
 		getContentPane().add(boardPanel);
 		boardPanel.addMouseListener(new SelectSquareController(activeLevel, boardPanel));
+		boardPanel.addMouseListener(new MovePieceBullpenToBoardController(builder, activeLevel, levelLoader, this));
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
 		bullpenContainer.setLayout(null);
