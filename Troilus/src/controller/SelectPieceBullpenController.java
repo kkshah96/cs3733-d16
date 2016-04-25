@@ -69,8 +69,10 @@ public class SelectPieceBullpenController extends MouseAdapter {
 			}
 		}
 		
-		// check if a piece was clicked on
+		// check if a piece was clicked on, deselect currently selected piece
 		if (selectedPiece == null) {
+			level.setActivePiece(null);
+			bullpenView.repaint();
 			return;
 		}
 		

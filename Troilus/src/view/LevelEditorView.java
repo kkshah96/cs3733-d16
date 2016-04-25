@@ -24,6 +24,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import controller.ExitLevelEditorController;
+import controller.FlipPieceController;
 import controller.MovePieceBullpenToBoardController;
 import controller.MovePiecePaletteToBullpenController;
 import controller.RotatePieceController;
@@ -150,12 +151,14 @@ public class LevelEditorView extends JFrame {
 		JButton flipHorizontalButton = new JButton("Flip Horizontal");
 		flipHorizontalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		flipHorizontalButton.setBounds(237, 4, 105, 29);
+		flipHorizontalButton.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_HORIZONTALLY));
 		bullPenOptionsPanel.add(flipHorizontalButton);
 		
 		JButton flipVerticalButton = new JButton("Flip Vertical");
 		flipVerticalButton.setBounds(335, 4, 105, 29);
-		bullPenOptionsPanel.add(flipVerticalButton);
 		flipVerticalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		flipVerticalButton.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_VERTICALLY));
+		bullPenOptionsPanel.add(flipVerticalButton);
 		
 		
 		

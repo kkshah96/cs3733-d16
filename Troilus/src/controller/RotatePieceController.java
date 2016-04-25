@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Bullpen;
-import model.Kabasuji;
 import model.Level;
 import model.Piece;
 import view.BullpenView;
