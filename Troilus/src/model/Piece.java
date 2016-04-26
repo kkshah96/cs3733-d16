@@ -46,6 +46,7 @@ public class Piece {
 		this.squares = squares;
 		this.anchor = anchor;
 		this.type = type;
+		this.color = c;
 		
 		if(squares.length != 5) {
 			throw new RuntimeException("Piece [" + type + "] must have an array of 5 squares. " + squares.length + " were passed in.");
