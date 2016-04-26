@@ -51,6 +51,9 @@ public class LoadPuzzleLevelController implements ActionListener {
 		
 		// change text fields to display current state
 		editorView.getMaxMovesField().setText(Integer.toString(level.getMaxMoves()));
+		
+		// add event listener to handle input
+		editorView.getMaxMovesField().addActionListener(new SetMaxMovesController(level, editorView));
 
 		// show level view
 		editorView.setLevelType("Puzzle");

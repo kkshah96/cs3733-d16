@@ -13,6 +13,7 @@ import view.LevelEditorView;
  * 
  *
  * @author Alexander Kasparek
+ * @author Connor Weeks
  */
 public class SetTimeLimitController implements ActionListener {
 	LightningLevel level;
@@ -32,8 +33,14 @@ public class SetTimeLimitController implements ActionListener {
 		int minutes = Integer.parseInt(m.getText());
 		int seconds = Integer.parseInt(s.getText());
 		
-		int newLimit = (minutes*60)+seconds;
-		// TODO no checks here...
+		// check for valid time
+		if (minutes < 0 || seconds < 0) {
+			return;
+		}
+		
+		int newLimit = (minutes * 60) + seconds;
+		System.out.println("set time");
+		
 		level.setTimeLimit(newLimit);
 	}
 }
