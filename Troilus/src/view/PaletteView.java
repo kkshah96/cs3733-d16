@@ -6,12 +6,15 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Hashtable;
+import java.util.Random;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Level;
 import model.Palette;
 import model.Piece;
+
 
 /**
  * GUI for a Palette in the LevelBuilder application
@@ -36,13 +39,16 @@ public class PaletteView extends JPanel {
 	 * We are simply storing these Pieces in locations in a HashTable as we draw them so we can access them later
 	 */
 	Hashtable<Piece, Point> pieces;
+
+	Level level;
 	Palette palette;
 	/**
 	 * Create the panel.
 	 */
-	public PaletteView(Palette palette) {
+	public PaletteView(Level level) {
 		pieces = new Hashtable<Piece, Point>();
-		this.palette = palette;
+		this.level = level;
+		palette = level.getPalette();
 		initialize();
 	}
 
@@ -53,10 +59,10 @@ public class PaletteView extends JPanel {
 
 		PieceDrawer pDrawer = new PieceDrawer();
 
-		
+		Palette palette = level.getPalette();
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
 			pieces.put(palette.getPieces().get(i), new Point(i * SPACING * SQUARE_SIZE + WIDTH_OFFSET, HEIGHT_OFFSET));
-			pDrawer.paint(g, palette.getPieces().get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			pDrawer.paint(g, palette.getPieces().get(i), new Point(i * SPACING, 0), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);			
 		}
 	}
 	

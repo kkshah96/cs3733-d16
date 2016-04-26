@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Board;
+import model.Level;
 import model.Piece;
 
 /**
@@ -40,14 +41,17 @@ public class BoardView extends JPanel {
 	static final public int HEIGHT_OFFSET = 30;
 
 	/** A reference to the Board entity */
+	Level level;
+	
 	Board board;
 
 	/**
 	 * Constructor for the BoardView, for a given Board
 	 * @param board The Board this BoardView is based on
 	 */
-	public BoardView(Board board) {
-		this.board = board;
+	public BoardView(Level level) {
+		this.level = level;
+		board = level.getBoard();
 		initialize();
 	}
 
@@ -91,7 +95,7 @@ public class BoardView extends JPanel {
 		Set<Piece> keySet = pieces.keySet();
 		//System.out.println(keySet.size() + " : Number of pieces stored in Board");
 		for(Piece p : keySet) {
-			pDrawer.paint(g, p, pieces.get(p), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			pDrawer.paint(g, p.getColor(), p, pieces.get(p), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 		if(board.getDraggedPiece() != null) {
@@ -102,7 +106,7 @@ public class BoardView extends JPanel {
 			Point p = board.getDraggedPiecePoint();
 			int x = p.x / SQUARE_SIZE;
 			int y = (p.y - SQUARE_SIZE) / SQUARE_SIZE;
-			pDrawer.paint(g, board.getDraggedPiece(), new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			pDrawer.paint(g, board.getDraggedPiece().getColor(), board.getDraggedPiece(), new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 	}

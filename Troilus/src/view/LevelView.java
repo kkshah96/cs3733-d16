@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,9 +15,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import controller.ExitLevelController;
-import model.Board;
 import model.Kabasuji;
 import model.Level;
+import model.Piece;
 
 /**
  * GUI for a playable level in the Kabasuji game
@@ -38,7 +39,7 @@ public class LevelView extends JFrame{
 	LevelSelectorView levelSelector;
 	Kabasuji game;
 	Level level;
-
+	
 	/**
 	 * Create the application.
 	 */
@@ -73,7 +74,7 @@ public class LevelView extends JFrame{
 		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		panelTitle.add(lblLevelPuzzle);
 	
-		BoardView panelBoard = new BoardView(level.getBoard());
+		BoardView panelBoard = new BoardView(level);
 		panelBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panelBoard.setBackground(Color.LIGHT_GRAY);
 		panelBoard.setBounds(0, 88, 461, 455);
@@ -207,3 +208,4 @@ public class LevelView extends JFrame{
 		return panelReleaseStats;
 	}
 }
+

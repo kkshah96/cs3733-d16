@@ -42,7 +42,7 @@ public class Piece {
 	/** An int representation of the piece type, from 1-35 */
 	int type;
 	
-	public Piece(PieceSquare[] squares, PieceSquare anchor, int type) {
+	public Piece(PieceSquare[] squares, PieceSquare anchor, int type, Color c) {
 		this.squares = squares;
 		this.anchor = anchor;
 		this.type = type;
@@ -119,7 +119,7 @@ public class Piece {
 				return this;
 			}
 		}
-		return new Piece(newSquares, anchor, type); // TODO: Implement this
+		return new Piece(newSquares, anchor, type, color); // TODO: Implement this
 	}
 	
 	
@@ -150,7 +150,7 @@ public class Piece {
 				return this;
 			}
 		}
-		return new Piece(newSquares, anchor, type); // TODO: Implement this
+		return new Piece(newSquares, anchor, type, color); // TODO: Implement this
 	}
 
 	public Piece place(int row, int col) {
@@ -174,5 +174,13 @@ public class Piece {
 		}
 		
 		return false;
+	}
+	
+	public Color getColor(){
+		return color;
+	}
+	
+	public void setColor(Color c){
+		this.color = c;
 	}
 }

@@ -93,7 +93,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		boardPanel = new BoardView(activeLevel.getBoard());
+		boardPanel = new BoardView(activeLevel);
 		boardPanel.setLayout(null);
 		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		boardPanel.setBackground(Color.LIGHT_GRAY);
@@ -384,7 +384,7 @@ public class LevelEditorView extends JFrame {
 		scrollPane.setBounds(0, 522, 1205, 201);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
-		palettePanel = new PaletteView(activeLevel.getPalette());
+		palettePanel = new PaletteView(activeLevel);
 		palettePanel.setPreferredSize(new Dimension(2100, 100));
 		scrollPane.setViewportView(palettePanel);
 		palettePanel.addMouseListener(new MovePiecePaletteToBullpenController(builder, activeLevel, levelLoader, this));
