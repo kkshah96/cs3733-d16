@@ -82,6 +82,10 @@ public class Board {
 			return false;
 		}
 		
+		if (getPiece(row, col) != null) {
+			return false;
+		}
+		
 		for (PieceSquare square : p.squares) {
 			// check if each square is in bounds
 			int absRow = square.row + col; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
