@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Color;
+
 import junit.framework.TestCase;
 
 
@@ -21,7 +23,7 @@ public class TestPiece extends TestCase {
 		pieceSquares[2] = new PieceSquare(-3, 0);
 		pieceSquares[3] = new PieceSquare(-4, 0);
 		pieceSquares[4] = new PieceSquare(-5, 0);
-		Piece piece1 = new Piece(pieceSquares, anchorSquare, 1);
+		Piece piece1 = new Piece(pieceSquares, anchorSquare, 1, Color.RED);
 		
 		// Assert an exception if we try to create a piece with more than 5 squares
 		PieceSquare[] tooManySquares = new PieceSquare[6];
@@ -31,7 +33,7 @@ public class TestPiece extends TestCase {
 		
 		// This test will succeed if the message in the catch block is printed
 		try {
-			Piece invalidPiece = new Piece(tooManySquares, anchorSquare, 1);
+			Piece invalidPiece = new Piece(tooManySquares, anchorSquare, 1, Color.RED);
 		} catch(RuntimeException e) {
 			System.out.println("5 squares should be used, no more no less");
 		}
