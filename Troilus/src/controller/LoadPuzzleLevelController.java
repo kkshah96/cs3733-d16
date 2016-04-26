@@ -7,16 +7,17 @@ import java.awt.event.WindowEvent;
 
 import model.Level;
 import model.LevelBuilder;
+import model.PuzzleLevel;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
 
 public class LoadPuzzleLevelController implements ActionListener {
 	LevelBuilder builder;
-	Level level;
+	PuzzleLevel level;
 	LevelLoaderView levelLoader;
 
-	public LoadPuzzleLevelController(LevelLoaderView levelLoader, Level level, LevelBuilder builder) {
+	public LoadPuzzleLevelController(LevelLoaderView levelLoader, PuzzleLevel level, LevelBuilder builder) {
 		this.levelLoader = levelLoader;
 		this.level = level;
 		this.builder = builder;
@@ -47,6 +48,9 @@ public class LoadPuzzleLevelController implements ActionListener {
 		editorView.setMaxMovesPanelVisibility(true);
 		editorView.setReleaseSquarePanelVisibility(false);
 		editorView.setTimeLimitPanelVisibility(false);
+		
+		// change text fields to display current state
+		editorView.getMaxMovesField().setText(Integer.toString(level.getMaxMoves()));
 
 		// show level view
 		editorView.setLevelType("Puzzle");
