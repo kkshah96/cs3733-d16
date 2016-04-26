@@ -98,15 +98,18 @@ public class Board {
 	public boolean addPiece(Piece p, int row, int col) {
 		// Ensure the anchor is not trying to be placed outside the board
 		if (row < 0 || row >= BOARD_HEIGHT || col < 0 || col >= BOARD_WIDTH) {
+			System.out.println("Not in bounds");
 			return false;
 		}
 		
 		for (PieceSquare square : p.squares) {
+			System.out.println("da sqaure");
 			// check if each square is in bounds
-			int absRow = square.row + row; // find absolute position
-			int absCol = square.col + col;
+			int absRow = square.row + col; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
+			int absCol = square.col + row;
 			if ((absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
 				if (!squares[absRow][absCol].isValid()) {
+					System.out.println("Not in bounds");
 					return false;
 				}
 			} else {
@@ -128,6 +131,7 @@ public class Board {
 
 	/** Find the Piece at the given location (don't change) //TODO: Sorry I changed this
 	 * WARNING: Returns NULL if not on board
+	 * WARNING: Coordinates are fucked up.
 	 * @param row The 
 	 * @param col
 	 * @return
@@ -136,18 +140,24 @@ public class Board {
 		if (row >= Board.BOARD_HEIGHT || row < 0 || col >= Board.BOARD_WIDTH || col < 0) {
 			return null;
 		}
-		
+				
 		Set<Piece> keySet = pieces.keySet();
 		for (Piece piece : keySet) {
 			// TODO this seems wrong... Board needs BoardView?
 			Point anchorPoint = pieces.get(piece);
-			double anchorX = anchorPoint.getX();
-			double anchorY = anchorPoint.getY();
-			int anchorRow = (int) anchorY/30 + 10;
-			int anchorCol = (int) anchorX/30 + 30;
+			int anchorX = anchorPoint.x;
+			int anchorY = anchorPoint.y;
+			
+			System.out.println(anchorPoint);
+			
+			if(anchorX == col && anchorY == row) {
+				return piece;
+			}
 			
 			for (Square square : piece.getSquares()) {
-				if (square.getRow() + anchorRow == row && square.getCol() + anchorCol == col) {
+				System.out.println(anchorY + square.getRow() + " Row");
+				System.out.println(anchorX + square.getCol() + " Col");
+				if (square.getRow() + anchorY == row && square.getCol() + anchorX == col) {
 					return piece;
 				}
 			}

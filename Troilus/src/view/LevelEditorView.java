@@ -24,6 +24,7 @@ import controller.MovePieceBullpenToBoardController;
 import controller.MovePiecePaletteToBullpenController;
 import controller.RotatePieceController;
 import controller.SaveLevelController;
+import controller.SelectPieceBoardController;
 import controller.SelectPieceBullpenController;
 import controller.SelectSquareController;
 import controller.SetBoardDimensionsController;
@@ -95,10 +96,10 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(boardPanel);
 		boardPanel.addMouseListener(new MovePieceBoardToBullpenController(activeLevel, boardPanel));
 		boardPanel.addMouseListener(new SelectSquareController(activeLevel, boardPanel));
-		boardPanel.addMouseListener(new MovePieceBullpenToBoardController(builder,
-				activeLevel, levelLoader, this));
 		boardPanel.addMouseMotionListener(new MovePieceBullpenToBoardController(builder,
 				activeLevel, levelLoader, this));
+		boardPanel.addMouseListener(new MovePieceBullpenToBoardController(builder, activeLevel, levelLoader, this));
+		boardPanel.addMouseListener(new SelectPieceBoardController(activeLevel, boardPanel));
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
 		bullpenContainer.setLayout(null);

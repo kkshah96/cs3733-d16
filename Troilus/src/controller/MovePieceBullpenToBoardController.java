@@ -56,14 +56,12 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		activePiece = level.getActivePiece();
 		Board b = level.getBoard();
 		BoardView bView = editorView.getBoardView();
-		System.out.println("Entering Board");
 
 		//
 		if(activePiece != null){
 			//TODO: THis doesnt work because our current implmentation doesnt allow for drawing
 			// outside of the actual grid
 			b.addDraggedPiece(activePiece, e.getPoint());
-			System.out.println("Dragged piece added!");
 			bView.repaint();
 		}
 	}
@@ -85,8 +83,12 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		Board b = level.getBoard();
 		b.addPiece(activePiece, e.getX() / BoardView.SQUARE_SIZE,
 				(e.getY() - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE);
+				
+		System.out.println("Added piece at (" + e.getX() / BoardView.SQUARE_SIZE + ", " + (e.getY() - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE
+				+ ")");
 		level.getBullpen().removePiece(activePiece); // TODO are we removing the piece, or just graying it out?
 		level.removeActivePiece();
+		level.getBoard().removeDraggedPiece(); // TODO: Get rid of dragged piece logic
 		BoardView bView = editorView.getBoardView();
 		bView.repaint();
 

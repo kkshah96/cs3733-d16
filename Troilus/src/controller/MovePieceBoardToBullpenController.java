@@ -18,14 +18,20 @@ public class MovePieceBoardToBullpenController extends MouseAdapter {
 	
 	public void mouseClicked(MouseEvent me) {
 		if(!(me.getButton() == MouseEvent.BUTTON3)) {
-			System.out.println("Not right click");
 			return;
 		}
 		
 		int row = (me.getY() - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 		int col = (me.getX() - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 		
-		Piece p = level.getBoard().removePiece(level.getBoard().getPiece(row, col));
-		level.getBullpen().addPiece(p);
+		Piece pToRemove = level.getBoard().getPiece(row, col);	
+		
+		if(pToRemove == null) return; // TODO: Is there a better way to handle this?
+		
+		Piece p = level.getBoard().removePiece(pToRemove);
+		level.getBullpen().addPiece(level.getBoard().removePiece(p));
+		
+		boardView.repaint();
+
 	}
 }
