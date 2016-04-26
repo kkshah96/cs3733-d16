@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import model.Level;
 import model.LevelBuilder;
 import model.LightningLevel;
 import view.LevelEditorView;

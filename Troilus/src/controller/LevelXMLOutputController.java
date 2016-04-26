@@ -17,7 +17,6 @@ import model.Level;
 import model.LightningLevel;
 import model.Piece;
 import model.PuzzleLevel;
-import model.ReleaseLevel;
 import model.ReleaseSquare;
 import model.Square;
 
