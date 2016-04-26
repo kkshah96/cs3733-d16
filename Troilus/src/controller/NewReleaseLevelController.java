@@ -35,7 +35,7 @@ public class NewReleaseLevelController implements ActionListener {
 		this.builder = builder;
 		this.levelLoader = levelLoader;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -47,31 +47,36 @@ public class NewReleaseLevelController implements ActionListener {
 				squares[i][j] = new ReleaseSquare(i, j, true);
 			}
 		}
-		
+
 		Board board = new Board(squares);
-				
+
 		Palette p = new Palette();
-		ReleaseLevel r = new ReleaseLevel(builder.getLevels().size(), true, bpen, board, p);
-		builder.addLevel(r);
+		ReleaseLevel newReleaseLevel = new ReleaseLevel(builder.getLevels().size(), true, bpen, board, p);
+		builder.addLevel(newReleaseLevel);
 		//builder.setActiveLevel(r);
 
 		// TODO Auto-generated method stub
-		final LevelEditorView newReleaseLevel = new LevelEditorView(builder, levelLoader, r);
+		final LevelEditorView newEditorView = new LevelEditorView(builder, levelLoader, newReleaseLevel);
 
-		newReleaseLevel.addWindowListener(new WindowAdapter() {
+		newEditorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				newReleaseLevel.dispose();
-				levelLoader.setVisible(true);
+				newEditorView.dispose();
+				// handle reset
+				new ExitLevelEditorController(builder, newEditorView, levelLoader).process();
 			}      
 		});
 
 		//Show/hide specific elements to only show things relevant to release levels
-		newReleaseLevel.setLevelType("Release");
-		newReleaseLevel.setMaxMovesPanelVisibility(false);
-		newReleaseLevel.setReleaseSquarePanelVisibility(true);
-		newReleaseLevel.setTimeLimitPanelVisibility(false);
+		newEditorView.setLevelType("Release");
+		newEditorView.setMaxMovesPanelVisibility(false);
+		newEditorView.setReleaseSquarePanelVisibility(true);
+		newEditorView.setTimeLimitPanelVisibility(false);
+
+		// add listeners to handle input
+		newEditorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(newReleaseLevel, newEditorView));
+		newEditorView.getNumberComboBox().addActionListener(new SetSquareNumberController(newReleaseLevel, newEditorView));
 
 		levelLoader.setVisible(false);
-		newReleaseLevel.setVisible(true);
+		newEditorView.setVisible(true);
 	}
 }

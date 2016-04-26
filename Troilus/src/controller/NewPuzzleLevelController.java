@@ -49,27 +49,28 @@ public class NewPuzzleLevelController implements ActionListener {
 		Board board = new Board(squares);
 		
 		Palette p = new Palette();
-		//TODO: I changed the level number from 0 to the size of the levels array (is there any reason this wouldn't work?)
-		PuzzleLevel p2 = new PuzzleLevel(builder.getLevels().size(), true, bpen, board, p, 0);
-		builder.addLevel(p2);
-		//builder.setActiveLevel(p2); //TODO: We should be able to remove any activeLevel logic
-
-		// TODO Auto-generated method stub
-		final LevelEditorView newPuzzleLevel = new LevelEditorView(builder, levelLoader, p2);
-		newPuzzleLevel.addWindowListener(new WindowAdapter() {
+		
+		PuzzleLevel newPuzzleLevel = new PuzzleLevel(builder.getLevels().size(), true, bpen, board, p, 0);
+		builder.addLevel(newPuzzleLevel);
+		
+		final LevelEditorView newEditorView = new LevelEditorView(builder, levelLoader, newPuzzleLevel);
+		newEditorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				newPuzzleLevel.dispose();
-				levelLoader.setVisible(true);
+				newEditorView.dispose();
+				// handle reset
+				new ExitLevelEditorController(builder, newEditorView, levelLoader).process();
 			}      
 		});
-		// Since this only varies by Level type and must also be done in gameplay, we
-		// might be able to have an Initialize() method for each Level subclass that
-		// sets the appropriate visibility...
-		newPuzzleLevel.setMaxMovesPanelVisibility(true);
-		newPuzzleLevel.setReleaseSquarePanelVisibility(false);
-		newPuzzleLevel.setTimeLimitPanelVisibility(false);
+		
+		newEditorView.setMaxMovesPanelVisibility(true);
+		newEditorView.setReleaseSquarePanelVisibility(false);
+		newEditorView.setTimeLimitPanelVisibility(false);
+		
+		// set listener
+		newEditorView.getMaxMovesField().addActionListener(new SetMaxMovesController(newPuzzleLevel, newEditorView));
+
 
 		levelLoader.setVisible(false);
-		newPuzzleLevel.setVisible(true);
+		newEditorView.setVisible(true);
 	}	
 }

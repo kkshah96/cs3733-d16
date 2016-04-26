@@ -25,22 +25,14 @@ public class LoadPuzzleLevelController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		// TODO deal with locked levels
-		if (level.isLocked()) {
-			
-			//return;
-		}
-		if (level.getPalette() == null) {
-			System.out.println("no palette");
-		}
 
 		final LevelEditorView editorView = new LevelEditorView(builder, levelLoader, level);
 		
 		editorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				editorView.dispose();
-				levelLoader.setVisible(true);
+				// handle reset
+				new ExitLevelEditorController(builder, editorView, levelLoader).process();
 			}      
 		});
 
