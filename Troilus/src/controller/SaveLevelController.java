@@ -31,12 +31,14 @@ public class SaveLevelController implements ActionListener {
 		this.filePath = filePath;
 	}
 	
+	
+	/**
+	 * Saves levels on the click of the save button.
+	 * @param e The ActionEvent triggered by the button press.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		// create new low level output object and store level
 		new LevelFileOutputController(levelBuilder);
-		
-		//TODO: When a level is saved, we need to add that level to the Kabausji Level arraylist--will that lgoci be handled here?
 	}
 }

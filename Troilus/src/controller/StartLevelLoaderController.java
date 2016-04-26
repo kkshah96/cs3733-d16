@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 import model.LevelBuilder;
+import model.LightningLevel;
+import model.PuzzleLevel;
+import model.ReleaseLevel;
 import model.Level;
 import view.LevelLoaderView;
 
@@ -45,13 +48,13 @@ public class StartLevelLoaderController {
 			buttons.get(i).setVisible(true);
 			buttons.get(i).setEnabled(true);
 			if (level.getName().equals("Puzzle")) {
-				buttons.get(i).addActionListener(new LoadPuzzleLevelController(levelLoaderView, level, builder));
+				buttons.get(i).addActionListener(new LoadPuzzleLevelController(levelLoaderView, (PuzzleLevel)level, builder));
 			}
 			else if (level.getName().equals("Lightning")) {
-				buttons.get(i).addActionListener(new LoadLightningLevelController(levelLoaderView, level, builder));
+				buttons.get(i).addActionListener(new LoadLightningLevelController(levelLoaderView, (LightningLevel)level, builder));
 			}
 			else if (level.getName().equals("Release")) {
-				buttons.get(i).addActionListener(new LoadReleaseLevelController(levelLoaderView, level, builder));
+				buttons.get(i).addActionListener(new LoadReleaseLevelController(levelLoaderView, (ReleaseLevel)level, builder));
 			}
 			else {
 				throw new RuntimeException("Unexpected level type found");

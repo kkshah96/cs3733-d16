@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 
 import model.Level;
 import model.LevelBuilder;
+import model.ReleaseLevel;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
@@ -18,10 +19,10 @@ import view.LevelLoaderView;
  */
 public class LoadReleaseLevelController implements ActionListener {
 	LevelBuilder builder;
-	Level level;
+	ReleaseLevel level;
 	LevelLoaderView levelLoader;
 
-	public LoadReleaseLevelController(LevelLoaderView levelLoader, Level level, LevelBuilder builder) {
+	public LoadReleaseLevelController(LevelLoaderView levelLoader, ReleaseLevel level, LevelBuilder builder) {
 		this.levelLoader = levelLoader;
 		this.level = level;
 		this.builder = builder;

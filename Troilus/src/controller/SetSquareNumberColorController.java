@@ -5,50 +5,43 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Level;
-import model.LevelBuilder;
 import model.ReleaseSquare;
 import view.LevelEditorView;
 
 /**
- * 
+ * Controls setting a Release Square's Number Color.
  * @author Alexander Kasparek
- *
+ * @author Maddy Longo
  */
 public class SetSquareNumberColorController implements ActionListener {
 	Level level;
-	LevelBuilder builder;
 	LevelEditorView editorView;
-	String color;
-	
-	public SetSquareNumberColorController(LevelBuilder builder, Level level, LevelEditorView editorView) {
-		this.builder = builder;
+
+	public SetSquareNumberColorController(Level level, LevelEditorView editorView) {
 		this.level = level;
 		this.editorView = editorView;
-		//this.color = color;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		color = (String)editorView.getNumberColorComboBox().getSelectedItem(); 
+	public void actionPerformed(ActionEvent ae) {
 		ReleaseSquare square = (ReleaseSquare) level.getBoard().getActiveSquare();
+		if (square == null) {
+			return;
+		}
 		
-		if(!(color.equals("None")) && square != null){
-			
-			if(color.equals("Red")){
-				square.setNumberColor(Color.RED);
-			}
-			else if(color.equals("Yellow")){
-				square.setNumberColor(Color.YELLOW);
-			}
-			else if(color.equals("Green")){
-				square.setNumberColor(Color.GREEN);
-			}
-			System.out.println("New Color:" + color);
-			
+		String color = (String) editorView.getNumberColorComboBox().getSelectedItem();
+
+		if (color.equals("Red")) {
+			square.setNumberColor(Color.RED);
+		} else if (color.equals("Yellow")) {
+			square.setNumberColor(Color.YELLOW);
+		} else if (color.equals("Green")) {
+			square.setNumberColor(Color.GREEN);
+		} else {
+			System.out.printf("Error: Invalid color of %s\n", color);
+			return;
 		}
-		else {
-			square.setNumberColor(null);
-		}
+		
 		editorView.getBoardView().repaint();
 	}
 }

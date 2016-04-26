@@ -7,16 +7,17 @@ import java.awt.event.WindowEvent;
 
 import model.Level;
 import model.LevelBuilder;
+import model.LightningLevel;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
 
 public class LoadLightningLevelController implements ActionListener {
 	LevelBuilder builder;
-	Level level;
+	LightningLevel level;
 	LevelLoaderView levelLoader;
 
-	public LoadLightningLevelController(LevelLoaderView levelLoader, Level level, LevelBuilder builder) {
+	public LoadLightningLevelController(LevelLoaderView levelLoader, LightningLevel level, LevelBuilder builder) {
 		this.levelLoader = levelLoader;
 		this.level = level;
 		this.builder = builder;
@@ -46,6 +47,8 @@ public class LoadLightningLevelController implements ActionListener {
 		editorView.setMaxMovesPanelVisibility(false);
 		editorView.setReleaseSquarePanelVisibility(false);
 		editorView.setTimeLimitPanelVisibility(true);
+		
+		// set text fields to show current state
 
 		// show level view
 		editorView.setLevelType("Lightning");

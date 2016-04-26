@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import model.Board;
+import model.Bullpen;
 import model.Level;
+import model.Piece;
 import view.LevelEditorView;
 
 /**
@@ -36,13 +38,17 @@ public class SetBoardDimensionsController implements ActionListener {
 		int rows = Integer.parseInt(r.getText());
 		int cols = Integer.parseInt(c.getText());
 
-		if (cols < 0 || cols > Board.BOARD_WIDTH || rows > Board.BOARD_HEIGHT || rows < 0){
-			System.out.println("Error: Invalid Dimensions");
+		if (cols < 0 || cols > Board.BOARD_WIDTH || rows > Board.BOARD_HEIGHT || rows < 0) {
+			System.out.printf("Error: Invalid Board Dimensions of %d, %d\n", rows, cols);
 			return;
 		}
-
-		//System.out.println(rows);
-		//System.out.println(cols);
+		
+		Bullpen bullpen = level.getBullpen();
+		// Remove all pieces from the board
+		for (Piece p : level.getBoard().getPieces().keySet()) {
+			bullpen.addPiece(level.getBoard().removePiece(p));
+		}
+		
 		level.getBoard().setDimensions(rows, cols);
 		editorView.getBoardView().repaint();
 	}
