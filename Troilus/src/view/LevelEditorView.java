@@ -311,7 +311,7 @@ public class LevelEditorView extends JFrame {
 		
 		//TODO: Is it okay to use this weirdish logic?
 		if(activeLevel.getName().equals("Puzzle")){
-			maxMovesField.addActionListener(new SetMaxMovesController(builder, activeLevel, levelLoader, 0));
+			maxMovesField.addActionListener(new SetMaxMovesController(activeLevel, this));
 		}
 		
 		JPanel panel_1 = new JPanel();
@@ -445,5 +445,8 @@ public class LevelEditorView extends JFrame {
 	
 	public JComboBox getNumberColorComboBox(){
 		return releaseColorComboBox;
+	}
+	public JTextField getMaxMovesField() {
+		return maxMovesField;
 	}
 }
