@@ -88,11 +88,11 @@ public class LevelFileOutputController {
 				levelElement.setAttribute("Number", "" + levels.get(i).getLevelNum());
 
 				// Now write that level to its file and append the new XML level tag to master file
-				LevelXMLOutputController xmlWriter = new LevelXMLOutputController(levels.get(i));
+				new LevelXMLOutputController(levels.get(i));
 				rootLevelElement.appendChild(levelElement);
 			}
 
-			// aded by Connor
+			// added by Connor
 			doc.appendChild(rootLevelElement);
 
 			// Create the Transformer stuff to output to XML

@@ -5,13 +5,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import model.Level;
 import model.LevelBuilder;
 import model.PuzzleLevel;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
 
+/**
+ * Controls the loading of a puzzle level for editing.
+ * @author Connor Weeks
+ *
+ */
 public class LoadPuzzleLevelController implements ActionListener {
 	LevelBuilder builder;
 	PuzzleLevel level;
@@ -25,22 +29,14 @@ public class LoadPuzzleLevelController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		// TODO deal with locked levels
-		if (level.isLocked()) {
-			
-			//return;
-		}
-		if (level.getPalette() == null) {
-			System.out.println("no palette");
-		}
 
 		final LevelEditorView editorView = new LevelEditorView(builder, levelLoader, level);
 		
 		editorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				editorView.dispose();
-				levelLoader.setVisible(true);
+				// handle reset
+				new ExitLevelEditorController(builder, editorView, levelLoader).process();
 			}      
 		});
 
@@ -51,6 +47,9 @@ public class LoadPuzzleLevelController implements ActionListener {
 		
 		// change text fields to display current state
 		editorView.getMaxMovesField().setText(Integer.toString(level.getMaxMoves()));
+		
+		// add event listener to handle input
+		editorView.getMaxMovesField().addActionListener(new SetMaxMovesController(level, editorView));
 
 		// show level view
 		editorView.setLevelType("Puzzle");

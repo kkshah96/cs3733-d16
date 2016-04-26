@@ -323,11 +323,7 @@ public class LevelEditorView extends JFrame {
 		btnSetTime.setBounds(209, -1, 64, 38);
 		timePanel.add(btnSetTime);
 		btnSetTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
-
-		//TODO: Is it okay to use this weirdish logic?
-		if (activeLevel.getName().equals("Puzzle")) {
-			maxMovesField.addActionListener(new SetMaxMovesController(activeLevel, this));
-		}
+		
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);

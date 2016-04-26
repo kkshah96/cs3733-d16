@@ -28,15 +28,15 @@ import view.LevelLoaderView;
 public class NewLightningLevelController implements ActionListener {
 	LevelBuilder builder;
 	LevelLoaderView levelLoader;
-	
+
 	public NewLightningLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
 		this.builder = builder;
 		this.levelLoader = levelLoader;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		// Create a new Bullpen, Palette and Board for the Level
 		Bullpen bpen = new Bullpen();
 		Square[][] squares = new LightningSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
@@ -45,30 +45,35 @@ public class NewLightningLevelController implements ActionListener {
 				squares[i][j] = new LightningSquare(i, j, true);
 			}
 		}
-		
+
 		Board board = new Board(squares);
-				
+
 		Palette p = new Palette();
-		LightningLevel l = new LightningLevel(builder.getLevels().size(), true, bpen, board, p, 0);
-		builder.addLevel(l);
+		LightningLevel newLevel = new LightningLevel(builder.getLevels().size(), true, bpen, board, p, 0);
+		builder.addLevel(newLevel);
 		//builder.setActiveLevel(l); // TODO: Will we have to handle setting activeLevel to null in the future when a level is exited?
 
-		final LevelEditorView newLightningLevel = new LevelEditorView(builder, levelLoader, l);
-		
-		newLightningLevel.addWindowListener(new WindowAdapter() {
+		final LevelEditorView newEditorView = new LevelEditorView(builder, levelLoader, newLevel);
+
+		newEditorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				newLightningLevel.dispose();
-				levelLoader.setVisible(true);
+				newEditorView.dispose();
+				// handle reset
+				new ExitLevelEditorController(builder, newEditorView, levelLoader).process();
 			}      
 		});
-		
+
 		//Show/hide specific elements to only show things relevant to lightning levels
-		newLightningLevel.setLevelType("Lightning");
-		newLightningLevel.setMaxMovesPanelVisibility(false);
-		newLightningLevel.setReleaseSquarePanelVisibility(false);
-		newLightningLevel.setTimeLimitPanelVisibility(true);
+		newEditorView.setLevelType("Lightning");
+		newEditorView.setMaxMovesPanelVisibility(false);
+		newEditorView.setReleaseSquarePanelVisibility(false);
+		newEditorView.setTimeLimitPanelVisibility(true);
+
+		// add listeners to handle input
+		newEditorView.getSecondsField().addActionListener(new SetTimeLimitController(newLevel, newEditorView));
+		newEditorView.getMinutesField().addActionListener(new SetTimeLimitController(newLevel, newEditorView));
 
 		levelLoader.setVisible(false);
-		newLightningLevel.setVisible(true);
+		newEditorView.setVisible(true);
 	}
 }

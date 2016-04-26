@@ -13,6 +13,7 @@ import view.LevelEditorView;
  * 
  *
  * @author Alexander Kasparek
+ * @author Connor Weeks
  */
 public class SetTimeLimitController implements ActionListener {
 	LightningLevel level;
@@ -26,14 +27,23 @@ public class SetTimeLimitController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JTextField m = editorView.getMinutesField();
-		JTextField s = editorView.getSecondsField();
+		JTextField minutesField = editorView.getMinutesField();
+		JTextField secondsField = editorView.getSecondsField();
 		
-		int minutes = Integer.parseInt(m.getText());
-		int seconds = Integer.parseInt(s.getText());
+		int minutes = Integer.parseInt(minutesField.getText());
+		int seconds = Integer.parseInt(secondsField.getText());
 		
-		int newLimit = (minutes*60)+seconds;
-		// TODO no checks here...
+		// check for valid time
+		if (minutes < 0 || seconds < 0) {
+			return;
+		}
+		
+		int newLimit = (minutes * 60) + seconds;
 		level.setTimeLimit(newLimit);
+		
+		// reset minutes : seconds view so seconds < 60
+		minutesField.setText(Integer.toString(newLimit / 60));
+		secondsField.setText(Integer.toString(newLimit % 60));
+		
 	}
 }
