@@ -65,12 +65,6 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		}
 	}
 	
-	@Override
-	public void mouseExited(MouseEvent e) {
-		boardView.removeDraggedPiece();
-		boardView.repaint();
-	}
-	
 	public void mousePressed(MouseEvent e) {
 		if(e.getButton() == MouseEvent.BUTTON3) {
 			System.out.println("Right click");
@@ -96,7 +90,7 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 			return;
 		}
 		
-		System.out.printf("Added piece at (%d, %d)\n", (e.getX() - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE,
+		System.out.printf("Added piece at (%d, %d)", (e.getX() - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE,
 				(e.getY() - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE);
 		level.getBullpen().removePiece(activePiece); // TODO are we removing the piece, or just graying it out?
 		level.removeActivePiece();
