@@ -17,6 +17,7 @@ public class MovePieceBoardToBullpenController extends MouseAdapter {
 	}
 	
 	public void mouseClicked(MouseEvent me) {
+		// Check for right click TODO is there a better way to do this?
 		if(!(me.getButton() == MouseEvent.BUTTON3)) {
 			return;
 		}
@@ -32,6 +33,5 @@ public class MovePieceBoardToBullpenController extends MouseAdapter {
 		level.getBullpen().addPiece(level.getBoard().removePiece(p));
 		
 		boardView.repaint();
-
 	}
 }

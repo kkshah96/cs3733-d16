@@ -33,13 +33,15 @@ public class TestBoard extends TestCase {
 		Piece piece1 = PieceFactory.getPiece(1);
 		
 		assertTrue(!board.addPiece(piece1, 0, 0));
-		assertTrue(board.addPiece(piece1, 7, 3));
+		assertTrue(board.addPiece(piece1, 7, 7));
 		
-		assertEquals(piece1, board.getPiece(7, 3));
+		//assertEquals(new Position(7, 7), board.getPieces().get(piece1));
+		assertEquals(null, board.getPiece(7, 8));
+		assertEquals(piece1, board.getPiece(7, 7));
 		
 		assertEquals(piece1, board.removePiece(piece1));
 
-		assertEquals(null, board.getPiece(7, 3));
+		assertEquals(null, board.getPiece(7, 7));
 	}
 	
 	@Test

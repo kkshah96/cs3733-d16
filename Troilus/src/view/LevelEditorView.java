@@ -59,8 +59,8 @@ public class LevelEditorView extends JFrame {
 	LevelLoaderView levelLoader;
 	LevelBuilder builder;
 	Level activeLevel;
-	BoardView boardPanel;
-	PaletteView palettePanel;
+	BoardView boardView;
+	PaletteView paletteView;
 	JPanel bullpenContainer;
 	BullpenView bullpenView;
 	
@@ -87,17 +87,16 @@ public class LevelEditorView extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		getContentPane().setLayout(null);
 		
-		boardPanel = new BoardView(activeLevel);
-		boardPanel.setLayout(null);
-		boardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		boardPanel.setBackground(Color.LIGHT_GRAY);
-		boardPanel.setBounds(0, 114, 747, 408);
-		getContentPane().add(boardPanel);
-		boardPanel.addMouseListener(new MovePieceBoardToBullpenController(activeLevel, boardPanel));
-		boardPanel.addMouseListener(new SelectSquareController(activeLevel, boardPanel));
-		boardPanel.addMouseMotionListener(new MovePieceBullpenToBoardController(builder,
-				activeLevel, levelLoader, this));
-		boardPanel.addMouseListener(new MovePieceBullpenToBoardController(builder, activeLevel, levelLoader, this));
+		boardView = new BoardView(activeLevel);
+		boardView.setLayout(null);
+		boardView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		boardView.setBackground(Color.LIGHT_GRAY);
+		boardView.setBounds(0, 114, 747, 408);
+		getContentPane().add(boardView);
+		boardView.addMouseListener(new MovePieceBoardToBullpenController(activeLevel, boardView));
+		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
+		boardView.addMouseMotionListener(new MovePieceBullpenToBoardController(activeLevel, boardView, bullpenView));
+		boardView.addMouseListener(new MovePieceBullpenToBoardController(activeLevel, boardView, bullpenView));
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
 		bullpenContainer.setLayout(null);
@@ -327,7 +326,7 @@ public class LevelEditorView extends JFrame {
 		ToggleButton.setBounds(437, 0, 115, 38);
 		panel_1.add(ToggleButton);
 		
-		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, boardPanel));
+		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, boardView));
 		
 		JButton btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -364,10 +363,10 @@ public class LevelEditorView extends JFrame {
 		releaseSquareOptionsPanel.add(lblNumberColor);
 		lblNumberColor.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
 		
-		 releaseColorComboBox = new JComboBox();
+		releaseColorComboBox = new JComboBox();
 		releaseColorComboBox.setBounds(250, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseColorComboBox);
-		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"None", "Red", "Green", "Yellow"}));
+		releaseColorComboBox.setModel(new DefaultComboBoxModel(new String[] {"Red", "Green", "Yellow"}));
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(100, 100, 1207, 751);
 		//pView.setPreferredSize(new Dimension(500, 500));
@@ -380,10 +379,10 @@ public class LevelEditorView extends JFrame {
 		scrollPane.setBounds(0, 522, 1205, 201);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
-		palettePanel = new PaletteView(activeLevel);
-		palettePanel.setPreferredSize(new Dimension(2100, 100));
-		scrollPane.setViewportView(palettePanel);
-		palettePanel.addMouseListener(new MovePiecePaletteToBullpenController(builder, activeLevel, levelLoader, this));
+		paletteView = new PaletteView(activeLevel);
+		paletteView.setPreferredSize(new Dimension(2100, 100));
+		scrollPane.setViewportView(paletteView);
+		paletteView.addMouseListener(new MovePiecePaletteToBullpenController(activeLevel, bullpenView, paletteView));
 		if(activeLevel.equals("Lightning")){
 			btnSetTime.addActionListener(new SetTimeLimitController
 				(builder, activeLevel, this));
@@ -425,11 +424,11 @@ public class LevelEditorView extends JFrame {
 	}
 	
 	public PaletteView getPaletteView() {
-		return palettePanel;
+		return paletteView;
 	}
 	
 	public BoardView getBoardView(){
-		return boardPanel;
+		return boardView;
 	}
 	
 	public BullpenView getBullpenView() {
@@ -437,7 +436,7 @@ public class LevelEditorView extends JFrame {
 	}
 	
 	public void setBoardView(BoardView b){
-		this.boardPanel = b;
+		this.boardView = b;
 	}
 
 	public JComboBox getNumberComboBox(){

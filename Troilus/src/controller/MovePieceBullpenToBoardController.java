@@ -9,30 +9,29 @@ import model.Level;
 import model.LevelBuilder;
 import model.Piece;
 import view.BoardView;
-import view.LevelEditorView;
-import view.LevelLoaderView;
-
+import view.BullpenView;
 
 /**
  * @author Dan Alfred
  * @author Connor Weeks
+ * @author Maddy Longo
  *
  */
 public class MovePieceBullpenToBoardController extends MouseAdapter {
 	LevelBuilder builder;
 	Level level;
-	LevelLoaderView loaderView;
-	LevelEditorView editorView;
+	BoardView boardView;
+	BullpenView bullpenView;
+	//LevelLoaderView loaderView;
+	//LevelEditorView editorView;
 
 	Piece activePiece;
 	Point activePieceLocation;
 
-	public MovePieceBullpenToBoardController(LevelBuilder builder,
-			Level level, LevelLoaderView loaderView, LevelEditorView editorView) {
-		this.builder = builder;
+	public MovePieceBullpenToBoardController(Level level, BoardView boardView, BullpenView bullpenView) {
 		this.level = level;
-		this.loaderView = loaderView;
-		this.editorView = editorView;
+		this.boardView = boardView;
+		this.bullpenView = bullpenView;
 	}
 
 /*	public void mouseEntered(MouseEvent e){
@@ -55,14 +54,14 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 	public void mouseMoved(MouseEvent e) {
 		activePiece = level.getActivePiece();
 		Board b = level.getBoard();
-		BoardView bView = editorView.getBoardView();
+		//BoardView bView = editorView.getBoardView();
 
 		//
-		if(activePiece != null){
-			//TODO: THis doesnt work because our current implmentation doesnt allow for drawing
+		if (activePiece != null) {
+			//TODO: THis doesn't work because our current implementation doesn't allow for drawing
 			// outside of the actual grid
 			b.addDraggedPiece(activePiece, e.getPoint());
-			bView.repaint();
+			boardView.repaint();
 		}
 	}
 	
@@ -81,17 +80,24 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		}
 		
 		Board b = level.getBoard();
-		b.addPiece(activePiece, e.getX() / BoardView.SQUARE_SIZE,
-				(e.getY() - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE);
-				
-		System.out.println("Added piece at (" + e.getX() / BoardView.SQUARE_SIZE + ", " + (e.getY() - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE
-				+ ")");
+		// Check if placement is valid
+		if (!b.addPiece(activePiece, e.getX() / BoardView.SQUARE_SIZE,
+				(e.getY() - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE)) {
+			System.out.println("Error: Unable to add piece");
+			level.getBoard().removeDraggedPiece(); // TODO: Get rid of dragged piece logic
+			level.removeActivePiece();
+			boardView.repaint();
+			return;
+		}
+		
+		System.out.printf("Added piece at (%d, %d)", (e.getX() - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE,
+				(e.getY() - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE);
 		level.getBullpen().removePiece(activePiece); // TODO are we removing the piece, or just graying it out?
 		level.removeActivePiece();
 		level.getBoard().removeDraggedPiece(); // TODO: Get rid of dragged piece logic
-		BoardView bView = editorView.getBoardView();
-		bView.repaint();
+		boardView.repaint();
 
+		// TODO what is all this commented code?
 		//Bullpen bp = level.getBullpen();
 		//BullpenView bpView = editorView.getBullpenView();
 

@@ -48,12 +48,12 @@ public class Board {
 	
 	protected int currentHeight; // TODO: Why are these stored when the board may not be rectangular?
 	protected int currentWidth;
-	public Board() {
-		squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
-		pieces = new Hashtable<Piece, Point>();
+	//public Board() {
+		//squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
+		//pieces = new Hashtable<Piece, Point>();
 		//this.currentHeight = BOARD_HEIGHT;
 		//this.currentWidth = BOARD_WIDTH;
-	}
+	//}
 	
 	
 	/**
@@ -143,21 +143,20 @@ public class Board {
 				
 		Set<Piece> keySet = pieces.keySet();
 		for (Piece piece : keySet) {
-			// TODO this seems wrong... Board needs BoardView?
 			Point anchorPoint = pieces.get(piece);
-			int anchorX = anchorPoint.x;
-			int anchorY = anchorPoint.y;
+			int anchorCol = anchorPoint.x;
+			int anchorRow = anchorPoint.y;
 			
 			System.out.println(anchorPoint);
 			
-			if(anchorX == col && anchorY == row) {
+			if(anchorCol == col && anchorRow == row) {
 				return piece;
 			}
 			
 			for (Square square : piece.getSquares()) {
-				System.out.println(anchorY + square.getRow() + " Row");
-				System.out.println(anchorX + square.getCol() + " Col");
-				if (square.getRow() + anchorY == row && square.getCol() + anchorX == col) {
+				System.out.println(anchorRow + square.getRow() + " Row");
+				System.out.println(anchorCol + square.getCol() + " Col");
+				if (square.getRow() + anchorRow == row && square.getCol() + anchorCol == col) {
 					return piece;
 				}
 			}
@@ -200,7 +199,7 @@ public class Board {
 	 * Retrieves the listing of pieces on this board.
 	 * @return Hashtable of Piece for this board
 	 */
-	public Hashtable<Piece, Point> getPieces(){
+	public Hashtable<Piece, Point> getPieces() {
 		return this.pieces;
 	}
 	
@@ -217,10 +216,12 @@ public class Board {
 		//activeSquare = null; // TODO We don't want to do this, do we?
 	}
 	
+	/** Returns the currently-set height for LevelEditorView */
 	public int getRows(){
 		return this.currentHeight;
 	}
 	
+	/** Returns the currently-set width for LevelEditorView */
 	public int getCols(){
 		return this.currentWidth;
 	}
