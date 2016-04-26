@@ -1,7 +1,5 @@
 package model;
 
-import static org.junit.Assert.*;
-
 import java.awt.Color;
 
 import org.junit.Test;
@@ -9,32 +7,30 @@ import org.junit.Test;
 import junit.framework.TestCase;
 
 public class TestReleaseSquare extends TestCase{
-	ReleaseSquare ex;
+	ReleaseSquare rSquare;
+	Color color;
 
-	Color init;
-	
 	protected void setUp() {
-		init = new Color(23);
-		
-		 ex = new ReleaseSquare(2,2, true, 4, init);
-		
+		color = new Color(23);
+		rSquare = new ReleaseSquare(2,2, true, 4, color);
 	}
-	
+
 	@Test
 	public void testSetNumber() {
-		
-		assertTrue(ex.setNumber(6));
-		assertFalse(ex.setNumber(0));
-		assertFalse(ex.setNumber(7));
-		
-		assertEquals(6, ex.getNumber());
-		
+		assertTrue(rSquare.setNumber(6));
+		assertFalse(rSquare.setNumber(-1));
+		assertFalse(rSquare.setNumber(7));
+
+		assertEquals(6, rSquare.getNumber());
 	}
-	
+
 	public void testSetColor() {
-		Color color = new Color(45);
-		assertTrue(ex.setNumberColor(color));
+		assertEquals(color, rSquare.getNumberColor());
 		
+		Color color1 = new Color(45);
+		assertTrue(rSquare.setNumberColor(color1));
 		
+		Color color2 = Color.RED;
+		assertTrue(rSquare.setNumberColor(color2));
 	}
 }

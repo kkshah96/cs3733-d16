@@ -76,7 +76,7 @@ public class Board {
 	public boolean addPiece(Piece p, int row, int col) {
 		// Bounds check
 		if (row < 0 || row >= BOARD_HEIGHT || col < 0 || col >= BOARD_WIDTH) {
-			System.out.println("Not in bounds");
+			//System.out.println("Not in bounds");
 			return false;
 		}
 		
@@ -102,13 +102,13 @@ public class Board {
 			
 			// Check if each square is in bounds
 			if (!squares[absRow][absCol].isValid()) {
-				System.out.printf("Not in bounds: %d, %d\n", absRow, absCol);
+				//System.out.printf("Not in bounds: %d, %d\n", absRow, absCol);
 				return false;
 			}
 
 			// Check for overlapping pieces
 			if (getPiece(absRow, absCol) != null) {
-				System.out.println("Overlapping pieces");
+				//System.out.println("Overlapping pieces");
 				return false;
 			}	
 		}

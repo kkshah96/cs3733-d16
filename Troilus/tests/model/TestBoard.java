@@ -45,7 +45,7 @@ public class TestBoard extends TestCase {
 	@Test
 	public void testPlacement() {
 		Piece piece1 = PieceFactory.getPiece(1);
-		Piece piece2 = PieceFactory.getPiece(1);
+		Piece piece2 = PieceFactory.getPiece(2);
 		
 		assertTrue(!board.addPiece(piece1, 0, 0));
 		assertTrue(board.addPiece(piece1, 7, 7));
@@ -65,8 +65,6 @@ public class TestBoard extends TestCase {
 		assertEquals(null, board.getPiece(7, 7));
 		assertTrue(board.addPiece(piece2, 10, 7));
 		
-		System.out.println(board.pieces.get(piece2).x);
-		System.out.println(board.pieces.get(piece2).y);
 		assertEquals(piece2, board.getPiece(10, 7));
 	}
 	
