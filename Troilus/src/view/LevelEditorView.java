@@ -99,7 +99,6 @@ public class LevelEditorView extends JFrame {
 		boardPanel.addMouseMotionListener(new MovePieceBullpenToBoardController(builder,
 				activeLevel, levelLoader, this));
 		boardPanel.addMouseListener(new MovePieceBullpenToBoardController(builder, activeLevel, levelLoader, this));
-		boardPanel.addMouseListener(new SelectPieceBoardController(activeLevel, boardPanel));
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
 		bullpenContainer.setLayout(null);
