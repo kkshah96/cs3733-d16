@@ -10,6 +10,7 @@ import controller.LoadLevelsController;
  * The LevelBuilder structure, similar to Kabasuji, contains a collection of Levels and keeps track of the active level (or level being edited)
  * 
  * @author Kunal Shah
+ * @author Connor Weeks
  *
  */
 public class LevelBuilder {
@@ -19,30 +20,6 @@ public class LevelBuilder {
 	
 	public LevelBuilder() {
 		initialize();
-		
-		
-		// stubs for testing
-//		levels = new ArrayList<Level>();
-//		for(int i = 0; i < 24; i++){
-//			Level level;
-//			if (i % 3 == 0) {
-//				//level = new PuzzleLevel(i, false, new Bullpen(), new Board(), new  Palette(), 10);
-//			}
-//			else if (i % 3 == 1) {
-//				//level = new LightningLevel(i, false, new Bullpen(), new Board(), new  Palette(), 10);
-//			}
-//			else {
-//				//level = new ReleaseLevel(i, false, new Bullpen(), new Board(), new  Palette());
-//			}
-//			
-//			// show the first three levels
-//			if(i >= 3) {
-//				//level.setLocked(true);
-//			}
-//			
-//			//levels.add(level);
-//		}
-		
 	}
 	
 	public void initialize() {

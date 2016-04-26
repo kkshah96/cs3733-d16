@@ -28,7 +28,21 @@ public class ExitLevelEditorController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// refresh levels in builder
+		builder.initialize();
+		
+		// dispose of curret editor and builder
 		levelEditor.dispose();
-		levelLoader.setVisible(true);
+		levelLoader.dispose();
+		
+		// create new loader view
+		LevelLoaderView window = new LevelLoaderView(builder);
+		
+		// allow controller to set up GUI based on the levels loaded by 'builder'
+		StartLevelLoaderController loaderController = new StartLevelLoaderController(window, builder);
+		loaderController.process();
+		
+		// show the window
+		window.setVisible(true);
 	}
 }
