@@ -92,7 +92,7 @@ public class LevelFileOutputController {
 				rootLevelElement.appendChild(levelElement);
 			}
 
-			// aded by Connor
+			// added by Connor
 			doc.appendChild(rootLevelElement);
 
 			// Create the Transformer stuff to output to XML
