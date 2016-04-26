@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import model.Level;
 import model.LevelBuilder;
 import model.ReleaseLevel;
 import view.LevelEditorView;
@@ -13,7 +12,7 @@ import view.LevelLoaderView;
 
 
 /**
- * 
+ * Controls the loading of a puzzle level for editing.
  * @author Connor Weeks
  *
  */

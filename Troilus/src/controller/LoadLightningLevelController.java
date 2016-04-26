@@ -11,7 +11,11 @@ import model.LightningLevel;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
-
+/**
+ * Controls the display of a loaded level for editing.
+ * @author Connor Weeks
+ *
+ */
 public class LoadLightningLevelController implements ActionListener {
 	LevelBuilder builder;
 	LightningLevel level;

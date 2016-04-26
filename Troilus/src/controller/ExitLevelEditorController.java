@@ -26,6 +26,9 @@ public class ExitLevelEditorController implements ActionListener {
 		this.levelLoader = levelLoader;
 	}
 
+	/**
+	 * This event is tied to a button click
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		process();
