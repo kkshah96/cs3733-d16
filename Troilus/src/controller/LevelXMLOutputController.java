@@ -17,7 +17,6 @@ import model.Level;
 import model.LightningLevel;
 import model.Piece;
 import model.PuzzleLevel;
-import model.ReleaseLevel;
 import model.ReleaseSquare;
 import model.Square;
 
@@ -64,12 +63,13 @@ public class LevelXMLOutputController {
 			rootLevelElement.setAttribute("Progress", "" + level.getNumStars());
 			
 			if (level.getName().equals("Lightning")) {
-				LightningLevel ll = (LightningLevel)level;
-				rootLevelElement.setAttribute("Time", "" + ll.getTime());
+				LightningLevel lightning = (LightningLevel)level;
+				System.out.println("saving time: " + lightning.getTime());
+				rootLevelElement.setAttribute("Time", "" + lightning.getTime());
 			} 
 			else if (level.getName().equals("Puzzle")) {
-				PuzzleLevel pl = (PuzzleLevel)level;
-				rootLevelElement.setAttribute("MaxMoves", "" + pl.getMaxMoves());
+				PuzzleLevel puzzle = (PuzzleLevel)level;
+				rootLevelElement.setAttribute("MaxMoves", "" + puzzle.getMaxMoves());
  			}
 
 			Element bullpenElement = doc.createElement("Bullpen");
@@ -94,6 +94,9 @@ public class LevelXMLOutputController {
 					if(squareType.equals("ReleaseSquare")) {
 						ReleaseSquare rs = (ReleaseSquare)s;
 						newSquare.setAttribute("Number", "" + rs.getNumber());
+						if (rs.getNumberColor() != null) {
+							System.out.println("Saving actual color");
+						}
 						newSquare.setAttribute("Color", "" + rs.getNumberColor());
 					}
 					

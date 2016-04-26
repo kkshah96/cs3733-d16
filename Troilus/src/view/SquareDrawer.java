@@ -20,10 +20,10 @@ import model.Square;
  */
 public class SquareDrawer {
 	public static final Color COVERED_COLOR = Color.GREEN;
-	public static final Color VALID_COLOR = Color.CYAN;
-	public static final Color VALID_ACTIVE_COLOR = Color.BLUE;
-	public static final Color INVALID_ACTIVE_COLOR = Color.DARK_GRAY;
-	public static final Color INVALID_COLOR = null;
+	public static final Color VALID_COLOR = Color.BLACK;
+	public static final Color VALID_ACTIVE_COLOR = Color.GRAY;
+	public static final Color INVALID_ACTIVE_COLOR = Color.RED;
+	public static final Color INVALID_COLOR = Color.LIGHT_GRAY;
 	public static final int BUFFER_HEIGHT = 20;
 	public static final int BUFFER_WIDTH = 10;
 	int x, y, size;
@@ -70,7 +70,7 @@ public class SquareDrawer {
 			int releaseNumber = ((ReleaseSquare) square).getNumber();
 			Color releaseColor = ((ReleaseSquare) square).getNumberColor();
 
-			if (releaseColor != null && releaseNumber > 0) {
+			if (releaseColor != null && releaseNumber > 0 && square.isValid()) {
 				g.setColor(releaseColor);
 				g.drawString("" + releaseNumber, x + BUFFER_WIDTH, y + BUFFER_HEIGHT);
 			} else {

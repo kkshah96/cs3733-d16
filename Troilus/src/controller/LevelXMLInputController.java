@@ -113,6 +113,7 @@ public class LevelXMLInputController {
 								int number = Integer.parseInt(attributes.getNamedItem("Number").getNodeValue());
 								String color = attributes.getNamedItem("Color").getNodeValue();
 								square = new ReleaseSquare(j, k, isValid, number, Color.getColor(color));
+								//System.out.println(color);
 							} 
 							else if(squareType.equals("LightningSquare")) {
 								square = new LightningSquare(j, k, isValid);

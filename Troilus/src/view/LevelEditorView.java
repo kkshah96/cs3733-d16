@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.BoardController;
+import controller.BullpenController;
 import controller.ExitLevelEditorController;
 import controller.FlipPieceController;
 import controller.MovePieceBoardToBullpenController;
@@ -94,11 +96,18 @@ public class LevelEditorView extends JFrame {
 		boardView.setBackground(Color.LIGHT_GRAY);
 		boardView.setBounds(0, 114, 747, 408);
 		getContentPane().add(boardView);
-		boardView.addMouseListener(new MovePieceBoardToBullpenController(activeLevel, boardView));
-		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
-		boardView.addMouseMotionListener(new MovePieceBullpenToBoardController(activeLevel, boardView, bullpenView));
-		boardView.addMouseListener(new MovePieceBullpenToBoardController(activeLevel, boardView, bullpenView));
+		
+		//OLD STUFF:
+//		boardView.addMouseListener(new MovePieceBoardToBullpenController(activeLevel, boardView));
+//		boardView.addMouseMotionListener(new MovePieceBullpenToBoardController(activeLevel, boardView, bullpenView));
+//		boardView.addMouseListener(new MovePieceBullpenToBoardController(activeLevel, boardView, bullpenView));
 
+		
+		//NEW STUFF:
+		boardView.addMouseListener(new BoardController(activeLevel, boardView, this));
+		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
+		
+		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
 		bullpenContainer.setLayout(null);
 		bullpenContainer.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -126,9 +135,16 @@ public class LevelEditorView extends JFrame {
 		bullpenView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		bullpenView.setBackground(Color.LIGHT_GRAY);
 		bullpenView.setBounds(748, 38, 457, 484);
-		//bullpenView.addMouseListener(new MovePieceBullpenToBoardController(builder, activeLevel, levelLoader, this));
-		bullpenView.addMouseListener(new SelectPieceBullpenController(activeLevel, bullpenView));
-
+		
+		//NEW STUFF:
+		bullpenView.addMouseListener(new BullpenController(activeLevel, bullpenView, this));
+		
+		//OLD STUFF:
+//		bullpenView.addMouseMotionListener(new MovePieceBullpenToBoardController(activeLevel, 
+//				 boardView,  bullpenView));
+//		bullpenView.addMouseListener(new SelectPieceBullpenController(activeLevel, bullpenView));
+		
+		
 		bullpenScrollPane.setBounds(6, 50, 446, 423);
 		bullpenScrollPane.setViewportView(bullpenView);
 		getContentPane().add(bullpenScrollPane, BorderLayout.CENTER);

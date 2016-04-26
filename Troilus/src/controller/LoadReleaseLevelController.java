@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import model.Level;
 import model.LevelBuilder;
 import model.ReleaseLevel;
 import view.LevelEditorView;
@@ -13,7 +12,7 @@ import view.LevelLoaderView;
 
 
 /**
- * 
+ * Controls the loading of a puzzle level for editing.
  * @author Connor Weeks
  *
  */
@@ -31,20 +30,13 @@ public class LoadReleaseLevelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		// do ont open level if it is locked TODO implement this
-		if (level.isLocked()) {
-			//return;
-		}
-		if (level.getPalette() == null) {
-			System.out.println("no palette");
-		}
-
 		final LevelEditorView editorView = new LevelEditorView(builder, levelLoader, level);
 		
 		editorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				editorView.dispose();
-				levelLoader.setVisible(true);
+				// handle reset
+				new ExitLevelEditorController(builder, editorView, levelLoader).process();
 			}      
 		});
 
