@@ -8,16 +8,15 @@ import java.util.Random;
  * 
  * This class provides a layer of abstraction between the developer and the piece they receive. All
  * logic pertaining to the creation of pieces and their shape (relative coordinates) are defined in here,
- * to prevent definition elsewhere
+ * to prevent definition elsewhere.
  * @author Dan Alfred
  *
  */
 public class PieceFactory {
-
 	public static Piece getPiece(int pieceType) {
 		PieceSquare anchorSquare = new PieceSquare(0, 0);
-		PieceSquare[] pieceSquares = new PieceSquare[5];
-		
+		PieceSquare[] pieceSquares = new PieceSquare[Piece.PIECE_SIZE - 1];
+
 		switch(pieceType) {
 		case 1:
 			pieceSquares[0] = new PieceSquare(-1, 0);
@@ -268,10 +267,9 @@ public class PieceFactory {
 			return null;
 		}
 	}
-	
+
 	private static Color getRandomColor(){
 		Random rand = new Random();
 		return new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
-		
 	}
 }
