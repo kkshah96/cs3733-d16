@@ -3,35 +3,31 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Level;
-import model.LevelBuilder;
 import model.PuzzleLevel;
-import view.LevelLoaderView;
+import view.LevelEditorView;
 
 /**
- * 
+ * Controls setting the Max Moves in a Puzzle Level.
  * 
  * @author Alexander Kasparek
+ * @author Maddy Longo
  */
-
-public class SetMaxMovesController implements ActionListener{
+public class SetMaxMovesController implements ActionListener {
 	PuzzleLevel level;
-	LevelBuilder builder;
-	LevelLoaderView editorView;
-	int maxMoves;
+	LevelEditorView editorView;
 	
-	public SetMaxMovesController(LevelBuilder builder,Level level, LevelLoaderView editorView, int maxMoves){
+	public SetMaxMovesController(Level level, LevelEditorView editorView) {
 		this.level = (PuzzleLevel) level;
-		this.builder = builder;
 		this.editorView = editorView;
-		this.maxMoves = maxMoves;
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(maxMoves <= 0){
-			System.out.println("Error: Invalid number of moves.");
+	public void actionPerformed(ActionEvent ae) {
+		int maxMoves = Integer.parseInt(editorView.getMaxMovesField().getText());
+		
+		if (maxMoves <= 0 || maxMoves > 1024) {
+			System.out.printf("Error: %d is an invalid number of moves\n", maxMoves);
 		} else {
-			System.out.println("Changed the max moves!");
 			level.setMaxMoves(maxMoves);
 		}
 	}

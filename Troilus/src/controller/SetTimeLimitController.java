@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import model.Level;
-import model.LevelBuilder;
 import model.LightningLevel;
 import view.LevelEditorView;
 
@@ -16,15 +15,12 @@ import view.LevelEditorView;
  * @author Alexander Kasparek
  */
 public class SetTimeLimitController implements ActionListener {
-
 	LightningLevel level;
-	LevelBuilder builder;
 	LevelEditorView editorView;
 	
 	
-	public SetTimeLimitController(LevelBuilder builder, Level level, LevelEditorView editorView){
+	public SetTimeLimitController(Level level, LevelEditorView editorView){
 		this.level = (LightningLevel) level;
-		this.builder = builder;
 		this.editorView = editorView;
 	}
 
@@ -37,7 +33,7 @@ public class SetTimeLimitController implements ActionListener {
 		int seconds = Integer.parseInt(s.getText());
 		
 		int newLimit = (minutes*60)+seconds;
-		
+		// TODO no checks here...
 		level.setTimeLimit(newLimit);
 	}
 }
