@@ -21,18 +21,25 @@ public class TestBoard extends TestCase {
 		this.board = board;
 	}
 	
-	@Test
-	public void testPlacement() {
+	public void testDimensions() {
 		board.setDimensions(4, 4);
 		assertTrue(!(board.getSquare(4, 4).isValid()));
 		assertTrue(!(board.getSquare(5, 5).isValid()));
 		assertTrue(board.getSquare(3, 3).isValid());
-		
+	}
+	
+	@Test
+	public void testPlacement() {
 		Piece piece1 = PieceFactory.getPiece(1);
-		assertTrue(!board.addPiece(piece1, 4, 4));
-		assertTrue(board.addPiece(piece1, 0, 3));
 		
-		assertEquals(piece1, board.getPiece(0, 3));
+		assertTrue(!board.addPiece(piece1, 0, 0));
+		assertTrue(board.addPiece(piece1, 7, 3));
+		
+		assertEquals(piece1, board.getPiece(7, 3));
+		
+		assertEquals(piece1, board.removePiece(piece1));
+
+		assertEquals(null, board.getPiece(7, 3));
 	}
 	
 	@Test
@@ -48,6 +55,4 @@ public class TestBoard extends TestCase {
 		board.toggleActiveSquare();
 		assertTrue(!board.getSquare(3, 2).isValid());
 	}
-	
-	
 }
