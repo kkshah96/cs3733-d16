@@ -9,33 +9,35 @@ import model.ReleaseSquare;
 import model.Square;
 
 /**
- * Contains logic for drawing Kabasuji Squares
+ * Contains logic for drawing Kabasuji Squares.
  * 
- * SquareDrawer handles painting a Square as an AWT Rectangle given an x, y, width, releaseNumber (if drawing a ReleaseSquare) and color
+ * SquareDrawer handles painting a Square as an AWT Rectangle given an
+ * x, y, width, releaseNumber (if drawing a ReleaseSquare) and color.
  * 
  * @author Kunal Shah
  * @author Maddy Longo
  *
  */
 public class SquareDrawer {
+	public static final Color COVERED_COLOR = Color.GREEN;
 	public static final Color VALID_COLOR = Color.CYAN;
 	public static final Color VALID_ACTIVE_COLOR = Color.BLUE;
 	public static final Color INVALID_ACTIVE_COLOR = Color.DARK_GRAY;
 	public static final Color INVALID_COLOR = null;
+	public static final int BUFFER_HEIGHT = 20;
+	public static final int BUFFER_WIDTH = 10;
 	int x, y, size;
-	Integer releaseNumber; // TODO How do we handle this without instanceof?
 	Board board;
 
 	public SquareDrawer(Board board) {
 		this.board = board;
-		releaseNumber = null;
 		size = BoardView.SQUARE_SIZE;
 	}
 
 	private Color findColor(Square square) {
 		if (square instanceof LightningSquare) {
 			if (((LightningSquare) square).isCovered()) {
-				return Color.GREEN;
+				return COVERED_COLOR;
 			}
 		}
 
@@ -61,26 +63,18 @@ public class SquareDrawer {
 		Color c = findColor(square);
 		if (c != null) {
 			g.setColor(c);
-			g.fillRect(x+1, y+1, size-2, size-2);
+			g.fillRect(x + 1, y + 1, size - 2, size - 2);
 		}
 
 		if (square instanceof ReleaseSquare) {
 			int releaseNumber = ((ReleaseSquare) square).getNumber();
 			Color releaseColor = ((ReleaseSquare) square).getNumberColor();
 
-			if (releaseColor == null || releaseNumber == -1) {
-				g.drawRect(x, y, size, size);
-			}
-			else{ //has a color
-				if (releaseColor.equals(Color.YELLOW)) {
-					g.setColor(Color.YELLOW);
-				} else if (releaseColor.equals(Color.RED)) {
-					g.setColor(Color.RED);
-				} else {
-					g.setColor(Color.GREEN);
-				}
-				
-				g.drawString("" + releaseNumber, x + 10, y + 20); //TODO: Change 5 to some buffer value
+			if (releaseColor != null && releaseNumber > 0) {
+				g.setColor(releaseColor);
+				g.drawString("" + releaseNumber, x + BUFFER_WIDTH, y + BUFFER_HEIGHT);
+			} else {
+				g.fillRect(x + 1, y + 1, size - 2, size - 2);
 			}
 		}
 	}

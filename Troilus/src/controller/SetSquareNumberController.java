@@ -1,45 +1,45 @@
 package controller;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Level;
-import model.LevelBuilder;
 import model.ReleaseSquare;
 import view.LevelEditorView;
 
 /**
- * 
+ * Controller to set a Release Square's Number.
  * @author Alexander Kasparek
- *
+ * @author Maddy Longo
  */
 public class SetSquareNumberController implements ActionListener{
 	Level level;
-	LevelBuilder builder;
 	LevelEditorView editorView;
-	String num;
-	
-	public SetSquareNumberController(LevelBuilder builder, Level level, LevelEditorView editorView){
-		this.builder = builder;
+
+	public SetSquareNumberController(Level level, LevelEditorView editorView) {
 		this.level = level;
 		this.editorView = editorView;
-	
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		num = (String) editorView.getNumberComboBox().getSelectedItem();
+		// Check if there is an active square
 		ReleaseSquare square = (ReleaseSquare) level.getBoard().getActiveSquare();
-	if(!(num.equals("None")) && square != null){
-		System.out.println("New Number:" + num);
-		int n = Integer.parseInt(num);
-		square.setNumber(n);
+		if (square == null) {
+			return;
 		}
-	else {
-		square.setNumber(-1);
-	}
-	editorView.getBoardView().repaint();
-	
+
+		String num = (String) editorView.getNumberComboBox().getSelectedItem();
+		
+		if (!(num.equals("None"))) {
+			int n = Integer.parseInt(num);
+			square.setNumber(n);
+			editorView.getBoardView().repaint();
+		} else {
+			square.setNumber(-1);
+			editorView.getBoardView().repaint();
+		}
+		
+		System.out.println("New Number: " + square.getNumber());
 	}
 }
