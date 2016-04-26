@@ -41,12 +41,12 @@ public class ReleaseSquare extends Square {
 		return numberColor;
 	}
 	
-	public boolean setNumber(int num){
-		if(num < 1 || num > 6){
+	public boolean setNumber(int num) {
+		// Value of 0 indicates no number
+		if (num < 0 || num > 6) {
 			System.out.println("Error! Invalid number");
 			return false;
-		}
-		else{
+		} else {
 			this.number = num;
 			return true;
 		}

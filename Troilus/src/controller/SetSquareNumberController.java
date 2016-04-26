@@ -30,16 +30,16 @@ public class SetSquareNumberController implements ActionListener{
 		}
 
 		String num = (String) editorView.getNumberComboBox().getSelectedItem();
+		System.out.println(num);
 		
 		if (!(num.equals("None"))) {
 			int n = Integer.parseInt(num);
 			square.setNumber(n);
-			editorView.getBoardView().repaint();
 		} else {
-			square.setNumber(-1);
-			editorView.getBoardView().repaint();
+			square.setNumber(0);
 		}
-		
+
+		editorView.getBoardView().repaint();
 		System.out.println("New Number: " + square.getNumber());
 	}
 }
