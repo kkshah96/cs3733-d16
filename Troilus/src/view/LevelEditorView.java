@@ -24,7 +24,6 @@ import controller.MovePieceBullpenToBoardController;
 import controller.MovePiecePaletteToBullpenController;
 import controller.RotatePieceController;
 import controller.SaveLevelController;
-import controller.SelectPieceBoardController;
 import controller.SelectPieceBullpenController;
 import controller.SelectSquareController;
 import controller.SetBoardDimensionsController;
