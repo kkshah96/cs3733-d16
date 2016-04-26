@@ -19,7 +19,6 @@ import view.LevelLoaderView;
  *
  */
 public class MovePieceBullpenToBoardController extends MouseAdapter {
-
 	LevelBuilder builder;
 	Level level;
 	LevelLoaderView loaderView;
@@ -28,7 +27,8 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 	Piece activePiece;
 	Point activePieceLocation;
 
-	public MovePieceBullpenToBoardController(LevelBuilder builder, Level level, LevelLoaderView loaderView, LevelEditorView editorView) {
+	public MovePieceBullpenToBoardController(LevelBuilder builder,
+			Level level, LevelLoaderView loaderView, LevelEditorView editorView) {
 		this.builder = builder;
 		this.level = level;
 		this.loaderView = loaderView;
@@ -83,7 +83,9 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 		}
 		
 		Board b = level.getBoard();
-		b.addPiece(activePiece, e.getX() / BoardView.SQUARE_SIZE, (e.getY() - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE);
+		b.addPiece(activePiece, e.getX() / BoardView.SQUARE_SIZE,
+				(e.getY() - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE);
+		level.getBullpen().removePiece(activePiece); // TODO are we removing the piece, or just graying it out?
 		level.removeActivePiece();
 		BoardView bView = editorView.getBoardView();
 		bView.repaint();
@@ -134,6 +136,4 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 				}
 			}*/
 	}
-
 }
-

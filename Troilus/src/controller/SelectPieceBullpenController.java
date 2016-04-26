@@ -12,7 +12,7 @@ import model.Piece;
 import model.Square;
 import view.BullpenView;
 
-
+// TODO What about RemovePieceFromBullpenController?
 /**
  * Controls the selection and removal of pieces in the bullpen.
  * 
@@ -20,7 +20,6 @@ import view.BullpenView;
  *
  */
 public class SelectPieceBullpenController extends MouseAdapter {
-
 	Level level;
 	BullpenView bullpenView;
 	
@@ -30,7 +29,6 @@ public class SelectPieceBullpenController extends MouseAdapter {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-				
 		// get coordinates of mouse click
 		int x = e.getX();
 		int y = e.getY();
@@ -81,13 +79,11 @@ public class SelectPieceBullpenController extends MouseAdapter {
 		if(e.getButton() == MouseEvent.BUTTON3) {
 			bullpen.removePiece(selectedPiece);
 			bullpenView.repaint();
-		}
-		else {
+		} else {
 			if (level.getActivePiece() == selectedPiece) {
 				// if the piece is already selected, deselect it
 				level.setActivePiece(null);
-			}
-			else {
+			} else {
 				// set piece as active piece and redraw
 				level.setActivePiece(selectedPiece);
 			}
@@ -95,9 +91,5 @@ public class SelectPieceBullpenController extends MouseAdapter {
 			// refresh the view
 			bullpenView.repaint();
 		}
-		
-		
 	}
-	
-
 }

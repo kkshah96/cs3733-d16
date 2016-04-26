@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import model.Board;
 import model.Palette;
 import model.Piece;
-
+// TODO this shouldn't be a class! It should be MovePieceBullpenToBoard and MovePieceBoardToBoard instead
 public class AddPieceToBoardController extends MouseAdapter {
 	Board board;
 	Piece piece;

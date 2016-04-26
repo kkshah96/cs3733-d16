@@ -51,8 +51,8 @@ public class Board {
 	public Board() {
 		squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
 		pieces = new Hashtable<Piece, Point>();
-		this.currentHeight = BOARD_HEIGHT;
-		this.currentWidth = BOARD_WIDTH;
+		//this.currentHeight = BOARD_HEIGHT;
+		//this.currentWidth = BOARD_WIDTH;
 	}
 	
 	
@@ -68,8 +68,8 @@ public class Board {
 			this.squares = squares;
 			this.pieces = new Hashtable<Piece, Point>();
 		}
-		this.currentHeight = BOARD_HEIGHT;
-		this.currentWidth = BOARD_WIDTH;
+		//this.currentHeight = BOARD_HEIGHT;
+		//this.currentWidth = BOARD_WIDTH;
 	}
 	
 	/**
@@ -109,9 +109,11 @@ public class Board {
 				if (!squares[absRow][absCol].isValid()) {
 					return false;
 				}
+			} else {
+				return false;
 			}
 		}
-
+		
 		this.pieces.put(p, new Point(row, col));
 		return true;
 	}
@@ -143,8 +145,11 @@ public class Board {
 			double anchorY = anchorPoint.getY();
 			int anchorRow = (int) anchorY/30 + 10;
 			int anchorCol = (int) anchorX/30 + 30;
-			if (piece.overlaps(row, col, anchorRow, anchorCol)) {
-				return piece;
+			
+			for (Square square : piece.getSquares()) {
+				if (square.getRow() + anchorRow == row && square.getCol() + anchorCol == col) {
+					return piece;
+				}
 			}
 		}
 		return null;
