@@ -103,16 +103,22 @@ public class LevelXMLInputController {
 						for(int k = 0; k < squareList.getLength(); k++) {
 							String squareType = squareList.item(k).getNodeName();
 							Square square = null;
+							System.out.println(squareList.item(k).getAttributes());
+							
+							// get attributes and set is valid
+							NamedNodeMap attributes = squareList.item(k).getAttributes();
+							boolean isValid = Boolean.parseBoolean(attributes.getNamedItem("Valid").getNodeValue());
 							
 							if(squareType.equals("ReleaseSquare")) {
-								NamedNodeMap rsAttributes = squareList.item(k).getAttributes();
-								int number = Integer.parseInt(rsAttributes.getNamedItem("Number").getNodeValue());
-								String color = rsAttributes.getNamedItem("Color").getNodeValue();
-								square = new ReleaseSquare(j, k, true, number, Color.getColor(color));
-							} else if(squareType.equals("LightningSquare")) {
-								square = new LightningSquare(j, k, true);
-							} else if(squareType.equals("PuzzleSquare")) {
-								square = new PuzzleSquare(j, k, true);
+								int number = Integer.parseInt(attributes.getNamedItem("Number").getNodeValue());
+								String color = attributes.getNamedItem("Color").getNodeValue();
+								square = new ReleaseSquare(j, k, isValid, number, Color.getColor(color));
+							} 
+							else if(squareType.equals("LightningSquare")) {
+								square = new LightningSquare(j, k, isValid);
+							} 
+							else if(squareType.equals("PuzzleSquare")) {
+								square = new PuzzleSquare(j, k, isValid);
 							}
 							
 							squares[j][k] = square;

@@ -17,7 +17,9 @@ import model.Level;
 import model.LightningLevel;
 import model.Piece;
 import model.PuzzleLevel;
+import model.ReleaseLevel;
 import model.ReleaseSquare;
+import model.Square;
 
 /**
  * Class to handle writing a level to file.
@@ -61,11 +63,12 @@ public class LevelXMLOutputController {
 			rootLevelElement.setAttribute("Locked", "" + level.isLocked());
 			rootLevelElement.setAttribute("Progress", "" + level.getNumStars());
 			
-			if(level.getName().equals("Lightning")) {
-				LightningLevel ll = (LightningLevel) level;
+			if (level.getName().equals("Lightning")) {
+				LightningLevel ll = (LightningLevel)level;
 				rootLevelElement.setAttribute("Time", "" + ll.getTime());
-			} else if(level.getName().equals("Puzzle")) {
-				PuzzleLevel pl = (PuzzleLevel) level;
+			} 
+			else if (level.getName().equals("Puzzle")) {
+				PuzzleLevel pl = (PuzzleLevel)level;
 				rootLevelElement.setAttribute("MaxMoves", "" + pl.getMaxMoves());
  			}
 
@@ -83,12 +86,13 @@ public class LevelXMLOutputController {
 				// Looping to add the 12 rows
 				Element newRowElement = doc.createElement("Row");
 				for(int j = 0; j < 12; j++) {
-					String squareType = level.getBoard().getSquare(i, j).getType();
+					Square s = level.getBoard().getSquare(i, j);
+					String squareType = s.getType();
 					Element newSquare = doc.createElement(squareType);
-					
+					newSquare.setAttribute("Valid", "" + s.isValid());
 					
 					if(squareType.equals("ReleaseSquare")) {
-						ReleaseSquare rs = (ReleaseSquare) level.getBoard().getSquare(i, j);
+						ReleaseSquare rs = (ReleaseSquare)s;
 						newSquare.setAttribute("Number", "" + rs.getNumber());
 						newSquare.setAttribute("Color", "" + rs.getNumberColor());
 					}
