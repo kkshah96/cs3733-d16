@@ -28,9 +28,7 @@ public class BullpenController extends MouseAdapter{
 	}
 	
 	
-	public void MousePressed(MouseEvent me){
-		// get coordinates of mouse click
-		System.out.println("Hello...");
+	public void mousePressed(MouseEvent me){
 		int x = me.getX();
 		int y = me.getY();
 		
@@ -99,15 +97,15 @@ public class BullpenController extends MouseAdapter{
 		
 	
 	
-	public void mouseReleased(MouseEvent me) {
-		//TODO: Expand this? Right now it will just let go of the piece and do nothing if the mouse is released in the bullpen
-		System.out.println("Let go of the mouse!");
-		if(me.getSource() instanceof BullpenView){
-			bV.removeDraggedPiece();
-			level.getBullpen().removePiece(activePiece);
-			level.setActivePiece(null);
-	}//end mouseReleased
-	
-
-	}
+//	public void mouseReleased(MouseEvent me) {
+//		//TODO: Expand this? Right now it will just let go of the piece and do nothing if the mouse is released in the bullpen
+//		System.out.println("Let go of the mouse!");
+//
+//			bV.removeDraggedPiece();
+//			level.getBullpen().removePiece(activePiece);
+//			level.setActivePiece(null);
+//
+//	
+//
+//	}
 }

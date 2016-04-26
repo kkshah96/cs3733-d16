@@ -51,7 +51,10 @@ public class BoardController extends MouseAdapter{
 	
 	public void mouseReleased(MouseEvent me) {
 		//From the bullpen
-		if(me.getSource() instanceof BullpenView){
+		
+		if(me.getSource() instanceof BoardView){ //this is incorrect, want to handle dragging something whose source is the bullpen
+			System.out.println("Should be here");
+			System.out.println("In board now!");
 			BullpenToBoardMove m = new BullpenToBoardMove (level.getBullpen(), 
 					level.getBoard(), activePiece, me.getX(), me.getY());
 
@@ -62,15 +65,17 @@ public class BoardController extends MouseAdapter{
 				System.out.println("Failure!");
 				//fromTableau.push (col);
 			}
+			
+			
+			level.getBullpen().removePiece(activePiece);
+			level.removeActivePiece();
 		}
 		//Dragging from board to board:
 		else if(me.getSource() instanceof BoardView){
 			
 		}
 		
-	bV.removeDraggedPiece();
-	level.getBullpen().removePiece(activePiece);
-	level.setActivePiece(null);
+	lV.repaint();
 		
 	}//end mouseReleased
 	
