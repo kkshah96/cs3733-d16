@@ -33,6 +33,7 @@ import model.Square;
  * This class, when given a level number (ID), will attempt to open the stored file containing the level data.
  * From there, a level object will be created, populated, and returned to be viewed in Kabasuji.
  * @author Dan Alfred
+ * @author Connor Weeks
  *
  */
 public class LevelXMLInputController {
