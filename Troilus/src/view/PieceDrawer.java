@@ -25,13 +25,9 @@ public class PieceDrawer {
 	/** Holds the anchor square of the piece to draw */
 	PieceSquare anchorSquare;
 	
-	/** Holds a random object to use for color generation*/
-	private Random rand;
-	
+	/** Holds a random object to use for color generation*/	
 	public PieceDrawer(){
 		this.squares = new PieceSquare[6]; // TODO: Where do we want to define constants such as the number of squares per piece (6)
-		
-		rand = new Random();
 	}
 	
 	/**
