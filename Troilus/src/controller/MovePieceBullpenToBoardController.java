@@ -22,8 +22,6 @@ public class MovePieceBullpenToBoardController extends MouseAdapter {
 	Level level;
 	BoardView boardView;
 	BullpenView bullpenView;
-	//LevelLoaderView loaderView;
-	//LevelEditorView editorView;
 
 	Piece activePiece;
 	Point activePieceLocation;

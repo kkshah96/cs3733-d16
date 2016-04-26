@@ -31,13 +31,15 @@ public class TestBoard extends TestCase {
 	@Test
 	public void testPlacement() {
 		Piece piece1 = PieceFactory.getPiece(1);
+		Piece piece2 = PieceFactory.getPiece(1);
 		
 		assertTrue(!board.addPiece(piece1, 0, 0));
 		assertTrue(board.addPiece(piece1, 7, 7));
 		
-		//assertEquals(new Position(7, 7), board.getPieces().get(piece1));
 		assertEquals(null, board.getPiece(7, 8));
 		assertEquals(piece1, board.getPiece(7, 7));
+		assertTrue(!board.addPiece(piece2, 7, 7));
+		assertTrue(!board.addPiece(piece2, 7, 8));
 		
 		assertEquals(piece1, board.removePiece(piece1));
 
@@ -45,7 +47,7 @@ public class TestBoard extends TestCase {
 	}
 	
 	@Test
-	public void testToggle() {
+	public void testSquares() {
 		board.setDimensions(4, 4);
 		
 		assertTrue(!(board.getSquare(5, 7).isValid()));

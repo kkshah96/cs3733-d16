@@ -29,6 +29,7 @@ public class Board {
 	
 	/** An ArrayList of Piece to hold references to pieces on the board. */
 	//ArrayList<Piece> pieces;
+	/** Pieces on the Board, where Point holds (row, col) */
 	Hashtable<Piece, Point> pieces;
 	
 	/** A reference to a square that has been clicked. */
@@ -36,9 +37,6 @@ public class Board {
 	
 	/** Holds a reference to a dragged piece */
 	//Piece draggedPiece = null;
-		
-	protected int currentHeight; // TODO: Why are these stored when the board may not be rectangular?
-	protected int currentWidth;
 	
 	/**
 	 * Constructor for the board to take in a predefined 2D array of squares
@@ -52,8 +50,6 @@ public class Board {
 			this.squares = squares;
 			this.pieces = new Hashtable<Piece, Point>();
 		}
-		//this.currentHeight = BOARD_HEIGHT;
-		//this.currentWidth = BOARD_WIDTH;
 	}
 	
 	/**
@@ -87,18 +83,23 @@ public class Board {
 		}
 		
 		for (PieceSquare square : p.squares) {
-			System.out.println("da sqaure");
 			// check if each square is in bounds
 			int absRow = square.row + col; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
 			int absCol = square.col + row;
-			if ((absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
-				if (!squares[absRow][absCol].isValid()) {
-					System.out.println("Not in bounds");
-					return false;
-				}
-			} else {
+
+			if (!(absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
 				return false;
 			}
+			
+			if (!squares[absRow][absCol].isValid()) {
+				System.out.println("Not in bounds");
+				return false;
+			}
+			
+			if (getPiece(absRow, absCol) != null) {
+				System.out.println("Overlapping pieces");
+				return false;
+			}	
 		}
 		
 		this.pieces.put(p, new Point(row, col));
@@ -133,7 +134,7 @@ public class Board {
 			
 			System.out.println(anchorPoint);
 			
-			if(anchorCol == col && anchorRow == row) {
+			if (anchorCol == col && anchorRow == row) {
 				return piece;
 			}
 			
@@ -145,6 +146,7 @@ public class Board {
 				}
 			}
 		}
+		
 		return null;
 	}
 
@@ -175,12 +177,11 @@ public class Board {
 				squares[row][column].setIsValid(valid);
 			}
 		}
-		this.currentHeight = rows;
-		this.currentWidth = cols;
 	}
 	
 	/**
 	 * Retrieves the listing of pieces on this board.
+	 * Point uses (row, col).
 	 * @return Hashtable of Piece for this board
 	 */
 	public Hashtable<Piece, Point> getPieces() {
@@ -201,12 +202,12 @@ public class Board {
 	}
 	
 	/** Returns the currently-set height for LevelEditorView */
-	public int getRows(){
-		return this.currentHeight;
-	}
+	//public int getRows(){
+		//return this.currentHeight;
+	//}
 	
 	/** Returns the currently-set width for LevelEditorView */
-	public int getCols(){
-		return this.currentWidth;
-	}
+	//public int getCols(){
+		//return this.currentWidth;
+	//}
 }

@@ -54,7 +54,8 @@ public class PieceDrawer {
 		
 		// fill other squares
 		for (int i = 0; i < 5; i++) {
-			g.fillRect((p.x + squares[i].getCol()) * width + widthOffset, (p.y + squares[i].getRow()) * width + heightOffset, width, width);
+			g.fillRect((p.x + squares[i].getCol()) * width + widthOffset,
+					(p.y + squares[i].getRow()) * width + heightOffset, width, width);
 		}
 	}
 	

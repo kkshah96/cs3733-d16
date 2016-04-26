@@ -81,9 +81,6 @@ public class BoardView extends JPanel {
 		PieceDrawer pDrawer = new PieceDrawer();
 
 		Hashtable<Piece, Point> pieces = board.getPieces();
-
-		//TEST adding pieces TODO: remove
-		//	pieces.put(PieceFactory.getPiece(4), new Point(5, 5));
 		
 		// i is y-coordinate, j is x-coordinate
 		for (int i = 0; i < HEIGHT; i+= SQUARE_SIZE) {
