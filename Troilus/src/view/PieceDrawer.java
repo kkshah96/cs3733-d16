@@ -53,7 +53,7 @@ public class PieceDrawer {
 		g.fillRect(p.x * width + widthOffset, p.y * width + heightOffset, width, width);
 		
 		// fill other squares
-		for(int i = 0; i < 5; i++){
+		for (int i = 0; i < 5; i++) {
 			g.fillRect((p.x + squares[i].getCol()) * width + widthOffset, (p.y + squares[i].getRow()) * width + heightOffset, width, width);
 		}
 	}

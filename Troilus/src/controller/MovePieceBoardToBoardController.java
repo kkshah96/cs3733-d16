@@ -34,6 +34,6 @@ public class MovePieceBoardToBoardController extends MouseAdapter {
 		int col = x/BoardView.SQUARE_SIZE - BoardView.WIDTH_OFFSET;
 		
 		activePiece = board.getPiece(row, col);
-		board.addDraggedPiece(activePiece, new Point(row, col));
+		boardView.addDraggedPiece(activePiece, new Point(row, col));
 	}
 }

@@ -35,26 +35,10 @@ public class Board {
 	Square activeSquare;
 	
 	/** Holds a reference to a dragged piece */
-	Piece draggedPiece = null;
-	Point dPiecePoint = null;
-
-	// TODO: Is there any case where we will need to pass parameters to the constructor?
-	// Yes- when loading a board from storage, where we will need to set the squares accordingly
-	
-	/**
-	 * Default constructor for Board, initializing 2D array of squares to max height and max width.
-	 * Also assumes no pieces are on the board. TODO: Should this EVER be used?
-	 */
-	
+	//Piece draggedPiece = null;
+		
 	protected int currentHeight; // TODO: Why are these stored when the board may not be rectangular?
 	protected int currentWidth;
-	//public Board() {
-		//squares = new Square[BOARD_HEIGHT][BOARD_WIDTH];
-		//pieces = new Hashtable<Piece, Point>();
-		//this.currentHeight = BOARD_HEIGHT;
-		//this.currentWidth = BOARD_WIDTH;
-	//}
-	
 	
 	/**
 	 * Constructor for the board to take in a predefined 2D array of squares
@@ -224,23 +208,5 @@ public class Board {
 	/** Returns the currently-set width for LevelEditorView */
 	public int getCols(){
 		return this.currentWidth;
-	}
-	
-	public Piece getDraggedPiece() {
-		return this.draggedPiece;
-	}
-	
-	public Point getDraggedPiecePoint() {
-		return this.dPiecePoint;
-	}
-	
-	public void addDraggedPiece(Piece draggedPiece, Point dPiecePoint) {
-		this.draggedPiece = draggedPiece;
-		this.dPiecePoint = dPiecePoint;
-	}
-	
-	public void removeDraggedPiece() {
-		this.draggedPiece = null;
-		this.dPiecePoint = null;
 	}
 }

@@ -44,6 +44,9 @@ public class BoardView extends JPanel {
 	Level level;
 	
 	Board board;
+	
+	Piece draggedPiece;
+	Point draggedPiecePoint;
 
 	/**
 	 * Constructor for the BoardView, for a given Board
@@ -72,8 +75,6 @@ public class BoardView extends JPanel {
 	 * Paints the BoardView and squares on the Board 
 	 */
 	public void paintComponent(Graphics g) {
-		
-		//
 		super.paintComponent(g);
 		
 		SquareDrawer sDrawer = new SquareDrawer(board);
@@ -98,16 +99,24 @@ public class BoardView extends JPanel {
 			pDrawer.paint(g, p.getColor(), p, pieces.get(p), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
-		if(board.getDraggedPiece() != null) {
+		if(draggedPiece != null) {
 			//System.out.println("Painting dragged piece");
 			//System.out.println("Point " + board.getDraggedPiecePoint());
 			
 			//TODO: There is definitely a better way to do this
-			Point p = board.getDraggedPiecePoint();
-			int x = p.x / SQUARE_SIZE;
-			int y = (p.y - SQUARE_SIZE) / SQUARE_SIZE;
-			pDrawer.paint(g, board.getDraggedPiece().getColor(), board.getDraggedPiece(), new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			int x = (draggedPiecePoint.x - WIDTH_OFFSET) / SQUARE_SIZE;
+			int y = (draggedPiecePoint.y - HEIGHT_OFFSET) / SQUARE_SIZE;
+			pDrawer.paint(g, draggedPiece.getColor(), draggedPiece, new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
-		
+	}
+	
+	public void addDraggedPiece(Piece piece, Point piecePoint) {
+		this.draggedPiece = piece;
+		this.draggedPiecePoint = piecePoint;
+	}
+	
+	public void removeDraggedPiece() {
+		this.draggedPiece = null;
+		this.draggedPiecePoint = null;
 	}
 }
