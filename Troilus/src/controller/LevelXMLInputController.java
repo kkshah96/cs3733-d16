@@ -103,7 +103,6 @@ public class LevelXMLInputController {
 						for(int k = 0; k < squareList.getLength(); k++) {
 							String squareType = squareList.item(k).getNodeName();
 							Square square = null;
-							System.out.println(squareList.item(k).getAttributes());
 							
 							// get attributes and set is valid
 							NamedNodeMap attributes = squareList.item(k).getAttributes();
