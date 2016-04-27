@@ -25,6 +25,10 @@ public class ReleaseLevel extends Level {
 		greenCovered = new boolean[MAX_NUM];
 	}
 
+	public void updateAfterMove() {
+		calcNumStars();
+	}
+	
 	@Override
 	/** 1 star for completing 1 color set, 2 for 2 color sets, win if get all 3 */
 	public void calcNumStars() {

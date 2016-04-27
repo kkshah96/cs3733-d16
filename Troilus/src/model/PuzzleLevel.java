@@ -18,10 +18,20 @@ public class PuzzleLevel extends Level {
 		this.maxMoves = maxMoves;
 		this.movesLeft = this.maxMoves; // TODO: Can I do dis
 	}
+	
+	public void updateAfterMove() {
+		updateMovesLeft(-1);
+		calcNumStars();
+	}
 
 	@Override
+	/** 1 star if 2 pieces left, 2 stars if 1 piece left, 3 if won */
 	public void calcNumStars() {
-		// TODO Implement this
+		if (bullpen.getNumPieces() > MAX_STARS) {
+			numStars = 0;
+		} else {
+			numStars = MAX_STARS - bullpen.getNumPieces();
+		}
 	}
 	
 	public void updateMovesLeft(int i) {
@@ -36,7 +46,7 @@ public class PuzzleLevel extends Level {
 		return maxMoves;
 	}
 	
-	public void setMaxMoves(int maxMoves){
+	public void setMaxMoves(int maxMoves) {
 		this.maxMoves = maxMoves;
 	}
 }
