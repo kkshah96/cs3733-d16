@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
@@ -16,14 +17,11 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import com.sun.glass.events.WindowEvent;
-
 import controller.BoardController;
 import controller.BullpenController;
 import controller.ExitLevelController;
 import controller.FlipPieceController;
 import controller.RotatePieceController;
-import controller.SelectPieceBullpenController;
 import model.Kabasuji;
 import model.Level;
 import model.Piece;
@@ -48,6 +46,7 @@ public class LevelView extends JFrame{
 	
 	JLabel movesLabel;
 	JLabel timeLabel;
+	JLabel labelStars;
 
 	LevelSelectorView levelSelector;
 	Kabasuji game;
@@ -69,7 +68,6 @@ public class LevelView extends JFrame{
 		this.isActive = true;
 		// set isActive to false for timer when window closes
 		this.addWindowListener(new WindowAdapter() {
-            @SuppressWarnings("unused")
 			public void windowClosing(WindowEvent e) {
                 isActive = false;
             }
@@ -185,7 +183,7 @@ public class LevelView extends JFrame{
 		movesLabel.setBounds(6, 7, 99, 22);
 		panelPuzzleStats.add(movesLabel);
 
-		JLabel labelStars = new JLabel("Stars: 0/3");
+		labelStars = new JLabel("Stars: 0/3");
 		labelStars.setBounds(689, 60, 82, 16);
 		panel.add(labelStars);
 		labelStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
