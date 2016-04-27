@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import controller.BoardController;
 import controller.BullpenController;
 import controller.ExitLevelController;
 import controller.FlipPieceController;
@@ -25,15 +26,16 @@ import model.Level;
 import model.Piece;
 
 /**
- * GUI for a playable level in the Kabasuji game
+ * GUI for a playable level in the Kabasuji game.
  * 
- * Contains a BoardView, BullpenView, and Paletteview as well as necessary buttons and labels for playing a Kabasuji Level
+ * Contains a BoardView, BullpenView, and Paletteview as well as
+ * necessary buttons and labels for playing a Kabasuji Level.
  * 
  * @author Kunal Shah
+ * @author Maddy Longo
  *
  */
 public class LevelView extends JFrame{
-
 	private JPanel panelTitle;
 	private JLabel lblLevelPuzzle;
 	private JPanel panelPuzzleStats;
@@ -45,6 +47,7 @@ public class LevelView extends JFrame{
 	Kabasuji game;
 	Level level;
 	BullpenView bullpenView;
+	BoardView boardView;
 
 	/**
 	 * Create the application.
@@ -80,13 +83,16 @@ public class LevelView extends JFrame{
 		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
 		panelTitle.add(lblLevelPuzzle);
 
-		BoardView panelBoard = new BoardView(level);
-		panelBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panelBoard.setBackground(Color.LIGHT_GRAY);
-		panelBoard.setBounds(0, 88, 461, 455);
-		panel.add(panelBoard);
-		panelBoard.setLayout(null);
-
+		boardView = new BoardView(level);
+		boardView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		boardView.setBackground(Color.LIGHT_GRAY);
+		boardView.setBounds(0, 88, 461, 455);
+		panel.add(boardView);
+		boardView.setLayout(null);
+		// BoardController
+		boardView.addMouseListener(new BoardController(level, boardView));
+		boardView.addMouseMotionListener(new BoardController(level, boardView));
+		
 		JPanel bullpenContainer = new JPanel();
 		bullpenContainer.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		bullpenContainer.setBackground(Color.LIGHT_GRAY);
@@ -107,16 +113,14 @@ public class LevelView extends JFrame{
 		bullpenOptionsPanel.add(bullpenLabel);
 
 		// create actual bullpen view and add it to the scroll pane
-
 		JScrollPane bullpenScrollPane = new JScrollPane();
 		bullpenView = new BullpenView(level, bullpenScrollPane);
 		bullpenView.setLayout(null);
 		bullpenView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		bullpenView.setBackground(Color.LIGHT_GRAY);
 		bullpenView.setBounds(748, 38, 457, 484);
-
+		// BullpenController
 		bullpenView.addMouseListener(new BullpenController(level, bullpenView));
-		// bullpenView.addMouseListener(new SelectPieceBullpenController(level, bullpenView));
 
 		bullpenScrollPane.setBounds(6, 50, 479, 394);
 		bullpenScrollPane.setViewportView(bullpenView);
@@ -146,8 +150,6 @@ public class LevelView extends JFrame{
 		flipPieceVerticalButton.addActionListener(new FlipPieceController(level, bullpenView, Piece.FLIP_VERTICALLY));
 		bullpenOptionsPanel.add(flipPieceVerticalButton);
 
-
-
 		JButton btnExitLevel = new JButton("Exit Level");
 		btnExitLevel.addActionListener(new ExitLevelController(this, levelSelector, game));
 		btnExitLevel.setBounds(771, 50, 176, 36);
@@ -160,10 +162,11 @@ public class LevelView extends JFrame{
 		panelPuzzleStats.setBounds(569, 52, 115, 34);
 		panel.add(panelPuzzleStats);
 
-		JLabel label_1 = new JLabel("Moves: 40/50");
-		label_1.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		label_1.setBounds(6, 7, 99, 22);
-		panelPuzzleStats.add(label_1);
+		// TODO remove hard-coded vals!
+		JLabel movesLabel = new JLabel("Moves: 40/50");
+		movesLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		movesLabel.setBounds(6, 7, 99, 22);
+		panelPuzzleStats.add(movesLabel);
 
 		JLabel labelStars = new JLabel("Stars: 0/3");
 		labelStars.setBounds(689, 60, 82, 16);
@@ -231,5 +234,8 @@ public class LevelView extends JFrame{
 	public JPanel getPanelReleaseStats() {
 		return panelReleaseStats;
 	}
+	
+	public BoardView getBoardView() {
+		return boardView;
+	}
 }
-

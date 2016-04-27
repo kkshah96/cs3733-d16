@@ -39,7 +39,7 @@ public class TestEditorBoardController {
 		LevelLoaderView lView = new LevelLoaderView(lb);
 		lsView = new LevelEditorView(lb, lView, level);
 		bpController = new BullpenController(level, lsView.getBullpenView());
-		boardController = new BoardController(level, lsView);
+		boardController = new BoardController(level, lsView.getBoardView());
 	}
 	
 	public void testToggle() {
