@@ -4,7 +4,6 @@ import model.Board;
 import model.Bullpen;
 import model.Level;
 import model.Piece;
-import view.BoardView;
 
 /** 
  * Class for implementation of moving a piece from board to bullpen
@@ -28,20 +27,17 @@ public class BullpenToBoardMove {
 	public boolean doMove() {
 		Bullpen bpen = level.getBullpen();
 		Board board = level.getBoard();
-		
+
 		if (!isValid(pieceMoved, col, row)) {
 			return false;
 		}
 
-		boolean status = board.addPiece(pieceMoved, col, row);
+		board.addPiece(pieceMoved, col, row);
+		level.removeActivePiece();
+		bpen.removePiece(pieceMoved);
 
-		if (status) {
-			board.addPiece(pieceMoved, col, row);
-			level.removeActivePiece();
-			bpen.removePiece(pieceMoved);
-		}
-
-		return status;
+		level.updateAfterMove();
+		return true;
 	}
 
 	/** Checks if adding a Piece from Bullpen to Board is valid */

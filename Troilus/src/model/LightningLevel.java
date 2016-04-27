@@ -22,6 +22,11 @@ public class LightningLevel extends Level{
 		this.coveredSquares = 0;
 	}
 
+	public void updateAfterMove() {
+		countValidSquares(); // Just in case in Level Editor
+		calcNumStars();
+	}
+	
 	@Override
 	/** 1 star if covered all but 12 squares, 2 if covered all but 6, 3 if won */
 	public void calcNumStars() {

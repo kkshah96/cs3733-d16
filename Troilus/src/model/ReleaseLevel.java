@@ -25,9 +25,36 @@ public class ReleaseLevel extends Level {
 		greenCovered = new boolean[MAX_NUM];
 	}
 
+	public void updateAfterMove() {
+		calcNumStars();
+	}
+	
 	@Override
+	/** 1 star for completing 1 color set, 2 for 2 color sets, win if get all 3 */
 	public void calcNumStars() {
-		// TODO Implement this
+		if (!(setComplete(redCovered) || setComplete(yellowCovered) || setComplete(greenCovered))) {
+			numStars = 0; // No sets are complete
+		} else if (setComplete(redCovered) && setComplete(yellowCovered) && setComplete(greenCovered)) {
+			numStars = 3; // All sets are complete
+		} else if ((setComplete(redCovered) && setComplete(yellowCovered) && !setComplete(greenCovered)) ||
+				(setComplete(redCovered) && setComplete(greenCovered) && !setComplete(yellowCovered)) ||
+				(setComplete(greenCovered) && setComplete(yellowCovered) && !setComplete(redCovered))) {
+			// TODO clean up logic!
+			numStars = 2;
+		} else {
+			numStars = 1;
+		}
+	}
+	
+	/** Helper function for calculating stars */
+	private boolean setComplete(boolean[] numSet) {
+		for (boolean covered : numSet) {
+			if (!covered) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 	
 	// TODO: There has to be a better way to do this
