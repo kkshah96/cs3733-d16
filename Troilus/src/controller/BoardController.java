@@ -51,15 +51,18 @@ public class BoardController extends MouseAdapter {
 		} else {
 			// TODO fix this logic!
 			if (level.getMoveSource() == null) {
-				level.setMoveSource("Board");	
-				Piece pieceToDrag = level.getBoard().removePiece(level.getBoard().getPiece(col, row));
-				if(pieceToDrag != null) {
-					level.setActivePiece(pieceToDrag);
-					boardView.addDraggedPiece(pieceToDrag, me.getPoint());
-					boardView.repaint();
+				level.setMoveSource("Board");
+				
+				// do nothing if no piece at click
+				if(level.getBoard().getPiece(col, row) != null) {
+					Piece pieceToDrag = level.getBoard().removePiece(level.getBoard().getPiece(col, row));
+					if(pieceToDrag != null) {
+						level.setActivePiece(pieceToDrag);
+						boardView.addDraggedPiece(pieceToDrag, me.getPoint());
+						boardView.repaint();
 				}
 				
-				
+				}
 				//boardView.addDraggedPiece(activePiece, me.getPoint());
 			} else if (level.getMoveSource() == "Bullpen") {
 
@@ -82,6 +85,7 @@ public class BoardController extends MouseAdapter {
 				} else {
 					System.out.println("Failure!");
 				}
+				level.setMoveSource(null);
 			} else {
 				System.err.println("Invalid source when moving to Board");
 			}
