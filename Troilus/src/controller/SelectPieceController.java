@@ -36,6 +36,7 @@ public class SelectPieceController extends MouseAdapter {
 	}
 
 	public SelectPieceController(LevelBuilder builder,Level level, LevelLoaderView editorView){
+		// initialize
 		this.level = level;
 		this.builder = builder;
 		this.editorView = editorView;
