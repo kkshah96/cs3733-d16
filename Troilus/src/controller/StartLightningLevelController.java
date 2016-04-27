@@ -57,6 +57,7 @@ public class StartLightningLevelController implements ActionListener {
 		});
 		
 		// set title of level
+		levelView.getLevelLabel().setText("Level " + level.getLevelNum() + ": " + level.getName());
 
 		// set visibility of level view elements to account for level type
 		levelView.getPanelPuzzleStats().setVisible(false);

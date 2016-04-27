@@ -36,9 +36,9 @@ import model.Piece;
  * @author Maddy Longo
  *
  */
-public class LevelView extends JFrame{
+public class LevelView extends JFrame implements velL{
 	private JPanel panelTitle;
-	private JLabel lblLevelPuzzle;
+	private JLabel levelLabel;
 	private JPanel panelPuzzleStats;
 	private JPanel panelLightningStats;
 	private JPanel panelReleaseStats;
@@ -92,11 +92,11 @@ public class LevelView extends JFrame{
 		panelTitle.setBounds(0, 0, 953, 46);
 		panel.add(panelTitle);
 
-		lblLevelPuzzle = new JLabel("Level 1: Puzzle");
-		lblLevelPuzzle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLevelPuzzle.setForeground(Color.LIGHT_GRAY);
-		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
-		panelTitle.add(lblLevelPuzzle);
+		levelLabel = new JLabel("Level 1: Puzzle");
+		levelLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		levelLabel.setForeground(Color.LIGHT_GRAY);
+		levelLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
+		panelTitle.add(levelLabel);
 
 		boardView = new BoardView(level);
 		boardView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -262,5 +262,8 @@ public class LevelView extends JFrame{
 	}
 	public boolean isActive() {
 		return isActive;
+	}
+	public JLabel getLevelLabel() {
+		return levelLabel;
 	}
 }
