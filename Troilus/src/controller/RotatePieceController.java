@@ -45,7 +45,10 @@ public class RotatePieceController implements ActionListener {
 		// reset the active piece and the bullpen
 		bullpen.getPieces().set(bullpen.getPieces().indexOf(activePiece), rotatedPiece);
 		level.setActivePiece(rotatedPiece);
-		
+		if (bullpenView == null) {
+			System.out.println("no bp");
+			return;
+		}
 		bullpenView.repaint();
 	}
 }

@@ -14,16 +14,13 @@ import view.LevelEditorView;
 
 public class BullpenController extends MouseAdapter{
 	
-	protected LevelEditorView lV;
-	protected BullpenView bV;
+	protected BullpenView bullpenView;
 	protected Level level;
 	Piece activePiece;
 	
-	public BullpenController(Level level, BullpenView bV, LevelEditorView lV) {
+	public BullpenController(Level level, BullpenView bullpenBiew) {
 		super();
-
-		this.lV = lV;
-		this.bV = bV;
+		this.bullpenView = bullpenBiew;
 		this.level = level;
 	}
 	
@@ -35,7 +32,7 @@ public class BullpenController extends MouseAdapter{
 		Bullpen bullpen = level.getBullpen();
 		
 		// find the piece that was clicked
-		Hashtable<Piece, Point> pieces = bV.getDrawnPieces();
+		Hashtable<Piece, Point> pieces = bullpenView.getDrawnPieces();
 		Set<Piece> keySet = pieces.keySet();
 		Piece selectedPiece = null;
 		
@@ -70,7 +67,7 @@ public class BullpenController extends MouseAdapter{
 		if (selectedPiece == null) {
 			System.out.println("Selectedpiece is NULL");
 			level.setActivePiece(null);
-			bV.repaint();
+			bullpenView.repaint();
 			return;
 		}
 		
@@ -78,7 +75,7 @@ public class BullpenController extends MouseAdapter{
 		// a right click will remove the selected piece from the bullpen
 		if(me.getButton() == MouseEvent.BUTTON3) {
 			bullpen.removePiece(selectedPiece);
-			bV.repaint();
+			bullpenView.repaint();
 		} else {
 			if (level.getActivePiece() == selectedPiece) {
 				// if the piece is already selected, deselect it
@@ -86,12 +83,12 @@ public class BullpenController extends MouseAdapter{
 			} else {
 				// set piece as active piece and redraw
 				level.setActivePiece(selectedPiece);
-				bV.addDraggedPiece(selectedPiece, new Point(selectedPiece.getRow(), selectedPiece.getCol()));
-				bV.repaint();
+				bullpenView.addDraggedPiece(selectedPiece, new Point(selectedPiece.getRow(), selectedPiece.getCol()));
+				bullpenView.repaint();
 			}
 			
 			// refresh the view
-			bV.repaint();
+			bullpenView.repaint();
 		}
 	}
 		

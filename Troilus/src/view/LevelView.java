@@ -19,6 +19,7 @@ import controller.BullpenController;
 import controller.ExitLevelController;
 import controller.FlipPieceController;
 import controller.RotatePieceController;
+import controller.SelectPieceBullpenController;
 import model.Kabasuji;
 import model.Level;
 import model.Piece;
@@ -105,6 +106,22 @@ public class LevelView extends JFrame{
 		bullpenLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
 		bullpenOptionsPanel.add(bullpenLabel);
 
+		// create actual bullpen view and add it to the scroll pane
+
+		JScrollPane bullpenScrollPane = new JScrollPane();
+		bullpenView = new BullpenView(level, bullpenScrollPane);
+		bullpenView.setLayout(null);
+		bullpenView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		bullpenView.setBackground(Color.LIGHT_GRAY);
+		bullpenView.setBounds(748, 38, 457, 484);
+
+		bullpenView.addMouseListener(new BullpenController(level, bullpenView));
+		// bullpenView.addMouseListener(new SelectPieceBullpenController(level, bullpenView));
+
+		bullpenScrollPane.setBounds(6, 50, 479, 394);
+		bullpenScrollPane.setViewportView(bullpenView);
+		bullpenContainer.add(bullpenScrollPane);
+
 		JButton rotateCWButton = new JButton("Rotate CW");
 		rotateCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		rotateCWButton.setBounds(76, 4, 99, 29);
@@ -116,7 +133,7 @@ public class LevelView extends JFrame{
 		rotateCCWButton.setBounds(166, 4, 93, 29);
 		rotateCCWButton.addActionListener(new RotatePieceController(level, bullpenView, Piece.ROTATE_CCW));
 		bullpenOptionsPanel.add(rotateCCWButton);
-		
+
 		JButton flipPieceHorizontalButton = new JButton("Flip Horizontal");
 		flipPieceHorizontalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		flipPieceHorizontalButton.setBounds(250, 4, 110, 29);
@@ -129,23 +146,7 @@ public class LevelView extends JFrame{
 		flipPieceVerticalButton.addActionListener(new FlipPieceController(level, bullpenView, Piece.FLIP_VERTICALLY));
 		bullpenOptionsPanel.add(flipPieceVerticalButton);
 
-		// create actual bullpen view and add it to the scroll pane
 
-		JScrollPane bullpenScrollPane = new JScrollPane();
-		bullpenView = new BullpenView(level, bullpenScrollPane);
-		bullpenView.setLayout(null);
-		bullpenView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		bullpenView.setBackground(Color.LIGHT_GRAY);
-		bullpenView.setBounds(748, 38, 457, 484);
-		
-		bullpenScrollPane.setBounds(6, 50, 479, 394);
-		bullpenScrollPane.setViewportView(bullpenView);
-		//getContentPane().add(bullpenScrollPane, BorderLayout.CENTER);
-		//bullpenContainer.add(bullpenScrollPane);
-		bullpenContainer.add(bullpenScrollPane);
-
-		//NEW STUFF:
-		//bullpenView.addMouseListener(new BullpenController(level, bullpenView, this));
 
 		JButton btnExitLevel = new JButton("Exit Level");
 		btnExitLevel.addActionListener(new ExitLevelController(this, levelSelector, game));
