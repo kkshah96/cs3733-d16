@@ -47,7 +47,7 @@ public class TestBoard extends TestCase {
 		Piece piece1 = PieceFactory.getPiece(1);
 		Piece piece2 = PieceFactory.getPiece(2);
 		
-		assertFalse(board.addPiece(piece1, 0, 0));
+		assertFalse(board.validPlacement(piece1, 0, 0));
 		assertTrue(board.addPiece(piece1, 7, 7));
 		
 		assertEquals(null, board.getPiece(7, 8));
@@ -56,9 +56,9 @@ public class TestBoard extends TestCase {
 		assertEquals(piece1, board.getPiece(7, 2));
 		assertEquals(piece1, board.getPiece(7, 7));
 		
-		assertFalse(board.addPiece(piece2, 7, 6));
-		assertFalse(board.addPiece(piece2, 7, 7));
-		assertFalse(board.addPiece(piece2, 7, 11));
+		assertFalse(board.validPlacement(piece2, 7, 6));
+		assertFalse(board.validPlacement(piece2, 7, 7));
+		assertFalse(board.validPlacement(piece2, 7, 11));
 		
 		assertEquals(piece1, board.removePiece(piece1));
 
@@ -77,17 +77,17 @@ public class TestBoard extends TestCase {
 		assertFalse(board.getSquare(9, 6).isValid());
 
 		// Off board edge
-		assertFalse(board.addPiece(piece1, 4, 0));
-		assertFalse(board.addPiece(piece1, 9, 1));
-		assertFalse(board.addPiece(piece1, 9, 2));
-		assertFalse(board.addPiece(piece1, 9, 3));
-		assertFalse(board.addPiece(piece1, 9, 4));
+		assertFalse(board.validPlacement(piece1, 4, 0));
+		assertFalse(board.validPlacement(piece1, 9, 1));
+		assertFalse(board.validPlacement(piece1, 9, 2));
+		assertFalse(board.validPlacement(piece1, 9, 3));
+		assertFalse(board.validPlacement(piece1, 9, 4));
 		
 		// Intersects with invalid square (out-of-bounds)
-		assertFalse(board.addPiece(piece1, 9, 6));
-		assertFalse(board.addPiece(piece1, 9, 9));
-		assertFalse(board.addPiece(piece1, 9, 10));
-		assertFalse(board.addPiece(piece1, 9, 11));
+		assertFalse(board.validPlacement(piece1, 9, 6));
+		assertFalse(board.validPlacement(piece1, 9, 9));
+		assertFalse(board.validPlacement(piece1, 9, 10));
+		assertFalse(board.validPlacement(piece1, 9, 11));
 		
 		// Valid
 		assertTrue(board.addPiece(piece1, 9, 5));
