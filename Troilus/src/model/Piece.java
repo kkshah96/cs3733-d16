@@ -2,9 +2,6 @@ package model;
 
 import java.awt.Color;
 
-// TODO: Should we make Piece subclasses for level types so square types are consistent?
-// Why would we want to do that??
-
 /**
  * Class allows for storage and manipulation of Piece structure.
  * 
@@ -18,6 +15,9 @@ import java.awt.Color;
  *
  */
 public class Piece {
+	/** Constant to denote Piece size (number of squares) */
+	public static final int PIECE_SIZE = 6;
+	
 	/** A constant provided to indicate a CCW rotation is requested. */
 	public static final int ROTATE_CCW = -1;
 	
@@ -48,8 +48,8 @@ public class Piece {
 		this.type = type;
 		this.color = c;
 		
-		if(squares.length != 5) {
-			throw new RuntimeException("Piece [" + type + "] must have an array of 5 squares. " + squares.length + " were passed in.");
+		if(squares.length != PIECE_SIZE - 1) {
+			throw new RuntimeException("Piece [" + type + "] must have an array of " + PIECE_SIZE + " squares. " + squares.length + " were passed in.");
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class Piece {
 	
 	/**
 	 * Returns the int representation of the piece's type.
-	 * @return Int from 1-35 indicating piece type
+	 * @return int from 1-35 indicating piece type
 	 */
 	public int getType() {
 		return type;
@@ -101,16 +101,14 @@ public class Piece {
 	public Piece rotatePiece(int direction){ //CCW: degree < 0
 		PieceSquare[] newSquares = new PieceSquare[5];
 
-		for(int i = 0; i < 5; i++){
+		for (int i = 0; i < PIECE_SIZE - 1; i++) {
 			if(direction == Piece.ROTATE_CCW){ //ROTATE CCW
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 				
 				PieceSquare newSquare = new PieceSquare((-1) * oldCol, oldRow);
 				newSquares[i] = newSquare;
-			}
-			
-			else if(direction == Piece.ROTATE_CW){ //ROTATE CW
+			} else if(direction == Piece.ROTATE_CW){ //ROTATE CW
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
@@ -120,6 +118,7 @@ public class Piece {
 				return this;
 			}
 		}
+		
 		return new Piece(newSquares, anchor, type, color); // TODO: Implement this
 	}
 	
@@ -132,16 +131,14 @@ public class Piece {
 	public Piece flipPiece(int direction){
 		PieceSquare[] newSquares = new PieceSquare[5];
 		
-		for(int i = 0; i < 5; i++){
+		for (int i = 0; i < PIECE_SIZE - 1; i++) {
 			if(direction == Piece.FLIP_HORIZONTALLY){ // FLIP HORIZONTAL
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
 				PieceSquare newSquare = new PieceSquare(oldRow, (-1) * oldCol);
 				newSquares[i] = newSquare;
-			}
-			
-			else if(direction == Piece.FLIP_VERTICALLY){ //FLIP VERTICAL
+			} else if(direction == Piece.FLIP_VERTICALLY){ //FLIP VERTICAL
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
@@ -151,37 +148,35 @@ public class Piece {
 				return this;
 			}
 		}
+		
 		return new Piece(newSquares, anchor, type, color); // TODO: Implement this
 	}
-
-	public Piece place(int row, int col) {
-		// TODO Do we need this method any more?
-		return this;
-	}
 	
-	// This method needs to be updated if anchor square uses relative coordinates
-	// TODO: Update this method
-	public boolean overlaps(int row, int col, int anchorRow, int anchorCol) {
-		//int anchorRow = this.getRow();
-		//int anchorCol = this.getCol();
-		
-		if (anchorRow == row && anchorCol == col) {
-			return true;
+	/* Returns true if the two Pieces are the same type, shape, and orientation */
+	public boolean sameShape(Piece other) {
+		if (type != other.type) {
+			return false;
 		}
-		for (PieceSquare square : squares) {
-			if (anchorRow + square.getRow() == row && anchorCol + square.getCol() == col) {
-				return true;
+		
+		for (int i = 0; i < PIECE_SIZE - 1; i++) {
+			int row = squares[i].getRow();
+			int col = squares[i].getCol();
+			int otherRow = other.squares[i].getRow();
+			int otherCol = other.squares[i].getCol();
+			
+			if (!(row == otherRow && col == otherCol)) {
+				return false;
 			}
 		}
 		
-		return false;
+		return true;
 	}
 	
-	public Color getColor(){
+	public Color getColor() {
 		return color;
 	}
 	
-	public void setColor(Color c){
+	public void setColor(Color c) {
 		this.color = c;
 	}
 }

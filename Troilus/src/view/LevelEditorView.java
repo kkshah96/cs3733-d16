@@ -137,7 +137,7 @@ public class LevelEditorView extends JFrame {
 		bullpenView.setBounds(748, 38, 457, 484);
 		
 		//NEW STUFF:
-		bullpenView.addMouseListener(new BullpenController(activeLevel, bullpenView, this));
+		bullpenView.addMouseListener(new BullpenController(activeLevel, bullpenView));
 		
 		//OLD STUFF:
 //		bullpenView.addMouseMotionListener(new MovePieceBullpenToBoardController(activeLevel, 

@@ -26,10 +26,8 @@ public class Board {
 
 	/** The 2D array of squares that compose the board. */
 	Square[][] squares; // uses squares[row][col]
-
-	/** An ArrayList of Piece to hold references to pieces on the board. */
-	//ArrayList<Piece> pieces;
-	/** Pieces on the Board, where Point holds (row, col) */
+	
+	/** Pieces on the Board, where Point holds (col, row) */
 	Hashtable<Piece, Point> pieces;
 
 	/** A reference to a square that has been clicked. */
@@ -44,7 +42,7 @@ public class Board {
 	 * @param squares 2D array of squares for the board
 	 */
 	public Board(Square[][] squares) {
-		if(squares[0].length > BOARD_HEIGHT || squares.length > BOARD_WIDTH) {
+		if (squares[0].length > BOARD_WIDTH || squares.length > BOARD_HEIGHT) {
 			throw new RuntimeException("Board Constructor exception: 2D array of Squares provided to Board exceeds max size of board!");
 		} else {
 			this.squares = squares;
@@ -78,12 +76,17 @@ public class Board {
 	public boolean addPiece(Piece p, int row, int col) {
 		// Bounds check
 		if (row < 0 || row >= BOARD_HEIGHT || col < 0 || col >= BOARD_WIDTH) {
-			System.out.println("Not in bounds");
+			//System.out.println("Not in bounds");
 			return false;
 		}
 		
-		int anchorRow = p.getAnchor().getRow();
-		int anchorCol = p.getAnchor().getCol();
+		if (p == null) {
+			System.out.println("No piece");
+			return false;
+		}
+		
+		int anchorRow = p.getAnchor().getRow() + row;
+		int anchorCol = p.getAnchor().getCol() + col;
 		
 		// TODO should anchor be separate in Piece storage?
 		if (getPiece(row, col) != null || getPiece(anchorRow, anchorCol) != null) {
@@ -96,26 +99,26 @@ public class Board {
 
 		for (PieceSquare square : p.squares) {
 			// check if each square is in board area
-			int absRow = square.row + col; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
-			int absCol = square.col + row;
+			int absRow = square.row + row; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
+			int absCol = square.col + col;
 			if (!(absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
 				return false;
 			}
 			
 			// Check if each square is in bounds
 			if (!squares[absRow][absCol].isValid()) {
-				System.out.println("Not in bounds");
+				//System.out.printf("Not in bounds: %d, %d\n", absRow, absCol);
 				return false;
 			}
 
 			// Check for overlapping pieces
 			if (getPiece(absRow, absCol) != null) {
-				System.out.println("Overlapping pieces");
+				//System.out.println("Overlapping pieces");
 				return false;
 			}	
 		}
 
-		this.pieces.put(p, new Point(row, col));
+		this.pieces.put(p, new Point(col, row));
 		return true;
 	}
 

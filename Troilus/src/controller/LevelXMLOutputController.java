@@ -71,6 +71,9 @@ public class LevelXMLOutputController {
 				PuzzleLevel puzzle = (PuzzleLevel)level;
 				rootLevelElement.setAttribute("MaxMoves", "" + puzzle.getMaxMoves());
  			}
+			else if (level.getName().equals("Release")) {
+				System.out.println("Saving relaease level");
+			}
 
 			Element bullpenElement = doc.createElement("Bullpen");
 			//int numPieces = level.getBullpen().getNumPieces();
@@ -94,10 +97,21 @@ public class LevelXMLOutputController {
 					if(squareType.equals("ReleaseSquare")) {
 						ReleaseSquare rs = (ReleaseSquare)s;
 						newSquare.setAttribute("Number", "" + rs.getNumber());
+						int red =0;
+						int green = 0;
+						int blue = 0;
 						if (rs.getNumberColor() != null) {
-							System.out.println("Saving actual color");
+							red = rs.getNumberColor().getRed();
+							green = rs.getNumberColor().getGreen();
+							blue = rs.getNumberColor().getBlue();
+							
 						}
-						newSquare.setAttribute("Color", "" + rs.getNumberColor());
+
+						// add separate fields for RGB
+						newSquare.setAttribute("ColorR", "" + red);
+						newSquare.setAttribute("ColorG", "" + green);
+						newSquare.setAttribute("ColorB", "" + blue);
+						
 					}
 					
 					newRowElement.appendChild(newSquare);

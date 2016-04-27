@@ -4,14 +4,13 @@ import java.awt.Color;
 
 import junit.framework.TestCase;
 
-
 /**
  * Test for proper behavior of piece class functionality.
  * @author Dan Alfred
+ * @author Maddy Longo
  *
  */
 public class TestPiece extends TestCase {
-
 	public TestPiece() {}
 	
 	public void testPiece() {
@@ -116,4 +115,74 @@ public class TestPiece extends TestCase {
 		assertEquals(piece6.squares[4].col, piece1.squares[4].col);
 	}
 	
+	public void testRotate() {
+		Piece piece4 = PieceFactory.getPiece(4);
+		
+		Piece piece4CCW1 = piece4.rotatePiece(Piece.ROTATE_CCW);
+		Piece piece4CCW2 = piece4CCW1.rotatePiece(Piece.ROTATE_CCW);
+		Piece piece4CCW3 = piece4CCW2.rotatePiece(Piece.ROTATE_CCW);
+		Piece piece4CCW4 = piece4CCW3.rotatePiece(Piece.ROTATE_CCW);
+
+		Piece piece4CW1 = piece4.rotatePiece(Piece.ROTATE_CW);
+		Piece piece4CW2 = piece4CW1.rotatePiece(Piece.ROTATE_CW);
+		Piece piece4CW3 = piece4CW2.rotatePiece(Piece.ROTATE_CW);
+		Piece piece4CW4 = piece4CW3.rotatePiece(Piece.ROTATE_CW);
+		
+		assertEquals(piece4CCW4.getType(), piece4CW4.getType());
+		assertTrue(piece4CW4.sameShape(piece4CCW4));
+		assertTrue(piece4CW4.sameShape(piece4));
+		
+		assertTrue(piece4CCW2.sameShape(piece4CW2));
+	}
+	
+	public void testFlipH() {
+		Piece piece5 = PieceFactory.getPiece(5);
+		
+		Piece piece5FH1 = piece5.flipPiece(Piece.FLIP_HORIZONTALLY);
+		Piece piece5FH2 = piece5FH1.flipPiece(Piece.FLIP_HORIZONTALLY);
+		
+		assertTrue(piece5.sameShape(piece5FH2));
+		assertFalse(piece5.sameShape(piece5FH1));
+	}
+	
+	public void testFlipV() {
+		Piece piece22 = PieceFactory.getPiece(22);
+		
+		Piece piece22FV1 = piece22.flipPiece(Piece.FLIP_VERTICALLY);
+		Piece piece22FV2 = piece22FV1.flipPiece(Piece.FLIP_VERTICALLY);
+		
+		assertTrue(piece22FV2.sameShape(piece22));
+		assertFalse(piece22FV1.sameShape(piece22));
+	}
+	
+	public void testFlipRotate() {
+		Piece piece21 = PieceFactory.getPiece(21);
+		
+		Piece piece21FV1 = piece21.flipPiece(Piece.FLIP_VERTICALLY);
+		Piece piece21CW1 = piece21.rotatePiece(Piece.ROTATE_CW);
+		Piece piece21CW2 = piece21CW1.rotatePiece(Piece.ROTATE_CW);
+		
+		assertFalse(piece21CW2.sameShape(piece21FV1));
+	}
+	
+	public void testFactory() {
+		Piece piece25 = PieceFactory.getPiece(25);
+		
+		PieceSquare[] pieceSquares = new PieceSquare[Piece.PIECE_SIZE - 1];
+		pieceSquares[0] = new PieceSquare(0, +1);
+		pieceSquares[1] = new PieceSquare(0, +2);
+		pieceSquares[2] = new PieceSquare(-1, +1);
+		pieceSquares[3] = new PieceSquare(-2, +1);
+		pieceSquares[4] = new PieceSquare(-3, +1);
+		Piece testPiece25 = new Piece(pieceSquares, new PieceSquare(0, 0), 25, Color.RED);
+		
+		assertTrue(piece25.sameShape(testPiece25));
+		
+		Piece piece24 = PieceFactory.getPiece(24);
+		Piece piece23 = PieceFactory.getPiece(23);
+		Piece piece23FV = piece23.flipPiece(Piece.FLIP_VERTICALLY);
+		
+		assertFalse(piece23.sameShape(piece24));
+		assertFalse(piece23.sameShape(piece23FV));
+	}
 }

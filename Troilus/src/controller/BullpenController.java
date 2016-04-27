@@ -19,10 +19,8 @@ public class BullpenController extends MouseAdapter{
 	protected Level level;
 	Piece activePiece;
 
-	public BullpenController(Level level, BullpenView bV, LevelEditorView lV) {
+	public BullpenController(Level level, BullpenView bV) {
 		super();
-
-		this.lV = lV;
 		this.bV = bV;
 		this.level = level;
 	}
@@ -86,8 +84,6 @@ public class BullpenController extends MouseAdapter{
 			}
 			// refresh the view
 			bV.repaint();
-			System.out.println(level.getActivePiece());
-
 		}
 	}
 
