@@ -6,20 +6,21 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import model.Level;
-
+import model.LightningLevel;
 import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
 
 /**
  * Controller to initialize new lightning level in Kabasuji.
+ * @author Connor Weeks
  */
 public class StartLightningLevelController implements ActionListener {
 	Kabasuji game;
-	Level level;
+	LightningLevel level;
 	LevelSelectorView levelSelector;
 
-	public StartLightningLevelController(LevelSelectorView levelSelector, Level level, Kabasuji game) {
+	public StartLightningLevelController(LevelSelectorView levelSelector, LightningLevel level, Kabasuji game) {
 		this.levelSelector = levelSelector;
 		this.level = level;
 		this.game = game;
@@ -55,8 +56,6 @@ public class StartLightningLevelController implements ActionListener {
 				window.setVisible(true);
 			}      
 		});
-		// set active level in top model to selected level
-		//game.setActiveLevel(selectedLevel);
 
 		// set visibility of level view elements to account for level type
 		levelView.getPanelPuzzleStats().setVisible(false);
@@ -66,7 +65,6 @@ public class StartLightningLevelController implements ActionListener {
 		levelView.setVisible(true);
 
 		// dispose of level selector view
-		// old levelSelector.setVisible(false);
 		levelSelector.dispose();
 	}
 }

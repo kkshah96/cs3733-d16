@@ -6,7 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import model.Level;
-
+import model.PuzzleLevel;
 import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
@@ -17,10 +17,10 @@ import view.LevelView;
  */
 public class StartPuzzleLevelController implements ActionListener {
 	Kabasuji game;
-	Level level;
+	PuzzleLevel level;
 	LevelSelectorView levelSelector;
 
-	public StartPuzzleLevelController(LevelSelectorView levelSelector, Level level, Kabasuji game) {
+	public StartPuzzleLevelController(LevelSelectorView levelSelector, PuzzleLevel level, Kabasuji game) {
 		this.levelSelector = levelSelector;
 		this.level = level;
 		this.game = game;
@@ -28,7 +28,6 @@ public class StartPuzzleLevelController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Level selectedLevel = game.getLevels().get(levelNumber - 1);
 
 		// if level is locked, take no action
 		if (level.isLocked()) {
@@ -56,18 +55,18 @@ public class StartPuzzleLevelController implements ActionListener {
 				window.setVisible(true);
 			}      
 		});
-		// set active level in top model to selected level
-		//game.setActiveLevel(selectedLevel);
-
+		
 		// set visibility of level view elements to account for level type
 		levelView.getPanelLightningStats().setVisible(false);
 		levelView.getPanelReleaseStats().setVisible(false);
+		
+		// initialize values
+		levelView.getMovesLabel().setText("" + level.getMaxMoves());
 
 		// show level view
 		levelView.setVisible(true);
 		
 		// dispose of level selector view
-		// old levelSelector.setVisible(false);
 		levelSelector.dispose();
 		
 	}

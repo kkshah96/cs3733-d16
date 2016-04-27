@@ -42,6 +42,8 @@ public class LevelView extends JFrame{
 	private JPanel panelLightningStats;
 	private JPanel panelReleaseStats;
 	JButton flipPieceHButton;
+	
+	JLabel movesLabel;
 
 	LevelSelectorView levelSelector;
 	Kabasuji game;
@@ -163,7 +165,7 @@ public class LevelView extends JFrame{
 		panel.add(panelPuzzleStats);
 
 		// TODO remove hard-coded vals!
-		JLabel movesLabel = new JLabel("Moves: 40/50");
+		movesLabel = new JLabel("Moves: 40/50");
 		movesLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		movesLabel.setBounds(6, 7, 99, 22);
 		panelPuzzleStats.add(movesLabel);
@@ -221,6 +223,10 @@ public class LevelView extends JFrame{
 		label.setBounds(6, 6, 161, 20);
 		panelLightningStats.add(label);
 		label.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+	}
+	
+	public JLabel getMovesLabel() {
+		return movesLabel;
 	}
 
 	public JPanel getPanelPuzzleStats() {

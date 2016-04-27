@@ -7,6 +7,9 @@ import javax.swing.JButton;
 
 import model.Kabasuji;
 import model.Level;
+import model.LightningLevel;
+import model.PuzzleLevel;
+import model.ReleaseLevel;
 import view.LevelSelectorView;
 
 /**
@@ -50,13 +53,13 @@ public class StartLevelSelectorController {
 			currentButton.setVisible(true);
 			currentButton.setText("Level " + currentLevel.getLevelNum() + ": " + name);
 			if (name.equals("Puzzle")) {
-				currentButton.addActionListener(new StartPuzzleLevelController(levelSelectorView, currentLevel, game));
+				currentButton.addActionListener(new StartPuzzleLevelController(levelSelectorView, (PuzzleLevel)currentLevel, game));
 			}
 			else if (name.equals("Lightning")) {
-				currentButton.addActionListener(new StartLightningLevelController(levelSelectorView, currentLevel, game));
+				currentButton.addActionListener(new StartLightningLevelController(levelSelectorView, (LightningLevel)currentLevel, game));
 			}
 			else if (name.equals("Release")) {
-				currentButton.addActionListener(new StartReleaseLevelController(levelSelectorView, currentLevel, game));
+				currentButton.addActionListener(new StartReleaseLevelController(levelSelectorView, (ReleaseLevel)currentLevel, game));
 			}
 			labels.get(i).setVisible(true);
 			
