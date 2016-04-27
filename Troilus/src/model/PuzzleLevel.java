@@ -1,12 +1,13 @@
 package model;
 
 /**
- * Represents a Level of game type Puzzle in the Kabasuji game
+ * Represents a Level of game type Puzzle in the Kabasuji game.
  * 
- * The PuzzleLevel structure stores the the maximum number of moves the Player is allowed to perform as well as the number of moves remaining
+ * The PuzzleLevel structure stores the the maximum number of moves
+ * the Player is allowed to perform as well as the number of moves remaining.
  * 
  * @author Kunal Shah
- *
+ * @author Maddy Longo
  */
 public class PuzzleLevel extends Level {
 	int maxMoves;

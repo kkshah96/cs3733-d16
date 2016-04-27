@@ -30,6 +30,7 @@ import controller.SetMaxMovesController;
 import controller.SetSquareNumberColorController;
 import controller.SetSquareNumberController;
 import controller.SetTimeLimitController;
+import controller.ToggleHintController;
 import controller.ToggleSquareController;
 import model.Level;
 import model.LevelBuilder;
@@ -99,6 +100,7 @@ public class LevelEditorView extends JFrame {
 		boardView.addMouseListener(new BoardController(activeLevel, boardView));
 		boardView.addMouseMotionListener(new BoardController(activeLevel, boardView));
 		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
+		
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
 		bullpenContainer.setLayout(null);
@@ -327,6 +329,7 @@ public class LevelEditorView extends JFrame {
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		btnToggleHint.setBounds(564, 0, 91, 38);
 		panel_1.add(btnToggleHint);
+btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView));
 
 		JLabel lblSquare = new JLabel("Square:");
 		lblSquare.setHorizontalAlignment(SwingConstants.CENTER);

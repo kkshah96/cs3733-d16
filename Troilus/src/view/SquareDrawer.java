@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import model.Board;
+import model.HintSquare;
 import model.LightningSquare;
 import model.ReleaseSquare;
 import model.Square;
@@ -24,6 +25,7 @@ public class SquareDrawer {
 	public static final Color VALID_ACTIVE_COLOR = Color.GRAY;
 	public static final Color INVALID_ACTIVE_COLOR = Color.RED;
 	public static final Color INVALID_COLOR = Color.LIGHT_GRAY;
+	public static final Color HINT_COLOR = Color.YELLOW;
 	public static final int BUFFER_HEIGHT = 20;
 	public static final int BUFFER_WIDTH = 10;
 	int x, y, size;
@@ -42,13 +44,16 @@ public class SquareDrawer {
 		}
 
 		if (square.equals(board.getActiveSquare())) {
-			if (square.isValid()) {
+			if(square.getType().equals("HintSquare")){
+				return HINT_COLOR;
+			}
+			 if (square.isValid()) {
 				return VALID_ACTIVE_COLOR;
 			} else {
 				return INVALID_ACTIVE_COLOR;
 			}
 		} else {
-			if (square.isValid()) {
+			 if (square.isValid()) {
 				return VALID_COLOR;
 			} else {
 				return INVALID_COLOR;
@@ -59,13 +64,21 @@ public class SquareDrawer {
 	public void paint(Graphics g, int x, int y, Square square) {
 		g.setColor(Color.BLACK);
 		g.drawRect(x, y, size, size);
-
+		
+	
 		Color c = findColor(square);
 		if (c != null) {
 			g.setColor(c);
 			g.fillRect(x + 1, y + 1, size - 2, size - 2);
 		}
-
+//		
+//		if (square instanceof HintSquare){
+//			g.setColor(Color.YELLOW);
+//			g.fillRect(x + 1, y + 1, size - 2, size - 2);
+//		
+//		}
+		
+		
 		if (square instanceof ReleaseSquare) {
 			int releaseNumber = ((ReleaseSquare) square).getNumber();
 			Color releaseColor = ((ReleaseSquare) square).getNumberColor();
@@ -77,5 +90,6 @@ public class SquareDrawer {
 				g.fillRect(x + 1, y + 1, size - 2, size - 2);
 			}
 		}
+		
 	}
 }

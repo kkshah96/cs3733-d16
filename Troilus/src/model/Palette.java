@@ -18,7 +18,6 @@ public class Palette {
 
 	// TODO: Handle checking there are exactly 35 pieces at execution time? 
 	public Palette(){
-
 		pieces = new ArrayList<Piece>();
 		initialize();
 	}
@@ -28,7 +27,7 @@ public class Palette {
 	}*/
 
 	// TODO: Assumed we would need to be able to get a piece from the Palette so I added this
-	public Piece getPiece(int row, int col){
+	public Piece getPiece(int row, int col) {
 		//Set<Piece> keySet = pieces.keySet();
 		//for (Piece piece : keySet) {
 			//Point p = pieces.get(piece);
@@ -37,20 +36,20 @@ public class Palette {
 			//}
 		//}
 		//return null;
-		for(int i = 0; i < pieces.size(); i++){
-			if(pieces.get(i).getRow() == row && pieces.get(i).getCol() == col){
+		for (int i = 0; i < pieces.size(); i++) {
+			if (pieces.get(i).getRow() == row && pieces.get(i).getCol() == col) {
 				return pieces.get(i);
 			}
 		}
 		return null;
 	}
 	
-	public ArrayList<Piece> getPieces(){
+	public ArrayList<Piece> getPieces() {
 		return this.pieces;
 	}
 	
-	private void initialize(){
-		for(int i = 0; i < NUM_PIECES; i++){
+	private void initialize() {
+		for(int i = 0; i < NUM_PIECES; i++) {
 			pieces.add(PieceFactory.getPiece(i+1));
 		}
 	}
