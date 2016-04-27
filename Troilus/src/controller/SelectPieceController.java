@@ -9,7 +9,7 @@ import model.LevelBuilder;
 import model.Piece;
 import view.BoardView;
 import view.LevelLoaderView;
-import view.velL;
+import view.LevelView;
 
 /** 
  * Controls the selection of a piece on the board or bullpen.
@@ -25,11 +25,11 @@ import view.velL;
 public class SelectPieceController extends MouseAdapter {
 	Kabasuji game;
 	Level level;
-	velL levelView;
+	LevelView levelView;
 	LevelBuilder builder;
 	LevelLoaderView editorView;
 
-	public SelectPieceController(Kabasuji game,Level level, velL levelView){
+	public SelectPieceController(Kabasuji game,Level level, LevelView levelView){
 		this.level = level;
 		this.game = game;
 		this.levelView = levelView;

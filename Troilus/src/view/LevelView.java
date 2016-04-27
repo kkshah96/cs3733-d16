@@ -36,7 +36,7 @@ import model.Piece;
  * @author Maddy Longo
  *
  */
-public class LevelView extends JFrame implements velL{
+public class LevelView extends JFrame {
 	private JPanel panelTitle;
 	private JLabel levelLabel;
 	private JPanel panelPuzzleStats;
