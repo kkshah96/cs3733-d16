@@ -25,6 +25,9 @@ public class Kabasuji {
 		// load levels into the list of levels
 		levels = loader.loadLevels();
 		
+		// automatically unlock first level
+		levels.get(0).setLocked(false);
+		
 		
 		// stubs for testing:
 		
