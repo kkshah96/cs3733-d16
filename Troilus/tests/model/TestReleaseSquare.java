@@ -6,13 +6,21 @@ import org.junit.Test;
 
 import junit.framework.TestCase;
 
-public class TestReleaseSquare extends TestCase{
+public class TestReleaseSquare extends TestCase {
 	ReleaseSquare rSquare;
 	Color color;
 
 	protected void setUp() {
 		color = new Color(23);
-		rSquare = new ReleaseSquare(2,2, true, 4, color);
+		rSquare = new ReleaseSquare(2, 2, true, 4, color);
+	}
+	
+	public void testDefaults() {
+		ReleaseSquare rSquare2 = new ReleaseSquare(5, 4, false);
+		
+		assertEquals(0, rSquare2.getNumber());
+		assertEquals(null, rSquare2.getNumberColor());
+		assertFalse(rSquare2.isValid());
 	}
 
 	@Test
@@ -22,6 +30,10 @@ public class TestReleaseSquare extends TestCase{
 		assertFalse(rSquare.setNumber(7));
 
 		assertEquals(6, rSquare.getNumber());
+		
+		assertTrue(rSquare.setNumber(0));
+		
+		assertEquals(0, rSquare.getNumber());
 	}
 
 	public void testSetColor() {
@@ -32,5 +44,17 @@ public class TestReleaseSquare extends TestCase{
 		
 		Color color2 = Color.RED;
 		assertTrue(rSquare.setNumberColor(color2));
+		
+		assertEquals(color2, rSquare.getNumberColor());
+	}
+	
+	public void testToggle() {
+		assertTrue(rSquare.setNumber(1));
+		assertTrue(rSquare.setNumberColor(Color.BLUE));
+		
+		rSquare.setIsValid(false);
+		
+		assertEquals(1, rSquare.getNumber());
+		assertEquals(Color.BLUE, rSquare.getNumberColor());
 	}
 }

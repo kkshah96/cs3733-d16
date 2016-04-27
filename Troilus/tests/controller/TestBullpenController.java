@@ -23,7 +23,6 @@ public class TestBullpenController extends TestCase {
 
 	public void testBullpenController() {
 		// Initialization things
-		
 		Square[][] squares = new PuzzleSquare[Board.BOARD_HEIGHT][Board.BOARD_WIDTH];
 		for (int i = 0; i < Board.BOARD_HEIGHT; i++) {
 			for (int j = 0; j < Board.BOARD_WIDTH; j++) {
@@ -50,12 +49,9 @@ public class TestBullpenController extends TestCase {
 		level.getBullpen().addPiece(piece1);
 		lsView.getBullpenView().getDrawnPieces().put(piece1, new Point(0,0));
 		assertEquals(1, lsView.getBullpenView().getDrawnPieces().size());
-		bpController.handleMousePressed(new Point(BullpenView.WIDTH_OFFSET + 5
-				, BullpenView.HEIGHT_OFFSET + 5), MouseEvent.BUTTON1);
+		bpController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
 		
 		// Assert that this click has set the active piece
 		assertEquals(piece1, level.getActivePiece());
-		
 	}
-	
 }
