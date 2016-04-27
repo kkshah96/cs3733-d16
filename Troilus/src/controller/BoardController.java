@@ -55,6 +55,8 @@ public class BoardController extends MouseAdapter {
 			// TODO fix this logic!
 			if (level.getMoveSource() == null) {
 				level.setMoveSource("Board");
+				level.setActivePiece(level.getBoard().getPiece(col, row));
+				//boardView.addDraggedPiece(activePiece, me.getPoint());
 			}
 			
 			if (level.getMoveSource() == "Bullpen") {
@@ -66,8 +68,9 @@ public class BoardController extends MouseAdapter {
 				} else {
 					System.out.println("Failure!");
 				}
+				level.setMoveSource(null);
 			} else if (level.getMoveSource() == "Board") {
-				BoardToBoardMove m = new BoardToBoardMove(level, activePiece, col, row);
+				BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row);
 
 				if (m.doMove()) {
 					//push move here

@@ -267,7 +267,8 @@ public class LevelEditorView extends JFrame {
 		maxMovesField.setBounds(101, 4, 74, 28);
 		maxMovesPanel.add(maxMovesField);
 		maxMovesField.setColumns(10);
-		maxMovesField.addActionListener(new SetMaxMovesController(activeLevel, this));
+		
+		//maxMovesField.addActionListener(new SetMaxMovesController(activeLevel, this));
 
 		timePanel = new JPanel();
 		timePanel.setBounds(468, 0, 279, 38);
@@ -348,7 +349,7 @@ public class LevelEditorView extends JFrame {
 		releaseNumberComboBox.setBounds(66, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseNumberComboBox);
 		releaseNumberComboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"None", "1", "2", "3", "4", "5", "6"}));
-		releaseNumberComboBox.addActionListener(new SetSquareNumberController(activeLevel, this));
+		//releaseNumberComboBox.addActionListener(new SetSquareNumberController(activeLevel, this));
 
 		JLabel lblNumberColor = new JLabel("Number Color:");
 		lblNumberColor.setBounds(150, 11, 97, 16);
@@ -363,7 +364,7 @@ public class LevelEditorView extends JFrame {
 		setBounds(100, 100, 1207, 751);
 		//pView.setPreferredSize(new Dimension(500, 500));
 		//pView.setLayout(null);
-		releaseColorComboBox.addActionListener(new SetSquareNumberColorController(activeLevel, this));
+		//releaseColorComboBox.addActionListener(new SetSquareNumberColorController(activeLevel, this));
 
 		//releaseColorComboBox.getSelectedItem().toString() //TODO: This is how to get the selected option
 		JScrollPane scrollPane = new JScrollPane();
@@ -376,9 +377,9 @@ public class LevelEditorView extends JFrame {
 		
 		// Initialize Controllers
 		paletteView.addMouseListener(new MovePiecePaletteToBullpenController(activeLevel, bullpenView, paletteView));
-		if (activeLevel.getName().equals("Lightning")) {
-			btnSetTime.addActionListener(new SetTimeLimitController(activeLevel, this));
-		}
+		//if (activeLevel.getName().equals("Lightning")) {
+			//btnSetTime.addActionListener(new SetTimeLimitController(activeLevel, this));
+		//}
 	}
 
 	public void setLevelType(String type){
