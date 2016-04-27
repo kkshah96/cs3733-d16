@@ -49,7 +49,7 @@ public class NewPuzzleLevelController implements ActionListener {
 		
 		Palette p = new Palette();
 		
-		PuzzleLevel newPuzzleLevel = new PuzzleLevel(builder.getLevels().size(), true, bpen, board, p, 0);
+		PuzzleLevel newPuzzleLevel = new PuzzleLevel(builder.getLevels().size() + 1, true, bpen, board, p, 0);
 		builder.addLevel(newPuzzleLevel);
 		
 		final LevelEditorView newEditorView = new LevelEditorView(builder, loaderView, newPuzzleLevel);

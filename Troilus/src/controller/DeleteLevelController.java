@@ -1,6 +1,8 @@
 package controller;
 
 
+import java.util.ArrayList;
+
 import model.Level;
 import model.LevelBuilder;
 
@@ -26,7 +28,13 @@ public class DeleteLevelController {
 
 	public void process() {
 		// remove level from level builder
-		levelBuilder.getLevels().remove(level);
+		ArrayList<Level> levels = levelBuilder.getLevels();
+		levels.remove(level);
+		
+		// reset level number
+		for (int i = 0; i < levels.size(); i++) {
+			levels.get(i).setLevelNum(i + 1);
+		}
 
 		// save all levels 
 		new LevelFileOutputController(levelBuilder);
