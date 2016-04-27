@@ -135,7 +135,7 @@ public class LevelView extends JFrame {
 		bullpenView.setBackground(Color.LIGHT_GRAY);
 		bullpenView.setBounds(748, 38, 457, 484);
 		// BullpenController
-		bullpenView.addMouseListener(new BullpenController(level, bullpenView));
+		bullpenView.addMouseListener(new BullpenController(level, bullpenView, boardView));
 
 		bullpenScrollPane.setBounds(6, 50, 479, 394);
 		bullpenScrollPane.setViewportView(bullpenView);

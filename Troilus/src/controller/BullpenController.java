@@ -5,10 +5,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Hashtable;
 import java.util.Set;
+
 import model.Bullpen;
 import model.Level;
 import model.Piece;
 import model.Square;
+import view.BoardView;
 import view.BullpenView;
 
 /**
@@ -19,12 +21,14 @@ import view.BullpenView;
 public class BullpenController extends MouseAdapter {
 	protected Level level;
 	protected BullpenView bullpenView;
+	protected BoardView boardView;
 	Piece activePiece;
 
-	public BullpenController(Level level, BullpenView bullpenView) {
+	public BullpenController(Level level, BullpenView bullpenView, BoardView boardView) {
 		super();
 		this.level = level;
 		this.bullpenView = bullpenView;
+		this.boardView = boardView;
 	}
 
 	// TODO why do this??
@@ -32,6 +36,7 @@ public class BullpenController extends MouseAdapter {
 		handleMousePressed(me.getPoint(), me.getButton());
 	}
 	
+	// TODO Is there a reason we need a different method? 
 	void handleMousePressed(Point p, int mouseButton) {
 		
 		int x = p.x;
@@ -95,6 +100,24 @@ public class BullpenController extends MouseAdapter {
 				level.setActivePiece(activePiece);
 			}
 			// refresh the view
+			bullpenView.repaint();
+		}
+	}
+	
+	// TODO This requires passing the BullpenController a BoardView. We can probably find a better solution
+	public void mouseEntered(MouseEvent me){
+		activePiece = level.getActivePiece();
+
+		if (boardView.getDraggedPiece() != null) {
+			
+			if(!level.getBullpen().getPieces().contains(boardView.getDraggedPiece())){
+				level.getBullpen().addPiece(boardView.getDraggedPiece());
+			}
+			
+			boardView.removeDraggedPiece();
+			level.setActivePiece(null);
+			
+			boardView.repaint();
 			bullpenView.repaint();
 		}
 	}
