@@ -6,12 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import model.Kabasuji;
-import view.LevelSelectorView;
 import view.LevelView;
 
 /**
  * Controls the behavior of the timer during lightning levels.
- * @author Connor
+ * @author Connor Weeks
  *
  */
 public class TimerController {
@@ -34,7 +33,7 @@ public class TimerController {
 	 * ExitLevelController and end the level.
 	 */
 	public void process() {
-		System.out.println("process 1");
+		
 		// create timer 
 		timer = new Timer(ONE_SECOND, new ActionListener() {
 
@@ -62,7 +61,8 @@ public class TimerController {
 				}
 			}    
 		});
-		System.out.println("process");
+		
+		// start timer
 		timer.start();
 
 	}
