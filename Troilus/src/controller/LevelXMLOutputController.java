@@ -12,6 +12,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import model.Board;
 import model.Bullpen;
 import model.Level;
 import model.LightningLevel;
@@ -76,8 +77,8 @@ public class LevelXMLOutputController {
 			}
 
 			Element bullpenElement = doc.createElement("Bullpen");
-			//int numPieces = level.getBullpen().getNumPieces();
 			Bullpen bullpen = level.getBullpen();
+			
 			for (Piece piece : bullpen.getPieces()) {
 				Element pieceElement = doc.createElement("Piece");
 				pieceElement.setAttribute("Number", "" + piece.getType()); //TODO: Fix first parameter
@@ -85,14 +86,21 @@ public class LevelXMLOutputController {
 			}
 			
 			Element boardElement = doc.createElement("Board");
-			for(int i = 0; i < 12; i++) {
-				// Looping to add the 12 rows
+			for(int i = 0; i < Board.BOARD_HEIGHT; i++) {
+				
+				// create element for each row
 				Element newRowElement = doc.createElement("Row");
-				for(int j = 0; j < 12; j++) {
+				
+				for(int j = 0; j < Board.BOARD_WIDTH; j++) {
+					
+					// add squares to row
 					Square s = level.getBoard().getSquare(j, i);
 					String squareType = s.getType();
 					Element newSquare = doc.createElement(squareType);
+					
+					// set hint and valid attributes
 					newSquare.setAttribute("Valid", "" + s.isValid());
+					newSquare.setAttribute("Hint", "" + s.isHint());
 					
 					if(squareType.equals("ReleaseSquare")) {
 						ReleaseSquare rs = (ReleaseSquare)s;

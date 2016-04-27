@@ -26,6 +26,13 @@ public abstract class Square {
 		isHint = false;
 	}
 	
+	public Square(int col, int row, boolean isValid, boolean isHint) {
+		this.row = row;
+		this.col = col;
+		this.isValid = isValid;
+		this.isHint = isHint;
+	}
+	
 	public boolean isValid() {
 		return this.isValid;
 	}
