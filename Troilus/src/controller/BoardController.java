@@ -54,11 +54,12 @@ public class BoardController extends MouseAdapter{
 		}else{
 			level.setMoveSource("Bullpen");
 			if(level.getMoveSource() == "Bullpen"){
-				BullpenToBoardMove m = new BullpenToBoardMove (level, activePiece, me.getX(), me.getY());
+				BullpenToBoardMove m = new BullpenToBoardMove (level, level.getActivePiece(), me.getX(), me.getY());
 
 				if (m.doMove ()) {
 				//push move here
 					System.out.println("Success!");
+					bV.repaint();
 				} else {
 					System.out.println("Failure!");
 				}
