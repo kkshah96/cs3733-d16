@@ -34,30 +34,26 @@ public class BoardController extends MouseAdapter {
 		int x = me.getX();
 		int y = me.getY();
 
+		if (boardView == null) {
+			System.out.println("BoardView was null!");
+			return;
+		}
+		
 		// TODO Someone remind me how we calculated these values
 		// They are from the GUI (converting so Entity can understand)
 		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 
-		if (boardView == null) {
-			System.out.println("BoardView was null!");
-			return;
-		}
-
 		// TODO WE SHOULD DELEGATE THIS TO THE UNDO MOVE THING
 		// TODO NO BECAUSE IT IS NOT UNDOING A MOVE
 		if (me.getButton() == MouseEvent.BUTTON3) { // We have right clicked
-			Piece pToRemove = level.getBoard().getPiece(col, row);	
-
-			if (pToRemove == null) {
-				return; // TODO: Is there a better way to handle this?
+			BoardToBullpenMove mBToBP = new BoardToBullpenMove(level, col, row);
+			if (mBToBP.doMove()) {
+				boardView.removeDraggedPiece();
+				// push move
+			} else {
+				System.out.println("Error: Unable to remove piece from board");
 			}
-
-			// TODO: BoardToBullpenMove
-			Piece p = level.getBoard().removePiece(pToRemove);
-			level.getBullpen().addPiece(level.getBoard().removePiece(p));
-
-			boardView.repaint();
 		} else {
 			level.setMoveSource("Bullpen");
 			if (level.getMoveSource() == "Bullpen") {
@@ -65,24 +61,20 @@ public class BoardController extends MouseAdapter {
 				if (m.doMove()) {
 					//push move here
 					System.out.println("Success!");
-					boardView.repaint();
+					boardView.removeDraggedPiece();
 				} else {
 					System.out.println("Failure!");
 				}
-
-				boardView.removeDraggedPiece();
-				//level.getBullpen().removePiece(activePiece); I Put this in the move itself instead
-				//level.removeActivePiece();
 			} else if (level.getMoveSource() == "Board") {
 				BoardToBoardMove m = new BoardToBoardMove(level, activePiece, col, row);
 
 				if (m.doMove()) {
 					//push move here
+					boardView.removeDraggedPiece();
 					System.out.println("Success!");
 				} else {
 					System.out.println("Failure!");
 				}
-				boardView.removeDraggedPiece();
 			} else {
 				System.err.println("Invalid source when moving to Board");
 			}
@@ -95,6 +87,7 @@ public class BoardController extends MouseAdapter {
 		//if(activePiece == null){
 		//System.out.println("No piece clicked");
 		//	}
+		boardView.repaint();
 	}
 
 	public void mouseMoved(MouseEvent me){
