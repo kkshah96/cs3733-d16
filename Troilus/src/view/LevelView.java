@@ -66,8 +66,11 @@ public class LevelView extends JFrame{
 		this.levelSelector = levelSelector;
 		this.game = game;
 		this.level = level;
+		this.isActive = true;
+		// set isActive to false for timer when window closes
 		this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
+            @SuppressWarnings("unused")
+			public void windowClosing(WindowEvent e) {
                 isActive = false;
             }
         });
