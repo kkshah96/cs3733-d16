@@ -9,54 +9,44 @@ import view.BoardView;
  * 
  * THIS NEEDS TO BE FINISHED!
  * @author Alex Kasparek
+ * @author Maddy
  *
  */
 public class BoardToBoardMove {
-	
-	Level l;
-	Piece pieceMoved;
-	int x;
-	int y;
-	
-	public BoardToBoardMove(Level l, Piece pieceMoved, int x, int y){
-		this.l = l;
-		this.pieceMoved = pieceMoved;	
-		this.x = x;
-		this.y = y;
+	Level level;
+	Piece movingPiece;
+	int col;
+	int row;
+
+	public BoardToBoardMove(Level level, Piece movingPiece, int col, int row) {
+		this.level = level;
+		this.movingPiece = movingPiece;	
+		this.col = col;
+		this.row = row;
 	}
-	
-	public boolean doMove(){
-		if(isValid() == false){
+
+	public boolean doMove() {
+		if (!isValid(movingPiece, col, row)) {
 			System.out.println("Invalid move!");
 			return false;
 		}
-		else{
-			Board b  = l.getBoard();
-			
-			b.removePiece(pieceMoved);
-			
-			boolean result = b.addPiece(pieceMoved, x / BoardView.SQUARE_SIZE,
-					(y - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE);
-			
-			l.removeActivePiece();
-			
-			return result;
-		}	
+		
+		Board board  = level.getBoard();
+
+		board.removePiece(movingPiece);
+		board.addPiece(movingPiece, col, row);
+
+		level.removeActivePiece();
+		return true;
 	}
-	
-	public boolean isValid(){
-		boolean validation = false;
-		
-		validation = true; //TODO: ADD THIS LOGIC!!!
-		
-		
-		return validation;
+
+	public boolean isValid(Piece piece, int col, int row) {
+		// TODO: if level.canMakeMove()...
+		return level.getBoard().validPlacement(piece, col, row);
 	}
 
 	//TODO: ADD UNDO
-	public boolean undo(){
-	
-		
+	public boolean undo() {
 		return false;
 	}
 }

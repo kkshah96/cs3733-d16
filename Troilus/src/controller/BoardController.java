@@ -14,7 +14,7 @@ import view.LevelEditorView;
 /**
  * Class to control events related to Board.
  * @author Maddy
- *
+ * @author Someone else
  */
 public class BoardController extends MouseAdapter {
 	protected LevelEditorView editorView;
@@ -29,19 +29,20 @@ public class BoardController extends MouseAdapter {
 		this.level = level;
 	}
 
-	public void mousePressed(MouseEvent me){
+	public void mousePressed(MouseEvent me) {
 		//get mouse coordinates
 		int x = me.getX();
 		int y = me.getY();
+
+		// TODO Someone remind me how we calculated these values
+		// They are from the GUI (converting so Entity can understand)
+		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
+		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 
 		if (boardView == null) {
 			System.out.println("BoardView was null!");
 			return;
 		}
-
-		// TODO Someone remind me how we calculated these values
-		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
-		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 
 		// TODO WE SHOULD DELEGATE THIS TO THE UNDO MOVE THING
 		// TODO NO BECAUSE IT IS NOT UNDOING A MOVE
@@ -52,6 +53,7 @@ public class BoardController extends MouseAdapter {
 				return; // TODO: Is there a better way to handle this?
 			}
 
+			// TODO: BoardToBullpenMove
 			Piece p = level.getBoard().removePiece(pToRemove);
 			level.getBullpen().addPiece(level.getBoard().removePiece(p));
 
@@ -59,43 +61,40 @@ public class BoardController extends MouseAdapter {
 		} else {
 			level.setMoveSource("Bullpen");
 			if (level.getMoveSource() == "Bullpen") {
-				BullpenToBoardMove m = new BullpenToBoardMove(level,
-						level.getActivePiece(), me.getX(), me.getY());
+				BullpenToBoardMove m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
 				if (m.doMove()) {
-				//push move here
+					//push move here
 					System.out.println("Success!");
 					boardView.repaint();
 				} else {
 					System.out.println("Failure!");
 				}
-				
+
 				boardView.removeDraggedPiece();
 				//level.getBullpen().removePiece(activePiece); I Put this in the move itself instead
 				//level.removeActivePiece();
 			} else if (level.getMoveSource() == "Board") {
-				BoardToBoardMove m = new BoardToBoardMove(level, activePiece, me.getX(), me.getY());
-				
-				if (m.doMove ()) {
+				BoardToBoardMove m = new BoardToBoardMove(level, activePiece, col, row);
+
+				if (m.doMove()) {
 					//push move here
-						System.out.println("Success!");
-					} else {
-						System.out.println("Failure!");
-					}
-				//	level.getBullpen().removePiece(activePiece);
-					//level.removeActivePiece();
+					System.out.println("Success!");
+				} else {
+					System.out.println("Failure!");
+				}
 				boardView.removeDraggedPiece();
 			} else {
 				System.err.println("Invalid source when moving to Board");
 			}
 		}
-		
+
 		//TODO what were these lines for again?
 
 		//activePiece = level.getBoard().getPiece(row, col);
 
 		//if(activePiece == null){
-			//System.out.println("No piece clicked");
-	//	}
+		//System.out.println("No piece clicked");
+		//	}
 	}
 
 	public void mouseMoved(MouseEvent me){
@@ -108,46 +107,10 @@ public class BoardController extends MouseAdapter {
 			boardView.repaint();
 		}
 	}
-	
+
 	@Override
 	public void mouseExited(MouseEvent me) {
 		boardView.removeDraggedPiece();
 		boardView.repaint();
 	}
-
-	/*public void mouseReleased(MouseEvent me) {
-		//From the bullpen
-
-		if(me.getSource() instanceof BoardView){ //this is incorrect, want to handle dragging something whose source is the bullpen
-			System.out.println("Should be here");
-			System.out.println("In board now!");
-
-			activePiece = level.getActivePiece();
-
-			if(activePiece == null) {
-				System.err.println("Unexpectedly encountered null piece during BullpenToBoard");
-				return;
-			}
-			BullpenToBoardMove m = new BullpenToBoardMove (level.getBullpen(), 
-					level.getBoard(), activePiece, me.getX(), me.getY());
-
-			if (m.doMove ()) {
-			//push move here
-				System.out.println("Success!");
-			} else {
-				System.out.println("Failure!");
-				//fromTableau.push (col);
-			}
-
-			level.getBullpen().removePiece(activePiece);
-			level.removeActivePiece();
-		}
-		//Dragging from board to board:
-		else if(me.getSource() instanceof BoardView){
-
-		}
-
-	lV.repaint();
-
-	}//end mouseReleased*/
 }

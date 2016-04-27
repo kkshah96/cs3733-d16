@@ -4,29 +4,31 @@ import model.Board;
 import model.Bullpen;
 import model.Level;
 import model.Piece;
-import model.PieceSquare;
 import view.BoardView;
 
+/** 
+ * Class for implementation of moving a piece from board to bullpen
+ * @author Maddy
+ * @author Someone Else
+ */
 public class BullpenToBoardMove {
 	Level level;
 	Piece pieceMoved;
-	int x;
-	int y;
+	int col;
+	int row;
 
-	public BullpenToBoardMove(Level level, Piece pieceMoved, int x, int y){
+	public BullpenToBoardMove(Level level, Piece pieceMoved, int col, int row) {
 		this.level = level;
 		this.pieceMoved = pieceMoved;
-		this.x = x;
-		this.y = y;
+		this.col = col;
+		this.row = row;
 	}
 
 	/** Adds the piece to the Board if valid */
 	public boolean doMove() {
 		Bullpen bpen = level.getBullpen();
 		Board board = level.getBoard();
-
-		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
-		int row = (y - BoardView.SQUARE_SIZE)/BoardView.SQUARE_SIZE;
+		
 		if (!isValid(pieceMoved, col, row)) {
 			return false;
 		}
