@@ -25,7 +25,7 @@ public class ToggleHintController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Need to implement this.");
-		//level.getBoard().toggleHint();
-		//boardView.repaint();
+		level.getBoard().toggleHint();
+		boardView.repaint();
 	}
 }

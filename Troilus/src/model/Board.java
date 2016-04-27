@@ -220,22 +220,14 @@ public class Board {
 		activeSquare.isValid = !activeSquare.isValid;
 	}
 	
-//	public void toggleHint(){
-//		
-//		if(activeSquare == null){
-//			return;
-//		}
-//		else{
-//			int row = activeSquare.getRow();
-//			int col = activeSquare.getCol();
-//			if(!(activeSquare instanceof HintSquare)){
-//				Square s = new HintSquare(row, col, true);
-//				squares[col][row] = s;
-//			}
-//			else{
-//				squares[col][row] = new PuzzleSquare(row, col, true);
-//			}
-//		}
-//		
-//	}
+	public void toggleHint(){
+		
+		if(activeSquare == null){
+			return;
+		}
+		else{
+			activeSquare.setHint();
+		}
+		
+	}
 }

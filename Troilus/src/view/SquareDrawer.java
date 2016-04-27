@@ -44,9 +44,6 @@ public class SquareDrawer {
 		}
 
 		if (square.equals(board.getActiveSquare())) {
-			if(square.getType().equals("HintSquare")){
-				return HINT_COLOR;
-			}
 			 if (square.isValid()) {
 				return VALID_ACTIVE_COLOR;
 			} else {
@@ -71,12 +68,13 @@ public class SquareDrawer {
 			g.setColor(c);
 			g.fillRect(x + 1, y + 1, size - 2, size - 2);
 		}
-//		
-//		if (square instanceof HintSquare){
-//			g.setColor(Color.YELLOW);
-//			g.fillRect(x + 1, y + 1, size - 2, size - 2);
-//		
-//		}
+		
+		if(square.getHintStatus() == true){
+			g.setColor(Color.YELLOW);
+			g.drawRect(x + 1, y + 1, size - 2, size - 2);
+		}
+		
+
 		
 		
 		if (square instanceof ReleaseSquare) {
