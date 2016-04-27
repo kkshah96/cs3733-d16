@@ -9,6 +9,7 @@ import model.Piece;
  * TODO THIS NEEDS TO BE FINISHED!
  * @author Alex Kasparek
  * @author Maddy
+ * @author Dan Alfred
  *
  */
 public class BoardToBoardMove {
@@ -31,11 +32,10 @@ public class BoardToBoardMove {
 		}
 		
 		Board board  = level.getBoard();
-
-		board.removePiece(movingPiece);
-		board.addPiece(movingPiece, col, row);
+		board.addPiece(board.removePiece(movingPiece), col, row);
 
 		level.removeActivePiece();
+		level.updateAfterMove();
 		return true;
 	}
 

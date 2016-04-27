@@ -18,21 +18,31 @@ import view.LevelView;
  */
 public class ExitLevelController implements ActionListener {
 	Kabasuji game;
-	LevelView level;
-	LevelSelectorView levelSelector;
+	LevelView levelView;
 
-	public ExitLevelController(LevelView level, LevelSelectorView levelSelector, Kabasuji game) {
-		this.level = level;
-		this.levelSelector = levelSelector;
+	public ExitLevelController(LevelView levelView, Kabasuji game) {
+		this.levelView = levelView;
 		this.game = game;
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//if(lvlSelection.)
-		// TODO Auto-generated method stub\
-		level.dispose();
-		levelSelector.setVisible(true);
+		process();
+	}
+
+	public void process() {
+		// TODO save level progress?
+		levelView.dispose();
+		game.initialize();
+		// create new window
+		LevelSelectorView window = new LevelSelectorView(game);
+
+		// allow controller to set up GUI based on the levels loaded by 'game'
+		StartLevelSelectorController selectorController = new StartLevelSelectorController(window, game);
+		selectorController.process();
+
+		// show window
+		window.setVisible(true);
 	}
 }

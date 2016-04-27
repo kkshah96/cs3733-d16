@@ -451,19 +451,6 @@ public class LevelSelectorView extends JFrame{
 		levelLabels.add(lblLevel25);
 		levelLabels.add(lblLevel26);
 		levelLabels.add(lblLevel27);
-
-		// add mouse listeners to all level buttons
-		for (int i = 0; i < levelButtons.size(); i++){
-			if (i % 3 == 0) {
-				levelButtons.get(i).addActionListener(new StartPuzzleLevelController(this, i + 1, game));
-			}
-			else if (i % 3 == 1) {
-				levelButtons.get(i).addActionListener(new StartLightningLevelController(this, i + 1, game));
-			}
-			else {
-				levelButtons.get(i).addActionListener(new StartReleaseLevelController(this, i + 1, game));
-			}
-		}
 	}
 	
 	public ArrayList<JButton> getLevelButtons(){

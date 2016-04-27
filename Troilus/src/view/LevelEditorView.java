@@ -53,6 +53,7 @@ public class LevelEditorView extends JFrame {
 	private JTextField maxMovesField;
 	private JTextField timeMinutesField;
 	private JTextField timeSecondsField;
+	private JButton saveButton;
 	JLabel levelTypeLabel;
 	JPanel maxMovesPanel;
 	JPanel releaseSquareOptionsPanel;
@@ -169,7 +170,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 
-		JButton saveButton = new JButton("Save");
+		saveButton = new JButton("Save");
 		saveButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		saveButton.setBounds(0, 0, 102, 38);
 		saveButton.addActionListener(new SaveLevelController(builder));
@@ -269,7 +270,8 @@ public class LevelEditorView extends JFrame {
 		maxMovesField.setBounds(101, 4, 74, 28);
 		maxMovesPanel.add(maxMovesField);
 		maxMovesField.setColumns(10);
-		maxMovesField.addActionListener(new SetMaxMovesController(activeLevel, this));
+		
+		//maxMovesField.addActionListener(new SetMaxMovesController(activeLevel, this));
 
 		timePanel = new JPanel();
 		timePanel.setBounds(468, 0, 279, 38);
@@ -351,7 +353,7 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 		releaseNumberComboBox.setBounds(66, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseNumberComboBox);
 		releaseNumberComboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"None", "1", "2", "3", "4", "5", "6"}));
-		releaseNumberComboBox.addActionListener(new SetSquareNumberController(activeLevel, this));
+		//releaseNumberComboBox.addActionListener(new SetSquareNumberController(activeLevel, this));
 
 		JLabel lblNumberColor = new JLabel("Number Color:");
 		lblNumberColor.setBounds(150, 11, 97, 16);
@@ -366,7 +368,7 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 		setBounds(100, 100, 1207, 751);
 		//pView.setPreferredSize(new Dimension(500, 500));
 		//pView.setLayout(null);
-		releaseColorComboBox.addActionListener(new SetSquareNumberColorController(activeLevel, this));
+		//releaseColorComboBox.addActionListener(new SetSquareNumberColorController(activeLevel, this));
 
 		//releaseColorComboBox.getSelectedItem().toString() //TODO: This is how to get the selected option
 		JScrollPane scrollPane = new JScrollPane();
@@ -379,9 +381,9 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 		
 		// Initialize Controllers
 		paletteView.addMouseListener(new MovePiecePaletteToBullpenController(activeLevel, bullpenView, paletteView));
-		if (activeLevel.getName().equals("Lightning")) {
-			btnSetTime.addActionListener(new SetTimeLimitController(activeLevel, this));
-		}
+		//if (activeLevel.getName().equals("Lightning")) {
+			//btnSetTime.addActionListener(new SetTimeLimitController(activeLevel, this));
+		//}
 	}
 
 	public void setLevelType(String type){
@@ -398,8 +400,13 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 		releaseSquareOptionsPanel.setVisible(which);
 
 	}
+	
 	public void setTimeLimitPanelVisibility(boolean which){
 		timePanel.setVisible(which);
+	}
+	
+	public JButton getSaveButton() {
+		return saveButton;
 	}
 
 	public JTextField getRowField(){
@@ -413,6 +420,7 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 	public JTextField getMinutesField(){
 		return timeMinutesField;
 	}
+	
 	public JTextField getSecondsField(){
 		return timeSecondsField;
 

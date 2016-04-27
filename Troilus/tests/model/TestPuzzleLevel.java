@@ -2,9 +2,11 @@ package model;
 
 import org.junit.Test;
 
-import model.Level;
+import junit.framework.TestCase;
 
-public class TestPuzzleLevel {
+public class TestPuzzleLevel extends TestCase {
+	PuzzleLevel level;
+	
 	public void setUp() {
 		Square[][] squares = new PuzzleSquare[Board.BOARD_HEIGHT][Board.BOARD_WIDTH];
 		for (int i = 0; i < Board.BOARD_HEIGHT; i++) {
@@ -12,6 +14,12 @@ public class TestPuzzleLevel {
 				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
-		Level puzzle = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), new Palette(), 15);
+		level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), new Palette(), 15);
+	}
+	
+	@Test
+	public void testMoves() {
+		assertEquals(15, level.getMaxMoves());
+		assertEquals(15, level.movesLeft);
 	}
 }

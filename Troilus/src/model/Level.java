@@ -10,6 +10,7 @@ package model;
  *
  */
 public abstract class Level {
+	public static final int MAX_STARS = 3;
 	int levelNum;
 	boolean locked;
 	Bullpen bullpen;
@@ -26,7 +27,13 @@ public abstract class Level {
 		this.palette = palette;
 		this.locked = locked;
 	}
+	
+	/** Do anything necessary after a move */
+	public abstract void updateAfterMove();
 
+	// TODO do we need this?
+	//public abstract void updateAfterUndo();
+	
 	public boolean isLocked() {
 		return locked;
 	}

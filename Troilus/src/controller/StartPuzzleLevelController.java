@@ -6,50 +6,68 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import model.Level;
-
+import model.PuzzleLevel;
 import model.Kabasuji;
 import view.LevelSelectorView;
 import view.LevelView;
 
 /**
  * Controller to initialize new puzzle level in Kabasuji.
+ * @author Connor Weeks
  */
 public class StartPuzzleLevelController implements ActionListener {
 	Kabasuji game;
-	int levelNumber;
+	PuzzleLevel level;
 	LevelSelectorView levelSelector;
 
-	public StartPuzzleLevelController(LevelSelectorView levelSelector, int levelNumber, Kabasuji game) {
+	public StartPuzzleLevelController(LevelSelectorView levelSelector, PuzzleLevel level, Kabasuji game) {
 		this.levelSelector = levelSelector;
-		this.levelNumber = levelNumber;
+		this.level = level;
 		this.game = game;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Level selectedLevel = game.getLevels().get(levelNumber - 1);
 
 		// if level is locked, take no action
-		if (selectedLevel.isLocked()) {
+		if (level.isLocked()) {
 			return;
 		}
-
-		final LevelView levelView = new LevelView(levelSelector, game, selectedLevel);
+		System.out.println("Starting Puzzle level");
+		final LevelView levelView = new LevelView(levelSelector, game, level);
 		levelView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				levelView.dispose();
-				levelSelector.setVisible(true);
+				// TODO save level progress?
+				
+				// dispose of level view and reload all levels
+				levelView.dispose();
+				game.initialize();
+				
+				// create new window
+				LevelSelectorView window = new LevelSelectorView(game);
+				
+				// allow controller to set up GUI based on the levels loaded by 'game'
+				StartLevelSelectorController selectorController = new StartLevelSelectorController(window, game);
+				selectorController.process();
+				
+				// show window
+				window.setVisible(true);
 			}      
 		});
-		// set active level in top model to selected level
-		//game.setActiveLevel(selectedLevel);
-
+		
 		// set visibility of level view elements to account for level type
 		levelView.getPanelLightningStats().setVisible(false);
 		levelView.getPanelReleaseStats().setVisible(false);
+		
+		// initialize values
+		levelView.getMovesLabel().setText("" + level.getMaxMoves());
 
 		// show level view
 		levelView.setVisible(true);
-		levelSelector.setVisible(false);
+		
+		// dispose of level selector view
+		levelSelector.dispose();
+		
 	}
 }
