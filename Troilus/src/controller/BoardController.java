@@ -44,52 +44,54 @@ public class BoardController extends MouseAdapter {
 			BoardToBullpenMove m = new BoardToBullpenMove(level, col, row);
 			if (m.doMove()) {
 				boardView.removeDraggedPiece();
+				level.setMoveSource(null);
+				level.setActivePiece(null);
 				// push move
 			} else {
 				System.out.println("Error: Unable to remove piece from board");
 			}
-		} else {
+		} else { // Not right-clicked
 			// TODO fix this logic!
 			if (level.getMoveSource() == null) {
-				level.setMoveSource("Board");
-				
-				// do nothing if no piece at click
-				if(level.getBoard().getPiece(col, row) != null) {
+				// Do nothing if no piece to click
+				if (level.getBoard().getPiece(col, row) != null) {
 					Piece pieceToDrag = level.getBoard().removePiece(level.getBoard().getPiece(col, row));
-					if(pieceToDrag != null) {
+
+					if (pieceToDrag != null) {
+						level.setMoveSource("Board");
 						level.setActivePiece(pieceToDrag);
 						boardView.addDraggedPiece(pieceToDrag, me.getPoint());
-						boardView.repaint();
+					}
 				}
-				
-				}
-				//boardView.addDraggedPiece(activePiece, me.getPoint());
 			} else if (level.getMoveSource() == "Bullpen") {
-
 				BullpenToBoardMove m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
+
 				if (m.doMove()) {
 					//push move here
 					System.out.println("Success!");
 					boardView.removeDraggedPiece();
+					level.setMoveSource(null);
+					level.setActivePiece(null);
 				} else {
 					System.out.println("Failure!");
 				}
-				level.setMoveSource(null);
 			} else if (level.getMoveSource() == "Board") {
 				BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row);
 
 				if (m.doMove()) {
 					//push move here
 					boardView.removeDraggedPiece();
+					level.setMoveSource(null);
+					level.setActivePiece(null);
 					System.out.println("Success!");
 				} else {
 					System.out.println("Failure!");
 				}
-				level.setMoveSource(null);
 			} else {
 				System.err.println("Invalid source when moving to Board");
 			}
 		}
+		// TODO update display of stars, etc!
 		boardView.repaint();
 	}
 
@@ -106,6 +108,8 @@ public class BoardController extends MouseAdapter {
 	// TODO does this work?
 	public void mouseExited(MouseEvent me) {
 		boardView.removeDraggedPiece();
+		level.setMoveSource(null);
+		level.setActivePiece(null);
 		boardView.repaint();
 	}
 }
