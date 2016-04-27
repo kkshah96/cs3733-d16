@@ -12,13 +12,13 @@ import model.Piece;
  */
 public class BullpenToBoardMove {
 	Level level;
-	Piece pieceMoved;
+	Piece movingPiece;
 	int col;
 	int row;
 
-	public BullpenToBoardMove(Level level, Piece pieceMoved, int col, int row) {
+	public BullpenToBoardMove(Level level, Piece movingPiece, int col, int row) {
 		this.level = level;
-		this.pieceMoved = pieceMoved;
+		this.movingPiece = movingPiece;
 		this.col = col;
 		this.row = row;
 	}
@@ -28,22 +28,22 @@ public class BullpenToBoardMove {
 		Bullpen bpen = level.getBullpen();
 		Board board = level.getBoard();
 
-		if (!isValid(pieceMoved, col, row)) {
+		if (!isValid()) {
 			return false;
 		}
 
-		board.addPiece(pieceMoved, col, row);
+		board.addPiece(movingPiece, col, row);
 		level.removeActivePiece();
-		bpen.removePiece(pieceMoved);
+		bpen.removePiece(movingPiece);
 
 		level.updateAfterMove();
 		return true;
 	}
 
 	/** Checks if adding a Piece from Bullpen to Board is valid */
-	public boolean isValid(Piece piece, int col, int row) {
+	public boolean isValid() {
 		// TODO: if level.canMakeMove()...
-		return level.getBoard().validPlacement(piece, col, row);
+		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
 
 	//TODO: ADD UNDO
