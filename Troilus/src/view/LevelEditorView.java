@@ -60,7 +60,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	JPanel releaseSquareOptionsPanel;
 	JPanel timePanel;
 
-	JButton btnToggleHint;
+	JButton toggleHintButton;
 	JButton ToggleButton;
 	JButton rotateCWButton;
 	JButton rotateCCWButton;
@@ -330,7 +330,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 
 		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, boardView));
 
-		JButton toggleHintButton = new JButton("Hint");
+		toggleHintButton = new JButton("Hint");
 		toggleHintButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		toggleHintButton.setBounds(564, 0, 91, 38);
 		squareBannerPanel.add(toggleHintButton);
@@ -474,7 +474,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	}
 	
 	public JButton getHintButton(){
-		return btnToggleHint;
+		return toggleHintButton;
 	}
 	
 	public JButton getToggleButton(){
