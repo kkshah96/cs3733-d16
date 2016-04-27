@@ -62,6 +62,7 @@ public class StartLevelSelectorController {
 				currentButton.addActionListener(new StartReleaseLevelController(levelSelectorView, (ReleaseLevel)currentLevel, game));
 			}
 			labels.get(i).setVisible(true);
+			labels.get(i).setText("Stars: " + currentLevel.getNumStars() + "/" + Level.MAX_STARS);
 			
 			// grey out button if locked
 			if (currentLevel.isLocked()) {
