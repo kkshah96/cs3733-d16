@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -30,8 +31,19 @@ public class LoadReleaseLevelController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		// check if shift was down when mouse was clicked; if so, delete level
+		if ((e.getModifiers() & InputEvent.SHIFT_MASK) != 0) {
+			// delete level
+			new DeleteLevelController(builder, level).process();
+
+			// reset level loader
+			builder.initialize();
+			new StartLevelLoaderController(levelLoader, builder).process();
+			return;
+		}
+
 		final LevelEditorView editorView = new LevelEditorView(builder, levelLoader, level);
-		
+
 		editorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				editorView.dispose();
@@ -44,7 +56,7 @@ public class LoadReleaseLevelController implements ActionListener {
 		editorView.setMaxMovesPanelVisibility(false);
 		editorView.setReleaseSquarePanelVisibility(true);
 		editorView.setTimeLimitPanelVisibility(false);
-		
+
 		// add listeners to handle input
 		editorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(level, editorView));
 		editorView.getNumberComboBox().addActionListener(new SetSquareNumberController(level, editorView));

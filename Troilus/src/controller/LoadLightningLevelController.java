@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -28,6 +29,17 @@ public class LoadLightningLevelController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		// check if shift was down when mouse was clicked; if so, delete level
+		if ((e.getModifiers() & InputEvent.SHIFT_MASK) != 0) {
+			// delete level
+			new DeleteLevelController(builder, level).process();
+			
+			// reset level loader
+			builder.initialize();
+			new StartLevelLoaderController(levelLoader, builder).process();
+			return;
+		}
 
 		final LevelEditorView editorView = new LevelEditorView(builder, levelLoader, level);
 		
