@@ -14,6 +14,7 @@ import view.LevelEditorView;
 /**
  * Class to control events related to Board.
  * @author Maddy
+ * @author Alex Kasparek
  */
 public class BoardController extends MouseAdapter {
 	protected BoardView boardView;
@@ -37,7 +38,7 @@ public class BoardController extends MouseAdapter {
 		int y = me.getY();
 		// TODO Someone remind me how we calculated these values
 		// They are from the GUI (converting so Entity can understand)
-		// Convert to col and row for Board
+		// Convert to col and row for Board <--- This
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
