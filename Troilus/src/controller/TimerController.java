@@ -52,8 +52,15 @@ public class TimerController {
 				if (seconds < 10) {
 					secondsString = "0" + seconds;
 				}
+				
 				levelView.getTimeLabel().setText("Time Remaining: " + minutes + ":" + secondsString);
-
+				
+				// check if level was quit prematurely
+				if (!levelView.isActive()) {
+					timer.stop();
+				}
+				
+				// check if time ran out
 				if (timeLeft <= 0) {
 					// exit level and stop timer
 					new ExitLevelController(levelView, game).process();

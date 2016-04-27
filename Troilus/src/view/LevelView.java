@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
@@ -14,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+import com.sun.glass.events.WindowEvent;
 
 import controller.BoardController;
 import controller.BullpenController;
@@ -51,6 +54,9 @@ public class LevelView extends JFrame{
 	Level level;
 	BullpenView bullpenView;
 	BoardView boardView;
+	
+	// flag for the timer
+	private boolean isActive;
 
 	/**
 	 * Create the application.
@@ -60,6 +66,11 @@ public class LevelView extends JFrame{
 		this.levelSelector = levelSelector;
 		this.game = game;
 		this.level = level;
+		this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                isActive = false;
+            }
+        });
 		initialize();
 	}
 
@@ -247,5 +258,8 @@ public class LevelView extends JFrame{
 	
 	public BoardView getBoardView() {
 		return boardView;
+	}
+	public boolean isActive() {
+		return isActive;
 	}
 }
