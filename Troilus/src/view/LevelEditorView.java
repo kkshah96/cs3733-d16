@@ -52,6 +52,7 @@ public class LevelEditorView extends JFrame {
 	private JTextField maxMovesField;
 	private JTextField timeMinutesField;
 	private JTextField timeSecondsField;
+	private JButton saveButton;
 	JLabel levelTypeLabel;
 	JPanel maxMovesPanel;
 	JPanel releaseSquareOptionsPanel;
@@ -167,7 +168,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 
-		JButton saveButton = new JButton("Save");
+		saveButton = new JButton("Save");
 		saveButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		saveButton.setBounds(0, 0, 102, 38);
 		saveButton.addActionListener(new SaveLevelController(builder));
@@ -396,8 +397,13 @@ public class LevelEditorView extends JFrame {
 		releaseSquareOptionsPanel.setVisible(which);
 
 	}
+	
 	public void setTimeLimitPanelVisibility(boolean which){
 		timePanel.setVisible(which);
+	}
+	
+	public JButton getSaveButton() {
+		return saveButton;
 	}
 
 	public JTextField getRowField(){
@@ -411,6 +417,7 @@ public class LevelEditorView extends JFrame {
 	public JTextField getMinutesField(){
 		return timeMinutesField;
 	}
+	
 	public JTextField getSecondsField(){
 		return timeSecondsField;
 
