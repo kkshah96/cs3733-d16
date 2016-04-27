@@ -69,11 +69,11 @@ public class TestRotatePieceController extends TestCase{
 		
 		assertEquals(p, level.getActivePiece());
 			
-		RotatePieceController r = new RotatePieceController(level, lsView.getBullpenView(), -1);
+		RotatePieceController r = new RotatePieceController(level, lsView.getBullpenView(), Piece.ROTATE_CCW);
 		r.actionPerformed(e);
 		
 		
-		Square[] sAfter = p.getSquares();
+		Square[] sAfter = level.getActivePiece().getSquares();
 		
 
 		assertEquals(sBefore[1].getRow(), sAfter[1].getCol());
