@@ -44,8 +44,16 @@ public class TimerController {
 
 				// decrease time left and update gui
 				timeLeft -= ONE_SECOND;
+				
+				// display "00" if seconds are 0
 				int displayTime = timeLeft / ONE_SECOND;
-				levelView.getTimeLabel().setText("Time Remaining: " + (displayTime / 60) + ":" + (displayTime % 60));
+				int minutes = displayTime / 60;
+				int seconds = displayTime % 60;
+				String secondsString = Integer.toString(seconds);
+				if (seconds < 10) {
+					secondsString = "0" + seconds;
+				}
+				levelView.getTimeLabel().setText("Time Remaining: " + minutes + ":" + secondsString);
 
 				if (timeLeft <= 0) {
 					// exit level and stop timer
