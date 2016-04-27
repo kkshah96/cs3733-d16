@@ -86,7 +86,7 @@ public class BoardView extends JPanel {
 		for (int i = 0; i < HEIGHT; i+= SQUARE_SIZE) {
 			for (int j = 0; j < WIDTH; j+= SQUARE_SIZE) {
 				sDrawer.paint(g, j + WIDTH_OFFSET, i + HEIGHT_OFFSET,
-						board.getSquare(i/SQUARE_SIZE, j/SQUARE_SIZE));
+						board.getSquare(j/SQUARE_SIZE, i/SQUARE_SIZE));
 			}
 		}
 		

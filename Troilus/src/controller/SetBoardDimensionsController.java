@@ -39,7 +39,7 @@ public class SetBoardDimensionsController implements ActionListener {
 		int cols = Integer.parseInt(c.getText());
 
 		if (cols < 0 || cols > Board.BOARD_WIDTH || rows > Board.BOARD_HEIGHT || rows < 0) {
-			System.out.printf("Error: Invalid Board Dimensions of %d, %d\n", rows, cols);
+			System.out.printf("Error: Invalid Board Dimensions of (%d, %d)\n", cols, rows);
 			return;
 		}
 		
@@ -49,7 +49,7 @@ public class SetBoardDimensionsController implements ActionListener {
 			bullpen.addPiece(level.getBoard().removePiece(p));
 		}
 		
-		level.getBoard().setDimensions(rows, cols);
+		level.getBoard().setDimensions(cols, rows);
 		editorView.getBoardView().repaint();
 	}
 }
