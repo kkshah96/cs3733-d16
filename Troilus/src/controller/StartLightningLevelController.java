@@ -60,6 +60,9 @@ public class StartLightningLevelController implements ActionListener {
 		// set visibility of level view elements to account for level type
 		levelView.getPanelPuzzleStats().setVisible(false);
 		levelView.getPanelReleaseStats().setVisible(false);
+		
+		// set initial time left
+		levelView.getTimeLabel().setText("Time Remaining" + (level.getTime() / 60) + ":" + (level.getTime() % 60));
 
 		// show level view
 		levelView.setVisible(true);

@@ -44,6 +44,7 @@ public class LevelView extends JFrame{
 	JButton flipPieceHButton;
 	
 	JLabel movesLabel;
+	JLabel timeLabel;
 
 	LevelSelectorView levelSelector;
 	Kabasuji game;
@@ -219,16 +220,19 @@ public class LevelView extends JFrame{
 		panelLightningStats.setBorder(null);
 		panelLightningStats.setBackground(Color.LIGHT_GRAY);
 
-		JLabel label = new JLabel("Time Remaining: 1:30");
-		label.setBounds(6, 6, 161, 20);
-		panelLightningStats.add(label);
-		label.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		timeLabel= new JLabel("Time Remaining: 1:30");
+		timeLabel.setBounds(6, 6, 161, 20);
+		panelLightningStats.add(timeLabel);
+		timeLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 	}
 	
 	public JLabel getMovesLabel() {
 		return movesLabel;
 	}
 
+	public JLabel getTimeLabel() {
+		return timeLabel;
+	}
 	public JPanel getPanelPuzzleStats() {
 		return panelPuzzleStats;
 	}
