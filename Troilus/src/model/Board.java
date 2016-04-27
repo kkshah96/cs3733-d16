@@ -26,7 +26,7 @@ public class Board {
 
 	/** The 2D array of squares that compose the board. */
 	Square[][] squares; // uses squares[col][row]
-	
+
 	/** Pieces on the Board, where Point holds (col, row) */
 	Hashtable<Piece, Point> pieces;
 
@@ -75,6 +75,56 @@ public class Board {
 	 */
 	public boolean addPiece(Piece p, int col, int row) {
 		this.pieces.put(p, new Point(col, row));
+		return true;
+	}
+
+	public boolean validPlacement(Piece piece, int col, int row) {
+		// Bounds check
+		if (row < 0 || row >= Board.BOARD_HEIGHT || col < 0 || col >= Board.BOARD_WIDTH) {
+			System.out.println("Not in bounds");
+			return false;
+		}
+
+		if (piece == null) {
+			System.out.println("No piece");
+			return false;
+		}
+
+		Piece getP = getPiece(col, row);
+		if (getP != null) {
+			System.out.print("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
+			return false;
+		}
+
+		if (!getSquare(col, row).isValid()) {
+			System.out.println("Anchor square placed at disabled square");
+			return false;
+		}
+
+		for (PieceSquare square : piece.getSquares()) {
+			// check if each square is in board area
+			int absRow = square.getRow() + row; 
+			int absCol = square.getCol() + col;
+			System.out.printf("Piece square is at (%d,%d)", absCol, absRow);
+
+			if (!(absRow < Board.BOARD_HEIGHT && absRow >= 0 && absCol < Board.BOARD_WIDTH && absCol >= 0)) {
+				System.out.println("Out of bounds");
+				return false;
+			}
+
+			// Check if each square is in bounds
+			if (!getSquare(absCol, absRow).isValid()) {
+				System.out.printf("Not in bounds (%d, %d)\n", absCol, absRow);
+				return false;
+			}
+
+			// Check for overlapping pieces
+			if (getPiece(absCol, absRow) != null) {
+				System.out.println("Overlapping pieces");
+				return false;
+			}	
+		}
+		
 		return true;
 	}
 
