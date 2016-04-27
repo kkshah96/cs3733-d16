@@ -14,6 +14,7 @@ import java.awt.Color;
 public class ReleaseSquare extends Square {
 	int number;
 	Color numberColor;
+	boolean hint;
 	
 	/** 
 	 * Creates a ReleaseSquare with the following parameters.
@@ -70,4 +71,14 @@ public class ReleaseSquare extends Square {
 		this.numberColor = color;
 		return true;
 	}
+	
+	public boolean getHintStatus(){
+		return false;
+	}
+	
+	public void setHint(){
+		return;
+	}
+	
+	
 }
