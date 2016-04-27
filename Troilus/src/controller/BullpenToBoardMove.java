@@ -2,37 +2,44 @@ package controller;
 
 import model.Board;
 import model.Bullpen;
+import model.Level;
 import model.Piece;
 import view.BoardView;
 
 public class BullpenToBoardMove {
 	
-	Bullpen bpen;
-	Board b;
+	Level l;
 	Piece pieceMoved;
 	int x;
 	int y;
 	
-	public BullpenToBoardMove(Bullpen bpen, Board b, Piece pieceMoved, int x, int y){
-		this.bpen = bpen;
-		this.b = b;
-		this.pieceMoved = pieceMoved;	
+	public BullpenToBoardMove(Level l, Piece pieceMoved, int x, int y){
+		this.l = l;
+		this.pieceMoved = pieceMoved;
 		this.x = x;
 		this.y = y;
 	}
 	
 	public boolean doMove(){
+		
 		if(isValid() == false){
 			System.out.println("Invalid move!");
 			return false;
 		}
 		else{
-			b.addPiece(pieceMoved, x / BoardView.SQUARE_SIZE,
+			Bullpen bpen = l.getBullpen();
+			Board b = l.getBoard();
+			
+			bpen.removePiece(pieceMoved);
+			
+			boolean status = b.addPiece(pieceMoved, (x - BoardView.WIDTH_OFFSET) / BoardView.SQUARE_SIZE,
 					(y - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE);
+			
+			l.removeActivePiece();
+			
+			return status;
 		}
-		
-		return true;
-		
+				
 	}
 	
 	public boolean isValid(){

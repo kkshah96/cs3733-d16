@@ -99,6 +99,7 @@ public class BoardView extends JPanel {
 		if(draggedPiece != null) {
 			//System.out.println("Painting dragged piece");
 			//System.out.println("Point " + board.getDraggedPiecePoint());
+			System.out.println("Dragged piece is not null");
 			
 			//TODO: There is definitely a better way to do this
 			int x = (draggedPiecePoint.x - WIDTH_OFFSET) / SQUARE_SIZE;
@@ -115,5 +116,13 @@ public class BoardView extends JPanel {
 	public void removeDraggedPiece() {
 		this.draggedPiece = null;
 		this.draggedPiecePoint = null;
+	}
+	
+	public Piece getDraggedPiece(){
+		return this.draggedPiece;
+	}
+	
+	public Point getDraggedPiecePoint(){
+		return this.draggedPiecePoint;
 	}
 }

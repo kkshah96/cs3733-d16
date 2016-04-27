@@ -1,7 +1,7 @@
 package controller;
 
 import model.Board;
-import model.Bullpen;
+import model.Level;
 import model.Piece;
 import view.BoardView;
 
@@ -13,15 +13,13 @@ import view.BoardView;
  */
 public class BoardToBoardMove {
 	
-	Bullpen bpen;
-	Board b;
+	Level l;
 	Piece pieceMoved;
 	int x;
 	int y;
 	
-	public BoardToBoardMove(Bullpen bpen, Board b, Piece pieceMoved, int x, int y){
-		this.bpen = bpen;
-		this.b = b;
+	public BoardToBoardMove(Level l, Piece pieceMoved, int x, int y){
+		this.l = l;
 		this.pieceMoved = pieceMoved;	
 		this.x = x;
 		this.y = y;
@@ -33,12 +31,17 @@ public class BoardToBoardMove {
 			return false;
 		}
 		else{
-			b.addPiece(pieceMoved, x / BoardView.SQUARE_SIZE,
+			Board b  = l.getBoard();
+			
+			b.removePiece(pieceMoved);
+			
+			boolean result = b.addPiece(pieceMoved, x / BoardView.SQUARE_SIZE,
 					(y - BoardView.SQUARE_SIZE) / BoardView.SQUARE_SIZE);
-		}
-		
-		return true;
-		
+			
+			l.removeActivePiece();
+			
+			return result;
+		}	
 	}
 	
 	public boolean isValid(){

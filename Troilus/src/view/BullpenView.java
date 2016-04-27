@@ -38,9 +38,6 @@ public class BullpenView extends JPanel {
 	JScrollPane scrollPane;
 	Bullpen bullpen;
 	Level level;
-	
-	Piece draggedPiece;
-	Point draggedPiecePoint;
 
 	/**
 	 * Create the panel.
@@ -87,7 +84,7 @@ public class BullpenView extends JPanel {
 					SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
-		if(draggedPiece != null) {
+		/*if(draggedPiece != null) {
 			//System.out.println("Painting dragged piece");
 			//System.out.println("Point " + board.getDraggedPiecePoint());
 			
@@ -95,12 +92,12 @@ public class BullpenView extends JPanel {
 			int x = (draggedPiecePoint.x - WIDTH_OFFSET) / SQUARE_SIZE;
 			int y = (draggedPiecePoint.y - HEIGHT_OFFSET) / SQUARE_SIZE;
 			pDrawer.paint(g, draggedPiece.getColor(), draggedPiece, new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
-		}
+		}*/
 		
 		scrollPane.repaint();
 	}
 	
-	public void addDraggedPiece(Piece piece, Point piecePoint) {
+	/*public void addDraggedPiece(Piece piece, Point piecePoint) {
 		this.draggedPiece = piece;
 		this.draggedPiecePoint = piecePoint;
 	}
@@ -108,5 +105,5 @@ public class BullpenView extends JPanel {
 	public void removeDraggedPiece() {
 		this.draggedPiece = null;
 		this.draggedPiecePoint = null;
-	}
+	}*/
 }

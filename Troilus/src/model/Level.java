@@ -17,6 +17,7 @@ public abstract class Level {
 	Palette palette;
 	int numStars;
 	Piece activePiece;
+	String moveSource;
 
 	public Level(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette) {
 		this.levelNum = levelNum;
@@ -80,5 +81,13 @@ public abstract class Level {
 
 	public void removeActivePiece() {
 		setActivePiece(null);
+	}
+	
+	public void setMoveSource(String s){
+		this.moveSource = s;
+	}
+	
+	public String getMoveSource(){
+		return moveSource;
 	}
 }
