@@ -12,7 +12,6 @@ import view.LevelEditorView;
  * @author Alexander Kasparek
  * @author Maddy Longo
  * @author Connor Weeks
->>>>>>> efc8c8dc0ad16192f4fd547e14eaa842c8d1488c
  */
 public class SetMaxMovesController implements ActionListener {
 	PuzzleLevel level;
