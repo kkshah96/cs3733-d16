@@ -98,4 +98,8 @@ public abstract class Level {
 	public String getMoveSource(){
 		return moveSource;
 	}
+	
+	public void setLevelNum(int levelNum) {
+		this.levelNum = levelNum;
+	}
 }
