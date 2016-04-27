@@ -105,7 +105,6 @@ public class Board {
 			// check if each square is in board area
 			int absRow = square.getRow() + row; 
 			int absCol = square.getCol() + col;
-			System.out.printf("Piece square is at (%d,%d)", absCol, absRow);
 
 			if (!(absRow < Board.BOARD_HEIGHT && absRow >= 0 && absCol < Board.BOARD_WIDTH && absCol >= 0)) {
 				System.out.println("Out of bounds");

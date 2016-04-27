@@ -15,27 +15,43 @@ public class TestPuzzleLevel extends TestCase {
 				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
-		level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), new Palette(), 15);
-	}
-	
-	@Test
-	public void testMoves() {
-		assertEquals(15, level.getMaxMoves());
-		assertEquals(15, level.movesLeft);
+		level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), new Palette(), 8);
+		
+		assertEquals(8, level.getMaxMoves());
+		assertEquals(8, level.movesLeft);
 		assertEquals(0, level.getNumStars());
 		
 		level.getBoard().setDimensions(6, 6);
+		// initialize bullpen
 		Piece piece1 = PieceFactory.getPiece(1);
 		Piece piece2 = PieceFactory.getPiece(1);
 		Piece piece3 = PieceFactory.getPiece(1);
 		Piece piece4 = PieceFactory.getPiece(1);
 		Piece piece5 = PieceFactory.getPiece(1);
 		Piece piece6 = PieceFactory.getPiece(1);
+		level.getBullpen().addPiece(piece1);
+		level.getBullpen().addPiece(piece2);
+		level.getBullpen().addPiece(piece3);
+		level.getBullpen().addPiece(piece4);
+		level.getBullpen().addPiece(piece5);
+		level.getBullpen().addPiece(piece6);
+	}
+	
+	@Test
+	public void testMoves() {
+		Piece piece1 = level.getBullpen().getPieces().get(0);
+		Piece piece2 = level.getBullpen().getPieces().get(1);
+		Piece piece3 = level.getBullpen().getPieces().get(2);
+		Piece piece4 = level.getBullpen().getPieces().get(3);
+		Piece piece5 = level.getBullpen().getPieces().get(4);
+		Piece piece6 = level.getBullpen().getPieces().get(5);
 		
+		// Test moving piece out of bounds
 		BullpenToBoardMove m_invalid = new BullpenToBoardMove(level, piece1, 6, 5);
 		assertFalse(m_invalid.isValid());
 		assertFalse(m_invalid.doMove());
 		
+		// Test valid moves
 		BullpenToBoardMove m1 = new BullpenToBoardMove(level, piece1, 0, 5);
 		BullpenToBoardMove m2 = new BullpenToBoardMove(level, piece2, 1, 5);
 		BullpenToBoardMove m3 = new BullpenToBoardMove(level, piece3, 2, 5);
