@@ -80,6 +80,11 @@ public class Board {
 			return false;
 		}
 		
+		if (p == null) {
+			System.out.println("No piece");
+			return false;
+		}
+		
 		int anchorRow = p.getAnchor().getRow() + row;
 		int anchorCol = p.getAnchor().getCol() + col;
 		
