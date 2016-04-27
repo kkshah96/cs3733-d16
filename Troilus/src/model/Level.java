@@ -1,7 +1,5 @@
 package model;
 
-import sun.java2d.xr.MutableInteger;
-
 /**
  * Represents a Level in the Kabasuji game
  * 
@@ -17,7 +15,7 @@ public abstract class Level {
 	Bullpen bullpen;
 	Board board;
 	Palette palette;
-	MutableInteger numStars;
+	int numStars;
 	Piece activePiece;
 	String moveSource;
 
@@ -34,7 +32,7 @@ public abstract class Level {
 	}
 
 	public void setNumStars(int numStars) {
-		this.numStars.setValue(numStars);
+		this.numStars = numStars;
 	}
 
 	public void setActivePiece(Piece activePiece) {
@@ -46,7 +44,7 @@ public abstract class Level {
 	}
 
 	public boolean hasWon() {
-		return numStars.getValue() > 0; // TODO: Is this valid lol
+		return numStars > 0; // TODO: Is this valid lol
 	}
 
 	public void setLocked(boolean locked) {
@@ -66,7 +64,7 @@ public abstract class Level {
 	public abstract String getName();
 	
 	public int getNumStars() {
-		return numStars.getValue();
+		return numStars;
 	}
 	
 	public Bullpen getBullpen() {
