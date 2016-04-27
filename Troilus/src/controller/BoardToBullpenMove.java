@@ -11,6 +11,7 @@ import model.Level;
  *
  */
 public class BoardToBullpenMove {
+	Level level;
 	Piece movingPiece;
 	Board board;
 	Bullpen bpen;
@@ -21,6 +22,7 @@ public class BoardToBullpenMove {
 		this.board = level.getBoard();
 		this.bpen = level.getBullpen();
 		this.movingPiece = board.getPiece(col, row);
+		this.level = level;
 	}
 	
 	public boolean doMove() {
@@ -29,6 +31,9 @@ public class BoardToBullpenMove {
 		}
 		
 		bpen.addPiece(board.removePiece(movingPiece));
+		
+		level.removeActivePiece();
+		level.updateAfterMove();
 		return true;
 	}
 	

@@ -50,6 +50,6 @@ public class SetBoardDimensionsController implements ActionListener {
 		}
 		
 		level.getBoard().setDimensions(cols, rows);
-		editorView.getBoardView().repaint();
+		editorView.repaint();
 	}
 }
