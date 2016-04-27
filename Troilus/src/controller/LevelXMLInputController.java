@@ -128,7 +128,7 @@ public class LevelXMLInputController {
 								square = new PuzzleSquare(k, j, isValid);
 							}
 
-							squares[j][k] = square;
+							squares[k][j] = square;
 						}
 					}
 
