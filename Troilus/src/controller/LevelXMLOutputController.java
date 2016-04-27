@@ -89,7 +89,7 @@ public class LevelXMLOutputController {
 				// Looping to add the 12 rows
 				Element newRowElement = doc.createElement("Row");
 				for(int j = 0; j < 12; j++) {
-					Square s = level.getBoard().getSquare(i, j);
+					Square s = level.getBoard().getSquare(j, i);
 					String squareType = s.getType();
 					Element newSquare = doc.createElement(squareType);
 					newSquare.setAttribute("Valid", "" + s.isValid());
