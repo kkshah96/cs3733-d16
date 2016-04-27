@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import model.Board;
-import model.HintSquare;
 import model.LightningSquare;
 import model.ReleaseSquare;
 import model.Square;
@@ -44,13 +43,13 @@ public class SquareDrawer {
 		}
 
 		if (square.equals(board.getActiveSquare())) {
-			 if (square.isValid()) {
+			if (square.isValid()) {
 				return VALID_ACTIVE_COLOR;
 			} else {
 				return INVALID_ACTIVE_COLOR;
 			}
 		} else {
-			 if (square.isValid()) {
+			if (square.isValid()) {
 				return VALID_COLOR;
 			} else {
 				return INVALID_COLOR;
@@ -59,24 +58,22 @@ public class SquareDrawer {
 	}
 
 	public void paint(Graphics g, int x, int y, Square square) {
-		g.setColor(Color.BLACK);
-		g.drawRect(x, y, size, size);
+		// Draw correct edge color based on hint status
+		if (square.isHint()) {
+			g.setColor(HINT_COLOR);
+		} else {
+			g.setColor(Color.WHITE);
+		}
+		g.drawRect(x, y, size - 1, size - 1);
 		
-	
+		// Draw correct fill color based on square type and status
 		Color c = findColor(square);
 		if (c != null) {
 			g.setColor(c);
 			g.fillRect(x + 1, y + 1, size - 2, size - 2);
 		}
 		
-		if(square.getHintStatus() == true){
-			g.setColor(Color.YELLOW);
-			g.drawRect(x + 1, y + 1, size - 2, size - 2);
-		}
-		
-
-		
-		
+		// Display numbers for ReleaseSquares
 		if (square instanceof ReleaseSquare) {
 			int releaseNumber = ((ReleaseSquare) square).getNumber();
 			Color releaseColor = ((ReleaseSquare) square).getNumberColor();
@@ -88,6 +85,5 @@ public class SquareDrawer {
 				g.fillRect(x + 1, y + 1, size - 2, size - 2);
 			}
 		}
-		
 	}
 }

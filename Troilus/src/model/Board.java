@@ -123,7 +123,7 @@ public class Board {
 				return false;
 			}	
 		}
-		
+
 		return true;
 	}
 
@@ -208,51 +208,45 @@ public class Board {
 	}
 
 	/**
-	 * Toggles the validity of the active square for this board
+	 * Toggles the validity of the active square for this board.
 	 */
 	public void toggleActiveSquare() {
 		// make sure an active square exists
 		if (activeSquare == null) {
 			return;
+		} else {
+			activeSquare.toggleIsValid();
 		}
+	}
 
-		activeSquare.isValid = !activeSquare.isValid;
-	}
-	
+	/** Toggle hint status of active square for this board. */
 	public void toggleHint(){
-		
-		if(activeSquare == null){
+		if (activeSquare == null){
 			return;
+		} else {
+			activeSquare.toggleHint();
 		}
-		else{
-			activeSquare.setHint();
-		}
-		
 	}
-	
+
 	public int getNumRows(){
 		int num = 0;
 		for (int row = 0; row < BOARD_HEIGHT; row++) {
-			
-				if(squares[0][row].isValid){
-					num++;
-				
+			if (squares[0][row].isValid) {
+				num++;
 			}
 		}
-		
+
 		return num;
 	}
-	
+
 	public int getNumCols(){
 		int num = 0;
 		for (int col = 0; col < BOARD_WIDTH; col++) {
-			
-				if(squares[col][0].isValid){
-					num++;
-				
+			if (squares[col][0].isValid) {
+				num++;
 			}
 		}
-		
+
 		return num;
 	}
 }

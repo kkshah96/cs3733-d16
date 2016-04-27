@@ -51,13 +51,12 @@ public abstract class Square {
 		this.isValid = isValid;
 	}
 	
-	public void setHint(){
-		if(isHint == false){
-			isHint = true;
-		}
-		else{
-			isHint = false;
-		}
+	public void toggleIsValid() {
+		isValid = !isValid;
+	}
+	
+	public void toggleHint() {
+		isHint = !isHint;
 	}
 	
 	/**
@@ -71,6 +70,4 @@ public abstract class Square {
 	public boolean getHintStatus(){
 		return isHint;
 	}
-	
-	
 }
