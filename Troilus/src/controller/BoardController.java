@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import model.Level;
 import model.Piece;
 import view.BoardView;
+import view.ILevelView;
 
 /**
  * Class to control events related to Board.
@@ -15,11 +16,13 @@ import view.BoardView;
 public class BoardController extends MouseAdapter {
 	protected BoardView boardView;
 	protected Level level;
+	ILevelView levelView;
 	Piece activePiece;
 
-	public BoardController(Level level, BoardView boardView) {
+	public BoardController(Level level, ILevelView levelView) {
 		super();
-		this.boardView = boardView;
+		this.levelView = levelView;
+		this.boardView = levelView.getBoardView();
 		this.level = level;
 	}
 
@@ -92,7 +95,7 @@ public class BoardController extends MouseAdapter {
 			}
 		}
 		// TODO update display of stars, etc!
-		boardView.repaint();
+		levelView.repaint();
 	}
 
 	public void mouseMoved(MouseEvent me){

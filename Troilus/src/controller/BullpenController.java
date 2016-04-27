@@ -10,6 +10,7 @@ import model.Level;
 import model.Piece;
 import model.Square;
 import view.BullpenView;
+import view.ILevelView;
 
 /**
  * Class that handles events related to Bullpen.
@@ -19,12 +20,14 @@ import view.BullpenView;
 public class BullpenController extends MouseAdapter {
 	protected Level level;
 	protected BullpenView bullpenView;
+	ILevelView levelView;
 	Piece activePiece;
 
-	public BullpenController(Level level, BullpenView bullpenView) {
+	public BullpenController(Level level, ILevelView levelView) {
 		super();
 		this.level = level;
-		this.bullpenView = bullpenView;
+		this.levelView = levelView;
+		this.bullpenView = levelView.getBullpenView();
 	}
 
 	// TODO why do this??
@@ -95,7 +98,7 @@ public class BullpenController extends MouseAdapter {
 				level.setActivePiece(activePiece);
 			}
 			// refresh the view
-			bullpenView.repaint();
+			levelView.repaint();
 		}
 	}
 

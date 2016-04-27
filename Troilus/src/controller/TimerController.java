@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import model.Kabasuji;
-import view.LevelView;
+import view.LevelPlayerView;
 
 /**
  * Controls the behavior of the timer during lightning levels.
@@ -17,12 +17,12 @@ public class TimerController {
 
 	public final static int ONE_SECOND = 1000;
 
-	LevelView levelView;
+	LevelPlayerView levelView;
 	Kabasuji game;
 	int startTime;
 	Timer timer;
 
-	public TimerController(LevelView levelView, Kabasuji game, int startTime) {
+	public TimerController(LevelPlayerView levelView, Kabasuji game, int startTime) {
 		this.levelView = levelView;
 		this.game = game;
 		this.startTime = startTime;

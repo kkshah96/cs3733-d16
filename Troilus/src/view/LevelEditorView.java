@@ -47,7 +47,7 @@ import model.Piece;
  * @author Maddy Longo
  *
  */
-public class LevelEditorView extends JFrame {
+public class LevelEditorView extends JFrame implements ILevelView {
 	private JTextField boardRowField;
 	private JTextField boardColField;
 	private JTextField maxMovesField;
@@ -65,7 +65,6 @@ public class LevelEditorView extends JFrame {
 	JButton rotateCCWButton;
 
 	JButton setTimeButton;
-
 
 	LevelLoaderView levelLoader;
 	LevelBuilder builder;
@@ -104,8 +103,8 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(boardView);
 		
 		// TODO still too many listeners!!!
-		boardView.addMouseListener(new BoardController(activeLevel, boardView));
-		boardView.addMouseMotionListener(new BoardController(activeLevel, boardView));
+		boardView.addMouseListener(new BoardController(activeLevel, this));
+		boardView.addMouseMotionListener(new BoardController(activeLevel, this));
 		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
@@ -134,7 +133,7 @@ public class LevelEditorView extends JFrame {
 		bullpenView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		bullpenView.setBackground(Color.LIGHT_GRAY);
 		bullpenView.setBounds(748, 38, 457, 484);
-		bullpenView.addMouseListener(new BullpenController(activeLevel, bullpenView));
+		bullpenView.addMouseListener(new BullpenController(activeLevel, this));
 		
 		bullpenScrollPane.setBounds(6, 50, 446, 423);
 		bullpenScrollPane.setViewportView(bullpenView);

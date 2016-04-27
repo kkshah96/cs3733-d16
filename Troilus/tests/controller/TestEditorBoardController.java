@@ -38,8 +38,8 @@ public class TestEditorBoardController {
 		level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
 		LevelLoaderView lView = new LevelLoaderView(lb);
 		lsView = new LevelEditorView(lb, lView, level);
-		bpController = new BullpenController(level, lsView.getBullpenView());
-		boardController = new BoardController(level, lsView.getBoardView());
+		bpController = new BullpenController(level, lsView);
+		boardController = new BoardController(level, lsView);
 	}
 	
 	public void testToggle() {

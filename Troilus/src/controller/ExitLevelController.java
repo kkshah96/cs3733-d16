@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import model.Kabasuji;
 import view.LevelSelectorView;
-import view.LevelView;
+import view.LevelPlayerView;
 
 /**
  * Controls the actions required to exit a level and display the level selector.
@@ -18,9 +18,9 @@ import view.LevelView;
  */
 public class ExitLevelController implements ActionListener {
 	Kabasuji game;
-	LevelView levelView;
+	LevelPlayerView levelView;
 
-	public ExitLevelController(LevelView levelView, Kabasuji game) {
+	public ExitLevelController(LevelPlayerView levelView, Kabasuji game) {
 		this.levelView = levelView;
 		this.game = game;
 	}

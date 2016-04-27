@@ -8,7 +8,7 @@ import java.awt.event.WindowEvent;
 import model.ReleaseLevel;
 import model.Kabasuji;
 import view.LevelSelectorView;
-import view.LevelView;
+import view.LevelPlayerView;
 
 /**
  * Controller to initialize new release level in Kabasuji.
@@ -33,7 +33,7 @@ public class StartReleaseLevelController implements ActionListener {
 			return;
 		}
 		System.out.println("Starting Release level");
-		final LevelView levelView = new LevelView(levelSelector, game, level);
+		final LevelPlayerView levelView = new LevelPlayerView(levelSelector, game, level);
 		levelView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				levelView.dispose();

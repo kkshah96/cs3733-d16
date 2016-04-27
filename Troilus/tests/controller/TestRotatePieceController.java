@@ -44,7 +44,7 @@ public class TestRotatePieceController extends TestCase{
 		level = new PuzzleLevel(0, false, bPen, board, new Palette(), 0);
 		LevelLoaderView lView = new LevelLoaderView(lb);
 		lsView = new LevelEditorView(lb, lView, level);
-		bpController = new BullpenController(level, lsView.getBullpenView());
+		bpController = new BullpenController(level, lsView);
 //		boardController = new BoardController(level, lsView.getBoardView());
 	}
 	

@@ -36,7 +36,7 @@ import model.Piece;
  * @author Maddy Longo
  *
  */
-public class LevelView extends JFrame {
+public class LevelPlayerView extends JFrame implements ILevelView {
 	private JPanel panelTitle;
 	private JLabel levelLabel;
 	private JPanel panelPuzzleStats;
@@ -60,7 +60,7 @@ public class LevelView extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public LevelView(LevelSelectorView levelSelector, Kabasuji game, Level level) { 
+	public LevelPlayerView(LevelSelectorView levelSelector, Kabasuji game, Level level) { 
 		setResizable(false);
 		this.levelSelector = levelSelector;
 		this.game = game;
@@ -105,8 +105,8 @@ public class LevelView extends JFrame {
 		panel.add(boardView);
 		boardView.setLayout(null);
 		// BoardController
-		boardView.addMouseListener(new BoardController(level, boardView));
-		boardView.addMouseMotionListener(new BoardController(level, boardView));
+		boardView.addMouseListener(new BoardController(level, this));
+		boardView.addMouseMotionListener(new BoardController(level, this));
 		
 		JPanel bullpenContainer = new JPanel();
 		bullpenContainer.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -135,7 +135,7 @@ public class LevelView extends JFrame {
 		bullpenView.setBackground(Color.LIGHT_GRAY);
 		bullpenView.setBounds(748, 38, 457, 484);
 		// BullpenController
-		bullpenView.addMouseListener(new BullpenController(level, bullpenView));
+		bullpenView.addMouseListener(new BullpenController(level, this));
 
 		bullpenScrollPane.setBounds(6, 50, 479, 394);
 		bullpenScrollPane.setViewportView(bullpenView);
@@ -257,9 +257,14 @@ public class LevelView extends JFrame {
 		return panelReleaseStats;
 	}
 	
+	public BullpenView getBullpenView() {
+		return bullpenView;
+	}
+	
 	public BoardView getBoardView() {
 		return boardView;
 	}
+	
 	public boolean isActive() {
 		return isActive;
 	}
