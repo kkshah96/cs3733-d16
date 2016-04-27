@@ -33,8 +33,9 @@ public class BoardToBoardMove {
 		
 		Board board  = level.getBoard();
 		board.addPiece(board.removePiece(movingPiece), col, row);
+
 		level.removeActivePiece();
-		level.setMoveSource(null);
+		level.updateAfterMove();
 		return true;
 	}
 
