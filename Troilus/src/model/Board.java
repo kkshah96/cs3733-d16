@@ -67,62 +67,13 @@ public class Board {
 		return activeSquare;
 	}
 
-	/** Add the given piece to the board if valid
+	/** Add the given piece to the board
 	 * @param p Piece to be added
 	 * @param col Requested column for the piece anchor
 	 * @param row Requested row for the piece anchor
 	 * @return Returns true if piece was added successfully, false otherwise
 	 */
 	public boolean addPiece(Piece p, int col, int row) {
-		// Bounds check
-		if (row < 0 || row >= BOARD_HEIGHT || col < 0 || col >= BOARD_WIDTH) {
-			System.out.println("Not in bounds");
-			return false;
-		}
-		
-		if (p == null) {
-			System.out.println("No piece");
-			return false;
-		}
-		
-		System.out.printf("Anchor placed at (%d,%d)", col, row);
-		
-		// TODO should anchor be separate in Piece storage?
-		Piece getP = getPiece(col, row);
-		if (getP != null) {
-			System.out.print("Overlapping piece at location: " + getP.type);
-			return false;
-		}
-		
-		if (!(squares[col][row].isValid())) {
-			System.out.println("Anchor square placed at disabled square");
-			return false;
-		}
-
-		for (PieceSquare square : p.squares) {
-			// check if each square is in board area
-			int absRow = square.row + row; 
-			int absCol = square.col + col;
-			System.out.printf("Piece square is at (%d,%d)", absCol, absRow);
-
-			if (!(absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
-				System.out.println("Out of bounds");
-				return false;
-			}
-			
-			// Check if each square is in bounds
-			if (!squares[absCol][absRow].isValid()) {
-				System.out.printf("Not in bounds (%d, %d)\n", absCol, absRow);
-				return false;
-			}
-
-			// Check for overlapping pieces
-			if (getPiece(absCol, absRow) != null) {
-				System.out.println("Overlapping pieces");
-				return false;
-			}	
-		}
-
 		this.pieces.put(p, new Point(col, row));
 		return true;
 	}
