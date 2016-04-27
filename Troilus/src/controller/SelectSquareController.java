@@ -14,7 +14,6 @@ import view.BoardView;
  */
 public class SelectSquareController extends MouseAdapter {
 	Level level;
-	//LevelBuilder builder;
 	BoardView boardView;
 
 	public SelectSquareController(Level level, BoardView boardView) {
@@ -23,10 +22,13 @@ public class SelectSquareController extends MouseAdapter {
 	}
 
 	public void mousePressed(MouseEvent e) {
+		if (level.getActivePiece() != null) {
+			return; // Draging a piece
+		}
+		
 		int x = e.getX();
 		int y = e.getY();
-
-		// TODO: Change from hard-coded values!!!
+		
 		if (x > BoardView.WIDTH + BoardView.WIDTH_OFFSET || x < BoardView.WIDTH_OFFSET
 				|| y > BoardView.HEIGHT + BoardView.HEIGHT_OFFSET || y < BoardView.HEIGHT_OFFSET) {
 			System.out.println("Error: Did not click within the board");
