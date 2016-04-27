@@ -30,6 +30,7 @@ import controller.SetMaxMovesController;
 import controller.SetSquareNumberColorController;
 import controller.SetSquareNumberController;
 import controller.SetTimeLimitController;
+import controller.ToggleHintController;
 import controller.ToggleSquareController;
 import model.Level;
 import model.LevelBuilder;
@@ -52,6 +53,7 @@ public class LevelEditorView extends JFrame {
 	private JTextField maxMovesField;
 	private JTextField timeMinutesField;
 	private JTextField timeSecondsField;
+	private JButton saveButton;
 	JLabel levelTypeLabel;
 	JPanel maxMovesPanel;
 	JPanel releaseSquareOptionsPanel;
@@ -98,6 +100,7 @@ public class LevelEditorView extends JFrame {
 		boardView.addMouseListener(new BoardController(activeLevel, boardView));
 		boardView.addMouseMotionListener(new BoardController(activeLevel, boardView));
 		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
+		
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
 		bullpenContainer.setLayout(null);
@@ -167,7 +170,7 @@ public class LevelEditorView extends JFrame {
 		getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 
-		JButton saveButton = new JButton("Save");
+		saveButton = new JButton("Save");
 		saveButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		saveButton.setBounds(0, 0, 102, 38);
 		saveButton.addActionListener(new SaveLevelController(builder));
@@ -326,6 +329,7 @@ public class LevelEditorView extends JFrame {
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		btnToggleHint.setBounds(564, 0, 91, 38);
 		panel_1.add(btnToggleHint);
+btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView));
 
 		JLabel lblSquare = new JLabel("Square:");
 		lblSquare.setHorizontalAlignment(SwingConstants.CENTER);
@@ -396,8 +400,13 @@ public class LevelEditorView extends JFrame {
 		releaseSquareOptionsPanel.setVisible(which);
 
 	}
+	
 	public void setTimeLimitPanelVisibility(boolean which){
 		timePanel.setVisible(which);
+	}
+	
+	public JButton getSaveButton() {
+		return saveButton;
 	}
 
 	public JTextField getRowField(){
@@ -411,6 +420,7 @@ public class LevelEditorView extends JFrame {
 	public JTextField getMinutesField(){
 		return timeMinutesField;
 	}
+	
 	public JTextField getSecondsField(){
 		return timeSecondsField;
 

@@ -154,7 +154,7 @@ public class LevelView extends JFrame{
 		bullpenOptionsPanel.add(flipPieceVerticalButton);
 
 		JButton btnExitLevel = new JButton("Exit Level");
-		btnExitLevel.addActionListener(new ExitLevelController(this, levelSelector, game));
+		btnExitLevel.addActionListener(new ExitLevelController(this, game));
 		btnExitLevel.setBounds(771, 50, 176, 36);
 		panel.add(btnExitLevel);
 

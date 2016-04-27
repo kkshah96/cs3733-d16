@@ -19,7 +19,6 @@ public class Kabasuji {
 	//Level activeLevel;
 
 	public Kabasuji() {
-
 		initialize();
 
 
@@ -59,6 +58,13 @@ public class Kabasuji {
 		// load levels into the list of levels
 		levels = loader.loadLevels();
 
+		
+		// TODO remove after testing
+		for (Level level : levels) {
+			level.setLocked(false);
+		}
+		
+		
 		// automatically unlock first level if it exists
 		if(levels.size() >= 1 ) {
 			levels.get(0).setLocked(false);

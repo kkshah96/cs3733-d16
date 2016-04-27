@@ -42,4 +42,5 @@ public abstract class Square {
 		this.isValid = isValid;
 	}
 	
+	
 }
