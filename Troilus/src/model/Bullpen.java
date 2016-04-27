@@ -1,9 +1,6 @@
 package model;
 
-import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Set;
 
 /**
  * Represents a storage area for Pieces in the Kabasuji game
