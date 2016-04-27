@@ -10,22 +10,25 @@ import model.Level;
 import model.Piece;
 import model.Square;
 import view.BullpenView;
-import view.LevelEditorView;
 
-public class BullpenController extends MouseAdapter{
-
-	protected LevelEditorView lV;
-	protected BullpenView bV;
+/**
+ * Class that handles events related to Bullpen.
+ * @author Maddy
+ *
+ */
+public class BullpenController extends MouseAdapter {
+	protected BullpenView bpView;
 	protected Level level;
 	Piece activePiece;
 
-	public BullpenController(Level level, BullpenView bV) {
+	public BullpenController(Level level, BullpenView bpView) {
 		super();
-		this.bV = bV;
+		this.bpView = bpView;
 		this.level = level;
 	}
 
-	public void mousePressed(MouseEvent me){
+	// TODO why do this??
+	public void mousePressed(MouseEvent me) {
 		handleMousePressed(me.getPoint(), me.getButton());
 	}
 	
@@ -36,19 +39,19 @@ public class BullpenController extends MouseAdapter{
 		Bullpen bullpen = level.getBullpen();
 
 		// find the piece that was clicked
-		Hashtable<Piece, Point> pieces = bV.getDrawnPieces();
+		Hashtable<Piece, Point> pieces = bpView.getDrawnPieces();
 		Set<Piece> keySet = pieces.keySet();
-		Piece selectedPiece = null;
+		activePiece = null;
 
 		// check anchor square and relative squares for each piece in the bullpen
-		for(Piece piece : keySet) {
+		for (Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
 
-			if((anchorPoint.getX() <= x) && 
+			if ((anchorPoint.getX() <= x) && 
 					(anchorPoint.getX() + BullpenView.SQUARE_SIZE >= x) && 
 					(anchorPoint.getY() <= y) && 
 					(anchorPoint.getY() + BullpenView.SQUARE_SIZE >= y)) {
-				selectedPiece = piece;
+				activePiece = piece;
 				break;
 			}
 
@@ -57,40 +60,42 @@ public class BullpenController extends MouseAdapter{
 						(anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= x) && 
 						(anchorPoint.getY() + (s.getRow() * BullpenView.SQUARE_SIZE) <= y) && 
 						(anchorPoint.getY() + (s.getRow() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= y)) {
-					selectedPiece = piece;
+					activePiece = piece;
 					break;
 				}
 			}
 
-			if (selectedPiece != null) {
+			if (activePiece != null) {
 				break;
 			}
 		}
 		
 		// check if a piece was clicked on, deselect currently selected piece
-		if (selectedPiece == null) {
+		if (activePiece == null) {
 			level.setActivePiece(null);
-			bV.repaint();
+			bpView.repaint();
 			return;
 		}
 
 		// a right click will remove the selected piece from the bullpen
-		if(mouseButton == MouseEvent.BUTTON3) {
-			bullpen.removePiece(selectedPiece);
-			bV.repaint();
+		if (mouseButton == MouseEvent.BUTTON3) {
+			bullpen.removePiece(activePiece);
+			bpView.repaint();
 		} else {
-			if (level.getActivePiece() == selectedPiece) {
+			if (level.getActivePiece() == activePiece) {
 				// if the piece is already selected, deselect it
 				level.setActivePiece(null);
 			} else {
 				// set piece as active piece and redraw
-				level.setActivePiece(selectedPiece);
+				level.setMoveSource("Bullpen");
+				level.setActivePiece(activePiece);
 			}
 			// refresh the view
-			bV.repaint();
+			bpView.repaint();
 		}
 	}
 
+	// TODO explain commented-out code
 	//	public void mouseReleased(MouseEvent me) {
 	//		//TODO: Expand this? Right now it will just let go of the piece and do nothing if the mouse is released in the bullpen
 	//		System.out.println("Let go of the mouse!");
