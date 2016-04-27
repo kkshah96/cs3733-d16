@@ -78,8 +78,6 @@ public class BullpenView extends JPanel {
 			
 			pieces.put(piece, new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET,
 					(i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
-			pieces.put(piece, new Point((i % NUM_COLUMNS) * SPACING * SQUARE_SIZE + WIDTH_OFFSET,
-					(i / NUM_COLUMNS) * SPACING * SQUARE_SIZE + HEIGHT_OFFSET));
 			pDrawer.paint(g, color, piece, new Point((i  % NUM_COLUMNS) * SPACING, (i / NUM_COLUMNS) * SPACING),
 					SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}

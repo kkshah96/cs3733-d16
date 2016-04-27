@@ -105,6 +105,12 @@ public class BoardController extends MouseAdapter{
 			bV.repaint();
 		}
 	}
+	
+	@Override
+	public void mouseExited(MouseEvent me) {
+		bV.removeDraggedPiece();
+		bV.repaint();
+	}
 
 	/*public void mouseReleased(MouseEvent me) {
 		//From the bullpen
