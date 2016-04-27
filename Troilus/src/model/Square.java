@@ -53,6 +53,14 @@ public abstract class Square {
 		}
 	}
 	
+	/**
+	 * Returns whether or not the given square is a hint.
+	 * @return boolean 
+	 */
+	public boolean isHint() {
+		return this.isHint;
+	}
+	
 	public boolean getHintStatus(){
 		return isHint;
 	}
