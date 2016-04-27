@@ -54,7 +54,7 @@ public class BoardController extends MouseAdapter {
 			// TODO fix this logic!
 			if (level.getMoveSource() == null) {
 				// Do nothing if no piece to click
-				if (level.getBoard().getPiece(col, row) != null && level.canMove()) {
+				if (level.getBoard().getPiece(col, row) != null) {
 					Piece pieceToDrag = level.getBoard().removePiece(level.getBoard().getPiece(col, row));
 
 					if (pieceToDrag != null) {

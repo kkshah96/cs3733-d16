@@ -38,7 +38,7 @@ public class BoardToBullpenMove {
 	}
 	
 	public boolean isValid() {
-		return level.canMove() && pToRemove != null;
+		return pToRemove != null;
 	}
 	
 	public boolean undo() {
