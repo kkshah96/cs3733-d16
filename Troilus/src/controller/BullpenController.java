@@ -17,14 +17,14 @@ import view.BullpenView;
  *
  */
 public class BullpenController extends MouseAdapter {
-	protected BullpenView bpView;
 	protected Level level;
+	protected BullpenView bullpenView;
 	Piece activePiece;
 
-	public BullpenController(Level level, BullpenView bpView) {
+	public BullpenController(Level level, BullpenView bullpenView) {
 		super();
-		this.bpView = bpView;
 		this.level = level;
+		this.bullpenView = bullpenView;
 	}
 
 	// TODO why do this??
@@ -39,7 +39,7 @@ public class BullpenController extends MouseAdapter {
 		Bullpen bullpen = level.getBullpen();
 
 		// find the piece that was clicked
-		Hashtable<Piece, Point> pieces = bpView.getDrawnPieces();
+		Hashtable<Piece, Point> pieces = bullpenView.getDrawnPieces();
 		Set<Piece> keySet = pieces.keySet();
 		activePiece = null;
 
@@ -73,14 +73,14 @@ public class BullpenController extends MouseAdapter {
 		// check if a piece was clicked on, deselect currently selected piece
 		if (activePiece == null) {
 			level.setActivePiece(null);
-			bpView.repaint();
+			bullpenView.repaint();
 			return;
 		}
 
 		// a right click will remove the selected piece from the bullpen
 		if (mouseButton == MouseEvent.BUTTON3) {
 			bullpen.removePiece(activePiece);
-			bpView.repaint();
+			bullpenView.repaint();
 		} else {
 			if (level.getActivePiece() == activePiece) {
 				// if the piece is already selected, deselect it
@@ -91,7 +91,7 @@ public class BullpenController extends MouseAdapter {
 				level.setActivePiece(activePiece);
 			}
 			// refresh the view
-			bpView.repaint();
+			bullpenView.repaint();
 		}
 	}
 

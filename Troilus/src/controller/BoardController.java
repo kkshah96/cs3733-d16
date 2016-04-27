@@ -16,15 +16,13 @@ import view.LevelEditorView;
  * @author Maddy
  */
 public class BoardController extends MouseAdapter {
-	protected LevelEditorView editorView;
 	protected BoardView boardView;
 	protected Level level;
 	Piece activePiece;
 
-	public BoardController(Level level, LevelEditorView editorView) {
+	public BoardController(Level level, BoardView boardView) {
 		super();
-		this.editorView = editorView;
-		this.boardView = editorView.getBoardView();
+		this.boardView = boardView;
 		this.level = level;
 	}
 

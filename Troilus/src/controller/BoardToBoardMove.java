@@ -5,7 +5,7 @@ import model.Level;
 import model.Piece;
 
 /**
- * Class for implemenation of moving a piece on the board.
+ * Class for implementation of moving a piece on the board.
  * TODO THIS NEEDS TO BE FINISHED!
  * @author Alex Kasparek
  * @author Maddy
