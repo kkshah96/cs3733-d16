@@ -15,15 +15,30 @@ public class ReleaseSquare extends Square {
 	int number;
 	Color numberColor;
 	
-	public ReleaseSquare(int row, int col, boolean isValid) {
-		super(row, col, isValid);
+	/** 
+	 * Creates a ReleaseSquare with the following parameters.
+	 * @param col
+	 * @param row
+	 * @param isValid
+	 * @param a
+	 */
+	public ReleaseSquare(int col, int row, boolean isValid) {
+		super(col, row, isValid);
 		number = 0;
 		numberColor = null;
 		
 	}
 	
-	public ReleaseSquare(int row, int col, boolean isValid, int number, Color numberColor) {
-		super(row, col, isValid);
+	/**
+	 * Creates a Release Square with the following parameters.
+	 * @param row
+	 * @param col
+	 * @param isValid
+	 * @param number
+	 * @param numberColor
+	 */
+	public ReleaseSquare(int col, int row, boolean isValid, int number, Color numberColor) {
+		super(col, row, isValid);
 		this.number = number;
 		this.numberColor = numberColor;
 	}

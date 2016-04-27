@@ -25,7 +25,7 @@ public class Board {
 	public static final int BOARD_HEIGHT = 12;
 
 	/** The 2D array of squares that compose the board. */
-	Square[][] squares; // uses squares[row][col]
+	Square[][] squares; // uses squares[col][row]
 	
 	/** Pieces on the Board, where Point holds (col, row) */
 	Hashtable<Piece, Point> pieces;
@@ -42,7 +42,7 @@ public class Board {
 	 * @param squares 2D array of squares for the board
 	 */
 	public Board(Square[][] squares) {
-		if (squares[0].length > BOARD_HEIGHT || squares.length > BOARD_WIDTH) {
+		if (squares[0].length > BOARD_WIDTH || squares.length > BOARD_HEIGHT) {
 			throw new RuntimeException("Board Constructor exception: 2D array of Squares provided to Board exceeds max size of board!");
 		} else {
 			this.squares = squares;
@@ -52,11 +52,11 @@ public class Board {
 
 	/**
 	 * Sets the currently active square on this board for events
-	 * @param row Row of the square selected
 	 * @param col Column of the square selected
+	 * @param row Row of the square selected
 	 */
-	public void setActiveSquare(int row, int col) {
-		this.activeSquare = squares[row][col];
+	public void setActiveSquare(int col, int row) {
+		this.activeSquare = squares[col][row];
 	}
 
 	/**
@@ -69,11 +69,11 @@ public class Board {
 
 	/** Add the given piece to the board if valid
 	 * @param p Piece to be added
-	 * @param row Requested row for the piece anchor
 	 * @param col Requested column for the piece anchor
+	 * @param row Requested row for the piece anchor
 	 * @return Returns true if piece was added successfully, false otherwise
 	 */
-	public boolean addPiece(Piece p, int row, int col) {
+	public boolean addPiece(Piece p, int col, int row) {
 		// Bounds check
 		if (row < 0 || row >= BOARD_HEIGHT || col < 0 || col >= BOARD_WIDTH) {
 			System.out.println("Not in bounds");
@@ -88,8 +88,9 @@ public class Board {
 		System.out.printf("Anchor placed at (%d,%d)", col, row);
 		
 		// TODO should anchor be separate in Piece storage?
-		if (getPiece(row, col) != null) {
-			System.out.print("Overlapping piece at location");
+		Piece getP = getPiece(col, row);
+		if (getP != null) {
+			System.out.print("Overlapping piece at location: " + getP.type);
 			return false;
 		}
 		
@@ -100,8 +101,8 @@ public class Board {
 
 		for (PieceSquare square : p.squares) {
 			// check if each square is in board area
-			int absRow = square.col + row; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
-			int absCol = square.row + col;
+			int absRow = square.row + row; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
+			int absCol = square.col + col;
 			System.out.printf("Piece square is at (%d,%d)", absCol, absRow);
 
 			if (!(absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
@@ -110,19 +111,19 @@ public class Board {
 			}
 			
 			// Check if each square is in bounds
-			if (!squares[absRow][absCol].isValid()) {
-				System.out.printf("Not in bounds: %d, %d\n", absRow, absCol);
+			if (!squares[absCol][absRow].isValid()) {
+				System.out.printf("Not in bounds (%d, %d)\n", absCol, absRow);
 				return false;
 			}
 
 			// Check for overlapping pieces
-			if (getPiece(absRow, absCol) != null) {
+			if (getPiece(absCol, absRow) != null) {
 				System.out.println("Overlapping pieces");
 				return false;
 			}	
 		}
 
-		this.pieces.put(p, new Point(row, col));
+		this.pieces.put(p, new Point(col, row));
 		return true;
 	}
 
@@ -137,11 +138,11 @@ public class Board {
 	/** Find the Piece at the given location (leave Piece unchanged)
 	 * WARNING: Returns NULL if not on board
 	 * WARNING: Coordinates are fucked up.
-	 * @param row Requested row
 	 * @param col Requested column
+	 * @param row Requested row
 	 * @return
 	 */
-	public Piece getPiece(int row, int col) {
+	public Piece getPiece(int col, int row) {
 		// Bounds check
 		if (row >= Board.BOARD_HEIGHT || row < 0 || col >= Board.BOARD_WIDTH || col < 0) {
 			return null;
@@ -153,12 +154,12 @@ public class Board {
 			int anchorCol = anchorPoint.x;
 			int anchorRow = anchorPoint.y;
 
-			if (anchorRow == col && anchorCol == row) {
+			if (anchorCol == col && anchorRow == row) {
 				return piece;
 			}
 
 			for (Square square : piece.getSquares()) {
-				if ((square.getRow() + anchorCol == row) && (square.getCol() + anchorRow == col)) {
+				if ((square.getRow() + anchorRow == row) && (square.getCol() + anchorCol == col)) {
 					return piece;
 				}
 			}
@@ -169,31 +170,31 @@ public class Board {
 
 	/** Find the Square at the given location (don't change).
 	 * WARNING: Returns NULL if not on board.
-	 * @param row Row of the requested square
 	 * @param col Column of the requested square
+	 * @param row Row of the requested square
 	 * @return Returns a reference to the requested square
 	 */
-	public Square getSquare(int row, int col) {
+	public Square getSquare(int col, int row) {
 		// Bounds check
 		if (row >= BOARD_HEIGHT || row < 0 || col >= BOARD_WIDTH || col < 0) {
 			return null;
 		}
 
-		return squares[row][col];
+		return squares[col][row];
 	}
 
 	/**
 	 * Resets the dimensions and squares inside the board.
 	 * Will throw a RuntimeException if the sizes given are greater than max size.
 	 * <p>
-	 * @param rows Size
 	 * @param cols
+	 * @param rows Size
 	 */
-	public void setDimensions(int rows, int cols) {
+	public void setDimensions(int cols, int rows) {
 		for (int row = 0; row < BOARD_HEIGHT; row++) {
 			for (int column = 0; column < BOARD_WIDTH; column++) {
 				boolean valid = (row < rows) && (column < cols);
-				squares[row][column].setIsValid(valid);
+				squares[column][row].setIsValid(valid);
 			}
 		}
 	}

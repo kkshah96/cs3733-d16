@@ -43,7 +43,7 @@ public class BoardController extends MouseAdapter{
 
 		// TODO WE SHOULD DELEGATE THIS TO THE UNDO MOVE THING
 		if(me.getButton() == MouseEvent.BUTTON3){ // We have right clicked
-			Piece pToRemove = level.getBoard().getPiece(row, col);	
+			Piece pToRemove = level.getBoard().getPiece(col, row);	
 
 			if(pToRemove == null) return; // TODO: Is there a better way to handle this?
 

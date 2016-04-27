@@ -119,13 +119,13 @@ public class LevelXMLInputController {
 								
 								// get actual color from rgb string
 								Color color = new Color(Integer.parseInt(red), Integer.parseInt(green), Integer.parseInt(blue));
-								square = new ReleaseSquare(j, k, isValid, number, color);
+								square = new ReleaseSquare(k, j, isValid, number, color);
 							} 
 							else if(squareType.equals("LightningSquare")) {
-								square = new LightningSquare(j, k, isValid);
+								square = new LightningSquare(k, j, isValid);
 							} 
 							else if(squareType.equals("PuzzleSquare")) {
-								square = new PuzzleSquare(j, k, isValid);
+								square = new PuzzleSquare(k, j, isValid);
 							}
 
 							squares[j][k] = square;

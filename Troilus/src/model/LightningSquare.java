@@ -13,8 +13,14 @@ package model;
 public class LightningSquare extends Square {
 	boolean isCovered;
 	
-	public LightningSquare(int row, int col, boolean isValid) {
-		super(row, col, isValid);
+	/**
+	 * Creates a LightningSquare with the following parameters.
+	 * @param col
+	 * @param row
+	 * @param isValid
+	 */
+	public LightningSquare(int col, int row, boolean isValid) {
+		super(col, row, isValid);
 	}
 
 	@Override

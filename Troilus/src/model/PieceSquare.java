@@ -10,8 +10,14 @@ package model;
  *
  */
 public class PieceSquare extends Square {
-	public PieceSquare(int row, int col) {
-		super(row, col, true);
+	
+	/**
+	 * Creates a PieceSquare with the following parameters.
+	 * @param col
+	 * @param row
+	 */
+	public PieceSquare(int col, int row) {
+		super(col, row, true);
 	}
 	
 	@Override

@@ -10,8 +10,15 @@ package model;
  *
  */
 public class PuzzleSquare extends Square {
-	public PuzzleSquare(int row, int col, boolean isValid) {
-		super(row, col, isValid);
+	
+	/**
+	 * Creates a PuzzleSquare with the following parameters.
+	 * @param col
+	 * @param row
+	 * @param isValid
+	 */
+	public PuzzleSquare(int col, int row, boolean isValid) {
+		super(col, row, isValid);
 	}
 
 	@Override

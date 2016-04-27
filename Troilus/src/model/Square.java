@@ -18,7 +18,7 @@ public abstract class Square {
 	int col;
 	boolean isValid;
 	
-	public Square(int row, int col, boolean isValid) {
+	public Square(int col, int row, boolean isValid) {
 		this.row = row;
 		this.col = col;
 		this.isValid = isValid;

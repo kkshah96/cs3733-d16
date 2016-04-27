@@ -58,7 +58,7 @@ public class Piece {
 	 * @return Row of the anchor square
 	 */
 	public int getRow() {
-		return anchor.row;
+		return anchor.getRow();
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public class Piece {
 	 * @return Col of the anchor square
 	 */
 	public int getCol() {
-		return anchor.col;
+		return anchor.getCol();
 	}
 	
 	/**
