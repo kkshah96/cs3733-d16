@@ -1,15 +1,11 @@
 package controller;
 
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import model.Board;
 import model.Level;
 import model.Piece;
 import view.BoardView;
-import view.BullpenView;
-import view.LevelEditorView;
 
 /**
  * Class to control events related to Board.
@@ -31,7 +27,7 @@ public class BoardController extends MouseAdapter {
 			System.out.println("BoardView was null!");
 			return;
 		}
-		
+
 		// get mouse coordinates
 		int x = me.getX();
 		int y = me.getY();
@@ -56,9 +52,8 @@ public class BoardController extends MouseAdapter {
 			if (level.getMoveSource() == null) {
 				level.setMoveSource("Board");
 				level.setActivePiece(level.getBoard().getPiece(col, row));
-				//boardView.addDraggedPiece(activePiece, me.getPoint());
 			}
-			
+
 			if (level.getMoveSource() == "Bullpen") {
 				BullpenToBoardMove m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
 				if (m.doMove()) {
@@ -83,29 +78,20 @@ public class BoardController extends MouseAdapter {
 				System.err.println("Invalid source when moving to Board");
 			}
 		}
-
-		//TODO what were these lines for again?
-
-		//activePiece = level.getBoard().getPiece(row, col);
-
-		//if(activePiece == null){
-		//System.out.println("No piece clicked");
-		//	}
 		boardView.repaint();
 	}
 
 	public void mouseMoved(MouseEvent me){
 		activePiece = level.getActivePiece();
-		//BoardView bView = editorView.getBoardView();
 
 		if (activePiece != null) {
-			System.out.println("adding dragged piece");
 			boardView.addDraggedPiece(activePiece, me.getPoint());
 			boardView.repaint();
 		}
 	}
 
 	@Override
+	// TODO does this work?
 	public void mouseExited(MouseEvent me) {
 		boardView.removeDraggedPiece();
 		boardView.repaint();
