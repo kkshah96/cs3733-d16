@@ -50,12 +50,6 @@ public class StartLevelSelectorController {
 			Level currentLevel = levels.get(i);
 			
 			// enable buttons if level exists
-			if (i > 0 && !levels.get(i - 1).hasWon()) {
-				currentLevel.setLocked(true);
-			} else {
-				currentLevel.setLocked(false);
-			}
-			
 			JButton currentButton = buttons.get(i);
 			String name = currentLevel.getName();
 			currentButton.setVisible(true);
