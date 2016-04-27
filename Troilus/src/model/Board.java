@@ -94,14 +94,14 @@ public class Board {
 			return false;
 		}
 		
-		if (!(squares[row][col].isValid())) {
+		if (!(squares[col][row].isValid())) {
 			System.out.println("Anchor square placed at disabled square");
 			return false;
 		}
 
 		for (PieceSquare square : p.squares) {
 			// check if each square is in board area
-			int absRow = square.row + row; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
+			int absRow = square.row + row; 
 			int absCol = square.col + col;
 			System.out.printf("Piece square is at (%d,%d)", absCol, absRow);
 
@@ -137,7 +137,6 @@ public class Board {
 
 	/** Find the Piece at the given location (leave Piece unchanged)
 	 * WARNING: Returns NULL if not on board
-	 * WARNING: Coordinates are fucked up.
 	 * @param col Requested column
 	 * @param row Requested row
 	 * @return

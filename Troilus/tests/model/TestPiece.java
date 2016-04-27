@@ -17,11 +17,11 @@ public class TestPiece extends TestCase {
 		// Start by creating a test Piece- Piece1 in this case, by hand
 		PieceSquare anchorSquare = new PieceSquare(1, 5);
 		PieceSquare[] pieceSquares = new PieceSquare[5];
-		pieceSquares[0] = new PieceSquare(-1, 0);
-		pieceSquares[1] = new PieceSquare(-2, 0);
-		pieceSquares[2] = new PieceSquare(-3, 0);
-		pieceSquares[3] = new PieceSquare(-4, 0);
-		pieceSquares[4] = new PieceSquare(-5, 0);
+		pieceSquares[0] = new PieceSquare(0, -1);
+		pieceSquares[1] = new PieceSquare(0, -2);
+		pieceSquares[2] = new PieceSquare(0, -3);
+		pieceSquares[3] = new PieceSquare(0, -4);
+		pieceSquares[4] = new PieceSquare(0, -5);
 		Piece piece1 = new Piece(pieceSquares, anchorSquare, 1, Color.RED);
 		
 		// Assert an exception if we try to create a piece with more than 5 squares
@@ -38,8 +38,8 @@ public class TestPiece extends TestCase {
 		}
 		
 		// Assert that getRow() and getCol() return the row and column of the anchor
-		assertEquals(1, piece1.getRow());
-		assertEquals(5, piece1.getCol());
+		assertEquals(5, piece1.getRow());
+		assertEquals(1, piece1.getCol());
 		
 		// Assert that the piece can return its type correctly
 		assertEquals(1, piece1.getType());
@@ -169,11 +169,11 @@ public class TestPiece extends TestCase {
 		Piece piece25 = PieceFactory.getPiece(25);
 		
 		PieceSquare[] pieceSquares = new PieceSquare[Piece.PIECE_SIZE - 1];
-		pieceSquares[0] = new PieceSquare(0, +1);
-		pieceSquares[1] = new PieceSquare(0, +2);
-		pieceSquares[2] = new PieceSquare(-1, +1);
-		pieceSquares[3] = new PieceSquare(-2, +1);
-		pieceSquares[4] = new PieceSquare(-3, +1);
+		pieceSquares[0] = new PieceSquare(+1, 0);
+		pieceSquares[1] = new PieceSquare(+2, 0);
+		pieceSquares[2] = new PieceSquare(+1, -1);
+		pieceSquares[3] = new PieceSquare(+1, -2);
+		pieceSquares[4] = new PieceSquare(+1, -3);
 		Piece testPiece25 = new Piece(pieceSquares, new PieceSquare(0, 0), 25, Color.RED);
 		
 		assertTrue(piece25.sameShape(testPiece25));

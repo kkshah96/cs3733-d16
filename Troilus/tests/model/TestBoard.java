@@ -52,52 +52,52 @@ public class TestBoard extends TestCase {
 		
 		assertEquals(null, board.getPiece(7, 8));
 		assertEquals(null, board.getPiece(8, 7));
-		assertEquals(null, board.getPiece(1, 7));
-		assertEquals(piece1, board.getPiece(2, 7));
+		assertEquals(null, board.getPiece(7, 1));
+		assertEquals(piece1, board.getPiece(7, 2));
 		assertEquals(piece1, board.getPiece(7, 7));
 		
-		assertFalse(board.addPiece(piece2, 6, 7));
+		assertFalse(board.addPiece(piece2, 7, 6));
 		assertFalse(board.addPiece(piece2, 7, 7));
-		assertFalse(board.addPiece(piece2, 11, 7));
+		assertFalse(board.addPiece(piece2, 7, 11));
 		
 		assertEquals(piece1, board.removePiece(piece1));
 
 		assertEquals(null, board.getPiece(7, 7));
-		assertTrue(board.addPiece(piece2, 10, 7));
+		assertTrue(board.addPiece(piece2, 7, 10));
 		
-		assertEquals(piece2, board.getPiece(10, 7));
+		assertEquals(piece2, board.getPiece(7, 10));
 	}
 	
 	public void testPlacement2() {
 		Piece piece1 = PieceFactory.getPiece(1);
 		
-		board.setActiveSquare(6, 9);
+		board.setActiveSquare(9, 6);
 		board.toggleActiveSquare();
 		
-		assertFalse(board.getSquare(6, 9).isValid());
+		assertFalse(board.getSquare(9, 6).isValid());
 
 		// Off board edge
-		assertFalse(board.addPiece(piece1, 0, 4));
-		assertFalse(board.addPiece(piece1, 1, 9));
-		assertFalse(board.addPiece(piece1, 2, 9));
-		assertFalse(board.addPiece(piece1, 3, 9));
-		assertFalse(board.addPiece(piece1, 4, 9));
+		assertFalse(board.addPiece(piece1, 4, 0));
+		assertFalse(board.addPiece(piece1, 9, 1));
+		assertFalse(board.addPiece(piece1, 9, 2));
+		assertFalse(board.addPiece(piece1, 9, 3));
+		assertFalse(board.addPiece(piece1, 9, 4));
 		
 		// Intersects with invalid square (out-of-bounds)
-		assertFalse(board.addPiece(piece1, 6, 9));
+		assertFalse(board.addPiece(piece1, 9, 6));
 		assertFalse(board.addPiece(piece1, 9, 9));
-		assertFalse(board.addPiece(piece1, 10, 9));
-		assertFalse(board.addPiece(piece1, 11, 9));
+		assertFalse(board.addPiece(piece1, 9, 10));
+		assertFalse(board.addPiece(piece1, 9, 11));
 		
 		// Valid
-		assertTrue(board.addPiece(piece1, 5, 9));
+		assertTrue(board.addPiece(piece1, 9, 5));
 	}
 	
 	public void testRemoval() {
 		Piece piece1 = PieceFactory.getPiece(1);
 		
 		assertTrue(board.addPiece(piece1, 11, 11));
-		assertEquals(piece1, board.removePiece(board.getPiece(7, 11)));
-		assertEquals(null, board.getPiece(7, 11));
+		assertEquals(piece1, board.removePiece(board.getPiece(11, 7)));
+		assertEquals(null, board.getPiece(11, 7));
 	}
 }
