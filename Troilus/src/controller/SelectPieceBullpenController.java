@@ -79,11 +79,13 @@ public class SelectPieceBullpenController extends MouseAdapter {
 		if(e.getButton() == MouseEvent.BUTTON3) {
 			bullpen.removePiece(selectedPiece);
 			bullpenView.repaint();
-		} else {
+		} 
+		else {
 			if (level.getActivePiece() == selectedPiece) {
 				// if the piece is already selected, deselect it
 				level.setActivePiece(null);
-			} else {
+			} 
+			else {
 				// set piece as active piece and redraw
 				level.setActivePiece(selectedPiece);
 			}

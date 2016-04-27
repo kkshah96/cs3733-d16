@@ -10,8 +10,12 @@ import model.Level;
 import model.Piece;
 import model.Square;
 import view.BullpenView;
-import view.LevelEditorView;
 
+/**
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class BullpenController extends MouseAdapter{
 	
 	protected BullpenView bullpenView;
@@ -76,11 +80,13 @@ public class BullpenController extends MouseAdapter{
 		if(me.getButton() == MouseEvent.BUTTON3) {
 			bullpen.removePiece(selectedPiece);
 			bullpenView.repaint();
-		} else {
+		} 
+		else {
 			if (level.getActivePiece() == selectedPiece) {
 				// if the piece is already selected, deselect it
 				level.setActivePiece(null);
-			} else {
+			} 
+			else {
 				// set piece as active piece and redraw
 				level.setActivePiece(selectedPiece);
 				bullpenView.addDraggedPiece(selectedPiece, new Point(selectedPiece.getRow(), selectedPiece.getCol()));
