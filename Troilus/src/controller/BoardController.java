@@ -11,28 +11,30 @@ import view.BoardView;
 import view.BullpenView;
 import view.LevelEditorView;
 
-public class BoardController extends MouseAdapter{
-
-	protected LevelEditorView lV;
-	protected BoardView bV;
+/**
+ * Class to control events related to Board.
+ * @author Maddy
+ *
+ */
+public class BoardController extends MouseAdapter {
+	protected LevelEditorView editorView;
+	protected BoardView boardView;
 	protected Level level;
 	Piece activePiece;
 
-	public BoardController(Level level, BoardView bV, LevelEditorView lV) {
+	public BoardController(Level level, LevelEditorView editorView) {
 		super();
-
-		this.lV = lV;
-		this.bV = bV;
+		this.editorView = editorView;
+		this.boardView = editorView.getBoardView();
 		this.level = level;
 	}
 
 	public void mousePressed(MouseEvent me){
-
 		//get mouse coordinates
 		int x = me.getX();
 		int y = me.getY();
 
-		if(bV == null){
+		if (boardView == null) {
 			System.out.println("BoardView was null!");
 			return;
 		}
@@ -42,32 +44,35 @@ public class BoardController extends MouseAdapter{
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 
 		// TODO WE SHOULD DELEGATE THIS TO THE UNDO MOVE THING
-		if(me.getButton() == MouseEvent.BUTTON3){ // We have right clicked
+		// TODO NO BECAUSE IT IS NOT UNDOING A MOVE
+		if (me.getButton() == MouseEvent.BUTTON3) { // We have right clicked
 			Piece pToRemove = level.getBoard().getPiece(col, row);	
 
-			if(pToRemove == null) return; // TODO: Is there a better way to handle this?
+			if (pToRemove == null) {
+				return; // TODO: Is there a better way to handle this?
+			}
 
 			Piece p = level.getBoard().removePiece(pToRemove);
 			level.getBullpen().addPiece(level.getBoard().removePiece(p));
 
-			bV.repaint();
-		}else{
+			boardView.repaint();
+		} else {
 			level.setMoveSource("Bullpen");
-			if(level.getMoveSource() == "Bullpen"){
-				BullpenToBoardMove m = new BullpenToBoardMove (level, level.getActivePiece(), me.getX(), me.getY());
-
-				if (m.doMove ()) {
+			if (level.getMoveSource() == "Bullpen") {
+				BullpenToBoardMove m = new BullpenToBoardMove(level,
+						level.getActivePiece(), me.getX(), me.getY());
+				if (m.doMove()) {
 				//push move here
 					System.out.println("Success!");
-					bV.repaint();
+					boardView.repaint();
 				} else {
 					System.out.println("Failure!");
 				}
 				
-				bV.removeDraggedPiece();
+				boardView.removeDraggedPiece();
 				//level.getBullpen().removePiece(activePiece); I Put this in the move itself instead
 				//level.removeActivePiece();
-			}else if (level.getMoveSource() == "Board"){
+			} else if (level.getMoveSource() == "Board") {
 				BoardToBoardMove m = new BoardToBoardMove(level, activePiece, me.getX(), me.getY());
 				
 				if (m.doMove ()) {
@@ -78,9 +83,9 @@ public class BoardController extends MouseAdapter{
 					}
 				//	level.getBullpen().removePiece(activePiece);
 					//level.removeActivePiece();
-				bV.removeDraggedPiece();
-			}else{
-				System.err.println("Invalid source");
+				boardView.removeDraggedPiece();
+			} else {
+				System.err.println("Invalid source when moving to Board");
 			}
 		}
 		
@@ -91,7 +96,6 @@ public class BoardController extends MouseAdapter{
 		//if(activePiece == null){
 			//System.out.println("No piece clicked");
 	//	}
-		
 	}
 
 	public void mouseMoved(MouseEvent me){
@@ -99,17 +103,16 @@ public class BoardController extends MouseAdapter{
 		//BoardView bView = editorView.getBoardView();
 
 		if (activePiece != null) {
-
 			System.out.println("adding dragged piece");
-			bV.addDraggedPiece(activePiece, me.getPoint());
-			bV.repaint();
+			boardView.addDraggedPiece(activePiece, me.getPoint());
+			boardView.repaint();
 		}
 	}
 	
 	@Override
 	public void mouseExited(MouseEvent me) {
-		bV.removeDraggedPiece();
-		bV.repaint();
+		boardView.removeDraggedPiece();
+		boardView.repaint();
 	}
 
 	/*public void mouseReleased(MouseEvent me) {
@@ -147,5 +150,4 @@ public class BoardController extends MouseAdapter{
 	lV.repaint();
 
 	}//end mouseReleased*/
-
 }

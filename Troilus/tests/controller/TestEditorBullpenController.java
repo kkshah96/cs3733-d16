@@ -14,14 +14,17 @@ import model.PieceFactory;
 import model.PuzzleLevel;
 import model.PuzzleSquare;
 import model.Square;
-import view.BoardView;
-import view.BullpenView;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
-public class TestBullpenController extends TestCase {
-
-	public void testBullpenController() {
+public class TestEditorBullpenController extends TestCase {
+	Board board;
+	LevelBuilder lb;
+	Level level;
+	LevelEditorView lsView;
+	BullpenController bpController;
+	
+	public void setUp() {
 		// Initialization things
 		Square[][] squares = new PuzzleSquare[Board.BOARD_HEIGHT][Board.BOARD_WIDTH];
 		for (int i = 0; i < Board.BOARD_HEIGHT; i++) {
@@ -29,14 +32,17 @@ public class TestBullpenController extends TestCase {
 				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
-		Board board = new Board(squares);
-		LevelBuilder lb = new LevelBuilder();
-		Level level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
-		LevelLoaderView lView = new LevelLoaderView(lb);
-		LevelEditorView lsView = new LevelEditorView(lb, lView, level);
 		
+		board = new Board(squares);
+		lb = new LevelBuilder();
+		level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
+		LevelLoaderView lView = new LevelLoaderView(lb);
+		lsView = new LevelEditorView(lb, lView, level);
+		bpController = new BullpenController(level, lsView.getBullpenView());
+	}
+	
+	public void testBullpenController() {
 		// Now for the fun stuff
-		BullpenController bpController = new BullpenController(level, lsView.getBullpenView());
 		
 		// Handle a basic press at the topleft of the board
 		bpController.handleMousePressed(new Point(0,0), MouseEvent.BUTTON1);
