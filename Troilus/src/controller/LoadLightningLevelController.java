@@ -60,10 +60,10 @@ public class LoadLightningLevelController implements ActionListener {
 		editorView.getMinutesField().setText(Integer.toString(level.getTime() / 60));
 		editorView.getSecondsField().setText(Integer.toString(level.getTime() % 60));
 		
-		// add action listeners for changing minutes and seconds
+		// add action listeners for changing minutes and seconds as well as the set button
 		editorView.getMinutesField().addActionListener(new SetTimeLimitController(level, editorView));
 		editorView.getSecondsField().addActionListener(new SetTimeLimitController(level, editorView));
-		
+		editorView.getSetTimeButton().addActionListener(new SetTimeLimitController(level, editorView));
 
 		// show level view
 		editorView.setLevelType("Lightning");
