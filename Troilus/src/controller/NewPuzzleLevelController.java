@@ -26,16 +26,15 @@ import view.LevelLoaderView;
  */
 public class NewPuzzleLevelController implements ActionListener {
 	LevelBuilder builder;
-	LevelLoaderView levelLoader;
+	LevelLoaderView loaderView;
 
-	public NewPuzzleLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
+	public NewPuzzleLevelController(LevelBuilder builder, LevelLoaderView loaderView) {
 		this.builder = builder;
-		this.levelLoader = levelLoader;
+		this.loaderView = loaderView;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		// Create a new Bullpen, Palette and Board for the Level
 		Bullpen bpen = new Bullpen();
 		
@@ -53,12 +52,12 @@ public class NewPuzzleLevelController implements ActionListener {
 		PuzzleLevel newPuzzleLevel = new PuzzleLevel(builder.getLevels().size(), true, bpen, board, p, 0);
 		builder.addLevel(newPuzzleLevel);
 		
-		final LevelEditorView newEditorView = new LevelEditorView(builder, levelLoader, newPuzzleLevel);
+		final LevelEditorView newEditorView = new LevelEditorView(builder, loaderView, newPuzzleLevel);
 		newEditorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				newEditorView.dispose();
 				// handle reset
-				new ExitLevelEditorController(builder, newEditorView, levelLoader).process();
+				new ExitLevelEditorController(builder, newEditorView, loaderView).process();
 			}      
 		});
 		
@@ -69,8 +68,7 @@ public class NewPuzzleLevelController implements ActionListener {
 		// set listener
 		newEditorView.getMaxMovesField().addActionListener(new SetMaxMovesController(newPuzzleLevel, newEditorView));
 
-
-		levelLoader.setVisible(false);
+		loaderView.setVisible(false);
 		newEditorView.setVisible(true);
 	}	
 }

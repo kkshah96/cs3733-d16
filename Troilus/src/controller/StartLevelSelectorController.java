@@ -35,6 +35,7 @@ public class StartLevelSelectorController {
 		
 		ArrayList<JButton> buttons = levelSelectorView.getLevelButtons();
 		ArrayList<JLabel> labels = levelSelectorView.getLevelLabels();
+		
 		// first set all buttons to invisible and disabled
 		for (JButton button : buttons) {
 			button.setVisible(false);
@@ -44,27 +45,34 @@ public class StartLevelSelectorController {
 		for (JLabel label : labels) {
 			label.setVisible(false);;
 		}
+		
 		for (int i = 0; i < numLevels; i++) {
 			Level currentLevel = levels.get(i);
-			JButton currentButton = buttons.get(i);
-			// enable buttons if level exists
 			
+			// enable buttons if level exists
+			if (i > 0 && !levels.get(i - 1).hasWon()) {
+				currentLevel.setLocked(true);
+			} else {
+				currentLevel.setLocked(false);
+			}
+			
+			JButton currentButton = buttons.get(i);
 			String name = currentLevel.getName();
 			currentButton.setVisible(true);
 			currentButton.setText("Level " + currentLevel.getLevelNum() + ": " + name);
 			if (name.equals("Puzzle")) {
 				currentButton.addActionListener(new StartPuzzleLevelController(levelSelectorView, (PuzzleLevel)currentLevel, game));
-			}
-			else if (name.equals("Lightning")) {
+			} else if (name.equals("Lightning")) {
 				currentButton.addActionListener(new StartLightningLevelController(levelSelectorView, (LightningLevel)currentLevel, game));
-			}
-			else if (name.equals("Release")) {
+			} else if (name.equals("Release")) {
 				currentButton.addActionListener(new StartReleaseLevelController(levelSelectorView, (ReleaseLevel)currentLevel, game));
 			}
 			labels.get(i).setVisible(true);
 			
 			// grey out button if locked
-			if (!currentLevel.isLocked()) {
+			if (currentLevel.isLocked()) {
+				currentButton.setEnabled(false);
+			} else {
 				currentButton.setEnabled(true);
 			}
 		}
