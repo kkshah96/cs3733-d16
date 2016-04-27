@@ -17,6 +17,8 @@ import javax.swing.border.LineBorder;
 
 import controller.BullpenController;
 import controller.ExitLevelController;
+import controller.FlipPieceController;
+import controller.RotatePieceController;
 import model.Kabasuji;
 import model.Level;
 import model.Piece;
@@ -84,48 +86,48 @@ public class LevelView extends JFrame{
 		panel.add(panelBoard);
 		panelBoard.setLayout(null);
 
-		JPanel panelBullpen = new JPanel();
-		panelBullpen.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panelBullpen.setBackground(Color.LIGHT_GRAY);
-		panelBullpen.setBounds(458, 88, 495, 455);
-		panel.add(panelBullpen);
-		panelBullpen.setLayout(null);
+		JPanel bullpenContainer = new JPanel();
+		bullpenContainer.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		bullpenContainer.setBackground(Color.LIGHT_GRAY);
+		bullpenContainer.setBounds(458, 88, 495, 455);
+		panel.add(bullpenContainer);
+		bullpenContainer.setLayout(null);
 
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(Color.LIGHT_GRAY);
-		panel_5.setBounds(6, 6, 483, 33);
-		panelBullpen.add(panel_5);
-		panel_5.setLayout(null);
+		JPanel bullpenOptionsPanel = new JPanel();
+		bullpenOptionsPanel.setBackground(Color.LIGHT_GRAY);
+		bullpenOptionsPanel.setBounds(6, 6, 483, 33);
+		bullpenContainer.add(bullpenOptionsPanel);
+		bullpenOptionsPanel.setLayout(null);
 
-		JLabel lblBullpen = new JLabel("Bullpen");
-		lblBullpen.setBounds(6, 6, 80, 23);
-		lblBullpen.setForeground(Color.BLACK);
-		lblBullpen.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
-		panel_5.add(lblBullpen);
+		JLabel bullpenLabel = new JLabel("Bullpen");
+		bullpenLabel.setBounds(6, 6, 80, 23);
+		bullpenLabel.setForeground(Color.BLACK);
+		bullpenLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 17));
+		bullpenOptionsPanel.add(bullpenLabel);
 
-		JButton btnNewButton_1 = new JButton("Rotate CW");
-		btnNewButton_1.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(76, 4, 99, 29);
-		panel_5.add(btnNewButton_1);
+		JButton rotateCWButton = new JButton("Rotate CW");
+		rotateCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		rotateCWButton.setBounds(76, 4, 99, 29);
+		rotateCWButton.addActionListener(new RotatePieceController(level, bullpenView, Piece.ROTATE_CW));
+		bullpenOptionsPanel.add(rotateCWButton);
 
-		JButton btnRotateCcw = new JButton("Rotate CCW");
-		btnRotateCcw.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		btnRotateCcw.setBounds(166, 4, 93, 29);
-		panel_5.add(btnRotateCcw);
+		JButton rotateCCWButton = new JButton("Rotate CCW");
+		rotateCCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		rotateCCWButton.setBounds(166, 4, 93, 29);
+		rotateCCWButton.addActionListener(new RotatePieceController(level, bullpenView, Piece.ROTATE_CCW));
+		bullpenOptionsPanel.add(rotateCCWButton);
+		
+		JButton flipPieceHorizontalButton = new JButton("Flip Horizontal");
+		flipPieceHorizontalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		flipPieceHorizontalButton.setBounds(250, 4, 110, 29);
+		flipPieceHorizontalButton.addActionListener(new FlipPieceController(level, bullpenView, Piece.FLIP_HORIZONTALLY));
+		bullpenOptionsPanel.add(flipPieceHorizontalButton);
 
-		flipPieceHButton = new JButton("Flip Horizontal");
-		flipPieceHButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		flipPieceHButton.setBounds(250, 4, 110, 29);
-		panel_5.add(flipPieceHButton);
-
-		JButton btnFlipVertical = new JButton("Flip Vertical");
-		btnFlipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		btnFlipVertical.setBounds(361, 4, 110, 29);
-		panel_5.add(btnFlipVertical);
+		JButton flipPieceVerticalButton = new JButton("Flip Vertical");
+		flipPieceVerticalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		flipPieceVerticalButton.setBounds(361, 4, 110, 29);
+		flipPieceVerticalButton.addActionListener(new FlipPieceController(level, bullpenView, Piece.FLIP_VERTICALLY));
+		bullpenOptionsPanel.add(flipPieceVerticalButton);
 
 		// create actual bullpen view and add it to the scroll pane
 
@@ -140,7 +142,7 @@ public class LevelView extends JFrame{
 		bullpenScrollPane.setViewportView(bullpenView);
 		//getContentPane().add(bullpenScrollPane, BorderLayout.CENTER);
 		//bullpenContainer.add(bullpenScrollPane);
-		panelBullpen.add(bullpenScrollPane);
+		bullpenContainer.add(bullpenScrollPane);
 
 		//NEW STUFF:
 		//bullpenView.addMouseListener(new BullpenController(level, bullpenView, this));
