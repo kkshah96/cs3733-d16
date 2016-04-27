@@ -106,13 +106,13 @@ public class Piece {
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 				
-				PieceSquare newSquare = new PieceSquare((-1) * oldCol, oldRow);
+				PieceSquare newSquare = new PieceSquare(oldRow, (-1) * oldCol);
 				newSquares[i] = newSquare;
 			} else if(direction == Piece.ROTATE_CW){ //ROTATE CW
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
-				PieceSquare newSquare = new PieceSquare(oldCol, (-1) * oldRow);
+				PieceSquare newSquare = new PieceSquare((-1) * oldRow, oldCol);
 				newSquares[i] = newSquare;
 			} else {
 				return this;
@@ -136,13 +136,13 @@ public class Piece {
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
-				PieceSquare newSquare = new PieceSquare(oldRow, (-1) * oldCol);
+				PieceSquare newSquare = new PieceSquare((-1) * oldCol, oldRow);
 				newSquares[i] = newSquare;
 			} else if(direction == Piece.FLIP_VERTICALLY){ //FLIP VERTICAL
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
-				PieceSquare newSquare = new PieceSquare((-1) * oldRow, oldCol);
+				PieceSquare newSquare = new PieceSquare(oldCol, (-1) * oldRow);
 				newSquares[i] = newSquare;
 			} else {
 				return this;
