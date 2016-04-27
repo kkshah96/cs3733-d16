@@ -10,6 +10,7 @@ import controller.LoadLevelsController;
  * The Kabasuji game consists of a collection of Levels, and always keeps track of the active Level (or level currently loaded)
  * 
  * @author Kunal Shah
+ * @author Connor Weeks
  *
  */
 public class Kabasuji {
@@ -27,6 +28,7 @@ public class Kabasuji {
 		
 		// automatically unlock first level
 		levels.get(0).setLocked(false);
+		
 		
 		
 		// stubs for testing:
@@ -54,10 +56,19 @@ public class Kabasuji {
 		
 	}
 
+	
+	/**
+	 * Returns an ordered list of the game's levels.
+	 * @return ArrayList<Level> list of levels
+	 */
 	public ArrayList<Level> getLevels() {
 		return levels;
 	}
 	
+	/**
+	 * Returns the number of levels in the game
+	 * @return int
+	 */
 	public int getNumLevels() {
 		return levels.size();
 	}
