@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import model.Level;
 import model.LightningLevel;
 import model.Kabasuji;
 import view.LevelSelectorView;
@@ -56,6 +55,9 @@ public class StartLightningLevelController implements ActionListener {
 				window.setVisible(true);
 			}      
 		});
+		
+		// set title of level
+		levelView.getLevelLabel().setText("Level " + level.getLevelNum() + ": " + level.getName());
 
 		// set visibility of level view elements to account for level type
 		levelView.getPanelPuzzleStats().setVisible(false);
@@ -69,6 +71,7 @@ public class StartLightningLevelController implements ActionListener {
 		}
 		levelView.getTimeLabel().setText("Time Remaining: " + (level.getTime() / 60) + ":" + secondsString);
 		new TimerController(levelView, game, level.getTime()).process();
+		
 
 		// show level view
 		levelView.setVisible(true);

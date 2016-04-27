@@ -61,6 +61,20 @@ public class LevelFileOutputController {
 	 */
 	void storeMasterFile() {
 		try {
+			// delete all level files in levels directory
+			File folder = new File(path);
+			File[] files = folder.listFiles();
+			
+			if (files != null) {
+				for (File file : files) {
+					if (file.isFile()) {
+						// remove all level files
+						if (file.getName().substring(0, 8).equals("LevelXML")) {
+							file.delete();
+						}
+					} 
+				}
+			}
 			// Create the master file, and overwrite it if needed
 			File masterFile = new File(path + "Levels.xml");
 			masterFile.createNewFile();

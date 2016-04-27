@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
@@ -20,7 +22,6 @@ import controller.BullpenController;
 import controller.ExitLevelController;
 import controller.FlipPieceController;
 import controller.RotatePieceController;
-import controller.SelectPieceBullpenController;
 import model.Kabasuji;
 import model.Level;
 import model.Piece;
@@ -35,9 +36,9 @@ import model.Piece;
  * @author Maddy Longo
  *
  */
-public class LevelView extends JFrame{
+public class LevelView extends JFrame {
 	private JPanel panelTitle;
-	private JLabel lblLevelPuzzle;
+	private JLabel levelLabel;
 	private JPanel panelPuzzleStats;
 	private JPanel panelLightningStats;
 	private JPanel panelReleaseStats;
@@ -45,12 +46,16 @@ public class LevelView extends JFrame{
 	
 	JLabel movesLabel;
 	JLabel timeLabel;
+	JLabel labelStars;
 
 	LevelSelectorView levelSelector;
 	Kabasuji game;
 	Level level;
 	BullpenView bullpenView;
 	BoardView boardView;
+	
+	// flag for the timer
+	private boolean isActive;
 
 	/**
 	 * Create the application.
@@ -60,6 +65,13 @@ public class LevelView extends JFrame{
 		this.levelSelector = levelSelector;
 		this.game = game;
 		this.level = level;
+		this.isActive = true;
+		// set isActive to false for timer when window closes
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+                isActive = false;
+            }
+        });
 		initialize();
 	}
 
@@ -80,11 +92,11 @@ public class LevelView extends JFrame{
 		panelTitle.setBounds(0, 0, 953, 46);
 		panel.add(panelTitle);
 
-		lblLevelPuzzle = new JLabel("Level 1: Puzzle");
-		lblLevelPuzzle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLevelPuzzle.setForeground(Color.LIGHT_GRAY);
-		lblLevelPuzzle.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
-		panelTitle.add(lblLevelPuzzle);
+		levelLabel = new JLabel("Level 1: Puzzle");
+		levelLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		levelLabel.setForeground(Color.LIGHT_GRAY);
+		levelLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 28));
+		panelTitle.add(levelLabel);
 
 		boardView = new BoardView(level);
 		boardView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -171,7 +183,7 @@ public class LevelView extends JFrame{
 		movesLabel.setBounds(6, 7, 99, 22);
 		panelPuzzleStats.add(movesLabel);
 
-		JLabel labelStars = new JLabel("Stars: 0/3");
+		labelStars = new JLabel("Stars: 0/3");
 		labelStars.setBounds(689, 60, 82, 16);
 		panel.add(labelStars);
 		labelStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
@@ -247,5 +259,11 @@ public class LevelView extends JFrame{
 	
 	public BoardView getBoardView() {
 		return boardView;
+	}
+	public boolean isActive() {
+		return isActive;
+	}
+	public JLabel getLevelLabel() {
+		return levelLabel;
 	}
 }

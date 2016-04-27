@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import model.Level;
 import model.PuzzleLevel;
 import model.Kabasuji;
 import view.LevelSelectorView;
@@ -39,35 +38,38 @@ public class StartPuzzleLevelController implements ActionListener {
 			public void windowClosing(WindowEvent e) {
 				levelView.dispose();
 				// TODO save level progress?
-				
+
 				// dispose of level view and reload all levels
 				levelView.dispose();
 				game.initialize();
-				
+
 				// create new window
 				LevelSelectorView window = new LevelSelectorView(game);
-				
+
 				// allow controller to set up GUI based on the levels loaded by 'game'
 				StartLevelSelectorController selectorController = new StartLevelSelectorController(window, game);
 				selectorController.process();
-				
+
 				// show window
 				window.setVisible(true);
 			}      
 		});
-		
+
+		// set title of level
+		levelView.getLevelLabel().setText("Level " + level.getLevelNum() + ": " + level.getName());
+
 		// set visibility of level view elements to account for level type
 		levelView.getPanelLightningStats().setVisible(false);
 		levelView.getPanelReleaseStats().setVisible(false);
-		
+
 		// initialize values
 		levelView.getMovesLabel().setText("" + level.getMaxMoves());
 
 		// show level view
 		levelView.setVisible(true);
-		
+
 		// dispose of level selector view
 		levelSelector.dispose();
-		
+
 	}
 }
