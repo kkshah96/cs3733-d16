@@ -50,6 +50,9 @@ public class LoadLightningLevelController implements ActionListener {
 				new ExitLevelEditorController(builder, editorView, levelLoader).process();
 			}      
 		});
+		
+		// set level title
+		editorView.getLevelTypeLabel().setText("Lightning");
 
 		// set visibility of level view elements to account for level type
 		editorView.setMaxMovesPanelVisibility(false);

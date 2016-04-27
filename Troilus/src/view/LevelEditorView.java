@@ -231,12 +231,12 @@ public class LevelEditorView extends JFrame {
 		boardBannerPanel.add(boardRowField);
 		boardRowField.setColumns(10);
 
-		JLabel lblX = new JLabel("x");
-		lblX.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblX.setHorizontalAlignment(SwingConstants.CENTER);
-		lblX.setBackground(Color.LIGHT_GRAY);
-		lblX.setBounds(120, 10, 25, 13);
-		boardBannerPanel.add(lblX);
+		JLabel boardDimensionXLabel = new JLabel("x");
+		boardDimensionXLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		boardDimensionXLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		boardDimensionXLabel.setBackground(Color.LIGHT_GRAY);
+		boardDimensionXLabel.setBounds(120, 10, 25, 13);
+		boardBannerPanel.add(boardDimensionXLabel);
 
 		boardColField = new JTextField("12");
 		boardColField.setColumns(10);
@@ -276,11 +276,11 @@ public class LevelEditorView extends JFrame {
 		timePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		timePanel.setBackground(Color.LIGHT_GRAY);
 
-		JLabel lblTime = new JLabel("Time:");
-		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTime.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
-		lblTime.setBounds(0, 1, 42, 32);
-		timePanel.add(lblTime);
+		JLabel timeLabel = new JLabel("Time:");
+		timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		timeLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
+		timeLabel.setBounds(0, 1, 42, 32);
+		timePanel.add(timeLabel);
 
 		timeMinutesField = new JTextField("0");
 		timeMinutesField.setColumns(10);
@@ -314,24 +314,24 @@ public class LevelEditorView extends JFrame {
 		squareBannerPanel.setBounds(0, 76, 747, 38);
 		getContentPane().add(squareBannerPanel);
 
-		JButton ToggleButton = new JButton("Toggle");
-		ToggleButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		ToggleButton.setBounds(437, 0, 115, 38);
-		squareBannerPanel.add(ToggleButton);
+		JButton toggleButton = new JButton("Toggle");
+		toggleButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		toggleButton.setBounds(437, 0, 115, 38);
+		squareBannerPanel.add(toggleButton);
 
-		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, boardView));
+		toggleButton.addActionListener(new ToggleSquareController(activeLevel, boardView));
 
-		JButton btnToggleHint = new JButton("Hint");
-		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		btnToggleHint.setBounds(564, 0, 91, 38);
-		squareBannerPanel.add(btnToggleHint);
-btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView));
+		JButton toggleHintButton = new JButton("Hint");
+		toggleHintButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		toggleHintButton.setBounds(564, 0, 91, 38);
+		squareBannerPanel.add(toggleHintButton);
+		toggleHintButton.addActionListener(new ToggleHintController(activeLevel, boardView));
 
-		JLabel lblSquare = new JLabel("Square:");
-		lblSquare.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSquare.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		lblSquare.setBounds(0, 2, 70, 32);
-		squareBannerPanel.add(lblSquare);
+		JLabel squareLabel = new JLabel("Square:");
+		squareLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		squareLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		squareLabel.setBounds(0, 2, 70, 32);
+		squareBannerPanel.add(squareLabel);
 
 		releaseSquareOptionsPanel = new JPanel();
 		releaseSquareOptionsPanel.setBounds(84, 0, 341, 40);
@@ -340,10 +340,10 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 		releaseSquareOptionsPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		releaseSquareOptionsPanel.setBackground(Color.LIGHT_GRAY);
 
-		JLabel lblNumber = new JLabel("Number:");
-		lblNumber.setBounds(6, 11, 61, 16);
-		releaseSquareOptionsPanel.add(lblNumber);
-		lblNumber.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
+		JLabel numberLabel = new JLabel("Number:");
+		numberLabel.setBounds(6, 11, 61, 16);
+		releaseSquareOptionsPanel.add(numberLabel);
+		numberLabel.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
 
 		releaseNumberComboBox = new JComboBox<String>();
 		releaseNumberComboBox.setBounds(66, 5, 85, 27);
@@ -351,10 +351,10 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 		releaseNumberComboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"None", "1", "2", "3", "4", "5", "6"}));
 		//releaseNumberComboBox.addActionListener(new SetSquareNumberController(activeLevel, this));
 
-		JLabel lblNumberColor = new JLabel("Number Color:");
-		lblNumberColor.setBounds(150, 11, 97, 16);
-		releaseSquareOptionsPanel.add(lblNumberColor);
-		lblNumberColor.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
+		JLabel numberColorLabel = new JLabel("Number Color:");
+		numberColorLabel.setBounds(150, 11, 97, 16);
+		releaseSquareOptionsPanel.add(numberColorLabel);
+		numberColorLabel.setFont(new Font("PT Sans Caption", Font.PLAIN, 13));
 
 		releaseColorComboBox = new JComboBox<String>();
 		releaseColorComboBox.setBounds(250, 5, 85, 27);
@@ -444,6 +444,10 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 	
 	public JButton getSetTimeButton() {
 		return setTimeButton;
+	}
+	
+	public JLabel getLevelTypeLabel() {
+		return levelTypeLabel;
 	}
 
 	public JComboBox<String> getNumberComboBox() {

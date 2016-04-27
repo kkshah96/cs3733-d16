@@ -52,6 +52,9 @@ public class LoadPuzzleLevelController implements ActionListener {
 			}      
 		});
 
+		// set level title
+		editorView.getLevelTypeLabel().setText("Puzzle");
+
 		// set visibility of level view elements to account for level type
 		editorView.setMaxMovesPanelVisibility(true);
 		editorView.setReleaseSquarePanelVisibility(false);

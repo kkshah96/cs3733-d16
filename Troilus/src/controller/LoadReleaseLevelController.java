@@ -52,6 +52,9 @@ public class LoadReleaseLevelController implements ActionListener {
 			}      
 		});
 
+		// set level title
+		editorView.getLevelTypeLabel().setText("Release");
+
 		// set visibility of level view elements to account for level type
 		editorView.setMaxMovesPanelVisibility(false);
 		editorView.setReleaseSquarePanelVisibility(true);

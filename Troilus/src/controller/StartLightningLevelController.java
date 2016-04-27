@@ -55,6 +55,8 @@ public class StartLightningLevelController implements ActionListener {
 				window.setVisible(true);
 			}      
 		});
+		
+		// set title of level
 
 		// set visibility of level view elements to account for level type
 		levelView.getPanelPuzzleStats().setVisible(false);
@@ -68,6 +70,7 @@ public class StartLightningLevelController implements ActionListener {
 		}
 		levelView.getTimeLabel().setText("Time Remaining: " + (level.getTime() / 60) + ":" + secondsString);
 		new TimerController(levelView, game, level.getTime()).process();
+		
 
 		// show level view
 		levelView.setVisible(true);
