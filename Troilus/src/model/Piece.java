@@ -152,6 +152,26 @@ public class Piece {
 		return new Piece(newSquares, anchor, type, color); // TODO: Implement this
 	}
 	
+	/* Returns true if the two Pieces are the same type, shape, and orientation */
+	public boolean sameShape(Piece other) {
+		if (type != other.type) {
+			return false;
+		}
+		
+		for (int i = 0; i < PIECE_SIZE - 1; i++) {
+			int row = squares[i].getRow();
+			int col = squares[i].getCol();
+			int otherRow = other.squares[i].getRow();
+			int otherCol = other.squares[i].getCol();
+			
+			if (!(row == otherRow && col == otherCol)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	public Color getColor() {
 		return color;
 	}

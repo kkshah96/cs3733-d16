@@ -23,8 +23,8 @@ public class TestBoard extends TestCase {
 	
 	public void testDimensions() {
 		board.setDimensions(4, 4);
-		assertTrue(!(board.getSquare(4, 4).isValid()));
-		assertTrue(!(board.getSquare(5, 5).isValid()));
+		assertFalse((board.getSquare(4, 4).isValid()));
+		assertFalse((board.getSquare(5, 5).isValid()));
 		assertTrue(board.getSquare(3, 3).isValid());	
 	}
 	
@@ -32,14 +32,14 @@ public class TestBoard extends TestCase {
 	public void testSquares() {
 		board.setDimensions(4, 4);
 		
-		assertTrue(!(board.getSquare(5, 7).isValid()));
+		assertFalse((board.getSquare(5, 7).isValid()));
 		board.setActiveSquare(5, 7);
 		board.toggleActiveSquare();
 		assertTrue(board.getSquare(5, 7).isValid());
 		
 		board.setActiveSquare(3, 2);
 		board.toggleActiveSquare();
-		assertTrue(!board.getSquare(3, 2).isValid());
+		assertFalse(board.getSquare(3, 2).isValid());
 	}
 	
 	@Test
@@ -47,7 +47,7 @@ public class TestBoard extends TestCase {
 		Piece piece1 = PieceFactory.getPiece(1);
 		Piece piece2 = PieceFactory.getPiece(2);
 		
-		assertTrue(!board.addPiece(piece1, 0, 0));
+		assertFalse(board.addPiece(piece1, 0, 0));
 		assertTrue(board.addPiece(piece1, 7, 7));
 		
 		assertEquals(null, board.getPiece(7, 8));
@@ -56,9 +56,9 @@ public class TestBoard extends TestCase {
 		assertEquals(piece1, board.getPiece(2, 7));
 		assertEquals(piece1, board.getPiece(7, 7));
 		
-		assertTrue(!board.addPiece(piece2, 6, 7));
-		assertTrue(!board.addPiece(piece2, 7, 7));
-		assertTrue(!board.addPiece(piece2, 11, 7));
+		assertFalse(board.addPiece(piece2, 6, 7));
+		assertFalse(board.addPiece(piece2, 7, 7));
+		assertFalse(board.addPiece(piece2, 11, 7));
 		
 		assertEquals(piece1, board.removePiece(piece1));
 
@@ -74,20 +74,20 @@ public class TestBoard extends TestCase {
 		board.setActiveSquare(6, 9);
 		board.toggleActiveSquare();
 		
-		assertTrue(!board.getSquare(6, 9).isValid());
+		assertFalse(board.getSquare(6, 9).isValid());
 
 		// Off board edge
-		assertTrue(!board.addPiece(piece1, 0, 4));
-		assertTrue(!board.addPiece(piece1, 1, 9));
-		assertTrue(!board.addPiece(piece1, 2, 9));
-		assertTrue(!board.addPiece(piece1, 3, 9));
-		assertTrue(!board.addPiece(piece1, 4, 9));
+		assertFalse(board.addPiece(piece1, 0, 4));
+		assertFalse(board.addPiece(piece1, 1, 9));
+		assertFalse(board.addPiece(piece1, 2, 9));
+		assertFalse(board.addPiece(piece1, 3, 9));
+		assertFalse(board.addPiece(piece1, 4, 9));
 		
 		// Intersects with invalid square (out-of-bounds)
-		assertTrue(!board.addPiece(piece1, 6, 9));
-		assertTrue(!board.addPiece(piece1, 9, 9));
-		assertTrue(!board.addPiece(piece1, 10, 9));
-		assertTrue(!board.addPiece(piece1, 11, 9));
+		assertFalse(board.addPiece(piece1, 6, 9));
+		assertFalse(board.addPiece(piece1, 9, 9));
+		assertFalse(board.addPiece(piece1, 10, 9));
+		assertFalse(board.addPiece(piece1, 11, 9));
 		
 		// Valid
 		assertTrue(board.addPiece(piece1, 5, 9));
