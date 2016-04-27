@@ -49,11 +49,9 @@ public class NewReleaseLevelController implements ActionListener {
 		Board board = new Board(squares);
 
 		Palette p = new Palette();
-		ReleaseLevel newReleaseLevel = new ReleaseLevel(builder.getLevels().size(), true, bpen, board, p);
+		ReleaseLevel newReleaseLevel = new ReleaseLevel(builder.getLevels().size() + 1, true, bpen, board, p);
 		builder.addLevel(newReleaseLevel);
-		//builder.setActiveLevel(r);
 
-		// TODO Auto-generated method stub
 		final LevelEditorView newEditorView = new LevelEditorView(builder, levelLoader, newReleaseLevel);
 
 		newEditorView.addWindowListener(new WindowAdapter() {

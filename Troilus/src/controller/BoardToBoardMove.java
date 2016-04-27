@@ -41,7 +41,7 @@ public class BoardToBoardMove {
 
 	public boolean isValid(Piece piece, int col, int row) {
 		// TODO: if level.canMakeMove()...
-		return level.getBoard().validPlacement(piece, col, row);
+		return level.canMove() && level.getBoard().validPlacement(piece, col, row);
 	}
 
 	//TODO: ADD UNDO

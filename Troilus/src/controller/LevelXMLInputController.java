@@ -108,6 +108,7 @@ public class LevelXMLInputController {
 							// get attributes and set is valid
 							NamedNodeMap attributes = squareList.item(k).getAttributes();
 							boolean isValid = Boolean.parseBoolean(attributes.getNamedItem("Valid").getNodeValue());
+							boolean isHint = Boolean.parseBoolean(attributes.getNamedItem("Hint").getNodeValue());
 
 							if(squareType.equals("ReleaseSquare")) {
 								int number = Integer.parseInt(attributes.getNamedItem("Number").getNodeValue());
@@ -119,13 +120,13 @@ public class LevelXMLInputController {
 								
 								// get actual color from rgb string
 								Color color = new Color(Integer.parseInt(red), Integer.parseInt(green), Integer.parseInt(blue));
-								square = new ReleaseSquare(k, j, isValid, number, color);
+								square = new ReleaseSquare(k, j, isValid, number, color, isHint);
 							} 
 							else if(squareType.equals("LightningSquare")) {
-								square = new LightningSquare(k, j, isValid);
+								square = new LightningSquare(k, j, isValid, isHint);
 							} 
 							else if(squareType.equals("PuzzleSquare")) {
-								square = new PuzzleSquare(k, j, isValid);
+								square = new PuzzleSquare(k, j, isValid, isHint);
 							}
 
 							squares[k][j] = square;

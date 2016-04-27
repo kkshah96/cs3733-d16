@@ -62,6 +62,10 @@ public class LightningLevel extends Level{
 		coveredSquares += i;
 	}
 	
+	public boolean canMove() {
+		return timeLimit > 0;
+	}
+	
 	public String getName() {
 		return "Lightning";
 	}
@@ -70,7 +74,7 @@ public class LightningLevel extends Level{
 		return timeLimit;
 	}
 	
-	public boolean setTimeLimit(int limit){
+	public boolean setTimeLimit(int limit) {
 		if (limit < 0) {
 			System.out.println("Error! Invalid time limit.");
 			return false;

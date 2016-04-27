@@ -28,11 +28,16 @@ public class PuzzleLevel extends Level {
 	@Override
 	/** 1 star if 2 pieces left, 2 stars if 1 piece left, 3 if won */
 	public void calcNumStars() {
-		if (bullpen.getNumPieces() > MAX_STARS) {
+		if (bullpen.getNumPieces() > MAX_STARS - 1) { // more than 2 pieces left
 			numStars = 0;
-		} else {
+		} else { // 2 pieces or fewer left
 			numStars = MAX_STARS - bullpen.getNumPieces();
 		}
+	}
+	
+	/** Check if there are moves left */
+	public boolean canMove() {
+		return movesLeft > 0;
 	}
 	
 	public void updateMovesLeft(int i) {

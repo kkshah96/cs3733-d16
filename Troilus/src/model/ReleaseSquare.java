@@ -27,8 +27,9 @@ public class ReleaseSquare extends Square {
 		super(col, row, isValid);
 		number = 0;
 		numberColor = null;
-		
 	}
+	
+
 	
 	/**
 	 * Creates a Release Square with the following parameters.
@@ -40,6 +41,19 @@ public class ReleaseSquare extends Square {
 	 */
 	public ReleaseSquare(int col, int row, boolean isValid, int number, Color numberColor) {
 		super(col, row, isValid);
+		this.number = number;
+		this.numberColor = numberColor;
+	}
+	
+	/**
+	 * Creates a LightningSquare with the following parameters.
+	 * @param col The column of the square
+	 * @param row The row of the square
+	 * @param isValid If the square is valid
+	 * @param isHint If the square is to be highlighted as a hint
+	 */
+	public ReleaseSquare(int col, int row, boolean isValid, int number, Color numberColor, boolean isHint) {
+		super(col, row, isValid, isHint);
 		this.number = number;
 		this.numberColor = numberColor;
 	}
