@@ -3,15 +3,16 @@ package model;
 import java.awt.Color;
 
 /**
- * Represents a Level of game type Release in the Kabasuji game
+ * Represents a Level of game type Release in the Kabasuji game.
  * 
- * The ReleaseLevel structure stores three boolean arrays that capture which numbers of each color type have been covered
+ * The ReleaseLevel structure stores three boolean arrays that capture
+ * which numbers of each color type have been covered.
  * 
  * @author Kunal Shah
- *
+ * @author Maddy
  */
-public class ReleaseLevel extends Level{
-
+public class ReleaseLevel extends Level {
+	public static final int MAX_NUM = 6;
 	boolean redCovered[];
 	boolean yellowCovered[];
 	boolean greenCovered[];
@@ -19,10 +20,9 @@ public class ReleaseLevel extends Level{
 	public ReleaseLevel(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette) {
 		super(levelNum, locked, bullpen, board, palette);
 		
-		//TODO: Am I initializing these correctly or..
-		redCovered = new boolean[6];
-		yellowCovered = new boolean[6];
-		greenCovered = new boolean[6];
+		redCovered = new boolean[MAX_NUM];
+		yellowCovered = new boolean[MAX_NUM];
+		greenCovered = new boolean[MAX_NUM];
 	}
 
 	@Override
@@ -31,16 +31,20 @@ public class ReleaseLevel extends Level{
 	}
 	
 	// TODO: There has to be a better way to do this
-	public void updateCoveredNumbers(Color c, int i){
-		if(c.equals(Color.RED) && i < redCovered.length){
+	public void updateCoveredNumbers(Color c, int i) {
+		if (i >= MAX_NUM || i < 0) {
+			return;
+		}
+		
+		if (c.equals(Color.RED)) {
 			redCovered[i] = true;
 		}
 		
-		if(c.equals(Color.YELLOW) && i < yellowCovered.length){
+		if (c.equals(Color.YELLOW)) {
 			yellowCovered[i] = true;
 		}
 		
-		if(c.equals(Color.GREEN) && i < greenCovered.length){
+		if (c.equals(Color.GREEN)) {
 			greenCovered[i] = true;
 		}
 	}
@@ -48,5 +52,4 @@ public class ReleaseLevel extends Level{
 	public String getName() {
 		return "Release";
 	}
-
 }
