@@ -7,9 +7,9 @@ import model.LevelBuilder;
 
 
 /**
- * Controls the abstract saving of the level.  This controller
- * is linked to the save button in the level builder; when the 
- * designer clicks the button, the current level is saved, 
+ * Controls the abstract saving of the level.
+ * This controller is linked to the save button in the level builder;
+ * when the designer clicks the button, the current level is saved, 
  * overwriting any previous versions. For the low level 
  * implementation, see LevelXMLOutputController.
  * 
@@ -17,7 +17,6 @@ import model.LevelBuilder;
  *
  */
 public class SaveLevelController implements ActionListener {
-	
 	LevelBuilder levelBuilder;
 	String filePath;
 
@@ -30,7 +29,6 @@ public class SaveLevelController implements ActionListener {
 		this.levelBuilder = levelBuilder;
 		this.filePath = filePath;
 	}
-	
 	
 	/**
 	 * Saves levels on the click of the save button.

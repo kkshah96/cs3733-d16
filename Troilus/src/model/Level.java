@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Represents a Level in the Kabasuji game.
  * 
@@ -28,10 +30,23 @@ public abstract class Level {
 		this.palette = palette;
 		this.locked = locked;
 	}
-	
+
+	public void clearBoardToBullpen() {
+		// Remove all pieces from the board
+		ArrayList<Piece> toRemove = new ArrayList<Piece>();
+		for (Piece p : board.getPieces().keySet()) {
+			toRemove.add(p);
+			bullpen.addPiece(p);
+		}
+		// Hack to avoid modifying board.pieces while looping through it
+		for (Piece p : toRemove) {
+			board.removePiece(p);
+		}
+	}
+
 	/** Do anything necessary after a move */
 	public abstract void updateAfterMove();
-	
+
 	public boolean canMove() {
 		return true;
 	}
@@ -70,19 +85,19 @@ public abstract class Level {
 	 * @return String
 	 */
 	public abstract String getName();
-	
+
 	public int getNumStars() {
 		return numStars;
 	}
-	
+
 	public Bullpen getBullpen() {
 		return bullpen;
 	}
-	
+
 	public Board getBoard() {
 		return board;
 	}
-	
+
 	public Palette getPalette(){
 		return palette;
 	}
@@ -90,15 +105,15 @@ public abstract class Level {
 	public void removeActivePiece() {
 		setActivePiece(null);
 	}
-	
+
 	public void setMoveSource(String s){
 		this.moveSource = s;
 	}
-	
+
 	public String getMoveSource(){
 		return moveSource;
 	}
-	
+
 	public void setLevelNum(int levelNum) {
 		this.levelNum = levelNum;
 	}

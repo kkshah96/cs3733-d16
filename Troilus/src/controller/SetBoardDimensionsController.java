@@ -2,14 +2,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
 import model.Board;
-import model.Bullpen;
 import model.Level;
-import model.Piece;
 import view.LevelEditorView;
 
 /**
@@ -44,19 +41,8 @@ public class SetBoardDimensionsController implements ActionListener {
 			return;
 		}
 		
-		Bullpen bullpen = level.getBullpen();
+		level.clearBoardToBullpen(); // Moves pieces to bullpen
 
-		// Remove all pieces from the board
-		ArrayList<Piece> toRemove = new ArrayList<Piece>();
-		for (Piece p : level.getBoard().getPieces().keySet()) {
-			toRemove.add(p);
-			bullpen.addPiece(p);
-		}
-		// Hack to avoid modifying board.pieces while looping through it
-		for (Piece p : toRemove) {
-			level.getBoard().removePiece(p);
-		}
-		
 		level.getBoard().setDimensions(cols, rows);
 		editorView.repaint();
 	}
