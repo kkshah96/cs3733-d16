@@ -85,9 +85,6 @@ public class Board {
 			return false;
 		}
 		
-		int anchorRow = p.getAnchor().getRow();
-		int anchorCol = p.getAnchor().getCol();
-		
 		System.out.printf("Anchor placed at (%d,%d)", col, row);
 		
 		// TODO should anchor be separate in Piece storage?
@@ -100,16 +97,13 @@ public class Board {
 			System.out.println("Anchor square placed at disabled square");
 			return false;
 		}
-		
-		if(! squares[anchorRow][anchorCol].isValid()) {
-			System.out.println("Idk what this even does");
-			return false;
-		}
 
 		for (PieceSquare square : p.squares) {
 			// check if each square is in board area
-			int absRow = square.row + col; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
-			int absCol = square.col + row;
+			int absRow = square.col + row; // TODO: HOUSTON WE FUCKED UP THE COORDINATE SYSTEM
+			int absCol = square.row + col;
+			System.out.printf("Piece square is at (%d,%d)", absCol, absRow);
+
 			if (!(absRow < BOARD_HEIGHT && absRow >= 0 && absCol < BOARD_WIDTH && absCol >= 0)) {
 				System.out.println("Out of bounds");
 				return false;
@@ -159,12 +153,12 @@ public class Board {
 			int anchorCol = anchorPoint.x;
 			int anchorRow = anchorPoint.y;
 
-			if (anchorCol == col && anchorRow == row) {
+			if (anchorRow == col && anchorCol == row) {
 				return piece;
 			}
 
 			for (Square square : piece.getSquares()) {
-				if ((square.getRow() + anchorRow == row) && (square.getCol() + anchorCol == col)) {
+				if ((square.getRow() + anchorCol == row) && (square.getCol() + anchorRow == col)) {
 					return piece;
 				}
 			}
