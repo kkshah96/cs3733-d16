@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import model.Level;
 
@@ -14,39 +16,57 @@ import view.LevelView;
  */
 public class StartLightningLevelController implements ActionListener {
 	Kabasuji game;
-	int levelNumber;
+	Level level;
 	LevelSelectorView levelSelector;
 
-	public StartLightningLevelController(LevelSelectorView levelSelector, int levelNumber, Kabasuji game) {
+	public StartLightningLevelController(LevelSelectorView levelSelector, Level level, Kabasuji game) {
 		this.levelSelector = levelSelector;
-		this.levelNumber = levelNumber;
+		this.level = level;
 		this.game = game;
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Level selectedLevel = game.getLevels().get(levelNumber - 1); //TODO: Why - 1? Can we assume 0 can be passed in?
 
 		// if level is locked, take no action
-		if (selectedLevel.isLocked()) {
+		if (level.isLocked()) {
 			return;
 		}
+		System.out.println("Starting Lightning level");
+		final LevelView levelView = new LevelView(levelSelector, game, level);
+		levelView.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				levelView.dispose();
+				// TODO save level progress?
 
-		// set active level in top model to selected level
-		//game.setActiveLevel(selectedLevel);
+				// dispose of level view and reload all levels
+				levelView.dispose();
+				game.initialize();
 
-		LevelView levelView = new LevelView(levelSelector, game, selectedLevel);
+				// create new window
+				LevelSelectorView window = new LevelSelectorView(game);
 
+				// allow controller to set up GUI based on the levels loaded by 'game'
+				StartLevelSelectorController selectorController = new StartLevelSelectorController(window, game);
+				selectorController.process();
+
+				// show window
+				window.setVisible(true);
+			}      
+		});
 		// set active level in top model to selected level
 		//game.setActiveLevel(selectedLevel);
 
 		// set visibility of level view elements to account for level type
 		levelView.getPanelPuzzleStats().setVisible(false);
 		levelView.getPanelReleaseStats().setVisible(false);
-		
+
 		// show level view
 		levelView.setVisible(true);
-		levelSelector.setVisible(false);
+
+		// dispose of level selector view
+		// old levelSelector.setVisible(false);
+		levelSelector.dispose();
 	}
 }
