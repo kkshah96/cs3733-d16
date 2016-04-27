@@ -2,6 +2,8 @@ package model;
 
 import org.junit.Test;
 
+import controller.BoardToBoardMove;
+import controller.BoardToBullpenMove;
 import controller.BullpenToBoardMove;
 import junit.framework.TestCase;
 
@@ -9,9 +11,9 @@ public class TestPuzzleLevel extends TestCase {
 	PuzzleLevel level;
 	
 	public void setUp() {
-		Square[][] squares = new PuzzleSquare[Board.BOARD_HEIGHT][Board.BOARD_WIDTH];
-		for (int i = 0; i < Board.BOARD_HEIGHT; i++) {
-			for (int j = 0; j < Board.BOARD_WIDTH; j++) {
+		Square[][] squares = new PuzzleSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
+		for (int i = 0; i < Board.BOARD_WIDTH; i++) {
+			for (int j = 0; j < Board.BOARD_HEIGHT; j++) {
 				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
@@ -82,5 +84,22 @@ public class TestPuzzleLevel extends TestCase {
 		assertTrue(m6.doMove());
 		assertEquals(2, level.movesLeft);
 		assertEquals(3, level.getNumStars());
+		
+		BoardToBoardMove mInvalid2 = new BoardToBoardMove(level, piece1, 5, 5);
+		assertFalse(mInvalid2.doMove());
+		
+		BoardToBullpenMove m7 = new BoardToBullpenMove(level, 1, 1);
+		assertTrue(m7.doMove());
+		assertEquals(1, level.movesLeft);
+		assertEquals(2, level.getNumStars());
+		
+		BoardToBoardMove m8 = new BoardToBoardMove(level, piece1, 1, 5);
+		assertTrue(m8.doMove());
+		assertEquals(0, level.movesLeft);
+		assertEquals(2, level.getNumStars());
+		
+		BoardToBullpenMove mInvalid3 = new BoardToBullpenMove(level, 1, 1);
+		assertFalse(mInvalid3.doMove());
+		assertEquals(0, level.movesLeft);
 	}
 }

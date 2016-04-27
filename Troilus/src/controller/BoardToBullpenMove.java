@@ -12,7 +12,7 @@ import model.Level;
  */
 public class BoardToBullpenMove {
 	Level level;
-	Piece movingPiece;
+	Piece pToRemove;
 	Board board;
 	Bullpen bpen;
 	int col;
@@ -21,7 +21,7 @@ public class BoardToBullpenMove {
 	public BoardToBullpenMove(Level level, int col, int row) {
 		this.board = level.getBoard();
 		this.bpen = level.getBullpen();
-		this.movingPiece = board.getPiece(col, row);
+		this.pToRemove = board.getPiece(col, row);
 		this.level = level;
 	}
 	
@@ -30,7 +30,7 @@ public class BoardToBullpenMove {
 			return false;
 		}
 		
-		bpen.addPiece(board.removePiece(movingPiece));
+		bpen.addPiece(board.removePiece(pToRemove));
 		
 		level.removeActivePiece();
 		level.updateAfterMove();
@@ -38,7 +38,7 @@ public class BoardToBullpenMove {
 	}
 	
 	public boolean isValid() {
-		return movingPiece != null;
+		return level.canMove() && pToRemove != null;
 	}
 	
 	public boolean undo() {

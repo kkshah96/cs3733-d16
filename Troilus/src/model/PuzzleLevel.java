@@ -35,6 +35,11 @@ public class PuzzleLevel extends Level {
 		}
 	}
 	
+	/** Check if there are moves left */
+	public boolean canMove() {
+		return movesLeft > 0;
+	}
+	
 	public void updateMovesLeft(int i) {
 		movesLeft += i;
 	}

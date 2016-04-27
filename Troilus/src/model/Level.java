@@ -31,10 +31,10 @@ public abstract class Level {
 	
 	/** Do anything necessary after a move */
 	public abstract void updateAfterMove();
-
-	// TODO do we need this?
-	//public abstract void updateAfterUndo();
 	
+	public boolean canMove() {
+		return true;
+	}
 	public boolean isLocked() {
 		return locked;
 	}

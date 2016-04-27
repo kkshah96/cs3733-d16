@@ -43,7 +43,7 @@ public class BullpenToBoardMove {
 	/** Checks if adding a Piece from Bullpen to Board is valid */
 	public boolean isValid() {
 		// TODO: if level.canMakeMove()...
-		return level.getBoard().validPlacement(movingPiece, col, row);
+		return level.canMove() && level.getBoard().validPlacement(movingPiece, col, row);
 	}
 
 	//TODO: ADD UNDO
