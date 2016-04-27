@@ -76,6 +76,18 @@ public class ReleaseLevel extends Level {
 		}
 	}
 	
+	// TODO implement stubs!
+	public int getRedCovered() {
+		return 0;
+	}
+	
+	public int getGreenCovered() {
+		return 0;
+	}
+	
+	public int getYellowCovered() {
+		return 0;
+	}
 	public String getName() {
 		return "Release";
 	}

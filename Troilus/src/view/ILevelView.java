@@ -5,5 +5,5 @@ public interface ILevelView {
 	
 	public BullpenView getBullpenView();
 	
-	public void repaint();
+	public void refresh();
 }

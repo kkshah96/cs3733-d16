@@ -103,7 +103,7 @@ public class BullpenController extends MouseAdapter {
 				level.setActivePiece(activePiece);
 			}
 			// refresh the view
-			levelView.repaint();
+			levelView.refresh();
 		}
 	}
 	

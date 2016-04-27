@@ -35,6 +35,7 @@ import controller.ToggleSquareController;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
+import model.PuzzleLevel;
 
 /**
  * GUI for editing Kabausji levels in the LevelBuilder application.
@@ -389,6 +390,11 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		//if (activeLevel.getName().equals("Lightning")) {
 			//btnSetTime.addActionListener(new SetTimeLimitController(activeLevel, this));
 		//}
+	}
+	
+	// TODO make less messy!
+	public void refresh() {
+		repaint();
 	}
 
 	public void setLevelType(String type){

@@ -48,6 +48,10 @@ public class PuzzleLevel extends Level {
 		return "Puzzle";
 	}
 	
+	public int getMovesLeft() {
+		return movesLeft;
+	}
+	
 	public int getMaxMoves() {
 		return maxMoves;
 	}

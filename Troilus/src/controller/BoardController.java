@@ -95,7 +95,7 @@ public class BoardController extends MouseAdapter {
 			}
 		}
 		// TODO update display of stars, etc!
-		levelView.repaint();
+		levelView.refresh();
 	}
 
 	public void mouseMoved(MouseEvent me){

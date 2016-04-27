@@ -24,7 +24,10 @@ import controller.FlipPieceController;
 import controller.RotatePieceController;
 import model.Kabasuji;
 import model.Level;
+import model.LightningLevel;
 import model.Piece;
+import model.PuzzleLevel;
+import model.ReleaseLevel;
 
 /**
  * GUI for a playable level in the Kabasuji game.
@@ -42,6 +45,9 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 	private JPanel panelPuzzleStats;
 	private JPanel panelLightningStats;
 	private JPanel panelReleaseStats;
+	private JLabel labelYellow;
+	private JLabel labelGreen;
+	private JLabel labelRed;
 	JButton flipPieceHButton;
 	
 	JLabel movesLabel;
@@ -200,30 +206,30 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		label_4.setBounds(0, 16, 82, 16);
 		panelReleaseStats.add(label_4);
 
-		JLabel label_5 = new JLabel("0/6");
-		label_5.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label_5.setBounds(85, 16, 31, 16);
-		panelReleaseStats.add(label_5);
+		labelRed = new JLabel("0/6");
+		labelRed.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		labelRed.setBounds(85, 16, 31, 16);
+		panelReleaseStats.add(labelRed);
 
 		JLabel label_6 = new JLabel("Green Squares:");
 		label_6.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		label_6.setBounds(115, 16, 103, 16);
 		panelReleaseStats.add(label_6);
 
-		JLabel label_7 = new JLabel("0/6");
-		label_7.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label_7.setBounds(218, 16, 31, 16);
-		panelReleaseStats.add(label_7);
+		labelGreen = new JLabel("0/6");
+		labelGreen.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		labelGreen.setBounds(218, 16, 31, 16);
+		panelReleaseStats.add(labelGreen);
 
 		JLabel label_8 = new JLabel("Yellow Squares:");
 		label_8.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		label_8.setBounds(249, 16, 103, 16);
 		panelReleaseStats.add(label_8);
 
-		JLabel label_9 = new JLabel("0/6");
-		label_9.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label_9.setBounds(356, 16, 31, 16);
-		panelReleaseStats.add(label_9);
+		labelYellow = new JLabel("0/6");
+		labelYellow.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		labelYellow.setBounds(356, 16, 31, 16);
+		panelReleaseStats.add(labelYellow);
 
 		panelLightningStats = new JPanel();
 		panelLightningStats.setBounds(394, 50, 175, 34);
@@ -236,6 +242,27 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		timeLabel.setBounds(6, 6, 161, 20);
 		panelLightningStats.add(timeLabel);
 		timeLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+	}
+	
+	// TODO fix messy code!
+	public void refresh() {
+		if (level instanceof PuzzleLevel) {
+			movesLabel.setText(((PuzzleLevel) level).getMovesLeft() + "/" + ((PuzzleLevel) level).getMaxMoves());
+		} else if (level instanceof LightningLevel) {
+			int seconds  = ((LightningLevel) level).getTime() % 60;
+			String secondsString = Integer.toString(seconds);
+			if (seconds < 10) {
+				secondsString = "0" + seconds;
+			}
+			timeLabel.setText("Time Remaining: " + (((LightningLevel) level).getTime() / 60) + ":" + secondsString);
+		} else if (level instanceof ReleaseLevel) {
+			labelRed.setText(((ReleaseLevel) level).getRedCovered() + "/" + ReleaseLevel.MAX_NUM);
+			labelGreen.setText(((ReleaseLevel) level).getGreenCovered() + "/" + ReleaseLevel.MAX_NUM);
+			labelYellow.setText(((ReleaseLevel) level).getYellowCovered() + "/" + ReleaseLevel.MAX_NUM);
+		}
+		
+		labelStars.setText(level.getNumStars() + "/3");
+		repaint();
 	}
 	
 	public JLabel getMovesLabel() {
