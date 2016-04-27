@@ -33,6 +33,9 @@ public class SelectPieceBullpenController extends MouseAdapter {
 		int x = e.getX();
 		int y = e.getY();
 		
+		System.out.print(x);
+		System.out.println(y);
+		
 		Bullpen bullpen = level.getBullpen();
 		
 		// find the piece that was clicked

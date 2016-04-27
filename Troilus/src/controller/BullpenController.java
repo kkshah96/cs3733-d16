@@ -33,8 +33,12 @@ public class BullpenController extends MouseAdapter {
 	}
 	
 	void handleMousePressed(Point p, int mouseButton) {
+		
 		int x = p.x;
 		int y = p.y;
+		
+		System.out.println(x);
+		System.out.println(y);
 
 		Bullpen bullpen = level.getBullpen();
 

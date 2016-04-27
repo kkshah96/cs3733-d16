@@ -58,6 +58,10 @@ public class LevelEditorView extends JFrame {
 	JPanel maxMovesPanel;
 	JPanel releaseSquareOptionsPanel;
 	JPanel timePanel;
+	JButton btnToggleHint;
+	JButton ToggleButton;
+	JButton rotateCWButton;
+	JButton rotateCCWButton;
 
 	LevelLoaderView levelLoader;
 	LevelBuilder builder;
@@ -136,13 +140,13 @@ public class LevelEditorView extends JFrame {
 		//bullpenContainer.add(bullpenScrollPane);
 		bullpenContainer.add(bullpenScrollPane);
 
-		JButton rotateCWButton = new JButton("Rotate CW");
+		 rotateCWButton = new JButton("Rotate CW");
 		rotateCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		rotateCWButton.setBounds(76, 4, 87, 29);
 		rotateCWButton.addActionListener(new RotatePieceController(activeLevel, bullpenView, Piece.ROTATE_CW));
 		bullPenOptionsPanel.add(rotateCWButton);
 
-		JButton rotateCCWButton = new JButton("Rotate CCW");
+		 rotateCCWButton = new JButton("Rotate CCW");
 		rotateCCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		rotateCCWButton.setBounds(158, 4, 87, 29);
 		rotateCCWButton.addActionListener(new RotatePieceController(activeLevel, bullpenView, Piece.ROTATE_CCW));
@@ -318,14 +322,14 @@ public class LevelEditorView extends JFrame {
 		panel_1.setBounds(0, 76, 747, 38);
 		getContentPane().add(panel_1);
 
-		JButton ToggleButton = new JButton("Toggle");
+		ToggleButton = new JButton("Toggle");
 		ToggleButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		ToggleButton.setBounds(437, 0, 115, 38);
 		panel_1.add(ToggleButton);
 
 		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, boardView));
 
-		JButton btnToggleHint = new JButton("Hint");
+		btnToggleHint = new JButton("Hint");
 		btnToggleHint.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		btnToggleHint.setBounds(564, 0, 91, 38);
 		panel_1.add(btnToggleHint);
@@ -452,5 +456,28 @@ btnToggleHint.addActionListener(new ToggleHintController(activeLevel, boardView)
 
 	public JComboBox<String> getNumberColorComboBox() {
 		return releaseColorComboBox;
+	}
+	
+	public JButton getHintButton(){
+		return btnToggleHint;
+	}
+	
+	public JButton getToggleButton(){
+		return ToggleButton;
+	}
+	
+	public void setHeightField(String n){
+		boardRowField.setText(n);
+	}
+	
+	public void setWidthField(String n){
+		boardColField.setText(n);
+	}
+	
+	public JButton getRotateCWButton(){
+		return rotateCWButton;
+	}
+	public JButton getRotateCCWButton(){
+		return rotateCCWButton;
 	}
 }
