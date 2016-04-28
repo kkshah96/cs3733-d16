@@ -66,7 +66,11 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	JButton rotateCCWButton;
 
 	JButton setTimeButton;
+	
+	JButton flipHorizontal;
+	JButton flipVertical;
 
+	JButton setMovesButton;
 	LevelLoaderView levelLoader;
 	LevelBuilder builder;
 	Level activeLevel;
@@ -155,17 +159,17 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		rotateCCWButton.addActionListener(new RotatePieceController(activeLevel, bullpenView, Piece.ROTATE_CCW));
 		bullPenOptionsPanel.add(rotateCCWButton);
 
-		JButton flipHorizontalButton = new JButton("Flip Horizontal");
-		flipHorizontalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		flipHorizontalButton.setBounds(237, 4, 105, 29);
-		flipHorizontalButton.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_HORIZONTALLY));
-		bullPenOptionsPanel.add(flipHorizontalButton);
+		 flipHorizontal = new JButton("Flip Horizontal");
+		 flipHorizontal.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		 flipHorizontal.setBounds(237, 4, 105, 29);
+		 flipHorizontal.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_HORIZONTALLY));
+		bullPenOptionsPanel.add(flipHorizontal);
 
-		JButton flipVerticalButton = new JButton("Flip Vertical");
-		flipVerticalButton.setBounds(335, 4, 105, 29);
-		flipVerticalButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
-		flipVerticalButton.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_VERTICALLY));
-		bullPenOptionsPanel.add(flipVerticalButton);
+		 flipVertical = new JButton("Flip Vertical");
+		 flipVertical.setBounds(335, 4, 105, 29);
+		 flipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
+		 flipVertical.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_VERTICALLY));
+		bullPenOptionsPanel.add(flipVertical);
 
 		//		JPanel panel_2 = new BullpenView(activeLevel.getBullpen());
 		//		bullpenScrollPane.setViewportView(panel_2);
@@ -495,4 +499,20 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	public JButton getRotateCCWButton(){
 		return rotateCCWButton;
 	}
+	
+	public JButton getFlipVertical(){
+		return flipVertical;
+	}
+	public JButton getFlipHorizontal(){
+		return flipHorizontal;
+	}
+	
+	public JTextField getMovesField(){
+		return maxMovesField;
+	}
+	
+	public void setMovesField(String s){
+		maxMovesField.setText(s);
+	}
+	
 }

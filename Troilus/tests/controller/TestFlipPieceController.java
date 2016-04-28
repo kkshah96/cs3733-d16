@@ -21,7 +21,7 @@ import view.LevelEditorView;
 import view.LevelLoaderView;
 
 
-public class TestRotatePieceController extends TestCase{
+public class TestFlipPieceController extends TestCase{
 	Board board;
 	LevelBuilder lb;
 	Level level;
@@ -48,8 +48,8 @@ public class TestRotatePieceController extends TestCase{
 //		boardController = new BoardController(level, lsView.getBoardView());
 	}
 	
-	public void testRotateCCWController() {
-		ActionEvent e = new ActionEvent(lsView.getRotateCCWButton(), 0, "", 0, 0);
+	public void testFlipHorizontal() {
+		ActionEvent e = new ActionEvent(lsView.getFlipHorizontal(), 0, "", 0, 0);
 		
 		
 		PieceSquare anchorSquare = new PieceSquare(1, 5);
@@ -69,28 +69,27 @@ public class TestRotatePieceController extends TestCase{
 		
 		assertEquals(p, level.getActivePiece());
 			
-		RotatePieceController r = new RotatePieceController(level, lsView.getBullpenView(), Piece.ROTATE_CCW);
+		FlipPieceController r = new FlipPieceController(level, lsView.getBullpenView(), Piece.FLIP_HORIZONTALLY);
 		r.actionPerformed(e);
 		
 		
 		Square[] sAfter = level.getActivePiece().getSquares();
 		
 
-		assertEquals(sBefore[1].getRow(), sAfter[1].getCol());
-		assertEquals(sBefore[2].getRow(), sAfter[2].getCol());
-		assertEquals(sBefore[3].getRow(), sAfter[3].getCol());
-		assertEquals(sBefore[4].getRow(), sAfter[4].getCol());
-		assertEquals(sBefore[0].getCol(), (-1) * sAfter[0].getRow());
-		assertEquals(sBefore[1].getCol(), (-1) * sAfter[1].getRow());
-		assertEquals(sBefore[2].getCol(), (-1) * sAfter[2].getRow());
-		assertEquals(sBefore[3].getCol(), (-1) * sAfter[3].getRow());
-		assertEquals(sBefore[4].getCol(), (-1) * sAfter[4].getRow());
+		assertEquals(sBefore[1].getRow(), sAfter[1].getRow());
+		assertEquals(sBefore[2].getRow(), sAfter[2].getRow());
+		assertEquals(sBefore[3].getRow(), sAfter[3].getRow());
+		assertEquals(sBefore[4].getRow(), sAfter[4].getRow());
+		assertEquals(sBefore[0].getCol(), (-1) * sAfter[0].getCol());
+		assertEquals(sBefore[1].getCol(), (-1) * sAfter[1].getCol());
+		assertEquals(sBefore[2].getCol(), (-1) * sAfter[2].getCol());
+		assertEquals(sBefore[3].getCol(), (-1) * sAfter[3].getCol());
+		assertEquals(sBefore[4].getCol(), (-1) * sAfter[4].getCol());
 
-		
 	}
 	
-	public void testRotateCWController(){
-ActionEvent e = new ActionEvent(lsView.getRotateCWButton(), 0, "", 0, 0);
+	public void testFlipVertical(){
+ActionEvent e = new ActionEvent(lsView.getFlipVertical(), 0, "", 0, 0);
 		
 		
 		PieceSquare anchorSquare = new PieceSquare(1, 5);
@@ -110,22 +109,21 @@ ActionEvent e = new ActionEvent(lsView.getRotateCWButton(), 0, "", 0, 0);
 		
 		assertEquals(p, level.getActivePiece());
 			
-		RotatePieceController r = new RotatePieceController(level, lsView.getBullpenView(), Piece.ROTATE_CW);
+		FlipPieceController r = new FlipPieceController(level, lsView.getBullpenView(), Piece.FLIP_VERTICALLY);
 		r.actionPerformed(e);
 		
 		
 		Square[] sAfter = level.getActivePiece().getSquares();
 		
 
-		assertEquals((-1) * sBefore[1].getRow(), sAfter[1].getCol());
-		assertEquals((-1) * sBefore[2].getRow(), sAfter[2].getCol());
-		assertEquals((-1) * sBefore[3].getRow(), sAfter[3].getCol());
-		assertEquals((-1) * sBefore[4].getRow(), sAfter[4].getCol());
-		assertEquals( (-1) * sBefore[0].getCol(), sAfter[0].getRow());
-		assertEquals(sBefore[1].getCol(),sAfter[1].getRow());
-		assertEquals(sBefore[2].getCol(),sAfter[2].getRow());
-		assertEquals(sBefore[3].getCol(),sAfter[3].getRow());
-		assertEquals(sBefore[4].getCol(),sAfter[4].getRow());
-		
+		assertEquals(sBefore[1].getRow(), (-1) *sAfter[1].getRow());
+		assertEquals(sBefore[2].getRow(), (-1) *sAfter[2].getRow());
+		assertEquals(sBefore[3].getRow(), (-1) *sAfter[3].getRow());
+		assertEquals(sBefore[4].getRow(), (-1) *sAfter[4].getRow());
+		assertEquals(sBefore[0].getCol(),  sAfter[0].getCol());
+		assertEquals(sBefore[1].getCol(), sAfter[1].getCol());
+		assertEquals(sBefore[2].getCol(), sAfter[2].getCol());
+		assertEquals(sBefore[3].getCol(), sAfter[3].getCol());
+		assertEquals(sBefore[4].getCol(), sAfter[4].getCol());
 	}
 }

@@ -46,8 +46,19 @@ public class BullpenToBoardMove {
 		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
 
-	//TODO: ADD UNDO
+	//TODO: IS THIS CORRECT?
 	public boolean undo() {
-		return false;
+		Bullpen bpen = level.getBullpen();
+		Board board = level.getBoard();
+
+		if (!isValid()) {
+			return false;
+		}
+
+		bpen.addPiece(movingPiece);
+		level.removeActivePiece();
+		board.removePiece(movingPiece);
+
+		return true;
 	}
 }
