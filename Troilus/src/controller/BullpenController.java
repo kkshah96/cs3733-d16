@@ -134,6 +134,8 @@ public class BullpenController extends MouseAdapter {
 	}
 	
 	// TODO This requires passing the BullpenController a BoardView. We can probably find a better solution
+	// TODO How about NOT having it? It is actually really annoying
+	/*
 	public void mouseEntered(MouseEvent me){
 		activePiece = level.getActivePiece();
 
@@ -152,6 +154,7 @@ public class BullpenController extends MouseAdapter {
 			level.setMoveSource(null);
 		}
 	}
+	*/
 
 	// TODO explain commented-out code
 	//	public void mouseReleased(MouseEvent me) {
