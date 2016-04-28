@@ -92,6 +92,8 @@ public class BoardToBoardMove extends Move{
 	 */
 	public boolean undo() {
 		boolean validation = false;
+		
+		
 		if(level.getBoard().getPiece(col, row) != null){
 			BoardToBoardMove undo = new BoardToBoardMove(level, movingPiece, previousCol, previousRow);
 			validation = undo.doMove();

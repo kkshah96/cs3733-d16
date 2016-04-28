@@ -21,7 +21,8 @@ public class LevelBuilder {
 	
 	//Level activeLevel;
 	
-	Stack<Move> moves;
+	Stack<Move> undoMoves;
+	Stack<Move> redoMoves;
 	
 	public LevelBuilder() {
 		initialize();
@@ -34,6 +35,9 @@ public class LevelBuilder {
 		
 		// load levels into the list of levels
 		levels = loader.loadLevels();
+		
+		undoMoves = new Stack<Move>();
+		redoMoves = new Stack<Move>();
 		
 		
 	}
@@ -57,5 +61,18 @@ public class LevelBuilder {
 	public void addLevel(Level level){
 		levels.add(level);
 		System.out.println(levels.size());
+	}
+	
+	public boolean pushMove(Move m){
+		undoMoves.push(m);
+		return true;
+	}
+	
+	public Move popUndoMove(){
+		return undoMoves.pop();
+	}
+	
+	public Move pushRedoMove(Move m){
+		return redoMoves.push(m);
 	}
 }

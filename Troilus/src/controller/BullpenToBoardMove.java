@@ -10,7 +10,7 @@ import model.Piece;
  * @author Maddy
  * @author Dan Alfred
  */
-public class BullpenToBoardMove {
+public class BullpenToBoardMove extends Move{
 	/** The level utilized in this move */
 	Level level;
 	
@@ -31,6 +31,7 @@ public class BullpenToBoardMove {
 	 * @param row The row on the board as the destination
 	 */
 	public BullpenToBoardMove(Level level, Piece movingPiece, int col, int row) {
+		super();
 		this.level = level;
 		this.movingPiece = movingPiece;
 		this.col = col;
@@ -74,12 +75,12 @@ public class BullpenToBoardMove {
 		Bullpen bpen = level.getBullpen();
 		Board board = level.getBoard();
 
-		if (!isValid()) {
-			return false;
-		}
+//		if (!isValid()) {
+//			return false;
+//		}
 
 		bpen.addPiece(movingPiece);
-		level.removeActivePiece();
+//		level.removeActivePiece();
 		board.removePiece(movingPiece);
 
 		return true;
