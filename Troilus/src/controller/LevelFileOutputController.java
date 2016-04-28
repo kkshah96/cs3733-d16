@@ -56,6 +56,8 @@ public class LevelFileOutputController {
 		this.path = "./src//levels/";
 		storeMasterFile();
 	}
+	
+	
 
 	/**
 	 * Writes master file containing level numbers and calls child controller to store levels
@@ -109,7 +111,7 @@ public class LevelFileOutputController {
 				levelElement.setAttribute("Number", "" + levels.get(i).getLevelNum());
 
 				// Now write that level to its file and append the new XML level tag to master file
-				new LevelXMLOutputController(levels.get(i));
+				new LevelXMLOutputController(levels.get(i)).storeLevelToFile();
 				rootLevelElement.appendChild(levelElement);
 			}
 

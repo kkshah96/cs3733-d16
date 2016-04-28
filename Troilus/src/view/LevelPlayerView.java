@@ -288,6 +288,10 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 	public boolean isActive() {
 		return isActive;
 	}
+	
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
 	public JLabel getLevelLabel() {
 		return levelLabel;
 	}

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,6 +12,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import model.Board;
 import model.Bullpen;
@@ -45,7 +47,6 @@ public class LevelXMLOutputController {
 	LevelXMLOutputController(Level level, String path) {
 		this.level = level;
 		this.path = path;
-		storeLevelToFile();
 	}
 	
 	/**
@@ -55,9 +56,51 @@ public class LevelXMLOutputController {
 	LevelXMLOutputController(Level level) {
 		this.level = level;
 		this.path = "./src/levels/";
-		storeLevelToFile();
 	}
 	
+	/**
+	 * Updates the number of stars for the current level. This method is used in
+	 * the game, since the contents of the bullpen are not overwritten.
+	 */
+	void saveLevelStars() {
+		try {
+			// get file path from name and number
+			String filePath = path + "LevelXML" + level.getLevelNum() + ".xml";
+			
+			// initialize
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
+			Document document = documentBuilder.parse(filePath);
+
+			// Get the root element
+			Node levelNode = document.getFirstChild();
+			
+			// get the stars (progress) element
+			Node progressNode = levelNode.getAttributes().getNamedItem("Progress");
+			
+			// set value to new value
+			progressNode.setNodeValue("" + level.getNumStars());
+			System.out.println("NUmber of stars: " + level.getNumStars());
+			
+			// write back to file
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(document);
+			StreamResult result = new StreamResult(new File(filePath));
+			transformer.transform(source, result);
+
+			
+		}
+		catch(IOException ioe) {
+			// Catch an IO exception (permissions error)
+			System.err.println("File cannot be overwritten!");
+			ioe.printStackTrace();
+		} 
+		catch(Exception e) {
+			// Catch a generalized exception and print trace
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * Stores the passed-in level to XML format
 	 */
