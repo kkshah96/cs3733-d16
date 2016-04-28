@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Kabasuji;
+import model.Level;
 import view.LevelSelectorView;
 import view.LevelPlayerView;
 
@@ -22,15 +23,19 @@ public class ExitLevelController implements ActionListener {
 	
 	/** The levelview for the current level */
 	LevelPlayerView levelView;
+	
+	/** The current level object */
+	Level level;
 
 	/**
 	 * Creates a new ExitLevelController for the given parameters
 	 * @param levelView Boundary object for the current level
 	 * @param game Reference to the main game entity
 	 */
-	public ExitLevelController(LevelPlayerView levelView, Kabasuji game) {
+	public ExitLevelController(LevelPlayerView levelView, Kabasuji game, Level level) {
 		this.levelView = levelView;
 		this.game = game;
+		this.level = level;
 	}
 
 
@@ -43,9 +48,14 @@ public class ExitLevelController implements ActionListener {
 	 * Completes the exiting of the current level
 	 */
 	public void process() {
-		// TODO save level progress?
+		
+		// save current level progress
+		new LevelXMLOutputController(level);
+		
+		// reset game
 		levelView.dispose();
 		game.initialize();
+		
 		// create new window
 		LevelSelectorView window = new LevelSelectorView(game);
 
