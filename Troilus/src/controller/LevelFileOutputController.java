@@ -122,12 +122,11 @@ public class LevelFileOutputController {
 			DOMSource source = new DOMSource(doc);
 
 			// Create the file object, and have it overwrite if it exists already
-
 			StreamResult result = new StreamResult(masterFile);
 			trans.transform(source, result);
 
-			StreamResult consoleResult = new StreamResult(System.out);
-			trans.transform(source, consoleResult);
+			//StreamResult consoleResult = new StreamResult(System.out);
+			//trans.transform(source, consoleResult);
 
 		} catch(IOException ioe) {
 			// Catch an IO exception (permissions error)
