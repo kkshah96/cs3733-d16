@@ -148,6 +148,8 @@ public class BullpenController extends MouseAdapter {
 			
 			boardView.repaint();
 			bullpenView.repaint();
+			
+			level.setMoveSource(null);
 		}
 	}
 
