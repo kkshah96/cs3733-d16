@@ -28,7 +28,6 @@ public class LightningLevel extends Level{
 	public void updateAfterMove() {
 		coverSquares();
 		replacePiece();
-		countValidSquares(); // Just in case in Level Editor
 		calcNumStars();
 	}
 	
@@ -63,6 +62,9 @@ public class LightningLevel extends Level{
 	@Override
 	/** 1 star if covered all but 12 squares, 2 if covered all but 6, 3 if won */
 	public void calcNumStars() {
+		validSquares = countValidSquares(); // Just in case in Level Editor
+		coveredSquares = countCoveredSquares();
+		
 		int squaresLeft = validSquares - coveredSquares;
 		
 		if (squaresLeft > 12) {
@@ -75,27 +77,39 @@ public class LightningLevel extends Level{
 			numStars = 3;
 		}
 	}
-	
-	/** Count the number of squares on the board (needed for LevelEditor) */
-	void countValidSquares() {
-		int squareCounter = 0;
+
+	/** Count the number of covered squares on the board (needed for LevelEditor) */
+	int countCoveredSquares() {
+		int coveredSquares = 0;
 		
 		for (Square[] col : board.squares) {
 			for (Square square : col) {
-				if (square.isValid()) {
-					squareCounter++;
+				if (square.isValid() && ((LightningSquare) square).isCovered()) {
+					// Check if valid, just in case
+					coveredSquares++;
 				}
 			}
 		}
 		
-		validSquares = squareCounter;
+		return coveredSquares;
 	}
 	
-	// TODO make this reachable from Board/etc.
-	public void updateSquaresCovered(int i) {
-		coveredSquares += i;
+	/** Count the number of squares on the board (needed for LevelEditor) */
+	int countValidSquares() {
+		int validSquares = 0;
+		
+		for (Square[] col : board.squares) {
+			for (Square square : col) {
+				if (square.isValid()) {
+					validSquares++;
+				}
+			}
+		}
+		
+		return validSquares;
 	}
 	
+	// TODO fix! Entity doesn't know how much time is left!
 	public boolean canMove() {
 		return timeLimit > 0;
 	}

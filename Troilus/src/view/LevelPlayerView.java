@@ -180,13 +180,13 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		panelPuzzleStats.setLayout(null);
 		panelPuzzleStats.setBorder(null);
 		panelPuzzleStats.setBackground(Color.LIGHT_GRAY);
-		panelPuzzleStats.setBounds(569, 52, 115, 34);
+		panelPuzzleStats.setBounds(530, 52, 154, 34);
 		panel.add(panelPuzzleStats);
 
 		// TODO remove hard-coded vals!
 		movesLabel = new JLabel("Moves: 40/50");
 		movesLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		movesLabel.setBounds(6, 7, 99, 22);
+		movesLabel.setBounds(6, 7, 136, 22);
 		panelPuzzleStats.add(movesLabel);
 
 		labelStars = new JLabel("Stars: 0/3");
@@ -232,14 +232,14 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		panelReleaseStats.add(labelYellow);
 
 		panelLightningStats = new JPanel();
-		panelLightningStats.setBounds(394, 50, 175, 34);
+		panelLightningStats.setBounds(339, 52, 210, 34);
 		panel.add(panelLightningStats);
 		panelLightningStats.setLayout(null);
 		panelLightningStats.setBorder(null);
 		panelLightningStats.setBackground(Color.LIGHT_GRAY);
 
 		timeLabel= new JLabel("Time Remaining: 1:30");
-		timeLabel.setBounds(6, 6, 161, 20);
+		timeLabel.setBounds(6, 6, 192, 20);
 		panelLightningStats.add(timeLabel);
 		timeLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 	}
@@ -248,20 +248,13 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 	public void refresh() {
 		if (level instanceof PuzzleLevel) {
 			movesLabel.setText(((PuzzleLevel) level).getMovesLeft() + "/" + ((PuzzleLevel) level).getMaxMoves());
-		} else if (level instanceof LightningLevel) {
-			int seconds  = ((LightningLevel) level).getTime() % 60;
-			String secondsString = Integer.toString(seconds);
-			if (seconds < 10) {
-				secondsString = "0" + seconds;
-			}
-			timeLabel.setText("Time Remaining: " + (((LightningLevel) level).getTime() / 60) + ":" + secondsString);
 		} else if (level instanceof ReleaseLevel) {
 			labelRed.setText(((ReleaseLevel) level).getRedCovered() + "/" + ReleaseLevel.MAX_NUM);
 			labelGreen.setText(((ReleaseLevel) level).getGreenCovered() + "/" + ReleaseLevel.MAX_NUM);
 			labelYellow.setText(((ReleaseLevel) level).getYellowCovered() + "/" + ReleaseLevel.MAX_NUM);
 		}
 		
-		labelStars.setText(level.getNumStars() + "/3");
+		labelStars.setText(level.getNumStars() + "/" + Level.MAX_STARS);
 		repaint();
 	}
 	
