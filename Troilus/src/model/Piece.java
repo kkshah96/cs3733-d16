@@ -69,9 +69,22 @@ public class Piece {
 		return anchor.getCol();
 	}
 	
+	// TODO fix logic here
+	/** Returns an ArrayList of ALL squares of a piece, including anchor. */
+	public PieceSquare[] getAllSquares() {
+		PieceSquare[] allSquares = new PieceSquare[PIECE_SIZE];
+		allSquares[0] = anchor;
+		allSquares[1] = squares[0];
+		allSquares[2] = squares[1];
+		allSquares[3] = squares[2];
+		allSquares[4] = squares[3];
+		allSquares[5] = squares[4];
+		return allSquares;
+	}
+	
 	/**
 	 * Provides the array of squares of a piece, not including the anchor square.
-	 * @return Array of piece squares
+	 * @return Array of piece squares, NOT including anchor.
 	 */
 	public PieceSquare[] getSquares() {
 		return squares;

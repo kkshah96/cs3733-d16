@@ -31,7 +31,7 @@ public class ReleaseLevel extends Level {
 	}
 
 	@Override
-	/** 1 star for completing 1 color set, 2 for 2 color sets, win if get all 3 */
+	/** 1 star for completing 1 color set, 2 for 2 color sets, win if get all 3. */
 	public void calcNumStars() {
 		int setsComplete = 0;
 		// Take advantage of rounding down to calculate stars
@@ -42,19 +42,21 @@ public class ReleaseLevel extends Level {
 		numStars = setsComplete;
 	}
 
+	// TODO fix bad code!
 	/** Helper function for calculating stars */
 	private void findCoveredNumbers() {
 		for (Piece piece : board.getPieces().keySet()) {
 			int anchorCol = board.getPieces().get(piece).x;
 			int anchorRow = board.getPieces().get(piece).y;
 			
-			for (Square square : piece.getSquares()) {
+			for (Square square : piece.getAllSquares()) {
 				int absCol = anchorCol + square.getCol();
 				int absRow = anchorRow + square.getRow();
 				
-				ReleaseSquare currentSquare = (ReleaseSquare) board.squares[absCol][absRow];
+				ReleaseSquare currentSquare = (ReleaseSquare) board.getSquare(absCol, absRow);
 				int currentNum = currentSquare.getNumber();
 				Color currentColor = currentSquare.getNumberColor();
+				
 				if (currentNum > 0 && currentColor != null) {
 					if (currentColor.equals(Color.RED)) {
 						redCovered[currentNum - 1] = true;

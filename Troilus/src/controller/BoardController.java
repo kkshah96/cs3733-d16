@@ -16,13 +16,13 @@ import view.ILevelView;
 public class BoardController extends MouseAdapter {
 	/** The BoardView modified in this controller. */
 	protected BoardView boardView;
-	
+
 	/** The Level for this context. */
 	protected Level level;
-	
+
 	/** The View that this controller modifies. */
 	ILevelView levelView;
-	
+
 	/** The active piece for this. */
 	Piece activePiece;
 
@@ -47,28 +47,35 @@ public class BoardController extends MouseAdapter {
 		// get mouse coordinates from press
 		int x = me.getX();
 		int y = me.getY();
-		
+
 		// Convert to col and row using our view offsets
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
 		// First check what type of click
 		if (me.getButton() == MouseEvent.BUTTON3) { // We have right clicked
-			// This means we want to attempt a BoardToBullpen move (send a piece on the board back to bullpen)
-			BoardToBullpenMove m = new BoardToBullpenMove(level, col, row);
-			if (m.doMove()) {
-				// If the move is valid (and completed), we remove the source and active pieces
+			// Stop dragging on right click
+			if (level.getActivePiece() != null) {
 				boardView.removeDraggedPiece();
 				level.setMoveSource(null);
 				level.setActivePiece(null);
-				// push move
 			} else {
-				// Otherwise, print an error
-				System.err.println("Error: Unable to remove piece from board");
+				// This means we want to attempt a BoardToBullpen move (send a piece on the board back to bullpen)
+				BoardToBullpenMove m = new BoardToBullpenMove(level, col, row);
+				if (m.doMove()) {
+					// If the move is valid (and completed), we remove the source and active pieces
+					boardView.removeDraggedPiece();
+					level.setMoveSource(null);
+					level.setActivePiece(null);
+					// push move
+				} else {
+					// Otherwise, print an error
+					System.err.println("Error: Unable to remove piece from board");
+				}
 			}
 		} else { // Not right-clicked
 			// TODO fix this logic!
-			
+
 			// Check to see if no move has been started (source is null)
 			if (level.getMoveSource() == null) {
 				// Then check if there is a piece at the click location

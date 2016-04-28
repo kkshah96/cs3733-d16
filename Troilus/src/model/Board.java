@@ -96,12 +96,15 @@ public class Board {
 			return false;
 		}
 
+		// TODO remove anchor square check
+		/*
 		if (!getSquare(col, row).isValid()) {
 			System.out.println("Anchor square placed at disabled square");
 			return false;
 		}
+		*/
 
-		for (PieceSquare square : piece.getSquares()) {
+		for (PieceSquare square : piece.getAllSquares()) {
 			// check if each square is in board area
 			int absRow = square.getRow() + row; 
 			int absCol = square.getCol() + col;
