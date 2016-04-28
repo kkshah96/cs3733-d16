@@ -12,7 +12,7 @@ import model.Piece;
  * @author Dan Alfred
  *
  */
-public class BoardToBoardMove {
+public class BoardToBoardMove extends Move{
 	/** The level this move acts on. */
 	Level level;
 	
@@ -24,6 +24,12 @@ public class BoardToBoardMove {
 	
 	/** The row on the board for destination. */
 	int row;
+	
+	/** movingPiece's previous row **/
+	int previousRow;
+	
+	/** movingPiece's previous column**/
+	int previousCol;
 
 	/**
 	 * Creates a new instance of a BoardToBoardMove with the given parameters.
@@ -33,10 +39,14 @@ public class BoardToBoardMove {
 	 * @param row The row of the destination square on the board
 	 */
 	public BoardToBoardMove(Level level, Piece movingPiece, int col, int row) {
+		super();
+		
 		this.level = level;
 		this.movingPiece = movingPiece;	
 		this.col = col;
 		this.row = row;
+		this.previousCol = movingPiece.getCol();
+		this.previousRow = movingPiece.getRow();
 	}
 
 	/**
@@ -45,7 +55,7 @@ public class BoardToBoardMove {
 	 */
 	public boolean doMove() {
 		// First check if the move is valid. Return false if invalid
-		if (!isValid(movingPiece, col, row)) {
+		if (!isValid()) {
 			System.out.println("Invalid move!");
 			return false;
 		}
@@ -70,17 +80,23 @@ public class BoardToBoardMove {
 	 * @param row Row on the board as the destination
 	 * @return True if this BoardToBoardMove is valid with the given parameters, false otherwise
 	 */
-	public boolean isValid(Piece piece, int col, int row) {
+	public boolean isValid() {
 		// TODO: if level.canMakeMove()...
-		return level.getBoard().validPlacement(piece, col, row);
+		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
 
-	//TODO: ADD UNDO
+	//TODO: IS THIS CORRECT LOGIC?
 	/**
 	 * Undoes this BoardToBoardMove
 	 * @return True if the move was undone successfully, or false otherwise
 	 */
 	public boolean undo() {
-		return false;
+		boolean validation = false;
+		if(level.getBoard().getPiece(col, row) != null){
+			BoardToBoardMove undo = new BoardToBoardMove(level, movingPiece, previousCol, previousRow);
+			validation = undo.doMove();
+		}
+		
+		return validation;
 	}
 }

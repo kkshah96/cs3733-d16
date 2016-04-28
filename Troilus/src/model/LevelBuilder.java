@@ -1,8 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import controller.LoadLevelsController;
+import controller.Move;
 
 /**
  * Top level entity for the LevelBuilder application
@@ -11,12 +13,15 @@ import controller.LoadLevelsController;
  * 
  * @author Kunal Shah
  * @author Connor Weeks
- *
+ * @author Alex Kasparek
  */
 public class LevelBuilder {
 	
 	ArrayList<Level> levels;
+	
 	//Level activeLevel;
+	
+	Stack<Move> moves;
 	
 	public LevelBuilder() {
 		initialize();
