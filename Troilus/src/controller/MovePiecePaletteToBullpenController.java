@@ -21,10 +21,7 @@ import view.PaletteView;
  *
  */
 public class MovePiecePaletteToBullpenController extends MouseAdapter {
-	//LevelBuilder builder;
 	Level level;
-	//LevelLoaderView loaderView;
-	//LevelEditorView editorView;
 	BullpenView bullpenView;
 	PaletteView paletteView;
 
@@ -35,35 +32,28 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 	}
 
 	public void mousePressed(MouseEvent me) {
-		if(me.getButton() == MouseEvent.BUTTON3) {
-			System.out.println("Right click");
+		if (me.getButton() == MouseEvent.BUTTON3) {
 			return;
 		}
 
 		Bullpen bp = level.getBullpen();
-		//BullpenView bpView = editorView.getBullpenView();
 
 		Point clickPoint = me.getPoint();
-		//PaletteView pView = editorView.getPaletteView();
 		Hashtable<Piece, Point> pieces = paletteView.getDrawnPieces();
 		Set<Piece> keySet = pieces.keySet();
-		//System.out.println(p);
+
 		for(Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
-			//			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET);
-			//			System.out.println(anchorPoint.getX() + PaletteView.WIDTH_OFFSET + PaletteView.SQUARE_SIZE);
-			//			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET);
-			//			System.out.println(anchorPoint.getY() + PaletteView.HEIGHT_OFFSET + PaletteView.SQUARE_SIZE);
-			//			System.out.println("---");
-
 			// added by Connor <-- stud muffin
+			/*
 			if (isPieceClicked (anchorPoint, clickPoint)) {
 				bp.addPiece(PieceFactory.getPiece(piece.getType()));
 				bullpenView.repaint();
 				return;
 			}
+			 */
 
-			for(Square s : piece.getSquares()) {
+			for(Square s : piece.getAllSquares()) {
 				if (isSquareClicked(anchorPoint, clickPoint, s)) {
 					bp.addPiece(PieceFactory.getPiece(piece.getType()));
 					bullpenView.repaint();
@@ -81,12 +71,20 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 				(anchorPoint.getY() <= clickPoint.getY()) && 
 				(anchorPoint.getY() + PaletteView.SQUARE_SIZE >= clickPoint.getY());
 	}
-	
+
 	/** Helper function for mousePressed */
 	private boolean isSquareClicked(Point anchorPoint, Point clickPoint, Square s) {
-		return (anchorPoint.getX() + (s.getCol() * PaletteView.SQUARE_SIZE) <= clickPoint.getX()) && 
-				(anchorPoint.getX() + (s.getCol() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= clickPoint.getX()) && 
-				(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) <= clickPoint.getY()) && 
-				(anchorPoint.getY() + (s.getRow() * PaletteView.SQUARE_SIZE) + PaletteView.SQUARE_SIZE >= clickPoint.getY());
+		int aCol = anchorPoint.x;
+		int aRow = anchorPoint.y;
+		int sCol = s.getCol();
+		int sRow = s.getRow();
+		int size = PaletteView.SQUARE_SIZE;
+		int cCol = clickPoint.x;
+		int cRow = clickPoint.y;
+
+		return (aCol + (sCol * size) <= cCol) && 
+				(aCol + (sCol * size) + size >= cCol) && 
+				(aRow + (sRow * size) <= cRow) && 
+				(aRow+ (sRow * size) + size >= cRow);
 	}
 }

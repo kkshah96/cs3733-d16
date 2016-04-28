@@ -62,7 +62,7 @@ public class TestRotatePieceController extends TestCase{
 		Piece p = new Piece(pieceSquares, anchorSquare, 1, Color.RED);
 		
 		
-		Square[] sBefore = p.getSquares();
+		Square[] sBefore = p.getAllSquares();
 		bPen.addPiece(p);
 
 		level.setActivePiece(p);
@@ -73,18 +73,18 @@ public class TestRotatePieceController extends TestCase{
 		r.actionPerformed(e);
 		
 		
-		Square[] sAfter = level.getActivePiece().getSquares();
+		Square[] sAfter = level.getActivePiece().getAllSquares();
 		
 
 		assertEquals(sBefore[1].getRow(), sAfter[1].getCol());
 		assertEquals(sBefore[2].getRow(), sAfter[2].getCol());
 		assertEquals(sBefore[3].getRow(), sAfter[3].getCol());
 		assertEquals(sBefore[4].getRow(), sAfter[4].getCol());
-		assertEquals(sBefore[0].getCol(), (-1) * sAfter[0].getRow());
 		assertEquals(sBefore[1].getCol(), (-1) * sAfter[1].getRow());
 		assertEquals(sBefore[2].getCol(), (-1) * sAfter[2].getRow());
 		assertEquals(sBefore[3].getCol(), (-1) * sAfter[3].getRow());
 		assertEquals(sBefore[4].getCol(), (-1) * sAfter[4].getRow());
+		assertEquals(sBefore[5].getCol(), (-1) * sAfter[5].getRow());
 
 		
 	}
@@ -121,7 +121,7 @@ ActionEvent e = new ActionEvent(lsView.getRotateCWButton(), 0, "", 0, 0);
 		assertEquals((-1) * sBefore[2].getRow(), sAfter[2].getCol());
 		assertEquals((-1) * sBefore[3].getRow(), sAfter[3].getCol());
 		assertEquals((-1) * sBefore[4].getRow(), sAfter[4].getCol());
-		assertEquals( (-1) * sBefore[0].getCol(), sAfter[0].getRow());
+		assertEquals((-1) * sBefore[0].getCol(), sAfter[0].getRow());
 		assertEquals(sBefore[1].getCol(),sAfter[1].getRow());
 		assertEquals(sBefore[2].getCol(),sAfter[2].getRow());
 		assertEquals(sBefore[3].getCol(),sAfter[3].getRow());

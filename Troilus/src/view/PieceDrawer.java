@@ -40,8 +40,8 @@ public class PieceDrawer {
 	 * @param widthOffset The width offset of the piece in pixels
 	 */
 	public void paint(Graphics g, Color color, Piece piece, Point p, int width, int heightOffset, int widthOffset){
-		squares = piece.getSquares();
-		anchorSquare = piece.getAnchor();
+		squares = piece.getAllSquares();
+		//anchorSquare = piece.getAnchor();
 		
 		g.setColor(color);
 		
@@ -49,7 +49,7 @@ public class PieceDrawer {
 		g.fillRect(p.x * width + widthOffset, p.y * width + heightOffset, width, width);
 		
 		// fill other squares
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < Piece.PIECE_SIZE; i++) {
 			g.fillRect((p.x + squares[i].getCol()) * width + widthOffset,
 					(p.y + squares[i].getRow()) * width + heightOffset, width, width);
 		}

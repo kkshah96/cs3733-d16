@@ -47,8 +47,7 @@ public class LightningLevel extends Level{
 			int anchorCol = board.getPieces().get(piece).x;
 			int anchorRow = board.getPieces().get(piece).y;
 			
-			((LightningSquare) board.squares[anchorCol][anchorRow]).isCovered = true;
-			for (PieceSquare square : piece.getSquares()) {
+			for (PieceSquare square : piece.getAllSquares()) {
 				int currentCol = anchorCol + square.getCol();
 				int currentRow = anchorRow + square.getRow();
 

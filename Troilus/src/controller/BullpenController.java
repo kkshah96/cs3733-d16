@@ -73,24 +73,30 @@ public class BullpenController extends MouseAdapter {
 
 		// check anchor square and relative squares for each piece in the bullpen
 		for (Piece piece : keySet) {
-			Point anchorPoint = pieces.get(piece);
-
+			int anchorCol = pieces.get(piece).x;
+			int anchorRow = pieces.get(piece).y;
+			
 			// Piece was clicked if the x coordinate is within the SQUARE_SIZE constant of the anchor point x coordinate
 			// and the SQUARE_SIZE constant of the anchor point y coordinate
-			if ((anchorPoint.getX() <= x) && 
-					(anchorPoint.getX() + BullpenView.SQUARE_SIZE >= x) && 
-					(anchorPoint.getY() <= y) && 
-					(anchorPoint.getY() + BullpenView.SQUARE_SIZE >= y)) {
+			/*
+			if ((anchorCol <= x) && 
+					(anchorCol + BullpenView.SQUARE_SIZE >= x) && 
+					(anchorRow <= y) && 
+					(anchorRow + BullpenView.SQUARE_SIZE >= y)) {
 				activePiece = piece;
 				break;
 			}
-
+			*/
+			
 			// Additionally, check this same condition with the rest of the squares in the piece
-			for(Square s : piece.getSquares()) {
-				if((anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) <= x) && 
-						(anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= x) && 
-						(anchorPoint.getY() + (s.getRow() * BullpenView.SQUARE_SIZE) <= y) && 
-						(anchorPoint.getY() + (s.getRow() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= y)) {
+			for (Square s : piece.getAllSquares()) {
+				int sCol = s.getCol();
+				int sRow = s.getRow();
+				
+				if ((anchorCol + (sCol * BullpenView.SQUARE_SIZE) <= x) && 
+						(anchorCol + (sCol * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= x) && 
+						(anchorRow + (sRow * BullpenView.SQUARE_SIZE) <= y) && 
+						(anchorRow + (sRow * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= y)) {
 					activePiece = piece;
 					break;
 				}

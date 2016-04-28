@@ -16,7 +16,7 @@ public class TestPiece extends TestCase {
 	public void testPiece() {
 		// Start by creating a test Piece- Piece1 in this case, by hand
 		PieceSquare anchorSquare = new PieceSquare(1, 5);
-		PieceSquare[] pieceSquares = new PieceSquare[5];
+		PieceSquare[] pieceSquares = new PieceSquare[Piece.PIECE_SIZE - 1];
 		pieceSquares[0] = new PieceSquare(0, -1);
 		pieceSquares[1] = new PieceSquare(0, -2);
 		pieceSquares[2] = new PieceSquare(0, -3);
