@@ -164,8 +164,8 @@ public class LevelXMLOutputController {
 			StreamResult result = new StreamResult(levelFile);
 			trans.transform(source, result);
 			
-			StreamResult consoleResult = new StreamResult(System.out);
-	        trans.transform(source, consoleResult);
+			//StreamResult consoleResult = new StreamResult(System.out);
+	        //trans.transform(source, consoleResult);
 		} catch(Exception e) {
 			// Catch any exceptions that occur and print trace
 			e.printStackTrace();
