@@ -70,7 +70,7 @@ public class StartLightningLevelController implements ActionListener {
 			secondsString = "0" + seconds;
 		}
 		levelView.getTimeLabel().setText("Time Remaining: " + (level.getTime() / 60) + ":" + secondsString);
-		new TimerController(levelView, game, level.getTime()).process();
+		new TimerController(levelView, game, level, level.getTime()).process();
 		
 
 		// show level view
