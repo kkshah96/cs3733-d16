@@ -53,8 +53,6 @@ public class BullpenController extends MouseAdapter {
 		handleMousePressed(me.getPoint(), me.getButton());
 	}
 	
-	// TODO Is there a reason we need a different method? 
-	// No, but it's easier than creating new mouse events for testing
 	void handleMousePressed(Point p, int mouseButton) {
 		// First obtain the x and y coordinates from the mouse press
 		int x = p.x;
@@ -71,26 +69,22 @@ public class BullpenController extends MouseAdapter {
 		Set<Piece> keySet = pieces.keySet();
 		activePiece = null;
 
+		int size = BullpenView.SQUARE_SIZE;
 		// check anchor square and relative squares for each piece in the bullpen
 		for (Piece piece : keySet) {
-			Point anchorPoint = pieces.get(piece);
-
-			// Piece was clicked if the x coordinate is within the SQUARE_SIZE constant of the anchor point x coordinate
-			// and the SQUARE_SIZE constant of the anchor point y coordinate
-			if ((anchorPoint.getX() <= x) && 
-					(anchorPoint.getX() + BullpenView.SQUARE_SIZE >= x) && 
-					(anchorPoint.getY() <= y) && 
-					(anchorPoint.getY() + BullpenView.SQUARE_SIZE >= y)) {
-				activePiece = piece;
-				break;
-			}
-
-			// Additionally, check this same condition with the rest of the squares in the piece
-			for(Square s : piece.getSquares()) {
-				if((anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) <= x) && 
-						(anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= x) && 
-						(anchorPoint.getY() + (s.getRow() * BullpenView.SQUARE_SIZE) <= y) && 
-						(anchorPoint.getY() + (s.getRow() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= y)) {
+			int aCol = pieces.get(piece).x;
+			int aRow = pieces.get(piece).y;
+			
+			// Piece was clicked if the x coordinate is within the SQUARE_SIZE constant of each point's
+			// x coordinate and the SQUARE_SIZE constant of each point's y coordinate
+			for (Square s : piece.getAllSquares()) {
+				int sCol = s.getCol();
+				int sRow = s.getRow();
+				
+				if ((aCol + (sCol * size) <= x) && 
+						(aCol + (sCol * size) + size >= x) && 
+						(aRow + (sRow * size) <= y) && 
+						(aRow + (sRow * size) + size >= y)) {
 					activePiece = piece;
 					break;
 				}
@@ -112,7 +106,6 @@ public class BullpenController extends MouseAdapter {
 		// a right click will remove the selected piece from the bullpen
 		if (mouseButton == MouseEvent.BUTTON3) {
 			bullpen.removePiece(activePiece);
-			bullpenView.repaint();
 		} else {
 			if (level.getActivePiece() == activePiece) {
 				// if the piece is already selected, deselect it
@@ -122,41 +115,8 @@ public class BullpenController extends MouseAdapter {
 				level.setMoveSource("Bullpen");
 				level.setActivePiece(activePiece);
 			}
-			// refresh the view
-			levelView.refresh();
 		}
+		// Refresh view regardless of what happened
+		levelView.refresh();
 	}
-	
-	// TODO This requires passing the BullpenController a BoardView. We can probably find a better solution
-	public void mouseEntered(MouseEvent me){
-		activePiece = level.getActivePiece();
-
-		if (boardView.getDraggedPiece() != null) {
-			
-			if(!level.getBullpen().getPieces().contains(boardView.getDraggedPiece())){
-				level.getBullpen().addPiece(boardView.getDraggedPiece());
-			}
-			
-			boardView.removeDraggedPiece();
-			level.setActivePiece(null);
-			
-			boardView.repaint();
-			bullpenView.repaint();
-			
-			level.setMoveSource(null);
-		}
-	}
-
-	// TODO explain commented-out code
-	//	public void mouseReleased(MouseEvent me) {
-	//		//TODO: Expand this? Right now it will just let go of the piece and do nothing if the mouse is released in the bullpen
-	//		System.out.println("Let go of the mouse!");
-	//
-	//			bV.removeDraggedPiece();
-	//			level.getBullpen().removePiece(activePiece);
-	//			level.setActivePiece(null);
-	//
-	//	
-	//
-	//	}
 }

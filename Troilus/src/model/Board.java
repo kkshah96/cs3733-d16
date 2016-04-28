@@ -156,11 +156,7 @@ public class Board {
 			int anchorCol = anchorPoint.x;
 			int anchorRow = anchorPoint.y;
 
-			if (anchorCol == col && anchorRow == row) {
-				return piece;
-			}
-
-			for (Square square : piece.getSquares()) {
+			for (Square square : piece.getAllSquares()) {
 				if ((square.getRow() + anchorRow == row) && (square.getCol() + anchorCol == col)) {
 					return piece;
 				}
