@@ -24,8 +24,8 @@ public class Board {
 	/** Constant denoting the maximum height of the board. */
 	public static final int BOARD_HEIGHT = 12;
 
-	/** The 2D array of squares that compose the board. */
-	Square[][] squares; // uses squares[col][row]
+	/** The 2D array of squares that compose the board. Acess with squares[col][row]. */
+	Square[][] squares;
 
 	/** Pieces on the Board, where Point holds (col, row) */
 	Hashtable<Piece, Point> pieces;
@@ -135,7 +135,7 @@ public class Board {
 		return p;
 	}
 
-	/** Find the Piece at the given location (leave Piece unchanged)
+	/** Find the Piece at the given location, using (col, row).
 	 * WARNING: Returns NULL if not on board
 	 * @param col Requested column
 	 * @param row Requested row
@@ -167,7 +167,7 @@ public class Board {
 		return null;
 	}
 
-	/** Find the Square at the given location (don't change).
+	/** Find the Square at the given location (using col, row).
 	 * WARNING: Returns NULL if not on board.
 	 * @param col Column of the requested square
 	 * @param row Row of the requested square
@@ -227,7 +227,8 @@ public class Board {
 			activeSquare.toggleHint();
 		}
 	}
-
+	
+	// TODO why do we need this? It doesn't even do anything meaningful.
 	public int getNumRows(){
 		int num = 0;
 		for (int row = 0; row < BOARD_HEIGHT; row++) {

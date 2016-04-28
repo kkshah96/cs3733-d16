@@ -16,78 +16,114 @@ public class ReleaseLevel extends Level {
 	boolean redCovered[];
 	boolean yellowCovered[];
 	boolean greenCovered[];
-	
+
 	public ReleaseLevel(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette) {
 		super(levelNum, locked, bullpen, board, palette);
-		
+
 		redCovered = new boolean[MAX_NUM];
 		yellowCovered = new boolean[MAX_NUM];
 		greenCovered = new boolean[MAX_NUM];
 	}
 
 	public void updateAfterMove() {
+		findCoveredNumbers();
 		calcNumStars();
 	}
-	
+
 	@Override
 	/** 1 star for completing 1 color set, 2 for 2 color sets, win if get all 3 */
 	public void calcNumStars() {
-		if (!(setComplete(redCovered) || setComplete(yellowCovered) || setComplete(greenCovered))) {
-			numStars = 0; // No sets are complete
-		} else if (setComplete(redCovered) && setComplete(yellowCovered) && setComplete(greenCovered)) {
-			numStars = 3; // All sets are complete
-		} else if ((setComplete(redCovered) && setComplete(yellowCovered) && !setComplete(greenCovered)) ||
-				(setComplete(redCovered) && setComplete(greenCovered) && !setComplete(yellowCovered)) ||
-				(setComplete(greenCovered) && setComplete(yellowCovered) && !setComplete(redCovered))) {
-			// TODO clean up logic!
-			numStars = 2;
-		} else {
-			numStars = 1;
-		}
+		int setsComplete = 0;
+		// Take advantage of rounding down to calculate stars
+		setsComplete += getRedCovered()/MAX_NUM;
+		setsComplete += getGreenCovered()/MAX_NUM;
+		setsComplete += getYellowCovered()/MAX_NUM;
+		
+		numStars = setsComplete;
 	}
-	
+
 	/** Helper function for calculating stars */
-	private boolean setComplete(boolean[] numSet) {
-		for (boolean covered : numSet) {
-			if (!covered) {
-				return false;
+	private void findCoveredNumbers() {
+		for (Piece piece : board.getPieces().keySet()) {
+			int anchorCol = board.getPieces().get(piece).x;
+			int anchorRow = board.getPieces().get(piece).y;
+			
+			for (Square square : piece.getSquares()) {
+				int absCol = anchorCol + square.getCol();
+				int absRow = anchorRow + square.getRow();
+				
+				ReleaseSquare currentSquare = (ReleaseSquare) board.squares[absCol][absRow];
+				int currentNum = currentSquare.getNumber();
+				Color currentColor = currentSquare.getNumberColor();
+				if (currentNum > 0 && currentColor != null) {
+					if (currentColor.equals(Color.RED)) {
+						redCovered[currentNum - 1] = true;
+					} else if (currentColor.equals(Color.GREEN)) {
+						greenCovered[currentNum - 1] = true;
+					} else if (currentColor.equals(Color.YELLOW)) {
+						yellowCovered[currentNum - 1] = true;
+					}
+				}
 			}
 		}
-		
-		return true;
 	}
-	
+
 	// TODO: There has to be a better way to do this
 	public void updateCoveredNumbers(Color c, int i) {
 		if (i >= MAX_NUM || i < 0) {
 			return;
 		}
-		
+
 		if (c.equals(Color.RED)) {
 			redCovered[i] = true;
 		}
-		
+
 		if (c.equals(Color.YELLOW)) {
 			yellowCovered[i] = true;
 		}
-		
+
 		if (c.equals(Color.GREEN)) {
 			greenCovered[i] = true;
 		}
 	}
-	
+
 	// TODO implement stubs!
 	public int getRedCovered() {
-		return 0;
+		int red = 0;
+
+		for (boolean covered : redCovered) {
+			if (covered) {
+				red++;
+			}
+		}
+
+		return red;
 	}
-	
+
 	public int getGreenCovered() {
-		return 0;
+		int green = 0;
+
+		for (boolean covered : greenCovered) {
+			if (covered) {
+				green++;
+			}
+		}
+
+		return green;
+	}
+
+	public int getYellowCovered() {
+		int yellow = 0;
+
+		for (boolean covered : yellowCovered) {
+			if (covered) {
+				yellow++;
+			}
+		}
+
+		return yellow;
 	}
 	
-	public int getYellowCovered() {
-		return 0;
-	}
 	public String getName() {
 		return "Release";
 	}
