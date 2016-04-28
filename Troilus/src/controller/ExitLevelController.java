@@ -17,9 +17,17 @@ import view.LevelPlayerView;
  *
  */
 public class ExitLevelController implements ActionListener {
+	/** The game */
 	Kabasuji game;
+	
+	/** The levelview for the current level */
 	LevelPlayerView levelView;
 
+	/**
+	 * Creates a new ExitLevelController for the given parameters
+	 * @param levelView Boundary object for the current level
+	 * @param game Reference to the main game entity
+	 */
 	public ExitLevelController(LevelPlayerView levelView, Kabasuji game) {
 		this.levelView = levelView;
 		this.game = game;
@@ -31,6 +39,9 @@ public class ExitLevelController implements ActionListener {
 		process();
 	}
 
+	/**
+	 * Completes the exiting of the current level
+	 */
 	public void process() {
 		// TODO save level progress?
 		levelView.dispose();

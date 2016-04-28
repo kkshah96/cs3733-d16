@@ -20,12 +20,26 @@ import view.ILevelView;
  *
  */
 public class BullpenController extends MouseAdapter {
+	/** The level that this bullpen is in */
 	protected Level level;
+	
+	/** The view for this bullpen */
 	protected BullpenView bullpenView;
+	
+	/** The view for the level containing this bullpen */
 	ILevelView levelView;
+	
+	/** Any active piece in the level */
 	Piece activePiece;
+	
+	/** The view for the board in this level */
 	BoardView boardView;
 
+	/**
+	 * Creates a new instance of the BullpenController with the given parameters
+	 * @param level The level of this bullpen
+	 * @param levelView The view for the level of this bullpen
+	 */
 	public BullpenController(Level level, ILevelView levelView) {
 		super();
 		this.level = level;
@@ -40,14 +54,16 @@ public class BullpenController extends MouseAdapter {
 	}
 	
 	// TODO Is there a reason we need a different method? 
+	// No, but it's easier than creating new mouse events for testing
 	void handleMousePressed(Point p, int mouseButton) {
-		
+		// First obtain the x and y coordinates from the mouse press
 		int x = p.x;
 		int y = p.y;
 		
 		System.out.println(x);
 		System.out.println(y);
 
+		// Create a reference to the bullpen
 		Bullpen bullpen = level.getBullpen();
 
 		// find the piece that was clicked
@@ -59,6 +75,8 @@ public class BullpenController extends MouseAdapter {
 		for (Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
 
+			// Piece was clicked if the x coordinate is within the SQUARE_SIZE constant of the anchor point x coordinate
+			// and the SQUARE_SIZE constant of the anchor point y coordinate
 			if ((anchorPoint.getX() <= x) && 
 					(anchorPoint.getX() + BullpenView.SQUARE_SIZE >= x) && 
 					(anchorPoint.getY() <= y) && 
@@ -67,6 +85,7 @@ public class BullpenController extends MouseAdapter {
 				break;
 			}
 
+			// Additionally, check this same condition with the rest of the squares in the piece
 			for(Square s : piece.getSquares()) {
 				if((anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) <= x) && 
 						(anchorPoint.getX() + (s.getCol() * BullpenView.SQUARE_SIZE) + BullpenView.SQUARE_SIZE >= x) && 
@@ -77,12 +96,13 @@ public class BullpenController extends MouseAdapter {
 				}
 			}
 
+			// If we have found a piece, exit the for loop
 			if (activePiece != null) {
 				break;
 			}
 		}
 		
-		// check if a piece was clicked on, deselect currently selected piece
+		// check if we didn't find a piece, deselect currently selected piece
 		if (activePiece == null) {
 			level.setActivePiece(null);
 			bullpenView.repaint();

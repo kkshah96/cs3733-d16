@@ -16,10 +16,21 @@ import view.LevelLoaderView;
  *
  */
 public class ExitLevelEditorController implements ActionListener {
+	/** The builder entity */
 	LevelBuilder builder;
+	
+	/** The view for the current LevelEditor */
 	LevelEditorView levelEditor;
+	
+	/** The view for the prior LevelLoader */
 	LevelLoaderView levelLoader;
 
+	/**
+	 * Creates a new instance of the ExitLevelEditorController with the given parameters
+	 * @param builder The main builder entity object
+	 * @param levelEditor The view for the current editor
+	 * @param levelLoader The view for the prior loader
+	 */
 	public ExitLevelEditorController(LevelBuilder builder, LevelEditorView levelEditor, LevelLoaderView levelLoader) {
 		this.builder = builder;
 		this.levelEditor = levelEditor;

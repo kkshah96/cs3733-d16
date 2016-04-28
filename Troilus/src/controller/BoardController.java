@@ -14,11 +14,23 @@ import view.ILevelView;
  * @author Alex Kasparek
  */
 public class BoardController extends MouseAdapter {
+	/** The BoardView modified in this controller. */
 	protected BoardView boardView;
+	
+	/** The Level for this context. */
 	protected Level level;
+	
+	/** The View that this controller modifies. */
 	ILevelView levelView;
+	
+	/** The active piece for this. */
 	Piece activePiece;
 
+	/**
+	 * Creates a new BoardController object with the specified parameters.
+	 * @param level The level this controller modifies
+	 * @param levelView The view for the level this controller calls to update
+	 */
 	public BoardController(Level level, ILevelView levelView) {
 		super();
 		this.levelView = levelView;
@@ -32,34 +44,38 @@ public class BoardController extends MouseAdapter {
 			return;
 		}
 
-		// get mouse coordinates
+		// get mouse coordinates from press
 		int x = me.getX();
 		int y = me.getY();
-		// TODO Someone remind me how we calculated these values
-		// They are from the GUI (converting so Entity can understand)
-		// Convert to col and row for Board <--- This
+		
+		// Convert to col and row using our view offsets
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
-		// TODO WE SHOULD DELEGATE THIS TO THE UNDO MOVE THING
-		// TODO NO BECAUSE IT IS NOT UNDOING A MOVE
+		// First check what type of click
 		if (me.getButton() == MouseEvent.BUTTON3) { // We have right clicked
+			// This means we want to attempt a BoardToBullpen move (send a piece on the board back to bullpen)
 			BoardToBullpenMove m = new BoardToBullpenMove(level, col, row);
 			if (m.doMove()) {
+				// If the move is valid (and completed), we remove the source and active pieces
 				boardView.removeDraggedPiece();
 				level.setMoveSource(null);
 				level.setActivePiece(null);
 				// push move
 			} else {
-				System.out.println("Error: Unable to remove piece from board");
+				// Otherwise, print an error
+				System.err.println("Error: Unable to remove piece from board");
 			}
 		} else { // Not right-clicked
 			// TODO fix this logic!
+			
+			// Check to see if no move has been started (source is null)
 			if (level.getMoveSource() == null) {
-				// Do nothing if no piece to click
+				// Then check if there is a piece at the click location
 				if (level.getBoard().getPiece(col, row) != null) {
 					Piece pieceToDrag = level.getBoard().removePiece(level.getBoard().getPiece(col, row));
 
+					// If present, we remove the piece, set active source, add call BoardView to render it
 					if (pieceToDrag != null) {
 						level.setMoveSource("Board");
 						level.setActivePiece(pieceToDrag);
@@ -67,6 +83,7 @@ public class BoardController extends MouseAdapter {
 					}
 				}
 			} else if (level.getMoveSource() == "Bullpen") {
+				// If our source is the bullpen, then we are trying to do a BullpenToBoard move
 				BullpenToBoardMove m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
 
 				if (m.doMove()) {
@@ -99,8 +116,10 @@ public class BoardController extends MouseAdapter {
 	}
 
 	public void mouseMoved(MouseEvent me){
+		// Whenever the mouse is moved, check if there is an active piece
 		activePiece = level.getActivePiece();
 
+		// If so, we need to have the BoardView set and render it
 		if (activePiece != null) {
 			boardView.addDraggedPiece(activePiece, me.getPoint());
 			boardView.repaint();

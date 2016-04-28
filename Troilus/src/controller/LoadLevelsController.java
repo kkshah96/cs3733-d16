@@ -12,12 +12,20 @@ import model.Level;
  *
  */
 public class LoadLevelsController {
+	/** The path to load levels from */
 	String filePath;
 
+	/**
+	 * Creates a new instance of LoadLevelsController, using default path
+	 */
 	public LoadLevelsController() {
 		this.filePath = "./src/levels/";
 	}
 
+	/**
+	 * Creates a new instance of LoadLevelsController with a user-specified path
+	 * @param filePath
+	 */
 	public LoadLevelsController(String filePath) {
 		this.filePath = filePath;
 

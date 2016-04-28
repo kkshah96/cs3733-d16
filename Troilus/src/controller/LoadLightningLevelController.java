@@ -17,10 +17,21 @@ import view.LevelLoaderView;
  *
  */
 public class LoadLightningLevelController implements ActionListener {
+	/** The builder entity used */
 	LevelBuilder builder;
+	
+	/** The lightning level to load */
 	LightningLevel level;
+	
+	/** The view for the lightning level */
 	LevelLoaderView levelLoader;
 
+	/**
+	 * Creates a new instance of the LoadLightningLevelController with the given parameters
+	 * @param levelLoader Boundary object for the lightning level
+	 * @param level Reference to the lightning level to load
+	 * @param builder Main builder entity
+	 */
 	public LoadLightningLevelController(LevelLoaderView levelLoader, LightningLevel level, LevelBuilder builder) {
 		this.levelLoader = levelLoader;
 		this.level = level;

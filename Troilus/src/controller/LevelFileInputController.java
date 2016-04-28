@@ -28,15 +28,13 @@ public class LevelFileInputController {
 	/** The path of our file save location */
 	String path;
 	
-	/** LevelFileInputController constructor comment
-	 * This constructor takes in a path to load the file fmor
+	/** Creates a new instance of the LevelFileInputController with a non-default path
+	 * @param path The path to the folder to read files from
 	 */
 	public LevelFileInputController(String path) {
 		this.path = path;
 	}
-	/** LevelFileInputController constructor comment
-	 * This constructor assumes default path
-	 */
+	/** Creates a new instance of the LevelFileInputController with a default path */
 	public LevelFileInputController() {
 		this.path = "./src/levels/";
 	}
@@ -82,9 +80,11 @@ public class LevelFileInputController {
 				levels.add(level);
 			}
 		} catch(FileNotFoundException fnfe) {
+			// Catch an exception if the file we try to read doesn't exist
 			System.out.println("LevelNumber save file is missing!");
 			fnfe.printStackTrace();
 		} catch(Exception e) {
+			// Catch a generalized exception if something else goes wrong
 			e.printStackTrace();
 		}
 		

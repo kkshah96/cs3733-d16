@@ -23,6 +23,7 @@ import model.LevelBuilder;
  * This class handles writing all levels to file. It starts by selecting the first 15 level files (or all if <15)
  * and updating the master file to contain the level number. After this, it passes the Level to the XMLOutputController
  * to store the level to file properly
+ * 
  * @author Dan Alfred
  * @author Connor Weeks
  *
@@ -48,7 +49,7 @@ public class LevelFileOutputController {
 
 	/**
 	 * Constructor for LevelFileOutputController with default path
-	 * @param lb
+	 * @param lb LevelBuilder object to pull data from
 	 */
 	public LevelFileOutputController(LevelBuilder lb) {
 		this.lb = lb;
@@ -57,7 +58,7 @@ public class LevelFileOutputController {
 	}
 
 	/**
-	 * Writes master file and calls child controller to store levels
+	 * Writes master file containing level numbers and calls child controller to store levels
 	 */
 	void storeMasterFile() {
 		try {
@@ -123,9 +124,11 @@ public class LevelFileOutputController {
 			trans.transform(source, consoleResult);
 
 		} catch(IOException ioe) {
+			// Catch an IO exception (permissions error)
 			System.err.println("File cannot be overwritten!");
 			ioe.printStackTrace();
 		} catch(Exception e) {
+			// Catch a generalized exception and print trace
 			e.printStackTrace();
 		}
 	}

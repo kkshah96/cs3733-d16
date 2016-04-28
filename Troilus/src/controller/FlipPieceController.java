@@ -10,16 +10,27 @@ import view.BullpenView;
 
 
 /**
+ * Handles the flipping of a given piece, either Horizontally or Vertically.
  * 
  * @author Connor Weeks
  *
  */
 public class FlipPieceController implements ActionListener {
-
+	/** The current level */
 	Level level;
+	
+	/** The view for the bullpen in the current level */
 	BullpenView bullpenView;
+	
+	/** The direction to flip */
 	int direction;
 
+	/**
+	 * Creates a new instance of the FlipPieceController with the given parameters
+	 * @param level The current level
+	 * @param bullpenView The view for the current bullpen
+	 * @param direction The direction to flip (Piece.FLIP_HORIZONTALLY or Piece.FLIP_VERTICALLY)
+	 */
 	public FlipPieceController(Level level, BullpenView bullpenView, int direction) {
 		this.bullpenView = bullpenView;
 		this.level = level;

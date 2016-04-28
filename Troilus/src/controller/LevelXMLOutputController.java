@@ -37,18 +37,30 @@ public class LevelXMLOutputController {
 	/** The path our file will be saved in (could be used later) */
 	String path;
 	
+	/**
+	 * Creates a new instance of the LevelXMLOutputController, with a specified path to write to
+	 * @param level Level object to store to file
+	 * @param path Path to folder to store file in
+	 */
 	LevelXMLOutputController(Level level, String path) {
 		this.level = level;
 		this.path = path;
 		storeLevelToFile();
 	}
 	
+	/**
+	 * Creates a new instance of the LevelXMLOutputController, using the default path
+	 * @param level Level object to store to file
+	 */
 	LevelXMLOutputController(Level level) {
 		this.level = level;
 		this.path = "./src/levels/";
 		storeLevelToFile();
 	}
 	
+	/**
+	 * Stores the passed-in level to XML format
+	 */
 	void storeLevelToFile() {
 		try {
 			// Initialize a factory to create our builder
@@ -57,12 +69,14 @@ public class LevelXMLOutputController {
 			DocumentBuilder db = dbFactory.newDocumentBuilder();
 			Document doc = db.newDocument();
 			
+			// Create the root element from the level structure and store attributes
 			Element rootLevelElement = doc.createElement("Level");
 			rootLevelElement.setAttribute("Type", level.getName());
 			rootLevelElement.setAttribute("Number", "" + level.getLevelNum());
 			rootLevelElement.setAttribute("Locked", "" + level.isLocked());
 			rootLevelElement.setAttribute("Progress", "" + level.getNumStars());
 			
+			// Store any level-specific attributes based on type
 			if (level.getName().equals("Lightning")) {
 				LightningLevel lightning = (LightningLevel)level;
 				System.out.println("saving time: " + lightning.getTime());
@@ -76,15 +90,18 @@ public class LevelXMLOutputController {
 				System.out.println("Saving relaease level");
 			}
 
+			// Create child element for bullpen
 			Element bullpenElement = doc.createElement("Bullpen");
 			Bullpen bullpen = level.getBullpen();
 			
+			// Create child elements in bullpen representing each piece present
 			for (Piece piece : bullpen.getPieces()) {
 				Element pieceElement = doc.createElement("Piece");
 				pieceElement.setAttribute("Number", "" + piece.getType()); //TODO: Fix first parameter
 				bullpenElement.appendChild(pieceElement);
 			}
 			
+			// Create child element for board, and loop through each square in board
 			Element boardElement = doc.createElement("Board");
 			for(int i = 0; i < Board.BOARD_HEIGHT; i++) {
 				
@@ -102,6 +119,7 @@ public class LevelXMLOutputController {
 					newSquare.setAttribute("Valid", "" + s.isValid());
 					newSquare.setAttribute("Hint", "" + s.isHint());
 					
+					// If we reach a release square, set special attributes
 					if(squareType.equals("ReleaseSquare")) {
 						ReleaseSquare rs = (ReleaseSquare)s;
 						newSquare.setAttribute("Number", "" + rs.getNumber());
@@ -122,16 +140,20 @@ public class LevelXMLOutputController {
 						
 					}
 					
+					// Add the square to the row element
 					newRowElement.appendChild(newSquare);
 				}
+				
+				// Add the row to the board element
 				boardElement.appendChild(newRowElement);
 			}
 			
+			// Add the board and bullpen to the level element, and add the level element to the document
 			rootLevelElement.appendChild(bullpenElement);
 			rootLevelElement.appendChild(boardElement);
 			doc.appendChild(rootLevelElement);
 			
-			// Create the Transformer stuff to output to XML
+			// Create the Transformer converters to output to XML
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer trans = tf.newTransformer();
 			DOMSource source = new DOMSource(doc);
@@ -145,6 +167,7 @@ public class LevelXMLOutputController {
 			StreamResult consoleResult = new StreamResult(System.out);
 	        trans.transform(source, consoleResult);
 		} catch(Exception e) {
+			// Catch any exceptions that occur and print trace
 			e.printStackTrace();
 		}
 	}	
