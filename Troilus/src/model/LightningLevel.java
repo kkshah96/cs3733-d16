@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Random;
+import java.util.Set;
+
 /**
  * Represents a Level of game type Lightning in the Kabasuji game.
  * 
@@ -23,8 +26,38 @@ public class LightningLevel extends Level{
 	}
 
 	public void updateAfterMove() {
+		coverSquares();
+		replacePiece();
 		countValidSquares(); // Just in case in Level Editor
 		calcNumStars();
+	}
+	
+	/** Generate a new random piece and put in bullpen */
+	private void replacePiece() {
+		Random rand = new Random();
+		int randNum = rand.nextInt(36);
+		System.out.println(randNum);
+		Piece newPiece = PieceFactory.getPiece(randNum);
+		bullpen.addPiece(newPiece);
+	}
+	
+	/** Replace any pieces with covered squares on the board */
+	private void coverSquares() {
+		Set<Piece> pSet = board.getPieces().keySet();
+		for (Piece piece : pSet) {
+			int anchorCol = board.getPieces().get(piece).x;
+			int anchorRow = board.getPieces().get(piece).y;
+			
+			((LightningSquare) board.squares[anchorCol][anchorRow]).isCovered = true;
+			for (PieceSquare square : piece.getSquares()) {
+				int currentCol = anchorCol + square.getCol();
+				int currentRow = anchorRow + square.getRow();
+
+				((LightningSquare) board.squares[currentCol][currentRow]).isCovered = true;
+			}
+			
+			board.removePiece(piece);
+		}
 	}
 	
 	@Override
@@ -43,6 +76,7 @@ public class LightningLevel extends Level{
 		}
 	}
 	
+	/** Count the number of squares on the board (needed for LevelEditor) */
 	void countValidSquares() {
 		int squareCounter = 0;
 		
