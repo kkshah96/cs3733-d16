@@ -75,4 +75,11 @@ public class LevelBuilder {
 	public Move pushRedoMove(Move m){
 		return redoMoves.push(m);
 	}
+	
+	public boolean canUndo() {
+		return undoMoves.size() > 0;
+	}
+	public boolean canRedo() {
+		return redoMoves.size() > 0;
+	}
 }

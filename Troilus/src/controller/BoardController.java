@@ -77,7 +77,10 @@ public class BoardController extends MouseAdapter {
 				if (m.doMove()) {
 					// If the move is valid (and completed), we remove the source and active pieces
 					boardView.removeDraggedPiece();
-					builder.pushMove(m);
+					if (builder != null) {
+						// TODO ugly code
+						builder.pushMove(m);
+					}
 					level.setMoveSource(null);
 					level.setActivePiece(null);
 					
@@ -111,7 +114,10 @@ public class BoardController extends MouseAdapter {
 					//push move here
 					System.out.println("Success!");
 					boardView.removeDraggedPiece();
-					builder.pushMove(m);
+					if (builder != null) {
+						// TODO ugly code
+						builder.pushMove(m);
+					}
 					level.setMoveSource(null);
 					level.setActivePiece(null);
 				} else {
@@ -125,7 +131,10 @@ public class BoardController extends MouseAdapter {
 					boardView.removeDraggedPiece();
 					level.setMoveSource(null);
 					level.setActivePiece(null);
-					builder.pushMove(m);
+					if (builder != null) {
+						// TODO this is ugly
+						builder.pushMove(m);
+					}
 					System.out.println("Success!");
 				} else {
 					System.out.println("Failure!");
