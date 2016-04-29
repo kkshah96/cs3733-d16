@@ -19,6 +19,10 @@ public class UndoMoveController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (!builder.canUndo()) {
+			System.out.println("Nothing to undo.");
+			return;
+		}
 		Move m = builder.popUndoMove();
 		m.undo();
 		lEV.repaint();
