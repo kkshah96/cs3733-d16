@@ -201,30 +201,30 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		panelReleaseStats.setBorder(null);
 		panelReleaseStats.setBackground(Color.LIGHT_GRAY);
 
-		JLabel label_4 = new JLabel("Red Squares:");
-		label_4.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label_4.setBounds(0, 16, 82, 16);
-		panelReleaseStats.add(label_4);
+		JLabel reSquaresLabel = new JLabel("Red Squares:");
+		reSquaresLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		reSquaresLabel.setBounds(0, 16, 82, 16);
+		panelReleaseStats.add(reSquaresLabel);
 
 		labelRed = new JLabel("0/6");
 		labelRed.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		labelRed.setBounds(85, 16, 31, 16);
 		panelReleaseStats.add(labelRed);
 
-		JLabel label_6 = new JLabel("Green Squares:");
-		label_6.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label_6.setBounds(115, 16, 103, 16);
-		panelReleaseStats.add(label_6);
+		JLabel greenSquaresLabel = new JLabel("Green Squares:");
+		greenSquaresLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		greenSquaresLabel.setBounds(115, 16, 103, 16);
+		panelReleaseStats.add(greenSquaresLabel);
 
 		labelGreen = new JLabel("0/6");
 		labelGreen.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		labelGreen.setBounds(218, 16, 31, 16);
 		panelReleaseStats.add(labelGreen);
 
-		JLabel label_8 = new JLabel("Yellow Squares:");
-		label_8.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
-		label_8.setBounds(249, 16, 103, 16);
-		panelReleaseStats.add(label_8);
+		JLabel yellowSquaresLabel = new JLabel("Yellow Squares:");
+		yellowSquaresLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
+		yellowSquaresLabel.setBounds(249, 16, 103, 16);
+		panelReleaseStats.add(yellowSquaresLabel);
 
 		labelYellow = new JLabel("0/6");
 		labelYellow.setFont(new Font("PT Sans Caption", Font.BOLD, 13));
