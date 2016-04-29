@@ -22,16 +22,16 @@ import view.ILevelView;
 public class BullpenController extends MouseAdapter {
 	/** The level that this bullpen is in */
 	protected Level level;
-	
+
 	/** The view for this bullpen */
 	protected BullpenView bullpenView;
-	
+
 	/** The view for the level containing this bullpen */
 	ILevelView levelView;
-	
+
 	/** Any active piece in the level */
 	Piece activePiece;
-	
+
 	/** The view for the board in this level */
 	BoardView boardView;
 
@@ -52,12 +52,12 @@ public class BullpenController extends MouseAdapter {
 	public void mousePressed(MouseEvent me) {
 		handleMousePressed(me.getPoint(), me.getButton());
 	}
-	
+
 	void handleMousePressed(Point p, int mouseButton) {
 		// First obtain the x and y coordinates from the mouse press
 		int x = p.x;
 		int y = p.y;
-		
+
 		System.out.println(x);
 		System.out.println(y);
 
@@ -74,13 +74,13 @@ public class BullpenController extends MouseAdapter {
 		for (Piece piece : keySet) {
 			int aCol = pieces.get(piece).x;
 			int aRow = pieces.get(piece).y;
-			
+
 			// Piece was clicked if the x coordinate is within the SQUARE_SIZE constant of each point's
 			// x coordinate and the SQUARE_SIZE constant of each point's y coordinate
 			for (Square s : piece.getAllSquares()) {
 				int sCol = s.getCol();
 				int sRow = s.getRow();
-				
+
 				if ((aCol + (sCol * size) <= x) && 
 						(aCol + (sCol * size) + size >= x) && 
 						(aRow + (sRow * size) <= y) && 
@@ -95,7 +95,7 @@ public class BullpenController extends MouseAdapter {
 				break;
 			}
 		}
-		
+
 		// check if we didn't find a piece, deselect currently selected piece
 		if (activePiece == null) {
 			level.setActivePiece(null);
@@ -119,4 +119,29 @@ public class BullpenController extends MouseAdapter {
 		// Refresh view regardless of what happened
 		levelView.refresh();
 	}
+
+	// TODO This requires passing the BullpenController a BoardView. We can probably find a better solution		
+	// TODO How about NOT having it? It is actually really annoying		
+
+	/*public void mouseEntered(MouseEvent me){		
+		activePiece = level.getActivePiece();		
+
+		if (boardView.getDraggedPiece() != null) {		
+
+		//	if(!level.getBullpen().getPieces().contains(boardView.getDraggedPiece())){		
+			//	level.getBullpen().addPiece(boardView.getDraggedPiece());		
+			//}		
+
+			//boardView.removeDraggedPiece();		
+			//level.setActivePiece(null);		
+
+			//boardView.repaint();		
+			//bullpenView.repaint();		
+
+			//level.setMoveSource(null);	
+			//level.setActivePiece(activePiece);
+		}		
+		// Refresh view regardless of what happened
+		levelView.refresh();
+	}*/
 }
