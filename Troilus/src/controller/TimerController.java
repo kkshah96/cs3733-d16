@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import model.Kabasuji;
+import model.Level;
 import view.LevelPlayerView;
 
 /**
@@ -19,12 +20,14 @@ public class TimerController {
 
 	LevelPlayerView levelView;
 	Kabasuji game;
+	Level level;
 	int startTime;
 	Timer timer;
 
-	public TimerController(LevelPlayerView levelView, Kabasuji game, int startTime) {
+	public TimerController(LevelPlayerView levelView, Kabasuji game, Level level, int startTime) {
 		this.levelView = levelView;
 		this.game = game;
+		this.level = level;
 		this.startTime = startTime;
 	}
 
@@ -63,7 +66,8 @@ public class TimerController {
 				// check if time ran out
 				if (timeLeft <= 0) {
 					// exit level and stop timer
-					new ExitLevelController(levelView, game).process();
+					new ExitLevelController(levelView, game, level).process();
+					System.out.println("Reseting game");
 					timer.stop();
 				}
 			}    

@@ -8,6 +8,7 @@ import java.util.Set;
 
 import model.Bullpen;
 import model.Level;
+import model.LevelBuilder;
 import model.Piece;
 import model.Square;
 import view.BoardView;
@@ -34,12 +35,23 @@ public class BullpenController extends MouseAdapter {
 
 	/** The view for the board in this level */
 	BoardView boardView;
+	
+	LevelBuilder builder;
 
 	/**
 	 * Creates a new instance of the BullpenController with the given parameters
 	 * @param level The level of this bullpen
 	 * @param levelView The view for the level of this bullpen
 	 */
+	public BullpenController(Level level, ILevelView levelView, LevelBuilder builder) {
+		super();
+		this.level = level;
+		this.levelView = levelView;
+		this.bullpenView = levelView.getBullpenView();
+		this.boardView = levelView.getBoardView();
+		this.builder = builder;
+	}
+	
 	public BullpenController(Level level, ILevelView levelView) {
 		super();
 		this.level = level;
@@ -47,6 +59,8 @@ public class BullpenController extends MouseAdapter {
 		this.bullpenView = levelView.getBullpenView();
 		this.boardView = levelView.getBoardView();
 	}
+	
+	
 
 	// TODO why do this??
 	public void mousePressed(MouseEvent me) {

@@ -32,6 +32,7 @@ import controller.SetSquareNumberController;
 import controller.SetTimeLimitController;
 import controller.ToggleHintController;
 import controller.ToggleSquareController;
+import controller.UndoMoveController;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
@@ -108,8 +109,8 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		getContentPane().add(boardView);
 		
 		// TODO still too many listeners!!!
-		boardView.addMouseListener(new BoardController(activeLevel, this));
-		boardView.addMouseMotionListener(new BoardController(activeLevel, this));
+		boardView.addMouseListener(new BoardController(activeLevel, this, builder));
+		boardView.addMouseMotionListener(new BoardController(activeLevel, this, builder));
 		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
 		
 		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
@@ -219,6 +220,8 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		undoButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		undoButton.setBounds(102, 0, 74, 38);
 		saveUndoPanel.add(undoButton);
+		undoButton.addActionListener( new UndoMoveController(builder, this));
+		
 
 		JButton redoButton = new JButton("Redo");
 		redoButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));

@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import model.Level;
+import model.LevelBuilder;
 import model.Piece;
 import view.BoardView;
 import view.ILevelView;
@@ -25,12 +26,23 @@ public class BoardController extends MouseAdapter {
 
 	/** The active piece for this. */
 	Piece activePiece;
+	
+	/** This board controller's builder (if in levelbuilder)**/
+	LevelBuilder builder;
 
 	/**
 	 * Creates a new BoardController object with the specified parameters.
 	 * @param level The level this controller modifies
 	 * @param levelView The view for the level this controller calls to update
 	 */
+	public BoardController(Level level, ILevelView levelView, LevelBuilder builder) {
+		super();
+		this.levelView = levelView;
+		this.boardView = levelView.getBoardView();
+		this.level = level;
+		this.builder = builder;
+	}
+	
 	public BoardController(Level level, ILevelView levelView) {
 		super();
 		this.levelView = levelView;
@@ -65,8 +77,10 @@ public class BoardController extends MouseAdapter {
 				if (m.doMove()) {
 					// If the move is valid (and completed), we remove the source and active pieces
 					boardView.removeDraggedPiece();
+					builder.pushMove(m);
 					level.setMoveSource(null);
 					level.setActivePiece(null);
+					
 					// push move
 				} else {
 					// Otherwise, print an error
@@ -97,6 +111,7 @@ public class BoardController extends MouseAdapter {
 					//push move here
 					System.out.println("Success!");
 					boardView.removeDraggedPiece();
+					builder.pushMove(m);
 					level.setMoveSource(null);
 					level.setActivePiece(null);
 				} else {
@@ -110,6 +125,7 @@ public class BoardController extends MouseAdapter {
 					boardView.removeDraggedPiece();
 					level.setMoveSource(null);
 					level.setActivePiece(null);
+					builder.pushMove(m);
 					System.out.println("Success!");
 				} else {
 					System.out.println("Failure!");

@@ -10,7 +10,7 @@ import model.Level;
  * @author Maddy
  *
  */
-public class BoardToBullpenMove {
+public class BoardToBullpenMove extends Move{
 	/** The level modified in this move */
 	Level level;
 	

@@ -172,7 +172,7 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		bullpenOptionsPanel.add(flipPieceVerticalButton);
 
 		JButton btnExitLevel = new JButton("Exit Level");
-		btnExitLevel.addActionListener(new ExitLevelController(this, game));
+		btnExitLevel.addActionListener(new ExitLevelController(this, game, level));
 		btnExitLevel.setBounds(771, 50, 176, 36);
 		panel.add(btnExitLevel);
 
@@ -287,6 +287,10 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 	
 	public boolean isActive() {
 		return isActive;
+	}
+	
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 	public JLabel getLevelLabel() {
 		return levelLabel;

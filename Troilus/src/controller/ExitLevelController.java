@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Kabasuji;
+import model.Level;
 import view.LevelSelectorView;
 import view.LevelPlayerView;
 
@@ -19,18 +20,26 @@ import view.LevelPlayerView;
 public class ExitLevelController implements ActionListener {
 	/** The game */
 	Kabasuji game;
-	
+
 	/** The levelview for the current level */
 	LevelPlayerView levelView;
+
+	/** The current level object */
+	Level level;
+
+	/** The number of stars the level has before the start of the game */
+	int initialStars;
 
 	/**
 	 * Creates a new ExitLevelController for the given parameters
 	 * @param levelView Boundary object for the current level
 	 * @param game Reference to the main game entity
 	 */
-	public ExitLevelController(LevelPlayerView levelView, Kabasuji game) {
+	public ExitLevelController(LevelPlayerView levelView, Kabasuji game, Level level) {
 		this.levelView = levelView;
 		this.game = game;
+		this.level = level;
+		this.initialStars = level.getNumStars();
 	}
 
 
@@ -43,9 +52,22 @@ public class ExitLevelController implements ActionListener {
 	 * Completes the exiting of the current level
 	 */
 	public void process() {
-		// TODO save level progress?
+
+		// check if the stars earned is greater than the initial stars
+		if (level.getNumStars() > initialStars) {
+			System.out.println("Tying to save level stars");
+			// save current level progress
+			new LevelXMLOutputController(level).saveLevelStars();;
+		}
+
+		// tell the timer the level is over if need be
+		levelView.setActive(false);
+
+		// reset game
 		levelView.dispose();
+
 		game.initialize();
+
 		// create new window
 		LevelSelectorView window = new LevelSelectorView(game);
 

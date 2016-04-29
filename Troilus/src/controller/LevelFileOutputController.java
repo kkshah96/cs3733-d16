@@ -56,24 +56,32 @@ public class LevelFileOutputController {
 		this.path = "./src//levels/";
 		storeMasterFile();
 	}
+	
+	
 
 	/**
 	 * Writes master file containing level numbers and calls child controller to store levels
 	 */
 	void storeMasterFile() {
 		try {
-			// delete all level files in levels directory
+			// First check if the folder exists
 			File folder = new File(path);
+			if(!folder.exists()) {
+				// If not, create the folder
+				folder.mkdir();
+			} else {
+				// Otherwise, delete all level files in levels directory
 			File[] files = folder.listFiles();
 			
-			if (files != null) {
-				for (File file : files) {
-					if (file.isFile()) {
-						// remove all level files
-						if (file.getName().substring(0, 8).equals("LevelXML")) {
-							file.delete();
-						}
-					} 
+				if (files != null) {
+					for (File file : files) {
+						if (file.isFile()) {
+							// remove all level files
+							if (file.getName().substring(0, 8).equals("LevelXML")) {
+								file.delete();
+							}
+						} 
+					}
 				}
 			}
 			// Create the master file, and overwrite it if needed
@@ -103,7 +111,7 @@ public class LevelFileOutputController {
 				levelElement.setAttribute("Number", "" + levels.get(i).getLevelNum());
 
 				// Now write that level to its file and append the new XML level tag to master file
-				new LevelXMLOutputController(levels.get(i));
+				new LevelXMLOutputController(levels.get(i)).storeLevelToFile();
 				rootLevelElement.appendChild(levelElement);
 			}
 
@@ -116,12 +124,11 @@ public class LevelFileOutputController {
 			DOMSource source = new DOMSource(doc);
 
 			// Create the file object, and have it overwrite if it exists already
-
 			StreamResult result = new StreamResult(masterFile);
 			trans.transform(source, result);
 
-			StreamResult consoleResult = new StreamResult(System.out);
-			trans.transform(source, consoleResult);
+			//StreamResult consoleResult = new StreamResult(System.out);
+			//trans.transform(source, consoleResult);
 
 		} catch(IOException ioe) {
 			// Catch an IO exception (permissions error)
