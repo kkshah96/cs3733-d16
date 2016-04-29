@@ -189,7 +189,7 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		movesLabel.setBounds(6, 7, 136, 22);
 		panelPuzzleStats.add(movesLabel);
 
-		labelStars = new JLabel("Stars: 0/3");
+		labelStars = new JLabel("0/3");
 		labelStars.setBounds(689, 60, 82, 16);
 		panel.add(labelStars);
 		labelStars.setFont(new Font("PT Sans Caption", Font.BOLD, 14));
