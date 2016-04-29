@@ -14,4 +14,8 @@ public class TestReleaseLevel extends TestCase {
 		}
 		level = new ReleaseLevel(1, false, new Bullpen(), new Board(squares), new Palette());
 	}
+	
+	public void testLevel() {
+		assertEquals(1, level.getLevelNum());
+	}
 }
