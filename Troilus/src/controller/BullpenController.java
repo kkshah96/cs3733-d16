@@ -69,6 +69,9 @@ public class BullpenController extends MouseAdapter {
 
 	void handleMousePressed(Point p, int mouseButton) {
 		// First obtain the x and y coordinates from the mouse press
+		
+		if(boardView.getDraggedPiece() != null) return;
+		
 		int x = p.x;
 		int y = p.y;
 
