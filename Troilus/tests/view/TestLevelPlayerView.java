@@ -7,7 +7,7 @@ import org.junit.Test;
 import model.Kabasuji;
 import model.Level;
 
-public class TesLevelPlayerView {
+public class TestLevelPlayerView {
 
 	@Test
 	public void test() {

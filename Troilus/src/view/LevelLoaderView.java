@@ -51,6 +51,10 @@ import java.awt.SystemColor;
 public class LevelLoaderView extends JFrame {
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	LevelBuilder builder;
+	
+	JButton btnNewPuzzleLevel;
+	JButton btnNewLightningLevel;
+	JButton btnNewReleaseLevel;
 
 	/**
 	 * Create the application.
@@ -64,11 +68,26 @@ public class LevelLoaderView extends JFrame {
 	public void setFrameVisible() {
 		setVisible(true);
 	}
+	
+	public JButton getPuzzleButton() {
+		return btnNewPuzzleLevel;
+	}
+	
+	public JButton getLightningButton() {
+		return btnNewLightningLevel;
+	}
+	
+	public JButton getReleaseButton() {
+		return btnNewReleaseLevel;
+	}
+	
+	
+	
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	void initialize() {
 		getContentPane().setFont(new Font("PT Sans Caption", Font.BOLD, 13));
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 
@@ -81,17 +100,17 @@ public class LevelLoaderView extends JFrame {
 		pnlTitle.setBackground(Color.DARK_GRAY);
 		pnlTitle.setBorder(null);
 		
-		JButton btnNewPuzzleLevel = new JButton("New Puzzle Level");
+		btnNewPuzzleLevel = new JButton("New Puzzle Level");
 		btnNewPuzzleLevel.addActionListener(new NewPuzzleLevelController(builder, this));
 		btnNewPuzzleLevel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewPuzzleLevel.setBackground(UIManager.getColor("Button.background"));
 		
-		JButton btnNewLightningLevel = new JButton("New Lightning Level");
+		btnNewLightningLevel = new JButton("New Lightning Level");
 		btnNewLightningLevel.addActionListener(new NewLightningLevelController(builder, this));
 		btnNewLightningLevel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewLightningLevel.setBackground(UIManager.getColor("Button.background"));
 		
-		JButton btnNewReleaseLevel = new JButton("New Release Level");
+		btnNewReleaseLevel = new JButton("New Release Level");
 		btnNewReleaseLevel.addActionListener(new NewReleaseLevelController(builder, this));
 		btnNewReleaseLevel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewReleaseLevel.setBackground(UIManager.getColor("Button.background"));
