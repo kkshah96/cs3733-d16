@@ -44,10 +44,12 @@ public class ReleaseLevel extends Level {
 	/**
 	 * Updates the entity after a move by updating the colored numbers that have been covered and 
 	 * determining the number of stars earned
+	 * @return True if the number of stars equals 3.
 	 */
-	public void updateAfterMove() {
+	public boolean updateAfterMove() {
 		findCoveredNumbers();
 		calcNumStars();
+		return (numStars == 3);
 	}
 
 	@Override

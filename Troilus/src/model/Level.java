@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * 
  * @author Kunal Shah
  * @author Maddy Longo
+ * @author Connor Weeks
  */
 public abstract class Level {
 	/** Constant to represent the maximum number of stars that can be earned */
@@ -72,8 +73,11 @@ public abstract class Level {
 		}
 	}
 
-	/** Do anything necessary after a move */
-	public abstract void updateAfterMove();
+	/** 
+	 * Do anything necessary after a move.
+	 * @return True if the update causes the end of the game
+	 */
+	public abstract boolean updateAfterMove();
 
 	//TODO: what does this do
 	/**

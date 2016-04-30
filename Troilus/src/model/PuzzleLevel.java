@@ -8,6 +8,7 @@ package model;
  * 
  * @author Kunal Shah
  * @author Maddy Longo
+ * @author Connor Weeks
  */
 public class PuzzleLevel extends Level {
 	/** The maximum moves for this level from the start */
@@ -35,11 +36,13 @@ public class PuzzleLevel extends Level {
 	
 	/**
 	 * Updates this entity after a move has been completed, by refreshing the number of moves remaining
-	 * and updating the number of stars earned
+	 * and updating the number of stars earned.
+	 * @return True if the number of stars equals 3, or no moves remain; false otherwise.
 	 */
-	public void updateAfterMove() {
+	public boolean updateAfterMove() {
 		updateMovesLeft(-1);
 		calcNumStars();
+		return (numStars == 3) || (movesLeft == 0);
 	}
 
 	@Override

@@ -10,7 +10,8 @@ import java.util.Set;
  * must be completed in and the number of squares that have been covered by Piece(s).
  * 
  * @author Kunal Shah
- * @author Maddy
+ * @author Maddy Longo
+ * @author Connor Weeks
  */
 public class LightningLevel extends Level{
 	/** The number of covered squares in this level */
@@ -42,11 +43,13 @@ public class LightningLevel extends Level{
 	/**
 	 * Refreshes the entity after completing a move by updating the number of squares covered, placing a new piece in the bullpen,
 	 * and updating the number of stars earned
+	 * @return True if the number of stars is 3, false otherwise
 	 */
-	public void updateAfterMove() {
+	public boolean updateAfterMove() {
 		coverSquares();
 		replacePiece();
 		calcNumStars();
+		return (numStars == 3);
 	}
 	
 	/** Generate a new random piece and put in bullpen */
