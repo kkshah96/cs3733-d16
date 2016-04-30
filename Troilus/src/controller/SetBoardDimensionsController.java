@@ -20,9 +20,17 @@ import view.LevelEditorView;
  * @author Maddy Longo
  */
 public class SetBoardDimensionsController implements ActionListener {
+	/** The level entity */
 	Level level;
+	
+	/** The view for the editor of the level above */
 	LevelEditorView editorView;
 
+	/**
+	 * Creates a new instance of the SetBoardDimensionsController with the following parameters
+	 * @param level Reference to the level entity used 
+	 * @param editorView Reference to the view for the level editor
+	 */
 	public SetBoardDimensionsController(Level level, LevelEditorView editorView) {
 		this.level = level;
 		this.editorView = editorView;
@@ -30,12 +38,14 @@ public class SetBoardDimensionsController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// Get references to the text fields for col/rows, and get their values
 		JTextField r = editorView.getRowField();
 		JTextField c = editorView.getColField();
 
 		int rows = Integer.parseInt(r.getText());
 		int cols = Integer.parseInt(c.getText());
 
+		// Ensure the values entered are within the bounds of the board
 		if (cols < 0 || cols > Board.BOARD_WIDTH || rows > Board.BOARD_HEIGHT || rows < 0) {
 			System.out.printf("Error: Invalid Board Dimensions of (%d, %d)\n", cols, rows);
 			return;
@@ -43,6 +53,7 @@ public class SetBoardDimensionsController implements ActionListener {
 		
 		level.clearBoardToBullpen(); // Moves pieces to bullpen
 
+		// Update the board size and repaint
 		level.getBoard().setDimensions(cols, rows);
 		editorView.repaint();
 	}

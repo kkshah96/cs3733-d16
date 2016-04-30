@@ -15,10 +15,21 @@ import view.LevelPlayerView;
  * @author Connor Weeks
  */
 public class StartLightningLevelController implements ActionListener {
+	/** The top-level game entity */
 	Kabasuji game;
+	
+	/** The lightning level to play */
 	LightningLevel level;
+	
+	/** The view for the top-level entity */
 	LevelSelectorView levelSelector;
 
+	/**
+	 * Creates a new instance of StartLightningLevelController with the following parameters
+	 * @param levelSelector Reference to the view for the level selection window
+	 * @param level Reference to the level to be selected for playing
+	 * @param game Reference to the top-level entity, containing the level
+	 */
 	public StartLightningLevelController(LevelSelectorView levelSelector, LightningLevel level, Kabasuji game) {
 		this.levelSelector = levelSelector;
 		this.level = level;
@@ -34,6 +45,8 @@ public class StartLightningLevelController implements ActionListener {
 			return;
 		}
 		System.out.println("Starting Lightning level");
+		
+		// Otherwise, create the new view for the level and add a controller to handle window close
 		final LevelPlayerView levelView = new LevelPlayerView(levelSelector, game, level);
 		levelView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

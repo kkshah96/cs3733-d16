@@ -17,14 +17,26 @@ import model.LevelBuilder;
  *
  */
 public class SaveLevelController implements ActionListener {
+	/** Top-level LevelBuilder entity */
 	LevelBuilder levelBuilder;
+	
+	/** Path to folder to store levels at */
 	String filePath;
 
+	/**
+	 * Creates a new instance of SaveLevelController, assuming default path
+	 * @param levelBuilder Reference to the builder entity to save with
+	 */
 	public SaveLevelController(LevelBuilder levelBuilder) {
 		this.levelBuilder = levelBuilder;
 		this.filePath = "./src/levels/";
 	}
 	
+	/**
+	 * Creates a new instance of SaveLevelController, with a provided path
+	 * @param levelBuilder Reference to the builer entity to save with
+	 * @param filePath Path to the folder to save files to (end with a /)
+	 */
 	public SaveLevelController(LevelBuilder levelBuilder, String filePath) {
 		this.levelBuilder = levelBuilder;
 		this.filePath = filePath;

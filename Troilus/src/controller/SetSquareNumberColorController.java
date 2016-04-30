@@ -14,9 +14,17 @@ import view.LevelEditorView;
  * @author Maddy Longo
  */
 public class SetSquareNumberColorController implements ActionListener {
+	/** The level entity being edited */
 	Level level;
+	
+	/** The view for the level being edited */
 	LevelEditorView editorView;
 
+	/**
+	 * Creates a new instance of SetSquareNumberColorController with the following parameters
+	 * @param level Reference to the level entity being edited
+	 * @param editorView Reference to the view for the level being edited
+	 */
 	public SetSquareNumberColorController(Level level, LevelEditorView editorView) {
 		this.level = level;
 		this.editorView = editorView;
@@ -24,13 +32,16 @@ public class SetSquareNumberColorController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
+		// Obtain the active square (if there is one- if not, return)
 		ReleaseSquare square = (ReleaseSquare) level.getBoard().getActiveSquare();
 		if (square == null) {
 			return;
 		}
 		
+		// Obtain the color from the drop-down
 		String color = (String) editorView.getNumberColorComboBox().getSelectedItem();
 
+		// Process based on value selected
 		if (color.equals("Red")) {
 			square.setNumberColor(Color.RED);
 		} else if (color.equals("Yellow")) {
@@ -42,6 +53,7 @@ public class SetSquareNumberColorController implements ActionListener {
 			return;
 		}
 		
+		// Update the view to reflect changes
 		editorView.getBoardView().repaint();
 	}
 }

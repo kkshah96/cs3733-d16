@@ -26,9 +26,17 @@ import view.LevelLoaderView;
  *
  */
 public class NewLightningLevelController implements ActionListener {
+	/** The builder entity */
 	LevelBuilder builder;
+	
+	/** The top level GUI for the builder */
 	LevelLoaderView levelLoader;
 
+	/**
+	 * Creates a new instance of NewLightningLevelController with the following parameters
+	 * @param builder Reference to the builder entity used
+	 * @param levelLoader Reference to the top-level builder GUI referenced
+	 */
 	public NewLightningLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
 		this.builder = builder;
 		this.levelLoader = levelLoader;
@@ -55,6 +63,7 @@ public class NewLightningLevelController implements ActionListener {
 
 		final LevelEditorView newEditorView = new LevelEditorView(builder, levelLoader, newLevel);
 
+		// Add controller to handle window close
 		newEditorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				newEditorView.dispose();
@@ -74,6 +83,7 @@ public class NewLightningLevelController implements ActionListener {
 		newEditorView.getMinutesField().addActionListener(new SetTimeLimitController(newLevel, newEditorView));
 		newEditorView.getSetTimeButton().addActionListener(new SetTimeLimitController(newLevel, newEditorView));
 
+		// Finalize visiblity
 		levelLoader.setVisible(false);
 		newEditorView.setVisible(true);
 	}

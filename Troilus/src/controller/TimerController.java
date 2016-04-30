@@ -15,15 +15,31 @@ import view.LevelPlayerView;
  *
  */
 public class TimerController {
-
+	/** Constant to represent a singular second in milliseconds */
 	public final static int ONE_SECOND = 1000;
 
+	/** The view for the level player */
 	LevelPlayerView levelView;
+	
+	/** The top-level player entity */
 	Kabasuji game;
+	
+	/** The level entity being played */
 	Level level;
+	
+	/** The starting time of the level */
 	int startTime;
+	
+	/** The timer object to control */
 	Timer timer;
 
+	/**
+	 * Creates a new instance of TimerController with the following parameters
+	 * @param levelView Reference to the view of the level player
+	 * @param game Reference to the top-level entity for player
+	 * @param level Reference to the level entity being played
+	 * @param startTime Reference to the starting time value from the level
+	 */
 	public TimerController(LevelPlayerView levelView, Kabasuji game, Level level, int startTime) {
 		this.levelView = levelView;
 		this.game = game;

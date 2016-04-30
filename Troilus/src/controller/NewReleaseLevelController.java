@@ -26,9 +26,17 @@ import view.LevelLoaderView;
  * @author Alexander Kasparek
  */
 public class NewReleaseLevelController implements ActionListener {
+	/** The builder entity */
 	LevelBuilder builder;
+	
+	/** The top level GUI for the builder */
 	LevelLoaderView levelLoader;
 
+	/**
+	 * Creates a new instance of NewReleaseLevelController with the following parameters
+	 * @param builder Reference to the builder entity used here
+	 * @param levelLoader Reference to the top level GUI for the builder
+	 */
 	public NewReleaseLevelController(LevelBuilder builder, LevelLoaderView levelLoader) {
 		this.builder = builder;
 		this.levelLoader = levelLoader;
@@ -39,6 +47,8 @@ public class NewReleaseLevelController implements ActionListener {
 
 		// Create a new Bullpen, Palette and Board for the Level
 		Bullpen bpen = new Bullpen();
+		
+		// Initialize 2D array of squares for board
 		Square[][] squares = new ReleaseSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
 		for(int i = 0; i < Board.BOARD_WIDTH; i++){
 			for(int j = 0; j < Board.BOARD_HEIGHT; j++){
@@ -46,14 +56,15 @@ public class NewReleaseLevelController implements ActionListener {
 			}
 		}
 
+		// Create board, palette, and level, and add level to builder entity
 		Board board = new Board(squares);
-
 		Palette p = new Palette();
 		ReleaseLevel newReleaseLevel = new ReleaseLevel(builder.getLevels().size() + 1, true, bpen, board, p);
 		builder.addLevel(newReleaseLevel);
 
 		final LevelEditorView newEditorView = new LevelEditorView(builder, levelLoader, newReleaseLevel);
 
+		// Add controller to handle window close
 		newEditorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				newEditorView.dispose();
@@ -72,6 +83,7 @@ public class NewReleaseLevelController implements ActionListener {
 		newEditorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(newReleaseLevel, newEditorView));
 		newEditorView.getNumberComboBox().addActionListener(new SetSquareNumberController(newReleaseLevel, newEditorView));
 
+		// Finalize visibility
 		levelLoader.setVisible(false);
 		newEditorView.setVisible(true);
 	}

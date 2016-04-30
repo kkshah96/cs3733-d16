@@ -18,10 +18,21 @@ import view.LevelLoaderView;
  *
  */
 public class LoadReleaseLevelController implements ActionListener {
+	/** The builder entity */
 	LevelBuilder builder;
+	
+	/** The ReleaseLevel this controller refers to */
 	ReleaseLevel level;
+	
+	/** The top level GUI for this */
 	LevelLoaderView levelLoader;
 
+	/**
+	 * Creates a new instance of LoadReleaseLevelController with the following parameters
+	 * @param levelLoader The top level GUI for this controller
+	 * @param level The ReleaseLevel object being loaded
+	 * @param builder The builder entity for the controller
+	 */
 	public LoadReleaseLevelController(LevelLoaderView levelLoader, ReleaseLevel level, LevelBuilder builder) {
 		this.levelLoader = levelLoader;
 		this.level = level;
@@ -44,6 +55,7 @@ public class LoadReleaseLevelController implements ActionListener {
 
 		final LevelEditorView editorView = new LevelEditorView(builder, levelLoader, level);
 
+		// Add controller to handle window close
 		editorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				editorView.dispose();

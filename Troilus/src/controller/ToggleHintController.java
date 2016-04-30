@@ -14,9 +14,17 @@ import view.BoardView;
  * @author Alexander Kasparek
  */
 public class ToggleHintController implements ActionListener {
+	/** The level to toggle hints on */
 	Level level;
+	
+	/** The view for the board in this level */
 	BoardView boardView;
 
+	/**
+	 * Creates a new instance of ToggleHintController with the following parameters
+	 * @param level Reference to the level entity being edited
+	 * @param boardView Reference to the view of the board in this level
+	 */
 	public ToggleHintController(Level level, BoardView boardView) {
 		this.level = level;
 		this.boardView = boardView;
@@ -25,6 +33,8 @@ public class ToggleHintController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Need to implement this.");
+		
+		// Toggles the hint on the board and updates the view
 		level.getBoard().toggleHint();
 		boardView.repaint();
 	}

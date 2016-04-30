@@ -25,9 +25,17 @@ import view.LevelLoaderView;
  * @author Alexander Kasparek
  */
 public class NewPuzzleLevelController implements ActionListener {
+	/** The builder entity */
 	LevelBuilder builder;
+	
+	/** The top level GUI for the builder */
 	LevelLoaderView loaderView;
 
+	/**
+	 * Creates a new instance of NewPuzzleLevelController with the following parameters
+	 * @param builder Reference to the builder entity used
+	 * @param loaderView Reference to the top leve GUI for the builder used
+	 */
 	public NewPuzzleLevelController(LevelBuilder builder, LevelLoaderView loaderView) {
 		this.builder = builder;
 		this.loaderView = loaderView;
@@ -38,6 +46,7 @@ public class NewPuzzleLevelController implements ActionListener {
 		// Create a new Bullpen, Palette and Board for the Level
 		Bullpen bpen = new Bullpen();
 		
+		// Initialize 2D array of squares for the board
 		Square[][] squares = new PuzzleSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
 		for(int i = 0; i < Board.BOARD_WIDTH; i++){
 			for(int j = 0; j < Board.BOARD_HEIGHT; j++){
@@ -45,13 +54,13 @@ public class NewPuzzleLevelController implements ActionListener {
 			}
 		}
 		
+		// Create board and palette, and add parameters to new level
 		Board board = new Board(squares);
-		
 		Palette p = new Palette();
-		
 		PuzzleLevel newPuzzleLevel = new PuzzleLevel(builder.getLevels().size() + 1, true, bpen, board, p, 0);
 		builder.addLevel(newPuzzleLevel);
 		
+		// Add controller to handle window close
 		final LevelEditorView newEditorView = new LevelEditorView(builder, loaderView, newPuzzleLevel);
 		newEditorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -61,6 +70,7 @@ public class NewPuzzleLevelController implements ActionListener {
 			}      
 		});
 		
+		// Update view for the Puzzle level
 		newEditorView.setMaxMovesPanelVisibility(true);
 		newEditorView.setReleaseSquarePanelVisibility(false);
 		newEditorView.setTimeLimitPanelVisibility(false);
@@ -68,6 +78,7 @@ public class NewPuzzleLevelController implements ActionListener {
 		// set listener
 		newEditorView.getMaxMovesField().addActionListener(new SetMaxMovesController(newPuzzleLevel, newEditorView));
 
+		// Finalize visiblity
 		loaderView.setVisible(false);
 		newEditorView.setVisible(true);
 	}	

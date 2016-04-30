@@ -15,10 +15,21 @@ import view.LevelPlayerView;
  * @author Connor Weeks
  */
 public class StartReleaseLevelController implements ActionListener {
+	/** The top-level player entity */
 	Kabasuji game;
+	
+	/** The PuzzleLevel to be played */
 	ReleaseLevel level;
+	
+	/** The view for the top-level entity */
 	LevelSelectorView levelSelector;
 
+	/**
+	 * Creates a new instance of StartReleaseLevelController with the following parameters
+	 * @param levelSelector Reference to the view of the top-level entity
+	 * @param level Reference to the level to be loaded for playing
+	 * @param game Reference to the top-level entity containing the level
+	 */
 	public StartReleaseLevelController(LevelSelectorView levelSelector, ReleaseLevel level, Kabasuji game) {
 		this.levelSelector = levelSelector;
 		this.level = level;
@@ -33,6 +44,8 @@ public class StartReleaseLevelController implements ActionListener {
 			return;
 		}
 		System.out.println("Starting Release level");
+		
+		// Create the new view for the level to play, and add controller to handle window close
 		final LevelPlayerView levelView = new LevelPlayerView(levelSelector, game, level);
 		levelView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

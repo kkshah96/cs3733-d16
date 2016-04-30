@@ -19,9 +19,17 @@ import view.BoardView;
  * @author Maddy Longo
  */
 public class ToggleSquareController implements ActionListener {
+	/** The level being edited */
 	Level level;
+	
+	/** The view for the board in this level */
 	BoardView boardView;
 
+	/**
+	 * Creates a new instance of ToggleSquareController with the following parameters
+	 * @param level Reference to the level entity being edited
+	 * @param boardView Reference to the view for the board in this level
+	 */
 	public ToggleSquareController(Level level, BoardView boardView) {
 		this.level = level;
 		this.boardView = boardView;
@@ -29,6 +37,7 @@ public class ToggleSquareController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// Toggles the active square and updates the boundary
 		level.getBoard().toggleActiveSquare();
 		boardView.repaint();
 	}

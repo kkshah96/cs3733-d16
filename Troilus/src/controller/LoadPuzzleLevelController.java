@@ -18,10 +18,21 @@ import view.LevelLoaderView;
  *
  */
 public class LoadPuzzleLevelController implements ActionListener {
+	/** The builder entity */
 	LevelBuilder builder;
+	
+	/** The PuzzleLevel object containing data to play the level */
 	PuzzleLevel level;
+	
+	/** The top level GUI for this */
 	LevelLoaderView levelLoader;
 
+	/**
+	 * Creates an instance of LoadPuzzleLevelController with the following parameters
+	 * @param levelLoader The top level GUI for this controller
+	 * @param level The PuzzleLevel object being loaded
+	 * @param builder The builder entity for this controller
+	 */
 	public LoadPuzzleLevelController(LevelLoaderView levelLoader, PuzzleLevel level, LevelBuilder builder) {
 		this.levelLoader = levelLoader;
 		this.level = level;
@@ -44,6 +55,7 @@ public class LoadPuzzleLevelController implements ActionListener {
 
 		final LevelEditorView editorView = new LevelEditorView(builder, levelLoader, level);
 
+		// Add controller to handle window closes
 		editorView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				editorView.dispose();
