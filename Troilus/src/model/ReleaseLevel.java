@@ -9,18 +9,19 @@ import java.awt.Color;
  * which numbers of each color type have been covered.
  * 
  * @author Kunal Shah
- * @author Maddy
+ * @author Maddy Longo
+ * @author Connor Weeks
  */
 public class ReleaseLevel extends Level {
 	/** Constant to indicate the quantity of numbers for each color */
 	public static final int MAX_NUM = 6;
-	
+
 	/** Array to store which red numbers have been covered */
 	boolean redCovered[];
-	
+
 	/** Array to store which yellow numbers have been covered */
 	boolean yellowCovered[];
-	
+
 	/** Array to store which green numbers have been covered */
 	boolean greenCovered[];
 
@@ -57,35 +58,37 @@ public class ReleaseLevel extends Level {
 		setsComplete += getRedCovered()/MAX_NUM;
 		setsComplete += getGreenCovered()/MAX_NUM;
 		setsComplete += getYellowCovered()/MAX_NUM;
-		
+
 		numStars = setsComplete;
 	}
 
 	// TODO fix bad code!
 	/** Helper function for calculating stars */
 	private void findCoveredNumbers() {
+
+		// reset values
+		redCovered = new boolean[MAX_NUM];
+		yellowCovered = new boolean[MAX_NUM];
+		greenCovered = new boolean[MAX_NUM];
+
 		// Loop through each piece on the board
 		for (Piece piece : board.getPieces().keySet()) {
-			// reset values
-			redCovered = new boolean[MAX_NUM];
-			yellowCovered = new boolean[MAX_NUM];
-			greenCovered = new boolean[MAX_NUM];
-			
+
 			// Determine the absolute position of the anchor square
 			int anchorCol = board.getPieces().get(piece).x;
 			int anchorRow = board.getPieces().get(piece).y;
-			
+
 			// Loop through each piecesquare
 			for (Square square : piece.getAllSquares()) {
 				// Obtain aboslute coordinates for each piecesquare
 				int absCol = anchorCol + square.getCol();
 				int absRow = anchorRow + square.getRow();
-				
+
 				// Get the square at the location of the overlayed piecesquare
 				ReleaseSquare currentSquare = (ReleaseSquare) board.getSquare(absCol, absRow);
 				int currentNum = currentSquare.getNumber();
 				Color currentColor = currentSquare.getNumberColor();
-				
+
 				// If it has a color and number, determine the color, and label it as marked in the appropriate array
 				if (currentNum > 0 && currentColor != null) {
 					if (currentColor.equals(Color.RED)) {
@@ -177,7 +180,7 @@ public class ReleaseLevel extends Level {
 
 		return yellow;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "Release";
