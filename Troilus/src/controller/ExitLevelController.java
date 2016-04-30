@@ -27,8 +27,6 @@ public class ExitLevelController implements ActionListener {
 	/** The current level object */
 	Level level;
 
-	/** The number of stars the level has before the start of the game */
-	int initialStars;
 
 	/**
 	 * Creates a new ExitLevelController for the given parameters
@@ -39,7 +37,6 @@ public class ExitLevelController implements ActionListener {
 		this.levelView = levelView;
 		this.game = game;
 		this.level = level;
-		this.initialStars = level.getNumStars();
 	}
 
 
@@ -53,12 +50,8 @@ public class ExitLevelController implements ActionListener {
 	 */
 	public void process() {
 
-		// check if the stars earned is greater than the initial stars
-		if (level.getNumStars() > initialStars) {
-			System.out.println("Tying to save level stars");
-			// save current level progress
-			new LevelXMLOutputController(level).saveLevelStars();;
-		}
+		// save current level progress
+		new LevelXMLOutputController(level).saveLevelStars();;
 
 		// tell the timer the level is over if need be
 		levelView.setActive(false);

@@ -78,6 +78,13 @@ public class LevelXMLOutputController {
 			// get the stars (progress) element
 			Node progressNode = levelNode.getAttributes().getNamedItem("Progress");
 			
+			int initialStars = Integer.parseInt(progressNode.getNodeValue());
+			
+			// return if the current number of stars is less than the original number
+			if (level.getNumStars() <= initialStars) {
+				return;
+			}
+			
 			// set value to new value
 			progressNode.setNodeValue("" + level.getNumStars());
 			System.out.println("NUmber of stars: " + level.getNumStars());
