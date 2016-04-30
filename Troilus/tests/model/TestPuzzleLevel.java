@@ -85,7 +85,7 @@ public class TestPuzzleLevel extends TestCase {
 		assertEquals(2, level.movesLeft);
 		assertEquals(3, level.getNumStars());
 		
-		BoardToBoardMove mInvalid2 = new BoardToBoardMove(level, piece1, 5, 5);
+		BoardToBoardMove mInvalid2 = new BoardToBoardMove(level, piece1, 5, 5, 0, 5);
 		assertFalse(mInvalid2.doMove());
 		
 		BoardToBullpenMove m7 = new BoardToBullpenMove(level, 1, 1);
@@ -93,7 +93,7 @@ public class TestPuzzleLevel extends TestCase {
 		assertEquals(1, level.movesLeft);
 		assertEquals(2, level.getNumStars());
 		
-		BoardToBoardMove m8 = new BoardToBoardMove(level, piece1, 1, 5);
+		BoardToBoardMove m8 = new BoardToBoardMove(level, piece1, 1, 5, 0, 5);
 		assertTrue(m8.doMove());
 		assertEquals(0, level.movesLeft);
 		assertEquals(2, level.getNumStars());

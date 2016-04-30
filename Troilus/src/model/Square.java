@@ -11,6 +11,7 @@ package model;
  * @author Maddy
  * @author Kunal Shah
  * @author Connor Weeks
+ * @author Alex Kasparek
  *
  */
 public abstract class Square {

@@ -38,15 +38,19 @@ public class BoardToBoardMove extends Move{
 	 * @param col The column of the destination square on the board
 	 * @param row The row of the destination square on the board
 	 */
-	public BoardToBoardMove(Level level, Piece movingPiece, int col, int row) {
+	public BoardToBoardMove(Level level, Piece movingPiece, int col, int row, int previousCol, int previousRow) {
 		super();
 		
 		this.level = level;
 		this.movingPiece = movingPiece;	
 		this.col = col;
 		this.row = row;
-		this.previousCol = movingPiece.getCol();
-		this.previousRow = movingPiece.getRow();
+	
+		this.previousCol = previousCol;
+		this.previousRow = previousRow;
+		
+		System.out.println("Col: " + previousCol);
+		System.out.println("Row: " + previousRow);
 	}
 
 	/**
@@ -85,19 +89,36 @@ public class BoardToBoardMove extends Move{
 		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
 
-	//TODO: IS THIS CORRECT LOGIC?
+	//TODO: FINISH
 	/**
 	 * Undoes this BoardToBoardMove
 	 * @return True if the move was undone successfully, or false otherwise
 	 */
 	public boolean undo() {
 		boolean validation = false;
+	
+//		BoardToBoardMove m = new BoardToBoardMove(level, movingPiece, previousCol, previousRow, col, row);
+//		if(m.isValid()){
+//			m.doMove();
+//			System.out.println("Done with undo BoardToBoard!");
+//			validation = true;
+//		}
+		
+			if(level.getBoard().getPiece(previousCol, previousRow)!=null){
+				Piece p = movingPiece;
+				level.getBoard().removePiece(movingPiece);
+				level.getBoard().addPiece(p, previousCol, previousRow);
+				
+				System.out.println("Valid Undo!");
+			}
+			
+		validation = true;
 		
 		
-		if(level.getBoard().getPiece(col, row) != null){
-			BoardToBoardMove undo = new BoardToBoardMove(level, movingPiece, previousCol, previousRow);
-			validation = undo.doMove();
-		}
+//		if(level.getBoard().getPiece(col, row) != null){
+//			BoardToBoardMove undo = new BoardToBoardMove(level, movingPiece, previousCol, previousRow);
+//			validation = undo.doMove();
+//		}
 		
 		return validation;
 	}

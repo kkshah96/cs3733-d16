@@ -31,6 +31,9 @@ public class BoardController extends MouseAdapter {
 	
 	/** This board controller's builder (if in levelbuilder)**/
 	LevelBuilder builder;
+	
+	int previousCol;
+	int previousRow;
 
 	/**
 	 * Creates a new BoardController object with the specified parameters.
@@ -70,6 +73,13 @@ public class BoardController extends MouseAdapter {
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
+		
+		//TODO: Pass these in as parameters to BoardToBoardMove?
+		previousCol = col;
+		previousRow = row;
+		System.out.println("Col: " + previousCol);
+		System.out.println("Row: " + previousRow);
+		
 		// First check what type of click
 		if (mouseButton == MouseEvent.BUTTON3) { // We have right clicked
 			// Stop dragging on right click
@@ -130,7 +140,7 @@ public class BoardController extends MouseAdapter {
 					System.out.println("Failure!");
 				}
 			} else if (level.getMoveSource() == "Board") {
-				BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row);
+				BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row, previousCol, previousRow);
 
 				if (m.doMove()) {
 					//push move here
