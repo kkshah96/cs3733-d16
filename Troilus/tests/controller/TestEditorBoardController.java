@@ -1,5 +1,8 @@
 package controller;
 
+
+import junit.framework.TestCase;
+
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 
@@ -16,14 +19,17 @@ import model.Square;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
-public class TestEditorBoardController {
+public class TestEditorBoardController extends TestCase {
+
+
+
 	Board board;
 	LevelBuilder lb;
 	Level level;
 	LevelEditorView lsView;
 	BullpenController bpController;
 	BoardController boardController;
-	
+
 	public void setUp() {
 		// Initialization things
 		Square[][] squares = new PuzzleSquare[Board.BOARD_HEIGHT][Board.BOARD_WIDTH];
@@ -32,7 +38,7 @@ public class TestEditorBoardController {
 				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
-		
+
 		board = new Board(squares);
 		lb = new LevelBuilder();
 		level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
@@ -41,10 +47,15 @@ public class TestEditorBoardController {
 		bpController = new BullpenController(level, lsView);
 		boardController = new BoardController(level, lsView);
 	}
-	
-	public void testToggle() {
+
+	public void test() {
 		bpController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
-		
+		level.getBullpen().addPiece(PieceFactory.getPiece(0));
+		bpController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
+		boardController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
+		boardController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON3);
 		Piece piece1 = PieceFactory.getPiece(1);
+		assertTrue(true);
 	}
 }
+

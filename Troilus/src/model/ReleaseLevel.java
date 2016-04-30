@@ -46,6 +46,11 @@ public class ReleaseLevel extends Level {
 	/** Helper function for calculating stars */
 	private void findCoveredNumbers() {
 		for (Piece piece : board.getPieces().keySet()) {
+			// reset values
+			redCovered = new boolean[MAX_NUM];
+			yellowCovered = new boolean[MAX_NUM];
+			greenCovered = new boolean[MAX_NUM];
+			
 			int anchorCol = board.getPieces().get(piece).x;
 			int anchorRow = board.getPieces().get(piece).y;
 			

@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import java.awt.Point;
+
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
@@ -51,21 +53,25 @@ public class BoardController extends MouseAdapter {
 	}
 
 	public void mousePressed(MouseEvent me) {
+		handleMousePressed(me.getPoint(), me.getButton());
+	}
+	
+	void handleMousePressed(Point p, int mouseButton) {
 		if (boardView == null) {
 			System.out.println("BoardView was null!");
 			return;
 		}
 
 		// get mouse coordinates from press
-		int x = me.getX();
-		int y = me.getY();
+		int x = p.x;
+		int y = p.y;
 
 		// Convert to col and row using our view offsets
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
 		// First check what type of click
-		if (me.getButton() == MouseEvent.BUTTON3) { // We have right clicked
+		if (mouseButton == MouseEvent.BUTTON3) { // We have right clicked
 			// Stop dragging on right click
 			if (level.getActivePiece() != null) {
 				boardView.removeDraggedPiece();
@@ -103,7 +109,7 @@ public class BoardController extends MouseAdapter {
 					if (pieceToDrag != null) {
 						level.setMoveSource("Board");
 						level.setActivePiece(pieceToDrag);
-						boardView.addDraggedPiece(pieceToDrag, me.getPoint());
+						boardView.addDraggedPiece(pieceToDrag, p);
 					}
 				}
 			} else if (level.getMoveSource() == "Bullpen") {
