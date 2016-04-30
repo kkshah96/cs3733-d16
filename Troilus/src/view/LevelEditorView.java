@@ -50,41 +50,84 @@ import model.PuzzleLevel;
  *
  */
 public class LevelEditorView extends JFrame implements ILevelView {
+	/** Textfield to hold changes to number of rows on the board */
 	private JTextField boardRowField;
+	
+	/** Textfield to hold changes to number of columns on the board */
 	private JTextField boardColField;
+	
+	/** Textfield to hold maximum number of moves for PuzzleLevels */
 	private JTextField maxMovesField;
+	
+	/** Textfield to hold the total time in minutes for LightningLevels */
 	private JTextField timeMinutesField;
+	
+	/** Textfield to hold the total time in seconds for LightningLevels */
 	private JTextField timeSecondsField;
+	
+	/** The button to save levels to the builder */
 	private JButton saveButton;
+	
 	JLabel levelTypeLabel;
 	JPanel maxMovesPanel;
 	JPanel releaseSquareOptionsPanel;
 	JPanel timePanel;
 
+	/** Button to toggle a piece as a hint on the board */
 	JButton toggleHintButton;
+	
+	/** Button to toggle square validity on the board */
 	JButton ToggleButton;
+	
+	/** Button to rotate a piece clockwise in the bullpen */
 	JButton rotateCWButton;
+	
+	/** Button to rotate a piece counter-clockwise in the bullpen */
 	JButton rotateCCWButton;
 
+	/** Button to set the time for LightningLevels */
 	JButton setTimeButton;
 	
+	/** Button to flip a piece horizontally in the bullpen */
 	JButton flipHorizontal;
+	
+	/** Button to flip a piece vertically in the bullpen */
 	JButton flipVertical;
 
+	/** Button to set the maximum number of moves for PuzzleLevels */
 	JButton setMovesButton;
+	
+	/** The prior loader view */
 	LevelLoaderView levelLoader;
+	
+	/** The top-level builder entity */
 	LevelBuilder builder;
+	
+	/** The level being edited */
 	Level activeLevel;
+	
+	/** The boundary for the board entity */
 	BoardView boardView;
+	
+	/** The boundary for the palette entity */
 	PaletteView paletteView;
+	
 	JPanel bullpenContainer;
+	
+	/** The boundary for the bullpen entity */
 	BullpenView bullpenView;
 
+	/** Drop-down menu for choosing a number for a ReleaseSquare */
 	JComboBox<String> releaseNumberComboBox;
+	
+	/** Drop-down menu for choosing a color for a number in a ReleaseSquare */
 	JComboBox<String> releaseColorComboBox;
 
 	/**
-	 * Create the application.
+	 * Creates a new instance of the LevelEditorView boundary with the following parameters
+	 * @param builder Reference to the top-level builder entity
+	 * @param levelLoader Reference to the top-level loader view
+	 * @param activeLevel Reference to the level currently being built
 	 */
 	public LevelEditorView (LevelBuilder builder, LevelLoaderView levelLoader, Level activeLevel) {
 		setResizable(false);
@@ -400,121 +443,211 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	}
 	
 	// TODO make less messy!
+	/**
+	 * Calls to refresh this view
+	 */
 	public void refresh() {
 		repaint();
 	}
 
+	/**
+	 * Updates the label specifying the level type
+	 * @param type New level type
+	 */
 	public void setLevelType(String type){
 		levelTypeLabel.setText(type);
 		// TODO fix this!
 		//this.initialize();
 	}
 
+	/**
+	 * Updates the visibility of the label specifying maximum moves for PuzzleLevels
+	 * @param which Boolean visibility for maxMoves label
+	 */
 	public void setMaxMovesPanelVisibility(boolean which){
 		maxMovesPanel.setVisible(which);
 	}
 
+	/**
+	 * Updates the visibility of the panel enclosing the dropdowns for ReleaseSquares
+	 * @param which Boolean visibility for ReleaseSquare panel
+	 */
 	public void setReleaseSquarePanelVisibility(boolean which){
 		releaseSquareOptionsPanel.setVisible(which);
 
 	}
 	
+	/**
+	 * Updates the visibility of the panel for updating/displaying time for LightningLevels
+	 * @param which Boolean visibility for time panel
+	 */
 	public void setTimeLimitPanelVisibility(boolean which){
 		timePanel.setVisible(which);
 	}
 	
+	/**
+	 * @return Reference to the Save Level button
+	 */
 	public JButton getSaveButton() {
 		return saveButton;
 	}
 
+	/**
+	 * @return Reference to the row dimension textfield
+	 */
 	public JTextField getRowField(){
 		return boardRowField;
 	}
 
+	/**
+	 * @return Reference to the column dimension textfield
+	 */
 	public JTextField getColField(){
 		return boardColField;
 	}
 
+	/**
+	 * @return Reference to the minutes textfield
+	 */
 	public JTextField getMinutesField(){
 		return timeMinutesField;
 	}
 	
+	/**
+	 * @return Reference to the seconds textfield
+	 */
 	public JTextField getSecondsField(){
 		return timeSecondsField;
 
 	}
 
+	/**
+	 * @return Reference to the enclosed Palette boundary
+	 */
 	public PaletteView getPaletteView() {
 		return paletteView;
 	}
 
+	/**
+	 * @return Reference to the enclosed Board boundary
+	 */
 	public BoardView getBoardView(){
 		return boardView;
 	}
 
+	/**
+	 * @return Reference to the enclosed Bullpen boundary
+	 */
 	public BullpenView getBullpenView() {
 		return bullpenView;
 	}
 
+	/**
+	 * Updates the enclosed BoardView
+	 * @param boardView Reference to the new BoardView object
+	 */
 	public void setBoardView(BoardView boardView) {
 		this.boardView = boardView;
 	}
 
-	public JTextField getMaxMovesField() {
-		return maxMovesField;
-	}
-	
+	/**
+	 * @return Reference to the time set button
+	 */
 	public JButton getSetTimeButton() {
 		return setTimeButton;
 	}
 	
+	/**
+	 * @return Reference to the level type label
+	 */
 	public JLabel getLevelTypeLabel() {
 		return levelTypeLabel;
 	}
 
+	/**
+	 * @return Reference to the combobox for the ReleaseSquare number
+	 */
 	public JComboBox<String> getNumberComboBox() {
 		return releaseNumberComboBox;
 	}
 
+	/**
+	 * @return Reference to the combobox for the ReleaseSquare number color
+	 */
 	public JComboBox<String> getNumberColorComboBox() {
 		return releaseColorComboBox;
 	}
 	
+	/**
+	 * @return Reference to the button to toggle hints
+	 */
 	public JButton getHintButton(){
 		return toggleHintButton;
 	}
 	
+	/**
+	 * @return Reference to the button to toggle squares
+	 */
 	public JButton getToggleButton(){
 		return ToggleButton;
 	}
 	
+	/**
+	 * Updates the value inside the row/height dimensions textfield
+	 * @param n New value for the textfield
+	 */
 	public void setHeightField(String n){
 		boardRowField.setText(n);
 	}
 	
+	/**
+	 * Updates the value inside the column/width dimensions textfield
+	 * @param n New value for the textfield
+	 */
 	public void setWidthField(String n){
 		boardColField.setText(n);
 	}
 	
+	/**
+	 * @return Reference to the rotate piece clockwise button
+	 */
 	public JButton getRotateCWButton(){
 		return rotateCWButton;
 	}
+	
+	/**
+	 * @return Reference to the rotate piece counterclockwise button
+	 */
 	public JButton getRotateCCWButton(){
 		return rotateCCWButton;
 	}
 	
+	/**
+	 * @return Reference to the flip piece vertically button
+	 */
 	public JButton getFlipVertical(){
 		return flipVertical;
 	}
+	
+	/**
+	 * @return Reference to the flip piece horizontally button
+	 */
 	public JButton getFlipHorizontal(){
 		return flipHorizontal;
 	}
 	
-	public JTextField getMovesField(){
+	/**
+	 * @return Reference to the maximum number of moves textfield
+	 */
+	public JTextField getMaxMovesField(){
 		return maxMovesField;
 	}
 	
-	public void setMovesField(String s){
+	/**
+	 * Updates the value inside the maximum number of moves textfield
+	 * @param s New value for the textfield
+	 */
+	public void setMaxMovesField(String s){
 		maxMovesField.setText(s);
 	}
 	

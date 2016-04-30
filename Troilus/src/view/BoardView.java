@@ -40,17 +40,21 @@ public class BoardView extends JPanel {
 	/** Constant to define the offset between the top of the panel and the top of the board*/
 	static final public int HEIGHT_OFFSET = 30;
 
-	/** A reference to the Board entity */
+	/** A reference to the Level entity */
 	Level level;
 	
+	/** A reference to the Board entity in the above Level */
 	Board board;
 	
+	/** A reference to a piece that is being dragged across the board */
 	Piece draggedPiece;
+	
+	/** A reference to the current location of the dragged piece */
 	Point draggedPiecePoint;
 
 	/**
-	 * Constructor for the BoardView, for a given Board
-	 * @param board The Board this BoardView is based on
+	 * Constructor for the BoardView, for a given Level
+	 * @param level The level this BoardView is based on
 	 */
 	public BoardView(Level level) {
 		this.level = level;
@@ -104,20 +108,36 @@ public class BoardView extends JPanel {
 		}
 	}
 	
+	/**
+	 * Adds a dragged piece to the Board
+	 * @param piece Reference to piece to set as dragged
+	 * @param piecePoint The new point for the dragged piece
+	 */
 	public void addDraggedPiece(Piece piece, Point piecePoint) {
 		this.draggedPiece = piece;
 		this.draggedPiecePoint = piecePoint;
 	}
 	
+	/**
+	 * Removes the dragged piece from this BoardView
+	 */
 	public void removeDraggedPiece() {
 		this.draggedPiece = null;
 		this.draggedPiecePoint = null;
 	}
 	
+	/**
+	 * Determines the dragged piece in this BoardView
+	 * @return Reference to the dragged piece, or null if no dragged piece
+	 */
 	public Piece getDraggedPiece(){
 		return this.draggedPiece;
 	}
 	
+	/**
+	 * Determines the point of the dragged piece in this BoardView
+	 * @return Reference to the point of the dragged piece, or null if no dragged piece
+	 */
 	public Point getDraggedPiecePoint(){
 		return this.draggedPiecePoint;
 	}
