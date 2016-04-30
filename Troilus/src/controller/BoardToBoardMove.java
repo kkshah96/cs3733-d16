@@ -70,7 +70,9 @@ public class BoardToBoardMove extends Move{
 
 		// Remove the active piece stored in level, and signal to update
 		level.removeActivePiece();
-		level.updateAfterMove();
+		// set end game status
+		endGameStatus = level.updateAfterMove();
+		
 		return true;
 	}
 

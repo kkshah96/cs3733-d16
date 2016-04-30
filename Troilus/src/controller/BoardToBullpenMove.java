@@ -8,6 +8,7 @@ import model.Level;
 /**
  * Class for implemenation of removing a piece from the board.
  * @author Maddy
+ * @author Connor Weeks
  *
  */
 public class BoardToBullpenMove extends Move{
@@ -57,7 +58,8 @@ public class BoardToBullpenMove extends Move{
 		
 		// Remove the active piece reference in level and signal to refresh
 		level.removeActivePiece();
-		level.updateAfterMove();
+		// update and set status
+		endGameStatus = level.updateAfterMove();
 		return true;
 	}
 	

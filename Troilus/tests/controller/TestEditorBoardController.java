@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 import model.Board;
 import model.Bullpen;
+import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
 import model.Palette;
@@ -22,7 +23,7 @@ import view.LevelLoaderView;
 public class TestEditorBoardController extends TestCase {
 
 
-
+	Kabasuji game;
 	Board board;
 	LevelBuilder lb;
 	Level level;
@@ -38,14 +39,14 @@ public class TestEditorBoardController extends TestCase {
 				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
-
+		game = new Kabasuji();
 		board = new Board(squares);
 		lb = new LevelBuilder();
 		level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
 		LevelLoaderView lView = new LevelLoaderView(lb);
 		lsView = new LevelEditorView(lb, lView, level);
 		bpController = new BullpenController(level, lsView);
-		boardController = new BoardController(level, lsView);
+		boardController = new BoardController(level, lsView, game);
 	}
 
 	public void test() {

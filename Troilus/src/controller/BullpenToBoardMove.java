@@ -9,6 +9,7 @@ import model.Piece;
  * Class for implementation of moving a piece from board to bullpen.
  * @author Maddy
  * @author Dan Alfred
+ * @author Connor Weeks
  */
 public class BullpenToBoardMove extends Move{
 	/** The level utilized in this move */
@@ -22,6 +23,7 @@ public class BullpenToBoardMove extends Move{
 	
 	/** The row of the square as the requested destination in the board */
 	int row;
+	
 
 	/**
 	 * Creates a new instance of the BullpentoBoardMove with the given parameters
@@ -56,8 +58,8 @@ public class BullpenToBoardMove extends Move{
 		level.removeActivePiece();
 		bpen.removePiece(movingPiece);
 
-		// Signal to the level to update
-		level.updateAfterMove();
+		// Signal to the level to update, set end status to return value
+		endGameStatus = level.updateAfterMove();
 		return true;
 	}
 

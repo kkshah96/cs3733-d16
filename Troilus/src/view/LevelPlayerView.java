@@ -37,6 +37,7 @@ import model.ReleaseLevel;
  * 
  * @author Kunal Shah
  * @author Maddy Longo
+ * @author Connor Weeks
  *
  */
 public class LevelPlayerView extends JFrame implements ILevelView {
@@ -111,8 +112,8 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		panel.add(boardView);
 		boardView.setLayout(null);
 		// BoardController
-		boardView.addMouseListener(new BoardController(level, this));
-		boardView.addMouseMotionListener(new BoardController(level, this));
+		boardView.addMouseListener(new BoardController(level, this, game));
+		boardView.addMouseMotionListener(new BoardController(level, this, game));
 		
 		JPanel bullpenContainer = new JPanel();
 		bullpenContainer.setBorder(new LineBorder(new Color(0, 0, 0), 2));

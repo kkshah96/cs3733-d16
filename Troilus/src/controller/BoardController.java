@@ -5,16 +5,19 @@ import java.awt.event.MouseEvent;
 
 import java.awt.Point;
 
+import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
 import view.BoardView;
 import view.ILevelView;
+import view.LevelPlayerView;
 
 /**
  * Class to control events related to Board.
  * @author Maddy
  * @author Alex Kasparek
+ * @author Connor Weeks
  */
 public class BoardController extends MouseAdapter {
 	/** The BoardView modified in this controller. */
@@ -28,10 +31,13 @@ public class BoardController extends MouseAdapter {
 
 	/** The active piece for this. */
 	Piece activePiece;
-	
+
 	/** This board controller's builder (if in levelbuilder)**/
 	LevelBuilder builder;
-	
+
+	/** This board controller's game (if in player)**/
+	Kabasuji game;
+
 	int previousCol;
 	int previousRow;
 
@@ -47,18 +53,19 @@ public class BoardController extends MouseAdapter {
 		this.level = level;
 		this.builder = builder;
 	}
-	
-	public BoardController(Level level, ILevelView levelView) {
+
+	public BoardController(Level level, ILevelView levelView, Kabasuji game) {
 		super();
 		this.levelView = levelView;
 		this.boardView = levelView.getBoardView();
 		this.level = level;
+		this.game = game;
 	}
 
 	public void mousePressed(MouseEvent me) {
 		handleMousePressed(me.getPoint(), me.getButton());
 	}
-	
+
 	void handleMousePressed(Point p, int mouseButton) {
 		if (boardView == null) {
 			System.out.println("BoardView was null!");
@@ -73,13 +80,13 @@ public class BoardController extends MouseAdapter {
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
-		
+
 		//TODO: Pass these in as parameters to BoardToBoardMove?
 		previousCol = col;
 		previousRow = row;
 		System.out.println("Col: " + previousCol);
 		System.out.println("Row: " + previousRow);
-		
+
 		// First check what type of click
 		if (mouseButton == MouseEvent.BUTTON3) { // We have right clicked
 			// Stop dragging on right click
@@ -91,15 +98,27 @@ public class BoardController extends MouseAdapter {
 				// This means we want to attempt a BoardToBullpen move (send a piece on the board back to bullpen)
 				BoardToBullpenMove m = new BoardToBullpenMove(level, col, row);
 				if (m.doMove()) {
-					// If the move is valid (and completed), we remove the source and active pieces
-					boardView.removeDraggedPiece();
+
 					if (builder != null) {
-						// TODO ugly code
+						// if we are in the level builder
+						// If the move is valid (and completed), we remove the source and active pieces
+						boardView.removeDraggedPiece();
 						builder.pushMove(m);
+
+						level.setMoveSource(null);
+						level.setActivePiece(null);
 					}
-					level.setMoveSource(null);
-					level.setActivePiece(null);
-					
+					else if (game != null) {
+						// if we are in the player
+						boardView.removeDraggedPiece();
+						// end game if needed
+						if (m.getEndGameStatus()) {
+							new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+						}
+					}
+					else {
+						System.err.println("Player and builder are null");
+					}
 					// push move
 				} else {
 					// Otherwise, print an error
@@ -127,15 +146,30 @@ public class BoardController extends MouseAdapter {
 				BullpenToBoardMove m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
 
 				if (m.doMove()) {
-					//push move here
-					System.out.println("Success!");
-					boardView.removeDraggedPiece();
 					if (builder != null) {
-						// TODO ugly code
+						//push move here
+						System.out.println("Success!");
+						boardView.removeDraggedPiece();
 						builder.pushMove(m);
+						
+						level.setMoveSource(null);
+						level.setActivePiece(null);
 					}
-					level.setMoveSource(null);
-					level.setActivePiece(null);
+					else if (game != null) {
+						// push move
+						System.out.println("Success!");
+						boardView.removeDraggedPiece();
+						level.setMoveSource(null);
+						level.setActivePiece(null);
+						// exit game if needed
+						if (m.getEndGameStatus()) {
+							new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+						}
+					}
+					else {
+						System.err.println("Player and builder are null");
+					}
+					
 				} else {
 					System.out.println("Failure!");
 				}
@@ -143,15 +177,28 @@ public class BoardController extends MouseAdapter {
 				BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row, previousCol, previousRow);
 
 				if (m.doMove()) {
-					//push move here
-					boardView.removeDraggedPiece();
-					level.setMoveSource(null);
-					level.setActivePiece(null);
 					if (builder != null) {
-						// TODO this is ugly
+						//push move here
+						boardView.removeDraggedPiece();
+						level.setMoveSource(null);
+						level.setActivePiece(null);
 						builder.pushMove(m);
+						System.out.println("Success!");
 					}
-					System.out.println("Success!");
+					else if (game != null) {
+						//push move here
+						boardView.removeDraggedPiece();
+						level.setMoveSource(null);
+						level.setActivePiece(null);
+						// exit game if needed
+						if (m.getEndGameStatus()) {
+							new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+						}
+					}
+					else {
+						System.err.println("Player and builder are null");
+					}
+					
 				} else {
 					System.out.println("Failure!");
 				}
