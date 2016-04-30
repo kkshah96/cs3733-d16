@@ -12,10 +12,10 @@ package model;
 public class PuzzleSquare extends Square {
 	
 	/**
-	 * Creates a PuzzleSquare with the following parameters.
-	 * @param col
-	 * @param row
-	 * @param isValid
+	 * Creates a PuzzleSquare with the following parameters (assumes not a hint).
+	 * @param col The column of this PuzzleSquare
+	 * @param row The row of this PuzzleSquare
+	 * @param isValid The validity of this PuzzleSquare
 	 */
 	public PuzzleSquare(int col, int row, boolean isValid) {
 		super(col, row, isValid);

@@ -15,9 +15,13 @@ import controller.LoadLevelsController;
  */
 public class Kabasuji {
 
+	/** The levels in this entity */
 	ArrayList<Level> levels;
 	//Level activeLevel;
 
+	/**
+	 * Creates a new instance of the Kabasuji entity with an empty collection of levels
+	 */
 	public Kabasuji() {
 		initialize();
 

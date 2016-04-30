@@ -42,12 +42,20 @@ public class Piece {
 	/** An int representation of the piece type, from 1-35 */
 	int type;
 	
+	/**
+	 * Creates a new instance of Piece with the following parameters:
+	 * @param squares 2D array of PieceSquares containing a relative row and column
+	 * @param anchor Reference to the anchor square for this piece
+	 * @param type Int representation of the type of this piece (1-35)
+	 * @param c The color for this piece
+	 */
 	public Piece(PieceSquare[] squares, PieceSquare anchor, int type, Color c) {
 		this.squares = squares;
 		this.anchor = anchor;
 		this.type = type;
 		this.color = c;
 		
+		// Ensure the number of PieceSquares passed in is proper
 		if(squares.length != PIECE_SIZE - 1) {
 			throw new RuntimeException("Piece [" + type + "] must have an array of " + PIECE_SIZE + " squares. " + squares.length + " were passed in.");
 		}
@@ -70,7 +78,9 @@ public class Piece {
 	}
 	
 	// TODO fix logic here
-	/** Returns an ArrayList of ALL squares of a piece, including anchor. */
+	/** Creates an array containing all piecesquares in this piece, including the anchor
+	 * @return Array of PieceSquares, including the anchor square
+	 */
 	public PieceSquare[] getAllSquares() {
 		PieceSquare[] allSquares = new PieceSquare[PIECE_SIZE];
 		allSquares[0] = anchor;
@@ -128,11 +138,12 @@ public class Piece {
 				PieceSquare newSquare = new PieceSquare((-1) * oldRow, oldCol);
 				newSquares[i] = newSquare;
 			} else {
+				// If an invalid rotation degree was provided, just return this
 				return this;
 			}
 		}
 		
-		return new Piece(newSquares, anchor, type, color); // TODO: Implement this
+		return new Piece(newSquares, anchor, type, color); 
 	}
 	
 	
@@ -158,37 +169,55 @@ public class Piece {
 				PieceSquare newSquare = new PieceSquare(oldCol, (-1) * oldRow);
 				newSquares[i] = newSquare;
 			} else {
+				// If an invalid flip direction was provided, just return this
 				return this;
 			}
 		}
 		
-		return new Piece(newSquares, anchor, type, color); // TODO: Implement this
+		return new Piece(newSquares, anchor, type, color);
 	}
 	
-	/* Returns true if the two Pieces are the same type, shape, and orientation */
+	/**
+	 * Determines if this piece is the same shape as another provided piece <br />
+	 * Any identical pieces that have been rotated/flipped are no longer considered the same shape
+	 * @param other The piece to compare shape with this
+	 * @return True if the shape is the same, false otherwise
+	 */
 	public boolean sameShape(Piece other) {
+		// First ensure that the types of the two pieces are the same- if not, they're definitely different shapes
 		if (type != other.type) {
 			return false;
 		}
 		
+		// Loop through each square in both pieces to ensure the relative coordinates match
 		for (int i = 0; i < PIECE_SIZE - 1; i++) {
 			int row = squares[i].getRow();
 			int col = squares[i].getCol();
 			int otherRow = other.squares[i].getRow();
 			int otherCol = other.squares[i].getCol();
 			
+			// Any irregularities means the pieces are different
 			if (!(row == otherRow && col == otherCol)) {
 				return false;
 			}
 		}
 		
+		// No irregularities mean the pieces are the same shape
 		return true;
 	}
 	
+	/**
+	 * Determines the color of this piece
+	 * @return AWT Color object representing the color of this piece
+	 */
 	public Color getColor() {
 		return color;
 	}
 	
+	/**
+	 * Updates the color of this piece
+	 * @param c AWT Color object representing the new color
+	 */
 	public void setColor(Color c) {
 		this.color = c;
 	}

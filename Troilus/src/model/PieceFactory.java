@@ -13,6 +13,11 @@ import java.util.Random;
  *
  */
 public class PieceFactory {
+	/**
+	 * Main method for retrieving pieces.
+	 * @param pieceType The requested piece type (in int, 1-35)
+	 * @return A new piece of the requested type, unless the type is invalid, then null is returned
+	 */
 	public static Piece getPiece(int pieceType) {
 		PieceSquare anchorSquare = new PieceSquare(0, 0);
 		PieceSquare[] pieceSquares = new PieceSquare[Piece.PIECE_SIZE - 1];
@@ -268,6 +273,10 @@ public class PieceFactory {
 		}
 	}
 
+	/**
+	 * Generates a random color for a piece
+	 * @return An AWT Color object of random RGB values
+	 */
 	private static Color getRandomColor(){
 		Random rand = new Random();
 		return new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));

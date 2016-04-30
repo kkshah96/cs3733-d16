@@ -47,15 +47,15 @@ public class TestHintToggle extends TestCase{
 		Square s = board.getActiveSquare();
 		
 		assertEquals(board.getSquare(1, 1), s);
-		assertEquals(false, board.getActiveSquare().getHintStatus());
+		assertEquals(false, board.getActiveSquare().isHint());
 		ToggleHintController h = new ToggleHintController(level,  lsView.getBoardView());
 		h.actionPerformed(e);
-		assertEquals(true, board.getActiveSquare().getHintStatus());
+		assertEquals(true, board.getActiveSquare().isHint());
 		
 		h = new ToggleHintController(level,  lsView.getBoardView());
 		h.actionPerformed(e);
 		
-		assertEquals(false, board.getActiveSquare().getHintStatus());
+		assertEquals(false, board.getActiveSquare().isHint());
 		
 	}
 }

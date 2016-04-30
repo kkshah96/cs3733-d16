@@ -78,6 +78,13 @@ public class Board {
 		return true;
 	}
 
+	/**
+	 * Checks if a given piece can be placed at a provided location on the board
+	 * @param piece The piece to check placement of
+	 * @param col The column of the square on the board to check
+	 * @param row The row of the square on the board to check
+	 * @return True if the piece can be placed, false otherwise
+	 */
 	public boolean validPlacement(Piece piece, int col, int row) {
 		// Bounds check
 		if (row < 0 || row >= Board.BOARD_HEIGHT || col < 0 || col >= Board.BOARD_WIDTH) {
@@ -85,11 +92,13 @@ public class Board {
 			return false;
 		}
 
+		// Check if the piece provided is null, cannot proceed if it is
 		if (piece == null) {
 			System.out.println("No piece");
 			return false;
 		}
 
+		// Check if there is already a piece at the requested location- cannot place if so
 		Piece getP = getPiece(col, row);
 		if (getP != null) {
 			System.out.print("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
@@ -109,12 +118,13 @@ public class Board {
 			int absRow = square.getRow() + row; 
 			int absCol = square.getCol() + col;
 
+			// Ensure each square of the piece is within the bounds
 			if (!(absRow < Board.BOARD_HEIGHT && absRow >= 0 && absCol < Board.BOARD_WIDTH && absCol >= 0)) {
 				System.out.println("Out of bounds");
 				return false;
 			}
 
-			// Check if each square is in bounds
+			// Check if each board square is valid
 			if (!getSquare(absCol, absRow).isValid()) {
 				System.out.printf("Not in bounds (%d, %d)\n", absCol, absRow);
 				return false;
@@ -142,7 +152,7 @@ public class Board {
 	 * WARNING: Returns NULL if not on board
 	 * @param col Requested column
 	 * @param row Requested row
-	 * @return
+	 * @return The piece at the requested location if present, or null if no piece at location
 	 */
 	public Piece getPiece(int col, int row) {
 		// Bounds check
@@ -150,12 +160,14 @@ public class Board {
 			return null;
 		}
 
+		// Convert map of pieces to list, and iterate through each
 		Set<Piece> keySet = pieces.keySet();
 		for (Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
 			int anchorCol = anchorPoint.x;
 			int anchorRow = anchorPoint.y;
 
+			// If any of the piece squares are at the provided row & col, return the piece
 			for (Square square : piece.getAllSquares()) {
 				if ((square.getRow() + anchorRow == row) && (square.getCol() + anchorCol == col)) {
 					return piece;
@@ -163,6 +175,7 @@ public class Board {
 			}
 		}
 
+		// Otherwise no piece, return null
 		return null;
 	}
 
@@ -185,10 +198,16 @@ public class Board {
 	 * Resets the dimensions and squares inside the board.
 	 * Will throw a RuntimeException if the sizes given are greater than max size.
 	 * <p>
-	 * @param cols
-	 * @param rows Size
+	 * @param cols Number of columns to utilize
+	 * @param rows Number of rows to utilize
 	 */
 	public void setDimensions(int cols, int rows) {
+		// Check for bounds of cols, rows before proceeding
+		if(cols > BOARD_WIDTH || rows > BOARD_HEIGHT || cols < 0 || rows < 0) {
+			throw new RuntimeException("Invalid dimensions for resizing board!");
+		}
+		
+		// Otherwise, loop through rows and columns, and reset the square validity
 		for (int row = 0; row < BOARD_HEIGHT; row++) {
 			for (int column = 0; column < BOARD_WIDTH; column++) {
 				boolean valid = (row < rows) && (column < cols);
@@ -199,7 +218,7 @@ public class Board {
 
 	/**
 	 * Retrieves the listing of pieces on this board.
-	 * Point uses (row, col).
+	 * Point uses (col, row).
 	 * @return Hashtable of Piece for this board
 	 */
 	public Hashtable<Piece, Point> getPieces() {
@@ -218,7 +237,9 @@ public class Board {
 		}
 	}
 
-	/** Toggle hint status of active square for this board. */
+	/** 
+	 * Toggle hint status of active square for this board, if applicable 
+	 */
 	public void toggleHint(){
 		if (activeSquare == null){
 			return;
@@ -228,6 +249,7 @@ public class Board {
 	}
 	
 	// TODO why do we need this? It doesn't even do anything meaningful.
+	
 	public int getNumRows(){
 		int num = 0;
 		for (int row = 0; row < BOARD_HEIGHT; row++) {
@@ -249,4 +271,5 @@ public class Board {
 
 		return num;
 	}
+	
 }

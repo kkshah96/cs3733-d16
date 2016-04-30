@@ -10,16 +10,33 @@ package model;
  * @author Maddy Longo
  */
 public class PuzzleLevel extends Level {
+	/** The maximum moves for this level from the start */
 	int maxMoves;
+	
+	/** The moves remaining for this level */
 	int movesLeft;
 	
+	/**
+	 * Creates a new instance of the PuzzleLevel entity with the following parameters
+	 * @param levelNum The number of this level
+	 * @param locked The status of the lock on this level
+	 * @param bullpen Reference to the bullpen object for this level
+	 * @param board Reference to the board object for this level
+	 * @param palette Reference to the palette object for this level (LevelBuilder only)
+	 * @param maxMoves Int representation of the maximum number of moves for this level
+	 */
 	public PuzzleLevel(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette, int maxMoves) {
 		super(levelNum, locked, bullpen, board, palette);
 		
 		this.maxMoves = maxMoves;
 		this.movesLeft = this.maxMoves; // TODO: Can I do dis
+										// TODO: Yiss
 	}
 	
+	/**
+	 * Updates this entity after a move has been completed, by refreshing the number of moves remaining
+	 * and updating the number of stars earned
+	 */
 	public void updateAfterMove() {
 		updateMovesLeft(-1);
 		calcNumStars();
@@ -40,22 +57,39 @@ public class PuzzleLevel extends Level {
 		return movesLeft > 0;
 	}
 	
+	/**
+	 * Updates the number of moves left for this level
+	 * @param i The difference in moves
+	 */
 	public void updateMovesLeft(int i) {
 		movesLeft += i;
 	}
 	
+	@Override
 	public String getName() {
 		return "Puzzle";
 	}
 	
+	/**
+	 * Determines the number of moves remaining in this level
+	 * @return Int representation of the number of moves left
+	 */
 	public int getMovesLeft() {
 		return movesLeft;
 	}
 	
+	/**
+	 * Determines the maximum number of moves for this level
+	 * @return Int representation of the total number of moves
+	 */
 	public int getMaxMoves() {
 		return maxMoves;
 	}
 	
+	/**
+	 * Updates the maximum number of moves for this level
+	 * @param maxMoves The new maximum number of moves
+	 */
 	public void setMaxMoves(int maxMoves) {
 		this.maxMoves = maxMoves;
 	}

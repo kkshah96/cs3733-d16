@@ -14,11 +14,24 @@ package model;
  *
  */
 public abstract class Square {
+	/** The row of this square on the board */
 	int row;
+	
+	/** The column of this square on the board */
 	int col;
+	
+	/** The status for if this square is valid */
 	boolean isValid;
+	
+	/** The status for if this square is part of a hint */
 	boolean isHint;
 	
+	/**
+	 * Constructor called by a child class to store the following state (hint is false by default):
+	 * @param col The column of this square
+	 * @param row The row of this square
+	 * @param isValid If this square is valid
+	 */
 	public Square(int col, int row, boolean isValid) {
 		this.row = row;
 		this.col = col;
@@ -26,6 +39,13 @@ public abstract class Square {
 		isHint = false;
 	}
 	
+	/**
+	 * Constructor called by a child class to store the following state (hint is specified as a parameter):
+	 * @param col The column of this square
+	 * @param row The row of this square
+	 * @param isValid If this square is valid
+	 * @param isHint If this square is part of a hint
+	 */
 	public Square(int col, int row, boolean isValid, boolean isHint) {
 		this.row = row;
 		this.col = col;
@@ -33,41 +53,64 @@ public abstract class Square {
 		this.isHint = isHint;
 	}
 	
+	/**
+	 * Determines if this square is valid
+	 * @return True if this square is valid, false if not
+	 */
 	public boolean isValid() {
 		return this.isValid;
 	}
 	
+	/**
+	 * Determines the type of this square
+	 * @return String representation of the type, or name of this square
+	 */
 	public abstract String getType();
 	
+	/**
+	 * Determines the row of this square
+	 * @return Int representation of this square's row
+	 */
 	public int getRow() {
 		return this.row;
 	}
 	
+	/**
+	 * Determines the column of this square
+	 * @return Int represetation of this square's column
+	 */
 	public int getCol() {
 		return this.col;
 	}
 	
+	/**
+	 * Updates the valid of this square
+	 * @param isValid New value for the validity of this square
+	 */
 	public void setIsValid(boolean isValid) {
 		this.isValid = isValid;
 	}
 	
+	/**
+	 * Toggles the validity of this square
+	 */
 	public void toggleIsValid() {
 		isValid = !isValid;
 	}
 	
+	/**
+	 * Toggles the hint of this square
+	 */
 	public void toggleHint() {
 		isHint = !isHint;
 	}
 	
 	/**
 	 * Returns whether or not the given square is a hint.
-	 * @return boolean 
+	 * @return True if this is a hint square, false if not
 	 */
 	public boolean isHint() {
 		return this.isHint;
 	}
 	
-	public boolean getHintStatus(){
-		return isHint;
-	}
 }

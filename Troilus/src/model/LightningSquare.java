@@ -11,6 +11,7 @@ package model;
  *
  */
 public class LightningSquare extends Square {
+	/** If this square has been covered by a piece yet */
 	boolean isCovered;
 	
 	/**

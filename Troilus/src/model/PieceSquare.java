@@ -13,8 +13,8 @@ public class PieceSquare extends Square {
 	
 	/**
 	 * Creates a PieceSquare with the following parameters.
-	 * @param col
-	 * @param row
+	 * @param col The column of this PieceSquare relative to the anchor
+	 * @param row The row of this PieceSquare relative to the anchor
 	 */
 	public PieceSquare(int col, int row) {
 		super(col, row, true);

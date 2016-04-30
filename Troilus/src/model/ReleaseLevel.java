@@ -12,11 +12,26 @@ import java.awt.Color;
  * @author Maddy
  */
 public class ReleaseLevel extends Level {
+	/** Constant to indicate the quantity of numbers for each color */
 	public static final int MAX_NUM = 6;
+	
+	/** Array to store which red numbers have been covered */
 	boolean redCovered[];
+	
+	/** Array to store which yellow numbers have been covered */
 	boolean yellowCovered[];
+	
+	/** Array to store which green numbers have been covered */
 	boolean greenCovered[];
 
+	/**
+	 * Creates a new instance of the ReleaseLevel entity with the following parameters:
+	 * @param levelNum The number of this level
+	 * @param locked The lock status of this level
+	 * @param bullpen Reference to the bullpen object for this level
+	 * @param board Reference to the board object for this level
+	 * @param palette Reference to the palette object for this level (LevelBuilder only)
+	 */
 	public ReleaseLevel(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette) {
 		super(levelNum, locked, bullpen, board, palette);
 
@@ -25,6 +40,10 @@ public class ReleaseLevel extends Level {
 		greenCovered = new boolean[MAX_NUM];
 	}
 
+	/**
+	 * Updates the entity after a move by updating the colored numbers that have been covered and 
+	 * determining the number of stars earned
+	 */
 	public void updateAfterMove() {
 		findCoveredNumbers();
 		calcNumStars();
@@ -45,23 +64,29 @@ public class ReleaseLevel extends Level {
 	// TODO fix bad code!
 	/** Helper function for calculating stars */
 	private void findCoveredNumbers() {
+		// Loop through each piece on the board
 		for (Piece piece : board.getPieces().keySet()) {
 			// reset values
 			redCovered = new boolean[MAX_NUM];
 			yellowCovered = new boolean[MAX_NUM];
 			greenCovered = new boolean[MAX_NUM];
 			
+			// Determine the absolute position of the anchor square
 			int anchorCol = board.getPieces().get(piece).x;
 			int anchorRow = board.getPieces().get(piece).y;
 			
+			// Loop through each piecesquare
 			for (Square square : piece.getAllSquares()) {
+				// Obtain aboslute coordinates for each piecesquare
 				int absCol = anchorCol + square.getCol();
 				int absRow = anchorRow + square.getRow();
 				
+				// Get the square at the location of the overlayed piecesquare
 				ReleaseSquare currentSquare = (ReleaseSquare) board.getSquare(absCol, absRow);
 				int currentNum = currentSquare.getNumber();
 				Color currentColor = currentSquare.getNumberColor();
 				
+				// If it has a color and number, determine the color, and label it as marked in the appropriate array
 				if (currentNum > 0 && currentColor != null) {
 					if (currentColor.equals(Color.RED)) {
 						redCovered[currentNum - 1] = true;
@@ -76,11 +101,18 @@ public class ReleaseLevel extends Level {
 	}
 
 	// TODO: There has to be a better way to do this
+	/**
+	 * Updates the entity for a colored number that has been covered
+	 * @param c The color of the square that has been covered
+	 * @param i The number on the square that has been covered
+	 */
 	public void updateCoveredNumbers(Color c, int i) {
+		// Ensure that a valid number was passed in
 		if (i >= MAX_NUM || i < 0) {
 			return;
 		}
 
+		// Handle logic depending on color passed in
 		if (c.equals(Color.RED)) {
 			redCovered[i] = true;
 		}
@@ -95,9 +127,14 @@ public class ReleaseLevel extends Level {
 	}
 
 	// TODO implement stubs!
+	/**
+	 * Determines the number of red squares covered
+	 * @return Int representation of number of red squares covered
+	 */
 	public int getRedCovered() {
 		int red = 0;
 
+		// Loop through red array and count each 'true'
 		for (boolean covered : redCovered) {
 			if (covered) {
 				red++;
@@ -107,9 +144,14 @@ public class ReleaseLevel extends Level {
 		return red;
 	}
 
+	/**
+	 * Determines the number of green squares covered
+	 * @return Int representation of number of green squares covered
+	 */
 	public int getGreenCovered() {
 		int green = 0;
 
+		// Loop through green array and count each 'true'
 		for (boolean covered : greenCovered) {
 			if (covered) {
 				green++;
@@ -119,9 +161,14 @@ public class ReleaseLevel extends Level {
 		return green;
 	}
 
+	/**
+	 * Determines the number of yellow squares covered
+	 * @return Int representation of number of yellow squares covered
+	 */
 	public int getYellowCovered() {
 		int yellow = 0;
 
+		// Loop through yellow array and count each 'true'
 		for (boolean covered : yellowCovered) {
 			if (covered) {
 				yellow++;
@@ -131,6 +178,7 @@ public class ReleaseLevel extends Level {
 		return yellow;
 	}
 	
+	@Override
 	public String getName() {
 		return "Release";
 	}
