@@ -31,8 +31,6 @@ public class TestFileInOutControllers extends TestCase {
 		int oldNumLevels = lb.getNumLevels();
 		lb.addLevel(level);
 		assertEquals(oldNumLevels+1, lb.getNumLevels());
-		SaveLevelController save = new SaveLevelController(lb);
-		save.actionPerformed(new ActionEvent(loaderView, 0, null));
 		
 		LevelFileInputController input = new LevelFileInputController();
 		ArrayList<Level> levels = input.getLevels();		

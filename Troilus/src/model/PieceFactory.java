@@ -201,7 +201,7 @@ public class PieceFactory {
 		case 26:
 			pieceSquares[0] = new PieceSquare(+1, 0);
 			pieceSquares[1] = new PieceSquare(+1, -1);
-			pieceSquares[2] = new PieceSquare(+2, -2);
+			pieceSquares[2] = new PieceSquare(+2, -1);
 			pieceSquares[3] = new PieceSquare(+1, -2);
 			pieceSquares[4] = new PieceSquare(+1, -3);
 			return new Piece(pieceSquares, anchorSquare, pieceType, getRandomColor());
