@@ -12,7 +12,7 @@ import view.LevelEditorView;
  * @author Alex Kasparek
  *
  */
-public class UndoMoveController implements ActionListener{
+public class RedoMoveController implements ActionListener{
 	/** The top-level level builder entity */
 	LevelBuilder builder;
 	
@@ -24,7 +24,7 @@ public class UndoMoveController implements ActionListener{
 	 * @param builder Reference to the top-level builder entity
 	 * @param lEV Reference to the view for a level in the builder entity
 	 */
-	public UndoMoveController(LevelBuilder builder, LevelEditorView lEV){
+	public RedoMoveController(LevelBuilder builder, LevelEditorView lEV){
 		this.builder = builder;
 		this.lEV = lEV;
 		
@@ -32,15 +32,15 @@ public class UndoMoveController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// Check if no undos are available- if so, return
-		if (!builder.canUndo()) {
-			System.out.println("Nothing to undo.");
+		// Check if no redos are available- if so, return
+		if (!builder.canRedo()) {
+			System.out.println("Nothing to redo.");
 			return;
 		}
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
-		Move m = builder.popUndoMove();
-		builder.pushRedoMove(m);
-		m.undo();
+		Move m = builder.popRedoMove();
+		builder.pushMove(m);
+		m.doMove();
 		lEV.repaint();
 		
 	}

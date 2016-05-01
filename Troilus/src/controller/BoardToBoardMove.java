@@ -49,8 +49,8 @@ public class BoardToBoardMove extends Move{
 		this.previousCol = previousCol;
 		this.previousRow = previousRow;
 		
-		System.out.println("Col: " + previousCol);
-		System.out.println("Row: " + previousRow);
+		System.out.println("previousCol: " + previousCol);
+		System.out.println("previousRow: " + previousRow);
 	}
 
 	/**
@@ -99,29 +99,25 @@ public class BoardToBoardMove extends Move{
 	public boolean undo() {
 		boolean validation = false;
 	
-//		BoardToBoardMove m = new BoardToBoardMove(level, movingPiece, previousCol, previousRow, col, row);
-//		if(m.isValid()){
-//			m.doMove();
-//			System.out.println("Done with undo BoardToBoard!");
-//			validation = true;
-//		}
 		
-			if(level.getBoard().getPiece(previousCol, previousRow)!=null){
-				Piece p = movingPiece;
-				level.getBoard().removePiece(movingPiece);
-				level.getBoard().addPiece(p, previousCol, previousRow);
+	
+		
+//			if(isValidUndo()){
+//				Piece p = movingPiece;
+//				level.getBoard().removePiece(movingPiece);
+				level.getBoard().addPiece(movingPiece, previousCol, previousRow);
 				
+				System.out.println("Piece moves back to col: " + movingPiece.getCol() + "row: " + movingPiece.getRow());
+				System.out.println("previousCol: " + previousCol + "previousRow: " + previousRow);
+			//System.out.printf(format, args)
 				System.out.println("Valid Undo!");
-			}
-			
-		validation = true;
-		
-		
-//		if(level.getBoard().getPiece(col, row) != null){
-//			BoardToBoardMove undo = new BoardToBoardMove(level, movingPiece, previousCol, previousRow);
-//			validation = undo.doMove();
-//		}
+				validation = true;
+			//}
 		
 		return validation;
+	}
+	
+	public boolean isValidUndo(){
+		return level.getBoard().validPlacement(movingPiece, previousCol, previousRow);
 	}
 }

@@ -22,6 +22,7 @@ import controller.BullpenController;
 import controller.ExitLevelEditorController;
 import controller.FlipPieceController;
 import controller.MovePiecePaletteToBullpenController;
+import controller.RedoMoveController;
 import controller.RotatePieceController;
 import controller.SaveLevelController;
 import controller.SelectSquareController;
@@ -270,6 +271,8 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		redoButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		redoButton.setBounds(176, 0, 74, 38);
 		saveUndoPanel.add(redoButton);
+		
+		redoButton.addActionListener( new RedoMoveController(builder, this));
 
 		JPanel boardBannerPanel = new JPanel();
 		boardBannerPanel.setBorder(new LineBorder(new Color(0, 0, 0)));

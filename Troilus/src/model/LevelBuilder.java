@@ -128,4 +128,12 @@ public class LevelBuilder {
 	public boolean canRedo() {
 		return redoMoves.size() > 0;
 	}
+	
+	/**
+	 * Pops and returns the move at the top of the redoMoves stack.
+	 * @return The Move object at the top of the redo stack.
+	 */
+	public Move popRedoMove(){
+		return redoMoves.pop();
+	}
 }
