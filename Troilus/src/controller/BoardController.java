@@ -92,18 +92,30 @@ public class BoardController extends MouseAdapter {
 		if (mouseButton == MouseEvent.BUTTON3) { // We have right clicked
 			// Stop dragging on right click
 			//if (level.getActivePiece() != null) {
-				//boardView.removeDraggedPiece();
-				//level.setMoveSource(null);
-				//level.removeActivePiece(); // level.setActivePiece(null)
+			//boardView.removeDraggedPiece();
+			//level.setMoveSource(null);
+			//level.removeActivePiece(); // level.setActivePiece(null)
 			//} else {
-				// This means we want to attempt a BoardToBullpen move (send a piece on the board back to bullpen)
-			
-				// TODO OK THIS IS MESSY, BUT IT FIXES BUG #2 IN THE BUGS GOOGLE DOC. Can we just pass a Piece to move classes instead of a row and column
-			    // so I dont need two constructors or will this not work?
+			// This means we want to attempt a BoardToBullpen move (send a piece on the board back to bullpen)
+
+			// TODO OK THIS IS MESSY, BUT IT FIXES BUG #2 IN THE BUGS GOOGLE DOC. Can we just pass a Piece to move classes instead of a row and column
+			// so I dont need two constructors or will this not work?
+
+			if(boardView.getDraggedPiece() != null && level.getBullpen().getPieces().contains(boardView.getDraggedPiece())){
+				System.out.println("Not null");
+				//m = new BoardToBullpenMove(level, boardView.getDraggedPiece());
+				//if(level.getBullpen().getPieces().contains(boardView.getDraggedPiece())){
+				System.out.println("");
+				boardView.removeDraggedPiece();
+				level.removeActivePiece();
+				level.setMoveSource(null);
+				//}
+			}else{
+
 				BoardToBullpenMove m;
+
 				if(boardView.getDraggedPiece() != null){
 					m = new BoardToBullpenMove(level, boardView.getDraggedPiece());
-					if(level.getBullpen().getPieces().contains(boardView.getDraggedPiece())) return;
 				}else{
 					m = new BoardToBullpenMove(level, col, row);
 				}
@@ -134,6 +146,7 @@ public class BoardController extends MouseAdapter {
 					// Otherwise, print an error
 					System.err.println("Error: Unable to remove piece from board");
 				}
+			}
 			//}
 		} else { // Not right-clicked
 			// TODO fix this logic!
@@ -161,7 +174,7 @@ public class BoardController extends MouseAdapter {
 						System.out.println("Success!");
 						boardView.removeDraggedPiece();
 						builder.pushMove(m);
-						
+
 						level.setMoveSource(null);
 						level.setActivePiece(null);
 					}
@@ -179,7 +192,7 @@ public class BoardController extends MouseAdapter {
 					else {
 						System.err.println("Player and builder are null");
 					}
-					
+
 				} else {
 					System.out.println("Failure!");
 				}
@@ -208,7 +221,7 @@ public class BoardController extends MouseAdapter {
 					else {
 						System.err.println("Player and builder are null");
 					}
-					
+
 				} else {
 					System.out.println("Failure!");
 				}
