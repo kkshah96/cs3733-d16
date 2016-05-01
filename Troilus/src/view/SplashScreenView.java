@@ -11,9 +11,16 @@ import java.awt.Font;
 
 import javax.swing.SwingConstants;
 
+/**
+ * This class provides the template for drawing the team's Splash Screen.
+ * 
+ * @author Alex Kasparek
+ * @author Dan Alfred
+ */
+
 public class SplashScreenView extends JFrame {
 	/**
-	 * Create the application.
+	 * Create a new instance of SplashScreenView.
 	 */
 	public SplashScreenView() {
 		setResizable(false);

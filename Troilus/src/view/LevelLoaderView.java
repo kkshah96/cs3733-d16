@@ -49,41 +49,52 @@ import java.awt.SystemColor;
  *
  */
 public class LevelLoaderView extends JFrame {
+	/** The collection of buttons displayed */
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
+	
+	/** The top-level entity for this view */
 	LevelBuilder builder;
 	
+	/** Button for creating a new puzzle level */
 	JButton btnNewPuzzleLevel;
+	
+	/** Button for creating a new lightning level */
 	JButton btnNewLightningLevel;
+	
+	/** Button for creating a new release level */
 	JButton btnNewReleaseLevel;
 
 	/**
-	 * Create the application.
+	 * Creates a new instance of LevelLoaderView with the provided builder entity
+	 * @param builder Reference to the level builder entity for this view
 	 */
 	public LevelLoaderView(LevelBuilder builder) {
 		setResizable(false);
 		this.builder = builder;
 		initialize();
 	}
-
-	public void setFrameVisible() {
-		setVisible(true);
-	}
 	
+	/**
+	 * @return Reference to the new puzzle level button
+	 */
 	public JButton getPuzzleButton() {
 		return btnNewPuzzleLevel;
 	}
 	
+	/**
+	 * @return Reference to the new lightning level button
+	 */
 	public JButton getLightningButton() {
 		return btnNewLightningLevel;
 	}
 	
+	/**
+	 * @return Reference to the new release level button
+	 */
 	public JButton getReleaseButton() {
 		return btnNewReleaseLevel;
 	}
 	
-	
-	
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -100,6 +111,7 @@ public class LevelLoaderView extends JFrame {
 		pnlTitle.setBackground(Color.DARK_GRAY);
 		pnlTitle.setBorder(null);
 		
+		// Initialize and add the level creation buttons
 		btnNewPuzzleLevel = new JButton("New Puzzle Level");
 		btnNewPuzzleLevel.addActionListener(new NewPuzzleLevelController(builder, this));
 		btnNewPuzzleLevel.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -161,6 +173,7 @@ public class LevelLoaderView extends JFrame {
 		lblLevels.setBounds(0, 0, 707, 29);
 		pnlLevels.add(lblLevels);
 
+		// Initialize templates for the 15 buttons for loaded levels
 		JButton btnLevel1 = new JButton("Level 1: Puzzle");
 		btnLevel1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnLevel1.setBackground(UIManager.getColor("Button.background"));
@@ -357,6 +370,10 @@ public class LevelLoaderView extends JFrame {
 		levelButtons.add(btnLevel27);
 	}
 	
+	/**
+	 * Provides the collection of 15 level buttons
+	 * @return ArrayList of JButton containing references to the 15 level buttons
+	 */
 	public ArrayList<JButton> getLevelButtons(){
 		return levelButtons;
 	}

@@ -28,9 +28,16 @@ import model.Piece;
 public class PaletteView extends JPanel {
 	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
 
+	/** Constant to define square size in pixels */
 	public static final int SQUARE_SIZE = 10;
+	
+	/** Constant to define the pixel gap between the top of the panel and piece drawing */
 	public static final int HEIGHT_OFFSET = 100;
+	
+	/** Constant to define the pixel gap between the left of the panel and piece drawing */
 	public static final int WIDTH_OFFSET = 10;
+	
+	/** Constant to define the spacing between pieces in pixels*/
 	public static final int SPACING = 6;
 	
 	/*
@@ -38,12 +45,19 @@ public class PaletteView extends JPanel {
 	 * drawn. NOTE: This is NOT keeping track of variable state because the PaletteView always draws the same number of pieces at the same locations
 	 * We are simply storing these Pieces in locations in a HashTable as we draw them so we can access them later
 	 */
+	/** Table of pieces in this palette and their corresponding anchor coordinates */
 	Hashtable<Piece, Point> pieces;
 
+	/** The level this PaletteView is contained in */
 	Level level;
+	
+	/** The palette this view draws */
 	Palette palette;
+	
+	
 	/**
-	 * Create the panel.
+	 * Creates a new instance of PaletteView with the provided level
+	 * @param level Reference to the level to be utilized
 	 */
 	public PaletteView(Level level) {
 		pieces = new Hashtable<Piece, Point>();
@@ -52,6 +66,7 @@ public class PaletteView extends JPanel {
 		initialize();
 	}
 
+	
 	public void paintComponent(Graphics g){
 
 		// THIS WAS SUPER IMPORTANT. pls
@@ -59,6 +74,7 @@ public class PaletteView extends JPanel {
 
 		PieceDrawer pDrawer = new PieceDrawer();
 
+		// Draw each piece in the palette
 		Palette palette = level.getPalette();
 		for(int i = 0; i < Palette.NUM_PIECES; i++){
 			pieces.put(palette.getPieces().get(i), new Point(i * SPACING * SQUARE_SIZE + WIDTH_OFFSET, HEIGHT_OFFSET));
@@ -66,10 +82,17 @@ public class PaletteView extends JPanel {
 		}
 	}
 	
+	/**
+	 * Provides the table of pieces in this PaletteView and their points
+	 * @return Hashtable of Piece,Point in this view
+	 */
 	public Hashtable<Piece,Point> getDrawnPieces() {
 		return pieces;
 	}
 
+	/**
+	 * Initialize the contents of the frame.
+	 */
 	private void initialize(){
 		setLayout(null);
 

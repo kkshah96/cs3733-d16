@@ -41,31 +41,65 @@ import model.ReleaseLevel;
  *
  */
 public class LevelPlayerView extends JFrame implements ILevelView {
+	/** Panel to hold the title for the view */
 	private JPanel panelTitle;
+	
+	/** Panel to hold label indicating level type */
 	private JLabel levelLabel;
+	
+	/** Panel to hold specialized statistics for puzzle levels */
 	private JPanel panelPuzzleStats;
+	
+	/** Panel to hold specialized statistics for lightning levels */
 	private JPanel panelLightningStats;
+	
+	/** Panel to hold specialized statistics for release levels */
 	private JPanel panelReleaseStats;
+	
+	/** Label to display yellow numbers remaining */
 	private JLabel labelYellow;
+	
+	/** Label to display green numbers remaining */
 	private JLabel labelGreen;
+	
+	/** Label to display red numbers remaining */
 	private JLabel labelRed;
+	
+	/** Button to request flipping a piece horizontally */
 	JButton flipPieceHButton;
 	
+	/** Label to display moves remaining for puzzle levels */
 	JLabel movesLabel;
+	
+	/** Label to display time remaining for lightning levels */
 	JLabel timeLabel;
+	
+	/** Label to display star progress */
 	JLabel labelStars;
 
+	/** The prior level selection screen */
 	LevelSelectorView levelSelector;
+	
+	/** The top-level game entity */
 	Kabasuji game;
+	
+	/** The level this view is based on */
 	Level level;
+	
+	/** The enclosed BullpenView for this level */
 	BullpenView bullpenView;
+	
+	/** The enclosed BoardView for this level */
 	BoardView boardView;
 	
-	// flag for the timer
+	/** Flag for if the timer is active */
 	private boolean isActive;
 
 	/**
-	 * Create the application.
+	 * Creates a new instance of LevelPlayerView with the following parameters:
+	 * @param levelSelector Reference to the prior level selection screen
+	 * @param game Top-level entity class this view uses
+	 * @param level Reference to the level to be played
 	 */
 	public LevelPlayerView(LevelSelectorView levelSelector, Kabasuji game, Level level) { 
 		setResizable(false);
@@ -246,6 +280,9 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 	}
 	
 	// TODO fix messy code!
+	/**
+	 * Refreshes the specific labels/panels for each type of level
+	 */
 	public void refresh() {
 		if (level instanceof PuzzleLevel) {
 			movesLabel.setText(((PuzzleLevel) level).getMovesLeft() + "/" + ((PuzzleLevel) level).getMaxMoves());
@@ -259,21 +296,37 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		repaint();
 	}
 	
+	/**
+	 * @return Reference to the label containing remaining moves for puzzle levels
+	 */
 	public JLabel getMovesLabel() {
 		return movesLabel;
 	}
-
+	
+	/**
+	 * @return Reference to the label containing time remaining for lightning levels
+	 */
 	public JLabel getTimeLabel() {
 		return timeLabel;
 	}
+	
+	/**
+	 * @return Reference to the panel containing statistics for puzzle levels
+	 */
 	public JPanel getPanelPuzzleStats() {
 		return panelPuzzleStats;
 	}
 
+	/**
+	 * @return Reference to the panel containing statistics for lightning levels
+	 */
 	public JPanel getPanelLightningStats() {
 		return panelLightningStats;
 	}
 
+	/**
+	 * @return Reference to the panel containing statistics for release levels
+	 */
 	public JPanel getPanelReleaseStats() {
 		return panelReleaseStats;
 	}
@@ -286,13 +339,24 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		return boardView;
 	}
 	
+	/** Determines whether the timer is currently active for this level
+	 * @return True if the timer is active, false if not
+	 */
 	public boolean isActive() {
 		return isActive;
 	}
 	
+	/**
+	 * Updates the active status for the timer on this level
+	 * @param isActive The new status for the timer
+	 */
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+	
+	/**
+	 * @return Reference to label indicating level type
+	 */
 	public JLabel getLevelLabel() {
 		return levelLabel;
 	}

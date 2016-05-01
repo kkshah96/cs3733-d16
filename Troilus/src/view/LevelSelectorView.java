@@ -46,28 +46,24 @@ import java.awt.SystemColor;
  */
 
 public class LevelSelectorView extends JFrame{
-
+	/** The collection of buttons for levels loaded */
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
+	
+	/** The collection of labels displaying progress for levels loaded */
 	ArrayList<JLabel> levelLabels = new ArrayList<JLabel>();
+	
+	/** The top-level entity */
 	Kabasuji game;
 
 
-	/*
-	 * TODO: Change level % 3, and allow builder to create levels in any order they want
-	 */
-
-
 	/**
-	 * Create the application.
+	 * Creates a new instance of LevelSelectorView with the provided game entity
+	 * @param game Reference to the Kabasuji entity object to use
 	 */
 	public LevelSelectorView(Kabasuji game) {
 		setResizable(false);
 		this.game = game;
 		initialize();
-	}
-
-	public void setFrameVisible() {
-		setVisible(true);
 	}
 
 	/**
@@ -118,6 +114,7 @@ public class LevelSelectorView extends JFrame{
 		lblLevels.setBounds(0, 0, 703, 29);
 		panel.add(lblLevels);
 
+		// Initialize level buttons and progress labels
 		JButton btnLevel1 = new JButton("Level 1: Puzzle");
 		btnLevel1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnLevel1.setBackground(UIManager.getColor("Button.background"));
@@ -453,10 +450,18 @@ public class LevelSelectorView extends JFrame{
 		levelLabels.add(lblLevel27);
 	}
 	
+	/**
+	 * Provides the collection of 15 level buttons in this view
+	 * @return ArrayList of JButton for the 15 level buttons
+	 */
 	public ArrayList<JButton> getLevelButtons(){
 		return levelButtons;
 	}
 
+	/**
+	 * Provides the collection of corresponding 15 level progress labels in this view
+	 * @return Arraylist of JLabel for the 15 level progress statuses
+	 */
 	public ArrayList<JLabel> getLevelLabels() {
 		return levelLabels;
 	}
