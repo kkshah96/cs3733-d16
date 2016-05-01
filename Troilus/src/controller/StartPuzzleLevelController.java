@@ -77,7 +77,7 @@ public class StartPuzzleLevelController implements ActionListener {
 		levelView.getPanelReleaseStats().setVisible(false);
 
 		// initialize values
-		levelView.getMovesLabel().setText("" + level.getMaxMoves());
+		levelView.getMovesLabel().setText("" + level.getMaxMoves() + "/" + level.getMaxMoves());
 
 		// show level view
 		levelView.setVisible(true);
