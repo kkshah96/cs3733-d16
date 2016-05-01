@@ -46,12 +46,30 @@ public class ExitLevelController implements ActionListener {
 	}
 
 	/**
-	 * Completes the exiting of the current level
+	 * Completes the exiting of the current level.
+	 * This saves the number of stars if needed and unlocks the
+	 * next level if needed.
 	 */
 	public void process() {
+		
+		// unlock next level if at least one star is obtained
+		if (level.getNumStars() > 0) {
+			int id = level.getLevelNum();
+			
+			// make sure we are not on the last level
+			if (id < game.getNumLevels()) {
+				
+				// unlock the next level
+				Level nextLevel = game.getLevels().get(id);
+				nextLevel.setLocked(false);
+				
+				// save next level
+				new LevelXMLOutputController(nextLevel).storeLevelToFile();
+			}	
+		}
 
 		// save current level progress
-		new LevelXMLOutputController(level).saveLevelStars();;
+		new LevelXMLOutputController(level).saveLevelStars();
 
 		// tell the timer the level is over if need be
 		levelView.setActive(false);
