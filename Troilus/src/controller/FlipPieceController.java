@@ -18,10 +18,10 @@ import view.BullpenView;
 public class FlipPieceController implements ActionListener {
 	/** The current level */
 	Level level;
-	
+
 	/** The view for the bullpen in the current level */
 	BullpenView bullpenView;
-	
+
 	/** The direction to flip */
 	int direction;
 
@@ -45,15 +45,20 @@ public class FlipPieceController implements ActionListener {
 		if (activePiece == null) {
 			return;
 		}
-		
+
 		// rotate piece
 		Bullpen bullpen = level.getBullpen();
 		Piece rotatedPiece = activePiece.flipPiece(direction);
-		
+
+		// if the piece is not in the bullpen, return
+		if (!bullpen.getPieces().contains(activePiece)) {
+			return;
+		}
+
 		// reset the active piece and the bullpen
 		bullpen.getPieces().set(bullpen.getPieces().indexOf(activePiece), rotatedPiece);
 		level.setActivePiece(rotatedPiece);
-		
+
 		bullpenView.repaint();
 	}
 }
