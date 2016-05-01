@@ -39,7 +39,7 @@ public abstract class Level {
 	Piece activePiece;
 	
 	/** The source of any in-progress move*/
-	String moveSource;
+	Object moveSource;
 
 	/**
 	 * Updates the field in level with the following parameters
@@ -197,15 +197,15 @@ public abstract class Level {
 	 * Updates the source of an in-progress move in this level
 	 * @param s String representation of the source for the move
 	 */
-	public void setMoveSource(String s){
-		this.moveSource = s;
+	public void setMoveSource(Object source){
+		this.moveSource = source;
 	}
 
 	/**
 	 * Determines the source of an in-progress move for this level, or null if no move in-progress
 	 * @return String representation of move source
 	 */
-	public String getMoveSource(){
+	public Object getMoveSource(){
 		return moveSource;
 	}
 

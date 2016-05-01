@@ -43,6 +43,13 @@ public class BoardToBullpenMove extends Move{
 		this.level = level;
 	}
 	
+	public BoardToBullpenMove(Level level, Piece p){
+		this.board = level.getBoard();
+		this.bpen = level.getBullpen();
+		this.pToRemove = p;
+		this.level = level;
+	}
+	
 	/**
 	 * Completes this BoardToBullpenMove
 	 * @return True if the move is completed successfully, false otherwise

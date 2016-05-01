@@ -76,7 +76,8 @@ public class BoardController extends MouseAdapter {
 		int x = p.x;
 		int y = p.y;
 
-		// Convert to col and row using our view offsets
+		// Convert to col and row using our view offsets 
+		// TODO Will this cause rounding error? Is there a better way to do this?
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
 		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
@@ -90,13 +91,22 @@ public class BoardController extends MouseAdapter {
 		// First check what type of click
 		if (mouseButton == MouseEvent.BUTTON3) { // We have right clicked
 			// Stop dragging on right click
-			if (level.getActivePiece() != null) {
-				boardView.removeDraggedPiece();
-				level.setMoveSource(null);
-				level.setActivePiece(null);
-			} else {
+			//if (level.getActivePiece() != null) {
+				//boardView.removeDraggedPiece();
+				//level.setMoveSource(null);
+				//level.removeActivePiece(); // level.setActivePiece(null)
+			//} else {
 				// This means we want to attempt a BoardToBullpen move (send a piece on the board back to bullpen)
-				BoardToBullpenMove m = new BoardToBullpenMove(level, col, row);
+			
+				// TODO OK THIS IS MESSY, BUT IT FIXES BUG #2 IN THE BUGS GOOGLE DOC. Can we just pass a Piece to move classes instead of a row and column
+			    // so I dont need two constructors or will this not work?
+				BoardToBullpenMove m;
+				if(boardView.getDraggedPiece() != null){
+					m = new BoardToBullpenMove(level, boardView.getDraggedPiece());
+					if(level.getBullpen().getPieces().contains(boardView.getDraggedPiece())) return;
+				}else{
+					m = new BoardToBullpenMove(level, col, row);
+				}
 				if (m.doMove()) {
 
 					if (builder != null) {
@@ -124,7 +134,7 @@ public class BoardController extends MouseAdapter {
 					// Otherwise, print an error
 					System.err.println("Error: Unable to remove piece from board");
 				}
-			}
+			//}
 		} else { // Not right-clicked
 			// TODO fix this logic!
 
@@ -136,12 +146,12 @@ public class BoardController extends MouseAdapter {
 
 					// If present, we remove the piece, set active source, add call BoardView to render it
 					if (pieceToDrag != null) {
-						level.setMoveSource("Board");
+						level.setMoveSource(boardView);
 						level.setActivePiece(pieceToDrag);
 						boardView.addDraggedPiece(pieceToDrag, p);
 					}
 				}
-			} else if (level.getMoveSource() == "Bullpen") {
+			} else if (level.getMoveSource().equals(levelView.getBullpenView())) {
 				// If our source is the bullpen, then we are trying to do a BullpenToBoard move
 				BullpenToBoardMove m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
 
@@ -173,7 +183,7 @@ public class BoardController extends MouseAdapter {
 				} else {
 					System.out.println("Failure!");
 				}
-			} else if (level.getMoveSource() == "Board") {
+			} else if (level.getMoveSource() == boardView) {
 				BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row, previousCol, previousRow);
 
 				if (m.doMove()) {

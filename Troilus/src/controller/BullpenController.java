@@ -70,7 +70,7 @@ public class BullpenController extends MouseAdapter {
 	void handleMousePressed(Point p, int mouseButton) {
 		// First obtain the x and y coordinates from the mouse press
 		
-		if(boardView.getDraggedPiece() != null) return;
+		if(boardView.getDraggedPiece() != null) return; // If a piece is being dragged we don't want to interact with the bullpen
 		
 		int x = p.x;
 		int y = p.y;
@@ -128,37 +128,12 @@ public class BullpenController extends MouseAdapter {
 				// if the piece is already selected, deselect it
 				level.setActivePiece(null);
 			} else {
-				// set piece as active piece and redraw
-				level.setMoveSource("Bullpen");
-				level.setActivePiece(activePiece);
+				// set piece as active piece and set the source as the bullpenview and redraw
+				level.setMoveSource(bullpenView);
+				level.setActivePiece(activePiece); 
 			}
 		}
 		// Refresh view regardless of what happened
 		levelView.refresh();
 	}
-
-	// TODO This requires passing the BullpenController a BoardView. We can probably find a better solution		
-	// TODO How about NOT having it? It is actually really annoying		
-
-	/*public void mouseEntered(MouseEvent me){		
-		activePiece = level.getActivePiece();		
-
-		if (boardView.getDraggedPiece() != null) {		
-
-		//	if(!level.getBullpen().getPieces().contains(boardView.getDraggedPiece())){		
-			//	level.getBullpen().addPiece(boardView.getDraggedPiece());		
-			//}		
-
-			//boardView.removeDraggedPiece();		
-			//level.setActivePiece(null);		
-
-			//boardView.repaint();		
-			//bullpenView.repaint();		
-
-			//level.setMoveSource(null);	
-			//level.setActivePiece(activePiece);
-		}		
-		// Refresh view regardless of what happened
-		levelView.refresh();
-	}*/
 }
