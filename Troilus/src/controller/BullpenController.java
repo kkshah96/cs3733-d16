@@ -14,6 +14,7 @@ import model.Square;
 import view.BoardView;
 import view.BullpenView;
 import view.ILevelView;
+import view.LevelEditorView;
 
 /**
  * Class that handles events related to Bullpen.
@@ -122,7 +123,8 @@ public class BullpenController extends MouseAdapter {
 
 		// a right click will remove the selected piece from the bullpen
 		if (mouseButton == MouseEvent.BUTTON3) {
-			bullpen.removePiece(activePiece);
+			if(levelView instanceof LevelEditorView)
+				bullpen.removePiece(activePiece);
 		} else {
 			if (level.getActivePiece() == activePiece) {
 				// if the piece is already selected, deselect it
