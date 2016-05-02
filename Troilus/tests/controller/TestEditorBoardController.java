@@ -55,8 +55,7 @@ public class TestEditorBoardController extends TestCase {
 		bpController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
 		boardController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
 		boardController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON3);
-		Piece piece1 = PieceFactory.getPiece(1);
-		assertTrue(true);
+		assertEquals(board.getPieces().size(), 0);
 	}
 }
 
