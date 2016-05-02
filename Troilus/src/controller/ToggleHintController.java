@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Level;
+import model.LevelBuilder;
 import view.BoardView;
 
 /**
@@ -19,23 +20,30 @@ public class ToggleHintController implements ActionListener {
 	
 	/** The view for the board in this level */
 	BoardView boardView;
+	
+	/**The LevelBuilder that contains the board**/
+	LevelBuilder editor;
 
 	/**
 	 * Creates a new instance of ToggleHintController with the following parameters
 	 * @param level Reference to the level entity being edited
 	 * @param boardView Reference to the view of the board in this level
 	 */
-	public ToggleHintController(Level level, BoardView boardView) {
+	public ToggleHintController(Level level, LevelBuilder editor, BoardView boardView) {
 		this.level = level;
 		this.boardView = boardView;
+		this.editor = editor;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Need to implement this.");
+		//System.out.println("Need to implement this.");
 		
 		// Toggles the hint on the board and updates the view
-		level.getBoard().toggleHint();
+		Move m = new ToggleSquareHintEdit(level.getBoard().getActiveSquare(),level, level.getBoard().getActiveSquare().getCol(), level.getBoard().getActiveSquare().getRow());
+			level.getBoard().toggleHint();
+		editor.pushMove(m);
+		
 		boardView.repaint();
 	}
 }

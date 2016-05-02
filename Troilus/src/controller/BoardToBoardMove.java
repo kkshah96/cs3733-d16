@@ -100,8 +100,6 @@ public class BoardToBoardMove extends Move{
 		boolean validation = false;
 	
 		
-	
-		
 //			if(isValidUndo()){
 //				Piece p = movingPiece;
 //				level.getBoard().removePiece(movingPiece);

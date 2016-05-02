@@ -39,8 +39,9 @@ public class RedoMoveController implements ActionListener{
 		}
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
 		Move m = builder.popRedoMove();
-		builder.pushMove(m);
 		m.doMove();
+		builder.pushMove(m);
+		
 		lEV.repaint();
 		
 	}
