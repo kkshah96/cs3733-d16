@@ -69,10 +69,10 @@ public class BullpenController extends MouseAdapter {
 	}
 
 	void handleMousePressed(Point p, int mouseButton) {
+		// If a piece is being dragged we don't want to interact with the bullpen
+		//if(boardView.getDraggedPiece() != null) { return; }
+		
 		// First obtain the x and y coordinates from the mouse press
-		
-		if(boardView.getDraggedPiece() != null) return; // If a piece is being dragged we don't want to interact with the bullpen
-		
 		int x = p.x;
 		int y = p.y;
 
@@ -117,22 +117,47 @@ public class BullpenController extends MouseAdapter {
 		// check if we didn't find a piece, deselect currently selected piece
 		if (activePiece == null) {
 			level.setActivePiece(null);
+			boardView.removeDraggedPiece();
 			bullpenView.repaint();
+			boardView.repaint();
 			return;
 		}
 
 		// a right click will remove the selected piece from the bullpen
-		if (mouseButton == MouseEvent.BUTTON3) {
-			if(levelView instanceof LevelEditorView)
-				bullpen.removePiece(activePiece);
-		} else {
-			if (level.getActivePiece() == activePiece) {
-				// if the piece is already selected, deselect it
-				level.setActivePiece(null);
+		if(boardView.getDraggedPiece() == null) {
+			if (mouseButton == MouseEvent.BUTTON3) {
+				if(levelView instanceof LevelEditorView) {
+					bullpen.removePiece(activePiece);
+					level.setActivePiece(null);
+				}
 			} else {
-				// set piece as active piece and set the source as the bullpenview and redraw
-				level.setMoveSource(bullpenView);
-				level.setActivePiece(activePiece); 
+				if (level.getActivePiece() == activePiece) {
+					// if the piece is already selected, deselect it
+					level.setActivePiece(null);
+				} else {
+					// set piece as active piece and set the source as the bullpenview and redraw
+					level.setMoveSource(bullpenView);
+					level.setActivePiece(activePiece); 
+				}
+			}
+		} else {
+			if (mouseButton == MouseEvent.BUTTON3) {
+				if(levelView instanceof LevelEditorView) {
+					boardView.removeDraggedPiece();
+					level.setActivePiece(null);
+				}
+			} else {
+				if (boardView.getDraggedPiece() == activePiece) {
+					// if the piece is already selected, deselect it
+					boardView.removeDraggedPiece();
+					level.setActivePiece(null);
+				} else {
+					// set piece as active piece and set the source as the bullpenview and redraw
+					level.setMoveSource(bullpenView);
+					level.setActivePiece(activePiece); 
+					//boardView.removeDraggedPiece();
+					boardView.repaint();
+				}
 			}
 		}
 		// Refresh view regardless of what happened
