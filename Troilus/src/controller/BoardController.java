@@ -114,7 +114,7 @@ public class BoardController extends MouseAdapter {
 				//}
 			}else{
 				// Board to bullpen moves are only allowed for the builder
-				if(levelView instanceof LevelEditorView) {
+				if((levelView instanceof LevelEditorView) || (levelView instanceof LevelPlayerView && level instanceof PuzzleLevel)) {
 					BoardToBullpenMove m;
 
 					if(boardView.getDraggedPiece() != null){
