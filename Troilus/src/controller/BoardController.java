@@ -244,13 +244,4 @@ public class BoardController extends MouseAdapter {
 		}
 	}
 
-	//@Override
-	// TODO does this work?
-	// TODO Kunal has decided against this. We should instead let the piece follow the cursor unless the mouseMoved event is trigged in Bullpen (I think)
-	/*public void mouseExited(MouseEvent me) {
-		boardView.removeDraggedPiece();
-		level.setMoveSource(null);
-		level.setActivePiece(null);
-		boardView.repaint();
-	}*/
 }

@@ -77,18 +77,16 @@ public class Piece {
 		return anchor.getCol();
 	}
 	
-	// TODO fix logic here
 	/** Creates an array containing all piecesquares in this piece, including the anchor
 	 * @return Array of PieceSquares, including the anchor square
 	 */
 	public PieceSquare[] getAllSquares() {
 		PieceSquare[] allSquares = new PieceSquare[PIECE_SIZE];
 		allSquares[0] = anchor;
-		allSquares[1] = squares[0];
-		allSquares[2] = squares[1];
-		allSquares[3] = squares[2];
-		allSquares[4] = squares[3];
-		allSquares[5] = squares[4];
+		
+		for(int i = 1; i < PIECE_SIZE; i++) {
+			allSquares[i] = squares[i-1];
+		}
 		return allSquares;
 	}
 	
