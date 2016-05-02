@@ -9,8 +9,10 @@ import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
+import model.PuzzleLevel;
 import view.BoardView;
 import view.ILevelView;
+import view.LevelEditorView;
 import view.LevelPlayerView;
 
 /**
@@ -111,40 +113,42 @@ public class BoardController extends MouseAdapter {
 				level.setMoveSource(null);
 				//}
 			}else{
+				// Board to bullpen moves are only allowed for the builder
+				if(levelView instanceof LevelEditorView) {
+					BoardToBullpenMove m;
 
-				BoardToBullpenMove m;
-
-				if(boardView.getDraggedPiece() != null){
-					m = new BoardToBullpenMove(level, boardView.getDraggedPiece());
-				}else{
-					m = new BoardToBullpenMove(level, col, row);
-				}
-				if (m.doMove()) {
-
-					if (builder != null) {
-						// if we are in the level builder
-						// If the move is valid (and completed), we remove the source and active pieces
-						boardView.removeDraggedPiece();
-						builder.pushMove(m);
-
-						level.setMoveSource(null);
-						level.setActivePiece(null);
+					if(boardView.getDraggedPiece() != null){
+						m = new BoardToBullpenMove(level, boardView.getDraggedPiece());
+					}else{
+						m = new BoardToBullpenMove(level, col, row);
 					}
-					else if (game != null) {
-						// if we are in the player
-						boardView.removeDraggedPiece();
-						// end game if needed
-						if (m.getEndGameStatus()) {
-							new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+					if (m.doMove()) {
+
+						if (builder != null) {
+							// if we are in the level builder
+							// If the move is valid (and completed), we remove the source and active pieces
+							boardView.removeDraggedPiece();
+							builder.pushMove(m);
+
+							level.setMoveSource(null);
+							level.setActivePiece(null);
 						}
+						else if (game != null) {
+							// if we are in the player
+							boardView.removeDraggedPiece();
+							// end game if needed
+							if (m.getEndGameStatus()) {
+								new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+							}
+						}
+						else {
+							System.err.println("Player and builder are null");
+						}
+						// push move
+					} else {
+						// Otherwise, print an error
+						System.err.println("Error: Unable to remove piece from board");
 					}
-					else {
-						System.err.println("Player and builder are null");
-					}
-					// push move
-				} else {
-					// Otherwise, print an error
-					System.err.println("Error: Unable to remove piece from board");
 				}
 			}
 			//}
@@ -155,13 +159,16 @@ public class BoardController extends MouseAdapter {
 			if (level.getMoveSource() == null) {
 				// Then check if there is a piece at the click location
 				if (level.getBoard().getPiece(col, row) != null) {
-					Piece pieceToDrag = level.getBoard().removePiece(level.getBoard().getPiece(col, row));
+					// We can only start dragging pieces inside puzzle levels in Kabasuji, and any level anywhere else
+					if((levelView instanceof LevelPlayerView && level instanceof PuzzleLevel) || levelView instanceof LevelEditorView) {
+						Piece pieceToDrag = level.getBoard().removePiece(level.getBoard().getPiece(col, row));
 
-					// If present, we remove the piece, set active source, add call BoardView to render it
-					if (pieceToDrag != null) {
-						level.setMoveSource(boardView);
-						level.setActivePiece(pieceToDrag);
-						boardView.addDraggedPiece(pieceToDrag, p);
+						// If present, we remove the piece, set active source, add call BoardView to render it
+						if (pieceToDrag != null) {
+							level.setMoveSource(boardView);
+							level.setActivePiece(pieceToDrag);
+							boardView.addDraggedPiece(pieceToDrag, p);
+						}
 					}
 				}
 			} else if (level.getMoveSource().equals(levelView.getBullpenView())) {
@@ -197,33 +204,37 @@ public class BoardController extends MouseAdapter {
 					System.out.println("Failure!");
 				}
 			} else if (level.getMoveSource() == boardView) {
-				BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row, previousCol, previousRow);
-
-				if (m.doMove()) {
-					if (builder != null) {
-						//push move here
-						boardView.removeDraggedPiece();
-						level.setMoveSource(null);
-						level.setActivePiece(null);
-						builder.pushMove(m);
-						System.out.println("Success!");
-					}
-					else if (game != null) {
-						//push move here
-						boardView.removeDraggedPiece();
-						level.setMoveSource(null);
-						level.setActivePiece(null);
-						// exit game if needed
-						if (m.getEndGameStatus()) {
-							new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+				// We can only do a BoardToBoardMove on a puzzle level in Kabasuji, and anywhere in builder
+				if((levelView instanceof LevelPlayerView && level instanceof PuzzleLevel) || levelView instanceof LevelEditorView) {
+						
+					BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row, previousCol, previousRow);
+	
+					if (m.doMove()) {
+						if (builder != null) {
+							//push move here
+							boardView.removeDraggedPiece();
+							level.setMoveSource(null);
+							level.setActivePiece(null);
+							builder.pushMove(m);
+							System.out.println("Success!");
 						}
+						else if (game != null) {
+							//push move here
+							boardView.removeDraggedPiece();
+							level.setMoveSource(null);
+							level.setActivePiece(null);
+							// exit game if needed
+							if (m.getEndGameStatus()) {
+								new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+							}
+						}
+						else {
+							System.err.println("Player and builder are null");
+						}
+	
+					} else {
+						System.out.println("Failure!");
 					}
-					else {
-						System.err.println("Player and builder are null");
-					}
-
-				} else {
-					System.out.println("Failure!");
 				}
 			} else {
 				System.err.println("Invalid source when moving to Board");
@@ -244,13 +255,4 @@ public class BoardController extends MouseAdapter {
 		}
 	}
 
-	//@Override
-	// TODO does this work?
-	// TODO Kunal has decided against this. We should instead let the piece follow the cursor unless the mouseMoved event is trigged in Bullpen (I think)
-	/*public void mouseExited(MouseEvent me) {
-		boardView.removeDraggedPiece();
-		level.setMoveSource(null);
-		level.setActivePiece(null);
-		boardView.repaint();
-	}*/
 }

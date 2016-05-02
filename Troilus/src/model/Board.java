@@ -56,6 +56,7 @@ public class Board {
 	 * @param row Row of the square selected
 	 */
 	public void setActiveSquare(int col, int row) {
+		if(col < 0 || col >= Board.BOARD_WIDTH || row < 0 || row >= Board.BOARD_HEIGHT) { return; }
 		this.activeSquare = squares[col][row];
 	}
 

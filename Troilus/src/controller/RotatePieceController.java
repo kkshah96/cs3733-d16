@@ -50,6 +50,11 @@ public class RotatePieceController implements ActionListener {
 		Bullpen bullpen = level.getBullpen();
 		Piece rotatedPiece = activePiece.rotatePiece(degree);
 		
+		// if the piece is not in the bullpen, return
+		if (!bullpen.getPieces().contains(activePiece)) {
+			return;
+		}
+		
 		// reset the active piece and the bullpen
 		bullpen.getPieces().set(bullpen.getPieces().indexOf(activePiece), rotatedPiece);
 		level.setActivePiece(rotatedPiece);
