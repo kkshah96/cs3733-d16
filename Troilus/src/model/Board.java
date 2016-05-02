@@ -213,6 +213,7 @@ public class Board {
 			for (int column = 0; column < BOARD_WIDTH; column++) {
 				boolean valid = (row < rows) && (column < cols);
 				squares[column][row].setIsValid(valid);
+				squares[column][row].setIsHint(false);
 			}
 		}
 	}

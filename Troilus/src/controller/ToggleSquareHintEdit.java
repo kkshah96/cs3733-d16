@@ -8,15 +8,12 @@ public class ToggleSquareHintEdit extends Move{
 	Level level;
 	int col;
 	int row;
-
 	
 	//TODO: Still need to finish logic for undoing and redoing....
-	public ToggleSquareHintEdit(Square toggledSquare, Level level, int col, int row){
+	public ToggleSquareHintEdit(Square toggledSquare, Level level){
 		super();
 		this.toggledSquare = toggledSquare;
 		this.level = level;
-		this.col = col;
-		this.row = row;
 	}
 	@Override
 	public boolean doMove() {
@@ -31,8 +28,7 @@ public class ToggleSquareHintEdit extends Move{
 	@Override
 	public boolean isValid() {
 		boolean validation = false;
-		if(level.getBoard().getActiveSquare() != null && level.getBoard().getActiveSquare().getCol() == col
-				&& level.getBoard().getActiveSquare().getRow() == row){
+		if(level.getBoard().getActiveSquare() != null && level.getBoard().getActiveSquare().isValid()){
 			validation = true;
 		}
 		return validation;
