@@ -43,6 +43,7 @@ import model.Piece;
  * @author Kunal Shah
  * @author Connor Weeks
  * @author Maddy Longo
+ * @author Alex Kasparek
  *
  */
 public class LevelEditorView extends JFrame implements ILevelView {

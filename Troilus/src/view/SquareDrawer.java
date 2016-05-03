@@ -16,6 +16,7 @@ import model.Square;
  * 
  * @author Kunal Shah
  * @author Maddy Longo
+ * @author Alex Kasparek
  *
  */
 public class SquareDrawer {
