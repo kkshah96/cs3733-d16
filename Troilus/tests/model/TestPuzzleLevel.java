@@ -98,7 +98,7 @@ public class TestPuzzleLevel extends TestCase {
 		assertEquals(0, level.movesLeft);
 		assertEquals(2, level.getNumStars());
 		
-		// TODO implement checking move limit
+		// TODO implement checking move limit so it is in the Entity, not Controller
 		//BoardToBullpenMove mInvalid3 = new BoardToBullpenMove(level, 1, 1);
 		//assertFalse(mInvalid3.doMove());
 		//assertEquals(0, level.movesLeft);

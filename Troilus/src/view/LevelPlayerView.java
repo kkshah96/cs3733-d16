@@ -218,7 +218,6 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		panelPuzzleStats.setBounds(530, 52, 154, 34);
 		panel.add(panelPuzzleStats);
 
-		// TODO remove hard-coded vals!
 		movesLabel = new JLabel("Moves: 40/50");
 		movesLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		movesLabel.setBounds(6, 7, 136, 22);

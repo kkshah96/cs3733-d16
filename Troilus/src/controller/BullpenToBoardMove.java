@@ -63,12 +63,12 @@ public class BullpenToBoardMove extends Move{
 		return true;
 	}
 
-	/** Checks if adding a Piece from Bullpen to Board is valid<br /> 
-	 * Valid if the requested piece destination doesn't contain any invalid squares or other pieces
-	 * @return True if the move is valid, false otherwise
+	/** Checks if adding a Piece from Bullpen to Board is valid.
+	 * Valid if the requested piece destination doesn't contain any invalid squares or other pieces.
+	 * @return True if the move is valid, false otherwise.
 	 */
 	public boolean isValid() {
-		// TODO: if level.canMakeMove()...
+		// TODO Check if moves left in Puzzle
 		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
 

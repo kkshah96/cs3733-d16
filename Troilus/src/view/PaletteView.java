@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Hashtable;
-import java.util.Random;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,7 +13,6 @@ import javax.swing.JPanel;
 import model.Level;
 import model.Palette;
 import model.Piece;
-
 
 /**
  * GUI for a Palette in the LevelBuilder application
@@ -26,8 +24,6 @@ import model.Piece;
  *
  */
 public class PaletteView extends JPanel {
-	//static final int MAX_BOARD_SIZE = 12; // TODO: Should we define these elsewhere? 
-
 	/** Constant to define square size in pixels */
 	public static final int SQUARE_SIZE = 10;
 	

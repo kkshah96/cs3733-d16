@@ -18,6 +18,7 @@ public class Palette {
 	ArrayList<Piece> pieces;
 
 	// TODO: Handle checking there are exactly 35 pieces at execution time? 
+	// Don't we want to be flexible here?
 	/**
 	 * Creates a new instance of the Palette entity
 	 */

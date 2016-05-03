@@ -18,13 +18,13 @@ public class Kabasuji {
 	/** The levels in this entity */
 	ArrayList<Level> levels;
 	//Level activeLevel;
+	// TODO figure this out!
 
 	/**
 	 * Creates a new instance of the Kabasuji entity with an empty collection of levels
 	 */
 	public Kabasuji() {
 		initialize();
-
 	}
 
 	/**
@@ -36,13 +36,6 @@ public class Kabasuji {
 
 		// load levels into the list of levels
 		levels = loader.loadLevels();
-
-		
-		// TODO remove after testing
-//		for (Level level : levels) {
-//			level.setLocked(false);
-//		}
-		
 		
 		// automatically unlock first level if it exists
 		if(levels.size() >= 1 ) {

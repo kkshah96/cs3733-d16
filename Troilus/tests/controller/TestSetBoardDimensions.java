@@ -1,21 +1,15 @@
 package controller;
 
-import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-
 import junit.framework.TestCase;
 import model.Board;
 import model.Bullpen;
 import model.Level;
 import model.LevelBuilder;
 import model.Palette;
-import model.Piece;
-import model.PieceFactory;
 import model.PuzzleLevel;
 import model.PuzzleSquare;
 import model.Square;
-import view.BoardView;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
@@ -48,38 +42,43 @@ public class TestSetBoardDimensions extends TestCase{
 	
 	public void testSetDimensions() {
 		ActionEvent e = new ActionEvent(lsView.getToggleButton(), 0, "", 0, 0);
-
-		
-		assertEquals(12,board.getNumRows());
-		assertEquals(12,board.getNumCols());
+		assertTrue(board.getSquare(11, 11).isValid());
+		//assertEquals(12,board.getNumRows());
+		//assertEquals(12,board.getNumCols());
 		
 		lsView.setHeightField("10");
 		lsView.setWidthField("10");
 		SetBoardDimensionsController h = new SetBoardDimensionsController(level,  lsView);
-		
 		h.actionPerformed(e);
-		assertEquals(10,board.getNumRows());
-		assertEquals(10,board.getNumCols());
+		assertTrue(board.getSquare(9, 9).isValid());
+		assertFalse(board.getSquare(11, 11).isValid());
+		//assertEquals(10,board.getNumRows());
+		//assertEquals(10,board.getNumCols());
 		
 		lsView.setWidthField("9");
 		h =  new SetBoardDimensionsController(level,  lsView);
 		h.actionPerformed(e);
-		assertEquals(10,board.getNumRows());
-		assertEquals(9,board.getNumCols());
+		//assertEquals(10,board.getNumRows());
+		//assertEquals(9,board.getNumCols());
+		assertTrue(board.getSquare(8, 8).isValid());
+		assertFalse(board.getSquare(9, 9).isValid());
 		
 		lsView.setWidthField("13");
 		lsView.setHeightField("13");
 		h =  new SetBoardDimensionsController(level,  lsView);
 		h.actionPerformed(e);
-		assertEquals(10,board.getNumRows());
-		assertEquals(9,board.getNumCols());
+		//assertEquals(10,board.getNumRows());
+		//assertEquals(9,board.getNumCols());
+		assertTrue(board.getSquare(8, 8).isValid());
+		assertFalse(board.getSquare(9, 9).isValid());
 		
 		lsView.setWidthField("-1");
 		lsView.setHeightField("-1");
 		h =  new SetBoardDimensionsController(level,  lsView);
 		h.actionPerformed(e);
-		assertEquals(10,board.getNumRows());
-		assertEquals(9,board.getNumCols());
-		
+		//assertEquals(10,board.getNumRows());
+		//assertEquals(9,board.getNumCols());
+		assertTrue(board.getSquare(8, 8).isValid());
+		assertFalse(board.getSquare(9, 9).isValid());
 	}
 }

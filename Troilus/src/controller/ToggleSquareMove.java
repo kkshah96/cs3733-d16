@@ -26,6 +26,7 @@ public class ToggleSquareMove extends Move {
 		this.level = level;
 		this.activeSquare = level.getBoard().getActiveSquare();
 	}
+	
 	@Override
 	public boolean doMove() {
 		boolean validation = false;

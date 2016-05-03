@@ -1,7 +1,5 @@
 package model;
 
-// TODO: Shouldn't this be an interface now that we aren't storing anything?
-
 /**
  * Class allows for consistent manipulation of square structure.
  * 
