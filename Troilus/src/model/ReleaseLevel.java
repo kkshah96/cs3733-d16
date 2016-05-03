@@ -131,10 +131,9 @@ public class ReleaseLevel extends Level {
 		}
 	}
 
-	// TODO implement stubs!
 	/**
-	 * Determines the number of red squares covered
-	 * @return Int representation of number of red squares covered
+	 * Determines the number of red squares covered.
+	 * @return int representation of number of red squares covered.
 	 */
 	public int getRedCovered() {
 		int red = 0;
@@ -150,8 +149,8 @@ public class ReleaseLevel extends Level {
 	}
 
 	/**
-	 * Determines the number of green squares covered
-	 * @return Int representation of number of green squares covered
+	 * Determines the number of green squares covered.
+	 * @return int representation of number of green squares covered.
 	 */
 	public int getGreenCovered() {
 		int green = 0;
@@ -167,8 +166,8 @@ public class ReleaseLevel extends Level {
 	}
 
 	/**
-	 * Determines the number of yellow squares covered
-	 * @return Int representation of number of yellow squares covered
+	 * Determines the number of yellow squares covered.
+	 * @return int representation of number of yellow squares covered.
 	 */
 	public int getYellowCovered() {
 		int yellow = 0;

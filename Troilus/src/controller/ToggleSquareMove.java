@@ -35,6 +35,7 @@ public class ToggleSquareMove extends Move {
 		this.activeSquare = level.getBoard().getActiveSquare();
 	}
 	
+
 	/**
 	 * Turns this square on or off, depending on its previous status.<p>
 	 * @return true If this move is valid and done successfully. 

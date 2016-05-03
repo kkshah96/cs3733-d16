@@ -152,7 +152,8 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		boardView.setBounds(0, 114, 747, 408);
 		getContentPane().add(boardView);
 		
-		// TODO still too many listeners!!! <- I mean, we can maybe integrate SelectSquareController into BoardController
+		// TODO still too many listeners!!! <- I mean, we can maybe integrate
+		// SelectSquareController into BoardController
 		// if it is only for selecting squares on the board, but otherwise this seems fine to me (only two controllers)
 		boardView.addMouseListener(new BoardController(activeLevel, this, builder));
 		boardView.addMouseMotionListener(new BoardController(activeLevel, this, builder));
@@ -459,9 +460,9 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	 * Updates the label specifying the level type
 	 * @param type New level type
 	 */
-	public void setLevelType(String type){
+	public void setLevelType(String type) {
 		levelTypeLabel.setText(type);
-		// TODO fix this!
+		// TODO fix this! What is supposed to happen here?
 		//this.initialize();
 	}
 

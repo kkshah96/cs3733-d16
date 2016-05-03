@@ -117,8 +117,7 @@ public abstract class Level {
 	 * @return True if the level has been won, false if not
 	 */
 	public boolean hasWon() {
-		return numStars > 0; // TODO: Is this valid lol
-							 // TODO: Pretty sure it is
+		return numStars > 0;
 	}
 
 	/**

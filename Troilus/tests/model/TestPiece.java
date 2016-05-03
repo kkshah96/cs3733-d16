@@ -184,5 +184,8 @@ public class TestPiece extends TestCase {
 		
 		assertFalse(piece23.sameShape(piece24));
 		assertFalse(piece23.sameShape(piece23FV));
+		
+		assertEquals("PieceSquare", piece25.getAnchor().getType());
+		assertTrue(piece25.getAnchor().isValid());
 	}
 }

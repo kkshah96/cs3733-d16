@@ -6,7 +6,6 @@ import model.Piece;
 
 /**
  * Class for implementation of moving a piece on the board.
- * TODO THIS NEEDS TO BE FINISHED!
  * @author Alex Kasparek
  * @author Maddy
  * @author Dan Alfred
@@ -15,19 +14,19 @@ import model.Piece;
 public class BoardToBoardMove extends Move{
 	/** The level this move acts on. */
 	Level level;
-	
+
 	/** The piece utilized during the move. */
 	Piece movingPiece;
-	
+
 	/** The column on the board for destination. */
 	int col;
-	
+
 	/** The row on the board for destination. */
 	int row;
-	
+
 	/** movingPiece's previous row **/
 	int previousRow;
-	
+
 	/** movingPiece's previous column**/
 	int previousCol;
 
@@ -40,15 +39,15 @@ public class BoardToBoardMove extends Move{
 	 */
 	public BoardToBoardMove(Level level, int col, int row, int previousCol, int previousRow) {
 		super();
-		
+
 		this.level = level;
 		this.movingPiece = level.getBoard().getPiece(previousCol, previousRow);	
 		this.col = col;
 		this.row = row;
-	
+
 		this.previousCol = previousCol;
 		this.previousRow = previousRow;
-		
+
 		System.out.println("previousCol: " + previousCol);
 		System.out.println("previousRow: " + previousRow);
 	}
@@ -63,7 +62,7 @@ public class BoardToBoardMove extends Move{
 			System.out.println("Invalid move!");
 			return false;
 		}
-		
+
 		// Obtain a reference to the board and add the piece at the specified location
 		Board board  = level.getBoard();
 		board.addPiece(movingPiece, col, row);
@@ -72,7 +71,7 @@ public class BoardToBoardMove extends Move{
 		level.removeActivePiece();
 		// set end game status
 		endGameStatus = level.updateAfterMove();
-		
+
 		return true;
 	}
 
@@ -87,14 +86,14 @@ public class BoardToBoardMove extends Move{
 	 * @return True if this BoardToBoardMove is valid with the given parameters, false otherwise
 	 */
 	public boolean isValid() {
-		// TODO: if level.canMakeMove()...
+		// TODO add test for ReleaseLevel, etc.
 		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
 
-	//TODO: FINISH
+	//TODO: FINISH BoardToBoardMove and TEST
 	/**
-	 * Undoes this BoardToBoardMove
-	 * @return True if the move was undone successfully, or false otherwise
+	 * Undoes this BoardToBoardMove.
+	 * @return True if the move was undone successfully, false otherwise.
 	 */
 	public boolean undo() {
 		boolean validation = false;
@@ -108,9 +107,10 @@ public class BoardToBoardMove extends Move{
 			}
 		
 		return validation;
+
 	}
-	
-	public boolean isValidUndo(){
+
+	public boolean isValidUndo() {
 		return level.getBoard().validPlacement(movingPiece, previousCol, previousRow);
 	}
 }

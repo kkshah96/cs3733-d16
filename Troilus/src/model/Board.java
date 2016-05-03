@@ -243,7 +243,7 @@ public class Board {
 	}
 	
 	// TODO why do we need this? It doesn't even do anything meaningful.
-	
+	/*
 	public int getNumRows(){
 		int num = 0;
 		for (int row = 0; row < BOARD_HEIGHT; row++) {
@@ -265,5 +265,5 @@ public class Board {
 
 		return num;
 	}
-	
+	*/
 }
