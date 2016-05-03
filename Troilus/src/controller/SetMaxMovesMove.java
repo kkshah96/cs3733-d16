@@ -23,7 +23,14 @@ public class SetMaxMovesMove extends Move {
 		// set value
 		this.level = level;
 		this.editorView = editorView;
-		this.numMoves = Integer.parseInt(editorView.getMaxMovesField().getText());
+		try {
+			// if some error occurs
+			this.numMoves = Integer.parseInt(editorView.getMaxMovesField().getText());
+		}
+		catch (Exception e) {
+			// set to invalid amount
+			this.numMoves = -1;
+		}
 		this.previousNumMoves = level.getMaxMoves();
 	}
 
