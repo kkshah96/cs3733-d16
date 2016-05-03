@@ -382,7 +382,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		squareBannerPanel.add(ToggleButton);
 
 
-		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, boardView));
+		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, builder, boardView));
 
 		toggleHintButton = new JButton("Hint");
 		toggleHintButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));

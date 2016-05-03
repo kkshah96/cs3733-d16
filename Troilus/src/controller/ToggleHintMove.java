@@ -9,29 +9,29 @@ import model.Square;
  * @author Connor Weeks
  *
  */
-public class ToggleSquareHintMove extends Move{
+public class ToggleHintMove extends Move{
 	Square toggledSquare;
 	Level level;
-	Square activeSquare;
-	
+	//Square activeSquare;
+
 	int col;
 	int row;
-	
+
 	//TODO: Still need to finish logic for undoing and redoing....
-	public ToggleSquareHintMove(Square toggledSquare, Level level){
+	public ToggleHintMove(Square toggledSquare, Level level){
 		super();
 		this.toggledSquare = toggledSquare;
 		this.level = level;
-		this.activeSquare = level.getBoard().getActiveSquare();
+		//this.activeSquare = level.getBoard().getActiveSquare();
 	}
 	@Override
 	public boolean doMove() {
 		boolean validation = false;
+
+		// set active square 
+		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
 		
 		if(isValid()){
-			// set active square 
-			level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
-			
 			level.getBoard().toggleHint();
 			validation = true;
 		}

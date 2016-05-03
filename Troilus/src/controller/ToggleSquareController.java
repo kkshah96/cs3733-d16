@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Level;
+import model.LevelBuilder;
 import view.BoardView;
 
 /**
@@ -17,6 +18,7 @@ import view.BoardView;
  * <p>
  * @author Alexander Kasparek
  * @author Maddy Longo
+ * @author Connor Weeks
  */
 public class ToggleSquareController implements ActionListener {
 	/** The level being edited */
@@ -24,24 +26,30 @@ public class ToggleSquareController implements ActionListener {
 	
 	/** The view for the board in this level */
 	BoardView boardView;
+	
+	/** The level builder instance containing the level*/
+	LevelBuilder builder;
+	
 
 	/**
 	 * Creates a new instance of ToggleSquareController with the following parameters
 	 * @param level Reference to the level entity being edited
 	 * @param boardView Reference to the view for the board in this level
 	 */
-	public ToggleSquareController(Level level, BoardView boardView) {
+	public ToggleSquareController(Level level, LevelBuilder builder, BoardView boardView) {
 		this.level = level;
 		this.boardView = boardView;
+		this.builder = builder;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Toggles the active square and updates the boundary
-		if(level.getBoard().getPiece(level.getBoard().getActiveSquare().getCol(), level.getBoard().getActiveSquare().getRow()) == null) {
-			level.getBoard().toggleActiveSquare();
-			boardView.repaint();
+		Move m = new ToggleSquareMove(level.getBoard().getActiveSquare(),level);
+		if(m.doMove()) {
+			builder.pushMove(m);	
 		}
-			
+		
+		boardView.repaint();
 	}
 }

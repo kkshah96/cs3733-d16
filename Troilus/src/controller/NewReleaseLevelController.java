@@ -80,8 +80,8 @@ public class NewReleaseLevelController implements ActionListener {
 		newEditorView.setTimeLimitPanelVisibility(false);
 
 		// add listeners to handle input
-		newEditorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(newReleaseLevel, newEditorView));
-		newEditorView.getNumberComboBox().addActionListener(new SetSquareNumberController(newReleaseLevel, newEditorView));
+		newEditorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(newReleaseLevel, newEditorView, builder));
+		newEditorView.getNumberComboBox().addActionListener(new SetSquareNumberController(newReleaseLevel, newEditorView, builder));
 
 		// Finalize visibility
 		levelLoader.setVisible(false);
