@@ -17,16 +17,16 @@ public class RedoMoveController implements ActionListener{
 	LevelBuilder builder;
 	
 	/** The view for the level editor in the builder entity */
-	LevelEditorView lEV;
+	LevelEditorView editorView;
 	
 	/**
 	 * Creates a new instance of UndoMoveController with the following parameters
 	 * @param builder Reference to the top-level builder entity
-	 * @param lEV Reference to the view for a level in the builder entity
+	 * @param editorView Reference to the view for a level in the builder entity
 	 */
-	public RedoMoveController(LevelBuilder builder, LevelEditorView lEV){
+	public RedoMoveController(LevelBuilder builder, LevelEditorView editorView){
 		this.builder = builder;
-		this.lEV = lEV;
+		this.editorView = editorView;
 		
 	}
 
@@ -42,12 +42,18 @@ public class RedoMoveController implements ActionListener{
 			System.out.println("Nothing to redo.");
 			return;
 		}
+		
+		// can't redo if dragging a piece
+		if (editorView.getBoardView().getDraggedPiece() != null) {
+			System.out.println("Can't redo while draging");
+			return;
+		}
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
 		Move m = builder.popRedoMove();
 		m.doMove();
 		builder.pushMove(m);
 		
-		lEV.repaint();
+		editorView.repaint();
 		
 	}
 
