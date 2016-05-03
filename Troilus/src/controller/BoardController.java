@@ -12,14 +12,14 @@ import model.Piece;
 import model.PuzzleLevel;
 import view.BoardView;
 import view.ILevelView;
-import view.LevelEditorView;
 import view.LevelPlayerView;
 
 /**
  * Class to control events related to Board.
- * @author Maddy
+ * @author Maddy Longo
  * @author Alex Kasparek
  * @author Connor Weeks
+ * @author Kunal Shah
  */
 public class BoardController extends MouseAdapter {
 	/** The BoardView modified in this controller. */

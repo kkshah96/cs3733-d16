@@ -6,7 +6,6 @@ import java.awt.event.MouseEvent;
 import java.util.Hashtable;
 import java.util.Set;
 
-import model.Bullpen;
 import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
@@ -16,16 +15,15 @@ import model.Square;
 import view.BoardView;
 import view.BullpenView;
 import view.ILevelView;
-import view.LevelEditorView;
 import view.LevelPlayerView;
 
 /**
  * Class that handles events related to the Bullpen for the current level.
- * @author Maddy
- * @author Alex
- * @author Connor
- * @author Kunal
- * @author Dan
+ * @author Maddy Longo 
+ * @author Alex Kasparek
+ * @author Connor Weeks
+ * @author Kunal Kunal
+ * @author Dan Alfred
  * 
  */
 public class BullpenController extends MouseAdapter {

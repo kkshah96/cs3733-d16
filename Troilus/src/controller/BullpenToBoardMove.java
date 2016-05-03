@@ -24,7 +24,6 @@ public class BullpenToBoardMove extends Move{
 	/** The row of the square as the requested destination in the board */
 	int row;
 	
-
 	/**
 	 * Creates a new instance of the BullpentoBoardMove with the given parameters
 	 * @param level The level to perform the move on
@@ -71,8 +70,6 @@ public class BullpenToBoardMove extends Move{
 		// TODO Check if moves left in Puzzle
 		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
-
-	//TODO: IS THIS CORRECT?
 	
 	/** Logic for undoing this BullpenToBoardMove. Places the piece back into the bullpen and removes it from the board.<br /> 
 	 * Valid if the requested piece destination doesn't contain any invalid squares or other pieces.

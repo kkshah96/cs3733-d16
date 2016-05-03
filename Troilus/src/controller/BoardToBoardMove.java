@@ -7,8 +7,9 @@ import model.Piece;
 /**
  * Class for implementation of moving a piece on the board.
  * @author Alex Kasparek
- * @author Maddy
+ * @author Maddy Longo
  * @author Dan Alfred
+ * @author Kunal Shah
  *
  */
 public class BoardToBoardMove extends Move{

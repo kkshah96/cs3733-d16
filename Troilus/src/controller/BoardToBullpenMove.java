@@ -9,6 +9,7 @@ import model.Level;
  * Class for implementation of removing a piece from the board back to the bullpen.
  * @author Maddy Longo
  * @author Connor Weeks
+ * @author Kunal Shah
  *
  */
 public class BoardToBullpenMove extends Move{
