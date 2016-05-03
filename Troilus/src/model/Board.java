@@ -101,18 +101,10 @@ public class Board {
 
 		// Check if there is already a piece at the requested location- cannot place if so
 		Piece getP = getPiece(col, row);
-		if (getP != null) {
+		if (getP != null && getP != piece) {
 			System.out.print("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
 			return false;
 		}
-
-		// TODO remove anchor square check
-		/*
-		if (!getSquare(col, row).isValid()) {
-			System.out.println("Anchor square placed at disabled square");
-			return false;
-		}
-		*/
 
 		for (PieceSquare square : piece.getAllSquares()) {
 			// check if each square is in board area
@@ -132,7 +124,7 @@ public class Board {
 			}
 
 			// Check for overlapping pieces
-			if (getPiece(absCol, absRow) != null) {
+			if (getPiece(absCol, absRow) != null && getPiece(absCol, absRow) != piece) {
 				System.out.println("Overlapping pieces");
 				return false;
 			}	
