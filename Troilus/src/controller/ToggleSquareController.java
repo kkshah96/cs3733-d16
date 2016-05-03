@@ -38,7 +38,10 @@ public class ToggleSquareController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Toggles the active square and updates the boundary
-		level.getBoard().toggleActiveSquare();
-		boardView.repaint();
+		if(level.getBoard().getPiece(level.getBoard().getActiveSquare().getCol(), level.getBoard().getActiveSquare().getRow()) == null) {
+			level.getBoard().toggleActiveSquare();
+			boardView.repaint();
+		}
+			
 	}
 }
