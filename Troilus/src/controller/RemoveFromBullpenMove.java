@@ -9,11 +9,14 @@ import model.Piece;
  * @author Kunal Shah
  */
 public class RemoveFromBullpenMove extends Move{
-	/** The level utilized in this move */
+	/** The level utilized in this move. */
 	Level level;
 	
-	/** The piece clicked in the Bullpen **/
+	/** The piece clicked in the bullpen. **/
 	Piece clickedPiece;
+	
+	/** The current level's bullpen. */
+	Bullpen bullpen;
 	
 	/**
 	 * Creates a new instance of the RemoveFromBullpenMove with the given parameters.
@@ -24,15 +27,13 @@ public class RemoveFromBullpenMove extends Move{
 		super();
 		this.level = level;
 		this.clickedPiece = clickedPiece;
+		this.bullpen = level.getBullpen();
 	}
 
 	/** Adds the piece to the Board if valid 
 	 * @return True if the move is completed successfully, false otherwise
 	 */
 	public boolean doMove() {
-		// Create references to the bullpen
-		Bullpen bullpen = level.getBullpen();
-
 		// Check if the move is valid. If not, return false
 		if (!isValid()) {
 			return false;
@@ -45,20 +46,18 @@ public class RemoveFromBullpenMove extends Move{
 	}
 
 	/** Checks if removing a Piece from Bullpen is valid.
-	 * Should always return true as this move can never be invalid
-	 * @return True
+	 * @return True if there are pieces in the bullpen.
 	 */
 	public boolean isValid() {
-		return true;
+		return bullpen.getNumPieces() > 0;
 	}
 	
 	/** Logic for undoing this RemoveFromBullpenMove. Adds the piece back to the bullpen.
-	 * @return True if the move is valid, false otherwise.
+	 * @return True if the move is valid (which it always should be).
 	 */
 	public boolean undo() {
-		Bullpen bpen = level.getBullpen();
+		bullpen.addPiece(clickedPiece);
 		level.removeActivePiece();
-		bpen.addPiece(clickedPiece);
 		return true;
 	}
 }

@@ -29,7 +29,7 @@ public class RedoMoveController implements ActionListener{
 		this.editorView = editorView;
 	}
 
-	/**Handles action of the "Redo" button being pressed. Pops move off of the redo stack if there is one,
+	/** Handles action of the "Redo" button being pressed. Pops move off of the redo stack if there is one,
 	 * and redoes the most recently undone move. <p>
 	 * 
 	 * @param e The ActionEvent
@@ -47,11 +47,16 @@ public class RedoMoveController implements ActionListener{
 			System.out.println("Can't redo while dragging");
 			return;
 		}
-		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
-		Move m = builder.popRedoMove();
-		m.doMove();
-		builder.pushMove(m);
 		
+		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
+		// TODO does this work?
+		Move m = builder.popRedoMove();
+		if (m.doMove()) {
+			System.out.println("Redid move " + m.getClass().toString());
+			builder.pushMove(m);
+		} else {
+			builder.pushRedoMove(m);
+		}
 		editorView.refresh();
 	}
 }

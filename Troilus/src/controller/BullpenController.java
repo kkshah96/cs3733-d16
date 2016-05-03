@@ -98,7 +98,6 @@ public class BullpenController extends MouseAdapter {
 		int y = p.y;
 
 		if (mouseButton == MouseEvent.BUTTON3) { // right click
-			System.out.println("Right click");
 			if (boardView.getDraggedPiece() != null) { // right click and dragging
 				level.removeActivePiece();
 				level.setMoveSource(null);
@@ -120,9 +119,7 @@ public class BullpenController extends MouseAdapter {
 				//boardView.updateDraggedPiece(null);
 			}
 		} else {
-			System.out.println("Left click");
 			if (boardView.getDraggedPiece() != null) { // left-click while dragging
-				System.out.println("Dragging a piece");
 				if (level.getMoveSource() == level.getBoard()) { // Move from Board
 					Move m = new BoardToBullpenMove(level, level.getActivePiece());
 					if (m.doMove()) {
@@ -164,20 +161,17 @@ public class BullpenController extends MouseAdapter {
 							}
 							level.setMoveSource(level.getBullpen());
 							level.setActivePiece(getClickedPiece(x, y));
-							//boardView.updateDraggedPiece(p);
 						}
 					}
 				}
 			} else { // left-click while not dragging
-				System.out.println("Not dragging a piece");
 				Piece clickedPiece = getClickedPiece(x, y);
 				if (clickedPiece != null) { // Clicked a piece
 					level.setMoveSource(level.getBullpen());
 					level.setActivePiece(clickedPiece);
-					//boardView.updateDraggedPiece(p);
-					System.out.println("Clicked piece is not null");
+					//System.out.println("Clicked piece is not null");
 				}
-				System.out.println("Clicked piece is null");
+				//System.out.println("Clicked piece is null");
 			}
 		}
 		levelView.refresh();
