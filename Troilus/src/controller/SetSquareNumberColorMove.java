@@ -1,27 +1,30 @@
 package controller;
 
+import java.awt.Color;
+
 import model.Level;
 import model.ReleaseSquare;
 
-public class SetSquareNumberMove extends Move{
+public class SetSquareNumberColorMove extends Move{
 	
 	ReleaseSquare setSquare;
 	Level level;
 	int num;
-	int previousNum;
+	Color c;
+	Color previousColor;
 
-	public SetSquareNumberMove(ReleaseSquare setSquare, Level level, int num){
+	public SetSquareNumberColorMove(ReleaseSquare setSquare, Level level, Color c){
 		this.level = level;
 		this.setSquare = setSquare;
-		this.num = num;
-		previousNum = setSquare.getNumber();
+		this.c = c;
+		previousColor = setSquare.getNumberColor();
 		
 	}
 	
 	@Override
 	public boolean doMove() {
 		if(isValid()){
-			setSquare.setNumber(num);
+			setSquare.setNumberColor(c);
 		}
 		return false;
 	}
@@ -29,7 +32,7 @@ public class SetSquareNumberMove extends Move{
 	@Override
 	public boolean isValid() {
 		boolean validation = false;
-		if(!(num < 1 || num > 6) && setSquare.isValid()){
+		if(setSquare.isValid()){
 			validation = true;
 		}
 		return validation;
@@ -38,7 +41,7 @@ public class SetSquareNumberMove extends Move{
 	@Override
 	public boolean undo() {
 		if(setSquare.isValid()){
-			setSquare.setNumber(previousNum);
+			setSquare.setNumberColor(previousColor);
 			return true;
 		}
 		return false;

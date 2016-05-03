@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Level;
+import model.LevelBuilder;
 import model.ReleaseSquare;
 import view.LevelEditorView;
 
@@ -20,14 +21,16 @@ public class SetSquareNumberColorController implements ActionListener {
 	/** The view for the level being edited */
 	LevelEditorView editorView;
 
+	LevelBuilder builder;
 	/**
 	 * Creates a new instance of SetSquareNumberColorController with the following parameters
 	 * @param level Reference to the level entity being edited
 	 * @param editorView Reference to the view for the level being edited
 	 */
-	public SetSquareNumberColorController(Level level, LevelEditorView editorView) {
+	public SetSquareNumberColorController(Level level, LevelEditorView editorView, LevelBuilder builder) {
 		this.level = level;
 		this.editorView = editorView;
+		this.builder = builder;
 	}
 
 	@Override
@@ -43,11 +46,20 @@ public class SetSquareNumberColorController implements ActionListener {
 
 		// Process based on value selected
 		if (color.equals("Red")) {
-			square.setNumberColor(Color.RED);
+			Move m = new SetSquareNumberColorMove((ReleaseSquare)level.getBoard().getActiveSquare(), 
+					level, Color.RED);
+			m.doMove();
+			builder.pushMove(m);
 		} else if (color.equals("Yellow")) {
-			square.setNumberColor(Color.YELLOW);
+			Move m = new SetSquareNumberColorMove((ReleaseSquare)level.getBoard().getActiveSquare(), 
+					level, Color.YELLOW);
+			m.doMove();
+			builder.pushMove(m);
 		} else if (color.equals("Green")) {
-			square.setNumberColor(Color.GREEN);
+			Move m = new SetSquareNumberColorMove((ReleaseSquare)level.getBoard().getActiveSquare(), 
+					level, Color.GREEN);
+			m.doMove();
+			builder.pushMove(m);
 		} else {
 			System.out.printf("Error: Invalid color of %s\n", color);
 			return;

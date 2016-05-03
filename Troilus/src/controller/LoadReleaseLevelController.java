@@ -73,7 +73,7 @@ public class LoadReleaseLevelController implements ActionListener {
 		editorView.setTimeLimitPanelVisibility(false);
 
 		// add listeners to handle input
-		editorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(level, editorView));
+		editorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(level, editorView, builder));
 		editorView.getNumberComboBox().addActionListener(new SetSquareNumberController(level, editorView, builder));
 
 		// show level view

@@ -36,7 +36,7 @@ public class TestSetSquareNumberColorController extends TestCase {
 		editorView.getNumberColorComboBox().setSelectedItem("Red");
 		editorView.getNumberComboBox().setSelectedItem("1");
 		
-		SetSquareNumberColorController setColor = new SetSquareNumberColorController(level, editorView);
+		SetSquareNumberColorController setColor = new SetSquareNumberColorController(level, editorView, builder);
 		SetSquareNumberController setNumber = new SetSquareNumberController(level, editorView, builder);
 		ActionEvent ae = new ActionEvent(editorView.getNumberColorComboBox(), 0, null, 0, 0);
 		setColor.actionPerformed(ae);
