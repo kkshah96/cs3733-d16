@@ -108,6 +108,12 @@ public class BoardView extends JPanel {
 		}
 	}
 	
+	/** Gets dragged piece from level */
+	public void updateDraggedPiece(Point piecePoint) {
+		this.draggedPiece = level.getActivePiece();
+		this.draggedPiecePoint = piecePoint;
+	}
+	
 	/**
 	 * Adds a dragged piece to the Board
 	 * @param piece Reference to piece to set as dragged

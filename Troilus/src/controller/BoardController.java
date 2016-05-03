@@ -333,7 +333,7 @@ public class BoardController extends MouseAdapter {
 
 		// If so, we need to have the BoardView set and render it
 		if (activePiece != null) {
-			boardView.addDraggedPiece(activePiece, me.getPoint());
+			boardView.updateDraggedPiece(me.getPoint());
 			boardView.repaint();
 		}
 	}

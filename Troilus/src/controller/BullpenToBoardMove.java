@@ -77,12 +77,8 @@ public class BullpenToBoardMove extends Move{
 		Bullpen bpen = level.getBullpen();
 		Board board = level.getBoard();
 
-//		if (!isValid()) {
-//			return false;
-//		}
-
 		bpen.addPiece(movingPiece);
-//		level.removeActivePiece();
+		level.removeActivePiece();
 		board.removePiece(movingPiece);
 
 		return true;

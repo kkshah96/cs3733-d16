@@ -152,7 +152,8 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		boardView.setBounds(0, 114, 747, 408);
 		getContentPane().add(boardView);
 		
-		// TODO still too many listeners!!!
+		// TODO still too many listeners!!! <- I mean, we can maybe integrate SelectSquareController into BoardController
+		// if it is only for selecting squares on the board, but otherwise this seems fine to me (only two controllers)
 		boardView.addMouseListener(new BoardController(activeLevel, this, builder));
 		boardView.addMouseMotionListener(new BoardController(activeLevel, this, builder));
 		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
@@ -183,8 +184,8 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		bullpenView.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		bullpenView.setBackground(Color.LIGHT_GRAY);
 		bullpenView.setBounds(748, 38, 457, 484);
-		bullpenView.addMouseListener(new BullpenController(activeLevel, this));
-		bullpenView.addMouseMotionListener(new BullpenController(activeLevel, this));
+		bullpenView.addMouseListener(new BullpenController(activeLevel, this, builder));
+		bullpenView.addMouseMotionListener(new BullpenController(activeLevel, this, builder));
 
 		bullpenScrollPane.setBounds(6, 50, 446, 423);
 		bullpenScrollPane.setViewportView(bullpenView);

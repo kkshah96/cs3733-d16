@@ -46,7 +46,8 @@ public class ToggleSquareMove extends Move {
 	@Override
 	public boolean isValid() {
 		boolean validation = false;
-		if(level.getBoard().getActiveSquare() != null){
+		if(level.getBoard().getActiveSquare() != null 
+				&& level.getBoard().getPiece(level.getBoard().getActiveSquare().getCol(), level.getBoard().getActiveSquare().getRow()) == null){
 			validation = true;
 		}
 		return validation;
