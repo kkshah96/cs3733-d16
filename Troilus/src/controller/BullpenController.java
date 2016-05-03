@@ -96,10 +96,21 @@ public class BullpenController extends MouseAdapter {
 				level.setMoveSource(null);
 				boardView.updateDraggedPiece(null);
 			} else if (builder != null) { // right click and not dragging
-				level.getBullpen().removePiece(getClickedPiece(x, y));
-				level.removeActivePiece();
-				level.setMoveSource(null);
-				boardView.updateDraggedPiece(null);
+				
+				RemoveFromBullpenMove m = new RemoveFromBullpenMove(level, getClickedPiece(x, y));
+				if (m.doMove()) {
+					level.setMoveSource(null);
+					boardView.updateDraggedPiece(null);
+					bullpenView.repaint();
+					
+					builder.pushMove(m);
+					return;
+				}
+				
+				//level.getBullpen().removePiece(getClickedPiece(x, y));
+				//level.removeActivePiece();
+				//level.setMoveSource(null);
+				//boardView.updateDraggedPiece(null);
 			}
 		} else {
 			System.out.println("Left click");

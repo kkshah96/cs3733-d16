@@ -5,25 +5,25 @@ import model.Level;
 import model.Piece;
 
 /** 
- * Class for implementation of moving a piece from palette to bullpen.
+ * Class for implementation of deleting a piece from the bullpen
  * @author Kunal Shah
  */
-public class PaletteToBullpenMove extends Move{
+public class RemoveFromBullpenMove extends Move{
 	/** The level utilized in this move */
 	Level level;
 	
-	/** The piece selected in the Palette **/
-	Piece selectedPiece;
+	/** The piece clicked in the Bullpen **/
+	Piece clickedPiece;
 	
 	/**
-	 * Creates a new instance of the PaletteToBullpenMove with the given parameters
+	 * Creates a new instance of the RemoveFromBullpenMove with the given parameters
 	 * @param level The level to perform the move on
-	 * @param selectedPiece A reference to the selectedPiece in the level
+	 * @param clickedPiece A reference to the piece right clicked in the bullpen
 	 */
-	public PaletteToBullpenMove(Level level, Piece selectedPiece) {
+	public RemoveFromBullpenMove(Level level, Piece clickedPiece) {
 		super();
 		this.level = level;
-		this.selectedPiece = selectedPiece;
+		this.clickedPiece = clickedPiece;
 	}
 
 	/** Adds the piece to the Board if valid 
@@ -38,13 +38,13 @@ public class PaletteToBullpenMove extends Move{
 			return false;
 		}
 
-		// Add the piece to the bullpen
-		bullpen.addPiece(selectedPiece);
+		// Remove the piece from the bullpen
+		bullpen.removePiece(clickedPiece);
 
 		return true;
 	}
 
-	/** Checks if adding a Piece from Palette to Bullpen is valid.
+	/** Checks if removing a Piece from Bullpen is valid.
 	 * Should always return true as this move can never be invalid
 	 * @return True
 	 */
@@ -52,13 +52,13 @@ public class PaletteToBullpenMove extends Move{
 		return true;
 	}
 	
-	/** Logic for undoing this PaletteToBullpenMove. Removes the piece from the bullpen
+	/** Logic for undoing this RemoveFromBullpenMove. Adds the piece back to the bullpen
 	 * @return True if the move is valid, false otherwise
 	 */
 	public boolean undo() {
 		Bullpen bpen = level.getBullpen();
 
-		bpen.removePiece(selectedPiece);
+		bpen.addPiece(clickedPiece);
 		return true;
 	}
 }
