@@ -6,8 +6,8 @@ import model.Bullpen;
 import model.Level;
 
 /**
- * Class for implemenation of removing a piece from the board.
- * @author Maddy
+ * Class for implementation of removing a piece from the board.
+ * @author Maddy Longo
  * @author Connor Weeks
  *
  */
@@ -16,7 +16,7 @@ public class BoardToBullpenMove extends Move{
 	Level level;
 	
 	/** The piece utilized during this move */
-	Piece pToRemove;
+	Piece piece;
 	
 	/** The board destination used during this move */
 	Board board;
@@ -39,15 +39,28 @@ public class BoardToBullpenMove extends Move{
 	public BoardToBullpenMove(Level level, int col, int row) {
 		this.board = level.getBoard();
 		this.bpen = level.getBullpen();
-		this.pToRemove = board.getPiece(col, row);
+		this.piece = board.getPiece(col, row);
 		this.level = level;
+		if (board.getPiece(col, row) != null) {
+			this.row = board.getPieces().get(board.getPiece(col, row)).y;
+			this.col = board.getPieces().get(board.getPiece(col, row)).x;
+		}
 	}
 	
+	/**
+	 * Creates an instance of a BoardToBullpenMove with the specified parameters
+	 * @param level The level to be modified during the move
+	 * @param p The piece to be moved
+	 */
 	public BoardToBullpenMove(Level level, Piece p){
 		this.board = level.getBoard();
 		this.bpen = level.getBullpen();
-		this.pToRemove = p;
+		this.piece = p;
 		this.level = level;
+		if (board.getPieces().containsKey(p)) {
+			this.row = board.getPieces().get(p).y;
+			this.col = board.getPieces().get(p).x;
+		}
 	}
 	
 	/**
@@ -61,7 +74,7 @@ public class BoardToBullpenMove extends Move{
 		}
 		
 		// Remove the requested piece from the board and add it to the bullpen
-		bpen.addPiece(board.removePiece(pToRemove));
+		bpen.addPiece(board.removePiece(piece));
 		
 		// Remove the active piece reference in level and signal to refresh
 		level.removeActivePiece();
@@ -75,9 +88,8 @@ public class BoardToBullpenMove extends Move{
 	 * Valid if the piece selected is not null
 	 * @return True if the move is valid, false otherwise
 	 */
-	//TODO: Shouldn't this have a check that the given piece is on the board?
 	public boolean isValid() {
-		return pToRemove != null;
+		return (piece != null) && (board.getPieces().containsKey(piece));
 	}
 	
 	/**
@@ -85,7 +97,12 @@ public class BoardToBullpenMove extends Move{
 	 * @return True if completed successfully, false otherwise
 	 */
 	public boolean undo() {
-		// TODO implement undo()
+		System.out.println(row + " " + col);
+		if (level.getBoard().validPlacement(piece, col, row)) {
+			level.getBoard().addPiece(piece, col, row);
+			bpen.removePiece(piece);
+			return true;
+		}
 		return false;
 	}
 }
