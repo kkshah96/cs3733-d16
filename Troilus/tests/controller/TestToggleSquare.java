@@ -48,11 +48,11 @@ public class TestToggleSquare extends TestCase{
 		
 		assertEquals(board.getSquare(1, 1), s);
 		assertEquals(true, board.getActiveSquare().isValid());
-		ToggleSquareController h = new ToggleSquareController(level,  lsView.getBoardView());
+		ToggleSquareController h = new ToggleSquareController(level, lb, lsView.getBoardView());
 		h.actionPerformed(e);
 		assertEquals(false, board.getActiveSquare().isValid());
 		
-		h = new ToggleSquareController(level,  lsView.getBoardView());
+		h = new ToggleSquareController(level, lb, lsView.getBoardView());
 		h.actionPerformed(e);
 		
 		assertEquals(true, board.getActiveSquare().isValid());
