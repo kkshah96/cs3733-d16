@@ -41,7 +41,10 @@ public class ToggleSquareHintEdit extends Move{
 	@Override
 	public boolean undo() {
 		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
+		System.out.println("Mean to toggle hint of: col " + toggledSquare.getCol() + " row " + toggledSquare.getRow());
 		level.getBoard().toggleHint();
+		System.out.println("Mean to toggle hint of: col " + level.getBoard().getActiveSquare().getCol() 
+				+ " row " + level.getBoard().getActiveSquare().getRow());
 		return true;
 	}
 

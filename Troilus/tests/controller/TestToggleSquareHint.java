@@ -58,6 +58,19 @@ public class TestToggleSquareHint {
 		assertTrue(board.getActiveSquare().isHint());
 		
 		
+		board.setActiveSquare(2, 2);
+		m = new ToggleSquareHintEdit(board.getActiveSquare(), level, 2, 2);
+		assertFalse(board.getActiveSquare().isHint());
+		m.doMove();
+		assertTrue(board.getActiveSquare().isHint());
+		
+		//Undo setting (2,2) As a hint
+		
+		m.undo();
+		assertFalse(board.getActiveSquare().isHint());
+		
+	
+		
 		
 	}
 
