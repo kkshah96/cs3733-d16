@@ -58,7 +58,7 @@ public class NewReleaseLevelController implements ActionListener {
 
 		// Create board, palette, and level, and add level to builder entity
 		Board board = new Board(squares);
-		Palette p = new Palette();
+		Palette p = Palette.getInstance();
 		ReleaseLevel newReleaseLevel = new ReleaseLevel(builder.getLevels().size() + 1, true, bpen, board, p);
 		builder.addLevel(newReleaseLevel);
 

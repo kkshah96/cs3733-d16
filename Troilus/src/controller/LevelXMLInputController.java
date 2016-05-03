@@ -160,13 +160,13 @@ public class LevelXMLInputController {
 
 			// Create the new level object based on the type property read
 			if (levelType.equals("Release")) {
-				level = new ReleaseLevel(levelNumber, levelLocked, bullpen, board, new Palette());
+				level = new ReleaseLevel(levelNumber, levelLocked, bullpen, board, Palette.getInstance());
 			} else if(levelType.equals("Lightning")) {
 				int levelTime = Integer.parseInt(rootLevelElement.getAttribute("Time"));
-				level = new LightningLevel(levelNumber, levelLocked, bullpen, board, new Palette(), levelTime);
+				level = new LightningLevel(levelNumber, levelLocked, bullpen, board, Palette.getInstance(), levelTime);
 			} else if(levelType.equals("Puzzle")) {
 				int maxMoves = Integer.parseInt(rootLevelElement.getAttribute("MaxMoves"));
-				level = new PuzzleLevel(levelNumber, levelLocked, bullpen, board, new Palette(), maxMoves);
+				level = new PuzzleLevel(levelNumber, levelLocked, bullpen, board, Palette.getInstance(), maxMoves);
 			}
 			
 			// Restore progress

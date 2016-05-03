@@ -11,6 +11,10 @@ import java.util.ArrayList;
  *
  */
 public class Palette {
+	
+	/** Make this a singleton object because the Palette should never change after instantiated **/
+	private static Palette instance = new Palette(); 
+	
 	/** Constant to identify the maximum number of a pieces a palette can contain*/
 	public static final int NUM_PIECES = 35;
 	
@@ -22,33 +26,16 @@ public class Palette {
 	/**
 	 * Creates a new instance of the Palette entity
 	 */
-	public Palette(){
-		pieces = new ArrayList<Piece>();
-		initialize();
+	private Palette(){
+		if(instance == null){
+			pieces = new ArrayList<Piece>();
+			initialize();
+		}
 	}
 	
-	/*public Piece getPiece(int index){
-		return pieces[index];
-	}*/
-
-	// TODO: Assumed we would need to be able to get a piece from the Palette so I added this
-	// TODO: This is a palette- do we need this?
-	/*public Piece getPiece(int row, int col) {
-		//Set<Piece> keySet = pieces.keySet();
-		//for (Piece piece : keySet) {
-			//Point p = pieces.get(piece);
-			//if (p.getY() == row && p.getX() == col) {
-				//return piece;
-			//}
-		//}
-		//return null;
-		for (int i = 0; i < pieces.size(); i++) {
-			if (pieces.get(i).getRow() == row && pieces.get(i).getCol() == col) {
-				return pieces.get(i);
-			}
-		}
-		return null;
-	}*/
+	public static Palette getInstance(){
+		return instance;
+	}
 	
 	/**
 	 * Provides a reference to the collection of pieces in the palette

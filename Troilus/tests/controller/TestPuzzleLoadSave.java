@@ -23,7 +23,7 @@ public class TestPuzzleLoadSave extends TestCase {
 				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
-		level = new PuzzleLevel(1, true, new Bullpen(), new Board(squares), new Palette(), 15);
+		level = new PuzzleLevel(1, true, new Bullpen(), new Board(squares), Palette.getInstance(), 15);
 		
 		// Initialize view
 		builder = new LevelBuilder();

@@ -26,7 +26,7 @@ public class TestFileInOutControllers extends TestCase {
 			}
 		}
 		
-		Level level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), new Palette(), 8);
+		Level level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), Palette.getInstance(), 8);
 		
 		int oldNumLevels = lb.getNumLevels();
 		lb.addLevel(level);

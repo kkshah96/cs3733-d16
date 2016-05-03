@@ -17,7 +17,7 @@ public class TestPuzzleLevel extends TestCase {
 				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
-		level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), new Palette(), 8);
+		level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), Palette.getInstance(), 8);
 		
 		assertEquals(8, level.getMaxMoves());
 		assertEquals(8, level.movesLeft);

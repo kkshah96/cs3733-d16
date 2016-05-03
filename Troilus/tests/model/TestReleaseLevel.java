@@ -29,7 +29,7 @@ public class TestReleaseLevel extends TestCase {
 			squares[2][i].setNumber(i + 1);
 			squares[2][i].setNumberColor(Color.YELLOW);
 		}
-		level = new ReleaseLevel(1, false, new Bullpen(), new Board(squares), new Palette());
+		level = new ReleaseLevel(1, false, new Bullpen(), new Board(squares), Palette.getInstance());
 		level.getBullpen().addPiece(PieceFactory.getPiece(1));
 		level.getBullpen().addPiece(PieceFactory.getPiece(1));
 		level.getBullpen().addPiece(PieceFactory.getPiece(1));

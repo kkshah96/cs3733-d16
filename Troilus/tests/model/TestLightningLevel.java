@@ -13,7 +13,7 @@ public class TestLightningLevel extends TestCase {
 				squares[i][j] = new LightningSquare(i, j, true);
 			}
 		}
-		level = new LightningLevel(1, false, new Bullpen(), new Board(squares), new Palette(), 60);
+		level = new LightningLevel(1, false, new Bullpen(), new Board(squares), Palette.getInstance(), 60);
 		
 		level.getBullpen().addPiece(PieceFactory.getPiece(1));
 		level.getBullpen().addPiece(PieceFactory.getPiece(1));

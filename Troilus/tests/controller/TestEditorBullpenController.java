@@ -35,7 +35,7 @@ public class TestEditorBullpenController extends TestCase {
 		
 		board = new Board(squares);
 		lb = new LevelBuilder();
-		level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
+		level = new PuzzleLevel(0, false, new Bullpen(), board, Palette.getInstance(), 0);
 		LevelLoaderView lView = new LevelLoaderView(lb);
 		lsView = new LevelEditorView(lb, lView, level);
 		bpController = new BullpenController(level, lsView, lb);

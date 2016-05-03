@@ -26,7 +26,7 @@ public class TestLevelPlayerView {
 			}
 		}
 		
-		Level level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), new Palette(), 8);
+		Level level = new PuzzleLevel(1, false, new Bullpen(), new Board(squares), Palette.getInstance(), 8);
 		
 		LevelPlayerView playerView = new LevelPlayerView(selectorView, game, level);
 		

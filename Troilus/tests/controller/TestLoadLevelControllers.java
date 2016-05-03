@@ -28,7 +28,7 @@ public class TestLoadLevelControllers extends TestCase {
 			}
 		}
 		Board board = new Board(squares);
-		Palette palette = new Palette();
+		Palette palette = Palette.getInstance();
 		PuzzleLevel level = new PuzzleLevel(0, false, bullpen, board, palette, 0);
 		
 		LoadPuzzleLevelController loadPuzzle = new LoadPuzzleLevelController(loader, level, builder);
@@ -51,7 +51,7 @@ public class TestLoadLevelControllers extends TestCase {
 			}
 		}
 		Board board = new Board(squares);
-		Palette palette = new Palette();
+		Palette palette = Palette.getInstance();
 		LightningLevel level = new LightningLevel(0, false, bullpen, board, palette, 0);
 		
 		LoadLightningLevelController loadLightning = new LoadLightningLevelController(loader, level, builder);
@@ -74,7 +74,7 @@ public class TestLoadLevelControllers extends TestCase {
 			}
 		}
 		Board board = new Board(squares);
-		Palette palette = new Palette();
+		Palette palette = Palette.getInstance();
 		ReleaseLevel level = new ReleaseLevel(0, false, bullpen, board, palette);
 		
 		LoadReleaseLevelController loadRelease = new LoadReleaseLevelController(loader, level, builder);

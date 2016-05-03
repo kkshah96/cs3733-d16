@@ -57,7 +57,7 @@ public class NewLightningLevelController implements ActionListener {
 
 		Board board = new Board(squares);
 
-		Palette p = new Palette();
+		Palette p = Palette.getInstance();
 		LightningLevel newLevel = new LightningLevel(builder.getLevels().size() + 1, true, bpen, board, p, 0);
 		builder.addLevel(newLevel);
 		//builder.setActiveLevel(l);

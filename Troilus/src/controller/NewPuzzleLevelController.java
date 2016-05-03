@@ -56,7 +56,7 @@ public class NewPuzzleLevelController implements ActionListener {
 		
 		// Create board and palette, and add parameters to new level
 		Board board = new Board(squares);
-		Palette p = new Palette();
+		Palette p = Palette.getInstance();
 		PuzzleLevel newPuzzleLevel = new PuzzleLevel(builder.getLevels().size() + 1, true, bpen, board, p, 0);
 		builder.addLevel(newPuzzleLevel);
 		

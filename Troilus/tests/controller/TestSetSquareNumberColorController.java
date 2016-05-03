@@ -29,7 +29,7 @@ public class TestSetSquareNumberColorController extends TestCase {
 			}
 		}
 		Board board = new Board(squares);
-		Palette palette = new Palette();
+		Palette palette = Palette.getInstance();
 		ReleaseLevel level = new ReleaseLevel(0, false, bullpen, board, palette);
 		LevelEditorView editorView = new LevelEditorView(builder, loader, level);
 		level.getBoard().setActiveSquare(0, 0);

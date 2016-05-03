@@ -36,7 +36,7 @@ public class TestToggleSquare extends TestCase{
 		
 		board = new Board(squares);
 		builder = new LevelBuilder();
-		level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
+		level = new PuzzleLevel(0, false, new Bullpen(), board, Palette.getInstance(), 0);
 		LevelLoaderView lView = new LevelLoaderView(builder);
 		editorView = new LevelEditorView(builder, lView, level);
 		undoController = new UndoMoveController(builder, editorView);
