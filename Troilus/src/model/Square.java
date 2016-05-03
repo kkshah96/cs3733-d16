@@ -62,6 +62,7 @@ public abstract class Square {
 	
 	/**
 	 * Returns a string representation of the type, or name of this square.
+	 * @return String indicating the type of this square
 	 */
 	public abstract String getName();
 	
