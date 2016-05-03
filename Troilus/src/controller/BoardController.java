@@ -88,24 +88,26 @@ public class BoardController extends MouseAdapter {
 				level.setMoveSource(null);
 				boardView.updateDraggedPiece(null);
 			} else if (level.getBoard().getPiece(col, row) != null) {
-				Move m = new BoardToBullpenMove(level, col, row);
-				
-				if (m.doMove()) {
-					if (builder != null) {
-						// if we are in the level builder
-						// If the move is valid (and completed), we remove the source and active pieces
-						builder.pushMove(m);
+				if (level instanceof PuzzleLevel || builder != null) {
+					Move m = new BoardToBullpenMove(level, col, row);
 
-					} else if (game != null) {
-						// if we are in the player
-						// end game if needed
-						if (m.getEndGameStatus()) {
-							new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+					if (m.doMove()) {
+						if (builder != null) {
+							// if we are in the level builder
+							// If the move is valid (and completed), we remove the source and active pieces
+							builder.pushMove(m);
+
+						} else if (game != null) {
+							// if we are in the player
+							// end game if needed
+							if (m.getEndGameStatus()) {
+								new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+							}
 						}
+						level.setMoveSource(null);
+						level.setActivePiece(null);
+						boardView.updateDraggedPiece(null);
 					}
-					level.setMoveSource(null);
-					level.setActivePiece(null);
-					boardView.updateDraggedPiece(null);
 				}
 			}
 		} else { // left click
@@ -135,13 +137,15 @@ public class BoardController extends MouseAdapter {
 					boardView.updateDraggedPiece(null);
 				}
 			} else if (level.getBoard().getPiece(col, row) != null) { // left click and not dragging
-				sourceCol = col;
-				sourceRow = row;
-				level.setMoveSource(level.getBoard());
-				Piece pieceToDrag = level.getBoard().getPiece(sourceCol, sourceRow);
-				if (pieceToDrag != null) {
-					level.setActivePiece(pieceToDrag);
-					boardView.updateDraggedPiece(p);
+				if (level instanceof PuzzleLevel || builder != null) {
+					sourceCol = col;
+					sourceRow = row;
+					level.setMoveSource(level.getBoard());
+					Piece pieceToDrag = level.getBoard().getPiece(sourceCol, sourceRow);
+					if (pieceToDrag != null) {
+						level.setActivePiece(pieceToDrag);
+						boardView.updateDraggedPiece(p);
+					}
 				}
 			}
 		}

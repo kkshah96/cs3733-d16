@@ -78,15 +78,6 @@ public abstract class Level {
 	 * @return True if the update causes the end of the game
 	 */
 	public abstract boolean updateAfterMove();
-
-	//TODO: what does this do
-	/**
-	 * Determines if this level can move
-	 * @return True
-	 */
-	public boolean canMove() {
-		return true;
-	}
 	
 	/**
 	 * Determines if this level is locked
