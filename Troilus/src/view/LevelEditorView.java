@@ -21,23 +21,18 @@ import controller.BoardController;
 import controller.BullpenController;
 import controller.ExitLevelEditorController;
 import controller.FlipPieceController;
-import controller.MovePiecePaletteToBullpenController;
+import controller.PaletteController;
 import controller.RedoMoveController;
 import controller.RotatePieceController;
 import controller.SaveLevelController;
 import controller.SelectSquareController;
 import controller.SetBoardDimensionsController;
-import controller.SetMaxMovesController;
-import controller.SetSquareNumberColorController;
-import controller.SetSquareNumberController;
-import controller.SetTimeLimitController;
 import controller.ToggleHintController;
 import controller.ToggleSquareController;
 import controller.UndoMoveController;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
-import model.PuzzleLevel;
 
 /**
  * GUI for editing Kabausji levels in the LevelBuilder application.
@@ -446,7 +441,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		scrollPane.setViewportView(paletteView);
 		
 		// Initialize Controllers
-		paletteView.addMouseListener(new MovePiecePaletteToBullpenController(activeLevel, bullpenView, paletteView));
+		paletteView.addMouseListener(new PaletteController(activeLevel, this, builder));
 		//if (activeLevel.getName().equals("Lightning")) {
 			//btnSetTime.addActionListener(new SetTimeLimitController(activeLevel, this));
 		//}

@@ -7,11 +7,15 @@ import java.util.Hashtable;
 import java.util.Set;
 
 import model.Bullpen;
+import model.Kabasuji;
 import model.Level;
+import model.LevelBuilder;
 import model.Piece;
 import model.PieceFactory;
 import model.Square;
 import view.BullpenView;
+import view.ILevelView;
+import view.LevelPlayerView;
 import view.PaletteView;
 
 /**
@@ -19,17 +23,20 @@ import view.PaletteView;
  * @author Dan Alfred
  * @author Connor Weeks
  * @author Maddy Longo
+ * @author Kunal Shah
  *
  */
-public class MovePiecePaletteToBullpenController extends MouseAdapter {
+public class PaletteController extends MouseAdapter {
 	/** The level containing the palette and bullpen */
 	Level level;
-	
+
 	/** The view for the bullpen here */
 	BullpenView bullpenView;
-	
+
 	/** The view for the palette here */
 	PaletteView paletteView;
+	
+	LevelBuilder builder;
 
 	/**
 	 * Creates a new instance of MovePiecePaletteToBullpenController with the specified objects
@@ -37,10 +44,11 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 	 * @param bullpenView The view for the bullpen object modified
 	 * @param paletteView The view for the palette object modified
 	 */
-	public MovePiecePaletteToBullpenController(Level level, BullpenView bullpenView, PaletteView paletteView) {
+	public PaletteController(Level level, ILevelView levelView, LevelBuilder builder) {
 		this.level = level;
-		this.bullpenView = bullpenView;
-		this.paletteView = paletteView;
+		this.bullpenView = levelView.getBullpenView();
+		this.paletteView = levelView.getPaletteView();
+		this.builder = builder;
 	}
 
 	public void mousePressed(MouseEvent me) {
@@ -48,8 +56,6 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 		if (me.getButton() == MouseEvent.BUTTON3) {
 			return;
 		}
-
-		Bullpen bp = level.getBullpen();
 
 		// Obtain the coordinates from the mouse click, and flatten our piece table into a set for iteration
 		Point clickPoint = me.getPoint();
@@ -65,25 +71,17 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 				// Check if a square within the piece is clicked (means this is the piece selected)
 				if (isSquareClicked(anchorPoint, clickPoint, s)) {
 					// If so, add to bullpen and repaint view
-					bp.addPiece(PieceFactory.getPiece(piece.getType()));
+
+					PaletteToBullpenMove m = new PaletteToBullpenMove(level, PieceFactory.getPiece(piece.getType()));
+					if (m.doMove()) {
+						builder.pushMove(m);
+					}
+					
 					bullpenView.repaint();
 					return;
 				}
 			}
 		}
-	}
-
-	// TODO clean these up
-	/** Helper function for mousePressed
-	 * @param anchorPoint Point object containing top-left coordinate for the anchorSquare
-	 * @param clickPoint Point object for the location of the mouse event
-	 * @return True if any squares in the given anchor point fall within the click point, false otherwise
-	 */
-	private boolean isPieceClicked(Point anchorPoint, Point clickPoint) {
-		return (anchorPoint.getX() <= clickPoint.getX()) && 
-				(anchorPoint.getX() + PaletteView.SQUARE_SIZE >= clickPoint.getX()) && 
-				(anchorPoint.getY() <= clickPoint.getY()) && 
-				(anchorPoint.getY() + PaletteView.SQUARE_SIZE >= clickPoint.getY());
 	}
 
 	/** Helper function for mousePressed
