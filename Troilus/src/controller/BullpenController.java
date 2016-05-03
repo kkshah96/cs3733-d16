@@ -115,7 +115,7 @@ public class BullpenController extends MouseAdapter {
 		}
 
 		// check if we didn't find a piece, deselect currently selected piece
-		if (activePiece == null) {
+		if (activePiece == null && level.getMoveSource() == bullpen) {
 			level.setActivePiece(null);
 			boardView.removeDraggedPiece();
 			bullpenView.repaint();
@@ -143,14 +143,19 @@ public class BullpenController extends MouseAdapter {
 		} else {
 			if (mouseButton == MouseEvent.BUTTON3) {
 				if(levelView instanceof LevelEditorView) {
+					bullpen.addPiece(level.getActivePiece());
 					boardView.removeDraggedPiece();
+					level.setMoveSource(null);
 					level.setActivePiece(null);
+					bullpenView.repaint();
+					boardView.repaint();
 				}
 			} else {
 				if (boardView.getDraggedPiece() == activePiece) {
 					// if the piece is already selected, deselect it
 					boardView.removeDraggedPiece();
 					level.setActivePiece(null);
+					
 				} else {
 					// set piece as active piece and set the source as the bullpenview and redraw
 					level.setMoveSource(bullpenView);

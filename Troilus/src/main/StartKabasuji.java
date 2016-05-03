@@ -1,10 +1,16 @@
 package main;
 
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
 import controller.StartLevelSelectorController;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import model.Kabasuji;
@@ -48,6 +54,9 @@ public class StartKabasuji {
 
 							// show window
 							window.setVisible(true);
+							ImageIcon image = new ImageIcon(StartKabasuji.class.getResource("/images/heineman.jpg"));
+							window.setIconImage(image.getImage().getScaledInstance(40, 40, 0));
+							System.out.println(image);	
 						}
 					});
 					
