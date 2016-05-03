@@ -39,7 +39,7 @@ public class TestToggleSquareHint {
 		level = new PuzzleLevel(0, false, bPen, board, new Palette(), 0);
 		LevelLoaderView lView = new LevelLoaderView(lb);
 		lsView = new LevelEditorView(lb, lView, level);
-		bpController = new BullpenController(level, lsView);
+		bpController = new BullpenController(level, lsView, lb);
 		
 		
 		board.setActiveSquare(1, 1);

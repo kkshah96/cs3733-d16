@@ -38,7 +38,7 @@ public class TestEditorBullpenController extends TestCase {
 		level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
 		LevelLoaderView lView = new LevelLoaderView(lb);
 		lsView = new LevelEditorView(lb, lView, level);
-		bpController = new BullpenController(level, lsView);
+		bpController = new BullpenController(level, lsView, lb);
 	}
 	
 	public void testBullpenController() {
