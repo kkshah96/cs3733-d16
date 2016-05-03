@@ -7,7 +7,7 @@ import model.Piece;
 
 /** 
  * Class for implementation of moving a piece from board to bullpen.
- * @author Maddy
+ * @author Maddy Longo
  * @author Dan Alfred
  * @author Connor Weeks
  */
@@ -25,11 +25,11 @@ public class BullpenToBoardMove extends Move{
 	int row;
 	
 	/**
-	 * Creates a new instance of the BullpentoBoardMove with the given parameters
-	 * @param level The level to perform the move on
-	 * @param movingPiece A reference to the active piece for the level
-	 * @param col The column on the board as the destination
-	 * @param row The row on the board as the destination
+	 * Creates a new instance of the BullpentoBoardMove with the given parameters.
+	 * @param level The level to perform the move on.
+	 * @param movingPiece A reference to the active piece for the level.
+	 * @param col The column on the board as the destination.
+	 * @param row The row on the board as the destination.
 	 */
 	public BullpenToBoardMove(Level level, Piece movingPiece, int col, int row) {
 		super();
@@ -39,8 +39,8 @@ public class BullpenToBoardMove extends Move{
 		this.row = row;
 	}
 
-	/** Adds the piece to the Board if valid 
-	 * @return True if the move is completed successfully, false otherwise
+	/** Adds the piece to the Board if valid.
+	 * @return True if the move is completed successfully, false otherwise.
 	 */
 	public boolean doMove() {
 		// Create references to the bullpen and board
@@ -71,9 +71,10 @@ public class BullpenToBoardMove extends Move{
 		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
 	
-	/** Logic for undoing this BullpenToBoardMove. Places the piece back into the bullpen and removes it from the board.<br /> 
+	/** Logic for undoing this BullpenToBoardMove. Places the piece back into
+	 * the bullpen and removes it from the board.
 	 * Valid if the requested piece destination doesn't contain any invalid squares or other pieces.
-	 * @return True if the move is valid, false otherwise
+	 * @return True if the move is valid, false otherwise.
 	 */
 	public boolean undo() {
 		Bullpen bpen = level.getBullpen();

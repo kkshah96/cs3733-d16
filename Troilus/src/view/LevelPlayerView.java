@@ -359,4 +359,11 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 	public JLabel getLevelLabel() {
 		return levelLabel;
 	}
+
+	/**
+	 * @return Reference to paletteView (should be null in the LevelPlayer)
+	 */
+	public PaletteView getPaletteView() {
+		return null;
+	}
 }

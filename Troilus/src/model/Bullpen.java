@@ -32,6 +32,12 @@ public class Bullpen {
 		if (p == null) {
 			return false;
 		} else {
+			// Check to avoid duplicates
+			for (Piece otherPiece : pieces) {
+				if (otherPiece == p) {
+					return true;
+				}
+			}
 			pieces.add(p);
 			return true;
 		}
