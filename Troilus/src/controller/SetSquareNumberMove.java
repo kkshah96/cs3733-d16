@@ -29,7 +29,7 @@ public class SetSquareNumberMove extends Move{
 	@Override
 	public boolean isValid() {
 		boolean validation = false;
-		if(!(num < 1 || num > 6) && setSquare.isValid()){
+		if(!(num < 0 || num > 6) && setSquare.isValid()){
 			validation = true;
 		}
 		return validation;

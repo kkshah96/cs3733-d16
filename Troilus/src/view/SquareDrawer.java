@@ -116,7 +116,8 @@ public class SquareDrawer {
 			if (releaseColor != null && releaseNumber > 0 && square.isValid()) {
 				g.setColor(releaseColor);
 				g.drawString("" + releaseNumber, x + BUFFER_WIDTH, y + BUFFER_HEIGHT);
-			} else {
+			} else if(releaseNumber == 0 && square.isValid()){
+				g.setColor(c);
 				g.fillRect(x + 1, y + 1, size - 2, size - 2);
 			}
 		}
