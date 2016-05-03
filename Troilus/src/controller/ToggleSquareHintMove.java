@@ -3,6 +3,12 @@ package controller;
 import model.Level;
 import model.Square;
 
+
+/**
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class ToggleSquareHintMove extends Move{
 	Square toggledSquare;
 	Level level;
@@ -21,7 +27,6 @@ public class ToggleSquareHintMove extends Move{
 	@Override
 	public boolean doMove() {
 		boolean validation = false;
-		
 		
 		if(isValid()){
 			// set active square 
