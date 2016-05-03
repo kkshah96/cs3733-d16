@@ -13,17 +13,18 @@ import view.LevelEditorView;
 public class SetTimeLimitMove extends Move{
 
 	LightningLevel level;
-
+	LevelEditorView editorView;
+	
 	int previousTime;
 	int time;
-
-	LevelEditorView editorView;
+	
 
 	public SetTimeLimitMove(LightningLevel level, LevelEditorView editorView){
 		this.level = level;
 		this.previousTime = level.getTime();
 		this.editorView = editorView;
 		this.previousTime = level.getTime();
+		
 		// try to get current values
 		try {
 			int seconds = Integer.parseInt(editorView.getSecondsField().getText());
@@ -68,8 +69,6 @@ public class SetTimeLimitMove extends Move{
 
 
 	@Override
-
-	//TODO: Still need to properly update the text fields after an undo
 	public boolean undo() {
 		
 		// update level
