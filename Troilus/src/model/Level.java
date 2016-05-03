@@ -203,7 +203,7 @@ public abstract class Level {
 
 	/**
 	 * Determines the source of an in-progress move for this level, or null if no move in-progress
-	 * @return String representation of move source
+	 * @return Move source as object
 	 */
 	public Object getMoveSource(){
 		return moveSource;
