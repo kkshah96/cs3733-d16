@@ -19,6 +19,11 @@ public interface ILevelView {
 	public BullpenView getBullpenView();
 	
 	/**
+	 * Determines the PaletteView boundary object
+	 * @return Reference to the enclosed PaletteView
+	 */
+	public PaletteView getPaletteView();
+	/**
 	 * Refreshes and updates the level view
 	 */
 	public void refresh();
