@@ -110,6 +110,7 @@ public class BoardView extends JPanel {
 	
 	/** Gets dragged piece from level, updating its location.
 	 * WARNING: ASSUMES dragged piece is always level active piece.
+	 * @param piecePoint Coordinate of the piece being dragged
 	 */
 	public void updateDraggedPiece(Point piecePoint) {
 		this.draggedPiece = level.getActivePiece();

@@ -3,7 +3,7 @@ package view;
 /**
  * Provides a way to abstract over LevelViews for code reuse.
  * Current implementations of this are LevelEditorView and LevelPlayerView
- * @author
+ * @author Maddy Longo
  */
 public interface ILevelView {
 	/**

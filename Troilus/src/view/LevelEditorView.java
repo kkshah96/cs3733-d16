@@ -65,9 +65,16 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	/** The button to save levels to the builder */
 	private JButton saveButton;
 	
+	/** Label to display the level type*/
 	JLabel levelTypeLabel;
+	
+	/** Panel to display maximum number of moves */
 	JPanel maxMovesPanel;
+	
+	/** Panel to display square number/color for release levels */
 	JPanel releaseSquareOptionsPanel;
+	
+	/** Panel to display time information for lightning levels*/
 	JPanel timePanel;
 
 	/** Button to toggle a piece as a hint on the board */
@@ -112,6 +119,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	/** The boundary for the palette entity */
 	PaletteView paletteView;
 	
+	/** Panel to hold the bullpenView */
 	JPanel bullpenContainer;
 	
 	/** The boundary for the bullpen entity */
@@ -597,7 +605,9 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		return toggleButton;
 	}
 	
-	/** Reference to the button to undo moves */
+	/** 
+	 * @return Reference to the button to undo moves 
+	 */
 	public JButton getUndoButton() {
 		return undoButton;
 	}
