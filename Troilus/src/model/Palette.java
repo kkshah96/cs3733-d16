@@ -11,11 +11,10 @@ import java.util.ArrayList;
  *
  */
 public class Palette {
-	
-	/** Make this a singleton object because the Palette should never change after instantiated **/
+	/** Make this a singleton object because the Palette should never change after being instantiated. **/
 	private static Palette instance = new Palette(); 
 	
-	/** Constant to identify the maximum number of a pieces a palette can contain*/
+	/** Constant to identify the maximum number of a pieces a palette can contain. */
 	public static final int NUM_PIECES = 35;
 	
 	/** The collection of pieces this palette contains*/
@@ -24,10 +23,10 @@ public class Palette {
 	// TODO: Handle checking there are exactly 35 pieces at execution time? 
 	// Don't we want to be flexible here?
 	/**
-	 * Creates a new instance of the Palette entity
+	 * Creates a new instance of the Palette entity.
 	 */
 	private Palette(){
-		if(instance == null){
+		if (instance == null) {
 			pieces = new ArrayList<Piece>();
 			initialize();
 		}
@@ -38,15 +37,15 @@ public class Palette {
 	}
 	
 	/**
-	 * Provides a reference to the collection of pieces in the palette
-	 * @return ArrayList of Pieces in this palette
+	 * Provides a reference to the collection of pieces in the palette.
+	 * @return ArrayList of Pieces in this palette.
 	 */
 	public ArrayList<Piece> getPieces() {
 		return this.pieces;
 	}
 	
 	/**
-	 * Initializes the palette by filling it with the 35 unique pieces
+	 * Initializes the palette by filling it with the 35 unique pieces.
 	 */
 	private void initialize() {
 		for(int i = 0; i < NUM_PIECES; i++) {

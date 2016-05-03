@@ -149,7 +149,9 @@ public class ReleaseLevel extends Level {
 		return yellow;
 	}
 
-	@Override
+	/**
+	 * Returns a string representation of the Level type.
+	 */
 	public String getName() {
 		return "Release";
 	}

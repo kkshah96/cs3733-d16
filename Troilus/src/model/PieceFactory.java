@@ -274,8 +274,8 @@ public class PieceFactory {
 	}
 
 	/**
-	 * Generates a random color for a piece
-	 * @return An AWT Color object of random RGB values
+	 * Generates a random color for a piece.
+	 * @return An AWT Color object of random RGB values.
 	 */
 	private static Color getRandomColor(){
 		Random rand = new Random();

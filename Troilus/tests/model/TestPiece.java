@@ -131,7 +131,6 @@ public class TestPiece extends TestCase {
 		assertEquals(piece4CCW4.getType(), piece4CW4.getType());
 		assertTrue(piece4CW4.sameShape(piece4CCW4));
 		assertTrue(piece4CW4.sameShape(piece4));
-		
 		assertTrue(piece4CCW2.sameShape(piece4CW2));
 	}
 	
@@ -185,7 +184,7 @@ public class TestPiece extends TestCase {
 		assertFalse(piece23.sameShape(piece24));
 		assertFalse(piece23.sameShape(piece23FV));
 		
-		assertEquals("PieceSquare", piece25.getAnchor().getType());
+		assertEquals("PieceSquare", piece25.getAnchor().getName());
 		assertTrue(piece25.getAnchor().isValid());
 	}
 }

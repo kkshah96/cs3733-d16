@@ -15,7 +15,7 @@ import java.awt.Color;
  *
  */
 public class Piece {
-	/** Constant to denote Piece size (number of squares) */
+	/** Constant to denote Piece size (number of squares). */
 	public static final int PIECE_SIZE = 6;
 	
 	/** A constant provided to indicate a CCW rotation is requested. */
@@ -30,24 +30,24 @@ public class Piece {
 	/** A constant provided to indicate a vertical flip is requested. */
 	public static final int FLIP_VERTICALLY = 2;
 	
-	/** The squares of the piece, not including anchor */
+	/** The squares of the piece, not including anchor. */
 	PieceSquare[] squares;
 	
-	/** The anchor square of the piece */
+	/** The anchor square of the piece. */
 	PieceSquare anchor;
 	
-	/** The color of the selected piece */
+	/** The color of the selected piece. */
 	Color color;
 	
-	/** An int representation of the piece type, from 1-35 */
+	/** An int representation of the piece type, from 1-35. */
 	int type;
 	
 	/**
 	 * Creates a new instance of Piece with the following parameters:
-	 * @param squares 2D array of PieceSquares containing a relative row and column
-	 * @param anchor Reference to the anchor square for this piece
-	 * @param type Int representation of the type of this piece (1-35)
-	 * @param c The color for this piece
+	 * @param squares 2D array of PieceSquares containing a relative row and column.
+	 * @param anchor Reference to the anchor square for this piece.
+	 * @param type Int representation of the type of this piece (1-35).
+	 * @param c The color for this piece.
 	 */
 	public Piece(PieceSquare[] squares, PieceSquare anchor, int type, Color c) {
 		this.squares = squares;
@@ -56,14 +56,14 @@ public class Piece {
 		this.color = c;
 		
 		// Ensure the number of PieceSquares passed in is proper
-		if(squares.length != PIECE_SIZE - 1) {
+		if (squares.length != PIECE_SIZE - 1) {
 			throw new RuntimeException("Piece [" + type + "] must have an array of " + PIECE_SIZE + " squares. " + squares.length + " were passed in.");
 		}
 	}
 	
 	/**
 	 * Returns int representation of anchor square's row.
-	 * @return Row of the anchor square
+	 * @return Row of the anchor square.
 	 */
 	public int getRow() {
 		return anchor.getRow();
@@ -71,14 +71,14 @@ public class Piece {
 	
 	/**
 	 * Returns int representation of anchor square's col.
-	 * @return Col of the anchor square
+	 * @return Col of the anchor square.
 	 */
 	public int getCol() {
 		return anchor.getCol();
 	}
 	
-	/** Creates an array containing all piecesquares in this piece, including the anchor
-	 * @return Array of PieceSquares, including the anchor square
+	/** Creates an array containing all PieceSquares in this piece, including the anchor.
+	 * @return Array of PieceSquares, including the anchor square.
 	 */
 	public PieceSquare[] getAllSquares() {
 		PieceSquare[] allSquares = new PieceSquare[PIECE_SIZE];
@@ -100,7 +100,7 @@ public class Piece {
 	
 	/**
 	 * Provides a reference to the anchor square.
-	 * @return The anchor square
+	 * @return The anchor square.
 	 */
 	public PieceSquare getAnchor() {
 		return anchor;
@@ -108,7 +108,7 @@ public class Piece {
 	
 	/**
 	 * Returns the int representation of the piece's type.
-	 * @return int from 1-35 indicating piece type
+	 * @return int from 1-35 indicating piece type.
 	 */
 	public int getType() {
 		return type;
@@ -116,20 +116,21 @@ public class Piece {
 	
 	/**
 	 * Returns this piece rotated either CCW or CW, or not rotated if given invalid input.
-	 * @param direction Must be Piece.ROTATE_CW or Piece.ROTATE_CCW
-	 * @return Returns newly rotated piece, or this if given an invalid input
+	 * @param direction Must be Piece.ROTATE_CW or Piece.ROTATE_CCW.
+	 * @return Returns newly rotated piece, or this if given an invalid input.
 	 */
 	public Piece rotatePiece(int direction){ //CCW: degree < 0
 		PieceSquare[] newSquares = new PieceSquare[5];
 
+		// Go through each PieceSquare
 		for (int i = 0; i < PIECE_SIZE - 1; i++) {
-			if(direction == Piece.ROTATE_CCW){ //ROTATE CCW
+			if (direction == Piece.ROTATE_CCW) { //ROTATE CCW
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 				
 				PieceSquare newSquare = new PieceSquare(oldRow, (-1) * oldCol);
 				newSquares[i] = newSquare;
-			} else if(direction == Piece.ROTATE_CW){ //ROTATE CW
+			} else if (direction == Piece.ROTATE_CW) { //ROTATE CW
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
@@ -147,20 +148,21 @@ public class Piece {
 	
 	/**
 	 * Returns this piece flipped either horizontally or vertically, or not flipped if given invalid input.
-	 * @param direction Must be Piece.FLIP_HORIZONTALLY or Piece.FLIP_VERTICALLY
-	 * @return Returns newly flipped piece, or this if given an invalid input
+	 * @param direction Must be Piece.FLIP_HORIZONTALLY or Piece.FLIP_VERTICALLY.
+	 * @return Returns newly flipped piece, or this if given an invalid input.
 	 */
 	public Piece flipPiece(int direction){
 		PieceSquare[] newSquares = new PieceSquare[5];
 		
+		// Go through each PieceSquare
 		for (int i = 0; i < PIECE_SIZE - 1; i++) {
-			if(direction == Piece.FLIP_HORIZONTALLY){ // FLIP HORIZONTAL
+			if (direction == Piece.FLIP_HORIZONTALLY) { // FLIP HORIZONTAL
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
 				PieceSquare newSquare = new PieceSquare((-1) * oldCol, oldRow);
 				newSquares[i] = newSquare;
-			} else if(direction == Piece.FLIP_VERTICALLY){ //FLIP VERTICAL
+			} else if (direction == Piece.FLIP_VERTICALLY) { //FLIP VERTICAL
 				int oldRow = squares[i].getRow();
 				int oldCol = squares[i].getCol();
 
@@ -176,13 +178,14 @@ public class Piece {
 	}
 	
 	/**
-	 * Determines if this piece is the same shape as another provided piece <br />
-	 * Any identical pieces that have been rotated/flipped are no longer considered the same shape
-	 * @param other The piece to compare shape with this
-	 * @return True if the shape is the same, false otherwise
+	 * Determines if this piece is the same shape (and orientation) as another provided piece.
+	 * Any identical pieces that have been rotated/flipped are no longer considered the same shape.
+	 * @param other The piece to compare shape with this.
+	 * @return True if the shape is the same, false otherwise.
 	 */
 	public boolean sameShape(Piece other) {
-		// First ensure that the types of the two pieces are the same- if not, they're definitely different shapes
+		// First ensure that the types of the two pieces are the same
+		// if not, they're definitely different shapes
 		if (type != other.type) {
 			return false;
 		}
@@ -205,16 +208,16 @@ public class Piece {
 	}
 	
 	/**
-	 * Determines the color of this piece
-	 * @return AWT Color object representing the color of this piece
+	 * Determines the color of this piece.
+	 * @return AWT Color object representing the color of this piece.
 	 */
 	public Color getColor() {
 		return color;
 	}
 	
 	/**
-	 * Updates the color of this piece
-	 * @param c AWT Color object representing the new color
+	 * Updates the color of this piece.
+	 * @param c AWT Color object representing the new color.
 	 */
 	public void setColor(Color c) {
 		this.color = c;

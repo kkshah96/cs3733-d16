@@ -13,46 +13,46 @@ import java.util.Set;
  * @author Maddy Longo
  * @author Connor Weeks
  */
-public class LightningLevel extends Level{
-	/** The number of covered squares in this level */
+public class LightningLevel extends Level {
+	/** The number of covered squares in this level. */
 	protected int coveredSquares;
 	
-	/** The number of total valid squares in this level */
+	/** The number of total valid squares in this level. */
 	protected int validSquares;
 	
-	/** The total time limit for this level */
+	/** The total time limit for this level. */
 	protected int timeLimit;
 	
 	/**
-	 * Creates a new instance of the LightningLevel entity with the following parameters
-	 * @param levelNum The number of this level
-	 * @param locked The status of if this level is locked or not
-	 * @param bullpen Reference to the bullpen object for this level
-	 * @param board Reference to the board object for this level
-	 * @param palette Reference to the palette object for this level (LevelBuilder only)
-	 * @param timeLimit Total time limit at the start of this level
+	 * Creates a new instance of the LightningLevel entity with the following parameters.
+	 * @param levelNum The number of this level.
+	 * @param locked The status of if this level is locked or not.
+	 * @param bullpen Reference to the bullpen object for this level.
+	 * @param board Reference to the board object for this level.
+	 * @param palette Reference to the palette object for this level (LevelBuilder only).
+	 * @param timeLimit Total time limit at the start of this level.
 	 */
-	public LightningLevel(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette, int timeLimit) {
+	public LightningLevel(int levelNum, boolean locked, Bullpen bullpen,
+			Board board, Palette palette, int timeLimit) {
 		super(levelNum, locked, bullpen, board, palette);
-		
 		this.timeLimit = timeLimit;
 		this.countValidSquares();
 		this.coveredSquares = 0;
 	}
 
 	/**
-	 * Refreshes the entity after completing a move by updating the number of squares covered, placing a new piece in the bullpen,
-	 * and updating the number of stars earned
-	 * @return True if the number of stars is 3, false otherwise
+	 * Refreshes the entity after completing a move by updating the number of squares
+	 * covered, placing a new piece in the bullpen, and updating the number of stars earned.
+	 * @return True if the number of stars is 3, false otherwise.
 	 */
 	public boolean updateAfterMove() {
-		coverSquares();
+		updateCoveredSquares();
 		replacePiece();
 		calcNumStars();
 		return (numStars == 3);
 	}
 	
-	/** Generate a new random piece and put in bullpen */
+	/** Generate a new random piece and put in bullpen. */
 	private void replacePiece() {
 		Random rand = new Random();
 		int randNum = rand.nextInt(36);
@@ -61,8 +61,9 @@ public class LightningLevel extends Level{
 		bullpen.addPiece(newPiece);
 	}
 	
-	/** Replace any pieces with covered squares on the board */
-	private void coverSquares() {
+	// TODO does this need to account for removing a piece in the Builder?
+	/** Replace any pieces with covered squares on the board. */
+	private void updateCoveredSquares() {
 		Set<Piece> pSet = board.getPieces().keySet();
 		
 		// Loop through the pieces in the board to replace them with covered squares
@@ -85,7 +86,7 @@ public class LightningLevel extends Level{
 	}
 	
 	@Override
-	/** 1 star if covered all but 12 squares, 2 if covered all but 6, 3 if won */
+	/** 1 star if covered all but 12 squares, 2 if covered all but 6, 3 if won. */
 	public void calcNumStars() {
 		validSquares = countValidSquares(); // Just in case in Level Editor
 		coveredSquares = countCoveredSquares();
@@ -103,8 +104,8 @@ public class LightningLevel extends Level{
 		}
 	}
 
-	/** Count the number of covered squares on the board (needed for LevelEditor) 
-	 * @return Int representation of the number of covered squares on the board
+	/** Count the number of covered squares on the board (needed for LevelEditor).
+	 * @return int representation of the number of covered squares on the board.
 	 */
 	int countCoveredSquares() {
 		int coveredSquares = 0;
@@ -121,8 +122,8 @@ public class LightningLevel extends Level{
 		return coveredSquares;
 	}
 	
-	/** Count the number of squares on the board (needed for LevelEditor)
-	 * @return Int representation of the total number of valid squares on the board
+	/** Count the number of squares on the board (needed for LevelEditor).
+	 * @return int representation of the total number of valid squares on the board.
 	 */
 	int countValidSquares() {
 		int validSquares = 0;
@@ -138,41 +139,32 @@ public class LightningLevel extends Level{
 		return validSquares;
 	}
 	
-	// TODO fix! Entity doesn't know how much time is left!
-	/** Determines if a move can be done on this level
-	 * @return True if moves can be completed, false if not
-	 */
-	//public boolean canMove() {
-	//	return timeLimit > 0;
-	//}
-	
 	/**
-	 * @return String representation of the name of this level type
+	 * @return String representation of the name of this level type.
 	 */
 	public String getName() {
 		return "Lightning";
 	}
 	
 	/**
-	 * Determines the starting time limit for this level
-	 * @return Int representation of starting time limit
+	 * Determines the starting time limit for this level.
+	 * @return int representation of starting time limit.
 	 */
 	public int getTime() {
 		return timeLimit;
 	}
 	
 	/**
-	 * Sets the time limit for this level
-	 * @param limit The time limit to set for this level
-	 * @return True if the limit was updateed successfully, false if otherwise
+	 * Sets the time limit for this level.
+	 * @param limit The time limit to set for this level.
+	 * @return True if the limit was updated successfully, false if otherwise.
 	 */
 	public boolean setTimeLimit(int limit) {
 		if (limit < 0) {
 			System.out.println("Error! Invalid time limit.");
 			return false;
-		} else {
+		}
 			this.timeLimit = limit;
-			return true;
-		}	
+			return true;	
 	}
 }

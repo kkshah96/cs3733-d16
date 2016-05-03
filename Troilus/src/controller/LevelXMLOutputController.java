@@ -171,7 +171,7 @@ public class LevelXMLOutputController {
 					
 					// add squares to row
 					Square s = level.getBoard().getSquare(j, i);
-					String squareType = s.getType();
+					String squareType = s.getName();
 					Element newSquare = doc.createElement(squareType);
 					
 					// set hint and valid attributes

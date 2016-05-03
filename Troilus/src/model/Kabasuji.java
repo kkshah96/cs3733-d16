@@ -5,20 +5,18 @@ import java.util.ArrayList;
 import controller.LoadLevelsController;
 
 /**
- * Top level entity for the Kabasuji game
+ * Top level entity for the Kabasuji game.
  * 
- * The Kabasuji game consists of a collection of Levels, and always keeps track of the active Level (or level currently loaded)
+ * The Kabasuji game consists of a collection of Levels, and always keeps track of the
+ * active Level (or level currently loaded).
  * 
  * @author Kunal Shah
  * @author Connor Weeks
  *
  */
 public class Kabasuji {
-
 	/** The levels in this entity */
 	ArrayList<Level> levels;
-	//Level activeLevel;
-	// TODO figure this out!
 
 	/**
 	 * Creates a new instance of the Kabasuji entity with an empty collection of levels
@@ -43,28 +41,19 @@ public class Kabasuji {
 		}
 	}
 
-
 	/**
 	 * Returns an ordered list of the game's levels.
-	 * @return ArrayList<Level> list of levels
+	 * @return ArrayList<Level> list of levels.
 	 */
 	public ArrayList<Level> getLevels() {
 		return levels;
 	}
 
 	/**
-	 * Returns the number of levels in the game
-	 * @return int
+	 * Returns the number of levels in the game.
+	 * @return int Number of levels.
 	 */
 	public int getNumLevels() {
 		return levels.size();
 	}
-
-	//	public void setActiveLevel(Level level) {
-	//	activeLevel = level;
-	//}
-
-	//public Level getActiveLevel() {
-	//return activeLevel;
-	//}
 }

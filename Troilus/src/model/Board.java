@@ -33,13 +33,11 @@ public class Board {
 	/** A reference to a square that has been clicked. */
 	Square activeSquare;
 
-	/** Holds a reference to a dragged piece */
-	//Piece draggedPiece = null;
-
 	/**
-	 * Constructor for the board to take in a predefined 2D array of squares
-	 * Will throw a RuntimeException if the number of rows or number of columns in the 2D array exceeds max board size
-	 * @param squares 2D array of squares for the board
+	 * Constructor for the board to take in a predefined 2D array of squares.
+	 * Will throw a RuntimeException if the number of rows or number of columns in
+	 * the 2D array exceeds max board size.
+	 * @param squares 2D array of squares for the board.
 	 */
 	public Board(Square[][] squares) {
 		if (squares[0].length > BOARD_WIDTH || squares.length > BOARD_HEIGHT) {
@@ -51,28 +49,30 @@ public class Board {
 	}
 
 	/**
-	 * Sets the currently active square on this board for events
-	 * @param col Column of the square selected
-	 * @param row Row of the square selected
+	 * Sets the currently active square on this board for events.
+	 * @param col Column of the square selected.
+	 * @param row Row of the square selected.
 	 */
 	public void setActiveSquare(int col, int row) {
-		if(col < 0 || col >= Board.BOARD_WIDTH || row < 0 || row >= Board.BOARD_HEIGHT) { return; }
+		if (col < 0 || col >= Board.BOARD_WIDTH || row < 0 || row >= Board.BOARD_HEIGHT) {
+			return;
+		}
 		this.activeSquare = squares[col][row];
 	}
 
 	/**
-	 * Returns the active square of this board
-	 * @return Reference to active Square object
+	 * Returns the active square of this board.
+	 * @return Reference to active Square object.
 	 */
 	public Square getActiveSquare() {
 		return activeSquare;
 	}
 
-	/** Add the given piece to the board
-	 * @param p Piece to be added
-	 * @param col Requested column for the piece anchor
-	 * @param row Requested row for the piece anchor
-	 * @return Returns true if piece was added successfully, false otherwise
+	/** Add the given piece to the board.
+	 * @param p Piece to be added.
+	 * @param col Requested column for the piece anchor.
+	 * @param row Requested row for the piece anchor.
+	 * @return Returns true if piece was added successfully, false otherwise.
 	 */
 	public boolean addPiece(Piece p, int col, int row) {
 		this.pieces.put(p, new Point(col, row));
@@ -80,11 +80,11 @@ public class Board {
 	}
 
 	/**
-	 * Checks if a given piece can be placed at a provided location on the board
-	 * @param piece The piece to check placement of
-	 * @param col The column of the square on the board to check
-	 * @param row The row of the square on the board to check
-	 * @return True if the piece can be placed, false otherwise
+	 * Checks if a given piece can be placed at a provided location on the board.
+	 * @param piece The piece to check placement of.
+	 * @param col The column of the square on the board to check.
+	 * @param row The row of the square on the board to check.
+	 * @return True if the piece can be placed, false otherwise.
 	 */
 	public boolean validPlacement(Piece piece, int col, int row) {
 		// Bounds check
@@ -99,12 +99,13 @@ public class Board {
 			return false;
 		}
 
+		// TODO check if removing this breaks anything
 		// Check if there is already a piece at the requested location- cannot place if so
-		Piece getP = getPiece(col, row);
-		if (getP != null && getP != piece) {
-			System.out.print("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
-			return false;
-		}
+		//Piece getP = getPiece(col, row);
+		//if (getP != null && getP != piece) {
+		//	System.out.print("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
+		//	return false;
+		//}
 
 		for (PieceSquare square : piece.getAllSquares()) {
 			// check if each square is in board area
@@ -123,7 +124,7 @@ public class Board {
 				return false;
 			}
 
-			// Check for overlapping pieces
+			// Check for overlapping pieces (and ensure not same piece instance)
 			if (getPiece(absCol, absRow) != null && getPiece(absCol, absRow) != piece) {
 				System.out.println("Overlapping pieces");
 				return false;
@@ -133,8 +134,8 @@ public class Board {
 		return true;
 	}
 
-	/** Remove the given piece from the board and return it
-	 * @param p The piece to be removed
+	/** Remove the given piece from the board and return it.
+	 * @param p The piece to be removed.
 	 */
 	public Piece removePiece(Piece p) {
 		this.pieces.remove(p);
@@ -142,10 +143,10 @@ public class Board {
 	}
 
 	/** Find the Piece at the given location, using (col, row).
-	 * WARNING: Returns NULL if not on board
-	 * @param col Requested column
-	 * @param row Requested row
-	 * @return The piece at the requested location if present, or null if no piece at location
+	 * WARNING: Returns NULL if not on board.
+	 * @param col Requested column.
+	 * @param row Requested row.
+	 * @return The piece at the requested location if present, or null if no piece at location.
 	 */
 	public Piece getPiece(int col, int row) {
 		// Bounds check
@@ -174,9 +175,9 @@ public class Board {
 
 	/** Find the Square at the given location (using col, row).
 	 * WARNING: Returns NULL if not on board.
-	 * @param col Column of the requested square
-	 * @param row Row of the requested square
-	 * @return Returns a reference to the requested square
+	 * @param col Column of the requested square.
+	 * @param row Row of the requested square.
+	 * @return Returns a reference to the requested square.
 	 */
 	public Square getSquare(int col, int row) {
 		// Bounds check
@@ -191,15 +192,15 @@ public class Board {
 	 * Resets the dimensions and squares inside the board.
 	 * Will throw a RuntimeException if the sizes given are greater than max size.
 	 * <p>
-	 * @param cols Number of columns to utilize
-	 * @param rows Number of rows to utilize
+	 * @param cols Number of columns to utilize.
+	 * @param rows Number of rows to utilize.
 	 */
 	public void setDimensions(int cols, int rows) {
 		// Check for bounds of cols, rows before proceeding
 		if(cols > BOARD_WIDTH || rows > BOARD_HEIGHT || cols < 0 || rows < 0) {
 			throw new RuntimeException("Invalid dimensions for resizing board!");
 		}
-		
+
 		// Otherwise, loop through rows and columns, and reset the square validity
 		for (int row = 0; row < BOARD_HEIGHT; row++) {
 			for (int column = 0; column < BOARD_WIDTH; column++) {
@@ -226,44 +227,18 @@ public class Board {
 		// make sure an active square exists
 		if (activeSquare == null) {
 			return;
-		} else {
-			activeSquare.toggleIsValid();
 		}
+		activeSquare.toggleIsValid();
 	}
 
 	/** 
 	 * Toggle hint status of active square for this board, if applicable 
 	 */
-	public void toggleHint(){
-		if (activeSquare == null){
+	public void toggleHint() {
+		// Make sure active square exists
+		if (activeSquare == null) {
 			return;
-		} else {
-			activeSquare.toggleHint();
 		}
+		activeSquare.toggleHint();
 	}
-	
-	// TODO why do we need this? It doesn't even do anything meaningful.
-	/*
-	public int getNumRows(){
-		int num = 0;
-		for (int row = 0; row < BOARD_HEIGHT; row++) {
-			if (squares[0][row].isValid) {
-				num++;
-			}
-		}
-
-		return num;
-	}
-
-	public int getNumCols(){
-		int num = 0;
-		for (int col = 0; col < BOARD_WIDTH; col++) {
-			if (squares[col][0].isValid) {
-				num++;
-			}
-		}
-
-		return num;
-	}
-	*/
 }
