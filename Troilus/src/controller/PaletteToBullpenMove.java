@@ -30,7 +30,7 @@ public class PaletteToBullpenMove extends Move{
 	 * @return True if the move is completed successfully, false otherwise
 	 */
 	public boolean doMove() {
-		// Create references to the bullpen and board
+		// Create references to the bullpen
 		Bullpen bullpen = level.getBullpen();
 
 		// Check if the move is valid. If not, return false
@@ -38,7 +38,7 @@ public class PaletteToBullpenMove extends Move{
 			return false;
 		}
 
-		// Add the piece to the board, remove the active drawn piece in the level, and remove the piece from the bullpen
+		// Add the piece to the bullpen
 		bullpen.addPiece(selectedPiece);
 
 		return true;

@@ -6,21 +6,16 @@ import model.Square;
 /**
  * Move Class for handling the toggling of the board's active square on or off.<p>
  * @author Connor Weeks
- *
+ * @author Maddy Longo
  */
 public class ToggleSquareMove extends Move {
-
-	/**The square being toggled**/
+	/**The square being toggled (which is the board's active square). */
 	Square toggledSquare;
 	
-	/**The current level**/
+	/**The current level. */
 	Level level;
 	
-	/**The active square**/
-	Square activeSquare;
-	
-	
-	/**The previous hint status for the active square**/
+	/**The previous hint status for the active square. */
 	boolean wasHint;
 
 	/**
@@ -28,13 +23,11 @@ public class ToggleSquareMove extends Move {
 	 * @param toggledSquare The Square being toggled.
 	 * @param level The current level.
 	 */
-	public ToggleSquareMove(Square toggledSquare, Level level){
+	public ToggleSquareMove(Square toggledSquare, Level level) {
 		super();
-		this.toggledSquare = toggledSquare;
+		this.toggledSquare = level.getBoard().getActiveSquare();
 		this.level = level;
-		this.activeSquare = level.getBoard().getActiveSquare();
 	}
-	
 
 	/**
 	 * Turns this square on or off, depending on its previous status.<p>
@@ -42,8 +35,6 @@ public class ToggleSquareMove extends Move {
 	 */
 	@Override
 	public boolean doMove() {
-		boolean validation = false;
-		
 		// set active square 
 		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
 		
@@ -52,9 +43,9 @@ public class ToggleSquareMove extends Move {
 		if(isValid()){
 			level.getBoard().toggleActiveSquare();
 			level.getBoard().getActiveSquare().setIsHint(false);
-			validation = true;
+			return true;
 		}
-		return validation;
+		return false;
 	}
 
 	
@@ -64,25 +55,28 @@ public class ToggleSquareMove extends Move {
 	 */
 	@Override
 	public boolean isValid() {
-		boolean validation = false;
-		if(level.getBoard().getActiveSquare() != null 
-				&& level.getBoard().getPiece(level.getBoard().getActiveSquare().getCol(), level.getBoard().getActiveSquare().getRow()) == null){
-			validation = true;
+		int col = level.getBoard().getActiveSquare().getCol();
+		int row = level.getBoard().getActiveSquare().getRow();
+		
+		// Check if there is an active square and no piece is on it.
+		if (level.getBoard().getActiveSquare() != null 
+				&& level.getBoard().getPiece(col, row) == null) {
+			return true;
 		}
-		return validation;
+		
+		return false;
 	}
 
 	/**
-	 * Determines if this ToggleSquareMove can be undone.
+	 * Determines if this ToggleSquareMove can be undone, and undoes it if true.
 	 * @return true If this ToggleSquareMove was successfully undone. 
 	 */
 	@Override
 	public boolean undo() {
+		// TODO is this ever false?
 		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
 		level.getBoard().toggleActiveSquare();
 		level.getBoard().getActiveSquare().setIsHint(wasHint);
 		return true;
 	}
-
 }
-

@@ -34,22 +34,23 @@ public class BoardController extends MouseAdapter {
 	/** The active piece for this. */
 	Piece activePiece;
 
-	/** This board controller's builder (if in Level Builder)**/
+	/** This board controller's builder (if in Level Builder). */
 	LevelBuilder builder;
 
-	/** This board controller's game (if in player)**/
+	/** This board controller's game (if in player). */
 	Kabasuji game;
 
-	/** This keeps track of the source column of the dragging piece if doing a BoardToBoardMove.**/
+	/** This keeps track of the source column of the dragging piece if doing a BoardToBoardMove. */
 	int sourceCol;
 	
-	/** This keeps track of the source row of the dragging piece if doing a BoardToBoardMove.**/
+	/** This keeps track of the source row of the dragging piece if doing a BoardToBoardMove. */
 	int sourceRow;
 
 	/**
 	 * Creates a new BoardController object with the specified parameters.
-	 * @param level The level this controller modifies
-	 * @param levelView The view for the level this controller calls to update
+	 * @param level The level this controller modifies.
+	 * @param levelView The view for the level this controller calls to update.
+	 * @param builder The top-level application (Builder in this case - required for some logic).
 	 */
 	public BoardController(Level level, ILevelView levelView, LevelBuilder builder) {
 		super();
@@ -58,7 +59,13 @@ public class BoardController extends MouseAdapter {
 		this.level = level;
 		this.builder = builder;
 	}
-
+	
+	/**
+	 * Creates a new BoardController object with the specified parameters.
+	 * @param level The level this controller modifies.
+	 * @param levelView The view for the level this controller calls to update.
+	 * @param builder The top-level application (Kabasuji in this case - required for some logic).
+	 */
 	public BoardController(Level level, ILevelView levelView, Kabasuji game) {
 		super();
 		this.levelView = levelView;
@@ -67,10 +74,18 @@ public class BoardController extends MouseAdapter {
 		this.game = game;
 	}
 
+	/**
+	 * Top-level function for handling mouse events (calls other function for testing).
+	 */
 	public void mousePressed(MouseEvent me) {
 		handleMousePressed(me.getPoint(), me.getButton());
 	}
 
+	/**
+	 * Function for handling mouse clicks (easier to use for testing).
+	 * @param p Point at which the mouse was clicked.
+	 * @param mouseButton Button that was clicked (used to check right or left).
+	 */
 	void handleMousePressed(Point p, int mouseButton) {
 		if (boardView == null) {
 			System.out.println("BoardView was null!");
@@ -156,7 +171,10 @@ public class BoardController extends MouseAdapter {
 		levelView.refresh();
 	}
 
-	public void mouseMoved(MouseEvent me){
+	/**
+	 * Function for handling mouse movements (to update position of dragged piece).
+	 */
+	public void mouseMoved(MouseEvent me) {
 		// Whenever the mouse is moved, check if there is an active piece
 		activePiece = level.getActivePiece();
 

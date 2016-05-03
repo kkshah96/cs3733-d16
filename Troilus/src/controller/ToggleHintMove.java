@@ -3,7 +3,6 @@ package controller;
 import model.Level;
 import model.Square;
 
-
 /**
  * Class for implementing toggling a hint in the level builder.
  * This move class stores the row and column of the square being
@@ -13,11 +12,10 @@ import model.Square;
  *
  */
 public class ToggleHintMove extends Move {
-	
-	/** The square being toggled */
+	/** The square being toggled. */
 	Square toggledSquare;
 	
-	/** The level being edited */
+	/** The level being edited. */
 	Level level;
 
 	/**
@@ -26,29 +24,25 @@ public class ToggleHintMove extends Move {
 	 * @param toggledSquare The square being toggled.
 	 * @param level The level currently being edited.
 	 */
-	public ToggleHintMove(Square toggledSquare, Level level){
+	public ToggleHintMove(Level level) {
 		super();
-		this.toggledSquare = toggledSquare;
+		this.toggledSquare = level.getBoard().getActiveSquare();
 		this.level = level;
 	}
 	
 	/**
-	 * Sets the active square to the square being toggled and toggle the hint for that square.
+	 * Toggles the hint for the current active square.
 	 * 
-	 * @return True if move is valid; false otherwise;
+	 * @return True if move is valid; false otherwise.
 	 */
 	@Override
 	public boolean doMove() {
-		boolean validation = false;
-
-		// set active square 
-		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
-		
-		if(isValid()){
+		// TODO used to change active square: Check that this is still valid
+		if (isValid()) {
 			level.getBoard().toggleHint();
-			validation = true;
+			return true;
 		}
-		return validation;
+		return false;
 	}
 
 	/**
@@ -69,5 +63,4 @@ public class ToggleHintMove extends Move {
 		level.getBoard().toggleHint();
 		return true;
 	}
-
 }

@@ -27,22 +27,22 @@ import view.LevelPlayerView;
  * 
  */
 public class BullpenController extends MouseAdapter {
-	/** The level that this bullpen is in */
+	/** The level that this bullpen is in. */
 	protected Level level;
 
-	/** The view for this bullpen */
+	/** The view for this bullpen. */
 	protected BullpenView bullpenView;
 
-	/** The view for the level containing this bullpen */
+	/** The view for the level containing this bullpen. */
 	ILevelView levelView;
 
-	/** Any active piece in the level */
+	/** Any active piece in the level. */
 	Piece activePiece;
 
-	/** The view for the board in this level */
+	/** The view for the board in this level. */
 	BoardView boardView;
 
-	/**The LevelBuilder**/
+	/** The LevelBuilder. */
 	LevelBuilder builder;
 	
 	/**The game**/
@@ -50,8 +50,8 @@ public class BullpenController extends MouseAdapter {
 
 	/**
 	 * Creates a new instance of the BullpenController with the given parameters, if in the LevelBuilder.
-	 * @param level The level of this bullpen
-	 * @param levelView The view for the level of this bullpen
+	 * @param level The level of this bullpen.
+	 * @param levelView The view for the level of this bullpen.
 	 * @param builder The LevelBuilder application.
 	 */
 	public BullpenController(Level level, ILevelView levelView, LevelBuilder builder) {
@@ -66,9 +66,10 @@ public class BullpenController extends MouseAdapter {
 	
 	
 	/**
-	 * Creates a new instance of the BullpenController with the given parameters, if in the Kabasuji application.
-	 * @param level The level of this bullpen
-	 * @param levelView The view for the level of this bullpen
+	 * Creates a new instance of the BullpenController with the given parameters,
+	 * if in the Kabasuji application.
+	 * @param level The level of this bullpen.
+	 * @param levelView The view for the level of this bullpen.
 	 * @param game The Kabasuji game application.
 	 */
 	public BullpenController(Level level, ILevelView levelView, Kabasuji game) {
@@ -81,32 +82,46 @@ public class BullpenController extends MouseAdapter {
 		boardView.updateDraggedPiece(null);
 	}
 
-	// TODO why do this??
+	/**
+	 * Top-level function for handling mouse events (Makes testing easier).
+	 */
 	public void mousePressed(MouseEvent me) {
 		handleMousePressed(me.getPoint(), me.getButton());
 	}
 
+	/**
+	 * Function to handle mouse clicks.
+	 * @param p Point at which mouse was clicked.
+	 * @param mouseButton Button which was clicked.
+	 */
 	void handleMousePressed(Point p, int mouseButton) {
 		//get coordinates of the mouse press
 		int x = p.x;
 		int y = p.y;
 
 		if (mouseButton == MouseEvent.BUTTON3) { // right click
-			System.out.println("Right click");
 			if (boardView.getDraggedPiece() != null) { // right click and dragging
 				level.removeActivePiece();
 				level.setMoveSource(null);
 				boardView.updateDraggedPiece(null);
 			} else if (builder != null) { // right click and not dragging
-				level.getBullpen().removePiece(getClickedPiece(x, y));
-				level.removeActivePiece();
-				level.setMoveSource(null);
-				boardView.updateDraggedPiece(null);
+				RemoveFromBullpenMove m = new RemoveFromBullpenMove(level, getClickedPiece(x, y));
+				if (m.doMove()) {
+					level.setMoveSource(null);
+					boardView.updateDraggedPiece(null);
+					bullpenView.repaint();
+					
+					builder.pushMove(m);
+					return;
+				}
+				
+				//level.getBullpen().removePiece(getClickedPiece(x, y));
+				//level.removeActivePiece();
+				//level.setMoveSource(null);
+				//boardView.updateDraggedPiece(null);
 			}
 		} else {
-			System.out.println("Left click");
 			if (boardView.getDraggedPiece() != null) { // left-click while dragging
-				System.out.println("Dragging a piece");
 				if (level.getMoveSource() == level.getBoard()) { // Move from Board
 					Move m = new BoardToBullpenMove(level, level.getActivePiece());
 					if (m.doMove()) {
@@ -148,20 +163,17 @@ public class BullpenController extends MouseAdapter {
 							}
 							level.setMoveSource(level.getBullpen());
 							level.setActivePiece(getClickedPiece(x, y));
-							//boardView.updateDraggedPiece(p);
 						}
 					}
 				}
 			} else { // left-click while not dragging
-				System.out.println("Not dragging a piece");
 				Piece clickedPiece = getClickedPiece(x, y);
 				if (clickedPiece != null) { // Clicked a piece
 					level.setMoveSource(level.getBullpen());
 					level.setActivePiece(clickedPiece);
-					//boardView.updateDraggedPiece(p);
-					System.out.println("Clicked piece is not null");
+					//System.out.println("Clicked piece is not null");
 				}
-				System.out.println("Clicked piece is null");
+				//System.out.println("Clicked piece is null");
 			}
 		}
 		levelView.refresh();

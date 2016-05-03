@@ -36,6 +36,7 @@ public class PieceDrawer {
 	 * @param g Graphics object from calling class
 	 * @param color The color of the piece to be drawn
 	 * @param piece The piece to be drawn
+	 * @param p The point for the piece to be drawn
 	 * @param width The width of each square in pixels
 	 * @param heightOffset The height offset of the piece in pixels
 	 * @param widthOffset The width offset of the piece in pixels
@@ -60,6 +61,7 @@ public class PieceDrawer {
 	 * Paints a given piece with the specified parameters and a color set to red.
 	 * @param g Graphics object from calling class
 	 * @param piece The piece to be drawn
+	 * @param p The point of the piece to be drawn
 	 * @param width The width of each square in pixels
 	 * @param heightOffset The height offset of the piece in pixels
 	 * @param widthOffset The width offset of the piece in pixels

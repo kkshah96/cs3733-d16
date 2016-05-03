@@ -16,10 +16,10 @@ import view.ILevelView;
 public class UndoMoveController implements ActionListener{
 	/** The top-level level builder entity */
 	LevelBuilder builder;
-	
+
 	/** The view for the level editor in the builder entity */
 	ILevelView editorView;
-	
+
 	/**
 	 * Creates a new instance of UndoMoveController with the following parameters
 	 * @param builder Reference to the top-level builder entity
@@ -28,7 +28,7 @@ public class UndoMoveController implements ActionListener{
 	public UndoMoveController(LevelBuilder builder, ILevelView editorView) {
 		this.builder = builder;
 		this.editorView = editorView;
-		
+
 	}
 
 	@Override
@@ -38,14 +38,21 @@ public class UndoMoveController implements ActionListener{
 			System.out.println("Nothing to undo.");
 			return;
 		}
+		
 		if (editorView.getBoardView().getDraggedPiece() != null) {
 			System.out.println("Can't undo while dragging");
 			return;
 		}
+		
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
+		// TODO is this correct?
 		Move m = builder.popUndoMove();
-		builder.pushRedoMove(m);
-		m.undo();
+		if (m.undo()) {
+			System.out.println("Undid move " + m.getClass().toString());
+			builder.pushRedoMove(m);
+		} else {
+			builder.pushMove(m);
+		}
 		editorView.refresh();
 	}
 }
