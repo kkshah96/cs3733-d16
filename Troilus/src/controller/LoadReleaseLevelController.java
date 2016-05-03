@@ -74,7 +74,7 @@ public class LoadReleaseLevelController implements ActionListener {
 
 		// add listeners to handle input
 		editorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(level, editorView));
-		editorView.getNumberComboBox().addActionListener(new SetSquareNumberController(level, editorView));
+		editorView.getNumberComboBox().addActionListener(new SetSquareNumberController(level, editorView, builder));
 
 		// show level view
 		editorView.setLevelType("Release");

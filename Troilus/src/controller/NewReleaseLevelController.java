@@ -81,7 +81,7 @@ public class NewReleaseLevelController implements ActionListener {
 
 		// add listeners to handle input
 		newEditorView.getNumberColorComboBox().addActionListener(new SetSquareNumberColorController(newReleaseLevel, newEditorView));
-		newEditorView.getNumberComboBox().addActionListener(new SetSquareNumberController(newReleaseLevel, newEditorView));
+		newEditorView.getNumberComboBox().addActionListener(new SetSquareNumberController(newReleaseLevel, newEditorView, builder));
 
 		// Finalize visibility
 		levelLoader.setVisible(false);
