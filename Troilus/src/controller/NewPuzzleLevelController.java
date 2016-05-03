@@ -76,7 +76,7 @@ public class NewPuzzleLevelController implements ActionListener {
 		newEditorView.setTimeLimitPanelVisibility(false);
 		
 		// set listener
-		newEditorView.getMaxMovesField().addActionListener(new SetMaxMovesController(newPuzzleLevel, newEditorView));
+		newEditorView.getMaxMovesField().addActionListener(new SetMaxMovesController(newPuzzleLevel, builder, newEditorView));
 
 		// Finalize visiblity
 		loaderView.setVisible(false);

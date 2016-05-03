@@ -42,7 +42,7 @@ public class TestSetMaxMovesController extends TestCase{
 
 		lsView.setMaxMovesField("2");
 		ActionEvent e = new ActionEvent(lsView.getMaxMovesField(), 0, "", 0, 0);
-		SetMaxMovesController s = new SetMaxMovesController(level, lsView);
+		SetMaxMovesController s = new SetMaxMovesController(level, lb, lsView);
 		s.actionPerformed(e);
 		
 		assertEquals(2, level.getMaxMoves());

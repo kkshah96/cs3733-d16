@@ -368,7 +368,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		setTimeButton.setBounds(209, -1, 64, 38);
 		timePanel.add(setTimeButton);
 		setTimeButton.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
-		setTimeButton.addActionListener(new SetTimeLimitController(activeLevel, this, builder));
+		//setTimeButton.addActionListener(new SetTimeLimitController(activeLevel, this, builder));
 		
 		JPanel squareBannerPanel = new JPanel();
 		squareBannerPanel.setLayout(null);

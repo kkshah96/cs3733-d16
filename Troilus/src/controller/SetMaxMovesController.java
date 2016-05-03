@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Level;
+import model.LevelBuilder;
 import model.PuzzleLevel;
 import view.LevelEditorView;
 
@@ -17,6 +18,9 @@ public class SetMaxMovesController implements ActionListener {
 	/** PuzzleLevel entity */
 	PuzzleLevel level;
 	
+	/** The level builder instance containing the level*/
+	LevelBuilder builder;
+	
 	/** View for the PuzzleLevel being edited */
 	LevelEditorView editorView;
 	
@@ -25,22 +29,18 @@ public class SetMaxMovesController implements ActionListener {
 	 * @param level Reference to the level being edited
 	 * @param editorView Reference to the view of the level being edited
 	 */
-	public SetMaxMovesController(Level level, LevelEditorView editorView) {
+	public SetMaxMovesController(Level level, LevelBuilder builder, LevelEditorView editorView) {
 		this.level = (PuzzleLevel) level;
+		this.builder = builder;
 		this.editorView = editorView;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		// Get the value in the moves textbox
-		int maxMoves = Integer.parseInt(editorView.getMaxMovesField().getText());
+		Move m = new SetMaxMovesMove(level, editorView);
 		
-		// Ensure it is within bounds
-		if (maxMoves <= 0 || maxMoves > 1024) {
-			System.out.printf("Error: %d is an invalid number of moves\n", maxMoves);
-		} else {
-			// If so, update the value stored in the entity
-			level.setMaxMoves(maxMoves);
+		if(m.doMove()) {
+			builder.pushMove(m);	
 		}
 	}
 }
