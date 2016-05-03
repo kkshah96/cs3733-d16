@@ -41,7 +41,8 @@ public class RemoveFromBullpenMove extends Move{
 
 		// Remove the piece from the bullpen
 		bullpen.removePiece(clickedPiece);
-
+		level.removeActivePiece();
+		
 		return true;
 	}
 
