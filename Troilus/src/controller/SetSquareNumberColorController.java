@@ -33,6 +33,11 @@ public class SetSquareNumberColorController implements ActionListener {
 		this.builder = builder;
 	}
 
+	
+	/**
+	 * Handles event when an option in the JComboBox is selected for the SquareNumber.
+	 * @param ae The ActionEvent. 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		// Obtain the active square (if there is one- if not, return)

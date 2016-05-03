@@ -40,7 +40,10 @@ public class BoardController extends MouseAdapter {
 	/** This board controller's game (if in player)**/
 	Kabasuji game;
 
+	/** This keeps track of the source column of the dragging piece if doing a BoardToBoardMove.**/
 	int sourceCol;
+	
+	/** This keeps track of the source row of the dragging piece if doing a BoardToBoardMove.**/
 	int sourceRow;
 
 	/**
@@ -138,6 +141,7 @@ public class BoardController extends MouseAdapter {
 				}
 			} else if (level.getBoard().getPiece(col, row) != null) { // left click and not dragging
 				if (level instanceof PuzzleLevel || builder != null) {
+					//set sourceCol and sourceRow if the activePiece was on the board
 					sourceCol = col;
 					sourceRow = row;
 					level.setMoveSource(level.getBoard());

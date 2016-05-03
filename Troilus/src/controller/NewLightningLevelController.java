@@ -23,6 +23,7 @@ import view.LevelLoaderView;
  * 
  * @author Connor Weeks
  * @author Kunal Shah
+ * @author Alex Kasparek
  *
  */
 public class NewLightningLevelController implements ActionListener {

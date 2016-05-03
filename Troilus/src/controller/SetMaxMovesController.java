@@ -35,6 +35,9 @@ public class SetMaxMovesController implements ActionListener {
 		this.editorView = editorView;
 	}
 	
+	/** Handles the ActionEvent that sets the max moves for a puzzle level.
+	 * @param ae the ActionEvent.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		Move m = new SetMaxMovesMove(level, editorView);

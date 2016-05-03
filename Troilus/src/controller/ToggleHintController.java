@@ -37,6 +37,11 @@ public class ToggleHintController implements ActionListener {
 		this.editor = editor;
 	}
 
+	
+	/**
+	 * Handles the event where the "Hint" button is pressed to toggle the hint status of the active square.
+	 * @param e the ActionEvent.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//System.out.println("Need to implement this.");

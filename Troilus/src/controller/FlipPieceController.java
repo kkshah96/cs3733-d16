@@ -13,6 +13,7 @@ import view.BullpenView;
  * Handles the flipping of a given piece, either Horizontally or Vertically.
  * 
  * @author Connor Weeks
+ * @author Alex Kasparek
  *
  */
 public class FlipPieceController implements ActionListener {

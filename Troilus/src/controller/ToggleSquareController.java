@@ -42,6 +42,10 @@ public class ToggleSquareController implements ActionListener {
 		this.builder = builder;
 	}
 
+	/**
+	 * Handles the pressing of the button to toggle a board square on or off.
+	 * @param e The ActionEvent.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Toggles the active square and updates the boundary

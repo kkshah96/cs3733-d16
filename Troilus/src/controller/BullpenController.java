@@ -20,7 +20,7 @@ import view.LevelEditorView;
 import view.LevelPlayerView;
 
 /**
- * Class that handles events related to Bullpen.
+ * Class that handles events related to the Bullpen for the current level.
  * @author Maddy
  * @author Alex
  * @author Connor
@@ -44,13 +44,15 @@ public class BullpenController extends MouseAdapter {
 	/** The view for the board in this level */
 	BoardView boardView;
 
+	/**The LevelBuilder**/
 	LevelBuilder builder;
 	Kabasuji game;
 
 	/**
-	 * Creates a new instance of the BullpenController with the given parameters
+	 * Creates a new instance of the BullpenController with the given parameters, if in the LevelBuilder.
 	 * @param level The level of this bullpen
 	 * @param levelView The view for the level of this bullpen
+	 * @param builder The LevelBuilder application.
 	 */
 	public BullpenController(Level level, ILevelView levelView, LevelBuilder builder) {
 		super();
@@ -61,7 +63,14 @@ public class BullpenController extends MouseAdapter {
 		this.builder = builder;
 		boardView.updateDraggedPiece(null);
 	}
-
+	
+	
+	/**
+	 * Creates a new instance of the BullpenController with the given parameters, if in the Kabasuji application.
+	 * @param level The level of this bullpen
+	 * @param levelView The view for the level of this bullpen
+	 * @param game The Kabasuji game application.
+	 */
 	public BullpenController(Level level, ILevelView levelView, Kabasuji game) {
 		super();
 		this.level = level;
@@ -78,6 +87,7 @@ public class BullpenController extends MouseAdapter {
 	}
 
 	void handleMousePressed(Point p, int mouseButton) {
+		//get coordinates of the mouse press
 		int x = p.x;
 		int y = p.y;
 

@@ -15,6 +15,7 @@ import view.LevelLoaderView;
 /**
  * Controls the loading of a puzzle level for editing.
  * @author Connor Weeks
+ * @author Alex Kasparek
  *
  */
 public class LoadPuzzleLevelController implements ActionListener {

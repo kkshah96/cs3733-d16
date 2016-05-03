@@ -29,6 +29,11 @@ public class SelectSquareController extends MouseAdapter {
 		this.boardView = boardView;
 	}
 
+	/**
+	 * Handles the mouse being pressed on a board square.<p>
+	 * @param e The MouseEvent (press).
+	 * 
+	 */
 	public void mousePressed(MouseEvent e) {
 		// First check if there is an active piece
 		if (level.getActivePiece() != null) {

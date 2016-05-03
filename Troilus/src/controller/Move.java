@@ -1,12 +1,12 @@
 package controller;
 
 /**
- * Class to provide basic format for moves in builder and game.
+ * Class to provide basic format for moves in builder and game.<p>
  * 
+ *@author Alexander Kasparek
  *@author Connor Weeks
  *@author Dan Alfred
  *@author Kunal Shah
- *@author Alexander Kasparek
  *@author Maddy Longo
  */
 public abstract class Move {

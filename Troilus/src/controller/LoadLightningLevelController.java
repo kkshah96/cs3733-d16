@@ -14,6 +14,7 @@ import view.LevelLoaderView;
 /**
  * Controls the display of a loaded level for editing.
  * @author Connor Weeks
+ * @author Alex Kasparek
  *
  */
 public class LoadLightningLevelController implements ActionListener {

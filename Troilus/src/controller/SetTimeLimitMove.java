@@ -82,6 +82,7 @@ public class SetTimeLimitMove extends Move{
 
 	/**
 	 * Returns true if the new time limit is greater than 0.
+	 * @return true If the time parameter is valid (> 0).
 	 */
 	@Override
 	public boolean isValid() {
@@ -91,6 +92,7 @@ public class SetTimeLimitMove extends Move{
 
 	/**
 	 * Restores the time limit in both the level and view to the previous time.
+	 *  @return true If this move was successfully undone.
 	 */
 	@Override
 	public boolean undo() {

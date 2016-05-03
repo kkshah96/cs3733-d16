@@ -100,17 +100,12 @@ public class BoardToBoardMove extends Move{
 		boolean validation = false;
 	
 		
-//			if(isValidUndo()){
-//				Piece p = movingPiece;
-//				level.getBoard().removePiece(movingPiece);
+			if(isValidUndo()){
 				level.getBoard().addPiece(movingPiece, previousCol, previousRow);
-				
 				System.out.println("Piece moves back to col: " + movingPiece.getCol() + "row: " + movingPiece.getRow());
 				System.out.println("previousCol: " + previousCol + "previousRow: " + previousRow);
-			//System.out.printf(format, args)
-				System.out.println("Valid Undo!");
 				validation = true;
-			//}
+			}
 		
 		return validation;
 	}

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.LevelBuilder;
+import view.ILevelView;
 import view.LevelEditorView;
 
 /**
@@ -17,15 +18,14 @@ public class UndoMoveController implements ActionListener{
 	LevelBuilder builder;
 	
 	/** The view for the level editor in the builder entity */
-	LevelEditorView lEV;
-	// TODO change to ILevelView?
+	ILevelView lEV;
 	
 	/**
 	 * Creates a new instance of UndoMoveController with the following parameters
 	 * @param builder Reference to the top-level builder entity
 	 * @param lEV Reference to the view for a level in the builder entity
 	 */
-	public UndoMoveController(LevelBuilder builder, LevelEditorView lEV) {
+	public UndoMoveController(LevelBuilder builder, ILevelView lEV) {
 		this.builder = builder;
 		this.lEV = lEV;
 		

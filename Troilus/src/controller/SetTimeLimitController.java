@@ -37,6 +37,10 @@ public class SetTimeLimitController implements ActionListener {
 		this.builder = builder;
 	}
 
+	/**
+	 * Handles the press on the "Set" button for the time limit field.
+	 * @param e The ActionEvent. 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 

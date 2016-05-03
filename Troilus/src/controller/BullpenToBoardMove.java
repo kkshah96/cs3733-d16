@@ -73,6 +73,11 @@ public class BullpenToBoardMove extends Move{
 	}
 
 	//TODO: IS THIS CORRECT?
+	
+	/** Logic for undoing this BullpenToBoardMove. Places the piece back into the bullpen and removes it from the board.<br /> 
+	 * Valid if the requested piece destination doesn't contain any invalid squares or other pieces.
+	 * @return True if the move is valid, false otherwise
+	 */
 	public boolean undo() {
 		Bullpen bpen = level.getBullpen();
 		Board board = level.getBoard();

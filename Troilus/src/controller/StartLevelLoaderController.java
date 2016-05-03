@@ -37,7 +37,7 @@ public class StartLevelLoaderController {
 	}
 
 	/**
-	 * Initializes the level loader for interaction
+	 * Initializes the level loader for interaction.
 	 */
 	public void process() {
 		// Get the levels from the builder

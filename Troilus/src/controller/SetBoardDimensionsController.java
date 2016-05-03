@@ -36,6 +36,11 @@ public class SetBoardDimensionsController implements ActionListener {
 		this.editorView = editorView;
 	}
 
+	
+	/** 
+	 * Handles the "Set" button for the board dimensions being pressed. <p>
+	 * @param e The ActionEvent to be handled.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Get references to the text fields for col/rows, and get their values

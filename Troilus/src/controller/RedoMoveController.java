@@ -30,6 +30,11 @@ public class RedoMoveController implements ActionListener{
 		
 	}
 
+	/**Handles action of the "Redo" button being pressed. Pops move off of the redo stack if there is one,
+	 * and redoes the most recently undone move. <p>
+	 * 
+	 * @param e The ActionEvent
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Check if no redos are available- if so, return
@@ -45,7 +50,5 @@ public class RedoMoveController implements ActionListener{
 		lEV.repaint();
 		
 	}
-	
-	
 
 }

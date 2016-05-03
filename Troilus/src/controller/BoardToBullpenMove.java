@@ -6,7 +6,7 @@ import model.Bullpen;
 import model.Level;
 
 /**
- * Class for implemenation of removing a piece from the board.
+ * Class for implementation of removing a piece from the board back to the bullpen.
  * @author Maddy
  * @author Connor Weeks
  *

@@ -59,14 +59,6 @@ public class MovePiecePaletteToBullpenController extends MouseAdapter {
 		// Loop through each piece in the set
 		for(Piece piece : keySet) {
 			Point anchorPoint = pieces.get(piece);
-			// added by Connor <-- stud muffin
-			/*
-			if (isPieceClicked (anchorPoint, clickPoint)) {
-				bp.addPiece(PieceFactory.getPiece(piece.getType()));
-				bullpenView.repaint();
-				return;
-			}
-			 */
 
 			// Loop through each square in the piece
 			for(Square s : piece.getAllSquares()) {
