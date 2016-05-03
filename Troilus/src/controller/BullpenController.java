@@ -59,7 +59,7 @@ public class BullpenController extends MouseAdapter {
 		this.bullpenView = levelView.getBullpenView();
 		this.boardView = levelView.getBoardView();
 		this.builder = builder;
-		boardView.removeDraggedPiece();
+		boardView.updateDraggedPiece(null);
 	}
 
 	public BullpenController(Level level, ILevelView levelView, Kabasuji game) {
@@ -69,7 +69,7 @@ public class BullpenController extends MouseAdapter {
 		this.bullpenView = levelView.getBullpenView();
 		this.boardView = levelView.getBoardView();
 		this.game = game;
-		boardView.removeDraggedPiece();
+		boardView.updateDraggedPiece(null);
 	}
 
 	// TODO why do this??
@@ -84,14 +84,14 @@ public class BullpenController extends MouseAdapter {
 		if (mouseButton == MouseEvent.BUTTON3) { // right click
 			System.out.println("Right click");
 			if (boardView.getDraggedPiece() != null) { // right click and dragging
-				boardView.removeDraggedPiece();
 				level.removeActivePiece();
 				level.setMoveSource(null);
+				boardView.updateDraggedPiece(null);
 			} else if (builder != null) { // right click and not dragging
 				level.getBullpen().removePiece(getClickedPiece(x, y));
-				boardView.removeDraggedPiece();
 				level.removeActivePiece();
 				level.setMoveSource(null);
+				boardView.updateDraggedPiece(null);
 			}
 		} else {
 			System.out.println("Left click");
@@ -113,15 +113,15 @@ public class BullpenController extends MouseAdapter {
 							}
 						}
 						// If the move is valid (and completed), we remove the source and active pieces
-						boardView.removeDraggedPiece();
 						level.setMoveSource(null);
 						level.setActivePiece(null);
+						boardView.updateDraggedPiece(null);
 					}
 				} else { // Click in bullpen
 					if (level.getMoveSource() == level.getBullpen()) { // Piece came from bullpen
-						boardView.removeDraggedPiece();
 						level.setMoveSource(null);
 						level.setActivePiece(null);
+						boardView.updateDraggedPiece(null);
 					} else { // Piece came from board
 						// TODO fix this bad code!
 						Move btbm = new BoardToBullpenMove(level, level.getActivePiece());
@@ -136,9 +136,9 @@ public class BullpenController extends MouseAdapter {
 								levelView.refresh();
 								return;
 							}
-							boardView.addDraggedPiece(getClickedPiece(x, y), p);
 							level.setMoveSource(level.getBullpen());
 							level.setActivePiece(getClickedPiece(x, y));
+							boardView.updateDraggedPiece(p);
 						}
 					}
 				}
@@ -146,9 +146,9 @@ public class BullpenController extends MouseAdapter {
 				System.out.println("Not dragging a piece");
 				Piece clickedPiece = getClickedPiece(x, y);
 				if (clickedPiece != null) { // Clicked a piece
-					boardView.addDraggedPiece(clickedPiece, p);
 					level.setMoveSource(level.getBullpen());
 					level.setActivePiece(clickedPiece);
+					boardView.updateDraggedPiece(p);
 					System.out.println("Clicked piece is not null");
 				}
 				System.out.println("Clicked piece is null");
@@ -192,106 +192,5 @@ public class BullpenController extends MouseAdapter {
 		}
 
 		return activePiece;
-	}
-
-	void handleMousePressed_old(Point p, int mouseButton) {
-		// If a piece is being dragged we don't want to interact with the bullpen
-		//if(boardView.getDraggedPiece() != null) { return; }
-
-		// First obtain the x and y coordinates from the mouse press
-		int x = p.x;
-		int y = p.y;
-
-		System.out.println(x);
-		System.out.println(y);
-
-		// Create a reference to the bullpen
-		Bullpen bullpen = level.getBullpen();
-
-		// find the piece that was clicked
-		Hashtable<Piece, Point> pieces = bullpenView.getDrawnPieces();
-		Set<Piece> keySet = pieces.keySet();
-		activePiece = null;
-
-		int size = BullpenView.SQUARE_SIZE;
-		// check anchor square and relative squares for each piece in the bullpen
-		for (Piece piece : keySet) {
-			int aCol = pieces.get(piece).x;
-			int aRow = pieces.get(piece).y;
-
-			// Piece was clicked if the x coordinate is within the SQUARE_SIZE constant of each point's
-			// x coordinate and the SQUARE_SIZE constant of each point's y coordinate
-			for (Square s : piece.getAllSquares()) {
-				int sCol = s.getCol();
-				int sRow = s.getRow();
-
-				if ((aCol + (sCol * size) <= x) && 
-						(aCol + (sCol * size) + size >= x) && 
-						(aRow + (sRow * size) <= y) && 
-						(aRow + (sRow * size) + size >= y)) {
-					activePiece = piece;
-					break;
-				}
-			}
-
-			// If we have found a piece, exit the for loop
-			if (activePiece != null) {
-				break;
-			}
-		}
-
-		// check if we didn't find a piece, deselect currently selected piece
-		if (activePiece == null && level.getMoveSource() == bullpen) {
-			level.setActivePiece(null);
-			boardView.removeDraggedPiece();
-			bullpenView.repaint();
-			boardView.repaint();
-			return;
-		}
-
-		// a right click will remove the selected piece from the bullpen
-		if(boardView.getDraggedPiece() == null) {
-			if (mouseButton == MouseEvent.BUTTON3) {
-				if(levelView instanceof LevelEditorView) {
-					bullpen.removePiece(activePiece);
-					level.setActivePiece(null);
-				}
-			} else {
-				if (level.getActivePiece() == activePiece) {
-					// if the piece is already selected, deselect it
-					level.setActivePiece(null);
-				} else {
-					// set piece as active piece and set the source as the bullpenview and redraw
-					level.setMoveSource(bullpenView);
-					level.setActivePiece(activePiece); 
-				}
-			}
-		} else {
-			if (mouseButton == MouseEvent.BUTTON3) {
-				if(levelView instanceof LevelEditorView) {
-					bullpen.addPiece(level.getActivePiece());
-					boardView.removeDraggedPiece();
-					level.setMoveSource(null);
-					level.setActivePiece(null);
-					bullpenView.repaint();
-					boardView.repaint();
-				}
-			} else {
-				if (boardView.getDraggedPiece() == activePiece) {
-					// if the piece is already selected, deselect it
-					boardView.removeDraggedPiece();
-					level.setActivePiece(null);
-					
-				} else {
-					// set piece as active piece and set the source as the bullpenview and redraw
-					level.setMoveSource(bullpenView);
-					level.setActivePiece(activePiece); 
-					//boardView.removeDraggedPiece();
-					boardView.repaint();
-				}
-			}
-		}
-		// Refresh view regardless of what happened
-		levelView.refresh();
 	}
 }
