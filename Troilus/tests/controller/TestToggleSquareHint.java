@@ -45,7 +45,7 @@ public class TestToggleSquareHint {
 		
 		assertFalse(board.getActiveSquare().isHint());
 		
-		ToggleHintMove m = new ToggleHintMove(board.getActiveSquare(), level);
+		ToggleHintMove m = new ToggleHintMove(level);
 		
 		m.doMove();
 		assertTrue(board.getActiveSquare().isHint());
@@ -58,7 +58,7 @@ public class TestToggleSquareHint {
 		
 		
 		board.setActiveSquare(2, 2);
-		m = new ToggleHintMove(board.getActiveSquare(), level);
+		m = new ToggleHintMove(level);
 		assertFalse(board.getActiveSquare().isHint());
 		m.doMove();
 		assertTrue(board.getActiveSquare().isHint());

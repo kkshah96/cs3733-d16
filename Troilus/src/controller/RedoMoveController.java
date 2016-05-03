@@ -20,14 +20,13 @@ public class RedoMoveController implements ActionListener{
 	LevelEditorView editorView;
 	
 	/**
-	 * Creates a new instance of UndoMoveController with the following parameters
-	 * @param builder Reference to the top-level builder entity
-	 * @param editorView Reference to the view for a level in the builder entity
+	 * Creates a new instance of UndoMoveController with the following parameters.
+	 * @param builder Reference to the top-level builder entity.
+	 * @param editorView Reference to the view for a level in the builder entity.
 	 */
-	public RedoMoveController(LevelBuilder builder, LevelEditorView editorView){
+	public RedoMoveController(LevelBuilder builder, LevelEditorView editorView) {
 		this.builder = builder;
 		this.editorView = editorView;
-		
 	}
 
 	/**Handles action of the "Redo" button being pressed. Pops move off of the redo stack if there is one,
@@ -45,7 +44,7 @@ public class RedoMoveController implements ActionListener{
 		
 		// can't redo if dragging a piece
 		if (editorView.getBoardView().getDraggedPiece() != null) {
-			System.out.println("Can't redo while draging");
+			System.out.println("Can't redo while dragging");
 			return;
 		}
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
@@ -53,8 +52,6 @@ public class RedoMoveController implements ActionListener{
 		m.doMove();
 		builder.pushMove(m);
 		
-		editorView.repaint();
-		
+		editorView.refresh();
 	}
-
 }

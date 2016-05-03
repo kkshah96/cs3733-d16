@@ -16,9 +16,9 @@ public class RemoveFromBullpenMove extends Move{
 	Piece clickedPiece;
 	
 	/**
-	 * Creates a new instance of the RemoveFromBullpenMove with the given parameters
-	 * @param level The level to perform the move on
-	 * @param clickedPiece A reference to the piece right clicked in the bullpen
+	 * Creates a new instance of the RemoveFromBullpenMove with the given parameters.
+	 * @param level The level to perform the move on.
+	 * @param clickedPiece A reference to the piece right clicked in the bullpen.
 	 */
 	public RemoveFromBullpenMove(Level level, Piece clickedPiece) {
 		super();
@@ -52,12 +52,12 @@ public class RemoveFromBullpenMove extends Move{
 		return true;
 	}
 	
-	/** Logic for undoing this RemoveFromBullpenMove. Adds the piece back to the bullpen
-	 * @return True if the move is valid, false otherwise
+	/** Logic for undoing this RemoveFromBullpenMove. Adds the piece back to the bullpen.
+	 * @return True if the move is valid, false otherwise.
 	 */
 	public boolean undo() {
 		Bullpen bpen = level.getBullpen();
-
+		level.removeActivePiece();
 		bpen.addPiece(clickedPiece);
 		return true;
 	}

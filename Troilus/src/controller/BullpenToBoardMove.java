@@ -67,7 +67,6 @@ public class BullpenToBoardMove extends Move{
 	 * @return True if the move is valid, false otherwise.
 	 */
 	public boolean isValid() {
-		// TODO Check if moves left in Puzzle
 		return level.getBoard().validPlacement(movingPiece, col, row);
 	}
 	
