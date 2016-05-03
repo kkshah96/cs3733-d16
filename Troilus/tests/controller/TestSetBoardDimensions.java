@@ -43,8 +43,6 @@ public class TestSetBoardDimensions extends TestCase{
 	public void testSetDimensions() {
 		ActionEvent e = new ActionEvent(lsView.getToggleButton(), 0, "", 0, 0);
 		assertTrue(board.getSquare(11, 11).isValid());
-		//assertEquals(12,board.getNumRows());
-		//assertEquals(12,board.getNumCols());
 		
 		lsView.setHeightField("10");
 		lsView.setWidthField("10");
@@ -52,23 +50,21 @@ public class TestSetBoardDimensions extends TestCase{
 		h.actionPerformed(e);
 		assertTrue(board.getSquare(9, 9).isValid());
 		assertFalse(board.getSquare(11, 11).isValid());
-		//assertEquals(10,board.getNumRows());
-		//assertEquals(10,board.getNumCols());
+		
+		board.addPiece(Palette.getInstance().getPieces().get(1), 6, 6);
+		assertNotNull(board.getPiece(6, 6));
 		
 		lsView.setWidthField("9");
 		h =  new SetBoardDimensionsController(level,  lsView);
 		h.actionPerformed(e);
-		//assertEquals(10,board.getNumRows());
-		//assertEquals(9,board.getNumCols());
 		assertTrue(board.getSquare(8, 8).isValid());
 		assertFalse(board.getSquare(9, 9).isValid());
+		assertNull(board.getPiece(6, 6));
 		
 		lsView.setWidthField("13");
 		lsView.setHeightField("13");
 		h =  new SetBoardDimensionsController(level,  lsView);
 		h.actionPerformed(e);
-		//assertEquals(10,board.getNumRows());
-		//assertEquals(9,board.getNumCols());
 		assertTrue(board.getSquare(8, 8).isValid());
 		assertFalse(board.getSquare(9, 9).isValid());
 		
@@ -76,8 +72,6 @@ public class TestSetBoardDimensions extends TestCase{
 		lsView.setHeightField("-1");
 		h =  new SetBoardDimensionsController(level,  lsView);
 		h.actionPerformed(e);
-		//assertEquals(10,board.getNumRows());
-		//assertEquals(9,board.getNumCols());
 		assertTrue(board.getSquare(8, 8).isValid());
 		assertFalse(board.getSquare(9, 9).isValid());
 	}
