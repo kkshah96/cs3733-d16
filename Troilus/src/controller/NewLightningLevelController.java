@@ -79,9 +79,9 @@ public class NewLightningLevelController implements ActionListener {
 		newEditorView.setTimeLimitPanelVisibility(true);
 
 		// add listeners to handle input
-		newEditorView.getSecondsField().addActionListener(new SetTimeLimitController(newLevel, newEditorView));
-		newEditorView.getMinutesField().addActionListener(new SetTimeLimitController(newLevel, newEditorView));
-		newEditorView.getSetTimeButton().addActionListener(new SetTimeLimitController(newLevel, newEditorView));
+		newEditorView.getSecondsField().addActionListener(new SetTimeLimitController(newLevel, newEditorView, builder));
+		newEditorView.getMinutesField().addActionListener(new SetTimeLimitController(newLevel, newEditorView, builder));
+		newEditorView.getSetTimeButton().addActionListener(new SetTimeLimitController(newLevel, newEditorView, builder));
 
 		// Finalize visiblity
 		levelLoader.setVisible(false);

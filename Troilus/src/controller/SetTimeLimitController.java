@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import model.Level;
+import model.LevelBuilder;
 import model.LightningLevel;
 import view.LevelEditorView;
 
@@ -22,14 +23,19 @@ public class SetTimeLimitController implements ActionListener {
 	/** The view for the level being edited */
 	LevelEditorView editorView;
 	
+	/** The LevelBuilder **/
+	LevelBuilder builder;
+	
 	/**
 	 * Creates a new instance of SetTimeLimitController with the following parameters
 	 * @param level Reference to the level being edited
 	 * @param editorView Reference to the view of the level being edited
+	 * @param builder The LevelBuilder 
 	 */
-	public SetTimeLimitController(Level level, LevelEditorView editorView){
+	public SetTimeLimitController(Level level, LevelEditorView editorView, LevelBuilder builder){
 		this.level = (LightningLevel) level;
 		this.editorView = editorView;
+		this.builder = builder;
 	}
 
 	@Override
@@ -46,9 +52,18 @@ public class SetTimeLimitController implements ActionListener {
 			return;
 		}
 		
-		// Otherwise, convert to secounds and set time limit
+		// Otherwise, convert to seconds and set time limit
 		int newLimit = (minutes * 60) + seconds;
-		level.setTimeLimit(newLimit);
+		
+		Move m = new SetTimeLimitMove(level, newLimit, editorView);
+		
+	
+			m.doMove();
+			if(m.isValid()){
+				builder.pushMove(m);
+			}
+		
+		
 		
 		// reset minutes : seconds view so seconds < 60
 		minutesField.setText(Integer.toString(newLimit / 60));
