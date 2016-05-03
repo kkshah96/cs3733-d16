@@ -1,16 +1,11 @@
 package main;
 
 import java.awt.EventQueue;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
 import controller.StartLevelSelectorController;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import model.Kabasuji;
@@ -22,10 +17,9 @@ import view.SplashScreenView;
  * @author Dan Alfred
  */
 public class StartKabasuji {
-	
 	/**
-	 * Main method to handle Kabasuji launch
-	 * @param args Command line arguments, which are disregarded
+	 * Main method to handle Kabasuji launch.
+	 * @param args Command line arguments, which are disregarded.
 	 */
 	public static void main(String[] args) {
 		// Define new Runnable for splash screen execution

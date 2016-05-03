@@ -16,7 +16,6 @@ import view.SplashScreenView;
  * @author Dan Alfred
  */
 public class StartLevelBuilder {
-	
 	/**
 	 * Main method to handle LevelBuilder launch
 	 * @param args Command line arguments, which are disregarded
@@ -50,6 +49,7 @@ public class StartLevelBuilder {
 							window.setVisible(true);
 						}
 					});
+					
 					// Start the timer and ensure it only runs once
 					timer.setRepeats(false);
 					timer.start();

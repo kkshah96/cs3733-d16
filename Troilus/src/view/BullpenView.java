@@ -20,34 +20,34 @@ import model.Piece;
  *
  */
 public class BullpenView extends JPanel {
-	/** Constant to define the width of the bullpen in pixels */
+	/** Constant to define the width of the bullpen in pixels. */
 	public static final int BULLPEN_WIDTH = 420;
 	
-	/** Constant to define the length of each square in pixels for drawing */
+	/** Constant to define the length of each square in pixels for drawing. */
 	public static final int SQUARE_SIZE = 10;
 
-	/** Constant to define the offset between the left of the panel and the left of the bullpen */
+	/** Constant to define the offset between the left of the panel and the left of the bullpen. */
 	public static final int WIDTH_OFFSET = 8 * SQUARE_SIZE;
 
-	/** Constant to define the offset between the top of the panel and the top of the bullpen*/
+	/** Constant to define the offset between the top of the panel and the top of the bullpen. */
 	public static final int HEIGHT_OFFSET = 100;
 
-	/** Constant to define how many pieces will be stored per row in the bullpen */
+	/** Constant to define how many pieces will be stored per row in the bullpen. */
 	public static final int NUM_COLUMNS = 4;
 
-	/** Constant to define the spacing in pixels between pieces in the bullpen rows */
+	/** Constant to define the spacing in pixels between pieces in the bullpen rows. */
 	public static final int SPACING = 8;
 
-	/** Storage for pieces in the bullpen */
+	/** Storage for pieces in the bullpen. */
 	Hashtable<Piece, Point> pieces;
 
-	/** The scrollpane this bullpenview belongs inside */
+	/** The scrollpane this bullpenview belongs inside. */
 	JScrollPane scrollPane;
 	
-	/** The bullpen entity this view draws */
+	/** The bullpen entity this view draws. */
 	Bullpen bullpen;
 	
-	/** The level entity this bullpen is from */
+	/** The level entity this bullpen is from. */
 	Level level;
 
 	/**

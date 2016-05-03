@@ -25,36 +25,36 @@ import model.Piece;
  * @author Alexander Kasparek
  */
 public class BoardView extends JPanel {
-	/** Constant to define how large each square is, in pixels*/
+	/** Constant to define how large each square is, in pixels. */
 	static final public int SQUARE_SIZE = 30;
 
-	/** Constant to define board width in pixels */
+	/** Constant to define board width in pixels. */
 	public static final int WIDTH = Board.BOARD_WIDTH*SQUARE_SIZE;
 
-	/** Constant to define board height in pixels */
+	/** Constant to define board height in pixels. */
 	public static final int HEIGHT = Board.BOARD_HEIGHT*SQUARE_SIZE;
 
-	/** Constant to define the offset between the left of the panel and the left of the board */
+	/** Constant to define the offset between the left of the panel and the left of the board. */
 	static final public int WIDTH_OFFSET = 10;
 
-	/** Constant to define the offset between the top of the panel and the top of the board*/
+	/** Constant to define the offset between the top of the panel and the top of the board. */
 	static final public int HEIGHT_OFFSET = 30;
 
-	/** A reference to the Level entity */
+	/** A reference to the Level entity. */
 	Level level;
 	
-	/** A reference to the Board entity in the above Level */
+	/** A reference to the Board entity in the above Level. */
 	Board board;
 	
-	/** A reference to a piece that is being dragged across the board */
+	/** A reference to a piece that is being dragged across the board. */
 	Piece draggedPiece;
 	
-	/** A reference to the current location of the dragged piece */
+	/** A reference to the current location of the dragged piece. */
 	Point draggedPiecePoint;
 
 	/**
-	 * Constructor for the BoardView, for a given Level
-	 * @param level The level this BoardView is based on
+	 * Constructor for the BoardView, for a given Level.
+	 * @param level The level this BoardView is based on.
 	 */
 	public BoardView(Level level) {
 		this.level = level;
@@ -76,7 +76,7 @@ public class BoardView extends JPanel {
 	}
 
 	/**
-	 * Paints the BoardView and squares on the Board 
+	 * Paints the BoardView and squares on the Board.
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -108,8 +108,8 @@ public class BoardView extends JPanel {
 		}
 	}
 	
-	/** Gets dragged piece from level, updating its location
-	 * WARNING: ASSUMES dragged piece is always level active piece
+	/** Gets dragged piece from level, updating its location.
+	 * WARNING: ASSUMES dragged piece is always level active piece.
 	 */
 	public void updateDraggedPiece(Point piecePoint) {
 		this.draggedPiece = level.getActivePiece();
@@ -117,16 +117,16 @@ public class BoardView extends JPanel {
 	}
 	
 	/**
-	 * Determines the dragged piece in this BoardView
-	 * @return Reference to the dragged piece, or null if no dragged piece
+	 * Determines the dragged piece in this BoardView.
+	 * @return Reference to the dragged piece, or null if no dragged piece.
 	 */
 	public Piece getDraggedPiece(){
 		return this.draggedPiece;
 	}
 	
 	/**
-	 * Determines the point of the dragged piece in this BoardView
-	 * @return Reference to the point of the dragged piece, or null if no dragged piece
+	 * Determines the point of the dragged piece in this BoardView.
+	 * @return Reference to the point of the dragged piece, or null if no dragged piece.
 	 */
 	public Point getDraggedPiecePoint(){
 		return this.draggedPiecePoint;

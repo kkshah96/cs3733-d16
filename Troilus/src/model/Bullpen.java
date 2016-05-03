@@ -17,6 +17,13 @@ public class Bullpen {
 	ArrayList<Piece> pieces;
 
 	/**
+	 * Constructor for Bullpen. Instantiates an array of Pieces.
+	 */
+	public Bullpen() {
+		pieces = new ArrayList<Piece>();
+	}
+	
+	/**
 	 * Adds the given piece to this bullpen.
 	 * @param p The piece object to add.
 	 * @return Returns true if the piece was added successfully, false if not.
@@ -24,9 +31,10 @@ public class Bullpen {
 	public boolean addPiece(Piece p) {
 		if (p == null) {
 			return false;
+		} else {
+			pieces.add(p);
+			return true;
 		}
-		pieces.add(p);
-		return true;
 	}
 
 	/**
@@ -39,7 +47,7 @@ public class Bullpen {
 		this.pieces.remove(p);
 		return p;
 	}
-	
+
 	/**
 	 * Provides a listing of pieces in the bullpen.
 	 * @return ArrayList of pieces in the bullpen.
@@ -47,7 +55,7 @@ public class Bullpen {
 	public ArrayList<Piece> getPieces(){
 		return this.pieces;
 	}
-	
+
 	/**
 	 * Determines the number of pieces currently in the bullpen.
 	 * @return Size of ArrayList of pieces.
