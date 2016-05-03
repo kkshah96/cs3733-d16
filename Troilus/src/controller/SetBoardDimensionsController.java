@@ -46,9 +46,20 @@ public class SetBoardDimensionsController implements ActionListener {
 		// Get references to the text fields for col/rows, and get their values
 		JTextField r = editorView.getRowField();
 		JTextField c = editorView.getColField();
+		
+		int rows;
+		int cols;
 
-		int rows = Integer.parseInt(r.getText());
-		int cols = Integer.parseInt(c.getText());
+		try {
+			rows = Integer.parseInt(r.getText());
+			cols = Integer.parseInt(c.getText());
+		}
+		catch (Exception ex) {
+			// invalid entry
+			r.setText("");
+			c.setText("");
+			return;
+		}
 
 		// Ensure the values entered are within the bounds of the board
 		if (cols < 0 || cols > Board.BOARD_WIDTH || rows > Board.BOARD_HEIGHT || rows < 0) {

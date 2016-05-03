@@ -61,7 +61,7 @@ public class TestToggleSquare extends TestCase{
 		assertTrue(board.getActiveSquare().isValid());
 	}
 	
-	public void testUndo() {
+	public void testUndoRedo() {
 		// Set up and test
 		ActionEvent toggle = new ActionEvent(editorView.getToggleButton(), 0, "", 0, 0);
 		board.setActiveSquare(1, 1);
