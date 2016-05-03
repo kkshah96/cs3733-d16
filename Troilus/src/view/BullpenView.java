@@ -20,6 +20,11 @@ import model.Piece;
  *
  */
 public class BullpenView extends JPanel {
+	/**
+	 * Default ID to get rid of warnings.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** Constant to define the width of the bullpen in pixels. */
 	public static final int BULLPEN_WIDTH = 420;
 	

@@ -20,6 +20,11 @@ import javax.swing.SwingConstants;
 
 public class SplashScreenView extends JFrame {
 	/**
+	 * Default ID to get rid of warnings.
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Create a new instance of SplashScreenView.
 	 */
 	public SplashScreenView() {

@@ -47,6 +47,11 @@ import model.Piece;
  *
  */
 public class LevelEditorView extends JFrame implements ILevelView {
+	/**
+	 * Default ID to get rid of warnings.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** Textfield to hold changes to number of rows on the board */
 	private JTextField boardRowField;
 	

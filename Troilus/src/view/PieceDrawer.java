@@ -3,7 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.Random;
 
 import model.Piece;
 import model.PieceSquare;

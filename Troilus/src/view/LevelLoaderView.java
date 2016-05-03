@@ -1,43 +1,25 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.Color;
-import java.awt.GridLayout;
-import javax.swing.JScrollBar;
-import java.awt.Panel;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
-import java.awt.ScrollPane;
-import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controller.NewLightningLevelController;
 import controller.NewPuzzleLevelController;
 import controller.NewReleaseLevelController;
-import controller.StartLightningLevelController;
-import controller.StartPuzzleLevelController;
-import controller.StartReleaseLevelController;
 
 import javax.swing.SwingConstants;
 
 import model.LevelBuilder;
 
-import javax.swing.ImageIcon;
-import java.awt.Toolkit;
-import java.awt.Button;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
-import java.awt.SystemColor;
 
 /**
  * GUI for loading Levels in the LevelBuilder application.
@@ -49,6 +31,11 @@ import java.awt.SystemColor;
  *
  */
 public class LevelLoaderView extends JFrame {
+	/**
+	 * Default ID to get rid of warnings.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The collection of buttons displayed */
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	

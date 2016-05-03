@@ -32,6 +32,7 @@ public class TestPiece extends TestCase {
 		
 		// This test will succeed if the message in the catch block is printed
 		try {
+			@SuppressWarnings("unused")
 			Piece invalidPiece = new Piece(tooManySquares, anchorSquare, 1, Color.RED);
 		} catch(RuntimeException e) {
 			System.out.println("5 squares should be used, no more no less");

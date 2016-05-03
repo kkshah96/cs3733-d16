@@ -3,11 +3,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Hashtable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,7 +21,6 @@ import controller.FlipPieceController;
 import controller.RotatePieceController;
 import model.Kabasuji;
 import model.Level;
-import model.LightningLevel;
 import model.Piece;
 import model.PuzzleLevel;
 import model.ReleaseLevel;
@@ -41,6 +37,11 @@ import model.ReleaseLevel;
  *
  */
 public class LevelPlayerView extends JFrame implements ILevelView {
+	/**
+	 * Default ID to get rid of warnings.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** Panel to hold the title for the view */
 	private JPanel panelTitle;
 	

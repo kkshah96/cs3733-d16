@@ -6,8 +6,6 @@ import java.awt.event.MouseEvent;
 import java.util.Hashtable;
 import java.util.Set;
 
-import model.Bullpen;
-import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
 import model.Piece;
@@ -15,7 +13,6 @@ import model.PieceFactory;
 import model.Square;
 import view.BullpenView;
 import view.ILevelView;
-import view.LevelPlayerView;
 import view.PaletteView;
 
 /**

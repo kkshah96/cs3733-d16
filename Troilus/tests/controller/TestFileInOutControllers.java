@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
@@ -14,11 +13,14 @@ import model.PuzzleSquare;
 import model.Square;
 import view.LevelLoaderView;
 
+// TODO fill this in!
 public class TestFileInOutControllers extends TestCase {
-
-	public void test() {
+	LevelLoaderView loaderView;
+	ArrayList<Level> levels;
+	
+	public void setUp() {
 		LevelBuilder lb = new LevelBuilder();
-		LevelLoaderView loaderView = new LevelLoaderView(lb);
+		loaderView = new LevelLoaderView(lb);
 		Square[][] squares = new PuzzleSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
 		for (int i = 0; i < Board.BOARD_WIDTH; i++) {
 			for (int j = 0; j < Board.BOARD_HEIGHT; j++) {
@@ -33,8 +35,6 @@ public class TestFileInOutControllers extends TestCase {
 		assertEquals(oldNumLevels+1, lb.getNumLevels());
 		
 		LevelFileInputController input = new LevelFileInputController();
-		ArrayList<Level> levels = input.getLevels();		
-		
+		levels = input.getLevels();
 	}
-	
 }

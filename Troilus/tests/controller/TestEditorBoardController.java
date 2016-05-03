@@ -1,6 +1,5 @@
 package controller;
 
-
 import junit.framework.TestCase;
 
 import java.awt.Point;
@@ -12,7 +11,6 @@ import model.Kabasuji;
 import model.Level;
 import model.LevelBuilder;
 import model.Palette;
-import model.Piece;
 import model.PieceFactory;
 import model.PuzzleLevel;
 import model.PuzzleSquare;

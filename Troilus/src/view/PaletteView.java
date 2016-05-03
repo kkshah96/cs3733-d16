@@ -24,6 +24,11 @@ import model.Piece;
  *
  */
 public class PaletteView extends JPanel {
+	/**
+	 * Default ID to get rid of warnings.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** Constant to define square size in pixels */
 	public static final int SQUARE_SIZE = 10;
 	

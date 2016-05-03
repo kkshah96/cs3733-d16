@@ -8,7 +8,6 @@ import model.Board;
 import model.Bullpen;
 import model.LevelBuilder;
 import model.Palette;
-import model.PuzzleSquare;
 import model.ReleaseLevel;
 import model.ReleaseSquare;
 import model.Square;
@@ -16,8 +15,6 @@ import view.LevelEditorView;
 import view.LevelLoaderView;
 
 public class TestSetSquareNumberColorController extends TestCase {
-
-	
 	public void testSet() {
 		LevelBuilder builder = new LevelBuilder();
 		LevelLoaderView loader = new LevelLoaderView(builder);

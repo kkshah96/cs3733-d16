@@ -1,9 +1,7 @@
 package controller;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 
 import junit.framework.TestCase;
 import model.Board;
@@ -12,7 +10,6 @@ import model.Level;
 import model.LevelBuilder;
 import model.Palette;
 import model.Piece;
-import model.PieceFactory;
 import model.PieceSquare;
 import model.PuzzleLevel;
 import model.PuzzleSquare;

@@ -25,6 +25,11 @@ import model.Piece;
  * @author Alexander Kasparek
  */
 public class BoardView extends JPanel {
+	/**
+	 * Default ID to get rid of warnings.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** Constant to define how large each square is, in pixels. */
 	static final public int SQUARE_SIZE = 30;
 

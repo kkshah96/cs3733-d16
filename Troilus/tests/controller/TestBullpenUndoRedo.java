@@ -34,8 +34,8 @@ public class TestBullpenUndoRedo extends TestCase {
 		bullpen = level.getBullpen();
 		bullpen.addPiece(PieceFactory.getPiece(1));
 		editorView = new LevelEditorView(builder, new LevelLoaderView(builder), level);
-		UndoMoveController undoController = new UndoMoveController(builder, editorView);
-		RedoMoveController redoController = new RedoMoveController(builder, editorView);
+		undoController = new UndoMoveController(builder, editorView);
+		redoController = new RedoMoveController(builder, editorView);
 	}
 	
 	public void testUndo() {
@@ -47,5 +47,6 @@ public class TestBullpenUndoRedo extends TestCase {
 		assertEquals(0, bullpen.getNumPieces());
 		
 		// Undo
+		
 	}
 }

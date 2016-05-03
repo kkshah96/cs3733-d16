@@ -3,7 +3,7 @@ package model;
 import java.awt.Color;
 
 import controller.BoardToBoardMove;
-import controller.BoardToBullpenMove;
+//import controller.BoardToBullpenMove;
 import controller.BullpenToBoardMove;
 import junit.framework.TestCase;
 
@@ -50,7 +50,7 @@ public class TestReleaseLevel extends TestCase {
 		assertFalse(invalidMove1.doMove());
 		
 		// TODO fix logic so this is true! Right now the check is in the controllers
-		BoardToBullpenMove invalidMove2 = new BoardToBullpenMove(level, 0, 5);
+		//BoardToBullpenMove invalidMove2 = new BoardToBullpenMove(level, 0, 5);
 		//assertFalse(invalidMove2.doMove());
 		
 		// Cover green squares

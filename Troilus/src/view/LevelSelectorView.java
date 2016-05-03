@@ -1,51 +1,37 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.Color;
-import java.awt.GridLayout;
-import javax.swing.JScrollBar;
-import java.awt.Panel;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
-import java.awt.ScrollPane;
-import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
-import controller.StartLightningLevelController;
-import controller.StartPuzzleLevelController;
-import controller.StartReleaseLevelController;
 
 import javax.swing.SwingConstants;
 
 import model.Kabasuji;
 
-import javax.swing.ImageIcon;
-import java.awt.Toolkit;
-import java.awt.Button;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
-import java.awt.SystemColor;
 
 /**
- * GUI for selecting Levels in the Kabasuji game
+ * GUI for selecting Levels in the Kabasuji game.
  * 
- * Displays buttons for every playable level in the game, as well as labels containing the number of stars received for respective Levels
+ * Displays buttons for every playable level in the game, as well as labels containing
+ * the number of stars received for respective Levels.
  * 
  * @author Kunal Shah
  *
  */
-
 public class LevelSelectorView extends JFrame{
+	/**
+	 * Default ID to get rid of warnings.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The collection of buttons for levels loaded */
 	ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	

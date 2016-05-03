@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import junit.framework.TestCase;
 import model.Board;
 import model.Bullpen;
-import model.Level;
 import model.LevelBuilder;
 import model.LightningLevel;
 import model.Palette;
