@@ -16,6 +16,8 @@ public class ToggleSquareMove extends Move {
 
 	int col;
 	int row;
+	
+	boolean wasHint;
 
 	//TODO: Still need to finish logic for undoing and redoing....
 	public ToggleSquareMove(Square toggledSquare, Level level){
@@ -31,8 +33,11 @@ public class ToggleSquareMove extends Move {
 		// set active square 
 		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
 		
+		wasHint = level.getBoard().getActiveSquare().isHint();
+		
 		if(isValid()){
 			level.getBoard().toggleActiveSquare();
+			level.getBoard().getActiveSquare().setIsHint(false);
 			validation = true;
 		}
 		return validation;
@@ -41,7 +46,8 @@ public class ToggleSquareMove extends Move {
 	@Override
 	public boolean isValid() {
 		boolean validation = false;
-		if(level.getBoard().getActiveSquare() != null && level.getBoard().getActiveSquare().isValid()){
+		if(level.getBoard().getActiveSquare() != null 
+				&& level.getBoard().getPiece(level.getBoard().getActiveSquare().getCol(), level.getBoard().getActiveSquare().getRow()) == null){
 			validation = true;
 		}
 		return validation;
@@ -51,6 +57,7 @@ public class ToggleSquareMove extends Move {
 	public boolean undo() {
 		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
 		level.getBoard().toggleActiveSquare();
+		level.getBoard().getActiveSquare().setIsHint(wasHint);
 		return true;
 	}
 

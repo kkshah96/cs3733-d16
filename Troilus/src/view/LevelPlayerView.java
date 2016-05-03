@@ -176,7 +176,7 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		bullpenView.setBackground(Color.LIGHT_GRAY);
 		bullpenView.setBounds(748, 38, 457, 484);
 		// BullpenController
-		bullpenView.addMouseListener(new BullpenController(level, this));
+		bullpenView.addMouseListener(new BullpenController(level, this, game));
 		
 		bullpenScrollPane.setBounds(6, 50, 479, 394);
 		bullpenScrollPane.setViewportView(bullpenView);
