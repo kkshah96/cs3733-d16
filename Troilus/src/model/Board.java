@@ -136,6 +136,7 @@ public class Board {
 
 	/** Remove the given piece from the board and return it.
 	 * @param p The piece to be removed.
+	 * @return Returns this piece removed, if any
 	 */
 	public Piece removePiece(Piece p) {
 		this.pieces.remove(p);

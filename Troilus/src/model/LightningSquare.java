@@ -40,6 +40,10 @@ public class LightningSquare extends Square {
 		return "LightningSquare";
 	}
 	
+	/**
+	 * Determines whether this LightningSquare is covered
+	 * @return Boolean true if it's covered, false otherwise
+	 */
 	public boolean isCovered() {
 		return isCovered;
 	}

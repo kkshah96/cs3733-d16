@@ -32,6 +32,9 @@ public class Palette {
 		}
 	}
 	
+	/**
+	 * @return Returns the instance of this Palette
+	 */
 	public static Palette getInstance(){
 		return instance;
 	}
