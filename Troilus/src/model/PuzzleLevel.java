@@ -55,11 +55,6 @@ public class PuzzleLevel extends Level {
 		}
 	}
 	
-	/** Check if there are moves left */
-	public boolean canMove() {
-		return movesLeft > 0;
-	}
-	
 	/**
 	 * Updates the number of moves left for this level
 	 * @param i The difference in moves

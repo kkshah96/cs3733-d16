@@ -142,9 +142,9 @@ public class LightningLevel extends Level{
 	/** Determines if a move can be done on this level
 	 * @return True if moves can be completed, false if not
 	 */
-	public boolean canMove() {
-		return timeLimit > 0;
-	}
+	//public boolean canMove() {
+	//	return timeLimit > 0;
+	//}
 	
 	/**
 	 * @return String representation of the name of this level type
