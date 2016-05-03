@@ -68,7 +68,7 @@ public class BoardToBullpenMove extends Move{
 	 * @return True if the move is completed successfully, false otherwise
 	 */
 	public boolean doMove() {
-		// First check if the move is valid. If not, return false
+		// First check if the move is valid. If not, return false.
 		if (!isValid()) {
 			return false;
 		}
