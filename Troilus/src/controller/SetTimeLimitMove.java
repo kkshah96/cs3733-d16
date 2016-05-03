@@ -1,24 +1,38 @@
 package controller;
 
-import model.Level;
 import model.LightningLevel;
 import view.LevelEditorView;
 
 
 /**
+ * Class for implementing a change in the time limit of a lightning level.
+ * This move class stores the previous time limit and the intended next 
+ * time limit.  Checks are made to be sure that the designer input is correct,
+ * and the text fields revert to the last valid value upon an invalid entry.
  * 
  * @author Connor Weeks
  *
  */
 public class SetTimeLimitMove extends Move{
 
+	/** The level in which the move takes place */
 	LightningLevel level;
+	
+	/** The LevelEditorView displaying the current level being edited */
 	LevelEditorView editorView;
 	
+	/** The time limit before the designer made this change */
 	int previousTime;
+	
+	/** The new possible time limit */
 	int time;
 	
 
+	/**
+	 * Standard constructor
+	 * @param level The level being edited.
+	 * @param editorView The LevelEditorView corresponding to the current level.
+	 */
 	public SetTimeLimitMove(LightningLevel level, LevelEditorView editorView){
 		this.level = level;
 		this.previousTime = level.getTime();
@@ -38,6 +52,10 @@ public class SetTimeLimitMove extends Move{
 	}
 
 
+	/**
+	 * Performs the move if it is valid.  This will update the time limit
+	 * in the level and change the appropriate text fields.
+	 */
 	@Override
 	public boolean doMove() {
 		
@@ -62,12 +80,18 @@ public class SetTimeLimitMove extends Move{
 	}
 
 
+	/**
+	 * Returns true if the new time limit is greater than 0.
+	 */
 	@Override
 	public boolean isValid() {
 		return time > 0;
 	}
 
 
+	/**
+	 * Restores the time limit in both the level and view to the previous time.
+	 */
 	@Override
 	public boolean undo() {
 		
@@ -79,8 +103,4 @@ public class SetTimeLimitMove extends Move{
 		editorView.getSecondsField().setText(Integer.toString(previousTime % 60));
 		return true;
 	}
-
-
-
-
 }
