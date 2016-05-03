@@ -9,8 +9,10 @@ import view.LevelEditorView;
  *
  */
 public class SetMaxMovesMove extends Move {
-	
+	/** The new maximum number of moves */
 	int numMoves;
+	
+	/** The current maximum number of moves */
 	int previousNumMoves;
 	
 	/** PuzzleLevel entity */
@@ -19,6 +21,11 @@ public class SetMaxMovesMove extends Move {
 	/** View for the PuzzleLevel being edited */
 	LevelEditorView editorView;
 	
+	/**
+	 * Creates a new instance of SetMaxMovesMove with the following parameters:
+	 * @param level Reference to the PuzzleLevel being modified
+	 * @param editorView The view displaying the PuzzleLevel
+	 */
 	public SetMaxMovesMove(PuzzleLevel level, LevelEditorView editorView) {
 		// set value
 		this.level = level;

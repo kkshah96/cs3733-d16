@@ -28,6 +28,7 @@ public class ToggleHintController implements ActionListener {
 	/**
 	 * Creates a new instance of ToggleHintController with the following parameters
 	 * @param level Reference to the level entity being edited
+	 * @param editor Reference to the LevelBuilder containing the level
 	 * @param boardView Reference to the view of the board in this level
 	 */
 	public ToggleHintController(Level level, LevelBuilder editor, BoardView boardView) {

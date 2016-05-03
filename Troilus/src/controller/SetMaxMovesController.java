@@ -27,6 +27,7 @@ public class SetMaxMovesController implements ActionListener {
 	/**
 	 * Creates a new SetMaxMovesController with the following parameters
 	 * @param level Reference to the level being edited
+	 * @param builder Reference to the builder being used
 	 * @param editorView Reference to the view of the level being edited
 	 */
 	public SetMaxMovesController(Level level, LevelBuilder builder, LevelEditorView editorView) {

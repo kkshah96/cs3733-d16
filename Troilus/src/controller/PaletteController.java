@@ -36,13 +36,14 @@ public class PaletteController extends MouseAdapter {
 	/** The view for the palette here */
 	PaletteView paletteView;
 	
+	/** The builder containing this palette */
 	LevelBuilder builder;
 
 	/**
 	 * Creates a new instance of MovePiecePaletteToBullpenController with the specified objects
 	 * @param level Level objecting containing bullpen and board to be modified
-	 * @param bullpenView The view for the bullpen object modified
-	 * @param paletteView The view for the palette object modified
+	 * @param levelView The view interface for the player/builder
+	 * @param builder Reference to the builder this palette controller refers to
 	 */
 	public PaletteController(Level level, ILevelView levelView, LevelBuilder builder) {
 		this.level = level;

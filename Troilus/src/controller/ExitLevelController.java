@@ -32,6 +32,7 @@ public class ExitLevelController implements ActionListener {
 	 * Creates a new ExitLevelController for the given parameters
 	 * @param levelView Boundary object for the current level
 	 * @param game Reference to the main game entity
+	 * @param level Reference to the current level being played
 	 */
 	public ExitLevelController(LevelPlayerView levelView, Kabasuji game, Level level) {
 		this.levelView = levelView;

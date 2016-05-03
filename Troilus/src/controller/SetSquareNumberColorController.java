@@ -21,11 +21,13 @@ public class SetSquareNumberColorController implements ActionListener {
 	/** The view for the level being edited */
 	LevelEditorView editorView;
 
+	/** The builder entity being edited */
 	LevelBuilder builder;
 	/**
 	 * Creates a new instance of SetSquareNumberColorController with the following parameters
 	 * @param level Reference to the level entity being edited
 	 * @param editorView Reference to the view for the level being edited
+	 * @param builder Reference to the builder entity containing the level
 	 */
 	public SetSquareNumberColorController(Level level, LevelEditorView editorView, LevelBuilder builder) {
 		this.level = level;

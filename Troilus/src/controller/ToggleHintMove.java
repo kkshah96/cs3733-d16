@@ -21,7 +21,6 @@ public class ToggleHintMove extends Move {
 	/**
 	 * Constructor for ToggleHintMove.
 	 * 
-	 * @param toggledSquare The square being toggled.
 	 * @param level The level currently being edited.
 	 */
 	public ToggleHintMove(Level level) {

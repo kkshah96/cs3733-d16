@@ -64,7 +64,7 @@ public class BoardController extends MouseAdapter {
 	 * Creates a new BoardController object with the specified parameters.
 	 * @param level The level this controller modifies.
 	 * @param levelView The view for the level this controller calls to update.
-	 * @param builder The top-level application (Kabasuji in this case - required for some logic).
+	 * @param game The top-level application (Kabasuji in this case - required for some logic).
 	 */
 	public BoardController(Level level, ILevelView levelView, Kabasuji game) {
 		super();

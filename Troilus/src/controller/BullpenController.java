@@ -180,6 +180,13 @@ public class BullpenController extends MouseAdapter {
 	}
 
 	// Ugly quick hack to get stuff working quickly
+	/**
+	 * Finds and returns the piece at the given pixel coordinates<br />
+	 * WARNING- Returns null if no piece at the given location
+	 * @param x X pixel coordinate of requested piece
+	 * @param y Y pixel coordinate of requested piece
+	 * @return Returns a reference to the piece at the provided location, or null if no piece is there
+	 */
 	Piece getClickedPiece(int x, int y) {
 		// find the piece that was clicked
 		Hashtable<Piece, Point> pieces = bullpenView.getDrawnPieces();

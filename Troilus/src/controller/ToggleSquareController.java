@@ -34,6 +34,7 @@ public class ToggleSquareController implements ActionListener {
 	/**
 	 * Creates a new instance of ToggleSquareController with the following parameters
 	 * @param level Reference to the level entity being edited
+	 * @param builder Reference to the builder containing the above level
 	 * @param boardView Reference to the view for the board in this level
 	 */
 	public ToggleSquareController(Level level, LevelBuilder builder, BoardView boardView) {

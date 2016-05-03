@@ -34,9 +34,10 @@ public class BoardToBoardMove extends Move{
 	/**
 	 * Creates a new instance of a BoardToBoardMove with the given parameters.
 	 * @param level The level to complete the move on
-	 * @param movingPiece A reference to the active, or moving piece
 	 * @param col The column of the destination square on the board
-	 * @param row The row of the destination square on the board
+	 * @param row The row of the anchor square on the board
+	 * @param previousCol The current column of the anchor square on the board
+	 * @param previousRow The current row of the anchor square on the board
 	 */
 	public BoardToBoardMove(Level level, int col, int row, int previousCol, int previousRow) {
 		super();
@@ -80,10 +81,6 @@ public class BoardToBoardMove extends Move{
 	 * Checks if this BoardToBoardMove is valid with the given parameters<br />
 	 * -Valid if all squares inside the piece are not on an invalid squares and <br />
 	 * -There are no pieces underneath the requested piece 
-	 * 
-	 * @param piece Reference to the piece to use in the move
-	 * @param col Column on the board as the destination
-	 * @param row Row on the board as the destination
 	 * @return True if this BoardToBoardMove is valid with the given parameters, false otherwise
 	 */
 	public boolean isValid() {
@@ -108,6 +105,10 @@ public class BoardToBoardMove extends Move{
 		return false;
 	}
 
+	/**
+	 * Determines if undoing this move is valid:
+	 * @return True if the move can be undone, false if not
+	 */
 	public boolean isValidUndo() {
 		return level.getBoard().validPlacement(movingPiece, previousCol, previousRow);
 	}
