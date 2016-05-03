@@ -32,8 +32,6 @@ public class ToggleSquareMove extends Move {
 		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
 		
 		if(isValid()){
-
-			System.out.println("Doing");
 			level.getBoard().toggleActiveSquare();
 			validation = true;
 		}
