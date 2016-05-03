@@ -91,7 +91,7 @@ public class LevelFileOutputController {
 			System.out.println("Number of levels: " + levels.size());
 
 			// Add the first 15 levels, or all levels if fewer than 15 exist
-			int maxLevels = min(15, levels.size());
+			int maxLevels = min(25, levels.size());
 
 			// Create our XML Writing objects
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
