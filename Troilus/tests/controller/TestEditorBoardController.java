@@ -17,6 +17,7 @@ import model.PieceFactory;
 import model.PuzzleLevel;
 import model.PuzzleSquare;
 import model.Square;
+import view.BoardView;
 import view.LevelEditorView;
 import view.LevelLoaderView;
 
@@ -49,11 +50,15 @@ public class TestEditorBoardController extends TestCase {
 		boardController = new BoardController(level, lsView, game);
 	}
 
-	public void test() {
+	public void testMoves() {
+		// TODO figure out how to get coordinates of piece in bullpen!
 		bpController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
 		level.getBullpen().addPiece(PieceFactory.getPiece(0));
 		bpController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
-		boardController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
+
+		//assertNotNull(level.getActivePiece());
+		boardController.handleMousePressed(new Point(BoardView.WIDTH_OFFSET, BoardView.HEIGHT_OFFSET), MouseEvent.BUTTON1);
+		//assertNotNull(board.getPiece(0, 0));
 		boardController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON3);
 		assertEquals(board.getPieces().size(), 0);
 	}

@@ -78,7 +78,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	JButton toggleHintButton;
 	
 	/** Button to toggle square validity on the board */
-	JButton ToggleButton;
+	JButton toggleButton;
 	
 	/** Button to rotate a piece clockwise in the bullpen */
 	JButton rotateCWButton;
@@ -97,6 +97,9 @@ public class LevelEditorView extends JFrame implements ILevelView {
 
 	/** Button to set the maximum number of moves for PuzzleLevels */
 	JButton setMovesButton;
+	
+	/** Button to undo moves and edits. */
+	JButton undoButton;
 	
 	/** The prior loader view */
 	LevelLoaderView levelLoader;
@@ -262,7 +265,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		levelLoaderButton.addActionListener(new ExitLevelEditorController(builder, this, levelLoader));
 		saveUndoPanel.add(levelLoaderButton);
 
-		JButton undoButton = new JButton("Undo");
+		undoButton = new JButton("Undo");
 		undoButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		undoButton.setBounds(102, 0, 74, 38);
 		saveUndoPanel.add(undoButton);
@@ -378,13 +381,13 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		squareBannerPanel.setBounds(0, 76, 747, 38);
 		getContentPane().add(squareBannerPanel);
 
-		ToggleButton = new JButton("Toggle");
-		ToggleButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
-		ToggleButton.setBounds(437, 0, 115, 38);
-		squareBannerPanel.add(ToggleButton);
+		toggleButton = new JButton("Toggle");
+		toggleButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
+		toggleButton.setBounds(437, 0, 115, 38);
+		squareBannerPanel.add(toggleButton);
 
 
-		ToggleButton.addActionListener(new ToggleSquareController(activeLevel, builder, boardView));
+		toggleButton.addActionListener(new ToggleSquareController(activeLevel, builder, boardView));
 
 		toggleHintButton = new JButton("Hint");
 		toggleHintButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
@@ -595,7 +598,12 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	 * @return Reference to the button to toggle squares
 	 */
 	public JButton getToggleButton(){
-		return ToggleButton;
+		return toggleButton;
+	}
+	
+	/** Reference to the button to undo moves */
+	public JButton getUndoButton() {
+		return undoButton;
 	}
 	
 	/**

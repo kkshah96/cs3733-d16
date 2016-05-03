@@ -148,7 +148,7 @@ public class BullpenController extends MouseAdapter {
 							}
 							level.setMoveSource(level.getBullpen());
 							level.setActivePiece(getClickedPiece(x, y));
-							boardView.updateDraggedPiece(p);
+							//boardView.updateDraggedPiece(p);
 						}
 					}
 				}
@@ -158,7 +158,7 @@ public class BullpenController extends MouseAdapter {
 				if (clickedPiece != null) { // Clicked a piece
 					level.setMoveSource(level.getBullpen());
 					level.setActivePiece(clickedPiece);
-					boardView.updateDraggedPiece(p);
+					//boardView.updateDraggedPiece(p);
 					System.out.println("Clicked piece is not null");
 				}
 				System.out.println("Clicked piece is null");

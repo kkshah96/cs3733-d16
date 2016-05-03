@@ -17,11 +17,13 @@ import view.LevelLoaderView;
 
 public class TestToggleSquare extends TestCase{
 	Board board;
-	LevelBuilder lb;
+	LevelBuilder builder;
 	Level level;
-	LevelEditorView lsView;
+	LevelEditorView editorView;
 	BullpenController bpController;
 	BoardController boardController;
+	ToggleSquareController toggleSquareController;
+	UndoMoveController undoController;
 	
 	public void setUp() {
 		// Initialization things
@@ -33,29 +35,58 @@ public class TestToggleSquare extends TestCase{
 		}
 		
 		board = new Board(squares);
-		lb = new LevelBuilder();
+		builder = new LevelBuilder();
 		level = new PuzzleLevel(0, false, new Bullpen(), board, new Palette(), 0);
-		LevelLoaderView lView = new LevelLoaderView(lb);
-		lsView = new LevelEditorView(lb, lView, level);
+		LevelLoaderView lView = new LevelLoaderView(builder);
+		editorView = new LevelEditorView(builder, lView, level);
+		undoController = new UndoMoveController(builder, editorView);
+		toggleSquareController = new ToggleSquareController(level, builder, editorView.getBoardView());
 //		bpController = new BullpenController(level, lsView.getBullpenView());
 //		boardController = new BoardController(level, lsView.getBoardView());
 	}
 	
 	public void testHintToggle() {
-		ActionEvent e = new ActionEvent(lsView.getToggleButton(), 0, "", 0, 0);
+		ActionEvent toggle = new ActionEvent(editorView.getToggleButton(), 0, "", 0, 0);
 		board.setActiveSquare(1, 1);
-		Square s = board.getActiveSquare();
+		Square activeSquare = board.getActiveSquare();
 		
-		assertEquals(board.getSquare(1, 1), s);
-		assertEquals(true, board.getActiveSquare().isValid());
-		ToggleSquareController h = new ToggleSquareController(level, lb, lsView.getBoardView());
-		h.actionPerformed(e);
-		assertEquals(false, board.getActiveSquare().isValid());
+		assertEquals(activeSquare, board.getSquare(1, 1));
+		assertTrue(board.getActiveSquare().isValid());
 		
-		h = new ToggleSquareController(level, lb, lsView.getBoardView());
-		h.actionPerformed(e);
+		toggleSquareController.actionPerformed(toggle);
+		assertFalse(board.getActiveSquare().isValid());
 		
-		assertEquals(true, board.getActiveSquare().isValid());
+		toggleSquareController.actionPerformed(toggle);
 		
+		assertTrue(board.getActiveSquare().isValid());
+	}
+	
+	public void testUndo() {
+		// Set up and test
+		ActionEvent toggle = new ActionEvent(editorView.getToggleButton(), 0, "", 0, 0);
+		board.setActiveSquare(1, 1);
+		Square activeSquare = board.getActiveSquare();
+		assertEquals(activeSquare, board.getSquare(1, 1));
+		assertTrue(board.getActiveSquare().isValid());
+		
+		// Toggle active square off
+		toggleSquareController.actionPerformed(toggle);
+		assertFalse(board.getActiveSquare().isValid());
+		
+		// Toggle active square on
+		toggleSquareController.actionPerformed(toggle);
+		assertTrue(board.getActiveSquare().isValid());
+		
+		// Undo last two moves
+		ActionEvent undo = new ActionEvent(editorView.getUndoButton(), 0, "", 0, 0);
+		undoController.actionPerformed(undo);
+		assertFalse(board.getActiveSquare().isValid());
+		
+		undoController.actionPerformed(undo);
+		assertTrue(board.getActiveSquare().isValid());
+		
+		// No more moves to undo
+		undoController.actionPerformed(undo);
+		assertTrue(board.getActiveSquare().isValid());
 	}
 }
