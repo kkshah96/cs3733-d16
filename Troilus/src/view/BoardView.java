@@ -95,7 +95,7 @@ public class BoardView extends JPanel {
 		}
 		
 		Set<Piece> keySet = pieces.keySet();
-		//System.out.println(keySet.size() + " : Number of pieces stored in Board");
+		
 		for (Piece p : keySet) {
 			pDrawer.paint(g, p.getColor(), p, pieces.get(p), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}

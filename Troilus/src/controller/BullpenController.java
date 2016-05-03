@@ -44,6 +44,8 @@ public class BullpenController extends MouseAdapter {
 
 	/**The LevelBuilder**/
 	LevelBuilder builder;
+	
+	/**The game**/
 	Kabasuji game;
 
 	/**

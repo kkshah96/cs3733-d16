@@ -65,9 +65,16 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	/** The button to save levels to the builder */
 	private JButton saveButton;
 	
+	/**Label that displays the level type*/
 	JLabel levelTypeLabel;
+	
+	/**Panel containing all options for puzzle levels*/
 	JPanel maxMovesPanel;
+	
+	/**Panel containing all options for release levels*/
 	JPanel releaseSquareOptionsPanel;
+	
+	/**Panel containing options for lightning levels*/
 	JPanel timePanel;
 
 	/** Button to toggle a piece as a hint on the board */
@@ -187,39 +194,41 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		bullpenView.addMouseListener(new BullpenController(activeLevel, this, builder));
 		bullpenView.addMouseMotionListener(new BullpenController(activeLevel, this, builder));
 
+		//add scroll pane to make bullpen scrollable
 		bullpenScrollPane.setBounds(6, 50, 446, 423);
 		bullpenScrollPane.setViewportView(bullpenView);
 		getContentPane().add(bullpenScrollPane, BorderLayout.CENTER);
-		//bullpenContainer.add(bullpenScrollPane);
 		bullpenContainer.add(bullpenScrollPane);
 
-		 rotateCWButton = new JButton("Rotate CW");
+		//Create button to rotate pieces Clockwise in the bullpen and add necessary controller
+		rotateCWButton = new JButton("Rotate CW");
 		rotateCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		rotateCWButton.setBounds(76, 4, 87, 29);
 		rotateCWButton.addActionListener(new RotatePieceController(activeLevel, bullpenView, Piece.ROTATE_CW));
 		bullPenOptionsPanel.add(rotateCWButton);
 
-		 rotateCCWButton = new JButton("Rotate CCW");
+		//Create button to rotate pieces counterclockwise in the bullpen and add necessary controller
+		rotateCCWButton = new JButton("Rotate CCW");
 		rotateCCWButton.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		rotateCCWButton.setBounds(158, 4, 87, 29);
 		rotateCCWButton.addActionListener(new RotatePieceController(activeLevel, bullpenView, Piece.ROTATE_CCW));
 		bullPenOptionsPanel.add(rotateCCWButton);
 
+		//Create button to flip pieces horizontally in the bullpen and add necessary controller
 		 flipHorizontal = new JButton("Flip Horizontal");
 		 flipHorizontal.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		 flipHorizontal.setBounds(237, 4, 105, 29);
 		 flipHorizontal.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_HORIZONTALLY));
-		bullPenOptionsPanel.add(flipHorizontal);
+		 bullPenOptionsPanel.add(flipHorizontal);
 
+		//Create button to flip pieces vertically in the bullpen and add necessary controller
 		 flipVertical = new JButton("Flip Vertical");
 		 flipVertical.setBounds(335, 4, 105, 29);
 		 flipVertical.setFont(new Font("PT Sans Caption", Font.PLAIN, 11));
 		 flipVertical.addActionListener(new FlipPieceController(activeLevel, bullpenView, Piece.FLIP_VERTICALLY));
 		bullPenOptionsPanel.add(flipVertical);
 
-		//		JPanel panel_2 = new BullpenView(activeLevel.getBullpen());
-		//		bullpenScrollPane.setViewportView(panel_2);
-
+		//Panel containing the save and undo buttons
 		JPanel saveUndoPanel = new JPanel();
 		saveUndoPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		saveUndoPanel.setBackground(Color.LIGHT_GRAY);
@@ -227,6 +236,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		getContentPane().add(saveUndoPanel);
 		saveUndoPanel.setLayout(null);
 
+		//Create button to save a level and add the necessary controller
 		saveButton = new JButton("Save");
 		saveButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		saveButton.setBounds(0, 0, 102, 38);
