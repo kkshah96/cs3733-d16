@@ -4,55 +4,84 @@ import model.Level;
 import model.LightningLevel;
 import view.LevelEditorView;
 
+
+/**
+ * 
+ * @author Connor Weeks
+ *
+ */
 public class SetTimeLimitMove extends Move{
 
 	LightningLevel level;
+
 	int previousTime;
 	int time;
-	LevelEditorView lEV;
-	String previousSeconds;
-	String previousMinutes;
-	
-	public SetTimeLimitMove(LightningLevel level, int time, LevelEditorView lEV){
+
+	LevelEditorView editorView;
+
+	public SetTimeLimitMove(LightningLevel level, LevelEditorView editorView){
 		this.level = level;
-		this.time = time;
 		this.previousTime = level.getTime();
-		this.lEV = lEV;
-		this.previousSeconds = lEV.getSecondsField().getText();
-		this.previousMinutes = lEV.getMinutesField().getText();
+		this.editorView = editorView;
+		this.previousTime = level.getTime();
+		// try to get current values
+		try {
+			int seconds = Integer.parseInt(editorView.getSecondsField().getText());
+			int minutes = Integer.parseInt(editorView.getMinutesField().getText());
+			this.time = seconds + minutes * 60;
+		}
+		catch (Exception e) {
+			// if parsing failed, set time to invalid value
+			this.time = -1;
+		}
 	}
 
 
 	@Override
 	public boolean doMove() {
-	if(isValid()){
-		level.setTimeLimit(time);
-	}
-		return false;
+		
+		boolean validation = false;
+		
+		if(isValid()){
+			// update display
+			editorView.getMinutesField().setText(Integer.toString(time / 60));
+			editorView.getSecondsField().setText(Integer.toString(time % 60));
+			
+			// update level
+			level.setTimeLimit(time);
+			validation = true;
+		}
+		else {
+			System.out.println("not valid");
+			// reset text
+			editorView.getMinutesField().setText(Integer.toString(previousTime / 60));
+			editorView.getSecondsField().setText(Integer.toString(previousTime % 60));
+		}
+		return validation;
 	}
 
 
 	@Override
 	public boolean isValid() {
-		if(time >= 0){
-			return true;
-		}
-		return false;
+		return time > 0;
 	}
 
 
 	@Override
-	
+
 	//TODO: Still need to properly update the text fields after an undo
 	public boolean undo() {
+		
+		// update level
 		level.setTimeLimit(previousTime);
-		lEV.setTimeMinutesField(previousMinutes);
-		lEV.setTimeSecondsField(previousSeconds);
-		lEV.repaint();
+		
+		// update display
+		editorView.getMinutesField().setText(Integer.toString(previousTime / 60));
+		editorView.getSecondsField().setText(Integer.toString(previousTime % 60));
 		return true;
 	}
-	
-	
-	
+
+
+
 
 }
