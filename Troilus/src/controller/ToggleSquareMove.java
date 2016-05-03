@@ -3,16 +3,22 @@ package controller;
 import model.Level;
 import model.Square;
 
-public class ToggleSquareHintMove extends Move{
+/**
+ * 
+ * @author Connor Weeks
+ *
+ */
+public class ToggleSquareMove extends Move {
+
 	Square toggledSquare;
 	Level level;
 	Square activeSquare;
-	
+
 	int col;
 	int row;
-	
+
 	//TODO: Still need to finish logic for undoing and redoing....
-	public ToggleSquareHintMove(Square toggledSquare, Level level){
+	public ToggleSquareMove(Square toggledSquare, Level level){
 		super();
 		this.toggledSquare = toggledSquare;
 		this.level = level;
@@ -22,12 +28,11 @@ public class ToggleSquareHintMove extends Move{
 	public boolean doMove() {
 		boolean validation = false;
 		
+		// set active square 
+		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
 		
 		if(isValid()){
-			// set active square 
-			level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
-			
-			level.getBoard().toggleHint();
+			level.getBoard().toggleActiveSquare();
 			validation = true;
 		}
 		return validation;
@@ -45,8 +50,9 @@ public class ToggleSquareHintMove extends Move{
 	@Override
 	public boolean undo() {
 		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
-		level.getBoard().toggleHint();
+		level.getBoard().toggleActiveSquare();
 		return true;
 	}
 
 }
+

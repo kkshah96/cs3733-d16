@@ -24,7 +24,7 @@ public class Board {
 	/** Constant denoting the maximum height of the board. */
 	public static final int BOARD_HEIGHT = 12;
 
-	/** The 2D array of squares that compose the board. Acess with squares[col][row]. */
+	/** The 2D array of squares that compose the board. Access with squares[col][row]. */
 	Square[][] squares;
 
 	/** Pieces on the Board, where Point holds (col, row) */

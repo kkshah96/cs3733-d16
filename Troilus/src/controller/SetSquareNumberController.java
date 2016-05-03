@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Level;
+import model.LevelBuilder;
 import model.ReleaseSquare;
 import view.LevelEditorView;
 
@@ -18,15 +19,20 @@ public class SetSquareNumberController implements ActionListener{
 	
 	/** The view for the level being edited */
 	LevelEditorView editorView;
+	
+	/** The LevelBuilder **/
+	LevelBuilder builder;
 
 	/**
 	 * Creates a new SetSquareNumberController with the following parameters
 	 * @param level Reference to the level entity being edited
 	 * @param editorView Reference to the view of the level being edited
+	 * @param builder The LevelBuilder 
 	 */
-	public SetSquareNumberController(Level level, LevelEditorView editorView) {
+	public SetSquareNumberController(Level level, LevelEditorView editorView, LevelBuilder builder) {
 		this.level = level;
 		this.editorView = editorView;
+		this.builder = builder;
 	}
 
 	@Override
@@ -44,10 +50,15 @@ public class SetSquareNumberController implements ActionListener{
 		// Ensure a valid number was chosen
 		if (!(num.equals("None"))) {
 			int n = Integer.parseInt(num);
-			square.setNumber(n);
+			Move m = new SetSquareNumberMove((ReleaseSquare)level.getBoard().getActiveSquare(), level, n);
+			m.doMove();
+			builder.pushMove(m);
+			
+			
 		} else {
-			// Assign the number to the square
-			square.setNumber(0);
+			Move m = new SetSquareNumberMove((ReleaseSquare)level.getBoard().getActiveSquare(), level, 0);
+			m.doMove();
+			builder.pushMove(m);
 		}
 
 		// Repaint to reflect changes
