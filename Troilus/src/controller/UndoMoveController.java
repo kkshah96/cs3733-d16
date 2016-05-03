@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 import model.LevelBuilder;
 import view.ILevelView;
-import view.LevelEditorView;
 
 /**
  * Class to handle the redirection for undoing moves during level building.
  * 
  * @author Alex Kasparek
+ * @author Connor Weeks
  *
  */
 public class UndoMoveController implements ActionListener{
@@ -18,16 +18,16 @@ public class UndoMoveController implements ActionListener{
 	LevelBuilder builder;
 	
 	/** The view for the level editor in the builder entity */
-	ILevelView lEV;
+	ILevelView editorView;
 	
 	/**
 	 * Creates a new instance of UndoMoveController with the following parameters
 	 * @param builder Reference to the top-level builder entity
-	 * @param lEV Reference to the view for a level in the builder entity
+	 * @param editorView Reference to the view for a level in the builder entity
 	 */
-	public UndoMoveController(LevelBuilder builder, ILevelView lEV) {
+	public UndoMoveController(LevelBuilder builder, ILevelView editorView) {
 		this.builder = builder;
-		this.lEV = lEV;
+		this.editorView = editorView;
 		
 	}
 
@@ -38,10 +38,14 @@ public class UndoMoveController implements ActionListener{
 			System.out.println("Nothing to undo.");
 			return;
 		}
+		if (editorView.getBoardView().getDraggedPiece() != null) {
+			System.out.println("Can't undo while dragging");
+			return;
+		}
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
 		Move m = builder.popUndoMove();
 		builder.pushRedoMove(m);
 		m.undo();
-		lEV.refresh();
+		editorView.refresh();
 	}
 }
