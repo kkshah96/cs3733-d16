@@ -195,7 +195,7 @@ public abstract class Level {
 
 	/**
 	 * Updates the source of an in-progress move in this level
-	 * @param s String representation of the source for the move
+	 * @param s Object representation of the source for the move
 	 */
 	public void setMoveSource(Object source){
 		this.moveSource = source;
@@ -203,7 +203,7 @@ public abstract class Level {
 
 	/**
 	 * Determines the source of an in-progress move for this level, or null if no move in-progress
-	 * @return String representation of move source
+	 * @return Move source as object
 	 */
 	public Object getMoveSource(){
 		return moveSource;

@@ -113,5 +113,13 @@ public abstract class Square {
 	public boolean isHint() {
 		return this.isHint;
 	}
+
+	/**
+	 * Updates the hint status of this squares
+	 * @param isHint Boolean for new hint status (true if hint, false otherwise)
+	 */
+	public void setIsHint(boolean isHint) {
+		this.isHint = isHint;
+	}
 	
 }

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import model.Level;
 import model.LevelBuilder;
+import model.Square;
 import view.BoardView;
 
 /**
@@ -13,6 +14,7 @@ import view.BoardView;
  * level = the current level being edited. <br>
  * <p>
  * @author Alexander Kasparek
+ * @author Dan Alfred
  */
 public class ToggleHintController implements ActionListener {
 	/** The level to toggle hints on */
@@ -40,9 +42,10 @@ public class ToggleHintController implements ActionListener {
 		//System.out.println("Need to implement this.");
 		
 		// Toggles the hint on the board and updates the view
-		Move m = new ToggleSquareHintEdit(level.getBoard().getActiveSquare(),level, level.getBoard().getActiveSquare().getCol(), level.getBoard().getActiveSquare().getRow());
-			level.getBoard().toggleHint();
-		editor.pushMove(m);
+		Move m = new ToggleSquareHintMove(level.getBoard().getActiveSquare(),level);
+		if(m.doMove()) {
+			editor.pushMove(m);	
+		}
 		
 		boardView.repaint();
 	}

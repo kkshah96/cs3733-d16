@@ -34,14 +34,14 @@ public class BoardController extends MouseAdapter {
 	/** The active piece for this. */
 	Piece activePiece;
 
-	/** This board controller's builder (if in levelbuilder)**/
+	/** This board controller's builder (if in Level Builder)**/
 	LevelBuilder builder;
 
 	/** This board controller's game (if in player)**/
 	Kabasuji game;
 
-	int previousCol;
-	int previousRow;
+	int sourceCol;
+	int sourceRow;
 
 	/**
 	 * Creates a new BoardController object with the specified parameters.
@@ -78,6 +78,88 @@ public class BoardController extends MouseAdapter {
 		int x = p.x;
 		int y = p.y;
 
+		// Convert to col and row using our view offsets
+		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
+		int row = (y - BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
+
+		if (mouseButton == MouseEvent.BUTTON3) { // right click
+			if (boardView.getDraggedPiece() != null) {
+				boardView.removeDraggedPiece();
+				level.removeActivePiece();
+				level.setMoveSource(null);
+			} else if (level.getBoard().getPiece(col, row) != null) {
+				Move m = new BoardToBullpenMove(level, col, row);
+				
+				if (m.doMove()) {
+					if (builder != null) {
+						// if we are in the level builder
+						// If the move is valid (and completed), we remove the source and active pieces
+						boardView.removeDraggedPiece();
+						builder.pushMove(m);
+
+					} else if (game != null) {
+						// if we are in the player
+						boardView.removeDraggedPiece();
+						// end game if needed
+						if (m.getEndGameStatus()) {
+							new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+						}
+					}
+					level.setMoveSource(null);
+					level.setActivePiece(null);
+				}
+			}
+		} else { // left click
+			if (boardView.getDraggedPiece() != null) { // left click and dragging a piece
+				Move m;
+				if (level.getMoveSource() == level.getBoard()) {
+					m = new BoardToBoardMove(level, col, row, sourceCol, sourceRow);
+				} else {
+					m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
+				}
+
+				if (m.doMove()) {
+					if (builder != null) {
+						// if we are in the level builder
+						// If the move is valid (and completed), we remove the source and active pieces
+						boardView.removeDraggedPiece();
+						builder.pushMove(m);
+
+					} else if (game != null) {
+						// if we are in the player
+						boardView.removeDraggedPiece();
+						// end game if needed
+						if (m.getEndGameStatus()) {
+							new ExitLevelController((LevelPlayerView)levelView, game, level).process();
+						}
+					}
+					level.setMoveSource(null);
+					level.setActivePiece(null);
+				}
+			} else if (level.getBoard().getPiece(col, row) != null) { // left click and not dragging
+				sourceCol = col;
+				sourceRow = row;
+				level.setMoveSource(level.getBoard());
+				Piece pieceToDrag = level.getBoard().getPiece(sourceCol, sourceRow);
+				if (pieceToDrag != null) {
+					level.setActivePiece(pieceToDrag);
+					boardView.addDraggedPiece(pieceToDrag, p);
+				}
+			}
+		}
+		levelView.refresh();
+	}
+
+	void handleMousePressed_old(Point p, int mouseButton) {
+		if (boardView == null) {
+			System.out.println("BoardView was null!");
+			return;
+		}
+
+		// get mouse coordinates from press
+		int x = p.x;
+		int y = p.y;
+
 		// Convert to col and row using our view offsets 
 		// TODO Will this cause rounding error? Is there a better way to do this?
 		int col = (x - BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE;
@@ -85,10 +167,10 @@ public class BoardController extends MouseAdapter {
 
 
 		//TODO: Pass these in as parameters to BoardToBoardMove?
-		previousCol = col;
-		previousRow = row;
-		System.out.println("Col: " + previousCol);
-		System.out.println("Row: " + previousRow);
+		sourceCol = col;
+		sourceRow = row;
+		System.out.println("Col: " + sourceCol);
+		System.out.println("Row: " + sourceRow);
 
 		// First check what type of click
 		if (mouseButton == MouseEvent.BUTTON3) { // We have right clicked
@@ -100,10 +182,11 @@ public class BoardController extends MouseAdapter {
 			//} else {
 			// This means we want to attempt a BoardToBullpen move (send a piece on the board back to bullpen)
 
-			// TODO OK THIS IS MESSY, BUT IT FIXES BUG #2 IN THE BUGS GOOGLE DOC. Can we just pass a Piece to move classes instead of a row and column
+			// TODO OK THIS IS MESSY, BUT IT FIXES BUG #2 IN THE BUGS GOOGLE DOC. Can we just pass a Piece
+			// to move classes instead of a row and column
 			// so I dont need two constructors or will this not work?
-
-			if(boardView.getDraggedPiece() != null && level.getBullpen().getPieces().contains(boardView.getDraggedPiece())){
+			if (boardView.getDraggedPiece() != null &&
+					level.getBullpen().getPieces().contains(boardView.getDraggedPiece())) {
 				System.out.println("Not null");
 				//m = new BoardToBullpenMove(level, boardView.getDraggedPiece());
 				//if(level.getBullpen().getPieces().contains(boardView.getDraggedPiece())){
@@ -112,18 +195,18 @@ public class BoardController extends MouseAdapter {
 				level.removeActivePiece();
 				level.setMoveSource(null);
 				//}
-			}else{
+			} else {
 				// Board to bullpen moves are only allowed for the builder
-				if(levelView instanceof LevelEditorView) {
+				if((levelView instanceof LevelEditorView) || (levelView instanceof LevelPlayerView && level instanceof PuzzleLevel)) {
 					BoardToBullpenMove m;
 
-					if(boardView.getDraggedPiece() != null){
+					if (boardView.getDraggedPiece() != null) {
 						m = new BoardToBullpenMove(level, boardView.getDraggedPiece());
-					}else{
+					} else {
 						m = new BoardToBullpenMove(level, col, row);
 					}
-					if (m.doMove()) {
 
+					if (m.doMove()) {
 						if (builder != null) {
 							// if we are in the level builder
 							// If the move is valid (and completed), we remove the source and active pieces
@@ -206,9 +289,9 @@ public class BoardController extends MouseAdapter {
 			} else if (level.getMoveSource() == boardView) {
 				// We can only do a BoardToBoardMove on a puzzle level in Kabasuji, and anywhere in builder
 				if((levelView instanceof LevelPlayerView && level instanceof PuzzleLevel) || levelView instanceof LevelEditorView) {
-						
-					BoardToBoardMove m = new BoardToBoardMove(level, level.getActivePiece(), col, row, previousCol, previousRow);
-	
+
+					BoardToBoardMove m = new BoardToBoardMove(level, col, row, sourceCol, sourceRow);
+
 					if (m.doMove()) {
 						if (builder != null) {
 							//push move here
@@ -231,7 +314,7 @@ public class BoardController extends MouseAdapter {
 						else {
 							System.err.println("Player and builder are null");
 						}
-	
+
 					} else {
 						System.out.println("Failure!");
 					}

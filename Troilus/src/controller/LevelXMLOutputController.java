@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -70,7 +71,15 @@ public class LevelXMLOutputController {
 			// initialize
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse(filePath);
+			
+			Document document;
+			try {
+				document = documentBuilder.parse(filePath);
+			}
+			catch (FileNotFoundException e) {
+				System.err.println("File cannot be found");
+				return;
+			}
 
 			// Get the root element
 			Node levelNode = document.getFirstChild();

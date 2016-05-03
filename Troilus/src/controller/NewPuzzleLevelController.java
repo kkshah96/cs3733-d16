@@ -50,7 +50,7 @@ public class NewPuzzleLevelController implements ActionListener {
 		Square[][] squares = new PuzzleSquare[Board.BOARD_WIDTH][Board.BOARD_HEIGHT];
 		for(int i = 0; i < Board.BOARD_WIDTH; i++){
 			for(int j = 0; j < Board.BOARD_HEIGHT; j++){
-				squares[i][j] = new PuzzleSquare(j, i, true);
+				squares[i][j] = new PuzzleSquare(i, j, true);
 			}
 		}
 		

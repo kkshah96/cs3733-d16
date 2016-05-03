@@ -38,11 +38,11 @@ public class BoardToBoardMove extends Move{
 	 * @param col The column of the destination square on the board
 	 * @param row The row of the destination square on the board
 	 */
-	public BoardToBoardMove(Level level, Piece movingPiece, int col, int row, int previousCol, int previousRow) {
+	public BoardToBoardMove(Level level, int col, int row, int previousCol, int previousRow) {
 		super();
 		
 		this.level = level;
-		this.movingPiece = movingPiece;	
+		this.movingPiece = level.getBoard().getPiece(previousCol, previousRow);	
 		this.col = col;
 		this.row = row;
 	

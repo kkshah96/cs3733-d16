@@ -48,6 +48,7 @@ public class SelectSquareController extends MouseAdapter {
 			int col = (x-BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE; // row and col were switched here
 			int row = (y-BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
 
+			
 			level.getBoard().setActiveSquare(col, row);
 			boardView.repaint();
 		}//end check bounds else

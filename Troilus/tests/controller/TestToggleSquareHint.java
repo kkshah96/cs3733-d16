@@ -41,12 +41,11 @@ public class TestToggleSquareHint {
 		lsView = new LevelEditorView(lb, lView, level);
 		bpController = new BullpenController(level, lsView);
 		
-		
 		board.setActiveSquare(1, 1);
 		
 		assertFalse(board.getActiveSquare().isHint());
 		
-		ToggleSquareHintEdit m = new ToggleSquareHintEdit(board.getActiveSquare(), level, 1, 1);
+		ToggleSquareHintMove m = new ToggleSquareHintMove(board.getActiveSquare(), level);
 		
 		m.doMove();
 		assertTrue(board.getActiveSquare().isHint());
@@ -59,7 +58,7 @@ public class TestToggleSquareHint {
 		
 		
 		board.setActiveSquare(2, 2);
-		m = new ToggleSquareHintEdit(board.getActiveSquare(), level, 2, 2);
+		m = new ToggleSquareHintMove(board.getActiveSquare(), level);
 		assertFalse(board.getActiveSquare().isHint());
 		m.doMove();
 		assertTrue(board.getActiveSquare().isHint());
