@@ -47,12 +47,8 @@ public class UndoMoveController implements ActionListener{
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
 		// TODO is this correct?
 		Move m = builder.popUndoMove();
-		if (m.undo()) {
-			System.out.println("Undid move " + m.getClass().toString());
-			builder.pushRedoMove(m);
-		} else {
-			builder.pushMove(m);
-		}
+		m.undo();
+		builder.pushRedoMove(m);
 		editorView.refresh();
 	}
 }

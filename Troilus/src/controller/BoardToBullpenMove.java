@@ -98,13 +98,14 @@ public class BoardToBullpenMove extends Move{
 	 * @return True if completed successfully, false otherwise.
 	 */
 	public boolean undo() {
+		// TODO see if a check is needed here
 		System.out.println(row + " " + col);
-		if (level.getBoard().validPlacement(piece, col, row)) {
+		//if (level.getBoard().validPlacement(piece, col, row)) {
 			level.getBoard().addPiece(piece, col, row);
 			level.removeActivePiece();
 			bpen.removePiece(piece);
 			return true;
-		}
-		return false;
+		//}
+		//return false;
 	}
 }

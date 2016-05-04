@@ -103,7 +103,7 @@ public class Board {
 		// Check if there is already a piece at the requested location- cannot place if so
 		Piece getP = getPiece(col, row);
 		if (getP != null && getP != piece) {
-			System.out.print("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
+			System.out.println("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
 			return false;
 		}
 

@@ -40,7 +40,6 @@ public class SetMaxMovesMove extends Move {
 		}
 		this.previousNumMoves = level.getMaxMoves();
 	}
-
 	
 	/**
 	 * Sets the max moves for this PuzzleLevel if numMoves is valid. 
@@ -49,19 +48,15 @@ public class SetMaxMovesMove extends Move {
 	 */
 	@Override
 	public boolean doMove() {
-		boolean validation = false;
 		if (isValid()) {
 			level.setMaxMoves(numMoves);
 			editorView.getMaxMovesField().setText(Integer.toString(numMoves));
-			validation = true;
-		}
-		else {
+			return true;
+		} else {
 			// reset text field to previous value
 			editorView.getMaxMovesField().setText(Integer.toString(previousNumMoves));
-			validation = false;
+			return false;
 		}
-		
-		return validation;
 	}
 
 	/**
@@ -73,7 +68,6 @@ public class SetMaxMovesMove extends Move {
 		// make sure number of moves is in bounds
 		return (numMoves > 0) && (numMoves < 1024);
 	}
-
 	
 	/**
 	 * Logic for undoing setting the maxMoves for this PuzzleLevel.
@@ -81,9 +75,9 @@ public class SetMaxMovesMove extends Move {
 	 */
 	@Override
 	public boolean undo() {
+		// TODO see if check is needed here
 		level.setMaxMoves(previousNumMoves);
 		editorView.getMaxMovesField().setText(Integer.toString(previousNumMoves));
 		return true;
 	}
-
 }

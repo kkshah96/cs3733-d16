@@ -61,10 +61,11 @@ public class SetSquareNumberMove extends Move {
 	 */
 	@Override
 	public boolean undo() {
-		if (setSquare.isValid()) {
+		// TODO see if this check is needed/correct
+		//if (setSquare.isValid()) {
 			setSquare.setNumber(previousNum);
 			return true;
-		}
-		return false;
+		//}
+		//return false;
 	}
 }

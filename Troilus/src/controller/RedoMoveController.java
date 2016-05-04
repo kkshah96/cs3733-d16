@@ -51,12 +51,8 @@ public class RedoMoveController implements ActionListener{
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
 		// TODO does this work?
 		Move m = builder.popRedoMove();
-		if (m.doMove()) {
-			System.out.println("Redid move " + m.getClass().toString());
-			builder.pushMove(m);
-		} else {
-			builder.pushRedoMove(m);
-		}
+		m.doMove();
+		builder.pushMove(m);
 		editorView.refresh();
 	}
 }
