@@ -95,7 +95,7 @@ public class BullpenView extends JPanel {
 		// Loop through each piece in the bullpen and redraw
 		for(int i = 0; i < bullpen.getPieces().size(); i++){
 			Piece piece = bullpen.getPieces().get(i);
-			Color color = Color.RED;
+			Color color = piece.getColor();
 
 			// if the piece is selected, highlight it
 			if (piece == level.getActivePiece()) {
