@@ -22,6 +22,9 @@ public class TestHintToggle extends TestCase{
 	LevelEditorView lsView;
 	BullpenController bpController;
 	BoardController boardController;
+	ToggleHintController toggleController;
+	UndoMoveController undoController;
+	RedoMoveController redoController;
 	
 	public void setUp() {
 		// Initialization things
@@ -37,25 +40,45 @@ public class TestHintToggle extends TestCase{
 		level = new PuzzleLevel(0, false, new Bullpen(), board, Palette.getInstance(), 0);
 		LevelLoaderView lView = new LevelLoaderView(lb);
 		lsView = new LevelEditorView(lb, lView, level);
-//		bpController = new BullpenController(level, lsView.getBullpenView());
-//		boardController = new BoardController(level, lsView.getBoardView());
+		toggleController = new ToggleHintController(level, lb, lsView.getBoardView());
+		undoController = new UndoMoveController(lb, lsView);
+		redoController = new RedoMoveController(lb, lsView);
 	}
 	
 	public void testHintToggle() {
-		ActionEvent e = new ActionEvent(lsView.getHintButton(), 0, "", 0, 0);
+		ActionEvent toggle = new ActionEvent(lsView.getHintButton(), 0, "", 0, 0);
 		board.setActiveSquare(1, 1);
 		Square s = board.getActiveSquare();
 		
 		assertEquals(board.getSquare(1, 1), s);
-		assertEquals(false, board.getActiveSquare().isHint());
-		ToggleHintController h = new ToggleHintController(level, lb, lsView.getBoardView());
-		h.actionPerformed(e);
-		assertEquals(true, board.getActiveSquare().isHint());
+		assertFalse(board.getActiveSquare().isHint());
+		toggleController.actionPerformed(toggle);
+		assertTrue(board.getActiveSquare().isHint());
 		
-		h = new ToggleHintController(level, lb, lsView.getBoardView());
-		h.actionPerformed(e);
+		toggleController.actionPerformed(toggle);
 		
-		assertEquals(false, board.getActiveSquare().isHint());
+		assertFalse(board.getActiveSquare().isHint());
 		
+		// Undo
+		ActionEvent undo = new ActionEvent(lsView.getUndoButton(), 0, "", 0, 0);
+		undoController.actionPerformed(undo);
+
+		assertTrue(board.getActiveSquare().isHint());
+		
+		// Redo
+		ActionEvent redo = new ActionEvent(lsView.getRedoButton(), 0, "", 0, 0);
+		redoController.actionPerformed(redo);
+		
+		assertFalse(board.getActiveSquare().isHint());
+		
+		// Undo, do a move, then try to redo
+		undoController.actionPerformed(undo);
+		assertTrue(board.getActiveSquare().isHint());
+		
+		toggleController.actionPerformed(toggle);
+		assertFalse(board.getActiveSquare().isHint());
+		
+		redoController.actionPerformed(redo);
+		assertFalse(board.getActiveSquare().isHint());
 	}
 }

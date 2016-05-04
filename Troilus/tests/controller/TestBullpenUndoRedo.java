@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+
 import junit.framework.TestCase;
 import model.Board;
 import model.Bullpen;
@@ -45,8 +47,5 @@ public class TestBullpenUndoRedo extends TestCase {
 		builder.pushMove(remove1, false);
 		
 		assertEquals(0, bullpen.getNumPieces());
-		
-		// Undo
-		
 	}
 }

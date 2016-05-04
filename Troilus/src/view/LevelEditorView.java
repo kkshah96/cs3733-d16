@@ -105,9 +105,12 @@ public class LevelEditorView extends JFrame implements ILevelView {
 
 	/** Button to set the maximum number of moves for PuzzleLevels */
 	JButton setMovesButton;
-	
+
 	/** Button to undo moves and edits. */
 	JButton undoButton;
+	
+	/** Button to redo moves and edits. */
+	JButton redoButton;
 	
 	/** The prior loader view */
 	LevelLoaderView levelLoader;
@@ -284,7 +287,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		undoButton.addActionListener( new UndoMoveController(builder, this));
 		
 
-		JButton redoButton = new JButton("Redo");
+		redoButton = new JButton("Redo");
 		redoButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		redoButton.setBounds(176, 0, 74, 38);
 		saveUndoPanel.add(redoButton);
@@ -619,6 +622,13 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	public JButton getUndoButton() {
 		return undoButton;
 	}
+
+	/** 
+	 * @return Reference to the button to redo moves 
+	 */
+	public JButton getRedoButton() {
+		return redoButton;
+	}
 	
 	/**
 	 * Updates the value inside the row/height dimensions textfield
@@ -685,7 +695,6 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	 */
 	public void setTimeMinutesField(String s){
 		timeMinutesField.setText(s);
-		
 	}
 	
 	/**
