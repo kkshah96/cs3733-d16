@@ -5,8 +5,6 @@ import model.Bullpen;
 import model.Level;
 import model.Piece;
 
-// TODO find bug caused by undoing/redoing this move after removing from bullpen!
-
 /** 
  * Class for implementation of moving a piece from board to bullpen.
  * @author Maddy Longo
@@ -16,22 +14,22 @@ import model.Piece;
 public class BullpenToBoardMove extends Move{
 	/** The level utilized in this move. */
 	Level level;
-	
+
 	/** The moving, or active piece used in the move. */
 	Piece movingPiece;
-	
+
 	/** The column of the square as the requested destination in the board. */
 	int col;
-	
+
 	/** The row of the square as the requested destination in the board. */
 	int row;
-	
+
 	/** The current level's bullpen. */
 	Bullpen bullpen;
-	
+
 	/** The current level's board. */
 	Board board;
-	
+
 	/**
 	 * Creates a new instance of the BullpentoBoardMove with the given parameters.
 	 * @param level The level to perform the move on.
@@ -76,7 +74,7 @@ public class BullpenToBoardMove extends Move{
 	public boolean isValid() {
 		return board.validPlacement(movingPiece, col, row);
 	}
-	
+
 	/** Logic for undoing this BullpenToBoardMove. Places the piece back into
 	 * the bullpen and removes it from the board.
 	 * Valid if the requested piece destination doesn't contain any invalid squares or other pieces.

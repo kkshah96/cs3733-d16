@@ -35,12 +35,11 @@ public class UndoMoveController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// Check if no undos are available- if so, return
 		if (!builder.canUndo()) {
-			System.out.println("Nothing to undo.");
 			return;
 		}
 		
 		if (editorView.getBoardView().getDraggedPiece() != null) {
-			System.out.println("Can't undo while dragging");
+			System.out.println("Can't undo while dragging a piece");
 			return;
 		}
 		

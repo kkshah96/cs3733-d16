@@ -33,7 +33,7 @@ public class BoardToBoardMove extends Move{
 
 	/** Current level's board. */
 	Board board;
-	
+
 	/**
 	 * Creates a new instance of a BoardToBoardMove with the given parameters.
 	 * @param level The level to complete the move on
@@ -53,7 +53,7 @@ public class BoardToBoardMove extends Move{
 		this.fromCol = fromCol;
 		this.fromRow = fromRow;
 
-		System.out.println("previous Col, Row: " + fromCol + ", " + fromRow);
+		//System.out.println("previous Col, Row: " + fromCol + ", " + fromRow);
 	}
 
 	/**
@@ -94,13 +94,13 @@ public class BoardToBoardMove extends Move{
 	public boolean undo() {
 		// TODO see if a check is needed here
 		//if (isValidUndo()) {
-			board.removePiece(movingPiece);
-			board.addPiece(movingPiece, fromCol, fromRow);
-			
-			System.out.println("Piece moves back to: " + toCol + ", " + toRow);
-			System.out.println("Previous Col, Row: " + fromCol + ", " + fromRow);
-			level.removeActivePiece();
-			return true;
+		board.removePiece(movingPiece);
+		board.addPiece(movingPiece, fromCol, fromRow);
+
+		//System.out.println("Piece moves back to: " + toCol + ", " + toRow);
+		//System.out.println("Previous Col, Row: " + fromCol + ", " + fromRow);
+		level.removeActivePiece();
+		return true;
 		//}
 		//return false;
 	}
@@ -109,7 +109,7 @@ public class BoardToBoardMove extends Move{
 	 * Determines if undoing this move is valid.
 	 * @return True if the move can be undone, false if not.
 	 */
-	public boolean isValidUndo() {
-		return level.getBoard().validPlacement(movingPiece, fromCol, fromRow);
-	}
+	//public boolean isValidUndo() {
+	//	return level.getBoard().validPlacement(movingPiece, fromCol, fromRow);
+	//}
 }

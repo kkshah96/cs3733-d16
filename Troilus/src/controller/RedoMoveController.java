@@ -38,13 +38,12 @@ public class RedoMoveController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// Check if no redos are available- if so, return
 		if (!builder.canRedo()) {
-			System.out.println("Nothing to redo.");
 			return;
 		}
 		
 		// can't redo if dragging a piece
 		if (editorView.getBoardView().getDraggedPiece() != null) {
-			System.out.println("Can't redo while dragging");
+			System.out.println("Can't redo while dragging a piece");
 			return;
 		}
 		
