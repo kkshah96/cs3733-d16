@@ -68,7 +68,6 @@ public class SetSquareNumberColorController implements ActionListener {
 			m.doMove();
 			builder.pushMove(m, false);
 		} else {
-			System.out.printf("Error: Invalid color of %s\n", color);
 			return;
 		}
 		

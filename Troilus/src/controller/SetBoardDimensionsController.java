@@ -63,7 +63,6 @@ public class SetBoardDimensionsController implements ActionListener {
 
 		// Ensure the values entered are within the bounds of the board
 		if (cols < 0 || cols > Board.BOARD_WIDTH || rows > Board.BOARD_HEIGHT || rows < 0) {
-			System.out.printf("Error: Invalid Board Dimensions of (%d, %d)\n", cols, rows);
 			return;
 		}
 		
