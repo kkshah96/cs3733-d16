@@ -86,8 +86,6 @@ public class BoardToBullpenMove extends Move {
 		if (inPlayer) {
 			// update and set status if in player
 			endGameStatus = level.updateAfterMove();
-		} else {
-			System.out.println("Did not update");
 		}
 		return true;
 	}

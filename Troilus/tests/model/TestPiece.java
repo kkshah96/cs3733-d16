@@ -30,14 +30,6 @@ public class TestPiece extends TestCase {
 			tooManySquares[i] = new PieceSquare(0, 0);
 		}
 		
-		// This test will succeed if the message in the catch block is printed
-		try {
-			@SuppressWarnings("unused")
-			Piece invalidPiece = new Piece(tooManySquares, anchorSquare, 1, Color.RED);
-		} catch(RuntimeException e) {
-			System.out.println("5 squares should be used, no more no less");
-		}
-		
 		// Assert that getRow() and getCol() return the row and column of the anchor
 		assertEquals(5, piece1.getRow());
 		assertEquals(1, piece1.getCol());

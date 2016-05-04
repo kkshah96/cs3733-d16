@@ -47,12 +47,10 @@ public class SelectSquareController extends MouseAdapter {
 		// Ensure the click occurred within the board bounds
 		if (x > BoardView.WIDTH + BoardView.WIDTH_OFFSET || x < BoardView.WIDTH_OFFSET
 				|| y > BoardView.HEIGHT + BoardView.HEIGHT_OFFSET || y < BoardView.HEIGHT_OFFSET) {
-			System.out.println("Error: Did not click within the board");
 		} else {
 			// Set the active square on the board and repaint
 			int col = (x-BoardView.WIDTH_OFFSET)/BoardView.SQUARE_SIZE; // row and col were switched here
 			int row = (y-BoardView.HEIGHT_OFFSET)/BoardView.SQUARE_SIZE;
-
 			
 			level.getBoard().setActiveSquare(col, row);
 			boardView.repaint();

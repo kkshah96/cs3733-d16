@@ -44,7 +44,6 @@ public class StartLightningLevelController implements ActionListener {
 		if (level.isLocked()) {
 			return;
 		}
-		System.out.println("Starting Lightning level");
 		
 		// Otherwise, create the new view for the level and add a controller to handle window close
 		final LevelPlayerView levelView = new LevelPlayerView(levelSelector, game, level);

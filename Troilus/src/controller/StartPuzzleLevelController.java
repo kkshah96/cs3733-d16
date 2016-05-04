@@ -43,7 +43,6 @@ public class StartPuzzleLevelController implements ActionListener {
 		if (level.isLocked()) {
 			return;
 		}
-		System.out.println("Starting Puzzle level");
 		
 		// Create the new view for the level, and add controller to handle window close
 		final LevelPlayerView levelView = new LevelPlayerView(levelSelector, game, level);

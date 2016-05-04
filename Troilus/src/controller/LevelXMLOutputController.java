@@ -96,7 +96,6 @@ public class LevelXMLOutputController {
 			
 			// set value to new value
 			progressNode.setNodeValue("" + level.getNumStars());
-			System.out.println("NUmber of stars: " + level.getNumStars());
 			
 			// write back to file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -136,18 +135,14 @@ public class LevelXMLOutputController {
 			rootLevelElement.setAttribute("Progress", "" + level.getNumStars());
 			
 			// Store any level-specific attributes based on type
-			if (level.getName().equals("Lightning")) {
+			if (level instanceof LightningLevel) {
 				LightningLevel lightning = (LightningLevel)level;
-				System.out.println("saving time: " + lightning.getTime());
 				rootLevelElement.setAttribute("Time", "" + lightning.getTime());
 			} 
-			else if (level.getName().equals("Puzzle")) {
+			else if (level instanceof PuzzleLevel) {
 				PuzzleLevel puzzle = (PuzzleLevel)level;
 				rootLevelElement.setAttribute("MaxMoves", "" + puzzle.getMaxMoves());
  			}
-			else if (level.getName().equals("Release")) {
-				System.out.println("Saving relaease level");
-			}
 
 			// Create child element for bullpen
 			Element bullpenElement = doc.createElement("Bullpen");

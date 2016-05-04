@@ -111,7 +111,6 @@ public class BoardController extends MouseAdapter {
 					if (builder != null) {
 						m = new BoardToBullpenMove(level, col, row, false);
 					} else {
-						System.out.println("In player");
 						m = new BoardToBullpenMove(level, col, row, true);
 					}
 

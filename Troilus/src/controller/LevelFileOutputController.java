@@ -88,7 +88,6 @@ public class LevelFileOutputController {
 			File masterFile = new File(path + "Levels.xml");
 			masterFile.createNewFile();
 			ArrayList<Level> levels = lb.getLevels();
-			System.out.println("Number of levels: " + levels.size());
 
 			// Add the first 15 levels, or all levels if fewer than 15 exist
 			int maxLevels = min(25, levels.size());

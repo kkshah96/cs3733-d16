@@ -51,8 +51,6 @@ public class StartLevelLoaderController {
 			button.setEnabled(false);
 		}
 		
-		System.out.println(levels.size());
-		
 		// Loop through all levels to update their corresponding buttons and apply the proper controller
 		// based on level type
 		for (int i = 0; i < numLevels; i++) {

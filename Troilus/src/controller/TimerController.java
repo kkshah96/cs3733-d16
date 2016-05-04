@@ -83,7 +83,6 @@ public class TimerController {
 				if (timeLeft <= 0) {
 					// exit level and stop timer
 					new ExitLevelController(levelView, game, level).process();
-					System.out.println("Reseting game");
 					timer.stop();
 				}
 			}    

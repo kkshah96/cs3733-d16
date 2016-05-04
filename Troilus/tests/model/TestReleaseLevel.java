@@ -41,7 +41,7 @@ public class TestReleaseLevel extends TestCase {
 		BullpenToBoardMove move1 = new BullpenToBoardMove(level,
 				level.getBullpen().getPieces().get(0), 0, 5, true);
 		assertTrue(move1.doMove());
-		System.out.println(level.getRedCovered());
+		
 		assertEquals(6, level.getRedCovered());
 		assertEquals(1, level.getNumStars());
 		

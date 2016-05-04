@@ -45,7 +45,6 @@ public class SetSquareNumberController implements ActionListener{
 
 		// Get the value from the drop-down
 		String num = (String) editorView.getNumberComboBox().getSelectedItem();
-		System.out.println(num);
 		
 		// Ensure a valid number was chosen
 		if (!(num.equals("None"))) {
@@ -63,6 +62,5 @@ public class SetSquareNumberController implements ActionListener{
 
 		// Repaint to reflect changes
 		editorView.getBoardView().repaint();
-		System.out.println("New Number: " + square.getNumber());
 	}
 }

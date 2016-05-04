@@ -14,7 +14,6 @@ import view.BullpenView;
  * @author Alexander Kasparek
  * @author Connor Weeks
  */
-
 public class RotatePieceController implements ActionListener {
 	/** The level entity referenced */
 	Level level;
@@ -59,7 +58,6 @@ public class RotatePieceController implements ActionListener {
 		bullpen.getPieces().set(bullpen.getPieces().indexOf(activePiece), rotatedPiece);
 		level.setActivePiece(rotatedPiece);
 		if (bullpenView == null) {
-			System.out.println("no bp");
 			return;
 		}
 		bullpenView.repaint();

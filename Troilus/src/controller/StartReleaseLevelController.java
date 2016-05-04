@@ -43,7 +43,6 @@ public class StartReleaseLevelController implements ActionListener {
 		if (level.isLocked()) {
 			return;
 		}
-		System.out.println("Starting Release level");
 		
 		// Create the new view for the level to play, and add controller to handle window close
 		final LevelPlayerView levelView = new LevelPlayerView(levelSelector, game, level);

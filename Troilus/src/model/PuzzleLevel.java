@@ -41,7 +41,6 @@ public class PuzzleLevel extends Level {
 	 */
 	public boolean updateAfterMove() {
 		updateMovesLeft(-1);
-		System.out.println("Moves Left: " + this.getMovesLeft());
 		calcNumStars();
 		return (numStars == 3) || (movesLeft == 0);
 	}

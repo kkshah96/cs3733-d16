@@ -62,7 +62,6 @@ public class SetTimeLimitMove extends Move{
 			level.setTimeLimit(time);
 			return true;
 		} else {
-			System.out.println("not valid");
 			// reset text
 			editorView.getMinutesField().setText(Integer.toString(previousTime / 60));
 			editorView.getSecondsField().setText(Integer.toString(previousTime % 60));

@@ -44,8 +44,6 @@ public class ToggleHintController implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//System.out.println("Need to implement this.");
-		
 		// Toggles the hint on the board and updates the view
 		Move m = new ToggleHintMove(level);
 		if(m.doMove()) {

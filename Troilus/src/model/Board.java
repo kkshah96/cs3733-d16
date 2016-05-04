@@ -89,13 +89,11 @@ public class Board {
 	public boolean validPlacement(Piece piece, int col, int row) {
 		// Bounds check
 		if (row < 0 || row >= Board.BOARD_HEIGHT || col < 0 || col >= Board.BOARD_WIDTH) {
-			System.out.println("Not in bounds");
 			return false;
 		}
 
 		// Check if the piece provided is null, cannot proceed if it is
 		if (piece == null) {
-			System.out.println("No piece");
 			return false;
 		}
 
@@ -112,19 +110,16 @@ public class Board {
 
 			// Ensure each square of the piece is within the bounds
 			if (!(absRow < Board.BOARD_HEIGHT && absRow >= 0 && absCol < Board.BOARD_WIDTH && absCol >= 0)) {
-				System.out.println("Out of bounds");
 				return false;
 			}
 
 			// Check if each board square is valid
 			if (!getSquare(absCol, absRow).isValid()) {
-				System.out.printf("Not in bounds (%d, %d)\n", absCol, absRow);
 				return false;
 			}
 
 			// Check for overlapping pieces (and ensure not same piece instance)
 			if (getPiece(absCol, absRow) != null && getPiece(absCol, absRow) != piece) {
-				System.out.println("Overlapping pieces");
 				return false;
 			}	
 		}
