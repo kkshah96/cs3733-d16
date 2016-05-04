@@ -101,11 +101,11 @@ public class Board {
 
 		// TODO check if removing this breaks anything
 		// Check if there is already a piece at the requested location- cannot place if so
-		//Piece getP = getPiece(col, row);
-		//if (getP != null && getP != piece) {
-		//	System.out.print("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
-		//	return false;
-		//}
+		Piece getP = getPiece(col, row);
+		if (getP != null && getP != piece) {
+			System.out.print("Overlapping piece at location: " + getP.getCol() + ", " + getP.getRow());
+			return false;
+		}
 
 		for (PieceSquare square : piece.getAllSquares()) {
 			// check if each square is in board area
