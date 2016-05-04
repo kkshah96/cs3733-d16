@@ -52,7 +52,7 @@ public class ToggleSquareController implements ActionListener {
 		// Toggles the active square and updates the boundary
 		Move m = new ToggleSquareMove(level.getBoard().getActiveSquare(),level);
 		if(m.doMove()) {
-			builder.pushMove(m);	
+			builder.pushMove(m, false);	
 		}
 		
 		boardView.repaint();

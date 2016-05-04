@@ -49,7 +49,7 @@ public class ToggleHintController implements ActionListener {
 		// Toggles the hint on the board and updates the view
 		Move m = new ToggleHintMove(level);
 		if(m.doMove()) {
-			editor.pushMove(m);	
+			editor.pushMove(m, false);	
 		}
 		
 		boardView.repaint();

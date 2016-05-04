@@ -42,7 +42,7 @@ public class TestBullpenUndoRedo extends TestCase {
 		// Do initial move
 		RemoveFromBullpenMove remove1 = new RemoveFromBullpenMove(level, bullpen.getPieces().get(0));
 		remove1.doMove();
-		builder.pushMove(remove1);
+		builder.pushMove(remove1, false);
 		
 		assertEquals(0, bullpen.getNumPieces());
 		

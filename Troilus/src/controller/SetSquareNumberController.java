@@ -52,13 +52,13 @@ public class SetSquareNumberController implements ActionListener{
 			int n = Integer.parseInt(num);
 			Move m = new SetSquareNumberMove((ReleaseSquare)level.getBoard().getActiveSquare(), level, n);
 			m.doMove();
-			builder.pushMove(m);
+			builder.pushMove(m, false);
 			
 			
 		} else {
 			Move m = new SetSquareNumberMove((ReleaseSquare)level.getBoard().getActiveSquare(), level, 0);
 			m.doMove();
-			builder.pushMove(m);
+			builder.pushMove(m, false);
 		}
 
 		// Repaint to reflect changes

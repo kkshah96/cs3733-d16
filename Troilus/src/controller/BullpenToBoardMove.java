@@ -84,10 +84,9 @@ public class BullpenToBoardMove extends Move{
 	 */
 	public boolean undo() {
 		// TODO see if a check is needed here
-		bullpen.addPiece(movingPiece);
 		board.removePiece(movingPiece);
+		bullpen.addPiece(movingPiece);
 		level.removeActivePiece();
-
 		return true;
 	}
 }

@@ -111,7 +111,7 @@ public class BullpenController extends MouseAdapter {
 					boardView.updateDraggedPiece(null);
 					bullpenView.repaint();
 					
-					builder.pushMove(m);
+					builder.pushMove(m, false);
 					return;
 				}
 				
@@ -128,7 +128,7 @@ public class BullpenController extends MouseAdapter {
 						// TODO fix copy-pasted code!!!
 						if (builder != null) {
 							// if we are in the level builder
-							builder.pushMove(m);
+							builder.pushMove(m, false);
 
 						} else {
 							// if we are in the player
@@ -152,7 +152,7 @@ public class BullpenController extends MouseAdapter {
 						Move btbm = new BoardToBullpenMove(level, level.getActivePiece());
 						if (btbm.doMove()) {
 							if (builder != null) {
-								builder.pushMove(btbm);
+								builder.pushMove(btbm, false);
 							} else if (level instanceof PuzzleLevel) {
 								if (btbm.getEndGameStatus()) {
 									new ExitLevelController((LevelPlayerView)levelView, game, level).process();

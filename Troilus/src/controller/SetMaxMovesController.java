@@ -44,7 +44,7 @@ public class SetMaxMovesController implements ActionListener {
 		Move m = new SetMaxMovesMove(level, editorView);
 		
 		if(m.doMove()) {
-			builder.pushMove(m);	
+			builder.pushMove(m, false);	
 		}
 	}
 }

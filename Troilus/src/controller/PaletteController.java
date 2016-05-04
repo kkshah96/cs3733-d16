@@ -72,7 +72,7 @@ public class PaletteController extends MouseAdapter {
 
 					PaletteToBullpenMove m = new PaletteToBullpenMove(level, PieceFactory.getPiece(piece.getType()));
 					if (m.doMove()) {
-						builder.pushMove(m);
+						builder.pushMove(m, false);
 					}
 					
 					bullpenView.repaint();

@@ -52,7 +52,7 @@ public class RedoMoveController implements ActionListener{
 		// TODO does this work?
 		Move m = builder.popRedoMove();
 		m.doMove();
-		builder.pushMove(m);
+		builder.pushMove(m, true);
 		editorView.refresh();
 	}
 }

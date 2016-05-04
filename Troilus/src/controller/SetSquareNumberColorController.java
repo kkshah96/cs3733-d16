@@ -56,17 +56,17 @@ public class SetSquareNumberColorController implements ActionListener {
 			Move m = new SetSquareNumberColorMove((ReleaseSquare)level.getBoard().getActiveSquare(), 
 					level, Color.RED);
 			m.doMove();
-			builder.pushMove(m);
+			builder.pushMove(m, false);
 		} else if (color.equals("Yellow")) {
 			Move m = new SetSquareNumberColorMove((ReleaseSquare)level.getBoard().getActiveSquare(), 
 					level, Color.YELLOW);
 			m.doMove();
-			builder.pushMove(m);
+			builder.pushMove(m, false);
 		} else if (color.equals("Green")) {
 			Move m = new SetSquareNumberColorMove((ReleaseSquare)level.getBoard().getActiveSquare(), 
 					level, Color.GREEN);
 			m.doMove();
-			builder.pushMove(m);
+			builder.pushMove(m, false);
 		} else {
 			System.out.printf("Error: Invalid color of %s\n", color);
 			return;

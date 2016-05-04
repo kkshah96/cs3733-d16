@@ -75,10 +75,17 @@ public class LevelBuilder {
 	/**
 	 * Adds a move to the stack of completed moves.
 	 * @param m The move object to add.
+	 * @param undoingMove False if not redoing a previously-done move.
+	 * Should ONLY be true in RedoMoveController.
 	 * @return Returns true if the move was added successfully.
 	 */
-	public boolean pushMove(Move m){
+	public boolean pushMove(Move m, boolean undoingMove) {
 		undoMoves.push(m);
+		// If not undoing a move, then clear redo stack to avoid conflict.
+		if (!undoingMove) {
+			redoMoves = new Stack<Move>();
+		}
+		
 		return true;
 	}
 

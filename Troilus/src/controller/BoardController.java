@@ -113,7 +113,7 @@ public class BoardController extends MouseAdapter {
 						if (builder != null) {
 							// if we are in the level builder
 							// If the move is valid (and completed), we remove the source and active pieces
-							builder.pushMove(m);
+							builder.pushMove(m, false);
 
 						} else if (game != null) {
 							// if we are in the player
@@ -143,7 +143,7 @@ public class BoardController extends MouseAdapter {
 					if (builder != null) {
 						// if we are in the level builder
 						// If the move is valid (and completed), we remove the source and active pieces
-						builder.pushMove(m);
+						builder.pushMove(m, false);
 
 					} else if (game != null) {
 						// if we are in the player
@@ -188,5 +188,4 @@ public class BoardController extends MouseAdapter {
 			boardView.repaint();
 		}
 	}
-
 }

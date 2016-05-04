@@ -47,7 +47,7 @@ public class SetTimeLimitController implements ActionListener {
 		Move m = new SetTimeLimitMove(level, editorView);
 		m.doMove();
 		if(m.isValid()){
-			builder.pushMove(m);
+			builder.pushMove(m, false);
 		}
 	}
 }
