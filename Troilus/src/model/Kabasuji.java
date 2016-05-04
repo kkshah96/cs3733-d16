@@ -43,7 +43,7 @@ public class Kabasuji {
 
 	/**
 	 * Returns an ordered list of the game's levels.
-	 * @return ArrayList<Level> list of levels.
+	 * @return ArrayList of levels.
 	 */
 	public ArrayList<Level> getLevels() {
 		return levels;

@@ -71,7 +71,7 @@ public class SetTimeLimitMove extends Move{
 
 	/**
 	 * Returns true if the new time limit is greater than 0.
-	 * @return true If the time parameter is valid (> 0).
+	 * @return true If the time parameter is valid (greater than 0).
 	 */
 	@Override
 	public boolean isValid() {

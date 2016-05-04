@@ -39,6 +39,7 @@ public class BoardToBullpenMove extends Move {
 	 * @param level The level to be modified during the move.
 	 * @param col The column of the source square on the board.
 	 * @param row The row of the source square on the board.
+	 * @param inPlayer Whether or not the move is being made in the player.
 	 */
 	public BoardToBullpenMove(Level level, int col, int row, boolean inPlayer) {
 		this.inPlayer = inPlayer;
@@ -56,6 +57,7 @@ public class BoardToBullpenMove extends Move {
 	 * Creates an instance of a BoardToBullpenMove with the specified parameters.
 	 * @param level The level to be modified during the move.
 	 * @param p The piece to be moved.
+	 * @param inPlayer Whether or not the move is being made in the player
 	 */
 	public BoardToBullpenMove(Level level, Piece p, boolean inPlayer) {
 		this.board = level.getBoard();

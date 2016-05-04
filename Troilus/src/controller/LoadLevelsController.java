@@ -24,7 +24,7 @@ public class LoadLevelsController {
 
 	/**
 	 * Creates a new instance of LoadLevelsController with a user-specified path
-	 * @param filePath
+	 * @param filePath The path to the storage location.
 	 */
 	public LoadLevelsController(String filePath) {
 		this.filePath = filePath;

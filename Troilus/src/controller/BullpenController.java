@@ -181,7 +181,7 @@ public class BullpenController extends MouseAdapter {
 
 	// Ugly quick hack to get stuff working quickly
 	/**
-	 * Finds and returns the piece at the given pixel coordinates<br />
+	 * Finds and returns the piece at the given pixel coordinates.
 	 * WARNING- Returns null if no piece at the given location
 	 * @param x X pixel coordinate of requested piece
 	 * @param y Y pixel coordinate of requested piece
