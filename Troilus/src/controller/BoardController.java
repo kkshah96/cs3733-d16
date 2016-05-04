@@ -42,7 +42,7 @@ public class BoardController extends MouseAdapter {
 
 	/** This keeps track of the source column of the dragging piece if doing a BoardToBoardMove. */
 	int sourceCol;
-	
+
 	/** This keeps track of the source row of the dragging piece if doing a BoardToBoardMove. */
 	int sourceRow;
 
@@ -59,7 +59,7 @@ public class BoardController extends MouseAdapter {
 		this.level = level;
 		this.builder = builder;
 	}
-	
+
 	/**
 	 * Creates a new BoardController object with the specified parameters.
 	 * @param level The level this controller modifies.
@@ -132,6 +132,8 @@ public class BoardController extends MouseAdapter {
 			if (boardView.getDraggedPiece() != null) { // left click and dragging a piece
 				Move m;
 				if (level.getMoveSource() == level.getBoard()) {
+					//sourceCol = level.getActivePiece().getCol();
+					//sourceRow = level.getActivePiece().getRow();
 					m = new BoardToBoardMove(level, col, row, sourceCol, sourceRow);
 				} else {
 					m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
@@ -157,11 +159,13 @@ public class BoardController extends MouseAdapter {
 			} else if (level.getBoard().getPiece(col, row) != null) { // left click and not dragging
 				if (level instanceof PuzzleLevel || builder != null) {
 					//set sourceCol and sourceRow if the activePiece was on the board
-					sourceCol = col;
-					sourceRow = row;
-					level.setMoveSource(level.getBoard());
-					Piece pieceToDrag = level.getBoard().getPiece(sourceCol, sourceRow);
+					// TODO set sourceCol and sourceRow where?
+					Piece pieceToDrag = level.getBoard().getPiece(col, row);
 					if (pieceToDrag != null) {
+						sourceCol = level.getBoard().getPieces().get(pieceToDrag).x;
+						sourceRow = level.getBoard().getPieces().get(pieceToDrag).y;
+						
+						level.setMoveSource(level.getBoard());
 						level.setActivePiece(pieceToDrag);
 						boardView.updateDraggedPiece(p);
 					}
