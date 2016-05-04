@@ -7,7 +7,6 @@ import controller.BoardToBoardMove;
 import controller.BullpenToBoardMove;
 import junit.framework.TestCase;
 
-// TODO actually test this!
 public class TestReleaseLevel extends TestCase {
 	ReleaseLevel level;
 
@@ -39,28 +38,27 @@ public class TestReleaseLevel extends TestCase {
 		assertEquals(1, level.getLevelNum());
 		
 		// Cover red squares
-		BullpenToBoardMove move1 = new BullpenToBoardMove(level, level.getBullpen().getPieces().get(0), 0, 5);
+		BullpenToBoardMove move1 = new BullpenToBoardMove(level,
+				level.getBullpen().getPieces().get(0), 0, 5, true);
 		assertTrue(move1.doMove());
 		System.out.println(level.getRedCovered());
 		assertEquals(6, level.getRedCovered());
 		assertEquals(1, level.getNumStars());
 		
 		// Test invalid moves (can't move pieces from board in Release level)
-		BoardToBoardMove invalidMove1 = new BoardToBoardMove(level, 0, 5, 1, 5);
+		BoardToBoardMove invalidMove1 = new BoardToBoardMove(level, 0, 5, 1, 5, true);
 		assertFalse(invalidMove1.doMove());
 		
-		// TODO fix logic so this is true! Right now the check is in the controllers
-		//BoardToBullpenMove invalidMove2 = new BoardToBullpenMove(level, 0, 5);
-		//assertFalse(invalidMove2.doMove());
-		
 		// Cover green squares
-		BullpenToBoardMove move2 = new BullpenToBoardMove(level, level.getBullpen().getPieces().get(0), 1, 5);
+		BullpenToBoardMove move2 = new BullpenToBoardMove(level,
+				level.getBullpen().getPieces().get(0), 1, 5, true);
 		assertTrue(move2.doMove());
 		assertEquals(6, level.getGreenCovered());
 		assertEquals(2, level.getNumStars());
 
 		// Cover yellow squares
-		BullpenToBoardMove move3 = new BullpenToBoardMove(level, level.getBullpen().getPieces().get(0), 2, 5);
+		BullpenToBoardMove move3 = new BullpenToBoardMove(level,
+				level.getBullpen().getPieces().get(0), 2, 5, true);
 		assertTrue(move3.doMove());
 		assertEquals(6, level.getYellowCovered());
 		assertEquals(3, level.getNumStars());

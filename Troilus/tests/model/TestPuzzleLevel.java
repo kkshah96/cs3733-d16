@@ -49,17 +49,17 @@ public class TestPuzzleLevel extends TestCase {
 		Piece piece6 = level.getBullpen().getPieces().get(5);
 		
 		// Test moving piece out of bounds
-		BullpenToBoardMove m_invalid = new BullpenToBoardMove(level, piece1, 6, 5);
+		BullpenToBoardMove m_invalid = new BullpenToBoardMove(level, piece1, 6, 5, true);
 		assertFalse(m_invalid.isValid());
 		assertFalse(m_invalid.doMove());
 		
 		// Test valid moves
-		BullpenToBoardMove m1 = new BullpenToBoardMove(level, piece1, 0, 5);
-		BullpenToBoardMove m2 = new BullpenToBoardMove(level, piece2, 1, 5);
-		BullpenToBoardMove m3 = new BullpenToBoardMove(level, piece3, 2, 5);
-		BullpenToBoardMove m4 = new BullpenToBoardMove(level, piece4, 3, 5);
-		BullpenToBoardMove m5 = new BullpenToBoardMove(level, piece5, 4, 5);
-		BullpenToBoardMove m6 = new BullpenToBoardMove(level, piece6, 5, 5);
+		BullpenToBoardMove m1 = new BullpenToBoardMove(level, piece1, 0, 5, true);
+		BullpenToBoardMove m2 = new BullpenToBoardMove(level, piece2, 1, 5, true);
+		BullpenToBoardMove m3 = new BullpenToBoardMove(level, piece3, 2, 5, true);
+		BullpenToBoardMove m4 = new BullpenToBoardMove(level, piece4, 3, 5, true);
+		BullpenToBoardMove m5 = new BullpenToBoardMove(level, piece5, 4, 5, true);
+		BullpenToBoardMove m6 = new BullpenToBoardMove(level, piece6, 5, 5, true);
 		
 		assertTrue(m1.doMove());
 		assertEquals(7, level.movesLeft);
@@ -85,22 +85,17 @@ public class TestPuzzleLevel extends TestCase {
 		assertEquals(2, level.movesLeft);
 		assertEquals(3, level.getNumStars());
 		
-		BoardToBoardMove mInvalid2 = new BoardToBoardMove(level, 5, 5, 0, 5);
+		BoardToBoardMove mInvalid2 = new BoardToBoardMove(level, 5, 5, 0, 5, true);
 		assertFalse(mInvalid2.doMove());
 		
-		BoardToBullpenMove m7 = new BoardToBullpenMove(level, 1, 1);
+		BoardToBullpenMove m7 = new BoardToBullpenMove(level, 1, 1, true);
 		assertTrue(m7.doMove());
 		assertEquals(1, level.movesLeft);
 		assertEquals(2, level.getNumStars());
 		
-		BoardToBoardMove m8 = new BoardToBoardMove(level, 1, 5, 0, 5);
+		BoardToBoardMove m8 = new BoardToBoardMove(level, 1, 5, 0, 5, true);
 		assertTrue(m8.doMove());
 		assertEquals(0, level.movesLeft);
 		assertEquals(2, level.getNumStars());
-		
-		// TODO implement checking move limit so it is in the Entity, not Controller
-		//BoardToBullpenMove mInvalid3 = new BoardToBullpenMove(level, 1, 1);
-		//assertFalse(mInvalid3.doMove());
-		//assertEquals(0, level.movesLeft);
 	}
 }

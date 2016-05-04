@@ -480,8 +480,6 @@ public class LevelEditorView extends JFrame implements ILevelView {
 	 */
 	public void setLevelType(String type) {
 		levelTypeLabel.setText(type);
-		// TODO fix this! What is supposed to happen here?
-		//this.initialize();
 	}
 
 	/**

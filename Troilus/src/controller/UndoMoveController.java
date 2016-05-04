@@ -37,14 +37,13 @@ public class UndoMoveController implements ActionListener{
 		if (!builder.canUndo()) {
 			return;
 		}
-		
+
 		if (editorView.getBoardView().getDraggedPiece() != null) {
 			System.out.println("Can't undo while dragging a piece");
 			return;
 		}
-		
+
 		// Otherwise, retrieve the last move from the stack, undo it, and update the boundary
-		// TODO is this correct?
 		Move m = builder.popUndoMove();
 		m.undo();
 		builder.pushRedoMove(m);

@@ -22,15 +22,18 @@ public class TestLightningLevel extends TestCase {
 	}
 	
 	public void testMoves() {
-		BullpenToBoardMove move1 = new BullpenToBoardMove(level, level.getBullpen().getPieces().get(0), 0, 5);
+		BullpenToBoardMove move1 = new BullpenToBoardMove(level,
+				level.getBullpen().getPieces().get(0), 0, 5, true);
 		assertTrue(move1.doMove());
 		assertEquals(1, level.getNumStars());
 		
-		BullpenToBoardMove move2 = new BullpenToBoardMove(level, level.getBullpen().getPieces().get(0), 1, 5);
+		BullpenToBoardMove move2 = new BullpenToBoardMove(level,
+				level.getBullpen().getPieces().get(0), 1, 5, true);
 		assertTrue(move2.doMove());
 		assertEquals(2, level.getNumStars());
 		
-		BullpenToBoardMove move3 = new BullpenToBoardMove(level, level.getBullpen().getPieces().get(0), 2, 5);
+		BullpenToBoardMove move3 = new BullpenToBoardMove(level,
+				level.getBullpen().getPieces().get(0), 2, 5, true);
 		assertTrue(move3.doMove());
 		assertEquals(3, level.getNumStars());
 	}

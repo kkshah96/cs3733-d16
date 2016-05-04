@@ -44,7 +44,7 @@ public class BullpenController extends MouseAdapter {
 
 	/** The LevelBuilder. */
 	LevelBuilder builder;
-	
+
 	/**The game**/
 	Kabasuji game;
 
@@ -63,8 +63,7 @@ public class BullpenController extends MouseAdapter {
 		this.builder = builder;
 		boardView.updateDraggedPiece(null);
 	}
-	
-	
+
 	/**
 	 * Creates a new instance of the BullpenController with the given parameters,
 	 * if in the Kabasuji application.
@@ -110,20 +109,20 @@ public class BullpenController extends MouseAdapter {
 					level.setMoveSource(null);
 					boardView.updateDraggedPiece(null);
 					bullpenView.repaint();
-					
+
 					builder.pushMove(m, false);
 					return;
 				}
-				
-				//level.getBullpen().removePiece(getClickedPiece(x, y));
-				//level.removeActivePiece();
-				//level.setMoveSource(null);
-				//boardView.updateDraggedPiece(null);
 			}
 		} else {
 			if (boardView.getDraggedPiece() != null) { // left-click while dragging
 				if (level.getMoveSource() == level.getBoard()) { // Move from Board
-					Move m = new BoardToBullpenMove(level, level.getActivePiece());
+					Move m;
+					if (builder != null) {
+						m = new BoardToBullpenMove(level, level.getActivePiece(), false);
+					} else {
+						m = new BoardToBullpenMove(level, level.getActivePiece(), true);
+					}
 					if (m.doMove()) {
 						// TODO fix copy-pasted code!!!
 						if (builder != null) {
@@ -148,8 +147,12 @@ public class BullpenController extends MouseAdapter {
 						level.setActivePiece(null);
 						boardView.updateDraggedPiece(null);
 					} else { // Piece came from board
-						// TODO fix this bad code!
-						Move btbm = new BoardToBullpenMove(level, level.getActivePiece());
+						Move btbm;
+						if (builder != null) {
+							btbm = new BoardToBullpenMove(level, level.getActivePiece(), false);
+						} else {
+							btbm = new BoardToBullpenMove(level, level.getActivePiece(), true);
+						}
 						if (btbm.doMove()) {
 							if (builder != null) {
 								builder.pushMove(btbm, false);
@@ -171,9 +174,7 @@ public class BullpenController extends MouseAdapter {
 				if (clickedPiece != null) { // Clicked a piece
 					level.setMoveSource(level.getBullpen());
 					level.setActivePiece(clickedPiece);
-					//System.out.println("Clicked piece is not null");
 				}
-				//System.out.println("Clicked piece is null");
 			}
 		}
 		levelView.refresh();

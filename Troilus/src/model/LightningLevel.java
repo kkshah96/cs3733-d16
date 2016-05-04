@@ -16,13 +16,13 @@ import java.util.Set;
 public class LightningLevel extends Level {
 	/** The number of covered squares in this level. */
 	protected int coveredSquares;
-	
+
 	/** The number of total valid squares in this level. */
 	protected int validSquares;
-	
+
 	/** The total time limit for this level. */
 	protected int timeLimit;
-	
+
 	/**
 	 * Creates a new instance of the LightningLevel entity with the following parameters.
 	 * @param levelNum The number of this level.
@@ -51,7 +51,7 @@ public class LightningLevel extends Level {
 		calcNumStars();
 		return (numStars == 3);
 	}
-	
+
 	/** Generate a new random piece and put in bullpen. */
 	private void replacePiece() {
 		Random rand = new Random();
@@ -60,17 +60,16 @@ public class LightningLevel extends Level {
 		Piece newPiece = PieceFactory.getPiece(randNum);
 		bullpen.addPiece(newPiece);
 	}
-	
-	// TODO does this need to account for removing a piece in the Builder?
+
 	/** Replace any pieces with covered squares on the board. */
 	private void updateCoveredSquares() {
 		Set<Piece> pSet = board.getPieces().keySet();
-		
+
 		// Loop through the pieces in the board to replace them with covered squares
 		for (Piece piece : pSet) {
 			int anchorCol = board.getPieces().get(piece).x;
 			int anchorRow = board.getPieces().get(piece).y;
-			
+
 			// Loop through the squares for each piece and replace the board square covered by that
 			// piece square with a covered square
 			for (PieceSquare square : piece.getAllSquares()) {
@@ -79,20 +78,20 @@ public class LightningLevel extends Level {
 
 				((LightningSquare) board.squares[currentCol][currentRow]).isCovered = true;
 			}
-			
+
 			// Remove the piece to prevent duplicate computations
 			board.removePiece(piece);
 		}
 	}
-	
+
 	@Override
 	/** 1 star if covered all but 12 squares, 2 if covered all but 6, 3 if won. */
 	public void calcNumStars() {
 		validSquares = countValidSquares(); // Just in case in Level Editor
 		coveredSquares = countCoveredSquares();
-		
+
 		int squaresLeft = validSquares - coveredSquares;
-		
+
 		if (squaresLeft > 12) {
 			numStars = 0;
 		} else if (squaresLeft > 6) {
@@ -109,7 +108,7 @@ public class LightningLevel extends Level {
 	 */
 	int countCoveredSquares() {
 		int coveredSquares = 0;
-		
+
 		for (Square[] col : board.squares) {
 			for (Square square : col) {
 				if (square.isValid() && ((LightningSquare) square).isCovered()) {
@@ -118,16 +117,16 @@ public class LightningLevel extends Level {
 				}
 			}
 		}
-		
+
 		return coveredSquares;
 	}
-	
+
 	/** Count the number of squares on the board (needed for LevelEditor).
 	 * @return int representation of the total number of valid squares on the board.
 	 */
 	int countValidSquares() {
 		int validSquares = 0;
-		
+
 		for (Square[] col : board.squares) {
 			for (Square square : col) {
 				if (square.isValid()) {
@@ -135,17 +134,17 @@ public class LightningLevel extends Level {
 				}
 			}
 		}
-		
+
 		return validSquares;
 	}
-	
+
 	/**
 	 * @return String representation of the name of this level type.
 	 */
 	public String getName() {
 		return "Lightning";
 	}
-	
+
 	/**
 	 * Determines the starting time limit for this level.
 	 * @return int representation of starting time limit.
@@ -153,7 +152,7 @@ public class LightningLevel extends Level {
 	public int getTime() {
 		return timeLimit;
 	}
-	
+
 	/**
 	 * Sets the time limit for this level.
 	 * @param limit The time limit to set for this level.
@@ -164,7 +163,7 @@ public class LightningLevel extends Level {
 			System.out.println("Error! Invalid time limit.");
 			return false;
 		}
-			this.timeLimit = limit;
-			return true;	
+		this.timeLimit = limit;
+		return true;	
 	}
 }

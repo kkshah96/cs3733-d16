@@ -13,7 +13,6 @@ import model.PuzzleSquare;
 import model.Square;
 import view.LevelLoaderView;
 
-// TODO fill this in!
 public class TestFileInOutControllers extends TestCase {
 	LevelLoaderView loaderView;
 	ArrayList<Level> levels;

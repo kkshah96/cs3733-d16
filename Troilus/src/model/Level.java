@@ -57,8 +57,7 @@ public abstract class Level {
 		this.palette = palette;
 		this.locked = locked;
 	}
-
-	// TODO figure out how to do this cleanly
+	
 	/**
 	 * Removes all pieces from the board and places them in the bullpen.
 	 */

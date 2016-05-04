@@ -26,7 +26,8 @@ public class PuzzleLevel extends Level {
 	 * @param palette Reference to the palette object for this level (LevelBuilder only).
 	 * @param maxMoves int representation of the maximum number of moves for this level.
 	 */
-	public PuzzleLevel(int levelNum, boolean locked, Bullpen bullpen, Board board, Palette palette, int maxMoves) {
+	public PuzzleLevel(int levelNum, boolean locked, Bullpen bullpen,
+			Board board, Palette palette, int maxMoves) {
 		super(levelNum, locked, bullpen, board, palette);
 		
 		this.maxMoves = maxMoves;
@@ -40,6 +41,7 @@ public class PuzzleLevel extends Level {
 	 */
 	public boolean updateAfterMove() {
 		updateMovesLeft(-1);
+		System.out.println("Moves Left: " + this.getMovesLeft());
 		calcNumStars();
 		return (numStars == 3) || (movesLeft == 0);
 	}

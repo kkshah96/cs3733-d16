@@ -11,7 +11,7 @@ import model.Piece;
  * @author Dan Alfred
  * @author Connor Weeks
  */
-public class BullpenToBoardMove extends Move{
+public class BullpenToBoardMove extends Move {
 	/** The level utilized in this move. */
 	Level level;
 
@@ -30,6 +30,9 @@ public class BullpenToBoardMove extends Move{
 	/** The current level's board. */
 	Board board;
 
+	/** Keep track of when in player (needed for Lightning Level in Builder) */
+	boolean inPlayer;
+	
 	/**
 	 * Creates a new instance of the BullpentoBoardMove with the given parameters.
 	 * @param level The level to perform the move on.
@@ -37,8 +40,9 @@ public class BullpenToBoardMove extends Move{
 	 * @param col The column on the board as the destination.
 	 * @param row The row on the board as the destination.
 	 */
-	public BullpenToBoardMove(Level level, Piece movingPiece, int col, int row) {
+	public BullpenToBoardMove(Level level, Piece movingPiece, int col, int row, boolean inPlayer) {
 		super();
+		this.inPlayer = inPlayer;
 		this.level = level;
 		this.movingPiece = movingPiece;
 		this.col = col;
@@ -62,8 +66,10 @@ public class BullpenToBoardMove extends Move{
 		bullpen.removePiece(movingPiece);
 		level.removeActivePiece();
 
-		// Signal to the level to update, set end status to return value
-		endGameStatus = level.updateAfterMove();
+		if (inPlayer) {
+			// Signal to the level to update, set end status to return value
+			endGameStatus = level.updateAfterMove();
+		}
 		return true;
 	}
 
@@ -81,7 +87,6 @@ public class BullpenToBoardMove extends Move{
 	 * @return True if the move is valid, false otherwise.
 	 */
 	public boolean undo() {
-		// TODO see if a check is needed here
 		board.removePiece(movingPiece);
 		bullpen.addPiece(movingPiece);
 		level.removeActivePiece();

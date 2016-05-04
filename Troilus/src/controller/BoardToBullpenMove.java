@@ -12,7 +12,7 @@ import model.Level;
  * @author Kunal Shah
  *
  */
-public class BoardToBullpenMove extends Move{
+public class BoardToBullpenMove extends Move {
 	/** The level modified in this move. */
 	Level level;
 
@@ -31,13 +31,17 @@ public class BoardToBullpenMove extends Move{
 	/** The row of the source square on the board. */
 	int row;
 
+	/** Keep track of when in player (needed for Lightning Level in Builder) */
+	boolean inPlayer;
+
 	/**
 	 * Creates an instance of a BoardToBullpenMove with the specified parameters.
 	 * @param level The level to be modified during the move.
 	 * @param col The column of the source square on the board.
 	 * @param row The row of the source square on the board.
 	 */
-	public BoardToBullpenMove(Level level, int col, int row) {
+	public BoardToBullpenMove(Level level, int col, int row, boolean inPlayer) {
+		this.inPlayer = inPlayer;
 		this.board = level.getBoard();
 		this.bpen = level.getBullpen();
 		this.piece = board.getPiece(col, row);
@@ -53,7 +57,7 @@ public class BoardToBullpenMove extends Move{
 	 * @param level The level to be modified during the move.
 	 * @param p The piece to be moved.
 	 */
-	public BoardToBullpenMove(Level level, Piece p){
+	public BoardToBullpenMove(Level level, Piece p, boolean inPlayer) {
 		this.board = level.getBoard();
 		this.bpen = level.getBullpen();
 		this.piece = p;
@@ -79,8 +83,12 @@ public class BoardToBullpenMove extends Move{
 
 		// Remove the active piece reference in level and signal to refresh
 		level.removeActivePiece();
-		// update and set status
-		endGameStatus = level.updateAfterMove();
+		if (inPlayer) {
+			// update and set status if in player
+			endGameStatus = level.updateAfterMove();
+		} else {
+			System.out.println("Did not update");
+		}
 		return true;
 	}
 
@@ -90,7 +98,7 @@ public class BoardToBullpenMove extends Move{
 	 * @return True if the move is valid, false otherwise.
 	 */
 	public boolean isValid() {
-		return (piece != null) && (board.getPieces().containsKey(piece)) /*&& (!(bpen.getPieces().contains(piece))*/;
+		return (piece != null) && (board.getPieces().containsKey(piece)); /*&& (!(bpen.getPieces().contains(piece))*/
 	}
 
 	/**
@@ -98,14 +106,9 @@ public class BoardToBullpenMove extends Move{
 	 * @return True if completed successfully, false otherwise.
 	 */
 	public boolean undo() {
-		// TODO see if a check is needed here
-		System.out.println(row + " " + col);
-		//if (level.getBoard().validPlacement(piece, col, row)) {
 		level.getBoard().addPiece(piece, col, row);
 		level.removeActivePiece();
 		bpen.removePiece(piece);
 		return true;
-		//}
-		//return false;
 	}
 }

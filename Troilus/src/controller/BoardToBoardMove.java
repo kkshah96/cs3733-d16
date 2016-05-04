@@ -33,6 +33,9 @@ public class BoardToBoardMove extends Move{
 
 	/** Current level's board. */
 	Board board;
+	
+	/** Keep track of when in player (needed for Lightning Level in Builder) */
+	boolean inPlayer;
 
 	/**
 	 * Creates a new instance of a BoardToBoardMove with the given parameters.
@@ -42,8 +45,10 @@ public class BoardToBoardMove extends Move{
 	 * @param fromCol The current column of the anchor square on the board
 	 * @param fromRow The current row of the anchor square on the board
 	 */
-	public BoardToBoardMove(Level level, int toCol, int toRow, int fromCol, int fromRow) {
+	public BoardToBoardMove(Level level, int toCol, int toRow,
+			int fromCol, int fromRow, boolean inPlayer) {
 		super();
+		this.inPlayer = inPlayer;
 		this.board = level.getBoard();
 		this.level = level;
 		this.movingPiece = board.getPiece(fromCol, fromRow);	
@@ -52,8 +57,6 @@ public class BoardToBoardMove extends Move{
 
 		this.fromCol = fromCol;
 		this.fromRow = fromRow;
-
-		//System.out.println("previous Col, Row: " + fromCol + ", " + fromRow);
 	}
 
 	/**
@@ -71,8 +74,11 @@ public class BoardToBoardMove extends Move{
 
 		// Remove the active piece stored in level, and signal to update
 		level.removeActivePiece();
-		// set end game status
-		endGameStatus = level.updateAfterMove();
+
+		if (inPlayer) {
+			// set end game status if in player
+			endGameStatus = level.updateAfterMove();
+		}
 		return true;
 	}
 
@@ -83,7 +89,6 @@ public class BoardToBoardMove extends Move{
 	 * @return True if this BoardToBoardMove is valid with the given parameters, false otherwise
 	 */
 	public boolean isValid() {
-		// TODO add test for ReleaseLevel, etc.
 		return level.getBoard().validPlacement(movingPiece, toCol, toRow);
 	}
 
@@ -92,24 +97,10 @@ public class BoardToBoardMove extends Move{
 	 * @return True if the move was undone successfully, false otherwise.
 	 */
 	public boolean undo() {
-		// TODO see if a check is needed here
-		//if (isValidUndo()) {
 		board.removePiece(movingPiece);
 		board.addPiece(movingPiece, fromCol, fromRow);
 
-		//System.out.println("Piece moves back to: " + toCol + ", " + toRow);
-		//System.out.println("Previous Col, Row: " + fromCol + ", " + fromRow);
 		level.removeActivePiece();
 		return true;
-		//}
-		//return false;
 	}
-
-	/**
-	 * Determines if undoing this move is valid.
-	 * @return True if the move can be undone, false if not.
-	 */
-	//public boolean isValidUndo() {
-	//	return level.getBoard().validPlacement(movingPiece, fromCol, fromRow);
-	//}
 }

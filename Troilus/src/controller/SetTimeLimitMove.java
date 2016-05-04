@@ -86,7 +86,6 @@ public class SetTimeLimitMove extends Move{
 	 */
 	@Override
 	public boolean undo() {
-		// TODO confirm no check is needed for undo()
 		// update level
 		level.setTimeLimit(previousTime);
 		

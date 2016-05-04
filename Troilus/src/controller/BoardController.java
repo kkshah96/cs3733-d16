@@ -107,7 +107,13 @@ public class BoardController extends MouseAdapter {
 				boardView.updateDraggedPiece(null);
 			} else if (level.getBoard().getPiece(col, row) != null) {
 				if (level instanceof PuzzleLevel || builder != null) {
-					Move m = new BoardToBullpenMove(level, col, row);
+					Move m;
+					if (builder != null) {
+						m = new BoardToBullpenMove(level, col, row, false);
+					} else {
+						System.out.println("In player");
+						m = new BoardToBullpenMove(level, col, row, true);
+					}
 
 					if (m.doMove()) {
 						if (builder != null) {
@@ -132,11 +138,17 @@ public class BoardController extends MouseAdapter {
 			if (boardView.getDraggedPiece() != null) { // left click and dragging a piece
 				Move m;
 				if (level.getMoveSource() == level.getBoard()) {
-					//sourceCol = level.getActivePiece().getCol();
-					//sourceRow = level.getActivePiece().getRow();
-					m = new BoardToBoardMove(level, col, row, sourceCol, sourceRow);
+					if (builder != null) {
+						m = new BoardToBoardMove(level, col, row, sourceCol, sourceRow, false);
+					} else {
+						m = new BoardToBoardMove(level, col, row, sourceCol, sourceRow, true);
+					}
 				} else {
-					m = new BullpenToBoardMove(level, level.getActivePiece(), col, row);
+					if (builder != null) {
+						m = new BullpenToBoardMove(level, level.getActivePiece(), col, row, false);
+					} else {
+						m = new BullpenToBoardMove(level, level.getActivePiece(), col, row, true);	
+					}
 				}
 
 				if (m.doMove()) {
@@ -164,7 +176,7 @@ public class BoardController extends MouseAdapter {
 					if (pieceToDrag != null) {
 						sourceCol = level.getBoard().getPieces().get(pieceToDrag).x;
 						sourceRow = level.getBoard().getPieces().get(pieceToDrag).y;
-						
+
 						level.setMoveSource(level.getBoard());
 						level.setActivePiece(pieceToDrag);
 						boardView.updateDraggedPiece(p);

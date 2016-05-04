@@ -73,7 +73,6 @@ public class ToggleSquareMove extends Move {
 	 */
 	@Override
 	public boolean undo() {
-		// TODO is this ever false?
 		level.getBoard().setActiveSquare(toggledSquare.getCol(), toggledSquare.getRow());
 		level.getBoard().toggleActiveSquare();
 		level.getBoard().getActiveSquare().setIsHint(wasHint);
