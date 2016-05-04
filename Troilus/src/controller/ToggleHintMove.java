@@ -36,7 +36,6 @@ public class ToggleHintMove extends Move {
 	 */
 	@Override
 	public boolean doMove() {
-		// TODO used to change active square: Check that this is still valid
 		if (isValid()) {
 			level.getBoard().toggleHint();
 			return true;

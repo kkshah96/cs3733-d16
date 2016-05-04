@@ -170,10 +170,9 @@ public class BoardController extends MouseAdapter {
 				}
 			} else if (level.getBoard().getPiece(col, row) != null) { // left click and not dragging
 				if (level instanceof PuzzleLevel || builder != null) {
-					//set sourceCol and sourceRow if the activePiece was on the board
-					// TODO set sourceCol and sourceRow where?
 					Piece pieceToDrag = level.getBoard().getPiece(col, row);
 					if (pieceToDrag != null) {
+						//set sourceCol and sourceRow if the activePiece was on the board
 						sourceCol = level.getBoard().getPieces().get(pieceToDrag).x;
 						sourceRow = level.getBoard().getPieces().get(pieceToDrag).y;
 

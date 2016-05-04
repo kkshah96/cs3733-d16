@@ -110,26 +110,6 @@ public class BullpenView extends JPanel {
 			}
 		}
 
-		/*if(draggedPiece != null) {
-			//System.out.println("Painting dragged piece");
-			//System.out.println("Point " + board.getDraggedPiecePoint());
-
-			//TODO: There is definitely a better way to do this
-			int x = (draggedPiecePoint.x - WIDTH_OFFSET) / SQUARE_SIZE;
-			int y = (draggedPiecePoint.y - HEIGHT_OFFSET) / SQUARE_SIZE;
-			pDrawer.paint(g, draggedPiece.getColor(), draggedPiece, new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
-		}*/
-
 		scrollPane.repaint();
 	}
-
-	/*public void addDraggedPiece(Piece piece, Point piecePoint) {
-		this.draggedPiece = piece;
-		this.draggedPiecePoint = piecePoint;
-	}
-
-	public void removeDraggedPiece() {
-		this.draggedPiece = null;
-		this.draggedPiecePoint = null;
-	}*/
 }

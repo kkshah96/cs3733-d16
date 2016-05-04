@@ -49,7 +49,7 @@ public class TestEditorBoardController extends TestCase {
 	}
 
 	public void testMoves() {
-		// TODO figure out how to get coordinates of piece in bullpen!
+		// todo figure out how to get coordinates of piece in bullpen!
 		bpController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);
 		level.getBullpen().addPiece(PieceFactory.getPiece(0));
 		bpController.handleMousePressed(new Point(5, 5), MouseEvent.BUTTON1);

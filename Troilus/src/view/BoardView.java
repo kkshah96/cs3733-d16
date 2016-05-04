@@ -102,14 +102,15 @@ public class BoardView extends JPanel {
 		Set<Piece> keySet = pieces.keySet();
 		
 		for (Piece p : keySet) {
-			pDrawer.paint(g, p.getColor(), p, pieces.get(p), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			pDrawer.paint(g, p.getColor(), p, pieces.get(p),
+					SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 		
 		if (draggedPiece != null) {
-			//TODO: There is definitely a better way to do this
 			int x = (draggedPiecePoint.x - WIDTH_OFFSET) / SQUARE_SIZE;
 			int y = (draggedPiecePoint.y - HEIGHT_OFFSET) / SQUARE_SIZE;
-			pDrawer.paint(g, draggedPiece.getColor(), draggedPiece, new Point(x, y), SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
+			pDrawer.paint(g, draggedPiece.getColor(), draggedPiece, new Point(x, y),
+					SQUARE_SIZE, HEIGHT_OFFSET, WIDTH_OFFSET);
 		}
 	}
 	

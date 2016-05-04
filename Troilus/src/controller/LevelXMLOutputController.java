@@ -156,7 +156,7 @@ public class LevelXMLOutputController {
 			// Create child elements in bullpen representing each piece present
 			for (Piece piece : bullpen.getPieces()) {
 				Element pieceElement = doc.createElement("Piece");
-				pieceElement.setAttribute("Number", "" + piece.getType()); //TODO: Fix first parameter
+				pieceElement.setAttribute("Number", "" + piece.getType());
 				bullpenElement.appendChild(pieceElement);
 			}
 			

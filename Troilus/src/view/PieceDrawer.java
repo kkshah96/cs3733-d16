@@ -27,7 +27,6 @@ public class PieceDrawer {
 	/** Holds a random object to use for color generation*/	
 	public PieceDrawer(){
 		this.squares = new PieceSquare[6];
-		// TODO: Where do we want to define constants such as the number of squares per piece (6)
 	}
 	
 	/**

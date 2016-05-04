@@ -12,17 +12,17 @@ import model.ReleaseSquare;
 public class SetSquareNumberColorMove extends Move {
 	/**The square whose number color is being set. */
 	ReleaseSquare setSquare;
-	
+
 	/**The current release level. */
 	Level level;
-	
+
 	/**The color that setSquare's number color is being set to. */
 	Color c;
-	
+
 	/** setSquare's previous color. */
 	Color previousColor;
 
-	
+
 	/**
 	 * Creates a new instance of a SetSquareNumberColorMove with the given parameters.
 	 * @param setSquare The square whose number color is being set.
@@ -35,7 +35,7 @@ public class SetSquareNumberColorMove extends Move {
 		this.c = c;
 		previousColor = setSquare.getNumberColor();
 	}
-	
+
 	/**
 	 * Completes this instance of SetSquareNumberColorMove.
 	 * @return True if the move completed successfully, or false if an error occurred.
@@ -47,7 +47,7 @@ public class SetSquareNumberColorMove extends Move {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Checks if this SetSquareNumberColorMove is valid.
 	 *  @return True if the move is valid, false if it is not a valid move.
@@ -60,7 +60,7 @@ public class SetSquareNumberColorMove extends Move {
 		}
 		return validation;
 	}
-	
+
 	/**
 	 * Undoes this SetSquareNumberColorMove and sets setSquare's number color to
 	 * what it was prior to this move being done.
@@ -68,11 +68,7 @@ public class SetSquareNumberColorMove extends Move {
 	 */
 	@Override
 	public boolean undo() {
-		// TODO see if this check is needed/correct
-		//if (setSquare.isValid()) {
-			setSquare.setNumberColor(previousColor);
-			return true;
-		//}
-		//return false;
+		setSquare.setNumberColor(previousColor);
+		return true;
 	}
 }

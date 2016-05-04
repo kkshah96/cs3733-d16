@@ -167,14 +167,11 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		boardView.setBounds(0, 114, 747, 408);
 		getContentPane().add(boardView);
 		
-		// TODO still too many listeners!!! <- I mean, we can maybe integrate
-		// SelectSquareController into BoardController
-		// if it is only for selecting squares on the board, but otherwise this seems fine to me (only two controllers)
 		boardView.addMouseListener(new BoardController(activeLevel, this, builder));
 		boardView.addMouseMotionListener(new BoardController(activeLevel, this, builder));
 		boardView.addMouseListener(new SelectSquareController(activeLevel, boardView));
 		
-		bullpenContainer = new JPanel(); //BullpenView(activeLevel.getBullpen());
+		bullpenContainer = new JPanel();
 		bullpenContainer.setLayout(null);
 		bullpenContainer.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		bullpenContainer.setBackground(Color.LIGHT_GRAY);
@@ -265,15 +262,6 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		levelTypeLabel.setBounds(6, 6, 124, 26);
 		titlePanel.add(levelTypeLabel);
 		
-		// the below panel is superfluous
-
-//		JPanel panel_6 = new JPanel();
-//		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
-//		panel_6.setBackground(Color.LIGHT_GRAY);
-//		panel_6.setBounds(404, 0, 351, 38);
-//		saveUndoPanel.add(panel_6);
-//		panel_6.setLayout(null);
-
 		JButton levelLoaderButton = new JButton("Level Loader");
 		levelLoaderButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		levelLoaderButton.setBounds(871, 0, 199, 38);
@@ -286,7 +274,6 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		saveUndoPanel.add(undoButton);
 		undoButton.addActionListener( new UndoMoveController(builder, this));
 		
-
 		redoButton = new JButton("Redo");
 		redoButton.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 		redoButton.setBounds(176, 0, 74, 38);
@@ -348,8 +335,6 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		maxMovesPanel.add(maxMovesField);
 		maxMovesField.setColumns(10);
 		
-		//maxMovesField.addActionListener(new SetMaxMovesController(activeLevel, this));
-
 		timePanel = new JPanel();
 		timePanel.setBounds(468, 0, 279, 38);
 		boardBannerPanel.add(timePanel);
@@ -387,7 +372,6 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		setTimeButton.setBounds(209, -1, 64, 38);
 		timePanel.add(setTimeButton);
 		setTimeButton.setFont(new Font("PT Sans Caption", Font.BOLD, 11));
-		//setTimeButton.addActionListener(new SetTimeLimitController(activeLevel, this, builder));
 		
 		JPanel squareBannerPanel = new JPanel();
 		squareBannerPanel.setLayout(null);
@@ -433,8 +417,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		releaseNumberComboBox.setBounds(66, 5, 85, 27);
 		releaseSquareOptionsPanel.add(releaseNumberComboBox);
 		releaseNumberComboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"None", "1", "2", "3", "4", "5", "6"}));
-		//releaseNumberComboBox.addActionListener(new SetSquareNumberController(activeLevel, this));
-
+		
 		JLabel numberColorLabel = new JLabel("Number Color:");
 		numberColorLabel.setBounds(150, 11, 97, 16);
 		releaseSquareOptionsPanel.add(numberColorLabel);
@@ -446,11 +429,7 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		releaseColorComboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Red", "Green", "Yellow"}));
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(100, 100, 1207, 751);
-		//pView.setPreferredSize(new Dimension(500, 500));
-		//pView.setLayout(null);
-		//releaseColorComboBox.addActionListener(new SetSquareNumberColorController(activeLevel, this));
-
-		//releaseColorComboBox.getSelectedItem().toString() //TODO: This is how to get the selected option
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 522, 1205, 201);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -461,12 +440,8 @@ public class LevelEditorView extends JFrame implements ILevelView {
 		
 		// Initialize Controllers
 		paletteView.addMouseListener(new PaletteController(activeLevel, this, builder));
-		//if (activeLevel.getName().equals("Lightning")) {
-			//btnSetTime.addActionListener(new SetTimeLimitController(activeLevel, this));
-		//}
 	}
 	
-	// TODO make less messy!
 	/**
 	 * Calls to refresh this view
 	 */

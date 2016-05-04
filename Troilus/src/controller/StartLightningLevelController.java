@@ -51,7 +51,6 @@ public class StartLightningLevelController implements ActionListener {
 		levelView.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				levelView.dispose();
-				// TODO save level progress?
 
 				// dispose of level view and reload all levels
 				levelView.dispose();

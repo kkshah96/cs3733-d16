@@ -41,7 +41,6 @@ public class DeleteLevelController {
 		levels.remove(level);
 		
 		// reset level number
-		// TODO: Wouldn't doing this eventually cause the level numbers to start above 1?
 		for (int i = 0; i < levels.size(); i++) {
 			levels.get(i).setLevelNum(i + 1);
 		}
@@ -49,5 +48,4 @@ public class DeleteLevelController {
 		// save all levels 
 		new LevelFileOutputController(levelBuilder);
 	}
-
 }

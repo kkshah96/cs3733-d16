@@ -279,7 +279,6 @@ public class LevelPlayerView extends JFrame implements ILevelView {
 		timeLabel.setFont(new Font("PT Sans Caption", Font.BOLD, 15));
 	}
 	
-	// TODO fix messy code!
 	/**
 	 * Refreshes the specific labels/panels for each type of level
 	 */

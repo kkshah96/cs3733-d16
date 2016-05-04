@@ -75,7 +75,6 @@ public class SetMaxMovesMove extends Move {
 	 */
 	@Override
 	public boolean undo() {
-		// TODO see if check is needed here
 		level.setMaxMoves(previousNumMoves);
 		editorView.getMaxMovesField().setText(Integer.toString(previousNumMoves));
 		return true;

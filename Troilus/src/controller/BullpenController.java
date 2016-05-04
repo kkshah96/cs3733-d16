@@ -124,7 +124,6 @@ public class BullpenController extends MouseAdapter {
 						m = new BoardToBullpenMove(level, level.getActivePiece(), true);
 					}
 					if (m.doMove()) {
-						// TODO fix copy-pasted code!!!
 						if (builder != null) {
 							// if we are in the level builder
 							builder.pushMove(m, false);
