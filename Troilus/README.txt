@@ -1,5 +1,7 @@
 Included in the Troilus project is the implementation of the Kabasuji and Level Builder applications, both of which can be found in the package "main." The applications are launched by running StartKabasuji and StartLevelBuilder, respectively.  In this project, you will also find a “CS 3733 Code Coverage Data” PDF, containing the code coverage data and graph requested.
 
+Our project ships with 15 levels, and can support up to 25. The solutions for the 15 non-lightning are included as well.
+
 Controls for Level Builder:
 In the Level Loader
 Click a level to edit it
@@ -65,7 +67,8 @@ To achieve Builder Concrete Scenario:
 15. Click on "New Lightning Level"
 16. Click on the "6x1" piece 6 times
 17. Type 30 in the seconds field, then press "Set"
-18. Click the red X twice
+18. Hit "Save" button
+19. Click the red X twice
 
 GamePlayer Concrete Scenario:
 1. Run StartKabasuji
