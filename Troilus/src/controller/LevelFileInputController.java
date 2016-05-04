@@ -20,7 +20,7 @@ import model.Level;
  * 
  * This controller will read through the master level file and obtain the level numbers selected by the builder.
  * From here, it will call our XMLInputController to retrieve the level information from the requested level.
- * Once this has finished, an ArrayList<Level> containing all levels is returned
+ * Once this has finished, an ArrayList containing all levels is returned
  * @author Dan Alfred
  *
  */
@@ -41,7 +41,7 @@ public class LevelFileInputController {
 	
 	/**
 	 * Gathers collection of levels based on level storage files
-	 * @return ArrayList<Level> of all requested levels
+	 * @return ArrayList of all requested levels
 	 */
 	public ArrayList<Level> getLevels() {
 		// Create an empty ArrayList first, in case we have an error and can't read more

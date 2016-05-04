@@ -44,6 +44,7 @@ public class BoardToBoardMove extends Move{
 	 * @param toRow The row of the anchor square on the board
 	 * @param fromCol The current column of the anchor square on the board
 	 * @param fromRow The current row of the anchor square on the board
+	 * @param inPlayer Whether or not the move is being used in the player
 	 */
 	public BoardToBoardMove(Level level, int toCol, int toRow,
 			int fromCol, int fromRow, boolean inPlayer) {
@@ -83,8 +84,8 @@ public class BoardToBoardMove extends Move{
 	}
 
 	/**
-	 * Checks if this BoardToBoardMove is valid with the given parameters<br />
-	 * -Valid if all squares inside the piece are not on an invalid squares and <br />
+	 * Checks if this BoardToBoardMove is valid with the given parameters.
+	 * -Valid if all squares inside the piece are not on an invalid squares and
 	 * -There are no pieces underneath the requested piece 
 	 * @return True if this BoardToBoardMove is valid with the given parameters, false otherwise
 	 */

@@ -39,6 +39,7 @@ public class BullpenToBoardMove extends Move {
 	 * @param movingPiece A reference to the active piece for the level.
 	 * @param col The column on the board as the destination.
 	 * @param row The row on the board as the destination.
+	 * @param inPlayer Whether or not the move is being made in the player.
 	 */
 	public BullpenToBoardMove(Level level, Piece movingPiece, int col, int row, boolean inPlayer) {
 		super();

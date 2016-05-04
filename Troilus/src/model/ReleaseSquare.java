@@ -22,7 +22,7 @@ public class ReleaseSquare extends Square {
 	boolean hint;
 	
 	/** 
-	 * Creates a ReleaseSquare with the following parameters. <br />
+	 * Creates a ReleaseSquare with the following parameters.
 	 * Sets number to 0, Color to null, and hint to false by default.
 	 * 
 	 * @param col The column of this ReleaseSquare on the board.
@@ -36,7 +36,7 @@ public class ReleaseSquare extends Square {
 	}
 	
 	/**
-	 * Creates a Release Square with the following parameters. <br />
+	 * Creates a Release Square with the following parameters.
 	 * Sets hint to false by default.
 	 * 
 	 * @param col The column of this ReleaseSquare on the board.

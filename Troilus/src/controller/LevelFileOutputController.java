@@ -18,9 +18,9 @@ import model.Level;
 import model.LevelBuilder;
 
 /** 
- * Controller handles writing level master file and <= 15 level files.
+ * Controller handles writing level master file and less than or equal 15 level files.
  * 
- * This class handles writing all levels to file. It starts by selecting the first 15 level files (or all if <15)
+ * This class handles writing all levels to file. It starts by selecting the first 15 level files (or all if less than 15)
  * and updating the master file to contain the level number. After this, it passes the Level to the XMLOutputController
  * to store the level to file properly
  * 
