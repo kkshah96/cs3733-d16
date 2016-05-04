@@ -90,7 +90,7 @@ public class BoardToBullpenMove extends Move{
 	 * @return True if the move is valid, false otherwise.
 	 */
 	public boolean isValid() {
-		return (piece != null) && (board.getPieces().containsKey(piece)) && (!(bpen.getPieces().contains(piece)));
+		return (piece != null) && (board.getPieces().containsKey(piece)) /*&& (!(bpen.getPieces().contains(piece))*/;
 	}
 	
 	/**
