@@ -1,7 +1,5 @@
 package controller;
 
-import java.awt.event.ActionEvent;
-
 import junit.framework.TestCase;
 import model.Board;
 import model.Bullpen;
